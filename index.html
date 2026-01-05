@@ -500,6 +500,31 @@
             transform: scale(1.1);
         }
 
+        .undo-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .undo-btn:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .undo-btn:disabled {
+            opacity: 0.5;
+            cursor: default;
+            transform: none;
+        }
+
         .example-text {
             flex: 1;
         }
@@ -1400,6 +1425,7 @@
                         <div class="example-label">例文</div>
                         <div class="example-sentence" id="exampleSentence">ファイルを読み込んでください</div>
                     </div>
+                    <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled>↩️ 戻る</button>
                 </div>
             </div>
         </div>
@@ -1446,6 +1472,42 @@
 
         let vocabulary = [];
         let autoTimer = null;
+        let gameStateHistory = []; // Stack to store previous states
+
+        // Save current state to history (Max 1 step for now)
+        function saveState() {
+            // Deep copy gameState
+            const stateSnapshot = JSON.parse(JSON.stringify(gameState));
+            gameStateHistory.push(stateSnapshot);
+            // Limit history to 1 step as per requirement (can be increased)
+            if (gameStateHistory.length > 5) {
+                gameStateHistory.shift();
+            }
+            updateUndoButton();
+        }
+
+        // Restore last state
+        function undoLastAction() {
+            if (gameStateHistory.length === 0) return;
+
+            const previousState = gameStateHistory.pop();
+            gameState = previousState;
+
+            // Restore UI
+            showWord(gameState.currentWord);
+            updateDisplay();
+            updateUndoButton();
+
+            // Re-apply current mode button styles if needed
+            updateModeButtons();
+        }
+
+        function updateUndoButton() {
+            const btn = document.getElementById('undoBtn');
+            if (btn) {
+                btn.disabled = gameStateHistory.length === 0;
+            }
+        }
 
         // --- Trial System Config ---
         const TRIAL_CONFIG = {
@@ -2192,6 +2254,66 @@
             checkLevelUp();
         }
 
+        // NEW: Function to show a SPECIFIC word (for Undo/Restore)
+        function showWord(word) {
+            if (!word) return;
+
+            // Reset Card State
+            gameState.meaningCardFlipped = false;
+            document.getElementById('meaningCard').classList.remove('flipped');
+
+            // Map POS
+            const posMap = {
+                "名": "名詞",
+                "動": "動詞",
+                "形": "形容詞",
+                "副": "副詞",
+                "助": "助動詞",
+                "接": "接続詞",
+                "前": "前置詞",
+                "代": "代名詞"
+            };
+            const fullPos = posMap[word.pos] || word.pos;
+
+            // Update DOM (MATCHING showNextWord STRUCTURE EXACTLY)
+            document.getElementById('vocabWord').innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; transform: translateY(-10%);">
+                    <div style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 5px;">${fullPos}</div>
+                    <div style="font-size: 42px; font-weight: bold; line-height: 1.2;">${word.word}</div>
+                </div>
+            `;
+
+            // Update Meaning (MATCHING showNextWord STRUCTURE)
+            // Label Idea: Use English "Phrase" in small caps for a cleaner look
+            const phraseLabel = `<span style="font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 4px;">PHRASE</span>`;
+
+            document.getElementById('meaningText').innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                    <div style="font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">${word.meaning}</div>
+                    ${word.phrase ? `
+                        <div style="text-align: center; background: #f8f9fa; padding: 10px 20px; border-radius: 12px; border: 1px solid #eef0f5;">
+                            ${phraseLabel}
+                            <div style="font-size: 18px; color: #444; font-weight: 500;">${word.phrase}</div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+
+            document.getElementById('exampleSentence').textContent = word.example;
+
+            // Re-bind speaker button for this word
+            const speakerBtn = document.getElementById('speakerBtn');
+            const newBtn = speakerBtn.cloneNode(true);
+            speakerBtn.parentNode.replaceChild(newBtn, speakerBtn);
+
+            newBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                speakText(word.example);
+            });
+
+            updateProgress();
+        }
+
         function showNoWordsMessage() {
             const cardsArea = document.getElementById('cardsArea');
             const modeNames = {
@@ -2315,6 +2437,9 @@
                 return;
             }
 
+            // Save state for Undo
+            saveState();
+
             const key = getWordKey(currentWord, gameState.currentLevel);
             let basePoints = 1;
             let msg = "";
@@ -2323,6 +2448,7 @@
             const currentState = gameState.wordStates[key];
 
             if (currentState === 'unlearned') {
+                gameState.wordStates[key] = 'perfect';
                 gameState.wordsLearned++;
                 checkLevelUp();
             } else if (currentState === 'weak') {
@@ -2373,6 +2499,9 @@
             clearAutoTimer();
 
             if (!gameState.meaningCardFlipped) {
+                // Save state for Undo
+                saveState();
+
                 // Flip = Incorrect / Check
                 card.classList.add('flipped');
                 gameState.meaningCardFlipped = true;
