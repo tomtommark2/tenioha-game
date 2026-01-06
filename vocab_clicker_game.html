@@ -3018,14 +3018,33 @@
             if (!playerName) {
                 document.getElementById('nameInputParams').style.display = 'block';
                 document.getElementById('leaderboardContent').style.display = 'none';
+                document.getElementById('renameBtn').style.display = 'none';
             } else {
                 document.getElementById('nameInputParams').style.display = 'none';
                 document.getElementById('leaderboardContent').style.display = 'block';
+                document.getElementById('renameBtn').style.display = 'block';
 
                 // Sync Score (attempt)
                 if (typeof attemptScoreSync === 'function') attemptScoreSync(true);
                 loadRankingData('top');
             }
+        }
+
+        function renamePlayer() {
+            // Store current name temporarily in case of cancel
+            document.getElementById('playerNameInput').value = playerName;
+
+            // Show input, hide content
+            document.getElementById('nameInputParams').style.display = 'block';
+            document.getElementById('leaderboardContent').style.display = 'none';
+            document.getElementById('renameBtn').style.display = 'none';
+
+            // Show cancel button
+            document.getElementById('cancelRenameBtn').style.display = 'inline-block';
+        }
+
+        function cancelRename() {
+            checkNameRegistration(); // Restore view
         }
 
         function registerName() {
@@ -3226,7 +3245,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.15</span>
+                <span style="font-size: 11px; color: #ccc;">v1.16</span>
             </div>
 
 
@@ -3292,17 +3311,29 @@
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 450px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
             <button onclick="closeLeaderboard()"
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+
+            <!-- Rename Button (Top Left) -->
+            <button id="renameBtn" onclick="renamePlayer()"
+                style="position: absolute; top: 15px; left: 15px; background: none; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 11px; cursor: pointer; color: #888; display: none;">
+                ✏️ 名前変更
+            </button>
+
             <h2 style="margin-top: 0; padding-bottom: 10px; color: #f1c40f; text-shadow: 1px 1px 0px #e67e22;">
                 🏆 ランキング
             </h2>
 
             <!-- Name Input Overlay (Initial Only) -->
+            <!-- Name Input Overlay (Initial Only) -->
             <div id="nameInputParams" style="display: none; margin-bottom: 20px;">
                 <p style="font-size: 14px; color: #666; margin-bottom: 10px;">ランキングに参加するには名前を登録してください</p>
                 <input type="text" id="playerNameInput" placeholder="ニックネーム（８文字以内）" maxlength="8"
                     style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; text-align: center;">
-                <button onclick="registerName()"
-                    style="margin-top: 10px; padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">登録して参加</button>
+                <div style="margin-top: 10px;">
+                    <button onclick="registerName()"
+                        style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">登録して参加</button>
+                    <button id="cancelRenameBtn" onclick="cancelRename()"
+                        style="display: none; padding: 8px 15px; background: #ddd; color: #555; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">キャンセル</button>
+                </div>
             </div>
 
             <!-- Tab Content -->
