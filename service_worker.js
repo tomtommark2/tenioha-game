@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vocab-clicker-v12';
+const CACHE_NAME = 'vocab-clicker-v13';
 const ASSETS = [
     './',
     './vocab_clicker_game.html',
