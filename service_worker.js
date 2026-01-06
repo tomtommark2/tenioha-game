@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vocab-clicker-v1';
+const CACHE_NAME = 'vocab-clicker-v2';
 const ASSETS = [
     './',
     './vocab_clicker_game.html',
@@ -7,6 +7,8 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', (event) => {
+    // Force immediate activation
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => cache.addAll(ASSETS))
@@ -34,6 +36,7 @@ self.addEventListener('fetch', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
+    // Force this SW to become the controller for all clients
     event.waitUntil(
         caches.keys().then((keyList) => {
             return Promise.all(keyList.map((key) => {
@@ -41,6 +44,6 @@ self.addEventListener('activate', (event) => {
                     return caches.delete(key);
                 }
             }));
-        })
+        }).then(() => self.clients.claim())
     );
 });

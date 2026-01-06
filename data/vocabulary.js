@@ -477,7 +477,7 @@ const DEFAULT_VOCABULARY = {
         { word: "extra", meaning: "さらに、余分に", phrase: "work extra", pos: "副", example: "I had to work extra hard this week.", set: 1 },
         { word: "extra", meaning: "余分な、追加の", phrase: "extra charge", pos: "形", example: "I need some extra help with my homework.", set: 1 },
         { word: "extremely", meaning: "非常に、極端に", phrase: "extremely cold", pos: "副", example: "The weather was extremely hot yesterday.", set: 1 },
-        { word: "face", meaning: "顔", phrase: "wash one's face", pos: "動", example: "She has a smile on her face.", set: 1 },
+        { word: "face", meaning: "直面する", phrase: "face a problem", pos: "動", example: "You must face reality.", set: 1 },
         { word: "fact", meaning: "事実", phrase: "in fact", pos: "名", example: "Is it a fact that he is leaving?", set: 1 },
         { word: "fail", meaning: "失敗する、し損なう、落ちる", phrase: "fail the test", pos: "動", example: "I failed the math exam.", set: 1 },
         { word: "fairly", meaning: "かなり、公平に", phrase: "fairly good", pos: "副", example: "The test was fairly difficult.", set: 1 },
@@ -8043,7 +8043,7 @@ const DEFAULT_VOCABULARY = {
 
     ],
     selection1900: [
-                { word: "create", meaning: "", phrase: "create", pos: "other", example: "", set: 1, id: 1, ref: "basic" },
+        { word: "create", meaning: "", phrase: "create", pos: "other", example: "", set: 1, id: 1, ref: "basic" },
         { word: "increase", meaning: "", phrase: "increase", pos: "other", example: "", set: 1, id: 2, ref: "basic" },
         { word: "improve", meaning: "", phrase: "improve", pos: "other", example: "", set: 1, id: 3, ref: "basic" },
         { word: "mean", meaning: "", phrase: "mean", pos: "other", example: "", set: 1, id: 4, ref: "junior" },
@@ -9995,7 +9995,7 @@ const DEFAULT_VOCABULARY = {
         { id: 1950, word: "aluminium", meaning: "", pos: "unknown", example: "", set: 1, ref: "exam1" },
     ],
     selection1400: [
-                { word: "believe", meaning: "", phrase: "believe", pos: "other", example: "", set: 1, id: 1, ref: "junior" },
+        { word: "believe", meaning: "", phrase: "believe", pos: "other", example: "", set: 1, id: 1, ref: "junior" },
         { word: "consider", meaning: "", phrase: "consider", pos: "other", example: "", set: 1, id: 2, ref: "basic" },
         { word: "expect", meaning: "", phrase: "expect", pos: "other", example: "", set: 1, id: 3, ref: "basic" },
         { word: "decide", meaning: "", phrase: "decide", pos: "other", example: "", set: 1, id: 4, ref: "basic" },
@@ -11447,7 +11447,7 @@ const DEFAULT_VOCABULARY = {
         { id: 1450, word: "alcoholic", meaning: "", pos: "unknown", example: "", set: 1, ref: "exam1" },
     ],
     sys_2000: [
-                { word: "follow", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "basic:follow" },
+        { word: "follow", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "basic:follow" },
         { word: "consider", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "basic:consider" },
         { word: "increase", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "basic:increase" },
         { word: "expect", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "basic:expect" },
