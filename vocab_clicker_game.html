@@ -51,7 +51,7 @@
             /* Subtle edge */
             border-radius: 24px;
             /* More modern roundness */
-            padding: 30px;
+            padding: 40px 30px 30px 30px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
             /* Colored shadow for depth */
             max-width: 900px;
@@ -1288,7 +1288,7 @@
         <!-- Stats (Moved from Header) -->
         <!-- Simple Mode Switch (Top Left) -->
         <div class="simple-switch-container"
-            style="position: absolute; top: 15px; left: 15px; z-index: 200; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+            style="position: absolute; top: 15px; left: 15px; z-index: 200; display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
             <button class="simple-mode-btn" id="simpleModeBtn" onclick="openSimpleModeModal()"
                 style="background: #fff; border: 1px solid #ddd; padding: 5px 10px; border-radius: 20px; font-size: 12px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 5px; color: #555; font-weight: bold;">
                 📱 シンプルモード
@@ -1434,7 +1434,7 @@
             @media (min-width: 769px) {
                 .header-controls {
                     position: absolute;
-                    top: 0px;
+                    top: -10px;
                     /* Adjusted up by another 10px */
                     right: 20px;
                     /* Force Right Align */
