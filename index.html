@@ -3758,6 +3758,17 @@
                                 localStorage.setItem('vocabGame_isUnlocked', 'false');
                             }
                             updatePremiumStatusDisplay();
+
+                            // BUGFIX: Immediately update in-memory trial state and hide overlay
+                            if (isValid) {
+                                if (typeof trialState !== 'undefined') {
+                                    trialState.unlocked = true;
+                                    saveTrialState(); // Persist simple unlocked state
+                                    updateTrialUI();
+                                }
+                                const overlay = document.getElementById('trialOverlay');
+                                if (overlay) overlay.style.display = 'none';
+                            }
                         }
 
                         // 2. Data Sync
