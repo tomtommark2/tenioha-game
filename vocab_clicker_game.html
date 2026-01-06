@@ -1114,36 +1114,6 @@
                 transform: translateY(-3px);
             }
         }
-
-
-        /* --- SIMPLE MODE STYLES --- */
-        body.simple-mode .header,
-        body.simple-mode .level-selector,
-        body.simple-mode .header-controls,
-        body.simple-mode .stats-absolute,
-        body.simple-mode .simple-switch-container,
-        body.simple-mode #trialTimerDisplay,
-        body.simple-mode .pos-filter-container,
-        body.simple-mode .progress-section,
-        body.simple-mode .mobile-progress-wrapper,
-        body.simple-mode .random-notice {
-            display: none !important;
-        }
-
-        body.simple-mode .container {
-            margin-top: 60px;
-            /* Reset reduced padding */
-            max-width: 600px;
-            /* Keep it focused */
-        }
-
-        body.simple-mode #exitSimpleModeBtn {
-            display: block !important;
-        }
-
-        body.simple-mode .cards-area {
-            margin-top: 20px;
-        }
     </style>
 </head>
 
@@ -1184,12 +1154,8 @@
     <div class="container" style="position: relative;">
         <!-- Stats (Moved from Header) -->
         <!-- Stats (Moved from Header) -->
-        <!-- Simple Mode Switch (Top Left) -->
-        <div class="simple-switch-container" style="position: absolute; top: 15px; left: 15px; z-index: 200;">
-            <button class="simple-mode-btn" id="simpleModeBtn" onclick="openSimpleModeModal()"
-                style="background: #fff; border: 1px solid #ddd; padding: 5px 10px; border-radius: 20px; font-size: 12px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 5px; color: #555; font-weight: bold;">
-                📱 シンプルモード
-            </button>
+        <div class="stats-absolute">
+            <div class="points">💰 <span id="points">0</span> gold</div>
         </div>
 
         <!-- Top Right Controls (Upload) -->
@@ -1225,12 +1191,6 @@
         <div class="header">
             <div class="rpg-inline">
                 <div id="enemySlime" class="pixel-art anim-slime" style="opacity: 0;"></div>
-
-                <!-- Gold Display (Above Level) -->
-                <div class="char-level-display" style="top: -42px; color: #f1c40f;">
-                    💰 <span id="points">0</span>
-                </div>
-
                 <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
                 <div id="heroCharacter" class="pixel-art anim-idle"></div>
             </div>
@@ -2860,73 +2820,9 @@
             }, 600);
         }
 
-        // --- SIMPLE MODE LOGIC ---
-        function openSimpleModeModal() {
-            document.getElementById('simpleModeModal').style.display = 'flex';
-        }
-
-        function startSimpleMode(level) {
-            document.getElementById('simpleModeModal').style.display = 'none';
-            document.body.classList.add('simple-mode');
-
-            if (level === 'wordbook') {
-                // Open Wordbook Selection Modal
-                // Assuming openWordbookModal() exists or we find the logic.
-                // Re-using existing button click logic is safest if function undefined.
-                const wbBtn = document.getElementById('wordbookBtn');
-                if (wbBtn) wbBtn.click();
-            } else {
-                // Set Level
-                const btn = document.querySelector(`.level-btn[data-level="${level}"]`);
-                if (btn) btn.click();
-            }
-        }
-
-        function exitSimpleMode() {
-            document.body.classList.remove('simple-mode');
-        }
-
         init();
         initTrialSystem(); // Start Trial Timer
     </script>
-    <!-- Simple Mode Category Selection Modal -->
-    <div id="simpleModeModal" class="modal-overlay"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10001; justify-content: center; align-items: center;">
-        <div class="modal-content"
-            style="background: white; padding: 30px; border-radius: 12px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-            <h2 style="margin-top: 0; color: #333; margin-bottom: 20px;">📱 シンプルモード設定</h2>
-            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">出題範囲を選択してスタート！</p>
-
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <button onclick="startSimpleMode('junior')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">🔰
-                    中学レベル</button>
-                <button onclick="startSimpleMode('basic')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">📚
-                    基礎レベル</button>
-                <button onclick="startSimpleMode('daily')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">🎬
-                    標準レベル</button>
-                <button onclick="startSimpleMode('exam1')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">📖
-                    受験レベル</button>
-                <!-- Wordbook Option -->
-                <button onclick="startSimpleMode('wordbook')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; cursor: pointer; font-weight: bold;">📘
-                    単語帳</button>
-            </div>
-
-            <button onclick="document.getElementById('simpleModeModal').style.display='none'"
-                style="margin-top: 20px; background: none; border: none; color: #999; text-decoration: underline; cursor: pointer;">キャンセル</button>
-        </div>
-    </div>
-
-    <!-- Simple Mode Exit Button (Hidden by default) -->
-    <button id="exitSimpleModeBtn" onclick="exitSimpleMode()"
-        style="display: none; position: fixed; top: 15px; right: 15px; z-index: 300; background: #333; color: white; border: none; padding: 5px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; opacity: 0.8;">
-        ✕ 通常モードへ戻る
-    </button>
-
     <!-- Help Modal -->
     <div id="helpModal" class="modal-overlay"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; justify-content: center; align-items: center;">

@@ -1114,7 +1114,7 @@
                 transform: translateY(-3px);
             }
         }
-        }
+
 
         /* --- SIMPLE MODE STYLES --- */
         body.simple-mode .header,
@@ -1200,13 +1200,25 @@
 
 
         <div class="level-selector" id="levelContainer">
-            <button class="level-btn" data-level="junior">🔰 中学</button>
-            <button class="level-btn active" data-level="basic">📚 基礎</button>
-            <button class="level-btn" data-level="daily">🎬 標準</button>
-            <button class="level-btn" data-level="exam1">📖 受験</button>
+            <button class="level-btn" data-level="junior">
+                <span class="lvl-icon">🔰</span>
+                <span class="lvl-text">中学</span>
+            </button>
+            <button class="level-btn active" data-level="basic">
+                <span class="lvl-icon">📚</span>
+                <span class="lvl-text">基礎</span>
+            </button>
+            <button class="level-btn" data-level="daily">
+                <span class="lvl-icon">🎬</span>
+                <span class="lvl-text">標準</span>
+            </button>
+            <button class="level-btn" data-level="exam1">
+                <span class="lvl-icon">📖</span>
+                <span class="lvl-text">受験</span>
+            </button>
             <button class="level-btn" id="wordbookBtn" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);">
-                <span class="pc-text">📘 単語帳</span>
-                <span class="mobile-text">単語帳</span>
+                <span class="lvl-icon">📘</span>
+                <span class="lvl-text">単語帳</span>
             </button>
         </div>
 
@@ -1322,6 +1334,175 @@
 
                 .pc-text {
                     display: none;
+                }
+
+                /* --- MOBILE RESPONSIVE STYLES --- */
+                /* 1. Container & Layout Reset */
+                .container {
+                    width: 95%;
+                    padding: 15px;
+                    /* Space for fixed top buttons */
+                    padding-top: 60px;
+                    margin: 0 auto;
+                }
+
+                /* 2. Circular Level Buttons (Top Row) */
+                .level-selector {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 5px;
+                    margin-bottom: 20px;
+                    overflow-x: auto;
+                    padding-bottom: 5px;
+                    /* Scroll space */
+                }
+
+                .level-btn {
+                    flex: 1;
+                    /* Equal Width */
+                    min-width: 60px;
+                    height: 60px;
+                    /* Circular aspect */
+                    border-radius: 50% !important;
+                    /* Circle or Rounded Pill */
+                    border-radius: 20px !important;
+                    /* Rounded Square looks better for text */
+                    padding: 5px !important;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 2px;
+                    font-size: 10px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                /* Hide spans on PC if needed, but styling here handles it. */
+                .level-btn .lvl-icon {
+                    font-size: 20px;
+                    margin: 0;
+                }
+
+                .level-btn .lvl-text {
+                    font-size: 10px;
+                    font-weight: bold;
+                    white-space: nowrap;
+                }
+
+                /* 3. Dashboard Grid (Character + Controls) */
+                .header {
+                    display: grid !important;
+                    grid-template-columns: 1fr 1.8fr;
+                    /* Character gets less, Controls get more */
+                    gap: 10px;
+                    align-items: center;
+                    margin-bottom: 20px;
+                }
+
+                /* Left Column: Character Area */
+                .rpg-inline {
+                    width: 100%;
+                    height: 120px;
+                    /* Fixed height for consistency */
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    /* Align char to bottom */
+                    position: relative;
+                }
+
+                /* Adjust Gold/Level positions for new layout */
+                .char-level-display {
+                    /* Keep relative to .rpg-inline */
+                    font-size: 10px;
+                }
+
+                /* Right Column: Controls */
+                /* We need to target the div wrapping .mobile-layout-row and others */
+                /* The structural div has no class, so we might need inline flex in HTML or target via child */
+
+                /* HACK: The Right Column is currently a generic div. Let's assume it flows into the 2nd grid cell. */
+                .header>div:nth-child(2) {
+                    width: 100% !important;
+                    max-width: none !important;
+                    align-items: stretch !important;
+                }
+
+                /* Toggles Row */
+                .mobile-layout-row {
+                    flex-direction: column;
+                    /* Stack Toggles and Bar? No, User wanted grid. */
+                    /* Let's try: Toggles Top, Mode Buttons Bottom */
+                    gap: 10px;
+                    margin-bottom: 10px;
+                }
+
+                /* Make Toggles (Auto/Random) compact Row */
+                .toggle-container {
+                    flex-direction: row !important;
+                    /* Force Row on Mobile */
+                    justify-content: space-between;
+                    gap: 5px !important;
+                    width: 100%;
+                }
+
+                .auto-mode-container {
+                    flex: 1;
+                    justify-content: center;
+                    padding: 8px 5px;
+                    font-size: 11px;
+                }
+
+                /* Mode Buttons Grid (2x2) */
+                .mode-buttons {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 8px;
+                    width: 100%;
+                }
+
+                .mode-btn {
+                    width: 100%;
+                    margin: 0;
+                    padding: 8px;
+                    flex-direction: column;
+                    /* Icon Top, Text Bottom */
+                    text-align: center;
+                    font-size: 11px;
+                    border-radius: 12px;
+                }
+
+                /* Progress Bar (Mobile) - Ensure Visibility */
+                .mobile-only {
+                    display: flex !important;
+                    margin-top: 5px;
+                    width: 100%;
+                }
+
+                /* Cards Stack */
+                .cards-area {
+                    flex-direction: row;
+                    /* Side by side cards? User image shows side-by-side! */
+                    gap: 10px;
+                }
+
+                .card {
+                    flex: 1;
+                    min-height: 180px;
+                    /* Square-ish */
+                    max-width: 50%;
+                    /* 2 per row */
+                }
+
+                .card .card-content {
+                    font-size: 20px;
+                    /* Smaller text for side-by-side */
+                }
+
+                /* Example Area below */
+                .example-area {
+                    margin-top: 15px;
                 }
 
                 .pc-only {
