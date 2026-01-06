@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>英単語学習クリッカー</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <link rel="apple-touch-icon" href="icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -984,6 +987,12 @@
                 -webkit-overflow-scrolling: touch;
                 padding-bottom: 5px;
             }
+
+            /* 6. Fix Simple Mode Switch Position */
+            .simple-switch-container {
+                top: 55px !important;
+                left: 10px !important;
+            }
         }
 
         /* Trial Overlay Styles */
@@ -1114,6 +1123,129 @@
                 transform: translateY(-3px);
             }
         }
+
+
+        /* --- SIMPLE MODE STYLES --- */
+        body.simple-mode .header,
+        body.simple-mode .level-selector,
+        body.simple-mode .header-controls,
+        body.simple-mode .stats-absolute,
+        body.simple-mode .simple-switch-container,
+        body.simple-mode #trialTimerDisplay,
+        body.simple-mode .pos-filter-container,
+        body.simple-mode .progress-section,
+        body.simple-mode .mobile-progress-wrapper,
+        body.simple-mode .mobile-layout-row,
+        body.simple-mode .toggle-container,
+        body.simple-mode .mobile-only,
+        body.simple-mode .char-level-display,
+        body.simple-mode .random-notice {
+            display: none !important;
+        }
+
+        body.simple-mode .container {
+            margin-top: 60px;
+            /* Reset reduced padding */
+            max-width: 600px;
+            /* Keep it focused */
+        }
+
+        body.simple-mode #exitSimpleModeBtn {
+            display: block !important;
+        }
+
+        /* Leaderboard Styles */
+        .ranking-btn {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            border: 1px solid #e67e22;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+        }
+
+        .ranking-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .leaderboard-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .lb-tab {
+            flex: 1;
+            padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: #999;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .lb-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .ranking-list {
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .ranking-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+
+        .ranking-item.is-me {
+            background: #eef2ff;
+            border-left: 4px solid #667eea;
+            font-weight: bold;
+        }
+
+        .rank-num {
+            width: 30px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .rank-num.top3 {
+            color: #e67e22;
+            font-size: 16px;
+        }
+
+        .rank-name {
+            flex: 1;
+            color: #333;
+        }
+
+        .rank-score {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        body.simple-mode .cards-area {
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -1154,14 +1286,31 @@
     <div class="container" style="position: relative;">
         <!-- Stats (Moved from Header) -->
         <!-- Stats (Moved from Header) -->
-        <div class="stats-absolute">
-            <div class="points">💰 <span id="points">0</span> gold</div>
+        <!-- Simple Mode Switch (Top Left) -->
+        <div class="simple-switch-container"
+            style="position: absolute; top: 15px; left: 15px; z-index: 200; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+            <button class="simple-mode-btn" id="simpleModeBtn" onclick="openSimpleModeModal()"
+                style="background: #fff; border: 1px solid #ddd; padding: 5px 10px; border-radius: 20px; font-size: 12px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 5px; color: #555; font-weight: bold;">
+                📱 シンプルモード
+            </button>
+            <button class="ranking-btn" id="rankingBtn" onclick="openLeaderboard()">
+                👑 ランキング
+            </button>
         </div>
 
         <!-- Top Right Controls (Upload) -->
-        <div class="header-controls">
+        <div class="header-controls" style="display: flex; align-items: center; gap: 10px;">
             <div id="trialTimerDisplay" class="trial-timer">残り 10:00</div>
-            <button class="icon-btn" id="helpBtn" title="遊び方" style="margin-left: 10px;">❓</button>
+
+            <!-- Profile Icon (New) -->
+            <div id="headerProfileIcon" onclick="toggleProfileModal()"
+                style="width: 40px; height: 40px; border-radius: 50%; background: #eee; cursor: pointer; overflow: hidden; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
+                <span id="headerProfileInitials" style="font-weight: bold; color: #888; font-size: 14px;">👤</span>
+                <img id="headerProfileImage" src=""
+                    style="width: 100%; height: 100%; object-fit: cover; display: none;">
+            </div>
+
+            <button class="icon-btn" id="helpBtn" title="遊び方">❓</button>
         </div>
 
 
@@ -1191,6 +1340,12 @@
         <div class="header">
             <div class="rpg-inline">
                 <div id="enemySlime" class="pixel-art anim-slime" style="opacity: 0;"></div>
+
+                <!-- Gold Display (Above Level) -->
+                <div class="char-level-display" style="top: -42px; color: #f1c40f;">
+                    💰 <span id="points">0</span>
+                </div>
+
                 <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
                 <div id="heroCharacter" class="pixel-art anim-idle"></div>
             </div>
@@ -1920,9 +2075,15 @@
                 currentLevel: gameState.currentLevel,
                 currentMode: gameState.currentMode,
                 vocabLevel: gameState.vocabLevel,
-                questionCount: gameState.questionCount
+                questionCount: gameState.questionCount,
+                lastSaveTime: Date.now() // Track local save time for Sync Logic
             };
             localStorage.setItem('vocabClickerSave', JSON.stringify(data));
+
+            // Leaderboard Sync (Reference defined at bottom)
+            if (typeof attemptScoreSync === 'function') {
+                attemptScoreSync();
+            }
         }
 
         function loadGame() {
@@ -2820,9 +2981,202 @@
             }, 600);
         }
 
+        // --- SIMPLE MODE LOGIC ---
+        function openSimpleModeModal() {
+            document.getElementById('simpleModeModal').style.display = 'flex';
+        }
+
+        function startSimpleMode(level) {
+            document.getElementById('simpleModeModal').style.display = 'none';
+            document.body.classList.add('simple-mode');
+
+            if (level === 'wordbook') {
+                // Open Wordbook Selection Modal
+                // Assuming openWordbookModal() exists or we find the logic.
+                // Re-using existing button click logic is safest if function undefined.
+                const wbBtn = document.getElementById('wordbookBtn');
+                if (wbBtn) wbBtn.click();
+            } else {
+                // Set Level
+                const btn = document.querySelector(`.level-btn[data-level="${level}"]`);
+                if (btn) btn.click();
+            }
+        }
+
+        function exitSimpleMode() {
+            document.body.classList.remove('simple-mode');
+        }
+
+        // --- Leaderboard & Cloud Modal UI Logic (Moved from Module) ---
+        function openLeaderboard() {
+            document.getElementById('leaderboardModal').style.display = 'flex';
+            checkNameRegistration();
+        }
+
+        function closeLeaderboard() {
+            document.getElementById('leaderboardModal').style.display = 'none';
+        }
+
+        function openCloudModal() {
+            document.getElementById('cloudModal').style.display = 'flex';
+        }
+
+        let playerName = localStorage.getItem('vocabGame_playerName');
+        let lastSyncTime = 0;
+
+        function checkNameRegistration() {
+            if (!playerName) {
+                document.getElementById('nameInputParams').style.display = 'block';
+                document.getElementById('leaderboardContent').style.display = 'none';
+            } else {
+                document.getElementById('nameInputParams').style.display = 'none';
+                document.getElementById('leaderboardContent').style.display = 'block';
+
+                // Sync Score (attempt)
+                if (typeof attemptScoreSync === 'function') attemptScoreSync(true);
+                loadRankingData('top');
+            }
+        }
+
+        function registerName() {
+            const input = document.getElementById('playerNameInput');
+            const val = input.value.trim();
+            if (val.length > 0 && val.length <= 8) {
+                playerName = val;
+                localStorage.setItem('vocabGame_playerName', playerName);
+
+                // Sync Score (attempt)
+                if (typeof attemptScoreSync === 'function') attemptScoreSync(true);
+                checkNameRegistration();
+            } else {
+                alert("名前は1〜8文字で入力してください");
+            }
+        }
+
+        // Global function for saveGame hook
+        window.attemptScoreSync = function (force = false) {
+            if (!playerName) return;
+            const now = Date.now();
+            if (force || (now - lastSyncTime > 60000)) {
+                if (window.uploadScore) {
+                    window.uploadScore(playerName, gameState.points);
+                    lastSyncTime = now;
+                }
+            }
+        };
+
+        // Fallback Stubs for Cloud Functions (in case module fails to load)
+        if (!window.uploadSaveData) {
+            window.uploadSaveData = function () { alert("機能の読み込み中、または通信環境により無効化されています。\n(ローカルファイルで開いている場合は動作しないことがあります)"); };
+        }
+        if (!window.restoreSaveData) {
+            window.restoreSaveData = function () { alert("機能の読み込み中、または通信環境により無効化されています。"); };
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.lb-tab').forEach(b => b.classList.remove('active'));
+            const buttons = document.querySelectorAll('.lb-tab');
+            if (buttons.length > 0) {
+                if (tab === 'top') buttons[0].classList.add('active');
+                else if (buttons[1]) buttons[1].classList.add('active');
+            }
+
+            document.getElementById('lb-list-top').style.display = (tab === 'top') ? 'block' : 'none';
+            document.getElementById('lb-list-around').style.display = (tab === 'around') ? 'block' : 'none';
+
+            loadRankingData(tab);
+        }
+
+        async function loadRankingData(type) {
+            const container = (type === 'top') ? document.getElementById('lb-list-top') : document.getElementById('lb-list-around');
+            container.innerHTML = '<div style="padding:10px; color:#999;">データ取得中...</div>';
+
+            if (window.fetchLeaderboard) {
+                const data = await window.fetchLeaderboard(type);
+
+                if (data.error) {
+                    container.innerHTML = `<div style="color:red; padding:10px;">エラー: ${data.error}</div>`;
+                    return;
+                }
+
+                if (!data.results || data.results.length === 0) {
+                    container.innerHTML = `<div style="padding:10px;">ランキングデータがありません</div>`;
+                    return;
+                }
+
+                let html = '';
+                data.results.forEach(item => {
+                    const rankDisplay = (typeof item.rank === 'number') ? item.rank : item.rank;
+                    const isTop3 = (typeof item.rank === 'number' && item.rank <= 3);
+
+                    html += `
+                    <div class="ranking-item ${item.isMe ? 'is-me' : ''}">
+                        <span class="rank-num ${isTop3 ? 'top3' : ''}">${rankDisplay}</span>
+                        <span class="rank-name">${escapeHtml(item.name)}</span>
+                        <span class="rank-score">${item.score.toLocaleString()} G</span>
+                    </div>`;
+                });
+                container.innerHTML = html;
+            } else {
+                container.innerHTML = `<div style="padding:10px;">接続できません (オフライン)</div>`;
+            }
+            document.getElementById('lb-loading').style.display = 'none';
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return str.replace(/[&<>"']/g, function (m) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[m];
+            });
+        }
+
         init();
         initTrialSystem(); // Start Trial Timer
     </script>
+    <!-- Simple Mode Category Selection Modal -->
+    <div id="simpleModeModal" class="modal-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10001; justify-content: center; align-items: center;">
+        <div class="modal-content"
+            style="background: white; padding: 30px; border-radius: 12px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+            <h2 style="margin-top: 0; color: #333; margin-bottom: 20px;">📱 シンプルモード設定</h2>
+            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">出題範囲を選択してスタート！</p>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button onclick="startSimpleMode('junior')" class="simple-select-btn"
+                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">🔰
+                    中学レベル</button>
+                <button onclick="startSimpleMode('basic')" class="simple-select-btn"
+                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">📚
+                    基礎レベル</button>
+                <button onclick="startSimpleMode('daily')" class="simple-select-btn"
+                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">🎬
+                    標準レベル</button>
+                <button onclick="startSimpleMode('exam1')" class="simple-select-btn"
+                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">📖
+                    受験レベル</button>
+                <!-- Wordbook Option -->
+                <button onclick="startSimpleMode('wordbook')" class="simple-select-btn"
+                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; cursor: pointer; font-weight: bold;">📘
+                    単語帳</button>
+            </div>
+
+            <button onclick="document.getElementById('simpleModeModal').style.display='none'"
+                style="margin-top: 20px; background: none; border: none; color: #999; text-decoration: underline; cursor: pointer;">キャンセル</button>
+        </div>
+    </div>
+
+    <!-- Simple Mode Exit Button (Hidden by default) -->
+    <button id="exitSimpleModeBtn" onclick="exitSimpleMode()"
+        style="display: none; position: fixed; top: 15px; right: 15px; z-index: 300; background: #333; color: white; border: none; padding: 5px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; opacity: 0.8;">
+        ✕ 通常モードへ戻る
+    </button>
+
     <!-- Help Modal -->
     <div id="helpModal" class="modal-overlay"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; justify-content: center; align-items: center;">
@@ -2857,6 +3211,22 @@
                     style="display: inline-block; background: #00b894; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
                     📚 詳しい使い方はこちら (Note)
                 </a>
+                </a>
+            </div>
+
+            <!-- PWA Install Button (Visible but Gray by default) -->
+            <div id="installAppContainer" style="margin-top: 15px; text-align: center;">
+                <button id="pwaInstallBtn"
+                    style="background: #bdc3c7; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: not-allowed; box-shadow: none; width: 80%;">
+                    📲 アプリとしてインストール
+                </button>
+                <p id="pwaInstallDesc" style="font-size: 11px; color: #999; margin-top: 5px;">準備中、またはブラウザのメニューから追加</p>
+            </div>
+
+
+
+            <div style="margin-top: 20px; text-align: center;">
+                <p style="font-size: 11px; color: #999; margin-top: 5px;">機種変更やアプリ版への移行はマイページから</p>
             </div>
         </div>
     </div>
@@ -2884,6 +3254,547 @@
                 style="margin-top: 20px; padding: 8px 20px; border: none; background: #ddd; border-radius: 5px; cursor: pointer;">閉じる</button>
         </div>
     </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="modal-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: center;">
+        <div class="modal-content"
+            style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 450px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
+            <button onclick="closeLeaderboard()"
+                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+            <h2 style="margin-top: 0; padding-bottom: 10px; color: #f1c40f; text-shadow: 1px 1px 0px #e67e22;">
+                🏆 ランキング
+            </h2>
+
+            <!-- Name Input Overlay (Initial Only) -->
+            <div id="nameInputParams" style="display: none; margin-bottom: 20px;">
+                <p style="font-size: 14px; color: #666; margin-bottom: 10px;">ランキングに参加するには名前を登録してください</p>
+                <input type="text" id="playerNameInput" placeholder="あなたの名前 (8文字以内)" maxlength="8"
+                    style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; text-align: center;">
+                <button onclick="registerName()"
+                    style="margin-top: 10px; padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">登録して参加</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="leaderboardContent" style="display: none;">
+                <div class="leaderboard-tabs">
+                    <button class="lb-tab active" onclick="switchTab('top')">TOP 20</button>
+                    <button class="lb-tab" onclick="switchTab('around')">自分の順位</button>
+                </div>
+
+                <div id="lb-loading" style="color: #999; padding: 20px;">読み込み中...</div>
+
+                <div id="lb-list-top" class="ranking-list">
+                    <!-- Dynamic Content -->
+                    <div class="ranking-item">
+                        <span class="rank-num top3">1</span>
+                        <span class="rank-name">No Data</span>
+                        <span class="rank-score">- G</span>
+                    </div>
+                </div>
+
+                <div id="lb-list-around" class="ranking-list" style="display: none;">
+                    <!-- Users + Neighbors -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cloud Data Modal -->
+    <!-- Profile Modal (New Hub) -->
+    <div id="profileModal" class="modal-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: center;">
+        <div class="modal-content"
+            style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
+            <button onclick="closeProfileModal()"
+                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+
+            <h2 style="margin-top: 0; color: #667eea; margin-bottom: 20px;">マイページ</h2>
+
+            <!-- User Info Section -->
+            <div
+                style="background: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 20px; text-align: center;">
+                <div
+                    style="width: 80px; height: 80px; margin: 0 auto 10px; border-radius: 50%; background: #eee; overflow: hidden; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
+                    <img id="modalProfileImage" src=""
+                        style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                    <span id="modalProfileInitials" style="font-size: 32px;">👤</span>
+                </div>
+                <div id="modalUserName" style="font-weight: bold; font-size: 18px; color: #333;">ゲストユーザー</div>
+                <div id="modalUserEmail" style="font-size: 12px; color: #888; margin-bottom: 10px;">未ログイン</div>
+
+                <!-- Plan Status -->
+                <div id="planStatusTag"
+                    style="display: inline-block; padding: 5px 15px; background: #95a5a6; color: white; border-radius: 20px; font-size: 12px; font-weight: bold;">
+                    無料プラン (制限あり)
+                </div>
+                <!-- Premium Activation Section (Hidden if Premium) -->
+                <div id="premiumActivationSection"
+                    style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+                    <div style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 5px;">💎 プレミアム有効化</div>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="text" id="promoCodeInput" placeholder="プロモコード"
+                            style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                        <button onclick="redeemPromoCode()"
+                            style="padding: 8px 12px; background: #2ecc71; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                            有効化
+                        </button>
+                    </div>
+                    <div style="font-size: 10px; color: #999; margin-top: 5px; text-align: left;">
+                        ※購入したコードを入力すると、このアカウントで永久にプレミアム機能が解放されます。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action List -->
+            <div style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
+
+                <!-- Sync Control (Only if logged in) -->
+                <div id="profileSyncSection"
+                    style="display: none; background: #eef2ff; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <span style="font-size: 14px; font-weight: bold; color: #333;">☁️ 現在の同期状況</span>
+                        <span id="profileLastSync" style="font-size: 11px; color: #666;">-</span>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="forceBackup()"
+                            style="flex: 1; padding: 8px; font-size: 12px; background: #fff; border: 1px solid #ddd; border-radius: 5px; cursor: pointer;">📤
+                            手動保存</button>
+                        <button onclick="forceRestore()"
+                            style="flex: 1; padding: 8px; font-size: 12px; background: #fff; border: 1px solid #ddd; border-radius: 5px; cursor: pointer;">📥
+                            復元</button>
+                    </div>
+                </div>
+
+                <!-- Login / Logout Btn -->
+                <button id="profileAuthBtn" onclick="handleProfileAuth()"
+                    style="width: 100%; padding: 12px; background: #667eea; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <img id="googleIconEntry" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                        width="18" height="18">
+                    <span>Googleでログイン</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // --- FIREBASE CONFIGURATION ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyBsS2T5UG2THIOC4zlm6dD9C1UjimFa6xI",
+            authDomain: "tenioha-game.firebaseapp.com",
+            projectId: "tenioha-game",
+            storageBucket: "tenioha-game.firebasestorage.app",
+            messagingSenderId: "183973262426",
+            appId: "1:183973262426:web:eb54502c744666f07a9463",
+            measurementId: "G-QHRLNKJ4CH"
+        };
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, doc, setDoc, getDoc, getDocs, query, orderBy, limit, where, Timestamp, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // Global Firebase References
+        let db = null;
+        let userId = localStorage.getItem('vocabGame_userId');
+
+        // Generate User ID if missing
+        if (!userId) {
+            userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('vocabGame_userId', userId);
+        }
+
+        let auth = null;
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            window.firestoreDb = db; // Expose DB
+            window.firebaseAuth = auth; // Expose Auth
+            console.log("Firebase initialized successfully");
+        } catch (e) {
+            console.error("Firebase initialization failed:", e);
+        }
+
+        // --- EXPORTED FUNCTIONS ---
+
+        // 1. Upload/Sync Score
+
+        // 1. Upload/Sync Score
+        window.uploadScore = async function (name, score) {
+            if (!db) return;
+            try {
+                await setDoc(doc(db, "leaderboard", userId), {
+                    name: name,
+                    score: Math.floor(score),
+                    updatedAt: serverTimestamp()
+                }, { merge: true });
+                console.log("Score uploaded:", score);
+            } catch (e) {
+                console.error("Error uploading score:", e);
+            }
+        };
+
+        // 2. Fetch Leaderboard
+        window.fetchLeaderboard = async function (type) {
+            if (!db) return { error: "Firebase not connected" };
+
+            try {
+                const leaderboardRef = collection(db, "leaderboard");
+                let results = [];
+
+                if (type === 'top') {
+                    const q = query(leaderboardRef, orderBy("score", "desc"), limit(20));
+                    const snapshot = await getDocs(q);
+                    let rank = 1;
+                    snapshot.forEach(doc => {
+                        results.push({
+                            rank: rank++,
+                            name: doc.data().name || "Unknown",
+                            score: doc.data().score,
+                            isMe: (doc.id === userId)
+                        });
+                    });
+                } else if (type === 'around') {
+                    const myDoc = await getDoc(doc(db, "leaderboard", userId));
+                    if (!myDoc.exists()) return { results: [] };
+                    const myScore = myDoc.data().score;
+                    const qAbove = query(leaderboardRef, where("score", ">", myScore), orderBy("score", "asc"), limit(4));
+                    const sAbove = await getDocs(qAbove);
+                    const qBelow = query(leaderboardRef, where("score", "<", myScore), orderBy("score", "desc"), limit(4));
+                    const sBelow = await getDocs(qBelow);
+
+                    let above = []; sAbove.forEach(d => above.push({ name: d.data().name, score: d.data().score }));
+                    let below = []; sBelow.forEach(d => below.push({ name: d.data().name, score: d.data().score }));
+
+                    results = [
+                        ...above.reverse().map(u => ({ ...u, rank: '▲' })),
+                        { name: myDoc.data().name, score: myScore, rank: 'You', isMe: true },
+                        ...below.map(u => ({ ...u, rank: '▼' }))
+                    ];
+                }
+                return { results: results };
+            } catch (e) {
+                return { error: e.message };
+            }
+        };
+
+        // 3. Auth Functions & Profile Logic
+
+        // Profile Helpers
+        window.toggleProfileModal = function () {
+            const modal = document.getElementById('profileModal');
+            if (modal.style.display === 'flex') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'flex';
+                updatePremiumStatusDisplay();
+            }
+        };
+        window.closeProfileModal = function () {
+            document.getElementById('profileModal').style.display = 'none';
+        };
+
+        function updatePremiumStatusDisplay() {
+            const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
+            const tag = document.getElementById('planStatusTag');
+            const activationSection = document.getElementById('premiumActivationSection');
+
+            if (tag) {
+                if (isUnlocked) {
+                    tag.textContent = "プレミアムプラン (有効)";
+                    tag.style.background = "#2ecc71"; // Green
+                    if (activationSection) activationSection.style.display = 'none'; // Hide input
+                } else {
+                    tag.textContent = "無料プラン (制限あり)";
+                    tag.style.background = "#95a5a6"; // Gray
+                    if (activationSection) activationSection.style.display = 'block'; // Show input
+                }
+            }
+        }
+
+        window.handleProfileAuth = function () {
+            if (auth.currentUser) {
+                if (confirm("ログアウトしますか？")) { logoutGoogle(); }
+            } else {
+                loginWithGoogle();
+            }
+        };
+
+        // --- PREMIUM SYSTEM ---
+        window.redeemPromoCode = async function () {
+            const input = document.getElementById('promoCodeInput');
+            const code = input.value.trim();
+
+            if (!code) { alert("コードを入力してください"); return; }
+            if (!auth || !auth.currentUser) { alert("コードを適用するにはログインが必要です"); return; }
+
+            try {
+                // 1. Check Code in Firestore
+                const codeDocRef = doc(db, "promocodes", code);
+                const codeDoc = await getDoc(codeDocRef);
+
+                if (codeDoc.exists() && codeDoc.data().active === true) {
+
+                    // 2. Activate Premium for User
+                    await setDoc(doc(db, "users", auth.currentUser.uid), {
+                        isPremium: true,
+                        premiumSource: 'promo_code',
+                        premiumActivatedAt: serverTimestamp(),
+                        usedCode: code
+                    }, { merge: true });
+
+                    // 3. Unlock Locally
+                    localStorage.setItem('vocabGame_isUnlocked', 'true');
+                    updatePremiumStatusDisplay();
+
+                    alert("プレミアム機能が有効化されました！\nありがとうございます！");
+                    input.value = "";
+
+                } else {
+                    alert("コードが無効か、期限切れです。");
+                }
+            } catch (e) {
+                console.error(e);
+                alert("エラーが発生しました: " + e.message);
+            }
+        };
+
+        window.loginWithGoogle = async function () {
+            if (!auth) {
+                alert("Firebase Authが初期化されていません。\nページをリロードしてみてください。");
+                return;
+            }
+            const provider = new GoogleAuthProvider();
+            try {
+                await signInWithPopup(auth, provider);
+            } catch (error) {
+                console.error("Login Failed:", error);
+
+                let msg = "ログインに失敗しました。";
+                if (error.code === 'auth/popup-blocked') msg += "\nポップアップがブロックされました。設定を確認してください。";
+                if (error.code === 'auth/cancelled-popup-request') msg += "\nポップアップが閉じられました。";
+                if (error.code === 'auth/popup-closed-by-user') msg += "\nポップアップが閉じられました。";
+                if (error.code === 'auth/unauthorized-domain') msg += "\n許可されていないドメインです。\nFirebase Consoleでドメインを追加してください。";
+                if (error.code === 'auth/operation-not-allowed') msg += "\nGoogleログインが無効です。\nFirebase Consoleで有効にしてください。";
+
+                alert(`${msg}\n\n(Error Code: ${error.code})\n${error.message}`);
+            }
+        };
+
+        window.logoutGoogle = async function () {
+            if (!auth) return;
+            try {
+                await signOut(auth);
+                alert("ログアウトしました");
+                location.reload();
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        // Auth State Listener
+        if (auth) {
+            onAuthStateChanged(auth, async (user) => {
+                // UI Elements
+                const headerIcon = document.getElementById('headerProfileIcon');
+                const headerInitials = document.getElementById('headerProfileInitials');
+                const headerImage = document.getElementById('headerProfileImage');
+
+                const modalImage = document.getElementById('modalProfileImage');
+                const modalInitials = document.getElementById('modalProfileInitials');
+                const modalName = document.getElementById('modalUserName');
+                const modalEmail = document.getElementById('modalUserEmail');
+                const authBtn = document.getElementById('profileAuthBtn');
+                const syncSection = document.getElementById('profileSyncSection');
+                const lastSync = document.getElementById('profileLastSync');
+
+                if (user) {
+                    // --- LOGGED IN ---
+                    console.log("Auth: Logged in as", user.uid);
+                    userId = user.uid; // Switch to Auth ID
+                    localStorage.setItem('vocabGame_userId', userId);
+
+                    // Update Header
+                    if (headerImage) { headerImage.src = user.photoURL; headerImage.style.display = 'block'; }
+                    if (headerInitials) headerInitials.style.display = 'none';
+                    if (headerIcon) headerIcon.style.border = "2px solid #2ecc71"; // Green border
+
+                    // Update Modal
+                    if (modalImage) { modalImage.src = user.photoURL; modalImage.style.display = 'block'; }
+                    if (modalInitials) modalInitials.style.display = 'none';
+                    if (modalName) modalName.textContent = user.displayName;
+                    if (modalEmail) modalEmail.textContent = user.email;
+
+                    if (authBtn) {
+                        authBtn.innerHTML = `<span>ログアウト</span>`;
+                        authBtn.style.background = "#bdc3c7";
+                    }
+                    if (syncSection) syncSection.style.display = 'block';
+
+                    // --- SMART SYNC LOGIC ---
+                    try {
+                        const userDoc = await getDoc(doc(db, "users", userId));
+
+                        // 1. Premium Status Sync
+                        const localUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
+                        let cloudPremium = false;
+
+                        if (userDoc.exists()) {
+                            const data = userDoc.data();
+                            cloudPremium = data.isPremium === true;
+
+                            // Cloud -> Local (Dowload Rights)
+                            if (cloudPremium && !localUnlocked) {
+                                console.log("Account is Premium. Unlocking Local.");
+                                localStorage.setItem('vocabGame_isUnlocked', 'true');
+                                updatePremiumStatusDisplay();
+                            }
+                            // Local -> Cloud (Migration)
+                            else if (!cloudPremium && localUnlocked) {
+                                console.log("Local is Premium (Legacy). Upgrading Cloud Account...");
+                                await setDoc(doc(db, "users", userId), {
+                                    isPremium: true,
+                                    premiumSource: 'legacy_migration',
+                                    premiumActivatedAt: serverTimestamp()
+                                }, { merge: true });
+                            }
+                        }
+
+                        // 2. Data Sync
+                        if (userDoc.exists() && userDoc.data().saveData) {
+                            const cloudData = JSON.parse(userDoc.data().saveData);
+                            const cloudTime = cloudData.lastSaveTime || 0;
+
+                            if (lastSync) lastSync.textContent = new Date(cloudTime).toLocaleString();
+
+                            const localStr = localStorage.getItem('vocabClickerSave');
+                            const localData = localStr ? JSON.parse(localStr) : null;
+                            const localTime = localData ? (localData.lastSaveTime || 0) : 0;
+
+                            console.log(`Sync Check: Cloud(${new Date(cloudTime).toLocaleTimeString()}) vs Local(${new Date(localTime).toLocaleTimeString()})`);
+
+                            if (cloudTime > localTime) {
+                                console.log("Cloud is newer. Auto-Restoring...");
+                                localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
+                                alert("クラウド上の最新データが見つかりました。\n同期して再読み込みします。");
+                                location.reload();
+                            } else {
+                                console.log("Local is newer or same. Keeping local.");
+                                if (localTime > cloudTime) {
+                                    console.log("Pushing newer local data to cloud...");
+                                    uploadSaveData(true);
+                                }
+                            }
+                        } else {
+                            console.log("No cloud data. Uploading local data...");
+                            uploadSaveData(true);
+                        }
+                    } catch (e) { console.error("Sync Check Failed:", e); }
+
+                    // Start Auto-Save Loop
+                    startAutoSaveLoop();
+
+                } else {
+                    // --- LOGGED OUT ---
+                    console.log("Auth: Signed out");
+
+                    // Reset Header
+                    if (headerImage) headerImage.style.display = 'none';
+                    if (headerInitials) headerInitials.style.display = 'block';
+                    if (headerIcon) headerIcon.style.border = "2px solid white";
+
+                    // Reset Modal
+                    if (modalImage) modalImage.style.display = 'none';
+                    if (modalInitials) modalInitials.style.display = 'block';
+                    if (modalName) modalName.textContent = "ゲストユーザー";
+                    if (modalEmail) modalEmail.textContent = "未ログイン";
+
+                    if (authBtn) {
+                        authBtn.innerHTML = `<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" height="18"><span>Googleでログイン</span>`;
+                        authBtn.style.background = "#667eea";
+                    }
+                    if (syncSection) syncSection.style.display = 'none';
+
+                    // Stop Auto-Save
+                    if (window.autoSaveInterval) clearInterval(window.autoSaveInterval);
+                }
+            });
+        }
+
+        // --- AUTO SAVE LOOP ---
+        function startAutoSaveLoop() {
+            if (window.autoSaveInterval) clearInterval(window.autoSaveInterval);
+            console.log("AutoManager: Auto-Save started (60s interval)");
+            window.autoSaveInterval = setInterval(() => {
+                if (auth && auth.currentUser) {
+                    console.log("AutoManager: Performing Auto-Save...");
+                    uploadSaveData(true);
+                }
+            }, 60000); // 60 seconds
+        }
+
+        // Modified Upload/Restore for Auth
+        window.forceBackup = async function () {
+            await uploadSaveData();
+        };
+
+        window.forceRestore = async function () {
+            if (!db || !auth.currentUser) return;
+            if (!confirm("クラウド上のデータで上書きしますか？\\n今の端末の未保存データは消えます。")) return;
+
+            try {
+                const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+                if (!userDoc.exists() || !userDoc.data().saveData) { alert("クラウドにデータがありません"); return; }
+
+                // Restore Logic
+                localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
+                alert("復元しました。リロードします。");
+                location.reload();
+            } catch (e) { alert("エラー: " + e.message); }
+        };
+
+        // Overwrite existing uploadSaveData to use Auth if available
+        window.uploadSaveData = async function (silent = false) {
+            if (!db) return;
+            if (!auth || !auth.currentUser) {
+                if (!silent) alert("ログインが必要です");
+                return;
+            }
+
+            const saveData = localStorage.getItem('vocabClickerSave');
+            if (!saveData) return;
+
+            try {
+                // Update Last Save Time in Data before sending?
+                // Ideally yes, but we rely on saveGame() being called before.
+                // But let's verify if we need to update it manually?
+                // The saveData string is from LocalStorage. 
+                // If we upload OLD data, the timestamp is old.
+                // We should assume local storage is fresh.
+
+                await setDoc(doc(db, "users", auth.currentUser.uid), {
+                    saveData: saveData,
+                    updatedAt: serverTimestamp(),
+                    name: auth.currentUser.displayName,
+                    email: auth.currentUser.email
+                }, { merge: true });
+
+                if (!silent) {
+                    alert("保存完了！");
+                    const lastSync = document.getElementById('profileLastSync');
+                    if (lastSync) lastSync.textContent = new Date().toLocaleString();
+                } else {
+                    // Update UI silently if open
+                    const lastSync = document.getElementById('profileLastSync');
+                    if (lastSync) lastSync.textContent = new Date().toLocaleString();
+                }
+            } catch (e) {
+                if (!silent) alert("失敗: " + e.message);
+                console.error(e);
+            }
+        };
+    </script>
 
     <script>
         // Modal Logic
@@ -2939,6 +3850,77 @@
                 switchLevel(level);
                 wordbookModal.style.display = 'none';
             });
+        });
+
+
+        if ('serviceWorker' in navigator) {
+
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service_worker.js')
+                    .then(reg => console.log('Service Worker Registered!', reg))
+                    .catch(err => console.log('Service Worker registration failed: ', err));
+            });
+        }
+
+        // --- PWA INSTALL LOGIC ---
+        let deferredPrompt;
+        const installContainer = document.getElementById('installAppContainer');
+        const installBtnHelper = document.getElementById('pwaInstallBtn'); // Help Modal
+        const installBtnProfile = document.getElementById('profileInstallBtn'); // Profile Modal
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+
+            console.log("PWA Install Prompt ready");
+
+            // Enable Helper Button
+            if (installBtnHelper) {
+                installBtnHelper.style.background = "#e17055"; // Orange
+                installBtnHelper.style.cursor = "pointer";
+                installBtnHelper.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+            }
+            const desc = document.getElementById('pwaInstallDesc');
+            if (desc) desc.textContent = "ホーム画面に追加してオフラインで遊ぶ";
+
+            // Enable Profile Button
+            if (installBtnProfile) {
+                installBtnProfile.style.display = 'block';
+                installBtnProfile.style.background = "#e17055";
+                installBtnProfile.style.color = "white";
+                installBtnProfile.style.border = "none";
+            }
+        });
+
+        const installApp = () => {
+            // If not ready, show alert or do nothing
+            if (!deferredPrompt) {
+                alert("このブラウザでは自動インストールが利用できません。\nブラウザのメニュー「ホーム画面に追加」などからインストールしてください。");
+                return;
+            }
+
+            // Show the prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                } else {
+                    console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+            });
+        };
+
+        if (installBtnHelper) installBtnHelper.addEventListener('click', installApp);
+        if (installBtnProfile) installBtnProfile.addEventListener('click', installApp);
+
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            if (installContainer) installContainer.style.display = 'none';
+            if (installBtnProfile) installBtnProfile.style.display = 'none';
         });
     </script>
 </body>

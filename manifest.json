@@ -1,0 +1,16 @@
+{
+  "name": "英語単語クリッカー - Tenioha Game",
+  "short_name": "英単語Clicker",
+  "start_url": "./vocab_clicker_game.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6c5ce7",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
