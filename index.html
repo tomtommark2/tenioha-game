@@ -3221,7 +3221,7 @@
             </div>
 
             <div style="text-align: right; margin-top: 10px; padding-right: 5px;">
-                <span style="font-size: 11px; color: #ccc;">v1.13</span>
+                <span style="font-size: 11px; color: #ccc;">v1.14</span>
             </div>
 
 
@@ -3811,6 +3811,20 @@
                             uploadSaveData(true);
                         }
                     } catch (e) { console.error("Sync Check Failed:", e); }
+
+                    // 3. Sync Leaderboard Name
+                    try {
+                        const lbDoc = await getDoc(doc(db, "leaderboard", userId));
+                        if (lbDoc.exists() && lbDoc.data().name) {
+                            const cloudName = lbDoc.data().name;
+                            const localName = localStorage.getItem('vocabGame_playerName');
+                            if (cloudName !== localName) {
+                                console.log(`Name Sync: Updating local name '${localName}' -> '${cloudName}'`);
+                                playerName = cloudName;
+                                localStorage.setItem('vocabGame_playerName', playerName);
+                            }
+                        }
+                    } catch (e) { console.error("Name Sync Failed:", e); }
 
                     // Start Auto-Save Loop
                     startAutoSaveLoop();
