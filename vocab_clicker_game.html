@@ -3000,7 +3000,21 @@
         // --- Leaderboard & Cloud Modal UI Logic (Moved from Module) ---
         function openLeaderboard() {
             document.getElementById('leaderboardModal').style.display = 'flex';
-            checkNameRegistration();
+
+            // Check Auth State (Global auth object exposed in window.firebaseAuth)
+            const currentUser = window.firebaseAuth ? window.firebaseAuth.currentUser : null;
+
+            if (!currentUser) {
+                // Not Logged In
+                document.getElementById('loginRequiredMessage').style.display = 'block';
+                document.getElementById('nameInputParams').style.display = 'none';
+                document.getElementById('leaderboardContent').style.display = 'none';
+                document.getElementById('renameBtn').style.display = 'none';
+            } else {
+                // Logged In
+                document.getElementById('loginRequiredMessage').style.display = 'none';
+                checkNameRegistration();
+            }
         }
 
         function closeLeaderboard() {
@@ -3245,7 +3259,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.20</span>
+                <span style="font-size: 11px; color: #ccc;">v1.21</span>
             </div>
 
 
@@ -3321,6 +3335,20 @@
             <h2 style="margin-top: 0; padding-bottom: 10px; color: #f1c40f; text-shadow: 1px 1px 0px #e67e22;">
                 🏆 ランキング
             </h2>
+
+            <!-- Login Required Message (New) -->
+            <div id="loginRequiredMessage" style="display: none; padding: 20px;">
+                <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
+                    未ログインのため、閲覧不可
+                </p>
+                <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
+                    ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
+                </p>
+                <button onclick="closeLeaderboard(); openProfileModal();"
+                    style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    ログイン画面へ移動
+                </button>
+            </div>
 
             <!-- Name Input Overlay (Initial Only) -->
             <!-- Name Input Overlay (Initial Only) -->
