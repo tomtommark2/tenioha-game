@@ -3245,7 +3245,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.18</span>
+                <span style="font-size: 11px; color: #ccc;">v1.19</span>
             </div>
 
 
@@ -3781,12 +3781,19 @@
                     if (headerIcon) headerIcon.style.border = "2px solid #2ecc71"; // Green border
 
                     // --- LEADERBOARD SYNC ---
-                    // Auto-register/Update Leaderboard with Google Name
+                    // --- LEADERBOARD SYNC ---
+                    // Improved: Only set Google Name if NO name is registered
                     if (typeof window.uploadScore === 'function') {
-                        // Use current points from global gameState if available, otherwise 0
                         const currentPoints = (typeof gameState !== 'undefined') ? gameState.points : 0;
-                        console.log("Auth: Syncing Leaderboard Name to", user.displayName);
-                        window.uploadScore(user.displayName, currentPoints);
+
+                        // Check if name is already set locally or wait for cloud sync?
+                        // Better to rely on Cloud Sync logic below to fetch name.
+                        // Only set default if we are sure?
+                        // Actually, let's defer this. The logic below (Step 3) fetches the name.
+                        // If that returns empty, THEN we can default to Google Name.
+
+                        // Temporary placeholder - we will handle name syncing in the async block below
+                        // to avoid overwriting custom names.
                     }
 
                     // Update Modal
@@ -3887,16 +3894,32 @@
                         }
                     } catch (e) { console.error("Sync Check Failed:", e); }
 
-                    // 3. Sync Leaderboard Name
+                    // 3. Sync Leaderboard Name (Robust)
                     try {
                         const lbDoc = await getDoc(doc(db, "leaderboard", userId));
+                        let finalName = localStorage.getItem('vocabGame_playerName'); // Start with local
+
                         if (lbDoc.exists() && lbDoc.data().name) {
+                            // Case A: Cloud has a name. It is the master authority.
                             const cloudName = lbDoc.data().name;
-                            const localName = localStorage.getItem('vocabGame_playerName');
-                            if (cloudName !== localName) {
-                                console.log(`Name Sync: Updating local name '${localName}' -> '${cloudName}'`);
-                                playerName = cloudName;
-                                localStorage.setItem('vocabGame_playerName', playerName);
+                            if (cloudName !== finalName) {
+                                console.log(`Name Sync: Cloud '${cloudName}' overrides local '${finalName}'`);
+                                finalName = cloudName;
+                                localStorage.setItem('vocabGame_playerName', finalName);
+                                playerName = finalName;
+                            }
+                        } else {
+                            // Case B: Cloud has NO name (New User for Leaderboard).
+                            // If local is also empty, use Google Display Name.
+                            if (!finalName && user.displayName) {
+                                console.log(`Name Sync: New user, defaulting to Google Name '${user.displayName}'`);
+                                finalName = user.displayName;
+                                localStorage.setItem('vocabGame_playerName', finalName);
+                                playerName = finalName;
+                            }
+                            // Now upload this initial name to Cloud
+                            if (finalName && window.uploadScore) {
+                                window.uploadScore(finalName, (typeof gameState !== 'undefined') ? gameState.points : 0);
                             }
                         }
                     } catch (e) { console.error("Name Sync Failed:", e); }
