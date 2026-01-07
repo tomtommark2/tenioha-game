@@ -3245,7 +3245,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.16</span>
+                <span style="font-size: 11px; color: #ccc;">v1.17</span>
             </div>
 
 
@@ -3410,14 +3410,27 @@
             <!-- Action List -->
             <div style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
 
-                <!-- Sync Control (Only if logged in) -->
                 <div id="profileSyncSection"
                     style="display: none; background: #eef2ff; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <span style="font-size: 14px; font-weight: bold; color: #333;">☁️ データの同期</span>
                         <span id="profileLastSync" style="font-size: 11px; color: #666;">-</span>
                     </div>
-                    <!-- Manual buttons removed as redundancy -->
+
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="forceBackup()"
+                            style="flex: 1; padding: 8px; background: #6c5ce7; color: white; border: none; border-radius: 5px; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                            ⬆️ 手動セーブ
+                        </button>
+                        <button onclick="forceRestore()"
+                            style="flex: 1; padding: 8px; background: white; border: 1px solid #6c5ce7; color: #6c5ce7; border-radius: 5px; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                            ⬇️ 手動ロード
+                        </button>
+                    </div>
+                    <div style="font-size: 10px; color: #888; margin-top: 5px; text-align: center;">
+                        ※端末を変える時は必ず「手動セーブ」を押してください
+                    </div>
                 </div>
 
                 <!-- Login / Logout Btn -->
