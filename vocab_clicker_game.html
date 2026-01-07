@@ -817,14 +817,22 @@
         }
 
         /* --- MOBILE RESPONSIVE STYLES --- */
+        /* --- MOBILE RESPONSIVE STYLES --- */
         @media (max-width: 768px) {
+            body {
+                padding: 20px 0px;
+                /* Vertical 20px, Horizontal 0px (Full Width) */
+            }
 
             /* 1. Container & Layout */
             .container {
-                width: 95%;
-                padding: 15px;
-                /* Reduce padding to save space */
-                margin: 10px auto;
+                width: 100%;
+                /* Fill available space */
+                max-width: 100%;
+                padding: 15px 10px;
+                padding-top: 90px;
+                /* Reverted to 90px */
+                margin: 0 auto;
             }
 
             /* 2. Stack Cards Vertically */
@@ -1161,11 +1169,17 @@
             border: 1px solid #e67e22;
             padding: 5px 10px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
+            /* Adjusted to 11px */
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
+            justify-content: center;
+            /* Center text */
+            width: 130px;
+            /* Fixed width */
+            box-sizing: border-box;
             gap: 5px;
             color: #fff;
             font-weight: bold;
@@ -1291,8 +1305,8 @@
         <div class="simple-switch-container"
             style="position: absolute; top: 15px; left: 15px; z-index: 200; display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
             <button class="simple-mode-btn" id="simpleModeBtn" onclick="openSimpleModeModal()"
-                style="background: #fff; border: 1px solid #ddd; padding: 5px 10px; border-radius: 20px; font-size: 12px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 5px; color: #555; font-weight: bold;">
-                📱 シンプルモード
+                style="background: #fff; border: 1px solid #ddd; padding: 5px 10px; border-radius: 20px; font-size: 11px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; width: 130px; box-sizing: border-box; gap: 5px; color: #555; font-weight: bold;">
+                📱 シンプル表示
             </button>
             <button class="ranking-btn" id="rankingBtn" onclick="openLeaderboard()">
                 👑 ランキング
@@ -3262,7 +3276,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.23</span>
+                <span style="font-size: 11px; color: #ccc;">v1.24</span>
             </div>
 
 
