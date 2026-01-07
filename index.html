@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英単語学習クリチE��ー</title>
+    <title>英単語学習クリッカー</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6c5ce7">
     <link rel="icon" href="icon-512.png" type="image/png">
@@ -341,7 +341,7 @@
         }
 
         .auto-checkbox.checked::after {
-            content: '✁E;
+            content: '✓';
             color: white;
             font-size: 14px;
             font-weight: bold;
@@ -1270,28 +1270,28 @@
     <div id="trialOverlay" class="trial-overlay">
         <!-- ... content ... -->
         <div class="trial-content">
-            <div class="trial-title">⏳ 本日のプレイ時間は終亁E��ました</div>
+            <div class="trial-title">⏳ 本日のプレイ時間は終了しました</div>
             <div class="trial-message">
-                無料版は1日10刁E��でプレイ可能です、Ebr>
-                続きは明日また遊んでください�E�Ebr>
+                無料版は1日10分までプレイ可能です。<br>
+                続きは明日また遊んでください！<br>
                 <br>
-                <strong>制限を解除するには�E�E/strong><br>
-                Noteメンバ�EシチE�Eの合言葉を入力するか、Ebr>
-                完�E版を購入してください、E
+                <strong>制限を解除するには？</strong><br>
+                Noteメンバーシップの合言葉を入力するか、<br>
+                完全版を購入してください。
             </div>
-            <input type="password" id="unlockPassword" class="unlock-input" placeholder="合言葉を入劁E>
+            <input type="password" id="unlockPassword" class="unlock-input" placeholder="合言葉を入力">
             <button class="unlock-btn" onclick="unlockGame()">解除する</button>
             <button onclick="document.getElementById('trialOverlay').style.display = 'none';"
-                style="margin-top: 10px; background: transparent; border: none; color: #999; text-decoration: underline; cursor: pointer;">閉じめE/button>
+                style="margin-top: 10px; background: transparent; border: none; color: #999; text-decoration: underline; cursor: pointer;">閉じる</button>
 
             <div class="trial-links" style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
                 <a href="https://note.com/tenioha_eng/n/n823dfa17b5c7?sub_rt=share_pw" target="_blank"
                     style="color: #74b9ff; text-decoration: none; font-weight: bold; border: 1px solid #74b9ff; padding: 10px; border-radius: 8px;">
-                    メンバ�EシチE�E�E�サブスク�E�で解除キーを�E扁E
+                    メンバーシップ（サブスク）で解除キーを入手
                 </a>
                 <a href="https://note.com/tenioha_eng/n/n84f2f394b674?sub_rt=share_pw" target="_blank"
                     style="color: #fab1a0; text-decoration: none; font-weight: bold; border: 1px solid #fab1a0; padding: 10px; border-radius: 8px;">
-                    完�E版（買ぁE�Eり）を購入する
+                    完全版（買い切り）を購入する
                 </a>
             </div>
         </div>
@@ -1325,15 +1325,15 @@
                     style="width: 100%; height: 100%; object-fit: cover; display: none;">
             </div>
 
-            <button class="icon-btn" id="helpBtn" title="遊�E方">❁E/button>
+            <button class="icon-btn" id="helpBtn" title="遊び方">❓</button>
         </div>
 
 
         <div class="level-selector" id="levelContainer">
             <button class="level-btn" data-level="junior">🔰 中学</button>
-            <button class="level-btn active" data-level="basic">📚 基礁E/button>
-            <button class="level-btn" data-level="daily">🎬 標溁E/button>
-            <button class="level-btn" data-level="exam1">📖 受騁E/button>
+            <button class="level-btn active" data-level="basic">📚 基礎</button>
+            <button class="level-btn" data-level="daily">🎬 標準</button>
+            <button class="level-btn" data-level="exam1">📖 受験</button>
             <button class="level-btn" id="wordbookBtn" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);">
                 <span class="pc-text">📘 単語帳</span>
                 <span class="mobile-text">単語帳</span>
@@ -1345,7 +1345,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
                 <div class="title-display">称号: <span id="currentTitle" class="js-current-title title-value">見習い</span>
                 </div>
-                <div class="progress-text"><span id="progressPercent" class="js-progress-percent">0</span>% 達�E</div>
+                <div class="progress-text"><span id="progressPercent" class="js-progress-percent">0</span>% 達成</div>
             </div>
             <div class="progress-bar-bg">
                 <div class="progress-bar-fill js-progress-bar-fill" id="progressBar" style="width: 0%;"></div>
@@ -1373,14 +1373,14 @@
                         <div class="auto-mode-container" id="autoModeToggle">
                             <div class="auto-checkbox" id="autoCheckbox"></div>
                             <div class="auto-label">
-                                <span class="pc-text">🤁EオートモーチE/span>
-                                <span class="mobile-text">オーチE/span>
+                                <span class="pc-text">🤖 オートモード</span>
+                                <span class="mobile-text">オート</span>
                             </div>
                         </div>
                         <div class="auto-mode-container" id="randomToggle">
                             <div class="auto-checkbox checked" id="randomCheckbox"></div>
                             <div class="auto-label">
-                                <span class="pc-text">🔀 ランダム出顁E/span>
+                                <span class="pc-text">🔀 ランダム出題</span>
                                 <span class="mobile-text">ランダム</span>
                             </div>
                         </div>
@@ -1396,7 +1396,7 @@
                         <div
                             style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
                             <div class="title-display">称号: <span class="js-current-title title-value">見習い</span></div>
-                            <div class="progress-text"><span class="js-progress-percent">0</span>% 達�E</div>
+                            <div class="progress-text"><span class="js-progress-percent">0</span>% 達成</div>
                         </div>
                         <div class="progress-bar-bg" style="margin-top: 2px;">
                             <div class="progress-bar-fill js-progress-bar-fill" style="width: 0%;"></div>
@@ -1405,14 +1405,14 @@
                 </div>
 
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <span class="random-notice" id="randomNotice" style="display: none;">ランダム出題中。�E題篁E��を選択できません、E/span>
+                    <span class="random-notice" id="randomNotice" style="display: none;">ランダム出題中。出題範囲を選択できません。</span>
                     <div class="mode-buttons">
                         <button class="mode-btn unlearned active" data-mode="unlearned" id="unlearnedBtn">
-                            <span>📝 未学翁E/span>
+                            <span>📝 未学習</span>
                             <span class="mode-count" id="unlearnedCount">0</span>
                         </button>
                         <button class="mode-btn learned" data-mode="learned" id="learnedBtn">
-                            <span>✁E得意</span>
+                            <span>✅ 得意</span>
                             <span class="mode-count" id="learnedCount">0</span>
                         </button>
                         <button class="mode-btn perfect" data-mode="perfect" id="perfectBtn">
@@ -1420,7 +1420,7 @@
                             <span class="mode-count" id="perfectCount">0</span>
                         </button>
                         <button class="mode-btn weak" data-mode="weak" id="weakBtn">
-                            <span>📚 苦扁E/span>
+                            <span>📚 苦手</span>
                             <span class="mode-count" id="weakCount">0</span>
                         </button>
                     </div>
@@ -1555,50 +1555,50 @@
         <div class="pos-filter-container">
             <div class="filter-label">フィルタ:</div>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="吁E checked> 名詁E
+                <input type="checkbox" class="pos-filter" data-pos="名" checked> 名詞
             </label>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="勁E checked> 動詁E
+                <input type="checkbox" class="pos-filter" data-pos="動" checked> 動詞
             </label>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詁E
+                <input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詞
             </label>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="副" checked> 副詁E
+                <input type="checkbox" class="pos-filter" data-pos="副" checked> 副詞
             </label>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="助" checked> 助動詁E
+                <input type="checkbox" class="pos-filter" data-pos="助" checked> 助動詞
             </label>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="剁E checked> 前置詁E
+                <input type="checkbox" class="pos-filter" data-pos="前" checked> 前置詞
             </label>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="接" checked> 接続詁E
+                <input type="checkbox" class="pos-filter" data-pos="接" checked> 接続詞
             </label>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="代" checked> 代名詁E
+                <input type="checkbox" class="pos-filter" data-pos="代" checked> 代名詞
             </label>
             <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="other" checked> そ�E仁E
+                <input type="checkbox" class="pos-filter" data-pos="other" checked> その他
             </label>
         </div>
 
         <div id="addWordsContainer" style="text-align: center; display: none; margin-bottom: 20px;">
-            <button class="add-words-btn" id="addWordsBtn">➁E次のセチE��を追加�E�レベルアチE�E�E�E/button>
+            <button class="add-words-btn" id="addWordsBtn">➕ 次のセットを追加（レベルアップ）</button>
         </div>
 
         <div class="main-content">
             <div class="cards-section">
                 <div class="cards-area" id="cardsArea">
                     <div class="card vocab-card" id="vocabCard">
-                        <div class="card-label">英単語カーチE/div>
+                        <div class="card-label">英単語カード</div>
                         <div class="card-content" id="vocabWord">ファイルを読み込んでください</div>
                     </div>
 
                     <div class="card meaning-card" id="meaningCard">
-                        <div class="card-label">意味カーチE/div>
+                        <div class="card-label">意味カード</div>
                         <div class="card-front">
-                            <div class="card-content">❁E/div>
+                            <div class="card-content">❓</div>
                         </div>
                         <div class="card-back">
                             <div class="card-content" id="meaningText">意味</div>
@@ -1612,7 +1612,7 @@
                         <div class="example-label">例文</div>
                         <div class="example-sentence" id="exampleSentence">ファイルを読み込んでください</div>
                     </div>
-                    <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled>↩�E�E戻めE/button>
+                    <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled>↩️ 戻る</button>
                 </div>
             </div>
         </div>
@@ -1640,7 +1640,7 @@
             questionCount: 0,
             autoMode: false,
             randomMode: true,
-            posFilters: ['吁E, '勁E, '形', '副', '助', '剁E, '接', '代', 'other'], // Active POS filters
+            posFilters: ['名', '動', '形', '副', '助', '前', '接', '代', 'other'], // Active POS filters
             vocabLevel: 1,
             wordsLearned: 0 // Total words moved from unlearned
         };
@@ -1974,7 +1974,7 @@
 
             loadVocabularyForLevel();
             initializeWordStates();
-            document.getElementById('fileInfo').textContent = `✁E${vocabularyDatabase[level].length}語を読み込みました`;
+            document.getElementById('fileInfo').textContent = `✅ ${vocabularyDatabase[level].length}語を読み込みました`;
             showNextWord();
             saveGame();
         }
@@ -2138,8 +2138,8 @@
             return words.filter(word => {
                 const pos = word.pos || 'other';
                 return gameState.posFilters.includes(pos) ||
-                    (pos !== '吁E && pos !== '勁E && pos !== '形' && pos !== '副' &&
-                        pos !== '助' && pos !== '剁E && pos !== '接' && pos !== '代' && gameState.posFilters.includes('other'));
+                    (pos !== '名' && pos !== '動' && pos !== '形' && pos !== '副' &&
+                        pos !== '助' && pos !== '前' && pos !== '接' && pos !== '代' && gameState.posFilters.includes('other'));
             });
         }
 
@@ -2153,7 +2153,7 @@
 
             if (newWorldLevel > gameState.vocabLevel) {
                 gameState.vocabLevel = newWorldLevel;
-                showCoinPopup(`🎉 ワールドレベル ${gameState.vocabLevel} にアチE�E�E�`, true);
+                showCoinPopup(`🎉 ワールドレベル ${gameState.vocabLevel} にアップ！`, true);
             }
             updateVocabLevelDisplay();
         }
@@ -2349,14 +2349,14 @@
 
             // MAP POS to Full Name
             const posMap = {
-                "吁E: "名詁E,
-                "勁E: "動詁E,
-                "形": "形容詁E,
-                "副": "副詁E,
-                "助": "助動詁E,
-                "接": "接続詁E,
-                "剁E: "前置詁E,
-                "代": "代名詁E
+                "名": "名詞",
+                "動": "動詞",
+                "形": "形容詞",
+                "副": "副詞",
+                "助": "助動詞",
+                "接": "接続詞",
+                "前": "前置詞",
+                "代": "代名詞"
             };
             const fullPos = posMap[word.pos] || word.pos;
 
@@ -2401,13 +2401,13 @@
                     badge.textContent = '得意';
                     badge.style.backgroundColor = '#4caf50'; // Green
                 } else {
-                    badge.textContent = '苦扁E;
+                    badge.textContent = '苦手';
                     badge.style.backgroundColor = '#f44336'; // Red
                 }
                 vocabCard.appendChild(badge);
             }
 
-            // DOM更新後、少し征E��てから音声再生
+            // DOM更新後、少し待ってから音声再生
             setTimeout(() => {
                 speakWord(word.word);
             }, 200);
@@ -2429,14 +2429,14 @@
 
             // Map POS
             const posMap = {
-                "吁E: "名詁E,
-                "勁E: "動詁E,
-                "形": "形容詁E,
-                "副": "副詁E,
-                "助": "助動詁E,
-                "接": "接続詁E,
-                "剁E: "前置詁E,
-                "代": "代名詁E
+                "名": "名詞",
+                "動": "動詞",
+                "形": "形容詞",
+                "副": "副詞",
+                "助": "助動詞",
+                "接": "接続詞",
+                "前": "前置詞",
+                "代": "代名詞"
             };
             const fullPos = posMap[word.pos] || word.pos;
 
@@ -2482,12 +2482,12 @@
         function showNoWordsMessage() {
             const cardsArea = document.getElementById('cardsArea');
             const modeNames = {
-                'unlearned': '未学翁E,
+                'unlearned': '未学習',
                 'learned': '得意',
                 'perfect': '完璧',
-                'weak': '苦扁E
+                'weak': '苦手'
             };
-            cardsArea.innerHTML = `<div class="no-words">こ�E${modeNames[gameState.currentMode] || gameState.currentMode}モードには単語がありません</div>`;
+            cardsArea.innerHTML = `<div class="no-words">この${modeNames[gameState.currentMode] || gameState.currentMode}モードには単語がありません</div>`;
             document.getElementById('exampleArea').style.display = 'none';
         }
 
@@ -2496,13 +2496,13 @@
             if (cardsArea.querySelector('.no-words')) {
                 cardsArea.innerHTML = `
                     <div class="card vocab-card" id="vocabCard">
-                        <div class="card-label">英単語カーチE/div>
+                        <div class="card-label">英単語カード</div>
                         <div class="card-content" id="vocabWord">Loading...</div>
                     </div>
                     <div class="card meaning-card" id="meaningCard">
-                        <div class="card-label">意味カーチE/div>
+                        <div class="card-label">意味カード</div>
                         <div class="card-front">
-                            <div class="card-content">❁E/div>
+                            <div class="card-content">❓</div>
                         </div>
                         <div class="card-back">
                             <div class="card-content" id="meaningText">意味</div>
@@ -2619,18 +2619,18 @@
             } else if (currentState === 'weak') {
                 gameState.wordStates[key] = 'learned';
                 basePoints = 2; // User Request: 2 points for weak (Priority)
-                msg = "✁E克服�E�E;
+                msg = "✅ 克服！";
                 if (gameState.weakWordProgress[key]) delete gameState.weakWordProgress[key];
                 gameState.learnedWordIntervals[key] = 0;
                 gameState.learnedWordIntervals[`${key}_last`] = gameState.globalQuestionCount;
             } else if (currentState === 'learned') {
                 gameState.wordStates[key] = 'perfect';
                 basePoints = 1; // Default 1
-                msg = "🏆 完璧マスター�E�E;
+                msg = "🏆 完璧マスター！";
             } else if (currentState === 'perfect') {
                 // Stay perfect
                 basePoints = 1; // Default 1
-                msg = "✨ 完璧維持E��E;
+                msg = "✨ 完璧維持！";
             } else {
                 // Fallback
                 gameState.wordStates[key] = 'perfect';
@@ -2745,14 +2745,14 @@
                 maxSet = Math.max(...vocabularyDatabase[gameState.currentLevel].map(v => v.set));
             }
             if (gameState.vocabLevel >= maxSet) {
-                alert('すでに全てのセチE��が追加されてぁE��す！E);
+                alert('すでに全てのセットが追加されています！');
                 return;
             }
 
             gameState.vocabLevel++;
             loadVocabularyForLevel();
             initializeWordStates();
-            showCoinPopup(`🎉 レベルアチE�E�E�語彙レベル ${gameState.vocabLevel}`, true);
+            showCoinPopup(`🎉 レベルアップ！語彙レベル ${gameState.vocabLevel}`, true);
             updateDisplay();
             saveGame();
             showNextWord();
@@ -2863,12 +2863,12 @@
 
                 // Determine Title (Mage Theme) based on percentage
                 let title = "見習い魔術師"; // 0-9
-                if (percent >= 100) title = "魔法�E祁E;
-                else if (percent >= 90) title = "賢老E;
+                if (percent >= 100) title = "魔法の神";
+                else if (percent >= 90) title = "賢者";
                 else if (percent >= 70) title = "大魔導士";
                 else if (percent >= 50) title = "王宮魔術師";
-                else if (percent >= 30) title = "手練れ�E魔導士";
-                else if (percent >= 10) title = "駁E��出し�E魔法使ぁE;
+                else if (percent >= 30) title = "手練れの魔導士";
+                else if (percent >= 10) title = "駆け出しの魔法使い";
 
                 document.querySelectorAll('.js-current-title').forEach(el => el.textContent = title);
             }
@@ -3089,7 +3089,7 @@
                 if (typeof attemptScoreSync === 'function') attemptScoreSync(true);
                 checkNameRegistration();
             } else {
-                alert("名前は1、E斁E��で入力してください");
+                alert("名前は1〜8文字で入力してください");
             }
         }
 
@@ -3107,10 +3107,10 @@
 
         // Fallback Stubs for Cloud Functions (in case module fails to load)
         if (!window.uploadSaveData) {
-            window.uploadSaveData = function () { alert("機�Eの読み込み中、また�E通信環墁E��より無効化されてぁE��す、En(ローカルファイルで開いてぁE��場合�E動作しなぁE��とがありまぁE"); };
+            window.uploadSaveData = function () { alert("機能の読み込み中、または通信環境により無効化されています。\n(ローカルファイルで開いている場合は動作しないことがあります)"); };
         }
         if (!window.restoreSaveData) {
-            window.restoreSaveData = function () { alert("機�Eの読み込み中、また�E通信環墁E��より無効化されてぁE��す、E); };
+            window.restoreSaveData = function () { alert("機能の読み込み中、または通信環境により無効化されています。"); };
         }
 
         function switchTab(tab) {
@@ -3129,7 +3129,7 @@
 
         async function loadRankingData(type) {
             const container = (type === 'top') ? document.getElementById('lb-list-top') : document.getElementById('lb-list-around');
-            container.innerHTML = '<div style="padding:10px; color:#999;">チE�Eタ取得中...</div>';
+            container.innerHTML = '<div style="padding:10px; color:#999;">データ取得中...</div>';
 
             if (window.fetchLeaderboard) {
                 const data = await window.fetchLeaderboard(type);
@@ -3140,7 +3140,7 @@
                 }
 
                 if (!data.results || data.results.length === 0) {
-                    container.innerHTML = `<div style="padding:10px;">ランキングチE�Eタがありません</div>`;
+                    container.innerHTML = `<div style="padding:10px;">ランキングデータがありません</div>`;
                     return;
                 }
 
@@ -3184,8 +3184,8 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10001; justify-content: center; align-items: center;">
         <div class="modal-content"
             style="background: white; padding: 30px; border-radius: 12px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-            <h2 style="margin-top: 0; color: #333; margin-bottom: 20px;">📱 シンプルモード設宁E/h2>
-            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">出題篁E��を選択してスタート！E/p>
+            <h2 style="margin-top: 0; color: #333; margin-bottom: 20px;">📱 シンプルモード設定</h2>
+            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">出題範囲を選択してスタート！</p>
 
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 <button onclick="startSimpleMode('junior')" class="simple-select-btn"
@@ -3214,7 +3214,7 @@
     <!-- Simple Mode Exit Button (Hidden by default) -->
     <button id="exitSimpleModeBtn" onclick="exitSimpleMode()"
         style="display: none; position: fixed; top: 15px; right: 15px; z-index: 300; background: #333; color: white; border: none; padding: 5px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; opacity: 0.8;">
-        ✁E通常モードへ戻めE
+        ✕ 通常モードへ戻る
     </button>
 
     <!-- Help Modal -->
@@ -3226,15 +3226,15 @@
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
             <h2
                 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #6c5ce7; text-align: center;">
-                遊�E方ガイチE/h2>
+                遊び方ガイド</h2>
 
-            <div style="font-weight: bold; margin-top: 15px; color: #333;">【指針】得意単語と苦手単語を仕�Eけてください</div>
+            <div style="font-weight: bold; margin-top: 15px; color: #333;">【指針】得意単語と苦手単語を仕分けてください</div>
             <ul style="margin: 10px 0 20px 0; padding-left: 20px; color: #444; line-height: 1.8; font-size: 15px;">
-                <li>意味がわかる→「単語カード」をタチE�E</li>
-                <li>わからなぁE�E「意味カード」をタチE�E</li>
-                <li>意味カードをタチE�E→その単語�E「苦手ゾーン」へ</li>
+                <li>意味がわかる→「単語カード」をタップ</li>
+                <li>わからない→「意味カード」をタップ</li>
+                <li>意味カードをタップ→その単語は「苦手ゾーン」へ</li>
                 <!-- Removed items as requested -->
-                <li>1日10刁E�E制限�E、Note特典のパスワードで解除可能</li>
+                <li>1日10分の制限は、Note特典のパスワードで解除可能</li>
             </ul>
             <div style="text-align: center; margin-bottom: 20px;">
                 <span style="font-size: 15px; color: #444;">解除は</span>
@@ -3248,7 +3248,7 @@
             <div style="text-align: center; margin-top: 25px;">
                 <a href="https://note.com/tenioha_eng/n/n5918d72138bd?sub_rt=share_pb" target="_blank"
                     style="display: inline-block; background: #00b894; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
-                    📚 詳しい使ぁE��はこちめE(Note)
+                    📚 詳しい使い方はこちら (Note)
                 </a>
                 </a>
             </div>
@@ -3257,13 +3257,13 @@
             <div id="installAppContainer" style="margin-top: 15px; text-align: center;">
                 <button id="pwaInstallBtn"
                     style="background: #bdc3c7; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: not-allowed; box-shadow: none; width: 80%;">
-                    📲 アプリとしてインスト�Eル
+                    📲 アプリとしてインストール
                 </button>
-                <p id="pwaInstallDesc" style="font-size: 11px; color: #999; margin-top: 5px;">準備中、また�Eブラウザのメニューから追加</p>
+                <p id="pwaInstallDesc" style="font-size: 11px; color: #999; margin-top: 5px;">準備中、またはブラウザのメニューから追加</p>
             </div>
 
             <div style="margin-top: 15px; text-align: center;">
-                <p style="font-size: 12px; color: #666;">お問ぁE��わせ・バグ報呁E/p>
+                <p style="font-size: 12px; color: #666;">お問い合わせ・バグ報告</p>
                 <a href="mailto:tenioha.eng@gmail.com"
                     style="display: inline-block; margin-top: 5px; color: #6c5ce7; font-weight: bold; text-decoration: underline;">
                     📧 tenioha.eng@gmail.com
@@ -3288,7 +3288,7 @@
     <script>
         // Force Update Logic
         async function forceUpdateApp() {
-            if (!confirm("アプリを最新版に更新してリロードしますか�E�\n(未保存�EプレイチE�Eタがある場合�E先に保存してください)")) return;
+            if (!confirm("アプリを最新版に更新してリロードしますか？\n(未保存のプレイデータがある場合は先に保存してください)")) return;
 
             try {
                 if ('serviceWorker' in navigator) {
@@ -3314,11 +3314,11 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
         <div class="modal-content"
             style="background: white; padding: 20px; border-radius: 12px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <h2 style="margin-top: 0; color: #333;">単語帳を選抁E/h2>
+            <h2 style="margin-top: 0; color: #333;">単語帳を選択</h2>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
                 <button class="wordbook-item-btn" data-level="selection1900"
                     style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <span style="font-size: 24px;">🦁E/span> 厳選 1900+
+                    <span style="font-size: 24px;">🦖</span> 厳選 1900+
                 </button>
                 <button class="wordbook-item-btn" data-level="selection1400"
                     style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
@@ -3326,12 +3326,12 @@
                 </button>
                 <button class="wordbook-item-btn" data-level="sys_2000"
                     style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <span style="font-size: 24px;">💻</span> シスチE��WORDS (2077誁E
+                    <span style="font-size: 24px;">💻</span> システムWORDS (2077語)
                 </button>
                 <!-- Future wordbooks can be added here -->
             </div>
             <button id="closeWordbookModal"
-                style="margin-top: 20px; padding: 8px 20px; border: none; background: #ddd; border-radius: 5px; cursor: pointer;">閉じめE/button>
+                style="margin-top: 20px; padding: 8px 20px; border: none; background: #ddd; border-radius: 5px; cursor: pointer;">閉じる</button>
         </div>
     </div>
 
@@ -3346,7 +3346,7 @@
             <!-- Rename Button (Top Left) -->
             <button id="renameBtn" onclick="renamePlayer()"
                 style="position: absolute; top: 15px; left: 15px; background: none; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 11px; cursor: pointer; color: #888; display: none;">
-                ✏︁E名前変更
+                ✏️ 名前変更
             </button>
 
             <h2 style="margin-top: 0; padding-bottom: 10px; color: #f1c40f; text-shadow: 1px 1px 0px #e67e22;">
@@ -3356,14 +3356,14 @@
             <!-- Login Required Message (New) -->
             <div id="loginRequiredMessage" style="display: none; padding: 20px;">
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
-                    未ログインのため、E��覧不可
+                    未ログインのため、閲覧不可
                 </p>
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
-                    ランキング機�Eを利用するには<br>Googleアカウントでのログインが忁E��です、E
+                    ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
                 </p>
                 <button onclick="closeLeaderboard(); openProfileModal();"
                     style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
-                    ログイン画面へ移勁E
+                    ログイン画面へ移動
                 </button>
             </div>
 
@@ -3371,7 +3371,7 @@
             <!-- Name Input Overlay (Initial Only) -->
             <div id="nameInputParams" style="display: none; margin-bottom: 20px;">
                 <p style="font-size: 14px; color: #666; margin-bottom: 10px;">ランキングに参加するには名前を登録してください</p>
-                <input type="text" id="playerNameInput" placeholder="ニックネ�Eム�E�８文字以冁E��E maxlength="8"
+                <input type="text" id="playerNameInput" placeholder="ニックネーム（８文字以内）" maxlength="8"
                     style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; text-align: center;">
                 <div style="margin-top: 10px;">
                     <button onclick="registerName()"
@@ -3385,7 +3385,7 @@
             <div id="leaderboardContent" style="display: none;">
                 <div class="leaderboard-tabs">
                     <button class="lb-tab active" onclick="switchTab('top')">TOP 20</button>
-                    <button class="lb-tab" onclick="switchTab('around')">自刁E�E頁E��E/button>
+                    <button class="lb-tab" onclick="switchTab('around')">自分の順位</button>
                 </div>
 
                 <div id="lb-loading" style="color: #999; padding: 20px;">読み込み中...</div>
@@ -3415,7 +3415,7 @@
             <button onclick="closeProfileModal()"
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
 
-            <h2 style="margin-top: 0; color: #667eea; margin-bottom: 20px;">マイペ�Eジ</h2>
+            <h2 style="margin-top: 0; color: #667eea; margin-bottom: 20px;">マイページ</h2>
 
             <!-- User Info Section -->
             <div
@@ -3432,22 +3432,22 @@
                 <!-- Plan Status -->
                 <div id="planStatusTag"
                     style="display: inline-block; padding: 5px 15px; background: #95a5a6; color: white; border-radius: 20px; font-size: 12px; font-weight: bold;">
-                    無料�Eラン (制限あめE
+                    無料プラン (制限あり)
                 </div>
                 <!-- Premium Activation Section (Hidden if Premium) -->
                 <div id="premiumActivationSection"
                     style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
-                    <div style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 5px;">💎 プレミアム有効匁E/div>
+                    <div style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 5px;">💎 プレミアム有効化</div>
                     <div style="display: flex; gap: 5px;">
-                        <input type="text" id="promoCodeInput" placeholder="プロモコーチE
+                        <input type="text" id="promoCodeInput" placeholder="プロモコード"
                             style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
                         <button onclick="redeemPromoCode()"
                             style="padding: 8px 12px; background: #2ecc71; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
-                            有効匁E
+                            有効化
                         </button>
                     </div>
                     <div style="font-size: 10px; color: #999; margin-top: 5px; text-align: left;">
-                        ※購入したコードを入力すると、�Eレミアム機�Eが解放されます、E
+                        ※購入したコードを入力すると、プレミアム機能が解放されます。
                     </div>
                 </div>
             </div>
@@ -3459,22 +3459,22 @@
                     style="display: none; background: #eef2ff; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
                     <div
                         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 14px; font-weight: bold; color: #333;">☁E��EチE�Eタの同期</span>
+                        <span style="font-size: 14px; font-weight: bold; color: #333;">☁️ データの同期</span>
                         <span id="profileLastSync" style="font-size: 11px; color: #666;">-</span>
                     </div>
 
                     <div style="display: flex; gap: 10px;">
                         <button onclick="forceBackup()"
                             style="flex: 1; padding: 8px; background: #6c5ce7; color: white; border: none; border-radius: 5px; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                            ⬁E��E手動セーチE
+                            ⬆️ 手動セーブ
                         </button>
                         <button onclick="forceRestore()"
                             style="flex: 1; padding: 8px; background: white; border: 1px solid #6c5ce7; color: #6c5ce7; border-radius: 5px; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                            ⬁E��E手動ローチE
+                            ⬇️ 手動ロード
                         </button>
                     </div>
                     <div style="font-size: 10px; color: #888; margin-top: 5px; text-align: center;">
-                        ※端末を変える時は忁E��「手動セーブ」を押してください
+                        ※端末を変える時は必ず「手動セーブ」を押してください
                     </div>
                 </div>
 
@@ -3486,7 +3486,7 @@
                     <span>Googleでログイン</span>
                 </button>
                 <div id="loginIncentiveText" style="font-size: 11px; color: #888; text-align: center; margin-top: 5px;">
-                    チE�Eタをクラウドに保存�E来ます、E
+                    データをクラウドに保存出来ます。
                 </div>
             </div>
         </div>
@@ -3640,7 +3640,7 @@
                     tag.style.background = "#2ecc71"; // Green
                     if (activationSection) activationSection.style.display = 'block'; // Allow extending
                 } else {
-                    tag.textContent = isExpired ? "期限刁E�� (再有効化が忁E��E" : "無料�Eラン (制限あめE";
+                    tag.textContent = isExpired ? "期限切れ (再有効化が必要)" : "無料プラン (制限あり)";
                     tag.style.background = "#95a5a6"; // Gray
                     if (activationSection) activationSection.style.display = 'block'; // Show input
                 }
@@ -3649,7 +3649,7 @@
 
         window.handleProfileAuth = function () {
             if (auth.currentUser) {
-                if (confirm("ログアウトしますか�E�E)) { logoutGoogle(); }
+                if (confirm("ログアウトしますか？")) { logoutGoogle(); }
             } else {
                 loginWithGoogle();
             }
@@ -3663,7 +3663,7 @@
             const code = input.value.trim();
 
             if (!code) { alert("コードを入力してください"); return; }
-            if (!auth || !auth.currentUser) { alert("コードを適用するにはログインが忁E��でぁE); return; }
+            if (!auth || !auth.currentUser) { alert("コードを適用するにはログインが必要です"); return; }
 
             try {
                 await runTransaction(db, async (transaction) => {
@@ -3676,7 +3676,7 @@
 
                     // 2. Validate Code Existence & Activity
                     if (!codeDoc.exists() || codeDoc.data().active !== true) {
-                        throw "コードが無効か、期限�Eれです、E;
+                        throw "コードが無効か、期限切れです。";
                     }
 
                     const codeData = codeDoc.data();
@@ -3686,7 +3686,7 @@
                     if (codeData.maxRedemptions) {
                         const currentCount = codeData.redemptionCount || 0;
                         if (currentCount >= codeData.maxRedemptions) {
-                            throw "こ�Eコード�E利用上限に達しました、E;
+                            throw "このコードは利用上限に達しました。";
                         }
                     }
 
@@ -3695,7 +3695,7 @@
 
                     // Check Duplicate Usage
                     if (userData.redeemedCodes && userData.redeemedCodes.includes(code)) {
-                        throw "こ�Eコード�E既に使用済みです、E;
+                        throw "このコードは既に使用済みです。";
                     }
 
                     // 5. Calculate New Expiration
@@ -3750,7 +3750,7 @@
                         document.getElementById('trialOverlay').style.display = 'none';
                     }
 
-                    alert(`プレミアム機�Eが有効化されました�E�\n有効期限: ${newExpiryDate.toLocaleDateString()} まで\n日数: +${durationDays}日`);
+                    alert(`プレミアム機能が有効化されました！\n有効期限: ${newExpiryDate.toLocaleDateString()} まで\n日数: +${durationDays}日`);
                     input.value = "";
 
                 });
@@ -3774,7 +3774,7 @@
 
         window.loginWithGoogle = async function () {
             if (!auth) {
-                alert("Firebase Authが�E期化されてぁE��せん、Enペ�Eジをリロードしてみてください、E);
+                alert("Firebase Authが初期化されていません。\nページをリロードしてみてください。");
                 return;
             }
             const provider = new GoogleAuthProvider();
@@ -3783,12 +3783,12 @@
             } catch (error) {
                 console.error("Login Failed:", error);
 
-                let msg = "ログインに失敗しました、E;
-                if (error.code === 'auth/popup-blocked') msg += "\nポップアチE�EがブロチE��されました。設定を確認してください、E;
-                if (error.code === 'auth/cancelled-popup-request') msg += "\nポップアチE�Eが閉じられました、E;
-                if (error.code === 'auth/popup-closed-by-user') msg += "\nポップアチE�Eが閉じられました、E;
-                if (error.code === 'auth/unauthorized-domain') msg += "\n許可されてぁE��ぁE��メインです、EnFirebase Consoleでドメインを追加してください、E;
-                if (error.code === 'auth/operation-not-allowed') msg += "\nGoogleログインが無効です、EnFirebase Consoleで有効にしてください、E;
+                let msg = "ログインに失敗しました。";
+                if (error.code === 'auth/popup-blocked') msg += "\nポップアップがブロックされました。設定を確認してください。";
+                if (error.code === 'auth/cancelled-popup-request') msg += "\nポップアップが閉じられました。";
+                if (error.code === 'auth/popup-closed-by-user') msg += "\nポップアップが閉じられました。";
+                if (error.code === 'auth/unauthorized-domain') msg += "\n許可されていないドメインです。\nFirebase Consoleでドメインを追加してください。";
+                if (error.code === 'auth/operation-not-allowed') msg += "\nGoogleログインが無効です。\nFirebase Consoleで有効にしてください。";
 
                 alert(`${msg}\n\n(Error Code: ${error.code})\n${error.message}`);
             }
@@ -3855,7 +3855,7 @@
                     if (modalEmail) modalEmail.textContent = user.email;
 
                     if (authBtn) {
-                        authBtn.innerHTML = `<span>ログアウチE/span>`;
+                        authBtn.innerHTML = `<span>ログアウト</span>`;
                         authBtn.style.background = "#bdc3c7";
                     }
                     if (syncSection) syncSection.style.display = 'block';
@@ -3931,7 +3931,7 @@
                             if (cloudTime > localTime) {
                                 console.log("Cloud is newer. Auto-Restoring...");
                                 localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
-                                alert("クラウド上�E最新チE�Eタが見つかりました、En同期して再読み込みします、E);
+                                alert("クラウド上の最新データが見つかりました。\n同期して再読み込みします。");
                                 location.reload();
                             } else {
                                 console.log("Local is newer or same. Keeping local.");
@@ -4025,15 +4025,15 @@
 
         window.forceRestore = async function () {
             if (!db || !auth.currentUser) return;
-            if (!confirm("クラウド上�EチE�Eタで上書きしますか�E�\\n今�E端末の未保存データは消えます、E)) return;
+            if (!confirm("クラウド上のデータで上書きしますか？\\n今の端末の未保存データは消えます。")) return;
 
             try {
                 const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
-                if (!userDoc.exists() || !userDoc.data().saveData) { alert("クラウドにチE�Eタがありません"); return; }
+                if (!userDoc.exists() || !userDoc.data().saveData) { alert("クラウドにデータがありません"); return; }
 
                 // Restore Logic
                 localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
-                alert("復允E��ました。リロードします、E);
+                alert("復元しました。リロードします。");
                 location.reload();
             } catch (e) { alert("エラー: " + e.message); }
         };
@@ -4042,7 +4042,7 @@
         window.uploadSaveData = async function (silent = false) {
             if (!db) return;
             if (!auth || !auth.currentUser) {
-                if (!silent) alert("ログインが忁E��でぁE);
+                if (!silent) alert("ログインが必要です");
                 return;
             }
 
@@ -4065,7 +4065,7 @@
                 }, { merge: true });
 
                 if (!silent) {
-                    alert("保存完亁E��E);
+                    alert("保存完了！");
                     const lastSync = document.getElementById('profileLastSync');
                     if (lastSync) lastSync.textContent = new Date().toLocaleString();
                 } else {
@@ -4074,7 +4074,7 @@
                     if (lastSync) lastSync.textContent = new Date().toLocaleString();
                 }
             } catch (e) {
-                if (!silent) alert("失敁E " + e.message);
+                if (!silent) alert("失敗: " + e.message);
                 console.error(e);
             }
         };
@@ -4181,7 +4181,7 @@
         const installApp = () => {
             // If not ready, show alert or do nothing
             if (!deferredPrompt) {
-                alert("こ�Eブラウザでは自動インスト�Eルが利用できません、Enブラウザのメニュー「�Eーム画面に追加」などからインスト�Eルしてください、E);
+                alert("このブラウザでは自動インストールが利用できません。\nブラウザのメニュー「ホーム画面に追加」などからインストールしてください。");
                 return;
             }
 
