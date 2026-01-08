@@ -125,14 +125,6 @@
         }
 
         /* Progress Bar & Title Styles */
-        .progress-section {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-        }
-
         .title-display {
             font-size: 16px;
             font-weight: bold;
@@ -1052,10 +1044,7 @@
                 margin-bottom: 5px;
             }
 
-            /* Adjust Progress Bar Section */
-            .progress-section {
-                margin-top: 20px;
-            }
+
 
             /* 5. Filter Scroll */
             .pos-filter-container {
@@ -1499,17 +1488,7 @@
             </button>
         </div>
 
-        <!-- PC Progress Bar (Original) - Hidden on Mobile -->
-        <div class="progress-section pc-only" style="display: none !important;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <div class="title-display">称号: <span id="currentTitle" class="js-current-title title-value">見習い</span>
-                </div>
-                <div class="progress-text"><span id="progressPercent" class="js-progress-percent">0</span>% 達成</div>
-            </div>
-            <div class="progress-bar-bg">
-                <div class="progress-bar-fill js-progress-bar-fill" id="progressBar" style="width: 0%;"></div>
-            </div>
-        </div>
+
 
         <div class="header">
             <div class="rpg-inline">
@@ -1535,25 +1514,7 @@
             <div class="header-controls-wrapper">
 
                 <!-- Wrapper for Mobile Layout: Toggles (Left) + Progress (Right) -->
-                <!-- Wrapper for Mobile Layout: Mobile Progress (Left/Top) -->
-                <div class="mobile-layout-row">
-                    <!-- Mobile Progress Bar (Visible only on Mobile) -->
-                    <div class="mobile-progress-wrapper mobile-only" style="display: none !important;">
-                        <!-- Level Display -->
-                        <div class="level-display" style="font-weight: bold; color: #666; margin-bottom: 2px;">
-                            Lv. <span class="js-local-level-value">1</span>
-                        </div>
 
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-                            <div class="title-display">称号: <span class="js-current-title title-value">見習い</span></div>
-                            <div class="progress-text"><span class="js-progress-percent">0</span>% 達成</div>
-                        </div>
-                        <div class="progress-bar-bg" style="margin-top: 2px;">
-                            <div class="progress-bar-fill js-progress-bar-fill" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Right Aligned Controls: Toggles + Mode Buttons -->
                 <div class="right-controls-container"
@@ -3503,7 +3464,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.49</span>
+                <span style="font-size: 11px; color: #ccc;">v1.50</span>
             </div>
 
 
@@ -3585,7 +3546,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v1.49</p>
+                <p>現在のバージョン: v1.50</p>
                 <p>不具合報告やご要望はGitHubまでお願いします。</p>
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
