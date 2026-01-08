@@ -876,15 +876,17 @@
                 /* For absolute character positioning inside */
             }
 
-            /* Mode Buttons: 2x2 Grid on Left (65% width) */
+            /* Mode Buttons: 2x2 Grid on RIGHT (40% width) */
             .mode-buttons {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 /* 2 cols */
                 gap: 8px;
-                width: 65%;
-                /* Leave 35% for character */
+                width: 40%;
+                /* Leave 60% for character on Left */
                 margin-top: 10px;
+                margin-left: auto;
+                /* Push to Right side */
             }
 
             .mode-btn {
@@ -905,17 +907,18 @@
                 font-size: 11px;
             }
 
-            /* Character: Absolute Right of Mode Buttons */
+            /* Character: Absolute LEFT of Mode Buttons */
             .rpg-inline {
                 position: absolute;
-                bottom: 0px;
-                /* Align bottom with buttons */
-                right: 0px;
-                /* Stick to right edge */
+                bottom: -20px;
+                /* Moved down 20px */
+                right: auto;
                 top: auto;
-                left: auto;
-                transform: scale(0.65);
-                transform-origin: bottom right;
+                left: 20px;
+                /* Moved right 10px (10+10) */
+                transform: scale(0.8);
+                /* Increased by ~20% */
+                transform-origin: bottom left;
                 margin-bottom: 0;
                 z-index: 50;
                 pointer-events: none;
@@ -1403,7 +1406,8 @@
                     </div>
                 </div>
 
-                <div style="display: flex; align-items: center; gap: 10px;">
+                <div
+                    style="display: flex; align-items: center; gap: 10px; width: 100%; justify-content: flex-end; padding-right: 5px;">
                     <span class="random-notice" id="randomNotice" style="display: none;">ランダム出題中。出題範囲を選択できません。</span>
                     <div class="mode-buttons">
                         <button class="mode-btn unlearned active" data-mode="unlearned" id="unlearnedBtn">
@@ -3329,7 +3333,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.29</span>
+                <span style="font-size: 11px; color: #ccc;">v1.30</span>
             </div>
 
 
