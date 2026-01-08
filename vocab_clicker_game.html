@@ -1361,7 +1361,7 @@
                     💰 <span id="points">0</span>
                 </div>
 
-                <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
+                <div class="char-level-display">勇者Lv.<span class="js-vocab-level-value">1</span></div>
                 <div id="heroCharacter" class="pixel-art anim-idle"></div>
             </div>
             <div class="header-controls-wrapper">
@@ -1442,6 +1442,10 @@
 
             .mobile-only {
                 display: none;
+            }
+
+            .mobile-progress-wrapper .level-display {
+                display: none !important;
             }
 
             /* PC Specific Tweaks */
@@ -2210,7 +2214,9 @@
         }
 
         function updateVocabLevelDisplay() {
-            document.getElementById('vocabLevelDisplay').textContent = gameState.vocabLevel;
+            document.querySelectorAll('.js-vocab-level-value').forEach(el => {
+                el.textContent = gameState.vocabLevel;
+            });
         }
 
         function getWordsByMode(mode) {
@@ -2963,15 +2969,11 @@
 
             const titleDisplay = document.querySelector('.title-display');
             if (titleDisplay) {
+                // Removed Lv display appending as per user request
                 let levelSpan = document.getElementById('playerLevelDisplay');
-                if (!levelSpan) {
-                    levelSpan = document.createElement('span');
-                    levelSpan.id = 'playerLevelDisplay';
-                    levelSpan.style.marginLeft = '10px';
-                    levelSpan.style.color = '#667eea';
-                    titleDisplay.appendChild(levelSpan);
+                if (levelSpan) {
+                    levelSpan.style.display = 'none'; // Ensure hidden if it exists
                 }
-                levelSpan.textContent = `Lv.${currentLocalLevel}`;
             }
         }
 
