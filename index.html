@@ -1444,6 +1444,10 @@
                 display: none;
             }
 
+            .mobile-progress-wrapper .level-display {
+                display: none !important;
+            }
+
             /* PC Specific Tweaks */
             @media (min-width: 769px) {
                 .header-controls {
@@ -1532,7 +1536,7 @@
 
                 /* Compact Auto/Random Buttons for Mobile */
                 .toggle-container .auto-mode-container {
-                    padding: 4px 8px;
+                    padding: 2px 6px;
                     margin: 0;
                     height: 48%;
                     /* Aim for half height of progress bar container */
@@ -1573,7 +1577,7 @@
 
                     /* PC Style White Frame */
                     background: white;
-                    padding: 6px 12px;
+                    padding: 3px 12px;
                     /* Compact padding */
                     border-radius: 10px;
                     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -2210,7 +2214,9 @@
         }
 
         function updateVocabLevelDisplay() {
-            document.getElementById('vocabLevelDisplay').textContent = gameState.vocabLevel;
+            document.querySelectorAll('.js-vocab-level-value').forEach(el => {
+                el.textContent = gameState.vocabLevel;
+            });
         }
 
         function getWordsByMode(mode) {
@@ -2963,15 +2969,11 @@
 
             const titleDisplay = document.querySelector('.title-display');
             if (titleDisplay) {
+                // Removed Lv display appending as per user request
                 let levelSpan = document.getElementById('playerLevelDisplay');
-                if (!levelSpan) {
-                    levelSpan = document.createElement('span');
-                    levelSpan.id = 'playerLevelDisplay';
-                    levelSpan.style.marginLeft = '10px';
-                    levelSpan.style.color = '#667eea';
-                    titleDisplay.appendChild(levelSpan);
+                if (levelSpan) {
+                    levelSpan.style.display = 'none'; // Ensure hidden if it exists
                 }
-                levelSpan.textContent = `Lv.${currentLocalLevel}`;
             }
         }
 
