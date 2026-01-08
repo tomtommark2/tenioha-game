@@ -312,22 +312,43 @@
         .auto-mode-container {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 15px;
-            background: #f8f9fa;
+            gap: 5px;
+            /* Reduced gap */
+            padding: 5px 8px;
+            /* Compact padding */
+            background: transparent;
+            /* Transparent as requested */
+            border: none;
+            /* Border removed */
             border-radius: 10px;
             cursor: pointer;
             user-select: none;
             transition: all 0.3s;
+            /* Ensure alignment in flex/grid */
+            justify-content: center;
         }
 
         .auto-mode-container:hover {
             background: #e9ecef;
         }
 
+        /* PC/Global Toggle Layout */
+        .toggle-container {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            width: 100%;
+            /* Or auto? Mode buttons below are flex row on PC? */
+            /* PC Mode Buttons are display: flex; gap: 10px; (Line 213) */
+            /* So we want Toggles to align similarly? */
+            margin-bottom: 10px;
+            justify-content: flex-end;
+            /* Right align on PC */
+        }
+
         .auto-checkbox {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             border: 2px solid #9c27b0;
             border-radius: 5px;
             display: flex;
@@ -348,7 +369,8 @@
         }
 
         .auto-label {
-            font-size: 14px;
+            font-size: 11px;
+            /* Compact font */
             font-weight: bold;
             color: #333;
             white-space: nowrap;
@@ -650,10 +672,10 @@
         /* New generic small button style */
         .icon-btn {
             background: #f0f0f0;
-            border: none;
+            border: 2px solid white;
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -836,6 +858,11 @@
             }
 
             /* 2. Stack Cards Vertically */
+            .header-controls {
+                gap: 5px !important;
+                /* Reduce gap on mobile */
+            }
+
             .cards-area {
                 flex-direction: column;
                 /* Stack top-to-bottom */
@@ -861,7 +888,8 @@
                 flex-direction: column;
                 gap: 10px;
                 align-items: flex-start;
-                margin-top: 50px;
+                margin-top: 0px;
+                /* Removed 50px margin to close gap */
                 /* Space for EXP/Stats at top */
             }
 
@@ -879,13 +907,39 @@
                 /* For absolute character positioning inside */
             }
 
+            /* ALIGNED TOGGLES (Mobile) */
+            /* ALIGNED TOGGLES (Mobile) - OLD Styles Removed/cleaned */
+
+            .auto-mode-container {
+                /* Equal Width */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                /* Transparent as requested */
+                border: none;
+                /* Border removed */
+                border-radius: 8px;
+                padding: 5px;
+                gap: 5px;
+                cursor: pointer;
+                box-sizing: border-box;
+                min-height: 40px;
+            }
+
+            #autoModeToggle {
+                margin-left: 0px;
+                /* Reset */
+            }
+
             /* Mode Buttons: 2x2 Grid on RIGHT (40% width) */
             .mode-buttons {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 /* 2 cols */
                 gap: 8px;
-                width: auto;
+                width: 100%;
+                /* Changed from auto to 100% */
                 /* Leave 60% for character on Left */
                 min-width: 150px;
                 /* Safe minimum size */
@@ -978,7 +1032,8 @@
             .container {
                 width: 95%;
                 padding: 15px;
-                padding-top: 90px;
+                padding-top: 95px;
+                /* Adjusted to 95px (Shifted up 45px total with margin fix) */
                 /* NEW: Adjusted to 90px (User Req: -20px further) */
                 margin: 0 auto;
             }
@@ -1145,28 +1200,54 @@
 
 
         /* --- SIMPLE MODE STYLES --- */
-        body.simple-mode .header,
+        /* --- SIMPLE MODE STYLES --- */
+        /* Specified to BE HIDDEN */
         body.simple-mode .level-selector,
         body.simple-mode .header-controls,
-        body.simple-mode .stats-absolute,
         body.simple-mode .simple-switch-container,
-        body.simple-mode #trialTimerDisplay,
-        body.simple-mode .pos-filter-container,
         body.simple-mode .progress-section,
         body.simple-mode .mobile-progress-wrapper,
-        body.simple-mode .mobile-layout-row,
-        body.simple-mode .toggle-container,
-        body.simple-mode .mobile-only,
-        body.simple-mode .char-level-display,
-        body.simple-mode .random-notice {
+        body.simple-mode .pos-filter-container,
+        body.simple-mode #trialTimerDisplay,
+        body.simple-mode .mobile-only.header-profile-icon,
+        /* If any specific profile icon class exists */
+        body.simple-mode #headerProfileIcon {
             display: none !important;
         }
 
         body.simple-mode .container {
             margin-top: 60px;
             /* Reset reduced padding */
-            max-width: 600px;
+            max-width: 900px;
             /* Keep it focused */
+            padding-top: 70px !important;
+            /* Push content down so Gold (top: -42px) has ~30px clear space from container top */
+            /* Gold is relative to .rpg-inline (absolute). 
+               .rpg-inline is at bottom: -20px. 
+               Wait, mobile layout differs. */
+        }
+
+        /* Mobile Specific Adjustment for Simple Mode Layout */
+        @media (max-width: 768px) {
+            body.simple-mode .container {
+                /* On mobile, .rpg-inline is absolute at bottom. 
+                   Gold is top: -42px relative to character.
+                   If we want Gold to be "Top of frame", we might need to shift the character or container.
+                   
+                   Actually, let's look at the Mobile Layout again.
+                   Character is Bottom-Left. Buttons are Right.
+                   Use didn't ask to move Character.
+                   
+                   "Gold notation top 30pix around -> Main frame top edge".
+                   This sounds like "Cut off everything above Gold".
+                   
+                   If the Character is unchanged:
+                   We just hide the header buttons.
+                   The container top edge is defined by .container.
+                */
+                padding-top: 20px !important;
+                /* Standard padding */
+            }
         }
 
         body.simple-mode #exitSimpleModeBtn {
@@ -1271,6 +1352,59 @@
         body.simple-mode .cards-area {
             margin-top: 20px;
         }
+
+        /* --- NEW MINI PROGRESS BAR --- */
+        .mini-progress-container {
+            position: absolute;
+            top: -65px;
+            /* Positioned above character */
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: -40px;
+            /* Shift Left 40px */
+            width: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            z-index: 150;
+            pointer-events: none;
+        }
+
+        .mini-title {
+            font-size: 10px;
+            color: #2d3436;
+            /* Dark grey/black for contrast */
+            font-weight: bold;
+            text-shadow:
+                -1px -1px 0 #fff,
+                1px -1px 0 #fff,
+                -1px 1px 0 #fff,
+                1px 1px 0 #fff;
+            /* White outline effect */
+            /* Strong shadow for readability */
+            white-space: nowrap;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .mini-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mini-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00b894, #55efc4);
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 4px rgba(85, 239, 196, 0.5);
+        }
     </style>
 </head>
 
@@ -1327,6 +1461,20 @@
         <div class="header-controls" style="display: flex; align-items: center; gap: 10px;">
             <div id="trialTimerDisplay" class="trial-timer">残り 10:00</div>
 
+            <!-- Auto/Random Toggles (Moved Here) -->
+            <div class="auto-mode-container" id="autoModeToggle" style="margin-right: 5px;">
+                <div class="auto-checkbox" id="autoCheckbox"></div>
+                <div class="auto-label">
+                    <span>オート</span>
+                </div>
+            </div>
+            <div class="auto-mode-container" id="randomToggle" style="margin-right: 5px;">
+                <div class="auto-checkbox checked" id="randomCheckbox"></div>
+                <div class="auto-label">
+                    <span>ランダム</span>
+                </div>
+            </div>
+
             <!-- Profile Icon (New) -->
             <div id="headerProfileIcon" onclick="toggleProfileModal()"
                 style="width: 40px; height: 40px; border-radius: 50%; background: #eee; cursor: pointer; overflow: hidden; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
@@ -1351,7 +1499,7 @@
         </div>
 
         <!-- PC Progress Bar (Original) - Hidden on Mobile -->
-        <div class="progress-section pc-only">
+        <div class="progress-section pc-only" style="display: none !important;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
                 <div class="title-display">称号: <span id="currentTitle" class="js-current-title title-value">見習い</span>
                 </div>
@@ -1372,31 +1520,24 @@
                 </div>
 
                 <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
+
+                <!-- NEW: Compact Progress Bar (90px) -->
+                <div class="mini-progress-container">
+                    <div class="mini-title js-current-title">見習い</div>
+                    <div class="mini-bar-bg">
+                        <div class="mini-bar-fill js-progress-bar-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
                 <div id="heroCharacter" class="pixel-art anim-idle"></div>
             </div>
             <div class="header-controls-wrapper">
 
                 <!-- Wrapper for Mobile Layout: Toggles (Left) + Progress (Right) -->
+                <!-- Wrapper for Mobile Layout: Mobile Progress (Left/Top) -->
                 <div class="mobile-layout-row">
-                    <div class="toggle-container" style="display: flex; gap: 15px;">
-                        <div class="auto-mode-container" id="autoModeToggle">
-                            <div class="auto-checkbox" id="autoCheckbox"></div>
-                            <div class="auto-label">
-                                <span class="pc-text">🤖 オートモード</span>
-                                <span class="mobile-text">オート</span>
-                            </div>
-                        </div>
-                        <div class="auto-mode-container" id="randomToggle">
-                            <div class="auto-checkbox checked" id="randomCheckbox"></div>
-                            <div class="auto-label">
-                                <span class="pc-text">🔀 ランダム出題</span>
-                                <span class="mobile-text">ランダム</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mobile Progress Bar (New) - Visible only on Mobile -->
-                    <div class="mobile-progress-wrapper mobile-only" style="display: none;">
+                    <!-- Mobile Progress Bar (Visible only on Mobile) -->
+                    <div class="mobile-progress-wrapper mobile-only" style="display: none !important;">
                         <!-- Level Display -->
                         <div class="level-display" style="font-weight: bold; color: #666; margin-bottom: 2px;">
                             Lv. <span class="js-local-level-value">1</span>
@@ -1413,9 +1554,17 @@
                     </div>
                 </div>
 
-                <div
-                    style="display: flex; align-items: center; gap: 10px; width: auto; align-self: flex-end; margin: 0; padding: 0; box-sizing: border-box; justify-content: flex-end;">
-                    <span class="random-notice" id="randomNotice" style="display: none;">ランダム出題中。出題範囲を選択できません。</span>
+                <!-- Right Aligned Controls: Toggles + Mode Buttons -->
+                <div class="right-controls-container"
+                    style="display: flex; flex-direction: column; width: auto; align-self: flex-end; margin: 0; padding: 0; box-sizing: border-box; align-items: stretch;">
+
+                    <span class="random-notice" id="randomNotice"
+                        style="display: none; margin-bottom: 5px;">ランダム出題中</span>
+
+                    <!-- Toggles (Moved Here) -->
+                    <!-- Toggles Moved to Header -->
+
+                    <!-- Mode Buttons -->
                     <div class="mode-buttons">
                         <button class="mode-btn unlearned active" data-mode="unlearned" id="unlearnedBtn">
                             <span>未学習</span>
@@ -1501,12 +1650,13 @@
                     justify-content: flex-start;
                 }
 
-                /* Squeeze "Random" text to fit same width as "Auto" */
-                #randomToggle .mobile-text {
+                /* Squeeze text to fit mobile header */
+                .auto-mode-container .mobile-text {
                     font-size: 11px;
-                    /* Smaller font for Random */
+                    /* Smaller font for both */
                     letter-spacing: -1px;
                     /* Tighter letter spacing */
+                    white-space: nowrap;
                 }
 
                 /* Mobile Layout Row: Toggles + Progress Bar */
@@ -3422,6 +3572,8 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
+                <p>現在のバージョン: v1.41</p>
+                <p>不具合報告やご要望はGitHubまでお願いします。</p>
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
                 </p>
