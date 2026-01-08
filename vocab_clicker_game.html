@@ -885,10 +885,12 @@
                 grid-template-columns: 1fr 1fr;
                 /* 2 cols */
                 gap: 8px;
-                width: 40%;
+                width: auto;
                 /* Leave 60% for character on Left */
+                min-width: 150px;
+                /* Safe minimum size */
                 margin-top: 10px;
-                margin-left: auto;
+                margin-left: 0;
                 /* Push to Right side */
                 margin-right: 5px;
                 /* New: Visual spacing from edge */
@@ -1412,7 +1414,7 @@
                 </div>
 
                 <div
-                    style="display: flex; align-items: center; gap: 10px; width: 100%; margin: 0; padding: 0; box-sizing: border-box; justify-content: flex-end;">
+                    style="display: flex; align-items: center; gap: 10px; width: auto; align-self: flex-end; margin: 0; padding: 0; box-sizing: border-box; justify-content: flex-end;">
                     <span class="random-notice" id="randomNotice" style="display: none;">ランダム出題中。出題範囲を選択できません。</span>
                     <div class="mode-buttons">
                         <button class="mode-btn unlearned active" data-mode="unlearned" id="unlearnedBtn">
@@ -3338,7 +3340,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.35</span>
+                <span style="font-size: 11px; color: #ccc;">v1.36</span>
             </div>
 
 
