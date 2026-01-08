@@ -4369,6 +4369,9 @@
                 navigator.serviceWorker.register('./service_worker.js').then(reg => {
                     console.log('Service Worker Registered!', reg);
 
+                    // 1.5 Force check for updates immediately on load
+                    reg.update().catch(e => console.log('SW initial update check failed', e));
+
                     // 2. Check for updates when app comes to foreground
                     document.addEventListener('visibilitychange', () => {
                         if (document.visibilityState === 'visible') {
