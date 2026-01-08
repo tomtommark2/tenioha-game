@@ -1364,8 +1364,7 @@
                 <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
                 <div id="heroCharacter" class="pixel-art anim-idle"></div>
             </div>
-            <div
-                style="display: flex; flex-direction: column; gap: 10px; align-items: flex-end; width: 100%; max-width: 400px;">
+            <div class="header-controls-wrapper">
 
                 <!-- Wrapper for Mobile Layout: Toggles (Left) + Progress (Right) -->
                 <div class="mobile-layout-row">
@@ -1496,6 +1495,23 @@
                 }
 
                 /* Mobile Layout Row: Toggles + Progress Bar */
+                .header-controls-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: flex-end;
+                    width: 100%;
+                    max-width: 400px;
+                    /* Default for PC */
+                }
+
+                @media (max-width: 768px) {
+                    .header-controls-wrapper {
+                        max-width: 100%;
+                        /* Allow full width on mobile */
+                    }
+                }
+
                 .mobile-layout-row {
                     display: flex;
                     gap: 10px;
@@ -3311,7 +3327,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.26</span>
+                <span style="font-size: 11px; color: #ccc;">v1.27</span>
             </div>
 
 
