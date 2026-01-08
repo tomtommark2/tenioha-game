@@ -2066,6 +2066,18 @@
                 }
             }, { once: true }); // Only needs to run once
 
+            // BUG FIX: Sync Level Buttons with Loaded State
+            document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+            // Check for standard level buttons
+            const activeBtn = document.querySelector(`.level-btn[data-level="${gameState.currentLevel}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            } else if (gameState.currentLevel.startsWith('selection')) {
+                // Check for Wordbook button
+                const wbBtn = document.getElementById('wordbookBtn');
+                if (wbBtn) wbBtn.classList.add('active');
+            }
+
             setupEventListeners();
             setupPOSFilters(); // Need to call this to attach listeners to new checkboxes
 
@@ -3491,7 +3503,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.48</span>
+                <span style="font-size: 11px; color: #ccc;">v1.49</span>
             </div>
 
 
@@ -3573,7 +3585,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v1.48</p>
+                <p>現在のバージョン: v1.49</p>
                 <p>不具合報告やご要望はGitHubまでお願いします。</p>
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
