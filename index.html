@@ -2222,6 +2222,9 @@
             });
         }
 
+        // --- CLOUD SYNC HELPERS (v1.52) ---
+        window.isDirty = false; // Tracks if local changes need saving
+
         function saveGame() {
             const data = {
                 points: gameState.points,
@@ -2236,6 +2239,9 @@
                 lastSaveTime: Date.now() // Track local save time for Sync Logic
             };
             localStorage.setItem('vocabClickerSave', JSON.stringify(data));
+
+            // Mark as Dirty for Cloud Sync
+            window.isDirty = true;
 
             // Leaderboard Sync (Reference defined at bottom)
             if (typeof attemptScoreSync === 'function') {
@@ -3427,7 +3433,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 10px; color: #555; cursor: pointer;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v1.51</span>
+                <span style="font-size: 11px; color: #ccc;">v1.52</span>
             </div>
 
 
@@ -3509,8 +3515,8 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v1.51</p>
-                <p>不具合報告やご要望はGitHubまでお願いします。</p>
+                <p>現在のバージョン: v1.52</p>
+
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
                 </p>
@@ -4079,18 +4085,35 @@
                             const localData = localStr ? JSON.parse(localStr) : null;
                             const localTime = localData ? (localData.lastSaveTime || 0) : 0;
 
-                            console.log(`Sync Check: Cloud(${new Date(cloudTime).toLocaleTimeString()}) vs Local(${new Date(localTime).toLocaleTimeString()})`);
+                            console.log(`Sync Check: Cloud(Pts:${cloudData.points}, Time:${new Date(cloudTime).toLocaleTimeString()}) vs Local(Pts:${localData ? localData.points : 0}, Time:${new Date(localTime).toLocaleTimeString()})`);
 
-                            if (cloudTime > localTime) {
-                                console.log("Cloud is newer. Auto-Restoring...");
-                                localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
-                                alert("クラウド上の最新データが見つかりました。\n同期して再読み込みします。");
-                                location.reload();
-                            } else {
-                                console.log("Local is newer or same. Keeping local.");
-                                if (localTime > cloudTime) {
-                                    console.log("Pushing newer local data to cloud...");
-                                    uploadSaveData(true);
+                            const localPoints = localData ? localData.points : 0;
+                            const cloudPoints = cloudData.points || 0;
+
+                            // 1. Cloud has better progress (Score based)
+                            if (cloudPoints > localPoints) {
+                                console.log("Cloud has better score. Prompting restore...");
+                                const msg = `クラウドに現在より進んだデータがあります。\n(Cloud: ${cloudPoints} pts vs Local: ${localPoints} pts)\n\n復元しますか？`;
+                                if (confirm(msg)) {
+                                    localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
+                                    alert("復元しました。リロードします。");
+                                    location.reload();
+                                } else {
+                                    // User chose to keep local (lower score). 
+                                    // Likely they want to reset or start over? Or they made a mistake.
+                                    // We honor their choice. We do NOT auto-upload immediately to avoid overwriting cloud record yet, 
+                                    // unless they play and trigger isDirty.
+                                    console.log("User rejected Cloud restore. Keeping Local.");
+                                    window.isDirty = true; // Mark local as dirty so it eventually syncs up
+                                }
+                            }
+                            // 2. Local has better or equal progress
+                            else {
+                                console.log("Local has better or equal score. Keeping Logic.");
+                                // If Local is significantly ahead or just ahead, we prefer Local.
+                                // We rely on Auto-Save or Manual Save to eventually push this to Cloud.
+                                if (localPoints > cloudPoints) {
+                                    window.isDirty = true; // Ensure this gets pushed
                                 }
                             }
                         } else {
@@ -4159,30 +4182,74 @@
             });
         }
 
-        // --- AUTO SAVE LOOP ---
+
+
+        // --- AUTO SAVE LOOP (Optimized) ---
         function startAutoSaveLoop() {
             if (window.autoSaveInterval) clearInterval(window.autoSaveInterval);
-            console.log("AutoManager: Auto-Save started (60s interval)");
+            console.log("AutoManager: Auto-Save started (60s interval - Dirty Check Only)");
+
+            // 1. Periodic Check (every 60s)
             window.autoSaveInterval = setInterval(() => {
                 if (auth && auth.currentUser) {
-                    console.log("AutoManager: Performing Auto-Save...");
+                    if (window.isDirty) {
+                        console.log("AutoManager: Dirty flag true. Sending background save...");
+                        uploadSaveData(true); // Silent
+                    }
+                }
+            }, 60000);
+
+            // 2. Save on Exit / Background (visibilitychange)
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') {
+                    if (auth && auth.currentUser && window.isDirty) {
+                        console.log("AutoManager: App hidden. Saving immediately...");
+                        // Use beacon-like behavior if possible, but fetch usually works in visibilitychange
+                        uploadSaveData(true);
+                    }
+                }
+            });
+
+            // 3. Fallback for Tab Close (pagehide)
+            window.addEventListener('pagehide', () => {
+                if (auth && auth.currentUser && window.isDirty) {
+                    // Try to push. Note: Async requests might be killed.
+                    // Ideally we use navigator.sendBeacon but Firestore SDK handles logic.
+                    // We just call it and hope for best effort.
                     uploadSaveData(true);
                 }
-            }, 60000); // 60 seconds
+            });
         }
 
         // Modified Upload/Restore for Auth
         window.forceBackup = async function () {
-            await uploadSaveData();
+            // Force save (not silent)
+            await uploadSaveData(false, true);
         };
 
         window.forceRestore = async function () {
             if (!db || !auth.currentUser) return;
-            if (!confirm("クラウド上のデータで上書きしますか？\\n今の端末の未保存データは消えます。")) return;
+            // First check if local is un-synced
+            // But restore implies "I want Cloud Data".
 
             try {
                 const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
                 if (!userDoc.exists() || !userDoc.data().saveData) { alert("クラウドにデータがありません"); return; }
+
+                const cloudData = JSON.parse(userDoc.data().saveData);
+                const localPoints = (typeof gameState !== 'undefined') ? gameState.points : -1;
+                const cloudPoints = cloudData.points || 0;
+
+                let msg = "クラウド上のデータで上書きしますか？\\n今の端末の未保存データは消えます。";
+
+                // Smart Warning
+                if (localPoints > cloudPoints) {
+                    msg = `⚠️ 警告: 現在の端末の方がスコアが高いです！\n(Local: ${localPoints} vs Cloud: ${cloudPoints})\n\n本当にクラウドの古いデータで上書きしますか？`;
+                } else if (cloudPoints > localPoints) {
+                    msg = `クラウドに新しいデータがあります！\n(Local: ${localPoints} vs Cloud: ${cloudPoints})\n\n復元しますか？`;
+                }
+
+                if (!confirm(msg)) return;
 
                 // Restore Logic
                 localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
@@ -4192,10 +4259,17 @@
         };
 
         // Overwrite existing uploadSaveData to use Auth if available
-        window.uploadSaveData = async function (silent = false) {
+        // Added 'force' parameter to bypass dirty check (for Manual Save)
+        window.uploadSaveData = async function (silent = false, force = false) {
             if (!db) return;
             if (!auth || !auth.currentUser) {
                 if (!silent) alert("ログインが必要です");
+                return;
+            }
+
+            // Dirty Check
+            if (!force && !window.isDirty) {
+                console.log("Skipping upload: No changes (isDirty=false)");
                 return;
             }
 
@@ -4203,19 +4277,42 @@
             if (!saveData) return;
 
             try {
-                // Update Last Save Time in Data before sending?
-                // Ideally yes, but we rely on saveGame() being called before.
-                // But let's verify if we need to update it manually?
-                // The saveData string is from LocalStorage. 
-                // If we upload OLD data, the timestamp is old.
-                // We should assume local storage is fresh.
+                // Conflict Check Logic (Prevent Overwriting Higher Score)
+                // We must READ before WRITE.
+                const userDocRef = doc(db, "users", auth.currentUser.uid);
 
-                await setDoc(doc(db, "users", auth.currentUser.uid), {
+                // Only check conflict if NOT silent (Manual Save) OR if we want to be super safe.
+                // For 'Manual Save' (force=true, silent=false), we MUST check.
+                // For 'Auto Save' (silent=true), ideally we check too, but reading every 60s is extra reads.
+                // Compromise: Auto-Save blindly writes IF local is newer? No, Auto-Safety is better.
+                // Let's Read-Check for Manual Mode. For Auto-Mode, maybe skip read to save quota? 
+                // BUT user issue was "Manual Save overwrote old data". So checking on Manual is Critical.
+
+                // Let's implement checking for Manual Save Only (silent=false) to show alert.
+                if (!silent) {
+                    const docSnap = await getDoc(userDocRef);
+                    if (docSnap.exists() && docSnap.data().saveData) {
+                        const cloudExisting = JSON.parse(docSnap.data().saveData);
+                        const localDataObj = JSON.parse(saveData);
+
+                        if (cloudExisting.points > localDataObj.points) {
+                            if (!confirm(`⚠️ 警告: クラウドの方がスコアが高いです！\n(Cloud: ${cloudExisting.points} vs Local: ${localDataObj.points})\n\n本当に現在の低いスコアで上書きしますか？`)) {
+                                console.log("Upload aborted by user.");
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                await setDoc(userDocRef, {
                     saveData: saveData,
                     updatedAt: serverTimestamp(),
                     name: auth.currentUser.displayName,
                     email: auth.currentUser.email
                 }, { merge: true });
+
+                // Reset Dirty Flag on success
+                window.isDirty = false;
 
                 if (!silent) {
                     alert("保存完了！");
@@ -4231,10 +4328,8 @@
                 console.error(e);
             }
         };
-    </script>
 
-    <script>
-        // Modal Logic
+        // --- MODAL LOGIC (Restored) ---
         const wordbookBtn = document.getElementById('wordbookBtn');
         const wordbookModal = document.getElementById('wordbookModal');
         const closeWordbookModal = document.getElementById('closeWordbookModal');
@@ -4269,17 +4364,21 @@
             });
         }
 
-        helpModal.addEventListener('click', (e) => {
-            if (e.target === helpModal) {
-                helpModal.style.display = 'none';
-            }
-        });
+        if (helpModal) {
+            helpModal.addEventListener('click', (e) => {
+                if (e.target === helpModal) {
+                    helpModal.style.display = 'none';
+                }
+            });
+        }
 
-        wordbookModal.addEventListener('click', (e) => {
-            if (e.target === wordbookModal) {
-                wordbookModal.style.display = 'none';
-            }
-        });
+        if (wordbookModal) {
+            wordbookModal.addEventListener('click', (e) => {
+                if (e.target === wordbookModal) {
+                    wordbookModal.style.display = 'none';
+                }
+            });
+        }
 
         wordbookItems.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -4289,7 +4388,7 @@
             });
         });
 
-
+        // --- SERVICE WORKER LOGIC ---
         if ('serviceWorker' in navigator) {
             let refreshing = false;
 
