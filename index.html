@@ -1360,6 +1360,137 @@
             box-shadow: 0 0 4px rgba(85, 239, 196, 0.5);
         }
     </style>
+    <style>
+        /* WELCOME LP STYLES */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 20000;
+            /* Highest priority */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .welcome-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .welcome-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .welcome-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .install-btn {
+            background: #fff;
+            color: #667eea;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .install-btn:hover {
+            transform: scale(1.02);
+            background: #f8f9fa;
+        }
+
+        .browser-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .browser-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .divider {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .invite-message {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -1395,6 +1526,40 @@
         </div>
     </div>
     <!-- TRIAL_END -->
+
+    <!-- WELCOME_LP_START -->
+    <div id="welcomeOverlay" class="welcome-overlay" style="display: none;">
+        <div class="welcome-content">
+            <div class="welcome-icon">🎮</div>
+            <h1 class="welcome-title">英単語クリッカー</h1>
+            <p class="welcome-desc">
+                スキマ時間で楽しく覚える<br>
+                英単語学習ゲーム
+            </p>
+
+            <div id="inviteMessage" class="invite-message" style="display: none;">
+                🎁 招待コード<br><span id="welcomeInviteCode" style="color: #fdcb6e; font-weight: bold;"></span> が適用されました！
+            </div>
+
+            <div class="welcome-actions">
+                <button id="installAppBtn" class="install-btn" onclick="triggerInstall()">
+                    📲 アプリをインストールして開始<br>
+                    <span style="font-size: 11px; opacity: 0.9; margin-top: 5px; line-height: 1.4;">
+                        💎 プレミアム権限もらえる！<br>
+                        🚀 オフライン対応
+                    </span>
+                </button>
+                <div class="divider">または</div>
+                <button id="browserPlayBtn" class="browser-btn" onclick="dismissWelcome()">
+                    ブラウザでそのまま遊ぶ
+                </button>
+            </div>
+            <div style="margin-top:20px; font-size: 10px; color: #aaa;">
+                ※インストールは無料です
+            </div>
+        </div>
+    </div>
+    <!-- WELCOME_LP_END -->
 
     <div class="container" style="position: relative;">
 
@@ -2222,7 +2387,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.02) ---
+        // --- CLOUD SYNC HELPERS (v2.03) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -3387,7 +3552,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #555; cursor: pointer; font-weight: bold;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v2.02</span>
+                <span style="font-size: 11px; color: #ccc;">v2.03</span>
             </div>
             <h2
                 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #6c5ce7; text-align: center;">
@@ -3516,7 +3681,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.02</p>
+                <p>現在のバージョン: v2.03</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -4479,6 +4644,90 @@
             if (installContainer) installContainer.style.display = 'none';
             if (installBtnProfile) installBtnProfile.style.display = 'none';
         });
+        // --- WELCOME & PWA ENHANCEMENTS ---
+        // --- WELCOME & PWA ENHANCEMENTS ---
+        // Removed duplicate 'welcomeDeferredPrompt' and listener.
+        // We will misuse the existing 'deferredPrompt' from line 4588.
+
+        function initWelcomeSequence() {
+            // 1. PWA vs Browser Detection
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+            // 2. URL Param Parsing (Invite Code)
+            const urlParams = new URLSearchParams(window.location.search);
+            const inviteCode = urlParams.get('invite') || urlParams.get('promo');
+
+            if (inviteCode) {
+                console.log("Welcome: Invite code detected:", inviteCode);
+                const welcomeCodeSpan = document.getElementById('welcomeInviteCode');
+                const inviteMsg = document.getElementById('inviteMessage');
+
+                // Show in Welcome LP (if visible)
+                if (welcomeCodeSpan) welcomeCodeSpan.textContent = inviteCode;
+                if (inviteMsg) inviteMsg.style.display = 'block';
+
+                // Auto-fill the main input field
+                const mainInput = document.getElementById('promoCodeInput');
+                if (mainInput) mainInput.value = inviteCode;
+            }
+
+            // 3. Flow Control
+            const hasSkipped = localStorage.getItem('vocabGame_skipWelcome');
+            const welcomeOverlay = document.getElementById('welcomeOverlay');
+
+            if (isStandalone) {
+                // App Mode: Skip LP
+                if (welcomeOverlay) welcomeOverlay.style.display = 'none';
+                // Auto-Redeem logic could go here, but for now just auto-fill is safe.
+                return;
+            }
+
+            // Browser Mode
+            if (!hasSkipped) {
+                // Show LP
+                if (welcomeOverlay) welcomeOverlay.style.display = 'flex';
+            } else {
+                // Previously skipped
+                if (welcomeOverlay) welcomeOverlay.style.display = 'none';
+            }
+        }
+
+        window.triggerInstall = async function () {
+            // Use the GLOBAL deferredPrompt (shared with Help/Profile)
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const choiceResult = await deferredPrompt.userChoice;
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                    window.dismissWelcome();
+                } else {
+                    console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+            } else {
+                // Fallback Guide
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                if (isIOS) {
+                    alert("【インストール方法】\n\n1. 画面下の共有ボタン[↑]をタップ\n2. 「ホーム画面に追加」を選択\n\nこれでアプリとして快適に遊べます！");
+                } else {
+                    alert("【インストール方法】\n\nブラウザのメニューから「アプリをインストール」\nまたは「ホーム画面に追加」を選択してください。"); // Chrome, etc.
+                }
+            }
+        };
+
+        window.dismissWelcome = function () {
+            const welcomeOverlay = document.getElementById('welcomeOverlay');
+            if (welcomeOverlay) {
+                welcomeOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    welcomeOverlay.style.display = 'none';
+                }, 300); // Wait for transition if we added one, otherwise instant
+            }
+            localStorage.setItem('vocabGame_skipWelcome', 'true');
+        };
+
+        // Run Init
+        window.addEventListener('load', initWelcomeSequence);
     </script>
 </body>
 
