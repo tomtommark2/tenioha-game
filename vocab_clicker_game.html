@@ -2416,7 +2416,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.09) ---
+        // --- CLOUD SYNC HELPERS (v2.10) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -3581,7 +3581,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #555; cursor: pointer; font-weight: bold;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v2.09</span>
+                <span style="font-size: 11px; color: #ccc;">v2.10</span>
             </div>
             <h2
                 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #6c5ce7; text-align: center;">
@@ -3710,7 +3710,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.09</p>
+                <p>現在のバージョン: v2.10</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -4707,7 +4707,38 @@
             if (isStandalone) {
                 // App Mode: Skip LP
                 if (welcomeOverlay) welcomeOverlay.style.display = 'none';
-                // Auto-Redeem logic could go here, but for now just auto-fill is safe.
+
+                // --- APP INSTALL BONUS (3 DAYS) ---
+                const hasReceivedBonus = localStorage.getItem('vocabGame_appBonusReceived');
+                if (!hasReceivedBonus) {
+                    try {
+                        const now = Date.now();
+                        // Get current expiry or default to now if not set/expired
+                        let currentExpiry = parseInt(localStorage.getItem('vocabGame_expiry') || '0');
+                        if (currentExpiry < now) {
+                            currentExpiry = now;
+                        }
+
+                        // Add 3 Days (3 * 24 * 60 * 60 * 1000)
+                        const bonusTime = 3 * 24 * 60 * 60 * 1000;
+                        const newExpiry = currentExpiry + bonusTime;
+
+                        localStorage.setItem('vocabGame_expiry', newExpiry.toString());
+                        localStorage.setItem('vocabGame_isUnlocked', 'true'); // Ensure unlocked
+                        localStorage.setItem('vocabGame_appBonusReceived', 'true'); // Mark as received
+
+                        alert("🎉 アプリインストール特典 🎉\n\nプレミアム期間を【3日間】プレゼントしました！\nゆっくり学習をお楽しみください。");
+
+                        // Reflect changes in UI immediate if possible
+                        if (window.updatePremiumStatusDisplay) {
+                            window.updatePremiumStatusDisplay();
+                        }
+
+                    } catch (e) {
+                        console.error("Bonus Grant Failed", e);
+                    }
+                }
+
                 return;
             }
 
