@@ -1120,14 +1120,6 @@
             pointer-events: none;
         }
 
-        @media (max-width: 768px) {
-            .trial-timer {
-                font-size: 10px;
-                padding: 2px 5px;
-                border-width: 0.5px;
-            }
-        }
-
         /* Character Level "Chocon" Display */
         .char-level-display {
             position: absolute;
@@ -1574,7 +1566,7 @@
 
         <!-- Simple Mode Switch (Top Left) -->
         <div class="simple-switch-container"
-            style="position: absolute; top: 5px; left: 15px; z-index: 300; display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
+            style="position: absolute; top: 5px; left: 15px; z-index: 200; display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
             <button class="simple-mode-btn" id="simpleModeBtn" onclick="openSimpleModeModal()"
                 style="background: #fff; border: 1px solid #ddd; padding: 4px 8px; border-radius: 20px; font-size: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; width: 102px; box-sizing: border-box; gap: 5px; color: #555; font-weight: bold;">
                 📱 シンプル表示
@@ -1585,7 +1577,7 @@
         </div>
 
         <!-- Top Right Controls (Upload) -->
-        <div class="header-controls">
+        <div class="header-controls" style="display: flex; align-items: center; gap: 10px;">
             <div id="trialTimerDisplay" class="trial-timer">残り 10:00</div>
 
             <!-- Auto/Random Toggles (Moved Here) -->
@@ -1712,17 +1704,9 @@
                 .header-controls {
                     position: absolute;
                     top: 10px;
+                    /* Adjusted down by 10px (was -10px) */
                     right: 20px;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .header-controls {
-                    flex-direction: column;
-                    align-items: flex-end;
-                    gap: 10px;
-                    top: 10px;
-                    right: 15px;
+                    /* Force Right Align */
                 }
             }
 
@@ -2417,7 +2401,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.08) ---
+        // --- CLOUD SYNC HELPERS (v2.06) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -3582,7 +3566,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #555; cursor: pointer; font-weight: bold;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v2.08</span>
+                <span style="font-size: 11px; color: #ccc;">v2.06</span>
             </div>
             <h2
                 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #6c5ce7; text-align: center;">
@@ -3711,7 +3695,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.08</p>
+                <p>現在のバージョン: v2.06</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
