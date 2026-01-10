@@ -1120,6 +1120,15 @@
             pointer-events: none;
         }
 
+        @media (max-width: 768px) {
+            .trial-timer {
+                font-size: 12px;
+                /* reduced from 14px (~15% smaller) */
+                padding: 4px 8px;
+                /* slightly tighter padding */
+            }
+        }
+
         /* Character Level "Chocon" Display */
         .char-level-display {
             position: absolute;
@@ -2122,7 +2131,7 @@
             const s = Math.floor(remaining % 60);
 
             // Format mm:ss
-            timerDisplay.textContent = `残り ${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            timerDisplay.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 
             // Warning color if low
             if (remaining < 60) {
@@ -2401,7 +2410,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.06) ---
+        // --- CLOUD SYNC HELPERS (v2.07) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -3566,7 +3575,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #555; cursor: pointer; font-weight: bold;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v2.06</span>
+                <span style="font-size: 11px; color: #ccc;">v2.07</span>
             </div>
             <h2
                 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #6c5ce7; text-align: center;">
@@ -3695,7 +3704,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.06</p>
+                <p>現在のバージョン: v2.07</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
