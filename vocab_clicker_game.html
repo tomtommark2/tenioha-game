@@ -2019,46 +2019,59 @@
 
         // Initialize Trial
         function initTrialSystem() {
-            const savedTrial = localStorage.getItem(TRIAL_CONFIG.STORAGE_KEY);
+            try {
+                const savedTrial = localStorage.getItem(TRIAL_CONFIG.STORAGE_KEY);
 
-            // Get Current Date in JST (Japan Standard Time)
-            const jstFormatter = new Intl.DateTimeFormat('en-CA', {
-                timeZone: 'Asia/Tokyo',
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-            });
-            const today = jstFormatter.format(new Date());
-
-            if (savedTrial) {
+                // Get Current Date in JST (Japan Standard Time)
+                let today;
                 try {
-                    const parsed = JSON.parse(savedTrial);
-                    trialState = { ...trialState, ...parsed };
+                    const jstFormatter = new Intl.DateTimeFormat('en-CA', {
+                        timeZone: 'Asia/Tokyo',
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    });
+                    today = jstFormatter.format(new Date());
                 } catch (e) {
-                    console.error("Trial save corrupted", e);
+                    // Fallback to local date if JST fails (e.g. invalid timeZone)
+                    const d = new Date();
+                    today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
                 }
-            }
 
-            // Daily Reset (JST Midnight)
-            if (trialState.lastPlayDate !== today) {
-                trialState.lastPlayDate = today;
-                if (!trialState.unlocked) {
-                    trialState.playTimeSeconds = 0; // Reset time if not unlocked
+                if (savedTrial) {
+                    try {
+                        const parsed = JSON.parse(savedTrial);
+                        trialState = { ...trialState, ...parsed };
+                    } catch (e) {
+                        console.error("Trial save corrupted", e);
+                    }
                 }
-                saveTrialState();
+
+                // Daily Reset (JST Midnight)
+                if (trialState.lastPlayDate !== today) {
+                    trialState.lastPlayDate = today;
+                    if (!trialState.unlocked) {
+                        trialState.playTimeSeconds = 0; // Reset time if not unlocked
+                    }
+                    saveTrialState();
+                }
+
+                // Initialize Tick Time
+                lastTickTime = Date.now();
+
+                // Toggle UI based on state
+                updateTrialUI();
+
+                // Check if already over limit
+                checkTrialLimit();
+
+                // Start Timer Loop
+                setInterval(updateTrialTimer, 1000);
+            } catch (e) {
+                console.error("Trial System Init Failed:", e);
+                // Fallback: Start timer anyway to ensure limits enforced if possible
+                setInterval(updateTrialTimer, 1000);
             }
-
-            // Initialize Tick Time
-            lastTickTime = Date.now();
-
-            // Toggle UI based on state
-            updateTrialUI();
-
-            // Check if already over limit
-            checkTrialLimit();
-
-            // Start Timer Loop
-            setInterval(updateTrialTimer, 1000);
         }
 
         function saveTrialState() {
@@ -2387,7 +2400,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.04) ---
+        // --- CLOUD SYNC HELPERS (v2.04.1) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -3552,7 +3565,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #555; cursor: pointer; font-weight: bold;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v2.04</span>
+                <span style="font-size: 11px; color: #ccc;">v2.04.1</span>
             </div>
             <h2
                 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #6c5ce7; text-align: center;">
@@ -3681,7 +3694,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.04</p>
+                <p>現在のバージョン: v2.04.1</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
