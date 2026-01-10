@@ -1117,6 +1117,7 @@
             display: none;
             /* Hidden by default, shown if trial is active */
             white-space: nowrap;
+            pointer-events: none;
         }
 
         /* Character Level "Chocon" Display */
@@ -2005,7 +2006,7 @@
         // --- Trial System Config ---
         const TRIAL_CONFIG = {
             LIMIT_SECONDS: 600, // 10 minutes
-            PASSWORD: "appleisbanana",
+
             STORAGE_KEY: "vocabGame_trialState_v2" // Changed key to force reset/migration if needed, or just keep same
         };
 
@@ -2400,7 +2401,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.05) ---
+        // --- CLOUD SYNC HELPERS (v2.05.1) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -3565,7 +3566,7 @@
                     style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #555; cursor: pointer; font-weight: bold;">
                     🔄 最新版へ更新
                 </button>
-                <span style="font-size: 11px; color: #ccc;">v2.05</span>
+                <span style="font-size: 11px; color: #ccc;">v2.05.1</span>
             </div>
             <h2
                 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #6c5ce7; text-align: center;">
@@ -3694,7 +3695,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.05</p>
+                <p>現在のバージョン: v2.05.1</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
