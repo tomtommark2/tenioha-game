@@ -3730,56 +3730,57 @@
     </div>
     <!-- UPDATE_PROMPT_MODAL_END -->
 
-    // Check for updates by fetching service_worker.js
-    async function checkForUpdates() {
-    try {
-    // Bypass cache with timestamp
-    const response = await fetch('./service_worker.js?t=' + Date.now());
-    const text = await response.text();
+    <script>
+        // Check for updates by fetching service_worker.js
+        async function checkForUpdates() {
+            try {
+                // Bypass cache with timestamp
+                const response = await fetch('./service_worker.js?t=' + Date.now());
+                const text = await response.text();
 
-    // Extract CACHE_NAME version (e.g. 'vocab-clicker-v2.11')
-    const match = text.match(/CACHE_NAME\s*=\s*['"]vocab-clicker-(v\d+\.\d+)['"]/);
-    if (match && match[1]) {
-    const serverVersion = match[1];
-    const localVersionEl = document.getElementById('helpVersionDisplay');
-    const localVersion = localVersionEl ? localVersionEl.textContent.trim() : 'v2.11'; // Fallback
+                // Extract CACHE_NAME version (e.g. 'vocab-clicker-v2.11')
+                const match = text.match(/CACHE_NAME\s*=\s*['"]vocab-clicker-(v\d+\.\d+)['"]/);
+                if (match && match[1]) {
+                    const serverVersion = match[1];
+                    const localVersionEl = document.getElementById('helpVersionDisplay');
+                    const localVersion = localVersionEl ? localVersionEl.textContent.trim() : 'v2.11'; // Fallback
 
-    console.log(`Version Check: Local=${localVersion}, Server=${serverVersion}`);
+                    console.log(`Version Check: Local=${localVersion}, Server=${serverVersion}`);
 
-    if (serverVersion !== localVersion) {
-    const msgEl = document.getElementById('updateVersionMsg');
-    if(msgEl) msgEl.innerHTML = `新しいバージョンがあります (${serverVersion})。<br>ランキング機能を利用するには<br>アプリの更新が必要です。`;
-    return true;
-    }
-    }
-    } catch (e) {
-    console.error("Failed to check for updates:", e);
-    }
-    return false;
-    }
+                    if (serverVersion !== localVersion) {
+                        const msgEl = document.getElementById('updateVersionMsg');
+                        if (msgEl) msgEl.innerHTML = `新しいバージョンがあります (${serverVersion})。<br>ランキング機能を利用するには<br>アプリの更新が必要です。`;
+                        return true;
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to check for updates:", e);
+            }
+            return false;
+        }
 
-    // Force Update Logic
-    async function forceUpdateApp() {
-    if (!confirm("アプリを最新版に更新してリロードしますか？\n(未保存のプレイデータがある場合は先に保存してください)")) return;
+        // Force Update Logic
+        async function forceUpdateApp() {
+            if (!confirm("アプリを最新版に更新してリロードしますか？\n(未保存のプレイデータがある場合は先に保存してください)")) return;
 
-    try {
-    if ('serviceWorker' in navigator) {
-    const registrations = await navigator.serviceWorker.getRegistrations();
-    for (let registration of registrations) {
-    await registration.unregister();
-    }
-    }
-    // Optional: Clear Cache API?
-    // const keys = await caches.keys();
-    // await Promise.all(keys.map(key => caches.delete(key)));
+            try {
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let registration of registrations) {
+                        await registration.unregister();
+                    }
+                }
+                // Optional: Clear Cache API?
+                // const keys = await caches.keys();
+                // await Promise.all(keys.map(key => caches.delete(key)));
 
-    // Hard Reload
-    window.location.reload(true);
-    } catch (e) {
-    console.error("Update failed:", e);
-    window.location.reload();
-    }
-    }
+                // Hard Reload
+                window.location.reload(true);
+            } catch (e) {
+                console.error("Update failed:", e);
+                window.location.reload();
+            }
+        }
     </script>
     </div>
     <div id="wordbookModal" class="modal-overlay"
