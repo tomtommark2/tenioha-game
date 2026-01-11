@@ -3919,6 +3919,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, doc, setDoc, getDoc, getDocs, query, orderBy, limit, where, Timestamp, serverTimestamp, arrayUnion, runTransaction, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
         // Global Firebase References
         let db = null;
@@ -3931,10 +3932,12 @@
         }
 
         let auth = null;
+        let analytics = null;
         try {
             const app = initializeApp(firebaseConfig);
             db = getFirestore(app);
             auth = getAuth(app);
+            analytics = getAnalytics(app); // Initialize Analytics
             window.firestoreDb = db; // Expose DB
             window.firebaseAuth = auth; // Expose Auth
             console.log("Firebase initialized successfully");
