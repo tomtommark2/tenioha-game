@@ -1577,6 +1577,57 @@
     </div>
     <!-- WELCOME_LP_END -->
 
+    <!-- SHARE_MODAL_START -->
+    <div id="shareModal" class="trial-overlay">
+        <div class="trial-content" style="max-width: 450px;">
+            <div class="trial-title">📱 友達に教える</div>
+            <div class="trial-message" style="margin-bottom: 20px;">
+                友達と一緒に英単語を覚えよう！
+            </div>
+
+            <div id="shareMainContent">
+                <!-- Main Action Buttons -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <button class="unlock-btn" onclick="shareApp()"
+                        style="background: #00b894; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100px; padding: 10px;">
+                        <span style="font-size: 24px; margin-bottom: 5px;">📤</span>
+                        <span style="font-size: 14px;">SNSでシェア</span>
+                    </button>
+                    <button class="unlock-btn" onclick="toggleQRCode()"
+                        style="background: #6c5ce7; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100px; padding: 10px;">
+                        <span style="font-size: 24px; margin-bottom: 5px;">📱</span>
+                        <span style="font-size: 14px;">QRコード表示</span>
+                    </button>
+                </div>
+
+                <div class="invite-message"
+                    style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; font-size: 13px; text-align: left; margin-bottom: 10px; color: #dfe6e9;">
+                    <strong style="color: #fab1a0;">URL:</strong> <br>
+                    <span id="shareUrlDisplay"
+                        style="user-select: all; color: #74b9ff; word-break: break-all;">https://tenioha-eng.github.io/vocab-clicker/</span>
+                </div>
+            </div>
+
+            <!-- QR Code Section (Hidden by Default) -->
+            <div id="qrSection"
+                style="display: none; flex-direction: column; align-items: center; justify-content: center; background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+                <div id="qrcode"></div>
+                <p style="color: #333; margin-top: 10px; font-size: 12px; font-weight: bold;">
+                    スキャンしてゲームを開始
+                </p>
+                <button onclick="toggleQRCode()"
+                    style="margin-top: 15px; background: #b2bec3; border: none; padding: 8px 20px; border-radius: 50px; color: white; cursor: pointer;">
+                    戻る
+                </button>
+            </div>
+
+            <button
+                onclick="document.getElementById('shareModal').style.display = 'none'; document.getElementById('qrSection').style.display='none'; document.getElementById('shareMainContent').style.display='block';"
+                style="margin-top: 10px; background: transparent; border: none; color: #999; text-decoration: underline; cursor: pointer;">閉じる</button>
+        </div>
+    </div>
+    <!-- SHARE_MODAL_END -->
+
     <div class="container" style="position: relative;">
 
         <!-- Simple Mode Switch (Top Left) -->
@@ -1616,6 +1667,7 @@
                 <img id="headerProfileImage" src=""
                     style="width: 100%; height: 100%; object-fit: cover; display: none;">
             </div>
+
 
             <button class="icon-btn" id="helpBtn" title="遊び方">❓</button>
         </div>
@@ -3575,57 +3627,63 @@
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 450px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
             <button id="closeHelpModal"
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
-            <!-- Update Button (Top Left) -->
-            <div style="position: absolute; top: 15px; left: 15px; display: flex; align-items: center; gap: 5px;">
-                <button onclick="forceUpdateApp()"
-                    style="background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #555; cursor: pointer; font-weight: bold;">
-                    🔄 最新版へ更新
-                </button>
-                <span style="font-size: 11px; color: #ccc;">v2.10</span>
+            <!-- Version Display (Top Left) -->
+            <div style="position: absolute; top: 15px; left: 15px;">
+                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.11</div>
             </div>
+
+            <!-- Share Button (Top Right, styled) -->
+            <button onclick="document.getElementById('helpModal').style.display='none'; window.openShareModal()"
+                style="position: absolute; top: 15px; right: 50px; background: #6c5ce7; border: none; font-size: 12px; cursor: pointer; padding: 5px 12px; border-radius: 20px; color: white; font-weight: bold; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 5px rgba(108, 92, 231, 0.3);">
+                🔗 シェア
+            </button>
+
             <h2
-                style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 10px; color: #6c5ce7; text-align: center;">
-                遊び方ガイド</h2>
+                style="margin-top: 0; margin-bottom: 20px; color: #333; text-align: center; font-size: 18px; font-weight: bold;">
+                ヘルプ
+            </h2>
 
-            <div style="font-weight: bold; margin-top: 15px; color: #333;">【指針】得意単語と苦手単語を仕分けてください</div>
-            <ul style="margin: 10px 0 20px 0; padding-left: 20px; color: #444; line-height: 1.8; font-size: 15px;">
-                <li>意味がわかる→「単語カード」をタップ</li>
-                <li>わからない→「意味カード」をタップ</li>
-                <li>意味カードをタップ→その単語は「苦手ゾーン」へ</li>
-                <!-- Removed items as requested -->
-                <li>1日10分の制限は、Note特典のパスワードで解除可能</li>
-            </ul>
-            <div style="text-align: center; margin-bottom: 20px;">
-                <span style="font-size: 15px; color: #444;">解除は</span>
-                <button onclick="showLockScreen(); document.getElementById('helpModal').style.display='none';"
-                    style="background: none; border: none; color: #667eea; text-decoration: underline; cursor: pointer; font-size: 16px; font-weight: bold;">
-                    コチラ
-                </button>
-                <span style="font-size: 15px; color: #444;">から</span>
+            <div class="help-list-container" style="text-align: left; padding: 0 10px;">
+                <div onclick="forceUpdateApp()"
+                    style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
+                    <span style="font-size: 20px;">🔄</span>
+                    <div>
+                        <div style="font-weight: bold; font-size: 13px; color: #333;">最新版への更新</div>
+                        <div style="font-size: 11px; color: #555;">ここをタップして更新を確認・実行</div>
+                    </div>
+                </div>
+
+                <div onclick="window.installApp()"
+                    style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
+                    <span style="font-size: 20px;">📲</span>
+                    <div>
+                        <div style="font-weight: bold; font-size: 13px; color: #333;">アプリインストール</div>
+                        <div style="font-size: 11px; color: #555;">タップしてインストール (プレミア権限付与)</div>
+                    </div>
+                </div>
+
+                <div onclick="window.open('https://note.com/tenioha_eng/n/n823dfa17b5c7?sub_rt=share_pw', '_blank')"
+                    style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
+                    <span style="font-size: 20px;">🔓</span>
+                    <div>
+                        <div style="font-weight: bold; font-size: 13px; color: #333;">10分制限の解除</div>
+                        <div style="font-size: 11px; color: #555;">タップして解除コードを入手 (Note)</div>
+                    </div>
+                </div>
+
+                <div onclick="location.href='mailto:tenioha.eng@gmail.com'"
+                    style="margin-bottom: 5px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
+                    <span style="font-size: 20px;">📧</span>
+                    <div>
+                        <div style="font-weight: bold; font-size: 13px; color: #333;">お問い合わせ（質問・バグ報告）</div>
+                        <div style="font-size: 11px; color: #555;">タップしてメールを送信</div>
+                    </div>
+                </div>
             </div>
-
             <div style="text-align: center; margin-top: 25px;">
                 <a href="https://note.com/tenioha_eng/n/n5918d72138bd?sub_rt=share_pb" target="_blank"
                     style="display: inline-block; background: #00b894; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
                     📚 詳しい使い方はこちら (Note)
-                </a>
-                </a>
-            </div>
-
-            <!-- PWA Install Button (Visible but Gray by default) -->
-            <div id="installAppContainer" style="margin-top: 15px; text-align: center;">
-                <button id="pwaInstallBtn"
-                    style="background: #bdc3c7; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: not-allowed; box-shadow: none; width: 80%;">
-                    📲 アプリとしてインストール
-                </button>
-                <p id="pwaInstallDesc" style="font-size: 11px; color: #999; margin-top: 5px;">準備中、またはブラウザのメニューから追加</p>
-            </div>
-
-            <div style="margin-top: 15px; text-align: center;">
-                <p style="font-size: 12px; color: #666;">お問い合わせ・バグ報告</p>
-                <a href="mailto:tenioha.eng@gmail.com"
-                    style="display: inline-block; margin-top: 5px; color: #6c5ce7; font-weight: bold; text-decoration: underline;">
-                    📧 tenioha.eng@gmail.com
                 </a>
             </div>
 
@@ -4645,7 +4703,7 @@
             }
         });
 
-        const installApp = () => {
+        window.installApp = () => {
             // If not ready, show alert or do nothing
             if (!deferredPrompt) {
                 alert("このブラウザでは自動インストールが利用できません。\nブラウザのメニュー「ホーム画面に追加」などからインストールしてください。");
@@ -4786,6 +4844,8 @@
                 welcomeOverlay.style.opacity = '0';
                 setTimeout(() => {
                     welcomeOverlay.style.display = 'none';
+                    // Version Update Check logic if needed
+                    const currentVer = document.getElementById('appVersion') ? document.getElementById('appVersion').innerText : '2.11';
                 }, 300);
             }
 
@@ -4795,9 +4855,85 @@
             }
         };
 
+        // --- SHARE & QR LOGIC ---
+        window.openShareModal = function () {
+            console.log("openShareModal called");
+            const modal = document.getElementById('shareModal');
+            const urlDisplay = document.getElementById('shareUrlDisplay');
+            if (modal) {
+                modal.style.display = 'flex';
+                // Use current URL or fallback
+                const shareUrl = window.location.href;
+                if (urlDisplay) urlDisplay.textContent = shareUrl;
+            } else {
+                console.error("shareModal not found!");
+                alert("エラー: シェア画面が見つかりません");
+            }
+        };
+
+        window.shareApp = async function () {
+            const shareData = {
+                title: '英単語学習クリッカー',
+                text: 'ポチポチするだけで英単語が覚えられるよ！一緒にやろう！',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.error('Share failed:', err);
+                }
+            } else {
+                // Fallback: Copy to clipboard
+                navigator.clipboard.writeText(shareData.url).then(() => {
+                    alert('URLをコピーしました！\nSNSに貼り付けてシェアしてください。');
+                });
+            }
+        };
+
+        let qrCodeObj = null;
+        window.toggleQRCode = function () {
+            const mainContent = document.getElementById('shareMainContent');
+            const qrSection = document.getElementById('qrSection');
+            const qrContainer = document.getElementById('qrcode');
+
+            if (qrSection.style.display === 'none') {
+                // Show QR
+                mainContent.style.display = 'none';
+                qrSection.style.display = 'flex';
+
+                // Remove existing QR if any (to prevent duplicates if URL changes dynamically, though unlikely here)
+                qrContainer.innerHTML = '';
+
+                if (typeof QRCode !== 'undefined') {
+                    new QRCode(qrContainer, {
+                        text: window.location.href,
+                        width: 180,
+                        height: 180,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                } else {
+                    qrContainer.innerHTML = 'QRコードライブラリの読み込みに失敗しました。';
+                }
+            } else {
+                // Hide QR
+                qrSection.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        };
+
+        // Ensure qrcode library is loaded
+        // (It is loaded via script tag below)
+
         // Run Init
         window.addEventListener('load', initWelcomeSequence);
     </script>
+    <script src="scripts/qrcode.min.js"></script>
+    <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
+        id="currentVersion">v2.11</div>
 </body>
 
 </html>
