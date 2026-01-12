@@ -4151,15 +4151,19 @@
                     const codeDocRef = doc(db, "promocodes", code);
                     const userRef = doc(db, "users", auth.currentUser.uid);
 
-                    const codeDoc = await transaction.get(codeDocRef);
-                    const userSnap = await transaction.get(userRef);
-
-                    // 2. Validate Code Existence & Activity
-                    if (!codeDoc.exists() || codeDoc.data().active !== true) {
-                        throw "コードが無効か、期限切れです。";
+                    let codeData;
+                    if (code === 'app') {
+                        // SPECIAL: Built-in code for App Install (No Firestore doc needed)
+                        codeData = { active: true, durationDays: 3 };
+                    } else {
+                        const codeDoc = await transaction.get(codeDocRef);
+                        // 2. Validate Code Existence & Activity
+                        if (!codeDoc.exists() || codeDoc.data().active !== true) {
+                            throw "コードが無効か、期限切れです。";
+                        }
+                        codeData = codeDoc.data();
                     }
 
-                    const codeData = codeDoc.data();
                     const durationDays = codeData.durationDays || 30;
 
                     // 3. Check Usage Limit (New Feature)
@@ -4171,6 +4175,7 @@
                     }
 
                     // 4. Validate User Status
+                    const userSnap = await transaction.get(userRef);
                     let userData = userSnap.exists() ? userSnap.data() : {};
 
                     // Check Duplicate Usage
@@ -4205,10 +4210,12 @@
                         redeemedCodes: arrayUnion(code)
                     }, { merge: true });
 
-                    // Increment Usage Count on Code
-                    transaction.update(codeDocRef, {
-                        redemptionCount: increment(1)
-                    });
+                    // Increment Usage Count on Code (Only if existing Doc)
+                    if (code !== 'app') {
+                        transaction.update(codeDocRef, {
+                            redemptionCount: increment(1)
+                        });
+                    }
 
                     // 7. Store Local Data for UI (Side Effect separate from Transaction)
                     // (We can't do local storage inside transaction effectively, pass data out)
@@ -4838,30 +4845,13 @@
                 const hasReceivedBonus = localStorage.getItem('vocabGame_appBonusReceived');
                 if (!hasReceivedBonus) {
                     try {
-                        const now = Date.now();
-                        // Get current expiry or default to now if not set/expired
-                        let currentExpiry = parseInt(localStorage.getItem('vocabGame_expiry') || '0');
-                        if (currentExpiry < now) {
-                            currentExpiry = now;
-                        }
+                        // MODIFIED (v2.13): Do NOT auto-grant. Show Promo Code instead.
+                        localStorage.setItem('vocabGame_appBonusReceived', 'true'); // Mark as shown to prevent repeat
 
-                        // Add 3 Days (3 * 24 * 60 * 60 * 1000)
-                        const bonusTime = 3 * 24 * 60 * 60 * 1000;
-                        const newExpiry = currentExpiry + bonusTime;
-
-                        localStorage.setItem('vocabGame_expiry', newExpiry.toString());
-                        localStorage.setItem('vocabGame_isUnlocked', 'true'); // Ensure unlocked
-                        localStorage.setItem('vocabGame_appBonusReceived', 'true'); // Mark as received
-
-                        alert("🎉 アプリインストール特典 🎉\n\nプレミアム期間を【3日間】プレゼントしました！\nゆっくり学習をお楽しみください。");
-
-                        // Reflect changes in UI immediate if possible
-                        if (window.updatePremiumStatusDisplay) {
-                            window.updatePremiumStatusDisplay();
-                        }
+                        alert("🎉 アプリインストールありがとうございます！ 🎉\n\n感謝の気持ちとして、プレミアム体験（3日間）コードを贈呈します。\n\n【プロモコード】\napp\n\n※設定画面の「コード入力」から利用できます。\n※Googleログインが必要です。");
 
                     } catch (e) {
-                        console.error("Bonus Grant Failed", e);
+                        console.error("Bonus Alert Failed", e);
                     }
                 }
 
