@@ -76,11 +76,26 @@
         <h1>🎉 購入完了！</h1>
         <p>プレミアム版のご購入ありがとうございます。<br>以下のコードが発行されました。</p>
 
-        <div class="code-display">
+        <div class="code-display" onclick="copyCode()" style="cursor: pointer; position: relative;" title="タップしてコピー">
             englishistenioha
+            <span
+                style="display: block; font-size: 12px; color: #999; font-weight: normal; margin-top: 5px;">(タップしてコピー)</span>
         </div>
 
-        <p>下のボタンを押すと、アプリに戻り<br><strong>自動的にコードを適用</strong>します。</p>
+        <script>
+            function copyCode() {
+                const code = "englishistenioha";
+                navigator.clipboard.writeText(code).then(() => {
+                    alert("コードをコピーしました！");
+                }).catch(() => {
+                    alert("コピーに失敗しました。手動でコピーしてください。");
+                });
+            }
+        </script>
+
+        <p>下のボタンを押すと、アプリに戻り<br><strong>自動的にコードを適用</strong>します。<br>
+            <span style="font-size: 12px; color: #666;">(※うまくいかない場合は、コードをコピーして手動で貼り付けてください)</span>
+        </p>
 
         <a href="./vocab_clicker_game.html?code=englishistenioha&auto_redeem=true" class="btn">
             🎮 ゲームに戻って有効化
