@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購入ありがとうございます！</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 90%;
+            width: 500px;
+        }
+
+        h1 {
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .code-display {
+            background: #f8f9fa;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 20px 0;
+            border-radius: 10px;
+            letter-spacing: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #6c5ce7;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
+        }
+
+        .note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎉 購入完了！</h1>
+        <p>プレミアム版のご購入ありがとうございます。<br>以下のコードが発行されました。</p>
+
+        <div class="code-display">
+            englishisimagery
+        </div>
+
+        <p>下のボタンを押すと、アプリに戻り<br><strong>自動的にコードを適用</strong>します。</p>
+
+        <a href="./vocab_clicker_game.html?code=englishisimagery&auto_redeem=true" class="btn">
+            🎮 ゲームに戻って有効化
+        </a>
+
+        <div class="note">
+            ※もし自動適用されない場合は、コードをコピーして設定画面から手動で入力してください。
+        </div>
+    </div>
+</body>
+
+</html>
