@@ -2468,7 +2468,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.14) ---
+        // --- CLOUD SYNC HELPERS (v2.15) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -3642,7 +3642,7 @@
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
             <!-- Version Display (Top Left) -->
             <div style="position: absolute; top: 15px; left: 15px;">
-                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.14</div>
+                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.15</div>
             </div>
 
             <!-- Share Button (Top Right, styled) -->
@@ -3745,7 +3745,7 @@
                 if (match && match[1]) {
                     const serverVersion = match[1];
                     const localVersionEl = document.getElementById('helpVersionDisplay');
-                    const localVersion = localVersionEl ? localVersionEl.textContent.trim() : 'v2.14'; // Fallback
+                    const localVersion = localVersionEl ? localVersionEl.textContent.trim() : 'v2.15'; // Fallback
 
                     console.log(`Version Check: Local=${localVersion}, Server=${serverVersion}`);
 
@@ -3833,7 +3833,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.14</p>
+                <p>現在のバージョン: v2.15</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -4357,18 +4357,8 @@
                                 cloudExpiresAt = 253402300799000;
                             } else {
                                 // No Cloud Premium Data
-                                const localUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
-                                if (localUnlocked) {
-                                    console.log("Local is Premium (Legacy). Migrating to Cloud (Permanent)...");
-                                    // Grant Permanent for Legacy Users
-                                    cloudExpiresAt = 253402300799000;
-                                    await setDoc(doc(db, "users", userId), {
-                                        isPremium: true, // Legacy Marker
-                                        premiumExpiresAt: Timestamp.fromMillis(cloudExpiresAt),
-                                        premiumSource: 'legacy_migration',
-                                        premiumActivatedAt: serverTimestamp()
-                                    }, { merge: true });
-                                }
+                                // LOGIC REMOVED: Do not migrate local trial status to infinite cloud premium.
+                                // Local 'isUnlocked' is treated as temporary/invalid if not backed by cloud.
                             }
 
                             localStorage.setItem('vocabGame_expiry', cloudExpiresAt);
@@ -4896,7 +4886,7 @@
                 setTimeout(() => {
                     welcomeOverlay.style.display = 'none';
                     // Version Update Check logic if needed
-                    const currentVer = document.getElementById('appVersion') ? document.getElementById('appVersion').innerText : '2.14';
+                    const currentVer = document.getElementById('appVersion') ? document.getElementById('appVersion').innerText : '2.15';
                 }, 300);
             }
 
@@ -4984,7 +4974,7 @@
     </script>
     <script src="scripts/qrcode.min.js"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
-        id="currentVersion">v2.14</div>
+        id="currentVersion">v2.15</div>
 </body>
 
 </html>
