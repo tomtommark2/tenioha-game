@@ -2468,7 +2468,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.12) ---
+        // --- CLOUD SYNC HELPERS (v2.13) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -2612,22 +2612,24 @@
 
                 audioContext = new AudioContext();
 
-                // Create a silent oscillator to keep the audio engine active
-                const oscillator = audioContext.createOscillator();
+                // OPTIMIZATION: Use a looped empty buffer instead of an oscillator.
+                // Oscillators can cause high CPU usage or "denormal" math issues on some PCs,
+                // leading to slow/robotic speech. Buffers are lighter.
+                const buffer = audioContext.createBuffer(1, 1, 22050); // 1 sample
+                const source = audioContext.createBufferSource();
+                source.buffer = buffer;
+                source.loop = true;
+
+                // Connect to destination (no gain node needed for empty buffer, but safety first)
                 const gainNode = audioContext.createGain();
+                gainNode.gain.value = 0.0001; // Just enough to be "active" but silent
 
-                oscillator.type = 'sine';
-                oscillator.frequency.value = 440; // Frequency doesn't matter much as volume is near zero
-
-                // Extremely low volume (but not zero) to cheat the OS silence detection
-                gainNode.gain.value = 0.00001;
-
-                oscillator.connect(gainNode);
+                source.connect(gainNode);
                 gainNode.connect(audioContext.destination);
 
-                oscillator.start(0);
+                source.start(0);
                 audioWakeLockSet = true;
-                console.log("Audio Wake Lock engaged.");
+                console.log("Audio Wake Lock engaged (Buffer Mode).");
             } catch (e) {
                 console.error("Audio Wake Lock failed:", e);
             }
@@ -3640,7 +3642,7 @@
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
             <!-- Version Display (Top Left) -->
             <div style="position: absolute; top: 15px; left: 15px;">
-                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.12</div>
+                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.13</div>
             </div>
 
             <!-- Share Button (Top Right, styled) -->
@@ -3743,7 +3745,7 @@
                 if (match && match[1]) {
                     const serverVersion = match[1];
                     const localVersionEl = document.getElementById('helpVersionDisplay');
-                    const localVersion = localVersionEl ? localVersionEl.textContent.trim() : 'v2.12'; // Fallback
+                    const localVersion = localVersionEl ? localVersionEl.textContent.trim() : 'v2.13'; // Fallback
 
                     console.log(`Version Check: Local=${localVersion}, Server=${serverVersion}`);
 
@@ -3831,7 +3833,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.12</p>
+                <p>現在のバージョン: v2.13</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -4911,7 +4913,7 @@
                 setTimeout(() => {
                     welcomeOverlay.style.display = 'none';
                     // Version Update Check logic if needed
-                    const currentVer = document.getElementById('appVersion') ? document.getElementById('appVersion').innerText : '2.12';
+                    const currentVer = document.getElementById('appVersion') ? document.getElementById('appVersion').innerText : '2.13';
                 }, 300);
             }
 
@@ -4999,7 +5001,7 @@
     </script>
     <script src="scripts/qrcode.min.js"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
-        id="currentVersion">v2.12</div>
+        id="currentVersion">v2.13</div>
 </body>
 
 </html>
