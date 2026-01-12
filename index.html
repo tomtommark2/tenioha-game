@@ -2468,7 +2468,7 @@
             });
         }
 
-        // --- CLOUD SYNC HELPERS (v2.13) ---
+        // --- CLOUD SYNC HELPERS (v2.14) ---
         window.isDirty = false; // Tracks if local changes need saving
 
         function saveGame() {
@@ -3642,7 +3642,7 @@
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
             <!-- Version Display (Top Left) -->
             <div style="position: absolute; top: 15px; left: 15px;">
-                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.13</div>
+                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.14</div>
             </div>
 
             <!-- Share Button (Top Right, styled) -->
@@ -3745,7 +3745,7 @@
                 if (match && match[1]) {
                     const serverVersion = match[1];
                     const localVersionEl = document.getElementById('helpVersionDisplay');
-                    const localVersion = localVersionEl ? localVersionEl.textContent.trim() : 'v2.13'; // Fallback
+                    const localVersion = localVersionEl ? localVersionEl.textContent.trim() : 'v2.14'; // Fallback
 
                     console.log(`Version Check: Local=${localVersion}, Server=${serverVersion}`);
 
@@ -3833,7 +3833,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.13</p>
+                <p>現在のバージョン: v2.14</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -4151,18 +4151,13 @@
                     const codeDocRef = doc(db, "promocodes", code);
                     const userRef = doc(db, "users", auth.currentUser.uid);
 
-                    let codeData;
-                    if (code === 'app') {
-                        // SPECIAL: Built-in code for App Install (No Firestore doc needed)
-                        codeData = { active: true, durationDays: 3 };
-                    } else {
-                        const codeDoc = await transaction.get(codeDocRef);
-                        // 2. Validate Code Existence & Activity
-                        if (!codeDoc.exists() || codeDoc.data().active !== true) {
-                            throw "コードが無効か、期限切れです。";
-                        }
-                        codeData = codeDoc.data();
+                    const codeDoc = await transaction.get(codeDocRef);
+                    // 2. Validate Code Existence & Activity
+                    if (!codeDoc.exists() || codeDoc.data().active !== true) {
+                        throw "コードが無効か、期限切れです。";
                     }
+
+                    const codeData = codeDoc.data();
 
                     const durationDays = codeData.durationDays || 30;
 
@@ -4210,12 +4205,10 @@
                         redeemedCodes: arrayUnion(code)
                     }, { merge: true });
 
-                    // Increment Usage Count on Code (Only if existing Doc)
-                    if (code !== 'app') {
-                        transaction.update(codeDocRef, {
-                            redemptionCount: increment(1)
-                        });
-                    }
+                    // Increment Usage Count on Code
+                    transaction.update(codeDocRef, {
+                        redemptionCount: increment(1)
+                    });
 
                     // 7. Store Local Data for UI (Side Effect separate from Transaction)
                     // (We can't do local storage inside transaction effectively, pass data out)
@@ -4848,7 +4841,7 @@
                         // MODIFIED (v2.13): Do NOT auto-grant. Show Promo Code instead.
                         localStorage.setItem('vocabGame_appBonusReceived', 'true'); // Mark as shown to prevent repeat
 
-                        alert("🎉 アプリインストールありがとうございます！ 🎉\n\n感謝の気持ちとして、プレミアム体験（3日間）コードを贈呈します。\n\n【プロモコード】\napp\n\n※設定画面の「コード入力」から利用できます。\n※Googleログインが必要です。");
+                        alert("🎉 アプリインストールありがとうございます！ 🎉\n\n感謝の気持ちとして、プレミアム体験（1日間）コードを贈呈します。\n\n【プロモコード】\napp\n\n※設定画面の「コード入力」から利用できます。\n※Googleログインが必要です。");
 
                     } catch (e) {
                         console.error("Bonus Alert Failed", e);
@@ -4903,7 +4896,7 @@
                 setTimeout(() => {
                     welcomeOverlay.style.display = 'none';
                     // Version Update Check logic if needed
-                    const currentVer = document.getElementById('appVersion') ? document.getElementById('appVersion').innerText : '2.13';
+                    const currentVer = document.getElementById('appVersion') ? document.getElementById('appVersion').innerText : '2.14';
                 }, 300);
             }
 
@@ -4991,7 +4984,7 @@
     </script>
     <script src="scripts/qrcode.min.js"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
-        id="currentVersion">v2.13</div>
+        id="currentVersion">v2.14</div>
 </body>
 
 </html>
