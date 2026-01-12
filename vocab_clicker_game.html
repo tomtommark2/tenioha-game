@@ -3649,7 +3649,7 @@
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
             <!-- Version Display (Top Left) -->
             <div style="position: absolute; top: 15px; left: 15px;">
-                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.16</div>
+                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.17</div>
             </div>
 
             <!-- Share Button (Top Right, styled) -->
@@ -3840,7 +3840,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.16</p>
+                <p>現在のバージョン: v2.17</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -4208,6 +4208,27 @@
             const code = input.value.trim();
 
             if (!code) { alert("コードを入力してください"); return; }
+
+            // --- GUEST HANDLING for Stripe Code ---
+            if ((!auth || !auth.currentUser) && code === 'englishisimagery') {
+                // Guest Activation (Local Only)
+                const newExpiryTime = 253402300799000; // Permanent
+                localStorage.setItem('vocabGame_isUnlocked', 'true');
+                localStorage.setItem('vocabGame_expiry', newExpiryTime);
+                updatePremiumStatusDisplay();
+
+                if (typeof trialState !== 'undefined') {
+                    trialState.unlocked = true;
+                    if (typeof saveTrialState === 'function') saveTrialState();
+                    if (typeof updateTrialUI === 'function') updateTrialUI();
+                    const overlay = document.getElementById('trialOverlay');
+                    if (overlay) overlay.style.display = 'none';
+                }
+                alert("【ゲスト購入】プレミアム機能を有効化しました！\n\n⚠️ご注意：\nブラウザのデータを削除すると無効になります。\n永続的に保存するには、後でGoogleログインしてください（自動で引き継がれます）。");
+                input.value = "";
+                return;
+            }
+
             if (!auth || !auth.currentUser) { alert("コードを適用するにはログインが必要です"); return; }
 
             try {
@@ -4382,8 +4403,8 @@
         // Auth State Listener
         if (auth) {
             onAuthStateChanged(auth, async (user) => {
-                // Call Auto Redeem logic
-                if (user) { checkAutoRedeem(user); }
+                // Call Auto Redeem logic (Always check, even if guest)
+                checkAutoRedeem(user);
                 // UI Elements
                 const headerIcon = document.getElementById('headerProfileIcon');
                 const headerInitials = document.getElementById('headerProfileInitials');
