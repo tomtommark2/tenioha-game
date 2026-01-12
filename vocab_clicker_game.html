@@ -1512,27 +1512,18 @@
             <div class="trial-title">⏳ 本日のプレイ時間は終了しました</div>
             <div class="trial-message">
                 無料版は1日10分までプレイ可能です。<br>
-                続きは明日また遊んでください！<br>
-                <br>
-                <strong>制限を解除するには？</strong><br>
-                Noteメンバーシップ（初月無料🎉）の合言葉を入力するか、<br>
-                買い切り版を購入してください。
+                制限を解除して、無制限に楽しみましょう！
             </div>
-            <input type="password" id="unlockPassword" class="unlock-input" placeholder="合言葉を入力">
-            <button class="unlock-btn" onclick="unlockGame()">解除する</button>
+
+            <button onclick="openPurchaseModal();"
+                style="margin-bottom: 20px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; padding: 15px 30px; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; width: 100%; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                <span>💎 制限を解除</span>
+                <span style="font-size: 12px; opacity: 0.9;">(買い切り¥1,800)</span>
+            </button>
+
+            <!-- Only Close Btn -->
             <button onclick="document.getElementById('trialOverlay').style.display = 'none';"
                 style="margin-top: 10px; background: transparent; border: none; color: #999; text-decoration: underline; cursor: pointer;">閉じる</button>
-
-            <div class="trial-links" style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
-                <a href="https://note.com/tenioha_eng/n/n823dfa17b5c7?sub_rt=share_pw" target="_blank"
-                    style="color: #74b9ff; text-decoration: none; font-weight: bold; border: 1px solid #74b9ff; padding: 10px; border-radius: 8px;">
-                    メンバーシップで解除キーを入手
-                </a>
-                <a href="https://note.com/tenioha_eng/n/n84f2f394b674?sub_rt=share_pw" target="_blank"
-                    style="color: #fab1a0; text-decoration: none; font-weight: bold; border: 1px solid #fab1a0; padding: 10px; border-radius: 8px;">
-                    買い切り版を購入する
-                </a>
-            </div>
         </div>
     </div>
     <!-- TRIAL_END -->
@@ -3393,6 +3384,22 @@
             }, 600);
         }
 
+        // --- PURCHASE MODAL LOGIC ---
+        window.openPurchaseModal = function () {
+            const modal = document.getElementById('purchaseModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                // Analytics or specific init if needed
+            }
+        };
+
+        window.closePurchaseModal = function () {
+            const modal = document.getElementById('purchaseModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        };
+
         // --- SIMPLE MODE LOGIC ---
         function openSimpleModeModal() {
             document.getElementById('simpleModeModal').style.display = 'flex';
@@ -3675,12 +3682,12 @@
                     </div>
                 </div>
 
-                <div onclick="window.open('https://note.com/tenioha_eng/n/n823dfa17b5c7?sub_rt=share_pw', '_blank')"
+                <div onclick="document.getElementById('helpModal').style.display='none'; openPurchaseModal();"
                     style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
-                    <span style="font-size: 20px;">🔓</span>
+                    <span style="font-size: 20px;">💎</span>
                     <div>
-                        <div style="font-weight: bold; font-size: 13px; color: #333;">10分制限の解除</div>
-                        <div style="font-size: 11px; color: #555;">タップして解除コードを入手 (Note)</div>
+                        <div style="font-weight: bold; font-size: 13px; color: #333;">制限の解除</div>
+                        <div style="font-size: 11px; color: #555;">タップして購入ページを表示</div>
                     </div>
                 </div>
 
@@ -3833,7 +3840,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.15</p>
+                <p>現在のバージョン: v2.16</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -3884,7 +3891,65 @@
     </div>
 
     <!-- Cloud Data Modal -->
-    <!-- Profile Modal (New Hub) -->
+    <!-- Purchase Modal (New) -->
+    <div id="purchaseModal" class="modal-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10003; justify-content: center; align-items: center; padding: 20px;">
+        <div class="modal-content"
+            style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
+            <button onclick="closePurchaseModal()"
+                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+
+            <h2 style="margin-top: 10px; color: #6c5ce7; margin-bottom: 20px; font-weight: bold;">💎 プレミアムプラン</h2>
+            <p style="font-size: 13px; color: #666; margin-bottom: 20px; text-align: left; line-height: 1.6;">
+                1日10分の制限を解除して、無制限に学習できます。<br>
+                買い切り版なので、追加料金は一切かかりません。
+            </p>
+
+            <!-- 1. Stripe (Primary) -->
+            <a href="https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01" target="_blank"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 15px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; border-radius: 8px; font-weight: bold; text-decoration: none; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3); transition: transform 0.2s;"
+                onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                <span style="font-size: 20px;">💳</span>
+                <span style="font-size: 16px;">買い切り版を購入 (¥1,800)</span>
+            </a>
+            <div style="font-size: 10px; color: #999; margin-bottom: 25px; text-align: center;">
+                ※支払完了後、自動で制限が解除されます。
+            </div>
+
+            <!-- 2. Note Links (Secondary) -->
+            <div
+                style="background: #fff8e1; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin-bottom: 25px; text-align: left;">
+                <div style="font-size: 12px; font-weight: bold; color: #d35400; margin-bottom: 10px;">その他の解除方法 (Note)
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <a href="https://note.com/tenioha_eng/n/n823dfa17b5c7?sub_rt=share_pw" target="_blank"
+                        style="font-size: 13px; color: #0984e3; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                        <span>🔓</span> メンバーシップで解除 (初月無料)
+                    </a>
+                    <a href="https://note.com/tenioha_eng/n/n84f2f394b674?sub_rt=share_pw" target="_blank"
+                        style="font-size: 13px; color: #e17055; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                        <span>📖</span> 買い切り版（NOTE）
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. Promo Code Input -->
+            <div style="border-top: 1px solid #eee; padding-top: 15px;">
+                <div style="font-size: 12px; color: #666; margin-bottom: 8px; text-align: left; font-weight: bold;">
+                    解除コードをお持ちの方</div>
+                <div style="display: flex; gap: 5px; align-items: center;">
+                    <input type="text" id="purchasePromoCodeInput" placeholder="コード入力"
+                        style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; background: #fafafa;">
+                    <button onclick="redeemPromoCode('purchasePromoCodeInput')"
+                        style="padding: 10px 15px; background: #2ecc71; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 14px;">
+                        有効化
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal (Reverted / Simplified) -->
     <div id="profileModal" class="modal-overlay"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: flex-start; padding-top: 50px; overflow-y: auto;">
         <div class="modal-content"
@@ -3908,25 +3973,25 @@
 
                 <!-- Plan Status -->
                 <div id="planStatusTag"
-                    style="display: inline-block; padding: 5px 15px; background: #95a5a6; color: white; border-radius: 20px; font-size: 12px; font-weight: bold;">
+                    style="display: inline-block; padding: 5px 15px; background: #95a5a6; color: white; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 15px;">
                     無料プラン (制限あり)
                 </div>
-                <!-- Premium Activation Section (Hidden if Premium) -->
-                <div id="premiumActivationSection"
-                    style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
-                    <div style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 5px;">💎 プレミアム有効化</div>
-                    <div style="display: flex; gap: 5px;">
-                        <input type="text" id="promoCodeInput" placeholder="プロモコード"
-                            style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
-                        <button onclick="redeemPromoCode()"
-                            style="padding: 8px 12px; background: #2ecc71; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
-                            有効化
-                        </button>
-                    </div>
-                    <div style="font-size: 10px; color: #999; margin-top: 5px; text-align: left;">
-                        ※購入したコードを入力すると、プレミアム機能が解放されます。
-                    </div>
+
+                <!-- Promo Code (Profile) -->
+                <div style="display: flex; gap: 5px; align-items: center; margin-bottom: 20px;">
+                    <input type="text" id="profilePromoCodeInput" placeholder="解除コードをお持ちの方"
+                        style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; background: #fafafa;">
+                    <button onclick="redeemPromoCode('profilePromoCodeInput')"
+                        style="padding: 10px 15px; background: #2ecc71; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 13px;">
+                        有効化
+                    </button>
                 </div>
+
+                <!-- Link to Purchase Modal (Clean) -->
+                <button id="premiumActivationSection" onclick="closeProfileModal(); openPurchaseModal();"
+                    style="display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 10px; background: transparent; border: 1px solid #6c5ce7; color: #6c5ce7; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
+                    <span>💎 制限を解除 (購入ページへ)</span>
+                </button>
             </div>
 
             <!-- Action List -->
@@ -4285,9 +4350,40 @@
             }
         };
 
+        // --- AUTO REDEEM LOGIC ---
+        async function checkAutoRedeem(user) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const shouldAutoRedeem = urlParams.get('auto_redeem');
+
+            if (code && shouldAutoRedeem === 'true') {
+                console.log("Auto-redeeming code:", code);
+
+                // Open Profile Modal to show context
+                if (typeof openProfileModal === 'function') openProfileModal();
+
+                // Wait a bit for UI to settle (Modal opens, DOM elements rendering)
+                setTimeout(async () => {
+                    const input = document.getElementById('promoCodeInput');
+                    if (input) {
+                        input.value = code;
+                        if (window.redeemPromoCode) {
+                            await window.redeemPromoCode();
+
+                            // Remove query params to prevent re-trigger on refresh
+                            const newUrl = window.location.pathname;
+                            window.history.replaceState({}, document.title, newUrl);
+                        }
+                    }
+                }, 1000);
+            }
+        }
+
         // Auth State Listener
         if (auth) {
             onAuthStateChanged(auth, async (user) => {
+                // Call Auto Redeem logic
+                if (user) { checkAutoRedeem(user); }
                 // UI Elements
                 const headerIcon = document.getElementById('headerProfileIcon');
                 const headerInitials = document.getElementById('headerProfileInitials');
