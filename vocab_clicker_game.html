@@ -3649,7 +3649,7 @@
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
             <!-- Version Display (Top Left) -->
             <div style="position: absolute; top: 15px; left: 15px;">
-                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.20</div>
+                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.21</div>
             </div>
 
             <!-- Share Button (Top Right, styled) -->
@@ -3840,7 +3840,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.20</p>
+                <p>現在のバージョン: v2.21</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -4177,7 +4177,16 @@
             if (isExpired && isUnlocked) {
                 // Auto-lock if expired locally
                 localStorage.setItem('vocabGame_isUnlocked', 'false');
-                // Reload to apply lock? Or just update UI. Let's update UI for now.
+
+                // BUGFIX: Immediately update in-memory trial state to enforce timer
+                // Without this, the timer loop thinks we are still unlocked and skips counting.
+                if (typeof trialState !== 'undefined') {
+                    // Force lock state
+                    trialState.unlocked = false;
+                    saveTrialState();
+                    // Ensure UI updates (show timer)
+                    updateTrialUI();
+                }
             }
 
             const effectivePremium = isUnlocked && !isExpired;
