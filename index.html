@@ -3791,20 +3791,26 @@
             if (!confirm("アプリを最新版に更新してリロードしますか？\n(未保存のプレイデータがある場合は先に保存してください)")) return;
 
             try {
+                // 1. Unregister Service Worker
                 if ('serviceWorker' in navigator) {
                     const registrations = await navigator.serviceWorker.getRegistrations();
                     for (let registration of registrations) {
                         await registration.unregister();
                     }
                 }
-                // Optional: Clear Cache API?
-                // const keys = await caches.keys();
-                // await Promise.all(keys.map(key => caches.delete(key)));
 
-                // Hard Reload
+                // 2. Clear All Caches (Critical for PWA reload)
+                if ('caches' in window) {
+                    const keys = await caches.keys();
+                    await Promise.all(keys.map(key => caches.delete(key)));
+                    console.log("Caches cleared.");
+                }
+
+                // 3. Hard Reload
                 window.location.reload(true);
             } catch (e) {
                 console.error("Update failed:", e);
+                // Fallback
                 window.location.reload();
             }
         }
@@ -4072,7 +4078,7 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
         // --- VERSION CONTROL ---
-        const APP_VERSION = 'v2.25'; // MASTER VERSION DEFINITION
+        const APP_VERSION = 'v2.26'; // MASTER VERSION DEFINITION
         // Immediately set version strings (DOM is ready due to module defer/position)
         const v1 = document.getElementById('helpVersionDisplay');
         const v2 = document.getElementById('leaderboardVersionDisplay');
