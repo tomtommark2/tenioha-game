@@ -3646,10 +3646,10 @@
         <div class="modal-content"
             style="background: white; padding: 30px; border-radius: 15px; max-width: 90%; width: 350px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
             <div style="font-size: 50px; margin-bottom: 20px;">⚠️</div>
-            <h2 style="color: #e74c3c; margin: 0 0 15px 0;">アップデートが必要です</h2>
+            <h2 style="color: #e74c3c; margin: 0 0 15px 0;">アップデートのお願い</h2>
             <p style="color: #555; font-size: 14px; line-height: 1.6; margin-bottom: 25px;">
-                ご利用のバージョンは古いため<br>これ以上プレイできません。<br>
-                最新版への更新をお願いします。
+                こちらのバージョンで不具合が発見されたため、<br>
+                アップデートをお願いいたします。
             </p>
             <button onclick="forceUpdateApp()"
                 style="width: 100%; padding: 15px; background: #e74c3c; color: white; border: none; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);">
@@ -4072,7 +4072,7 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
         // --- VERSION CONTROL ---
-        const APP_VERSION = 'v2.24'; // MASTER VERSION DEFINITION
+        const APP_VERSION = 'v2.25'; // MASTER VERSION DEFINITION
         // Immediately set version strings (DOM is ready due to module defer/position)
         const v1 = document.getElementById('helpVersionDisplay');
         const v2 = document.getElementById('leaderboardVersionDisplay');
