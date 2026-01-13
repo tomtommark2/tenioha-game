@@ -4731,11 +4731,15 @@
                     }
                 }
 
+                const verElem = document.getElementById('helpVersionDisplay');
+                const pwaVer = verElem ? verElem.textContent : 'unknown';
+
                 await setDoc(userDocRef, {
                     saveData: saveData,
                     updatedAt: serverTimestamp(),
                     name: auth.currentUser.displayName,
-                    email: auth.currentUser.email
+                    email: auth.currentUser.email,
+                    appVersion: pwaVer
                 }, { merge: true });
 
                 // Reset Dirty Flag on success
