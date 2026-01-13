@@ -3640,6 +3640,24 @@
         ✕ 通常モードへ戻る
     </button>
 
+    <!-- Force Update Modal (Blocking) -->
+    <div id="forceUpdateModal" class="modal-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 20000; justify-content: center; align-items: center;">
+        <div class="modal-content"
+            style="background: white; padding: 30px; border-radius: 15px; max-width: 90%; width: 350px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+            <div style="font-size: 50px; margin-bottom: 20px;">⚠️</div>
+            <h2 style="color: #e74c3c; margin: 0 0 15px 0;">アップデートが必要です</h2>
+            <p style="color: #555; font-size: 14px; line-height: 1.6; margin-bottom: 25px;">
+                ご利用のバージョンは古いため<br>これ以上プレイできません。<br>
+                最新版への更新をお願いします。
+            </p>
+            <button onclick="forceUpdateApp()"
+                style="width: 100%; padding: 15px; background: #e74c3c; color: white; border: none; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);">
+                🔄 今すぐアップデート
+            </button>
+        </div>
+    </div>
+
     <!-- Help Modal -->
     <div id="helpModal" class="modal-overlay"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; justify-content: center; align-items: center;">
@@ -3649,7 +3667,7 @@
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
             <!-- Version Display (Top Left) -->
             <div style="position: absolute; top: 15px; left: 15px;">
-                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay">v2.22</div>
+                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay"></div>
             </div>
 
             <!-- Share Button (Top Right, styled) -->
@@ -3840,7 +3858,7 @@
                 <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
                     未ログインのため、閲覧不可
                 </p>
-                <p>現在のバージョン: v2.22</p>
+                <p id="leaderboardVersionDisplay">現在のバージョン: -</p>
 
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
@@ -4045,6 +4063,17 @@
             appId: "1:183973262426:web:eb54502c744666f07a9463",
             measurementId: "G-QHRLNKJ4CH"
         };
+
+        // --- VERSION CONTROL ---
+        const APP_VERSION = 'v2.23'; // MASTER VERSION DEFINITION
+
+        // Initial UI Set
+        document.addEventListener('DOMContentLoaded', () => {
+            const v1 = document.getElementById('helpVersionDisplay');
+            const v2 = document.getElementById('leaderboardVersionDisplay');
+            if (v1) v1.textContent = APP_VERSION;
+            if (v2) v2.textContent = `現在のバージョン: ${APP_VERSION}`;
+        });
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, doc, setDoc, getDoc, getDocs, query, orderBy, limit, where, Timestamp, serverTimestamp, arrayUnion, runTransaction, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -4611,8 +4640,41 @@
 
 
 
+        }
+
+        // --- VERSION ENFORCER (Kill Switch) ---
+        window.checkForceUpdate = async function () {
+            if (!db) return;
+            try {
+                const configDoc = await getDoc(doc(db, "config", "app_settings"));
+                if (configDoc.exists()) {
+                    const minVer = configDoc.data().min_required_version; // e.g., "v2.23"
+                    if (minVer) {
+                        // Simple Lexicographical Comparison (Works for v2.22 vs v2.23)
+                        // For more complex versions, needs semantic versioning parser.
+                        // Assuming format "vX.YY"
+                        if (APP_VERSION < minVer) {
+                            console.error(`Version Mismatch: Current ${APP_VERSION} < Required ${minVer}`);
+                            document.getElementById('forceUpdateModal').style.display = 'flex';
+                            // Stop Auto Save to prevent corrupting data with old logic
+                            if (window.autoSaveInterval) clearInterval(window.autoSaveInterval);
+                            return false; // Result Blocked
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error("Version Check Failed:", e);
+                // Safe Fail: If we can't check, we let them play (don't break on offline)
+            }
+            return true; // Result Passed
+        };
+
+
         // --- AUTO SAVE LOOP (Optimized) ---
         function startAutoSaveLoop() {
+            // Run Version Check on Loop Start
+            checkForceUpdate();
+
             if (window.autoSaveInterval) clearInterval(window.autoSaveInterval);
             console.log("AutoManager: Auto-Save started (60s interval - Dirty Check Only)");
 
