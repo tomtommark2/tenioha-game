@@ -4064,21 +4064,20 @@
             measurementId: "G-QHRLNKJ4CH"
         };
 
-        // --- VERSION CONTROL ---
-        const APP_VERSION = 'v2.23'; // MASTER VERSION DEFINITION
-
-        // Initial UI Set
-        document.addEventListener('DOMContentLoaded', () => {
-            const v1 = document.getElementById('helpVersionDisplay');
-            const v2 = document.getElementById('leaderboardVersionDisplay');
-            if (v1) v1.textContent = APP_VERSION;
-            if (v2) v2.textContent = `現在のバージョン: ${APP_VERSION}`;
-        });
+        // (Moved APP_VERSION to post-imports)
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, doc, setDoc, getDoc, getDocs, query, orderBy, limit, where, Timestamp, serverTimestamp, arrayUnion, runTransaction, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+
+        // --- VERSION CONTROL ---
+        const APP_VERSION = 'v2.23'; // MASTER VERSION DEFINITION
+        // Immediately set version strings (DOM is ready due to module defer/position)
+        const v1 = document.getElementById('helpVersionDisplay');
+        const v2 = document.getElementById('leaderboardVersionDisplay');
+        if (v1) v1.textContent = APP_VERSION;
+        if (v2) v2.textContent = `現在のバージョン: ${APP_VERSION}`;
 
         // Global Firebase References
         let db = null;
