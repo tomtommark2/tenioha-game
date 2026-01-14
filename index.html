@@ -3926,7 +3926,7 @@
             <h2 style="margin-top: 10px; color: #6c5ce7; margin-bottom: 20px; font-weight: bold;">💎 プレミアムプラン</h2>
             <p style="font-size: 13px; color: #666; margin-bottom: 20px; text-align: left; line-height: 1.6;">
                 1日10分の制限を解除して、無制限に学習できます。<br>
-                買い切り版なので、追加料金は一切かかりません。
+                <span style="color: #e74c3c; font-weight: bold;">⚠️ログイン後の購入を強く勧めます⚠️</span>
             </p>
 
             <!-- 1. Stripe (Primary) -->
@@ -3937,26 +3937,25 @@
                 <span style="font-size: 20px;">💳</span>
                 <span style="font-size: 16px;">買い切り版を購入 (¥1,800)</span>
             </a>
-            <div style="font-size: 10px; color: #999; margin-bottom: 25px; text-align: center;">
+            <div style="font-size: 10px; color: #999; margin-bottom: 20px; text-align: center;">
                 ※支払完了後、自動で制限が解除されます。
             </div>
 
-            <!-- 2. Note Links (Secondary) -->
-            <div
-                style="background: #fff8e1; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin-bottom: 25px; text-align: left;">
-                <div style="font-size: 12px; font-weight: bold; color: #d35400; margin-bottom: 10px;">その他の解除方法 (Note)
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <a href="https://note.com/tenioha_eng/n/n823dfa17b5c7?sub_rt=share_pw" target="_blank"
-                        style="font-size: 13px; color: #0984e3; text-decoration: none; display: flex; align-items: center; gap: 5px;">
-                        <span>🔓</span> メンバーシップで解除 (初月無料)
-                    </a>
-                    <a href="https://note.com/tenioha_eng/n/n84f2f394b674?sub_rt=share_pw" target="_blank"
-                        style="font-size: 13px; color: #e17055; text-decoration: none; display: flex; align-items: center; gap: 5px;">
-                        <span>📖</span> 買い切り版（NOTE）
-                    </a>
-                </div>
-            </div>
+            <!-- 2. Note Membership (Secondary Button) -->
+            <a href="https://note.com/tenioha_eng/n/n823dfa17b5c7?sub_rt=share_pw" target="_blank"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; background: white; border: 1px solid #2ecc71; color: #2ecc71; border-radius: 8px; font-weight: bold; text-decoration: none; margin-bottom: 10px; transition: background 0.2s;"
+                onmouseover="this.style.background='#f0fff4'" onmouseout="this.style.background='white'">
+                <span style="font-size: 18px;">🔓</span>
+                <span style="font-size: 14px;">メンバーシップで解除 (初月無料)</span>
+            </a>
+
+            <!-- 3. Note Q&A (Tertiary Button) -->
+            <a href="https://note.com/tenioha_eng/n/n84f2f394b674?sub_rt=share_pw" target="_blank"
+                style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; background: white; border: 1px solid #95a5a6; color: #7f8c8d; border-radius: 8px; font-weight: bold; text-decoration: none; margin-bottom: 25px; transition: background 0.2s;"
+                onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='white'">
+                <span style="font-size: 18px;">❓</span>
+                <span style="font-size: 14px;">買い切り版Q&A</span>
+            </a>
 
             <!-- 3. Promo Code Input -->
             <div style="border-top: 1px solid #eee; padding-top: 15px;">
@@ -4079,7 +4078,7 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
         // --- VERSION CONTROL ---
-        const APP_VERSION = 'v2.29'; // MASTER VERSION DEFINITION (Stripe Integration)
+        const APP_VERSION = 'v2.30'; // MASTER VERSION DEFINITION (UI Refinement)
         // Immediately set version strings (DOM is ready due to module defer/position)
         const v1 = document.getElementById('helpVersionDisplay');
         const v2 = document.getElementById('leaderboardVersionDisplay');
