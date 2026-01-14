@@ -3930,7 +3930,8 @@
             </p>
 
             <!-- 1. Stripe (Primary) -->
-            <a href="https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01" target="_blank"
+            <!-- 1. Stripe (Primary) -->
+            <a id="stripePurchaseLink" href="https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01" target="_blank"
                 style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 15px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; border-radius: 8px; font-weight: bold; text-decoration: none; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3); transition: transform 0.2s;"
                 onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
                 <span style="font-size: 20px;">💳</span>
@@ -4078,7 +4079,7 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
         // --- VERSION CONTROL ---
-        const APP_VERSION = 'v2.28'; // MASTER VERSION DEFINITION (Cached Leaderboard)
+        const APP_VERSION = 'v2.29'; // MASTER VERSION DEFINITION (Stripe Integration)
         // Immediately set version strings (DOM is ready due to module defer/position)
         const v1 = document.getElementById('helpVersionDisplay');
         const v2 = document.getElementById('leaderboardVersionDisplay');
@@ -4221,6 +4222,26 @@
         };
         window.closeProfileModal = function () {
             document.getElementById('profileModal').style.display = 'none';
+        };
+
+        // Purchase Modal Helpers (Added v2.29)
+        const STRIPE_BASE_URL = "https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01";
+        window.openPurchaseModal = function () {
+            const modal = document.getElementById('purchaseModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                // Update Stripe Link with User ID for Webhook
+                const link = document.getElementById('stripePurchaseLink');
+                if (link && userId) {
+                    // Decide which ID to use: Auth UID (preferred) or Local ID
+                    // Using global 'userId' variable which is kept in sync by onAuthStateChanged
+                    link.href = `${STRIPE_BASE_URL}?client_reference_id=${userId}`;
+                    console.log("Stripe Link Updated for:", userId);
+                }
+            }
+        };
+        window.closePurchaseModal = function () {
+            document.getElementById('purchaseModal').style.display = 'none';
         };
 
         function updatePremiumStatusDisplay() {
