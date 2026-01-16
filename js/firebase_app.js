@@ -18,12 +18,12 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
 // --- VERSION CONTROL ---
-const APP_VERSION = 'v2.33'; // MASTER VERSION DEFINITION (Fix Update Button & Text)
+const APP_VERSION = 'v2.34'; // MASTER VERSION DEFINITION (Fix Mojibake)
 // Immediately set version strings (DOM is ready due to module defer/position)
 const v1 = document.getElementById('helpVersionDisplay');
 const v2 = document.getElementById('leaderboardVersionDisplay');
 if (v1) v1.textContent = APP_VERSION;
-if (v2) v2.textContent = `迴ｾ蝨ｨ縺ｮ繝舌�繧ｸ繝ｧ繝ｳ: ${APP_VERSION}`;
+if (v2) v2.textContent = `現在のバージョン: ${APP_VERSION}`;
 
 // Global Firebase References
 let db = null;
@@ -50,8 +50,6 @@ try {
 }
 
 // --- EXPORTED FUNCTIONS ---
-
-// 1. Upload/Sync Score
 
 // 1. Upload/Sync Score
 window.uploadScore = async function (name, score) {
@@ -124,9 +122,9 @@ window.fetchLeaderboard = async function (type, force = false) {
             let below = []; sBelow.forEach(d => below.push({ name: d.data().name, score: d.data().score }));
 
             results = [
-                ...above.reverse().map(u => ({ ...u, rank: '笆ｲ' })),
+                ...above.reverse().map(u => ({ ...u, rank: '▲' })),
                 { name: myDoc.data().name, score: myScore, rank: 'You', isMe: true },
-                ...below.map(u => ({ ...u, rank: '笆ｼ' }))
+                ...below.map(u => ({ ...u, rank: '▼' }))
             ];
         }
 
@@ -213,12 +211,12 @@ window.updatePremiumStatusDisplay = function () {
         if (effectivePremium) {
             const expiryDate = new Date(expiryTime);
             const isPermanent = expiryDate.getFullYear() > 3000;
-            const dateStr = (expiryTime > 0 && !isPermanent) ? expiryDate.toLocaleDateString() : "辟｡譛滄剞";
-            tag.textContent = `繝励Ξ繝溘い繝� (譛滄剞: ${dateStr})`;
+            const dateStr = (expiryTime > 0 && !isPermanent) ? expiryDate.toLocaleDateString() : "無期限";
+            tag.textContent = `プレミアム (期限: ${dateStr})`;
             tag.style.background = "#2ecc71"; // Green
             if (activationSection) activationSection.style.display = 'block'; // Allow extending
         } else {
-            tag.textContent = isExpired ? "譛滄剞蛻�ｌ (蜀肴怏蜉ｹ蛹悶′蠢�ｦ�)" : "辟｡譁吶�繝ｩ繝ｳ (蛻ｶ髯舌≠繧�)";
+            tag.textContent = isExpired ? "期限切れ (再有効化が必要)" : "無料プラン (制限あり)";
             tag.style.background = "#95a5a6"; // Gray
             if (activationSection) activationSection.style.display = 'block'; // Show input
         }
@@ -227,21 +225,20 @@ window.updatePremiumStatusDisplay = function () {
 
 window.handleProfileAuth = function () {
     if (auth.currentUser) {
-        if (confirm("繝ｭ繧ｰ繧｢繧ｦ繝医＠縺ｾ縺吶°��")) { logoutGoogle(); }
+        if (confirm("ログアウトしますか？")) { logoutGoogle(); }
     } else {
         loginWithGoogle();
     }
 };
 
 // --- PREMIUM SYSTEM ---
-// --- PREMIUM SYSTEM ---
 window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
     const input = document.getElementById(inputId);
     if (!input) return;
     const code = input.value.trim();
 
-    if (!code) { alert("繧ｳ繝ｼ繝峨ｒ蜈･蜉帙＠縺ｦ縺上□縺輔＞"); return; }
-    if (!auth || !auth.currentUser) { alert("繧ｳ繝ｼ繝峨ｒ驕ｩ逕ｨ縺吶ｋ縺ｫ縺ｯ繝ｭ繧ｰ繧､繝ｳ縺悟ｿ�ｦ√〒縺�"); return; }
+    if (!code) { alert("コードを入力してください"); return; }
+    if (!auth || !auth.currentUser) { alert("コードを適用するにはログインが必要です"); return; }
 
     try {
         await runTransaction(db, async (transaction) => {
@@ -252,7 +249,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
             const codeDoc = await transaction.get(codeDocRef);
             // 2. Validate Code Existence & Activity
             if (!codeDoc.exists() || codeDoc.data().active !== true) {
-                throw "繧ｳ繝ｼ繝峨′辟｡蜉ｹ縺九∵悄髯仙�繧後〒縺吶�";
+                throw "コードが無効か、期限切れです。";
             }
 
             const codeData = codeDoc.data();
@@ -263,7 +260,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
             if (codeData.maxRedemptions) {
                 const currentCount = codeData.redemptionCount || 0;
                 if (currentCount >= codeData.maxRedemptions) {
-                    throw "縺薙�繧ｳ繝ｼ繝峨�蛻ｩ逕ｨ荳企剞縺ｫ驕斐＠縺ｾ縺励◆縲�";
+                    throw "このコードの利用上限に達しました。";
                 }
             }
 
@@ -273,7 +270,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
 
             // Check Duplicate Usage
             if (userData.redeemedCodes && userData.redeemedCodes.includes(code)) {
-                throw "縺薙�繧ｳ繝ｼ繝峨�譌｢縺ｫ菴ｿ逕ｨ貂医∩縺ｧ縺吶�";
+                throw "このコードは既に使用済みです。";
             }
 
             // 5. Calculate New Expiration
@@ -328,7 +325,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
                 document.getElementById('trialOverlay').style.display = 'none';
             }
 
-            alert(`繝励Ξ繝溘い繝�讖溯�縺梧怏蜉ｹ蛹悶＆繧後∪縺励◆�―n譛牙柑譛滄剞: ${newExpiryDate.toLocaleDateString()} 縺ｾ縺ｧ\n譌･謨ｰ: +${durationDays}譌･`);
+            alert(`プレミアム機能が有効化されました！\n有効期限: ${newExpiryDate.toLocaleDateString()} まで\n日数: +${durationDays}日`);
             input.value = "";
 
         });
@@ -339,7 +336,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
         if (typeof e === 'string') {
             alert(e);
         } else {
-            alert("繧ｨ繝ｩ繝ｼ縺檎匱逕溘＠縺ｾ縺励◆: " + e.message);
+            alert("エラーが発生しました: " + e.message);
         }
     }
 };
@@ -352,7 +349,7 @@ window.unlockGame = function () {
 
 window.loginWithGoogle = async function () {
     if (!auth) {
-        alert("Firebase Auth縺悟�譛溷喧縺輔ｌ縺ｦ縺�∪縺帙ｓ縲�n繝壹�繧ｸ繧偵Μ繝ｭ繝ｼ繝峨＠縺ｦ縺ｿ縺ｦ縺上□縺輔＞縲�");
+        alert("Firebase Authが初期化されていません。\nページをリロードしてみてください。");
         return;
     }
     const provider = new GoogleAuthProvider();
@@ -361,12 +358,12 @@ window.loginWithGoogle = async function () {
     } catch (error) {
         console.error("Login Failed:", error);
 
-        let msg = "繝ｭ繧ｰ繧､繝ｳ縺ｫ螟ｱ謨励＠縺ｾ縺励◆縲�";
-        if (error.code === 'auth/popup-blocked') msg += "\n繝昴ャ繝励い繝��縺後ヶ繝ｭ繝�け縺輔ｌ縺ｾ縺励◆縲りｨｭ螳壹ｒ遒ｺ隱阪＠縺ｦ縺上□縺輔＞縲�";
-        if (error.code === 'auth/cancelled-popup-request') msg += "\n繝昴ャ繝励い繝��縺碁哩縺倥ｉ繧後∪縺励◆縲�";
-        if (error.code === 'auth/popup-closed-by-user') msg += "\n繝昴ャ繝励い繝��縺碁哩縺倥ｉ繧後∪縺励◆縲�";
-        if (error.code === 'auth/unauthorized-domain') msg += "\n險ｱ蜿ｯ縺輔ｌ縺ｦ縺�↑縺�ラ繝｡繧､繝ｳ縺ｧ縺吶�nFirebase Console縺ｧ繝峨Γ繧､繝ｳ繧定ｿｽ蜉�縺励※縺上□縺輔＞縲�";
-        if (error.code === 'auth/operation-not-allowed') msg += "\nGoogle繝ｭ繧ｰ繧､繝ｳ縺檎┌蜉ｹ縺ｧ縺吶�nFirebase Console縺ｧ譛牙柑縺ｫ縺励※縺上□縺輔＞縲�";
+        let msg = "ログインに失敗しました。";
+        if (error.code === 'auth/popup-blocked') msg += "\nポップアップがブロックされました。設定を確認してください。";
+        if (error.code === 'auth/cancelled-popup-request') msg += "\nポップアップが閉じられました。";
+        if (error.code === 'auth/popup-closed-by-user') msg += "\nポップアップが閉じられました。";
+        if (error.code === 'auth/unauthorized-domain') msg += "\n許可されていないドメインです。\nFirebase Consoleでドメインを追加してください。";
+        if (error.code === 'auth/operation-not-allowed') msg += "\nGoogleログインが無効です。\nFirebase Consoleで有効にしてください。";
 
         alert(`${msg}\n\n(Error Code: ${error.code})\n${error.message}`);
     }
@@ -376,7 +373,7 @@ window.logoutGoogle = async function () {
     if (!auth) return;
     try {
         await signOut(auth);
-        alert("繝ｭ繧ｰ繧｢繧ｦ繝医＠縺ｾ縺励◆");
+        alert("ログアウトしました");
         location.reload();
     } catch (error) {
         console.error(error);
@@ -411,7 +408,7 @@ async function checkAutoRedeem(user) {
                     }
                 } else {
                     // Not Logged in: Just fill and prompt
-                    alert("繧ｳ繝ｼ繝峨′蜈･蜉帙＆繧後∪縺励◆縲�n驕ｩ逕ｨ縺吶ｋ縺ｫ縺ｯGoogle繝ｭ繧ｰ繧､繝ｳ縺悟ｿ�ｦ√〒縺吶�");
+                    alert("コードが入力されました。\n適用するにはGoogleログインが必要です。");
                 }
             }
         }, 1000);
@@ -439,7 +436,6 @@ if (auth) {
         if (user) {
             // --- LOGGED IN ---
             console.log("Auth: Logged in as", user.uid);
-            console.log("Auth: Logged in as", user.uid);
 
             // GA4: Set User ID for cross-device tracking
             if (analytics) {
@@ -454,7 +450,6 @@ if (auth) {
             if (headerInitials) headerInitials.style.display = 'none';
             if (headerIcon) headerIcon.style.border = "2px solid #2ecc71"; // Green border
 
-            // --- LEADERBOARD SYNC ---
             // --- LEADERBOARD SYNC ---
             // Improved: Only set Google Name if NO name is registered
             if (typeof window.uploadScore === 'function') {
@@ -477,7 +472,7 @@ if (auth) {
             if (modalEmail) modalEmail.textContent = user.email;
 
             if (authBtn) {
-                authBtn.innerHTML = `<span>繝ｭ繧ｰ繧｢繧ｦ繝�</span>`;
+                authBtn.innerHTML = `<span>ログアウト</span>`;
                 authBtn.style.background = "#bdc3c7";
             }
             if (syncSection) syncSection.style.display = 'block';
@@ -546,10 +541,10 @@ if (auth) {
                     // 1. Cloud has better progress (Score based)
                     if (cloudPoints > localPoints) {
                         console.log("Cloud has better score. Prompting restore...");
-                        const msg = `繧ｯ繝ｩ繧ｦ繝峨↓迴ｾ蝨ｨ繧医ｊ騾ｲ繧薙□繝��繧ｿ縺後≠繧翫∪縺吶�n(Cloud: ${cloudPoints} pts vs Local: ${localPoints} pts)\n\n蠕ｩ蜈�＠縺ｾ縺吶°�歔;
+                        const msg = `クラウドに現在より進んだデータがあります。\n(Cloud: ${cloudPoints} pts vs Local: ${localPoints} pts)\n\n復元しますか？`;
                         if (confirm(msg)) {
                             localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
-                            alert("蠕ｩ蜈�＠縺ｾ縺励◆縲ゅΜ繝ｭ繝ｼ繝峨＠縺ｾ縺吶�");
+                            alert("復元しました。リロードします。");
                             location.reload();
                         } else {
                             // User chose to keep local (lower score). 
@@ -626,11 +621,11 @@ if (auth) {
             // Reset Modal
             if (modalImage) modalImage.style.display = 'none';
             if (modalInitials) modalInitials.style.display = 'block';
-            if (modalName) modalName.textContent = "繧ｲ繧ｹ繝医Θ繝ｼ繧ｶ繝ｼ";
-            if (modalEmail) modalEmail.textContent = "譛ｪ繝ｭ繧ｰ繧､繝ｳ";
+            if (modalName) modalName.textContent = "ゲストユーザー";
+            if (modalEmail) modalEmail.textContent = "未ログイン";
 
             if (authBtn) {
-                authBtn.innerHTML = `< img src = "https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width = "18" height = "18" > <span>Google縺ｧ繝ｭ繧ｰ繧､繝ｳ</span>`;
+                authBtn.innerHTML = `<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" height="18"> <span>Googleでログイン</span>`;
                 authBtn.style.background = "#667eea";
             }
             if (syncSection) syncSection.style.display = 'none';
@@ -652,7 +647,7 @@ window.checkForceUpdate = async function () {
             if (minVer) {
                 // Simple Lexicographical Comparison
                 if (APP_VERSION.trim() < minVer) {
-                    console.error(`Version Mismatch: Current ${ APP_VERSION } < Required ${minVer}`);
+                    console.error(`Version Mismatch: Current ${APP_VERSION} < Required ${minVer}`);
                     document.getElementById('forceUpdateModal').style.display = 'flex';
                     // Stop Auto Save to prevent corrupting data with old logic
                     if (window.autoSaveInterval) clearInterval(window.autoSaveInterval);
@@ -721,28 +716,28 @@ window.forceRestore = async function () {
 
     try {
         const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
-        if (!userDoc.exists() || !userDoc.data().saveData) { alert("繧ｯ繝ｩ繧ｦ繝峨↓繝��繧ｿ縺後≠繧翫∪縺帙ｓ"); return; }
+        if (!userDoc.exists() || !userDoc.data().saveData) { alert("クラウドにデータがありません"); return; }
 
         const cloudData = JSON.parse(userDoc.data().saveData);
         const localPoints = (typeof gameState !== 'undefined') ? gameState.points : -1;
         const cloudPoints = cloudData.points || 0;
 
-        let msg = "繧ｯ繝ｩ繧ｦ繝我ｸ翫�繝��繧ｿ縺ｧ荳頑嶌縺阪＠縺ｾ縺吶°�歃\n莉翫�遶ｯ譛ｫ縺ｮ譛ｪ菫晏ｭ倥ョ繝ｼ繧ｿ縺ｯ豸医∴縺ｾ縺吶�";
+        let msg = "クラウド上のデータで上書きしますか？\n今の端末の未保存データは消えます。";
 
         // Smart Warning
         if (localPoints > cloudPoints) {
-            msg = `笞��� 隴ｦ蜻�: 迴ｾ蝨ｨ縺ｮ遶ｯ譛ｫ縺ｮ譁ｹ縺後せ繧ｳ繧｢縺碁ｫ倥＞縺ｧ縺呻ｼ―n(Local: ${localPoints} vs Cloud: ${cloudPoints})\n\n譛ｬ蠖薙↓繧ｯ繝ｩ繧ｦ繝峨�蜿､縺�ョ繝ｼ繧ｿ縺ｧ荳頑嶌縺阪＠縺ｾ縺吶°�歔;
+            msg = `⚠️ 警告: 現在の端末の方がスコアが高いです！\n(Local: ${localPoints} vs Cloud: ${cloudPoints})\n\n本当にクラウドの古いデータで上書きしますか？`;
         } else if (cloudPoints > localPoints) {
-            msg = `繧ｯ繝ｩ繧ｦ繝峨↓譁ｰ縺励＞繝��繧ｿ縺後≠繧翫∪縺呻ｼ―n(Local: ${localPoints} vs Cloud: ${cloudPoints})\n\n蠕ｩ蜈�＠縺ｾ縺吶°�歔;
+            msg = `クラウドに新しいデータがあります！\n(Local: ${localPoints} vs Cloud: ${cloudPoints})\n\n復元しますか？`;
         }
 
         if (!confirm(msg)) return;
 
         // Restore Logic
         localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
-        alert("蠕ｩ蜈�＠縺ｾ縺励◆縲ゅΜ繝ｭ繝ｼ繝峨＠縺ｾ縺吶�");
+        alert("復元しました。リロードします。");
         location.reload();
-    } catch (e) { alert("繧ｨ繝ｩ繝ｼ: " + e.message); }
+    } catch (e) { alert("エラー: " + e.message); }
 };
 
 // Overwrite existing uploadSaveData to use Auth if available
@@ -750,7 +745,7 @@ window.forceRestore = async function () {
 window.uploadSaveData = async function (silent = false, force = false) {
     if (!db) return;
     if (!auth || !auth.currentUser) {
-        if (!silent) alert("繝ｭ繧ｰ繧､繝ｳ縺悟ｿ�ｦ√〒縺�");
+        if (!silent) alert("ログインが必要です。");
         return;
     }
 
@@ -783,7 +778,7 @@ window.uploadSaveData = async function (silent = false, force = false) {
                 const localDataObj = JSON.parse(saveData);
 
                 if (cloudExisting.points > localDataObj.points) {
-                    if (!confirm(`笞��� 隴ｦ蜻�: 繧ｯ繝ｩ繧ｦ繝峨�譁ｹ縺後せ繧ｳ繧｢縺碁ｫ倥＞縺ｧ縺呻ｼ―n(Cloud: ${cloudExisting.points} vs Local: ${localDataObj.points})\n\n譛ｬ蠖薙↓迴ｾ蝨ｨ縺ｮ菴弱＞繧ｹ繧ｳ繧｢縺ｧ荳頑嶌縺阪＠縺ｾ縺吶°�歔)) {
+                    if (!confirm(`⚠️ 警告: クラウドの方がスコアが高いです！\n(Cloud: ${cloudExisting.points} vs Local: ${localDataObj.points})\n\n本当に現在の低いスコアで上書きしますか？`)) {
                         console.log("Upload aborted by user.");
                         return;
                     }
@@ -806,7 +801,7 @@ window.uploadSaveData = async function (silent = false, force = false) {
         window.isDirty = false;
 
         if (!silent) {
-            alert("菫晏ｭ伜ｮ御ｺ�ｼ�");
+            alert("保存完了！");
             const lastSync = document.getElementById('profileLastSync');
             if (lastSync) lastSync.textContent = new Date().toLocaleString();
         } else {
@@ -815,7 +810,7 @@ window.uploadSaveData = async function (silent = false, force = false) {
             if (lastSync) lastSync.textContent = new Date().toLocaleString();
         }
     } catch (e) {
-        if (!silent) alert("螟ｱ謨�: " + e.message);
+        if (!silent) alert("失敗: " + e.message);
         console.error(e);
     }
 };
@@ -944,7 +939,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 window.installApp = () => {
     // If not ready, show alert or do nothing
     if (!deferredPrompt) {
-        alert("縺薙�繝悶Λ繧ｦ繧ｶ縺ｧ縺ｯ閾ｪ蜍輔う繝ｳ繧ｹ繝医�繝ｫ縺悟茜逕ｨ縺ｧ縺阪∪縺帙ｓ縲�n繝悶Λ繧ｦ繧ｶ縺ｮ繝｡繝九Η繝ｼ縲後�繝ｼ繝�逕ｻ髱｢縺ｫ霑ｽ蜉�縲阪↑縺ｩ縺九ｉ繧､繝ｳ繧ｹ繝医�繝ｫ縺励※縺上□縺輔＞縲�");
+        alert("このブラウザでは自動インストールが利用できません。\nブラウザのメニュー「ホーム画面に追加」などからインストールしてください。");
         return;
     }
 
@@ -969,7 +964,6 @@ window.addEventListener('appinstalled', () => {
     if (installContainer) installContainer.style.display = 'none';
     if (installBtnProfile) installBtnProfile.style.display = 'none';
 });
-// --- WELCOME & PWA ENHANCEMENTS ---
 // --- WELCOME & PWA ENHANCEMENTS ---
 // Removed duplicate 'welcomeDeferredPrompt' and listener.
 // We will misuse the existing 'deferredPrompt' from line 4588.
@@ -1011,7 +1005,7 @@ function initWelcomeSequence() {
                 // MODIFIED (v2.13): Do NOT auto-grant. Show Promo Code instead.
                 localStorage.setItem('vocabGame_appBonusReceived', 'true'); // Mark as shown to prevent repeat
 
-                alert("�脂 繧｢繝励Μ繧､繝ｳ繧ｹ繝医�繝ｫ縺ゅｊ縺後→縺�＃縺悶＞縺ｾ縺呻ｼ� �脂\n\n諢溯ｬ昴�豌玲戟縺｡縺ｨ縺励※縲√�繝ｬ繝溘い繝�菴馴ｨ難ｼ�1譌･髢難ｼ峨さ繝ｼ繝峨ｒ雍亥争縺励∪縺吶�n\n縲舌�繝ｭ繝｢繧ｳ繝ｼ繝峨曾napp\n\n窶ｻ險ｭ螳夂判髱｢縺ｮ縲後さ繝ｼ繝牙�蜉帙阪°繧牙茜逕ｨ縺ｧ縺阪∪縺吶�n窶ｻGoogle繝ｭ繧ｰ繧､繝ｳ縺悟ｿ�ｦ√〒縺吶�");
+                alert("🎉 アプリインストールありがとうございます！ 🎉\n\n感謝の気持ちとして、プレミアム体験（1日間）コードを贈呈します。\n\n【プロモーションコード】\napp\n\n※設定画面の「コード入力」から利用できます。\n※Googleログインが必要です。");
 
             } catch (e) {
                 console.error("Bonus Alert Failed", e);
@@ -1050,9 +1044,9 @@ window.triggerInstall = async function () {
         // Fallback Guide
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         if (isIOS) {
-            alert("縲舌う繝ｳ繧ｹ繝医�繝ｫ譁ｹ豕輔曾n\n1. 逕ｻ髱｢荳九�蜈ｱ譛峨�繧ｿ繝ｳ[竊曽繧偵ち繝��\n2. 縲後�繝ｼ繝�逕ｻ髱｢縺ｫ霑ｽ蜉�縲阪ｒ驕ｸ謚杤n\n縺薙ｌ縺ｧ繧｢繝励Μ縺ｨ縺励※蠢ｫ驕ｩ縺ｫ驕翫∋縺ｾ縺呻ｼ�");
+            alert("【インストール方法】\n\n1. 画面下の共有ボタン[⬆️]をタップ\n2. 「ホーム画面に追加」を選択\n\nこれでアプリとして快適に遊べます！");
         } else {
-            alert("縲舌う繝ｳ繧ｹ繝医�繝ｫ譁ｹ豕輔曾n\n繝悶Λ繧ｦ繧ｶ縺ｮ繝｡繝九Η繝ｼ縺九ｉ縲後い繝励Μ繧偵う繝ｳ繧ｹ繝医�繝ｫ縲構n縺ｾ縺溘�縲後�繝ｼ繝�逕ｻ髱｢縺ｫ霑ｽ蜉�縲阪ｒ驕ｸ謚槭＠縺ｦ縺上□縺輔＞縲�"); // Chrome, etc.
+            alert("【インストール方法】\n\nブラウザのメニューから「アプリをインストール」\nまたは「ホーム画面に追加」を選択してください。"); // Chrome, etc.
         }
     }
 };
@@ -1088,14 +1082,14 @@ window.openShareModal = function () {
         if (urlDisplay) urlDisplay.textContent = shareUrl;
     } else {
         console.error("shareModal not found!");
-        alert("繧ｨ繝ｩ繝ｼ: 繧ｷ繧ｧ繧｢逕ｻ髱｢縺瑚ｦ九▽縺九ｊ縺ｾ縺帙ｓ");
+        alert("エラー: シェア画面が見つかりません");
     }
 };
 
 window.shareApp = async function () {
     const shareData = {
-        title: '闍ｱ蜊倩ｪ槫ｭｦ鄙偵け繝ｪ繝�き繝ｼ',
-        text: '繝昴メ繝昴メ縺吶ｋ縺�縺代〒闍ｱ蜊倩ｪ槭′隕壹∴繧峨ｌ繧九ｈ�∽ｸ邱偵↓繧�ｍ縺�ｼ�',
+        title: '英単語学習クリッカー',
+        text: 'ポチポチするだけで英単語が覚えられる！？一緒にやろう！',
         url: window.location.href
     };
 
@@ -1108,7 +1102,7 @@ window.shareApp = async function () {
     } else {
         // Fallback: Copy to clipboard
         navigator.clipboard.writeText(shareData.url).then(() => {
-            alert('URL繧偵さ繝斐�縺励∪縺励◆�―nSNS縺ｫ雋ｼ繧贋ｻ倥￠縺ｦ繧ｷ繧ｧ繧｢縺励※縺上□縺輔＞縲�');
+            alert('URLをコピーしました！\nSNSに貼り付けてシェアしてください。');
         });
     }
 };
@@ -1137,7 +1131,7 @@ window.toggleQRCode = function () {
                 correctLevel: QRCode.CorrectLevel.H
             });
         } else {
-            qrContainer.innerHTML = 'QR繧ｳ繝ｼ繝峨Λ繧､繝悶Λ繝ｪ縺ｮ隱ｭ縺ｿ霎ｼ縺ｿ縺ｫ螟ｱ謨励＠縺ｾ縺励◆縲�';
+            qrContainer.innerHTML = 'QRコードライブラリの読み込みに失敗しました。';
         }
     } else {
         // Hide QR
