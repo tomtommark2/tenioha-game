@@ -66,6 +66,7 @@ exports.stripeWebhook = onRequest(async (req, res) => {
                     isPremium: true,
                     premiumSource: 'stripe',
                     premiumSince: admin.firestore.FieldValue.serverTimestamp(),
+                    premiumExpiresAt: admin.firestore.Timestamp.fromDate(new Date("2125-01-01")), // ~100 years
                     stripePaymentId: paymentId,
                     lastActivatedAt: admin.firestore.FieldValue.serverTimestamp()
                 }, { merge: true });

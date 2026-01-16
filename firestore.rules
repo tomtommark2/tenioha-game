@@ -1,0 +1,60 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- 🚫 BAN LIST CONFIGURATION 🚫 ---
+    // Blocked User IDs (Cheaters)
+    // Add the specific UID to this list to strictly block all writes
+    function isBanned() {
+      // Example: return request.auth.uid in ['UID_123', 'UID_456'];
+      return request.auth.uid in [
+        'Z6gybt3F4Fcq0XrQs64AAHWdxCL2' 
+      ];
+    }
+    // ------------------------------------
+
+    // --- Helper Functions ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // --- Collection Rules ---
+
+    // 1. Users Collection
+    // Users can only read/write their own document
+    match /users/{userId} {
+      allow read, write: if isOwner(userId) && !isBanned();
+    }
+
+    // 2. Leaderboard Collection
+    // Public read, Owner write
+    match /leaderboard/{userId} {
+      allow read: if true;
+      allow write: if isOwner(userId) && !isBanned();
+    }
+
+    // 3. Promo Codes Collection
+    // Read: Authenticated users (to check code)
+    // Write: Authenticated users (ONLY to increment count)
+    // Note: In a strict environment, this logic should be moved to Cloud Functions.
+    // tailored to allow client-side transaction updates for now.
+    match /promocodes/{code} {
+      allow read: if isSignedIn();
+      allow update: if isSignedIn() 
+                    && !isBanned()
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['redemptionCount']); // Only allow count update
+      allow create, delete: if false; // Admin only
+    }
+
+    // 4. Config Collection
+    // Public Read-only (for version checks)
+    match /config/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

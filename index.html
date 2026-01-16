@@ -3536,7 +3536,10 @@
             window.restoreSaveData = function () { alert("機能の読み込み中、または通信環境により無効化されています。"); };
         }
 
+        let currentLeaderboardTab = 'top';
+
         function switchTab(tab) {
+            currentLeaderboardTab = tab;
             document.querySelectorAll('.lb-tab').forEach(b => b.classList.remove('active'));
             const buttons = document.querySelectorAll('.lb-tab');
             if (buttons.length > 0) {
@@ -3550,12 +3553,12 @@
             loadRankingData(tab);
         }
 
-        async function loadRankingData(type) {
+        async function loadRankingData(type, force = false) {
             const container = (type === 'top') ? document.getElementById('lb-list-top') : document.getElementById('lb-list-around');
             container.innerHTML = '<div style="padding:10px; color:#999;">データ取得中...</div>';
 
             if (window.fetchLeaderboard) {
-                const data = await window.fetchLeaderboard(type);
+                const data = await window.fetchLeaderboard(type, force);
 
                 if (data.error) {
                     container.innerHTML = `<div style="color:red; padding:10px;">エラー: ${data.error}</div>`;
@@ -3855,6 +3858,8 @@
                 ✏️ 名前変更
             </button>
 
+
+
             <h2 style="margin-top: 0; padding-bottom: 10px; color: #f1c40f; text-shadow: 1px 1px 0px #e67e22;">
                 🏆 ランキング
             </h2>
@@ -4075,10 +4080,11 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, doc, setDoc, getDoc, getDocs, query, orderBy, limit, where, Timestamp, serverTimestamp, arrayUnion, runTransaction, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+
+        import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
         // --- VERSION CONTROL ---
-        const APP_VERSION = 'v2.30'; // MASTER VERSION DEFINITION (UI Refinement)
+        const APP_VERSION = 'v2.31'; // MASTER VERSION DEFINITION (UI Refinement)
         // Immediately set version strings (DOM is ready due to module defer/position)
         const v1 = document.getElementById('helpVersionDisplay');
         const v2 = document.getElementById('leaderboardVersionDisplay');
@@ -4499,6 +4505,13 @@
                 if (user) {
                     // --- LOGGED IN ---
                     console.log("Auth: Logged in as", user.uid);
+                    console.log("Auth: Logged in as", user.uid);
+
+                    // GA4: Set User ID for cross-device tracking
+                    if (analytics) {
+                        setUserId(analytics, user.uid);
+                    }
+
                     userId = user.uid; // Switch to Auth ID
                     localStorage.setItem('vocabGame_userId', userId);
 
@@ -4665,6 +4678,11 @@
                 } else {
                     // --- LOGGED OUT ---
                     console.log("Auth: Signed out");
+
+                    // GA4: Clear User ID
+                    if (analytics) {
+                        setUserId(analytics, null);
+                    }
 
                     // Reset Header
                     if (headerImage) headerImage.style.display = 'none';
