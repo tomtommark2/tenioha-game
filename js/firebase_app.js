@@ -18,7 +18,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
 // --- VERSION CONTROL ---
-const APP_VERSION = 'v2.31'; // MASTER VERSION DEFINITION (UI Refinement)
+const APP_VERSION = 'v2.32'; // MASTER VERSION DEFINITION (UI Refinement)
 // Immediately set version strings (DOM is ready due to module defer/position)
 const v1 = document.getElementById('helpVersionDisplay');
 const v2 = document.getElementById('leaderboardVersionDisplay');
