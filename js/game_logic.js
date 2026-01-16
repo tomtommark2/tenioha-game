@@ -248,15 +248,6 @@ function init() {
         if (wbBtn) wbBtn.classList.add('active');
     }
 
-    // HOTFIX: Force Wordbook Button Text to avoid duplication
-    const wbBtnForce = document.getElementById('wordbookBtn');
-    if (wbBtnForce) {
-        // "📘" only on PC, "単語帳" always (but no emoji on mobile)
-        // Structure: <span class="pc-only">📘</span><span> 単語帳</span>
-        // Note: CSS .pc-only { display: none } on mobile handles the icon.
-        wbBtnForce.innerHTML = '<span class="pc-only">📘</span><span> 単語帳</span>';
-    }
-
     setupEventListeners();
     setupPOSFilters(); // Need to call this to attach listeners to new checkboxes
 

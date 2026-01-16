@@ -1484,12 +1484,7 @@ body.simple-mode .cards-area {
     }
 }
 
-/* Force suppress duplication on Wordbook button */
-#wordbookBtn::before,
-#wordbookBtn::after {
-    content: none !important;
-    display: none !important;
-}
+
 
 @media (max-width: 768px) {
     .pc-only {
