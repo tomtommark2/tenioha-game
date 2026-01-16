@@ -53,11 +53,11 @@ body {
     background: white;
     color: #555;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 10px 24px;
+    padding: 8px 20px;
     border-radius: 50px;
     /* Pill shape */
     cursor: pointer;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);

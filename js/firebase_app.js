@@ -18,7 +18,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
 // --- VERSION CONTROL ---
-const APP_VERSION = 'v2.34'; // MASTER VERSION DEFINITION (Fix Mojibake)
+const APP_VERSION = 'v2.35'; // MASTER VERSION DEFINITION (Resize PC Buttons)
 // Immediately set version strings (DOM is ready due to module defer/position)
 const v1 = document.getElementById('helpVersionDisplay');
 const v2 = document.getElementById('leaderboardVersionDisplay');
