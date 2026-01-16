@@ -248,6 +248,13 @@ function init() {
         if (wbBtn) wbBtn.classList.add('active');
     }
 
+    // HOTFIX: Force Wordbook Button Text to avoid duplication
+    const wbBtnForce = document.getElementById('wordbookBtn');
+    if (wbBtnForce) {
+        // Only "Book" icon and text, no duplication
+        wbBtnForce.innerHTML = '<span>📘 単語帳</span>';
+    }
+
     setupEventListeners();
     setupPOSFilters(); // Need to call this to attach listeners to new checkboxes
 

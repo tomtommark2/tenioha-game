@@ -1483,3 +1483,5 @@ body.simple-mode .cards-area {
         transform: translateY(0);
     }
 }
+/* Force suppress duplication on Wordbook button */
+#wordbookBtn::before, #wordbookBtn::after { content: none !important; display: none !important; }
