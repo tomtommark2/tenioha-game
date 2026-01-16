@@ -630,7 +630,7 @@ body {
 
 .header-controls {
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 10px;
     display: flex;
     align-items: center;
@@ -1483,5 +1483,16 @@ body.simple-mode .cards-area {
         transform: translateY(0);
     }
 }
+
 /* Force suppress duplication on Wordbook button */
-#wordbookBtn::before, #wordbookBtn::after { content: none !important; display: none !important; }
+#wordbookBtn::before,
+#wordbookBtn::after {
+    content: none !important;
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .pc-only {
+        display: none !important;
+    }
+}

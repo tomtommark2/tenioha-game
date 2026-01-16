@@ -251,8 +251,10 @@ function init() {
     // HOTFIX: Force Wordbook Button Text to avoid duplication
     const wbBtnForce = document.getElementById('wordbookBtn');
     if (wbBtnForce) {
-        // Only "Book" icon and text, no duplication
-        wbBtnForce.innerHTML = '<span>📘 単語帳</span>';
+        // "📘" only on PC, "単語帳" always (but no emoji on mobile)
+        // Structure: <span class="pc-only">📘</span><span> 単語帳</span>
+        // Note: CSS .pc-only { display: none } on mobile handles the icon.
+        wbBtnForce.innerHTML = '<span class="pc-only">📘</span><span> 単語帳</span>';
     }
 
     setupEventListeners();
