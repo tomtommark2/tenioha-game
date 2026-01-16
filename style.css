@@ -1,0 +1,1483 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Deep Space / Magic Purple */
+            background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
+            /* Let's try a fresh "Mystic Teal" or keep purple? 
+               User liked the purple but maybe "Magic" needs more depth. 
+               Let's go nicely deep purple/blue: */
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+            /* Deep Blue */
+            background: linear-gradient(135deg, #9796f0 0%, #fbc7d4 100%);
+            /* Pastel? No. */
+            background: linear-gradient(135deg, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
+            /* Sunset Magic - nice breadth */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            /* Semi-transparent */
+            backdrop-filter: blur(12px);
+            /* Frosted Glass */
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            /* Subtle edge */
+            border-radius: 24px;
+            /* More modern roundness */
+            padding: 57px 30px 30px 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+            /* Colored shadow for depth */
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .level-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: flex-end;
+        }
+
+        .level-btn {
+            background: white;
+            color: #555;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 10px 24px;
+            border-radius: 50px;
+            /* Pill shape */
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .level-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .level-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .file-upload-area {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .file-upload-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .file-upload-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .file-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Progress Bar & Title Styles */
+
+
+        .header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            flex: 1;
+        }
+
+        .points {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+            white-space: nowrap;
+            /* Force single line */
+        }
+
+        .vocab-level {
+            font-size: 18px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .vocab-level-display {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .play-time {
+            font-size: 14px;
+            color: #999;
+            margin-top: 3px;
+        }
+
+        .mode-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .mode-btn {
+            background: #e0e0e0;
+            color: #333;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 90px;
+        }
+
+        .mode-count {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 2px;
+            font-weight: normal;
+        }
+
+        .mode-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .mode-btn.unlearned {
+            background: #90caf9;
+        }
+
+        .mode-btn.learned {
+            background: #4caf50;
+            color: white;
+        }
+
+        .mode-btn.perfect {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .mode-btn.weak {
+            background: #f44336;
+            color: white;
+        }
+
+        .stat-item.perfect {
+            background: #fff9c4;
+        }
+
+        .mode-btn.active {
+            box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .mode-btn:disabled,
+        .mode-btn.disabled {
+            opacity: 0.8;
+            /* Less transparent */
+            cursor: not-allowed;
+            pointer-events: none;
+            filter: grayscale(30%);
+            /* Subtle grayscale */
+        }
+
+        .mode-btn span {
+            white-space: nowrap;
+            /* Prevent text wrapping */
+        }
+
+        .random-notice {
+            font-size: 11px;
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .add-words-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .add-words-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .auto-mode-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            /* Reduced gap */
+            padding: 5px 8px;
+            /* Compact padding */
+            background: transparent;
+            /* Transparent as requested */
+            border: none;
+            /* Border removed */
+            border-radius: 10px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s;
+            /* Ensure alignment in flex/grid */
+            justify-content: center;
+        }
+
+        .auto-mode-container:hover {
+            background: #e9ecef;
+        }
+
+        /* PC/Global Toggle Layout */
+        .toggle-container {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            width: 100%;
+            /* Or auto? Mode buttons below are flex row on PC? */
+            /* PC Mode Buttons are display: flex; gap: 10px; (Line 213) */
+            /* So we want Toggles to align similarly? */
+            margin-bottom: 10px;
+            justify-content: flex-end;
+            /* Right align on PC */
+        }
+
+        .auto-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #9c27b0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .auto-checkbox.checked {
+            background: #9c27b0;
+        }
+
+        .auto-checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .auto-label {
+            font-size: 11px;
+            /* Compact font */
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+        }
+
+        .pos-filter-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        .pos-checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s;
+        }
+
+        .pos-checkbox-item:hover {
+            background: #e9ecef;
+        }
+
+        .pos-checkbox-item input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+
+
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .cards-section {
+            flex: 1;
+        }
+
+        .cards-area {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card {
+            flex: 1;
+            background: white;
+            /* Gradient Border/Glow effect can be done with box-shadow */
+            border: none;
+            border-radius: 20px;
+            padding: 40px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 240px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), inset 0 0 0 2px #f0f0f5;
+            /* Subtle border inset */
+        }
+
+        .card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.25);
+            /* Border highlight on hover */
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.25), inset 0 0 0 2px #667eea;
+        }
+
+        .card:active {
+            transform: translateY(-2px);
+        }
+
+        .card-label {
+            position: absolute;
+            top: 15px;
+            font-size: 14px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .card-content {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .meaning-card .card-content {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .card-back {
+            display: none;
+        }
+
+        .card.flipped .card-front {
+            display: none;
+        }
+
+        .card.flipped .card-back {
+            display: block;
+        }
+
+        .example-area {
+            background: #fff9e6;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .speaker-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .speaker-btn:hover {
+            background: #5568d3;
+            transform: scale(1.1);
+        }
+
+        .undo-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .undo-btn:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .undo-btn:disabled {
+            opacity: 0.5;
+            cursor: default;
+            transform: none;
+        }
+
+        .example-text {
+            flex: 1;
+        }
+
+        .example-label {
+            font-size: 11px;
+            color: #996600;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .example-sentence {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .character-area {
+            width: 200px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .character {
+            font-size: 80px;
+            margin: 20px 0;
+        }
+
+        .character-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .character-level {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .no-words {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .coin-popup {
+            position: fixed;
+            top: 30px;
+            left: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.6);
+            z-index: 1000;
+            animation: popupSlide 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes popupSlide {
+            0% {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateX(10px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .review-badge {
+            position: absolute;
+            top: 50px;
+            right: 15px;
+            background: #4caf50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .character.working .card.working {
+            animation: bounce 0.5s ease-in-out;
+        }
+
+        /* ... previous styles ... */
+        .character-area,
+        .vocab-level,
+        .play-time {
+            display: none !important;
+        }
+
+        /* New generic small button style */
+        .icon-btn {
+            background: #f0f0f0;
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+            color: #666;
+        }
+
+        .icon-btn:hover {
+            background: #e0e0e0;
+            transform: scale(1.1);
+        }
+
+        .header-controls {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 200;
+        }
+
+        .file-info-small {
+            font-size: 12px;
+            color: #888;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* RPG Styles */
+        /* New Stats Position (Top Left) */
+        .stats-absolute {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            z-index: 100;
+            transform: scale(0.8);
+            transform-origin: top left;
+        }
+
+        /* RPG Stage (Now Inline in Header) */
+        .rpg-inline {
+            position: relative;
+            width: 140px;
+            height: 100px;
+            /* Shifting position as requested */
+            top: 40px;
+            left: 40px;
+        }
+
+        .pixel-art {
+            width: 50px;
+            /* Reduced further to 50px to prevent clipping */
+            height: 64px;
+            background-image: url('assets/char_sprite.png?v=17');
+            background-size: 300px 256px;
+            /* Explicit size: 6 cols * 50px, 4 rows * 64px */
+            image-rendering: pixelated;
+            transform: scaleX(-1) scale(2.5);
+            /* Flip horizontally to face Right, Scale 2.5 */
+            transform-origin: center;
+        }
+
+        /* Frames: 0px to -300px via steps(6) */
+        @keyframes sprite-play {
+            from {
+                background-position-x: 0px;
+            }
+
+            to {
+                background-position-x: -300px;
+            }
+        }
+
+        /* Rows */
+        .anim-idle {
+            background-position-y: 0px;
+            animation: sprite-play 1.2s steps(6) infinite;
+        }
+
+        .anim-attack {
+            background-position-y: -64px;
+            /* 2nd Row */
+            animation: sprite-play 0.8s steps(6) infinite;
+            transform: scaleX(1) scale(2.5);
+            /* Flip back to face opposite of Idle */
+        }
+
+        .anim-cheer {
+            background-position-y: -128px;
+            /* 3rd Row */
+            animation: sprite-play 0.8s steps(6) infinite;
+            transform: scaleX(1) scale(2.2);
+            /* Flip back to face opposite of Idle */
+        }
+
+        .anim-slime {
+            background-position-y: -192px;
+            /* 4th Row */
+            animation: sprite-play 0.8s steps(6) infinite;
+
+            position: absolute;
+            left: 80px;
+            /* To the right of the hero */
+            top: 20px;
+            filter: hue-rotate(0deg);
+        }
+
+
+
+        .taking-damage {
+            animation: flash 0.2s infinite;
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Filter Compact Styles */
+        .pos-filter-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            /* Allow scroll on very small screens, but aim for single line */
+            white-space: nowrap;
+        }
+
+        .filter-label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #555;
+            margin-right: 5px;
+        }
+
+        .pos-checkbox-item {
+            font-size: 13px;
+            /* Smaller font */
+            color: #666;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            /* Tight gap between box and text */
+        }
+
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 0px;
+                /* Vertical 20px, Horizontal 0px (Full Width) */
+            }
+
+            /* 1. Container & Layout */
+            .container {
+                width: 100%;
+                /* Fill available space */
+                max-width: 100%;
+                padding: 15px 10px;
+                padding-top: 90px;
+                /* Reverted to 90px */
+                margin: 0 auto;
+            }
+
+            /* 2. Stack Cards Vertically */
+            .header-controls {
+                gap: 5px !important;
+                /* Reduce gap on mobile */
+            }
+
+            .cards-area {
+                flex-direction: column;
+                /* Stack top-to-bottom */
+                gap: 15px;
+                align-items: stretch;
+                /* Cards take full width */
+            }
+
+            .card {
+                width: 100%;
+                /* Full width */
+                min-height: 160px;
+                /* Slightly shorter default */
+            }
+
+            .card .card-content {
+                font-size: 28px;
+                /* Slightly smaller text for long words */
+            }
+
+            /* 3. Adjust Header */
+            .header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+                margin-top: 0px;
+                /* Removed 50px margin to close gap */
+                /* Space for EXP/Stats at top */
+            }
+
+            /* Right Header Controls (Mode, etc) */
+            .header>div:last-child {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                /* Stack auto-toggles above modes */
+                align-items: flex-start !important;
+                position: relative;
+                /* For absolute character positioning inside */
+            }
+
+            /* ALIGNED TOGGLES (Mobile) */
+            /* ALIGNED TOGGLES (Mobile) - OLD Styles Removed/cleaned */
+
+            .auto-mode-container {
+                /* Equal Width */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                /* Transparent as requested */
+                border: none;
+                /* Border removed */
+                border-radius: 8px;
+                padding: 5px;
+                gap: 5px;
+                cursor: pointer;
+                box-sizing: border-box;
+                min-height: 40px;
+            }
+
+            #autoModeToggle {
+                /* margin-left was ineffective due to right-anchoring */
+                position: relative;
+                left: 10px;
+            }
+
+            /* Mode Buttons: 2x2 Grid on RIGHT (40% width) */
+            .mode-buttons {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                /* 2 cols */
+                gap: 8px;
+                width: 100%;
+                /* Changed from auto to 100% */
+                /* Leave 60% for character on Left */
+                min-width: 150px;
+                /* Safe minimum size */
+                margin-top: 10px;
+                margin-left: 0;
+                /* Push to Right side */
+                margin-right: 5px;
+                /* New: Visual spacing from edge */
+            }
+
+            .mode-btn {
+                flex: unset;
+                width: auto;
+                min-width: unset;
+                height: 50px;
+                /* Uniform height */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-size: 13px;
+            }
+
+            /* Hide counts if too cramped, or keep small */
+            .mode-count {
+                font-size: 11px;
+            }
+
+            /* Character: Absolute LEFT of Mode Buttons */
+            .rpg-inline {
+                position: absolute;
+                bottom: -20px;
+                /* Moved down 20px */
+                right: auto;
+                top: auto;
+                left: 20px;
+                /* Moved right 10px (10+10) */
+                transform: scale(0.8);
+                /* Increased by ~20% */
+                transform-origin: bottom left;
+                margin-bottom: 0;
+                z-index: 50;
+                pointer-events: none;
+            }
+
+            /* 4. EXP & Stats: Keep at Top Left */
+            .stats-absolute {
+                transform: scale(0.85);
+                top: 10px;
+                left: 10px;
+                transform-origin: top left;
+                z-index: 100;
+                width: auto;
+            }
+
+            /* Level Selector: Move DOWN below Stats to prevent overlap */
+            .level-selector {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: flex-end;
+                gap: 3px;
+                /* Even tighter gap */
+                padding-right: 0px;
+                overflow-x: auto;
+                /* Allow scroll if needed */
+                padding-bottom: 5px;
+                position: absolute;
+                top: 70px;
+                /* NEW: Reverted to 60px */
+                right: 5px;
+                /* Slightly more space on right */
+                width: auto;
+                max-width: 100%;
+                /* Ensure it doesn't overflow screen width logically */
+                margin: 0;
+            }
+
+            /* Compact Level Buttons for Mobile */
+            .level-selector .level-btn {
+                padding: 4px 8px;
+                /* Extremely compact vertical/horizontal */
+                font-size: 11px;
+                /* Smaller text */
+                white-space: nowrap;
+                min-width: unset;
+                /* Remove any min-width */
+            }
+
+            /* Fix Container padding to account for TALLER fixed header zone */
+            .container {
+                width: 95%;
+                padding: 15px;
+                padding-top: 95px;
+                /* Adjusted to 95px (Shifted up 45px total with margin fix) */
+                /* NEW: Adjusted to 90px (User Req: -20px further) */
+                margin: 0 auto;
+            }
+
+            /* Compact Level Buttons for Mobile */
+            .level-selector .level-btn {
+                padding: 4px 8px;
+                font-size: 11px;
+                white-space: nowrap;
+                min-width: unset;
+            }
+
+            /* Remove huge header margin on mobile */
+            .header {
+                margin-bottom: 5px;
+            }
+
+
+
+            /* 5. Filter Scroll */
+            .pos-filter-container {
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
+            }
+
+            /* 6. Fix Simple Mode Switch Position */
+            .simple-switch-container {
+                top: 55px !important;
+                left: 10px !important;
+            }
+        }
+
+        /* Trial Overlay Styles */
+        .trial-overlay {
+            position: fixed;
+            top: 0;
+            /* Added top:0 to ensure full coverage */
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: none;
+            /* Hidden by default */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .trial-content {
+            background: #2d3436;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 400px;
+        }
+
+        .trial-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff7675;
+            font-weight: bold;
+        }
+
+        .trial-message {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #dfe6e9;
+        }
+
+        .unlock-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #636e72;
+            background: #b2bec3;
+            color: #2d3436;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .unlock-btn {
+            background: #0984e3;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .unlock-btn:hover {
+            background: #74b9ff;
+        }
+
+        .trial-links {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #b2bec3;
+        }
+
+        .trial-links a {
+            color: #74b9ff;
+            text-decoration: none;
+        }
+
+        /* Trial Timer UI */
+        .trial-timer {
+            font-size: 14px;
+            color: #ff7675;
+            font-weight: bold;
+            background: rgba(255, 118, 117, 0.1);
+            padding: 5px 10px;
+            border-radius: 12px;
+            border: 1px solid #ff7675;
+            display: none;
+            /* Hidden by default, shown if trial is active */
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .trial-timer {
+                font-size: 12px;
+                /* reduced from 14px (~15% smaller) */
+                padding: 4px 8px;
+                /* slightly tighter padding */
+            }
+        }
+
+        /* Character Level "Chocon" Display */
+        .char-level-display {
+            position: absolute;
+            top: -20px;
+            /* Float above */
+            right: 0px;
+            /* Centered visually above right-aligned character */
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #667eea;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            white-space: nowrap;
+            pointer-events: none;
+            /* Animation for cute float */
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+
+
+        /* --- SIMPLE MODE STYLES --- */
+        /* --- SIMPLE MODE STYLES --- */
+        /* Specified to BE HIDDEN */
+        body.simple-mode .level-selector,
+        body.simple-mode .header-controls,
+        body.simple-mode .simple-switch-container,
+        body.simple-mode .progress-section,
+        body.simple-mode .mobile-progress-wrapper,
+        body.simple-mode .pos-filter-container,
+        body.simple-mode #trialTimerDisplay,
+        body.simple-mode .mobile-only.header-profile-icon,
+        /* If any specific profile icon class exists */
+        body.simple-mode #headerProfileIcon {
+            display: none !important;
+        }
+
+        body.simple-mode .container {
+            margin-top: 60px;
+            /* Reset reduced padding */
+            max-width: 900px;
+            /* Keep it focused */
+            padding-top: 70px !important;
+            /* Push content down so Gold (top: -42px) has ~30px clear space from container top */
+            /* Gold is relative to .rpg-inline (absolute). 
+               .rpg-inline is at bottom: -20px. 
+               Wait, mobile layout differs. */
+        }
+
+        /* Mobile Specific Adjustment for Simple Mode Layout */
+        @media (max-width: 768px) {
+            body.simple-mode .container {
+                /* On mobile, .rpg-inline is absolute at bottom. 
+                   Gold is top: -42px relative to character.
+                   If we want Gold to be "Top of frame", we might need to shift the character or container.
+                   
+                   Actually, let's look at the Mobile Layout again.
+                   Character is Bottom-Left. Buttons are Right.
+                   Use didn't ask to move Character.
+                   
+                   "Gold notation top 30pix around -> Main frame top edge".
+                   This sounds like "Cut off everything above Gold".
+                   
+                   If the Character is unchanged:
+                   We just hide the header buttons.
+                   The container top edge is defined by .container.
+                */
+                padding-top: 20px !important;
+                /* Standard padding */
+            }
+        }
+
+        body.simple-mode #exitSimpleModeBtn {
+            display: block !important;
+        }
+
+        /* Leaderboard Styles */
+        .ranking-btn {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            border: 1px solid #e67e22;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 10px;
+            /* Adjusted to 10px */
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Center text */
+            width: 102px;
+            /* Fixed width */
+            box-sizing: border-box;
+            gap: 5px;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+        }
+
+        .ranking-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .leaderboard-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .lb-tab {
+            flex: 1;
+            padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: #999;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .lb-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .ranking-list {
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .ranking-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+
+        .ranking-item.is-me {
+            background: #eef2ff;
+            border-left: 4px solid #667eea;
+            font-weight: bold;
+        }
+
+        .rank-num {
+            width: 30px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .rank-num.top3 {
+            color: #e67e22;
+            font-size: 16px;
+        }
+
+        .rank-name {
+            flex: 1;
+            color: #333;
+        }
+
+        .rank-score {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        body.simple-mode .cards-area {
+            margin-top: 20px;
+        }
+
+        /* --- NEW MINI PROGRESS BAR --- */
+        .mini-progress-container {
+            position: absolute;
+            top: -65px;
+            /* Positioned above character */
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: -40px;
+            /* Shift Left 40px */
+            width: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            z-index: 150;
+            pointer-events: none;
+        }
+
+        .mini-title {
+            font-size: 10px;
+            color: #2d3436;
+            /* Dark grey/black for contrast */
+            font-weight: bold;
+            text-shadow:
+                -1px -1px 0 #fff,
+                1px -1px 0 #fff,
+                -1px 1px 0 #fff,
+                1px 1px 0 #fff;
+            /* White outline effect */
+            /* Strong shadow for readability */
+            white-space: nowrap;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .mini-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mini-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00b894, #55efc4);
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 4px rgba(85, 239, 196, 0.5);
+        }
+
+        /* WELCOME LP STYLES */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 20000;
+            /* Highest priority */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .welcome-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .welcome-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .welcome-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .install-btn {
+            background: #fff;
+            color: #667eea;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .install-btn:hover {
+            transform: scale(1.02);
+            background: #f8f9fa;
+        }
+
+        .browser-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .browser-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .divider {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .invite-message {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
