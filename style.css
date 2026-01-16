@@ -47,6 +47,7 @@ body {
     gap: 10px;
     margin-bottom: 20px;
     justify-content: flex-end;
+    margin-right: -10px;
 }
 
 .level-btn {
