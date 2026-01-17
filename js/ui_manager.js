@@ -72,16 +72,27 @@ window.selectWordbook = function (level) {
     }
 
     // Confirmation removed as per user request
-    gameState.currentLevel = level;
-    // Reset level-specific stats potentially? No, just switch.
-    // Try to save
-    if (typeof saveGame === 'function') {
-        saveGame();
+
+    // Check if switchLevel function is available (defined in game_logic.js)
+    if (typeof switchLevel === 'function') {
+        // Use Soft Switch for smoother experience (No Reload)
+        switchLevel(level);
+
+        // Close the modal
+        const modal = document.getElementById('wordbookModal');
+        if (modal) modal.style.display = 'none';
+
     } else {
-        // Fallback save if game_logic not fully ready (unlikely)
-        localStorage.setItem('vocabClickerSave', JSON.stringify(gameState));
+        // Fallback to reload if game_logic not fully ready
+        gameState.currentLevel = level;
+
+        if (typeof saveGame === 'function') {
+            saveGame();
+        } else {
+            localStorage.setItem('vocabClickerSave', JSON.stringify(gameState));
+        }
+        window.location.reload();
     }
-    window.location.reload();
 };
 
 window.openLearningLogModal = function () {

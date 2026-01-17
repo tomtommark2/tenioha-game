@@ -76,6 +76,32 @@ body {
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
+/* Independent class for Wordbook Opener to avoid JS conflicts */
+.wordbook-opener-btn {
+    background: white;
+    color: #555;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.wordbook-opener-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.2);
+}
+
+.wordbook-opener-btn.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
 .file-upload-area {
     background: #f8f9fa;
     border: 2px dashed #667eea;
