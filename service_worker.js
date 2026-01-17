@@ -1,11 +1,15 @@
-const CACHE_NAME = 'vocab-clicker-v2.37';
+const CACHE_NAME = 'vocab-clicker-v2.40';
 const ASSETS = [
     './',
     './vocab_clicker_game.html',
     './icon-512.png',
     './icon-192.png',
     './manifest.json',
-    './scripts/qrcode.min.js'
+    './scripts/qrcode.min.js',
+    './style.css',
+    './js/game_logic.js',
+    './js/ui_manager.js',
+    './data/vocabulary.js'
 ];
 
 self.addEventListener('install', (event) => {
