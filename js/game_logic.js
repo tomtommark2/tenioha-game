@@ -449,9 +449,10 @@ function switchLevel(level) {
 }
 
 function loadVocabularyForLevel() {
-    if (gameState.currentLevel.startsWith('selection')) {
+    if (gameState.currentLevel.startsWith('selection') || gameState.currentLevel === 'sys_2000') {
         const rawWords = vocabularyDatabase[gameState.currentLevel] || [];
         vocabulary = rawWords.map(v => {
+            let processed = v;
             if (v.ref && v.ref !== gameState.currentLevel) {
                 let refCategory = v.ref;
                 let refWordText = v.word;
@@ -468,7 +469,7 @@ function loadVocabularyForLevel() {
                     const refWord = refArray.find(r => r.word === refWordText);
                     if (refWord) {
                         // Merge referenced data (meanings, examples) but keep selection-specific metadata (set, id)
-                        return {
+                        processed = {
                             ...v,
                             meaning: refWord.meaning,
                             phrase: refWord.phrase,
@@ -478,7 +479,16 @@ function loadVocabularyForLevel() {
                     }
                 }
             }
-            return v;
+
+            // Fallback for missing data
+            if (!processed.pos || processed.pos === 'unknown') {
+                processed.pos = 'other';
+            }
+            if (!processed.meaning) {
+                processed.meaning = '（データ準備中）';
+            }
+
+            return processed;
         }).filter(v => {
             // Always include if set is not a number (e.g. "system") or matches current level logic
             if (typeof v.set !== 'number') return true;
