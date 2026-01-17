@@ -6,10 +6,12 @@ service cloud.firestore {
     // Blocked User IDs (Cheaters)
     // Add the specific UID to this list to strictly block all writes
     function isBanned() {
-      // Example: return request.auth.uid in ['UID_123', 'UID_456'];
-      return request.auth.uid in [
-        'Z6gybt3F4Fcq0XrQs64AAHWdxCL2' 
-      ];
+      // Blocked User IDs (Cheaters) & Emails
+      return request.auth.uid in ['Z6gybt3F4Fcq0XrQs64AAHWdxCL2'] ||
+             request.auth.token.email in [
+                 'shanbenkensuke@gmail.com',
+                 'shanbenhassaku839@gmail.com'
+             ];
     }
     // ------------------------------------
 

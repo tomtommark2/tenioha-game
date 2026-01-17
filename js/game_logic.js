@@ -1612,4 +1612,77 @@ function escapeHtml(str) {
 }
 
 init();
-initTrialSystem();
+
+window.openProfileModal = function () {
+    const modal = document.getElementById('profileModal');
+    if (!modal) return;
+    modal.style.display = 'flex';
+
+    // Attempt to update premium status display if function exists
+    if (window.updatePremiumStatusDisplay) {
+        try { window.updatePremiumStatusDisplay(); } catch (e) { }
+    }
+
+    // Attempt to render chart if function exists (Chart.js / Firebase)
+    if (window.updateChart) {
+        setTimeout(() => { window.updateChart('total'); }, 100);
+    } else {
+        const canvas = document.getElementById('learningChart');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.font = "12px sans-serif";
+            ctx.fillStyle = "#666";
+            ctx.fillText("読み込み中...", 20, 50);
+        }
+    }
+};
+
+window.closeProfileModal = function () {
+    const modal = document.getElementById('profileModal');
+    if (modal) modal.style.display = 'none';
+};
+
+// Help Modal Fix
+const helpBtnGlobal = document.getElementById('helpBtn');
+if (helpBtnGlobal) {
+    helpBtnGlobal.onclick = function () {
+        const hModal = document.getElementById('helpModal');
+        if (hModal) hModal.style.display = 'flex';
+    };
+}
+const closeHelpBtnGlobal = document.getElementById('closeHelpModal');
+if (closeHelpBtnGlobal) {
+    closeHelpBtnGlobal.onclick = function () {
+        const hModal = document.getElementById('helpModal');
+        if (hModal) hModal.style.display = 'none';
+    };
+}
+const helpModalGlobal = document.getElementById('helpModal');
+if (helpModalGlobal) {
+    helpModalGlobal.onclick = function (e) {
+        if (e.target === helpModalGlobal) helpModalGlobal.style.display = 'none';
+    }
+}
+
+// Wordbook Modal Fix
+const wbBtnGlobal = document.getElementById('wordbookBtn');
+const wbModalGlobal = document.getElementById('wordbookModal');
+const closeWbGlobal = document.getElementById('closeWordbookModal');
+
+if (wbBtnGlobal && wbModalGlobal) {
+    wbBtnGlobal.onclick = function () {
+        wbModalGlobal.style.display = 'flex';
+    };
+}
+if (closeWbGlobal && wbModalGlobal) {
+    closeWbGlobal.onclick = function () {
+        wbModalGlobal.style.display = 'none';
+    };
+}
+if (wbModalGlobal) {
+    wbModalGlobal.onclick = function (e) {
+        if (e.target === wbModalGlobal) wbModalGlobal.style.display = 'none';
+    };
+}
+

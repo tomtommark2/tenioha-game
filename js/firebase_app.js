@@ -18,7 +18,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
 // --- VERSION CONTROL ---
-const APP_VERSION = 'v2.36'; // MASTER VERSION DEFINITION (Layout Shift Right)
+const APP_VERSION = 'v2.37'; // MASTER VERSION DEFINITION (Learning Log & Graph)
 // Immediately set version strings (DOM is ready due to module defer/position)
 const v1 = document.getElementById('helpVersionDisplay');
 const v2 = document.getElementById('leaderboardVersionDisplay');
@@ -79,6 +79,27 @@ const leaderboardCache = {
     around: { data: null, timestamp: 0 }
 };
 const CACHE_DURATION = 5 * 60 * 1000; // 5 Minutes
+
+let currentLeaderboardTab = 'top';
+
+window.switchTab = function (tab) {
+    currentLeaderboardTab = tab;
+    window.fetchLeaderboard(tab, true).then(data => {
+        // Assuming renderLeaderboard is a global function defined elsewhere
+        if (typeof window.renderLeaderboard === 'function') {
+            window.renderLeaderboard(data.results);
+        }
+    });
+
+    // Update tab active state
+    document.querySelectorAll('.leaderboard-tab-btn').forEach(btn => {
+        if (btn.dataset.tab === tab) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+};
 
 window.fetchLeaderboard = async function (type, force = false) {
     if (!db) return { error: "Firebase not connected" };
@@ -144,42 +165,15 @@ window.fetchLeaderboard = async function (type, force = false) {
 // 3. Auth Functions & Profile Logic
 
 // Profile Helpers
-window.toggleProfileModal = function () {
-    const modal = document.getElementById('profileModal');
-    if (modal.style.display === 'flex') {
-        modal.style.display = 'none';
-    } else {
-        modal.style.display = 'flex';
-        updatePremiumStatusDisplay();
-    }
-};
-window.openProfileModal = function () {
-    document.getElementById('profileModal').style.display = 'flex';
-    updatePremiumStatusDisplay();
-};
-window.closeProfileModal = function () {
-    document.getElementById('profileModal').style.display = 'none';
-};
+// Profile Helpers (UI handled by ui_manager.js)
+// Keeping updatePremiumStatusDisplay as it logic-heavy
+// But toggle/open/close are now in ui_manager.js
 
-// Purchase Modal Helpers (Added v2.29)
-const STRIPE_BASE_URL = "https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01";
-window.openPurchaseModal = function () {
-    const modal = document.getElementById('purchaseModal');
-    if (modal) {
-        modal.style.display = 'flex';
-        // Update Stripe Link with User ID for Webhook
-        const link = document.getElementById('stripePurchaseLink');
-        if (link && userId) {
-            // Decide which ID to use: Auth UID (preferred) or Local ID
-            // Using global 'userId' variable which is kept in sync by onAuthStateChanged
-            link.href = `${STRIPE_BASE_URL}?client_reference_id=${userId}`;
-            console.log("Stripe Link Updated for:", userId);
-        }
-    }
-};
-window.closePurchaseModal = function () {
-    document.getElementById('purchaseModal').style.display = 'none';
-};
+
+// --- PURCHASE MODAL LOGIC ---
+// --- PURCHASE MODAL UI (Moved to ui_manager.js) ---
+// window.openPurchaseModal ...
+// window.closePurchaseModal ...
 
 window.updatePremiumStatusDisplay = function () {
     const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
@@ -809,70 +803,407 @@ window.uploadSaveData = async function (silent = false, force = false) {
             const lastSync = document.getElementById('profileLastSync');
             if (lastSync) lastSync.textContent = new Date().toLocaleString();
         }
+        // Reset Dirty Flag on success
+        window.isDirty = false;
+        console.log("Upload success (Silent:" + silent + ")");
+
+        // TRIGGER DAILY LOG SAVE (New v2.37)
+        // We do this after successful main save to ensure stats are fresh
+        if (window.saveDailyProgress) {
+            window.saveDailyProgress();
+        }
+
     } catch (e) {
-        if (!silent) alert("失敗: " + e.message);
-        console.error(e);
+        if (!silent) alert("アップロード失敗: " + e.message);
+        console.error("Upload Error:", e);
     }
 };
 
-// --- MODAL LOGIC (Restored) ---
-const wordbookBtn = document.getElementById('wordbookBtn');
-const wordbookModal = document.getElementById('wordbookModal');
-const closeWordbookModal = document.getElementById('closeWordbookModal');
-const wordbookItems = document.querySelectorAll('.wordbook-item-btn');
+// --- LEARNING LOG & GRAPH SYSTEM (v2.37) ---
 
-if (wordbookBtn) {
-    wordbookBtn.addEventListener('click', () => {
-        wordbookModal.style.display = 'flex';
-    });
-}
+// Map Internal Levels to CEFR
+const CEFR_MAP = {
+    'junior': 'A1',
+    'basic': 'A2',
+    'daily': 'B1',
+    'exam1': 'B2',
+    'exam1_2': 'B2', // handling potential variants
+    'exam2': 'B2'
+};
 
-if (closeWordbookModal) {
-    closeWordbookModal.addEventListener('click', () => {
-        wordbookModal.style.display = 'none';
-    });
-}
+// Max counts per CEFR level (Approximate for capping)
+const CEFR_MAX = {
+    'A1': 1100, // Junior
+    'A2': 1100, // Basic
+    'B1': 1500, // Daily
+    'B2': 2500, // Exam
+    'total': 6200
+};
 
-// Help Modal Logic
-const helpBtn = document.getElementById('helpBtn');
-const helpModal = document.getElementById('helpModal');
-const closeHelpModal = document.getElementById('closeHelpModal');
+window.saveDailyProgress = async function () {
+    if (!db || !auth.currentUser || typeof gameState === 'undefined') return;
 
-if (helpBtn) {
-    helpBtn.addEventListener('click', () => {
-        helpModal.style.display = 'flex';
-    });
-}
+    try {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const docId = `${yyyy}-${mm}-${dd}`;
 
-if (closeHelpModal) {
-    closeHelpModal.addEventListener('click', () => {
-        helpModal.style.display = 'none';
-    });
-}
+        // 1. Calculate Stats
+        let stats = { A1: 0, A2: 0, B1: 0, B2: 0 };
+        let totalLearned = 0;
 
-if (helpModal) {
-    helpModal.addEventListener('click', (e) => {
-        if (e.target === helpModal) {
-            helpModal.style.display = 'none';
+        // Iterate all wordStates
+        for (const [key, status] of Object.entries(gameState.wordStates)) {
+            // Count 'learned', 'proficient' (legacy?), 'perfect'
+            // In v2.x: 'learned' (blue) and 'perfect' (gold). 
+            // Note: 'proficient' is not used in current logic but maybe legacy.
+            // Let's count 'learned' and 'perfect'.
+            if (status === 'learned' || status === 'perfect') {
+                const parts = key.split('_');
+                const level = parts[0];
+                // Handle 'selection' special levels?
+                // If selection maps to standard levels, we count them based on reference?
+                // Current logic just prefixes level.
+
+                const cefr = CEFR_MAP[level];
+                if (cefr) {
+                    stats[cefr]++;
+                    totalLearned++;
+                }
+            }
+        }
+
+        // 2. Save to Firestore Daily Log
+        const logRef = doc(db, "users", auth.currentUser.uid, "daily_logs", docId);
+
+        await setDoc(logRef, {
+            date: serverTimestamp(), // Use server time for sorting
+            dateString: docId,
+            total_learned: totalLearned,
+            cefr_breakdown: stats,
+            updatedAt: serverTimestamp()
+        }, { merge: true });
+
+        console.log(`Daily Log Saved [${docId}]: Total ${totalLearned}`, stats);
+
+        // 3. Update Parent Doc for fast access
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        await setDoc(userRef, {
+            lastLogDate: docId,
+            currentStats: {
+                total: totalLearned,
+                cefr: stats
+            }
+        }, { merge: true });
+
+    } catch (e) {
+        console.error("Daily Log Save Failed:", e);
+    }
+};
+
+let myPageChart = null;
+
+// Graph Data & Prediction Logic
+window.getChartDataWithPrediction = async function (historyDays = 30) {
+    if (!db || !auth.currentUser) return null;
+
+    const logsRef = collection(db, "users", auth.currentUser.uid, "daily_logs");
+    // Get last 30 days
+    const q = query(logsRef, orderBy("dateString", "desc"), limit(historyDays));
+    const snapshot = await getDocs(q);
+
+    let rawData = [];
+    snapshot.forEach(doc => rawData.push(doc.data()));
+
+    // Sort Ascending (Oldest -> Newest)
+    rawData.reverse();
+
+    if (rawData.length === 0) return null;
+
+    // --- PREDICTION LOGIC ---
+    // 1. Calculate Velocity (Avg Words/Day over last 3 active days)
+    let velocity = 0;
+    if (rawData.length >= 2) {
+        // Take last 3 points (or fewer)
+        const recent = rawData.slice(-4); // Take up to 4 to get 3 intervals?
+        // Let's use simple logic: (Last - First_of_recent) / days
+        const last = recent[recent.length - 1];
+        const first = recent[0];
+
+        // Days diff
+        const d1 = new Date(first.dateString);
+        const d2 = new Date(last.dateString);
+        const dayDiff = Math.max(1, (d2 - d1) / (1000 * 60 * 60 * 24));
+
+        if (dayDiff > 0) {
+            velocity = (last.total_learned - first.total_learned) / dayDiff;
+        }
+    }
+
+    // Cap velocity to avoid crazy projections (e.g. user imported file)
+    // Max 100 words/day reasonable sustained?
+    velocity = Math.min(Math.max(0, velocity), 100);
+
+    // 2. Project Future (30 Days)
+    const lastData = rawData[rawData.length - 1];
+    let projection = [];
+    let currentTotal = lastData.total_learned;
+    // CEFR Projections (Proportional growth?)
+    // Simplified: Project TOTAL, and just flatline breakdowns for now?
+    // User requested "Each Level Caps". 
+    // Complexity: We need velocity PER LEVEL?
+    // Let's implement Per-Level Velocity if possible.
+
+    // Recalculate Velocity Per Level
+    let velocityMap = { A1: 0, A2: 0, B1: 0, B2: 0, total: 0 };
+    if (rawData.length >= 2) {
+        const recent = rawData.slice(-4);
+        const last = recent[recent.length - 1];
+        const first = recent[0];
+        const d1 = new Date(first.dateString);
+        const d2 = new Date(last.dateString);
+        const dayDiff = Math.max(1, (d2 - d1) / (1000 * 60 * 60 * 24));
+
+        ['A1', 'A2', 'B1', 'B2'].forEach(lvl => {
+            const v = ((last.cefr_breakdown[lvl] || 0) - (first.cefr_breakdown[lvl] || 0)) / dayDiff;
+            velocityMap[lvl] = Math.max(0, v); // No negative growth
+        });
+        velocityMap.total = velocityMap.A1 + velocityMap.A2 + velocityMap.B1 + velocityMap.B2;
+    }
+
+    const today = new Date(); // Anchor
+    // Generate Prediction Points (e.g. +5, +10, +20, +30 days)
+    const futureSteps = [5, 10, 20, 30];
+
+    let chartLabels = rawData.map(d => d.dateString.slice(5)); // MM-DD
+    let datasets = {
+        total: rawData.map(d => d.total_learned),
+        A1: rawData.map(d => d.cefr_breakdown.A1 || 0),
+        A2: rawData.map(d => d.cefr_breakdown.A2 || 0),
+        B1: rawData.map(d => d.cefr_breakdown.B1 || 0),
+        B2: rawData.map(d => d.cefr_breakdown.B2 || 0)
+    };
+
+    // Add nulls to existing data for future slots?
+    // Chart.js handles this by having separate datasets or just extending.
+    // Let's extend the arrays with projected values.
+
+    let lastDate = new Date(lastData.dateString);
+
+    // Create continuous daily projection?
+    // Too many points. Let's just do daily for 30 days.
+    for (let i = 1; i <= 30; i++) {
+        let futureDate = new Date(lastDate);
+        futureDate.setDate(lastDate.getDate() + i);
+
+        let mm = String(futureDate.getMonth() + 1).padStart(2, '0');
+        let dd = String(futureDate.getDate()).padStart(2, '0');
+        chartLabels.push(`${mm}-${dd}`);
+
+        ['A1', 'A2', 'B1', 'B2'].forEach(lvl => {
+            let currentVal = datasets[lvl][datasets[lvl].length - 1];
+            let nextVal = currentVal + velocityMap[lvl];
+            // Cap
+            nextVal = Math.min(nextVal, CEFR_MAX[lvl]);
+            datasets[lvl].push(Math.floor(nextVal));
+        });
+
+        // Sum total from parts
+        let totalVal = datasets.A1[datasets.A1.length - 1] + datasets.A2[datasets.A2.length - 1] + datasets.B1[datasets.B1.length - 1] + datasets.B2[datasets.B2.length - 1];
+        datasets.total.push(totalVal);
+    }
+
+    return { labels: chartLabels, datasets, realCount: rawData.length };
+};
+
+// UI: Render Chart
+window.updateChart = async function (type = 'total') {
+    const ctx = document.getElementById('learningChart');
+    if (!ctx) return;
+
+    // Show Loading or Cache?
+    // For now simple wait text?
+
+    // Update Tabs
+    document.querySelectorAll('.chart-tab').forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '#f1f2f6';
+        b.style.color = '#555';
+        if (b.dataset.tab === type) {
+            b.classList.add('active');
+            b.style.background = '#6c5ce7';
+            b.style.color = 'white';
         }
     });
-}
 
-if (wordbookModal) {
-    wordbookModal.addEventListener('click', (e) => {
-        if (e.target === wordbookModal) {
-            wordbookModal.style.display = 'none';
+    const dataObj = await window.getChartDataWithPrediction();
+    if (!dataObj) {
+        ctx.getContext('2d').fillText("データがありません (学習してセーブしてください)", 10, 50);
+        return;
+    }
+
+    // Colors
+    const colors = {
+        total: '#6c5ce7',
+        A1: '#00b894',
+        A2: '#0984e3',
+        B1: '#fdcb6e',
+        B2: '#e17055'
+    };
+
+    // Prepare Dataset for Chart.js
+    // We want Real Data (Solid) vs Prediction (Dashed)?
+    // Chart.js segment styling is complex.
+    // Easier approach: Two datasets. "History" and "Prediction".
+    // History ends at index [realCount - 1].
+    // Prediction starts at index [realCount - 1].
+
+    const cutOff = dataObj.realCount;
+    const fullArr = dataObj.datasets[type];
+
+    const historyData = fullArr.slice(0, cutOff);
+    // Pad prediction with nulls for history part
+    let predictionData = Array(cutOff - 1).fill(null);
+    predictionData.push(historyData[historyData.length - 1]); // Link point
+    predictionData = predictionData.concat(fullArr.slice(cutOff));
+
+    // Stats Text
+    const currentVal = historyData[historyData.length - 1];
+    const projectedVal = fullArr[fullArr.length - 1];
+    const diff = projectedVal - currentVal;
+    document.getElementById('chartStats').innerHTML = `
+        現在: <strong>${currentVal}語</strong> → 
+        30日後予測: <strong style="color: ${colors[type]}">${projectedVal}語</strong> 
+        (+${diff}) <br>
+        <span style="font-size: 10px; color: #999;">※直近のペースに基づく予測です (上限: ${(type === 'total' ? CEFR_MAX.total : CEFR_MAX[type])})</span>
+    `;
+
+    if (myPageChart) myPageChart.destroy();
+
+    myPageChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dataObj.labels,
+            datasets: [
+                {
+                    label: '実績',
+                    data: historyData,
+                    borderColor: colors[type],
+                    backgroundColor: colors[type],
+                    tension: 0.3,
+                    pointRadius: 2
+                },
+                {
+                    label: '予測',
+                    data: predictionData,
+                    borderColor: colors[type],
+                    borderDash: [5, 5],
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    tension: 0.3,
+                    pointRadius: 0,
+                    pointHoverRadius: 0
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: { mode: 'index', intersect: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: (type === 'total' ? 1000 : 500) // Dynamic max?
+                },
+                x: {
+                    display: false // Hide busy X axis labels? Or show just some?
+                }
+            }
         }
     });
+
+};
+
+// Override Profile Modal Open to load Chart
+const originalOpenProfile = window.openProfileModal;
+window.openProfileModal = function () {
+    // Call original logic (UI toggle)
+    document.getElementById('profileModal').style.display = 'flex';
+    if (window.updatePremiumStatusDisplay) window.updatePremiumStatusDisplay();
+
+    // New: Init Chart
+    // Defer slightly to ensure modal is rendered
+    setTimeout(() => {
+        updateChart('total');
+    }, 100);
+};
+
+// FIX: Expose toggleProfileModal for HTML onclick
+window.toggleProfileModal = function () {
+    const modal = document.getElementById('profileModal');
+    if (modal.style.display === 'flex') {
+        window.closeProfileModal();
+    } else {
+        window.openProfileModal();
+    }
+};
+
+window.closeProfileModal = function () {
+    document.getElementById('profileModal').style.display = 'none';
+};
+
+// Expose openProfileModal (already defined but let's be explicit)
+// window.openProfileModal is defined above at line 1139
+
+
+// --- SIMPLE MODE LOGIC (Moved to ui_manager.js) ---
+/*
+window.openSimpleModeModal = ...
+window.startSimpleMode = ...
+window.exitSimpleMode = ...
+*/
+
+// --- SAFE UI INIT (v2.37) ---
+function initUI() {
+    console.log("initUI: Attaching listeners...");
+
+    // Help Modal
+    const helpBtn = document.getElementById('helpBtn');
+    const helpModal = document.getElementById('helpModal');
+    const closeHelpModal = document.getElementById('closeHelpModal');
+
+    if (helpBtn) helpBtn.onclick = () => helpModal.style.display = 'flex';
+    if (closeHelpModal) closeHelpModal.onclick = () => helpModal.style.display = 'none';
+    if (helpModal) helpModal.onclick = (e) => { if (e.target === helpModal) helpModal.style.display = 'none'; };
+
+    // Wordbook Modal (if elements exist)
+    const wbBtn = document.getElementById('wordbookBtn');
+    const wbModal = document.getElementById('wordbookModal');
+    const closeWb = document.getElementById('closeWordbookModal');
+    if (wbBtn && wbModal) wbBtn.onclick = () => wbModal.style.display = 'flex';
+    if (closeWb && wbModal) closeWb.onclick = () => wbModal.style.display = 'none';
+    if (wbModal) wbModal.onclick = (e) => { if (e.target === wbModal) wbModal.style.display = 'none'; };
+
+    // Wordbook Items
+    document.querySelectorAll('.wordbook-item-btn').forEach(btn => {
+        btn.onclick = () => {
+            const level = btn.dataset.level;
+            // Safe call to global switchLevel (game_logic.js)
+            if (typeof switchLevel === 'function') switchLevel(level);
+            if (wbModal) wbModal.style.display = 'none';
+        }
+    });
+
+    // Profile Modal (Extra Safety)
+    const profileBtn = document.getElementById('headerProfileIcon');
+    // Note: headerProfileIcon has onclick="toggleProfileModal()" in HTML, 
+    // which calls window.toggleProfileModal. That is fine.
 }
 
-wordbookItems.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const level = btn.dataset.level;
-        switchLevel(level);
-        wordbookModal.style.display = 'none';
-    });
-});
 
 // --- SERVICE WORKER LOGIC ---
 if ('serviceWorker' in navigator) {
@@ -968,205 +1299,28 @@ window.addEventListener('appinstalled', () => {
 // Removed duplicate 'welcomeDeferredPrompt' and listener.
 // We will misuse the existing 'deferredPrompt' from line 4588.
 
-function initWelcomeSequence() {
-    // 1. PWA vs Browser Detection
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+// initWelcomeSequence logic moved to ui_manager.js
 
-    // 2. URL Param Parsing (Invite Code)
-    const urlParams = new URLSearchParams(window.location.search);
-    const inviteCode = urlParams.get('invite') || urlParams.get('promo');
-
-    if (inviteCode) {
-        console.log("Welcome: Invite code detected:", inviteCode);
-        const welcomeCodeSpan = document.getElementById('welcomeInviteCode');
-        const inviteMsg = document.getElementById('inviteMessage');
-
-        // Show in Welcome LP (if visible)
-        if (welcomeCodeSpan) welcomeCodeSpan.textContent = inviteCode;
-        if (inviteMsg) inviteMsg.style.display = 'block';
-
-        // Auto-fill the main input field
-        const mainInput = document.getElementById('promoCodeInput');
-        if (mainInput) mainInput.value = inviteCode;
-    }
-
-    // 3. Flow Control
-    const hasSkipped = localStorage.getItem('vocabGame_skipWelcome');
-    const welcomeOverlay = document.getElementById('welcomeOverlay');
-
-    if (isStandalone) {
-        // App Mode: Skip LP
-        if (welcomeOverlay) welcomeOverlay.style.display = 'none';
-
-        // --- APP INSTALL BONUS (3 DAYS) ---
-        const hasReceivedBonus = localStorage.getItem('vocabGame_appBonusReceived');
-        if (!hasReceivedBonus) {
-            try {
-                // MODIFIED (v2.13): Do NOT auto-grant. Show Promo Code instead.
-                localStorage.setItem('vocabGame_appBonusReceived', 'true'); // Mark as shown to prevent repeat
-
-                alert("🎉 アプリインストールありがとうございます！ 🎉\n\n感謝の気持ちとして、プレミアム体験（1日間）コードを贈呈します。\n\n【プロモーションコード】\napp\n\n※設定画面の「コード入力」から利用できます。\n※Googleログインが必要です。");
-
-            } catch (e) {
-                console.error("Bonus Alert Failed", e);
-            }
-        }
-
-        return;
-    }
-
-    // Browser Mode
-    if (!hasSkipped) {
-        // Show LP
-        if (welcomeOverlay) welcomeOverlay.style.display = 'flex';
-    } else {
-        // Previously skipped
-        if (welcomeOverlay) welcomeOverlay.style.display = 'none';
-    }
-}
-
-window.triggerInstall = async function () {
-    // Installing implies "Don't show again" preference
-    localStorage.setItem('vocabGame_skipWelcome', 'true');
-
-    // Use the GLOBAL deferredPrompt (shared with Help/Profile)
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const choiceResult = await deferredPrompt.userChoice;
-        if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt');
-            window.dismissWelcome();
-        } else {
-            console.log('User dismissed the A2HS prompt');
-        }
-        deferredPrompt = null;
-    } else {
-        // Fallback Guide
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {
-            alert("【インストール方法】\n\n1. 画面下の共有ボタン[⬆️]をタップ\n2. 「ホーム画面に追加」を選択\n\nこれでアプリとして快適に遊べます！");
-        } else {
-            alert("【インストール方法】\n\nブラウザのメニューから「アプリをインストール」\nまたは「ホーム画面に追加」を選択してください。"); // Chrome, etc.
-        }
-    }
-};
-
-window.dismissWelcome = function () {
-    const welcomeOverlay = document.getElementById('welcomeOverlay');
-    const checkbox = document.getElementById('dontShowWelcomeAgain');
-
-    if (welcomeOverlay) {
-        welcomeOverlay.style.opacity = '0';
-        setTimeout(() => {
-            welcomeOverlay.style.display = 'none';
-            // Version Update Check logic if needed
-            const currentVer = document.getElementById('appVersion') ? document.getElementById('appVersion').innerText : '2.15';
-        }, 300);
-    }
-
-    // Only save skip flag if checkbox is checked
-    if (checkbox && checkbox.checked) {
-        localStorage.setItem('vocabGame_skipWelcome', 'true');
-    }
-};
+// window.triggerInstall moved to ui_manager.js
+// window.dismissWelcome moved to ui_manager.js
 
 // --- SHARE & QR LOGIC ---
-window.openShareModal = function () {
-    console.log("openShareModal called");
-    const modal = document.getElementById('shareModal');
-    const urlDisplay = document.getElementById('shareUrlDisplay');
-    if (modal) {
-        modal.style.display = 'flex';
-        // Use current URL or fallback
-        const shareUrl = window.location.href;
-        if (urlDisplay) urlDisplay.textContent = shareUrl;
-    } else {
-        console.error("shareModal not found!");
-        alert("エラー: シェア画面が見つかりません");
-    }
-};
+// openShareModal and shareApp moved to ui_manager.js
 
-window.shareApp = async function () {
-    const shareData = {
-        title: '英単語学習クリッカー',
-        text: 'ポチポチするだけで英単語が覚えられる！？一緒にやろう！',
-        url: window.location.href
-    };
-
-    if (navigator.share) {
-        try {
-            await navigator.share(shareData);
-        } catch (err) {
-            console.error('Share failed:', err);
-        }
-    } else {
-        // Fallback: Copy to clipboard
-        navigator.clipboard.writeText(shareData.url).then(() => {
-            alert('URLをコピーしました！\nSNSに貼り付けてシェアしてください。');
-        });
-    }
-};
+// rename/cancel/register moved to ui_manager.js
 
 let qrCodeObj = null;
-window.toggleQRCode = function () {
-    const mainContent = document.getElementById('shareMainContent');
-    const qrSection = document.getElementById('qrSection');
-    const qrContainer = document.getElementById('qrcode');
-
-    if (qrSection.style.display === 'none') {
-        // Show QR
-        mainContent.style.display = 'none';
-        qrSection.style.display = 'flex';
-
-        // Remove existing QR if any (to prevent duplicates if URL changes dynamically, though unlikely here)
-        qrContainer.innerHTML = '';
-
-        if (typeof QRCode !== 'undefined') {
-            new QRCode(qrContainer, {
-                text: window.location.href,
-                width: 180,
-                height: 180,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-        } else {
-            qrContainer.innerHTML = 'QRコードライブラリの読み込みに失敗しました。';
-        }
-    } else {
-        // Hide QR
-        qrSection.style.display = 'none';
-        mainContent.style.display = 'block';
-    }
-};
+// toggleQRCode moved to ui_manager.js
 
 // Ensure qrcode library is loaded
 // (It is loaded via script tag below)
 
 // Run Init
-window.addEventListener('load', initWelcomeSequence);
+// Load Listeners handled by ui_manager.js automatically
+// window.addEventListener('load', () => {
+//    initWelcomeSequence();
+//    initUI();
+// });
 
 // --- UPDATE HELPER ---
-window.forceUpdateApp = async () => {
-    if ('serviceWorker' in navigator) {
-        const reg = await navigator.serviceWorker.getRegistration();
-        if (reg) {
-            if (reg.waiting) {
-                reg.waiting.postMessage({ type: 'SKIP_WAITING' });
-                setTimeout(() => window.location.reload(), 500);
-                return;
-            }
-            try {
-                await reg.update();
-                alert('更新を確認しました。最新版であればリロードされます。');
-                setTimeout(() => window.location.reload(), 500);
-            } catch (e) {
-                alert('更新チェックに失敗しました: ' + e);
-            }
-        } else {
-            window.location.reload();
-        }
-    } else {
-        window.location.reload();
-    }
-};
+// forceUpdateApp to ui_manager.js

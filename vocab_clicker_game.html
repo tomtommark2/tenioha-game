@@ -15,6 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -134,16 +135,49 @@
 
     <div class="container" style="position: relative;">
 
-        <!-- Simple Mode Switch (Top Left) -->
-        <div class="simple-switch-container"
-            style="position: absolute; top: 5px; left: 15px; z-index: 200; display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
-            <button class="simple-mode-btn" id="simpleModeBtn" onclick="openSimpleModeModal()"
-                style="background: #fff; border: 1px solid #ddd; padding: 4px 8px; border-radius: 20px; font-size: 10px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; width: 102px; box-sizing: border-box; gap: 5px; color: #555; font-weight: bold;">
-                📱 シンプル表示
+        <!-- Other Menu Button (Top Left) -->
+        <div class="simple-switch-container" style="position: absolute; top: 15px; left: 15px; z-index: 200;">
+            <button id="otherMenuBtn" onclick="toggleOtherMenu()"
+                style="background: white; border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 12px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; padding: 0;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3px; width: 22px; height: 22px;">
+                    <div style="background: #555; border-radius: 2px;"></div>
+                    <div style="background: #555; border-radius: 2px;"></div>
+                    <div style="background: #555; border-radius: 2px;"></div>
+                    <div style="background: #555; border-radius: 2px;"></div>
+                </div>
             </button>
-            <button class="ranking-btn" id="rankingBtn" onclick="openLeaderboard()">
-                👑 ランキング
-            </button>
+            <div style="font-size: 10px; color: #666; font-weight: bold; text-align: center; margin-top: 3px;">その他</div>
+        </div>
+
+        <!-- Other Menu Dropdown (Hidden) -->
+        <div id="otherMenuDropdown"
+            style="display: none; position: absolute; top: 60px; left: 15px; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); width: 200px; z-index: 201; overflow: hidden; border: 1px solid #eee;">
+
+            <!-- Simple Mode -->
+            <div onclick="openSimpleModeModal(); toggleOtherMenu();"
+                style="padding: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background='white'">
+                <span style="font-size: 20px;">📱</span>
+                <span style="font-size: 14px; font-weight: bold; color: #444;">シンプル表示</span>
+            </div>
+
+            <!-- Learning Log (New Modal) -->
+            <div onclick="openLearningLogModal(); toggleOtherMenu();"
+                style="padding: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background='white'">
+                <span style="font-size: 20px;">📊</span>
+                <span style="font-size: 14px; font-weight: bold; color: #444;">学習記録</span>
+            </div>
+
+            <!-- Ranking -->
+            <div onclick="openLeaderboard(); toggleOtherMenu();"
+                style="padding: 15px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background='white'">
+                <span style="font-size: 20px;">👑</span>
+                <span style="font-size: 14px; font-weight: bold; color: #444;">ランキング</span>
+            </div>
+
+            <!-- Account (Profile) Removed -->
         </div>
 
         <!-- Top Right Controls (Upload) -->
@@ -164,7 +198,7 @@
                 </div>
             </div>
 
-            <!-- Profile Icon (New) -->
+            <!-- Profile Icon (Restored) -->
             <div id="headerProfileIcon" onclick="toggleProfileModal()"
                 style="width: 40px; height: 40px; border-radius: 50%; background: #eee; cursor: pointer; overflow: hidden; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
                 <span id="headerProfileInitials" style="font-weight: bold; color: #888; font-size: 14px;">👤</span>
@@ -467,6 +501,26 @@
     </div>
     <!-- UPDATE_PROMPT_MODAL_END -->
 
+    <!-- OFFLINE_ALERT_MODAL_START -->
+    <div id="offlineAlertModal" class="modal-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2147483647; justify-content: center; align-items: center;">
+        <div class="modal-content"
+            style="background: white; padding: 25px; border-radius: 12px; max-width: 85%; width: 320px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div style="font-size: 40px; margin-bottom: 15px;">📡</div>
+            <h3 style="margin-top: 0; color: #333; margin-bottom: 10px;">現在はオフラインです</h3>
+            <p style="color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
+                通信環境のある所で、<br>更新してください。
+            </p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button onclick="document.getElementById('offlineAlertModal').style.display='none'"
+                    style="flex: 1; padding: 12px; background: #dfe6e9; color: #636e72; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- OFFLINE_ALERT_MODAL_END -->
+
     <div id="wordbookModal" class="modal-overlay"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
         <div class="modal-content"
@@ -566,6 +620,84 @@
         </div>
     </div>
 
+    <!-- Learning Log Modal (New) -->
+    <div id="learningLogModal" class="modal-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: flex-start; padding-top: 50px; overflow-y: auto;">
+        <div class="modal-content"
+            style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; margin-bottom: 50px;">
+            <button onclick="document.getElementById('learningLogModal').style.display='none'"
+                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+
+            <h2 style="margin-top: 20px; color: #6c5ce7; margin-bottom: 20px;">📊 学習の記録</h2>
+
+            <!-- New Stats Section (Velocity & Future Vision) -->
+            <div style="position: relative; display: flex; gap: 10px; margin-bottom: 20px;">
+                <!-- Demo Badge -->
+                <div
+                    style="position: absolute; top: -12px; left: 0; background: #ffeaa7; color: #d35400; font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: bold; border: 1px solid #fdcb6e; z-index: 10;">
+                    ※開発中のデモ数値です
+                </div>
+                <!-- Velocity Box (Left) -->
+                <div
+                    style="flex: 1; background: linear-gradient(135deg, #ffffff, #f8f9fa); border-radius: 12px; padding: 15px; border: 1px solid #eee; text-align: left; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -5px; right: 5px; font-size: 30px; opacity: 0.1;">🚀</div>
+                    <div style="font-size: 11px; color: #888; margin-bottom: 5px; font-weight: bold;">現在の成長ペース</div>
+                    <div style="display: flex; align-items: baseline; gap: 3px;">
+                        <span id="statVelocity" style="font-size: 24px; font-weight: bold; color: #2ecc71;">--</span>
+                        <span style="font-size: 12px; color: #666;">語相当 / 日</span>
+                    </div>
+                    <!-- Breakdown -->
+                    <div style="font-size: 9px; color: #aaa; margin-top: 5px;">
+                        <span id="statBreakdownAttempts">アタック 0</span> +
+                        <span id="statBreakdownCorrects">克服 0</span> +
+                        <span id="statBreakdownDiscovery">発見 0</span>
+                    </div>
+                </div>
+
+                <!-- Future Box (Right) -->
+                <div
+                    style="flex: 1.2; background: linear-gradient(135deg, #fff5e6, #fff); border-radius: 12px; padding: 15px; border: 1px solid #ffeaa7; text-align: left; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -5px; right: 5px; font-size: 30px; opacity: 0.1;">🌟</div>
+                    <div style="font-size: 11px; color: #e17055; margin-bottom: 5px; font-weight: bold;">1ヶ月後の到達地点 (予想)
+                    </div>
+                    <div id="statFutureMilestone"
+                        style="font-size: 14px; font-weight: bold; color: #d35400; line-height: 1.4;">
+                        --
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graph Section -->
+            <div id="learningGraphSection" style="margin-bottom: 20px;">
+                <!-- Tabs -->
+                <div style="display: flex; gap: 5px; margin-bottom: 10px; flex-wrap: wrap; justify-content: center;">
+                    <button onclick="updateChart('total')" class="chart-tab active" data-tab="total"
+                        style="padding: 5px 10px; font-size: 12px; border: 1px solid #ddd; background: #6c5ce7; color: white; border-radius: 15px; cursor: pointer;">総合</button>
+                    <button onclick="updateChart('A1')" class="chart-tab" data-tab="A1"
+                        style="padding: 5px 10px; font-size: 12px; border: 1px solid #ddd; background: #f1f2f6; color: #555; border-radius: 15px; cursor: pointer;">A1</button>
+                    <button onclick="updateChart('A2')" class="chart-tab" data-tab="A2"
+                        style="padding: 5px 10px; font-size: 12px; border: 1px solid #ddd; background: #f1f2f6; color: #555; border-radius: 15px; cursor: pointer;">A2</button>
+                    <button onclick="updateChart('B1')" class="chart-tab" data-tab="B1"
+                        style="padding: 5px 10px; font-size: 12px; border: 1px solid #ddd; background: #f1f2f6; color: #555; border-radius: 15px; cursor: pointer;">B1</button>
+                    <button onclick="updateChart('B2')" class="chart-tab" data-tab="B2"
+                        style="padding: 5px 10px; font-size: 12px; border: 1px solid #ddd; background: #f1f2f6; color: #555; border-radius: 15px; cursor: pointer;">B2</button>
+                </div>
+
+                <!-- Canvas -->
+                <div style="position: relative; height: 200px; width: 100%;">
+                    <canvas id="learningChart"></canvas>
+                </div>
+                <div id="chartStats" style="font-size: 12px; color: #666; margin-top: 5px;">
+                    <!-- Stats injected by JS -->
+                </div>
+            </div>
+
+            <p style="font-size: 12px; color: #999;">
+                毎日の学習データがここに蓄積され、<br>未来の成長予測が表示されます。
+            </p>
+        </div>
+    </div>
+
     <!-- Purchase Modal (New) -->
     <div id="purchaseModal" class="modal-overlay"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10003; justify-content: center; align-items: center; padding: 20px;">
@@ -577,7 +709,9 @@
             <h2 style="margin-top: 10px; color: #6c5ce7; margin-bottom: 20px; font-weight: bold;">💎 プレミアムプラン</h2>
             <p style="font-size: 13px; color: #666; margin-bottom: 20px; text-align: left; line-height: 1.6;">
                 1日10分の制限を解除して、無制限に学習できます。<br>
-                <span style="color: #e74c3c; font-weight: bold;">⚠️ログイン後の購入を強く勧めます⚠️</span>
+                <span style="color: #e74c3c; font-weight: bold;">⚠️ログイン後の購入を強く勧めます⚠️</span><br>
+                <a href="legal.html" target="_blank"
+                    style="font-size: 11px; color: #999; text-decoration: underline;">特定商取引法に基づく表記</a>
             </p>
 
             <!-- 1. Stripe (Primary) -->
@@ -631,7 +765,7 @@
             <button onclick="closeProfileModal()"
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
 
-            <h2 style="margin-top: 20px; color: #667eea; margin-bottom: 20px;">マイページ</h2>
+            <h2 style="margin-top: 20px; color: #667eea; margin-bottom: 20px;">アカウント</h2>
 
             <!-- User Info Section -->
             <div
@@ -668,8 +802,13 @@
                 </button>
             </div>
 
+            <!-- Graph Section Removed (Moved to Learning Log Modal) -->
+
             <!-- Action List -->
             <div style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
+
+                <!-- Ranking Button Removed -->
+
 
                 <div id="profileSyncSection"
                     style="display: none; background: #eef2ff; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
@@ -708,10 +847,11 @@
         </div>
     </div>
 
-    <script type="module" src="js/firebase_app.js"></script>
     <script src="scripts/qrcode.min.js"></script>
+    <script src="js/ui_manager.js"></script>
+    <script type="module" src="js/firebase_app.js"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
-        id="currentVersion">v2.36</div>
+        id="currentVersion">v2.37</div>
 </body>
 
 </html>
