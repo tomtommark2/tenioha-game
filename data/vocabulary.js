@@ -8036,6 +8036,7 @@ const DEFAULT_VOCABULARY = {
         { word: "yours", meaning: "あなたのもの", phrase: "it is yours", pos: "代", example: "Is this book yours?", set: 1 },
         { word: "yourself", meaning: "あなた自身", phrase: "by yourself", pos: "代", example: "Do it by yourself.", set: 1 },
         { word: "zoo", meaning: "動物園", phrase: "go to the zoo", pos: "名", example: "There are lions in the zoo.", set: 1 },
+        { word: "solve", meaning: "解決する", phrase: "solve a problem", pos: "動", example: "We need to solve this issue.", set: 1 },
 
 
 
@@ -8149,7 +8150,7 @@ const DEFAULT_VOCABULARY = {
         { word: "wonder", meaning: "", phrase: "wonder", pos: "other", example: "", set: 1, id: 104, ref: "basic" },
         { word: "imagine", meaning: "", phrase: "imagine", pos: "other", example: "", set: 1, id: 105, ref: "junior" },
         { word: "recognize", meaning: "", phrase: "recognize", pos: "other", example: "", set: 1, id: 106, ref: "daily" },
-        { word: "solve", meaning: "を解く，解明する；（困難など）を解決する", phrase: "solve", pos: "other", example: "solve example.", set: 1, id: 107 },
+        { word: "solve", meaning: "", phrase: "", pos: "unknown", example: "", set: 1, id: 107, ref: "junior:solve" },
         { word: "occur", meaning: "", phrase: "occur", pos: "other", example: "", set: 1, id: 108, ref: "daily" },
         { word: "argue", meaning: "", phrase: "argue", pos: "other", example: "", set: 1, id: 109, ref: "basic" },
         { word: "claim", meaning: "", phrase: "claim", pos: "other", example: "", set: 1, id: 110, ref: "basic" },
@@ -10205,7 +10206,7 @@ const DEFAULT_VOCABULARY = {
         { word: "represent", meaning: "", phrase: "represent", pos: "other", example: "", set: 1, id: 208, ref: "basic" },
         { word: "identify", meaning: "", phrase: "identify", pos: "other", example: "", set: 1, id: 209, ref: "exam1" },
         { word: "mention", meaning: "", phrase: "mention", pos: "other", example: "", set: 1, id: 210, ref: "basic" },
-        { word: "solve", meaning: "を解決する", phrase: "solve", pos: "other", example: "solve example.", set: 1, id: 211 },
+        { word: "solve", meaning: "", phrase: "", pos: "unknown", example: "", set: 1, id: 211, ref: "junior:solve" },
         { word: "prove", meaning: "", phrase: "prove", pos: "other", example: "", set: 1, id: 212, ref: "daily" },
         { word: "communicate", meaning: "", phrase: "communicate", pos: "other", example: "", set: 1, id: 213, ref: "basic" },
         { word: "respect", meaning: "", phrase: "respect", pos: "other", example: "", set: 1, id: 214, ref: "daily" },
@@ -11789,7 +11790,7 @@ const DEFAULT_VOCABULARY = {
         { word: "protect", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "daily:protect" },
         { word: "affect", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "daily:affect" },
         { word: "determine", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "daily:determine" },
-        { word: "solve", meaning: "～を解決する", phrase: "solve a problem", pos: "動", example: "We need to solve this issue.", set: "sys_2000" },
+        { word: "solve", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "junior:solve" },
         { word: "contain", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "daily:contain" },
         { word: "discuss", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "junior:discuss" },
         { word: "ignore", meaning: "", phrase: "", pos: "unknown", example: "", set: "sys_2000", ref: "daily:ignore" },
