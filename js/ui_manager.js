@@ -6,7 +6,7 @@
 console.log("UI Manager Loaded");
 
 // --- VERSION & PWA INIT ---
-const APP_VERSION_UI = 'v2.38';
+const APP_VERSION_UI = 'v2.40';
 window.addEventListener('load', () => {
     // Version Display
     const v1 = document.getElementById('helpVersionDisplay');
@@ -35,6 +35,8 @@ function initGlobalUIListeners() {
     if (wbModal) {
         wbModal.onclick = (e) => { if (e.target === wbModal) wbModal.style.display = 'none'; };
         if (closeWbBtn) closeWbBtn.onclick = () => wbModal.style.display = 'none';
+
+        // Removed JS loop for wordbook-item-btn to allow inline onclick to work
     }
 }
 
@@ -61,20 +63,97 @@ window.openProfileModal = function () {
     // Chart logic moved to Learning Log Modal
 };
 
+// Robust Wordbook Selector (Called via inline onclick)
+window.selectWordbook = function (level) {
+    if (!level) return;
+    if (typeof gameState === 'undefined') {
+        alert("ゲームデータの読み込みが完了していません。少々お待ちください。");
+        return;
+    }
+
+    // Confirmation removed as per user request
+    gameState.currentLevel = level;
+    // Reset level-specific stats potentially? No, just switch.
+    // Try to save
+    if (typeof saveGame === 'function') {
+        saveGame();
+    } else {
+        // Fallback save if game_logic not fully ready (unlikely)
+        localStorage.setItem('vocabClickerSave', JSON.stringify(gameState));
+    }
+    window.location.reload();
+};
+
 window.openLearningLogModal = function () {
     const modal = document.getElementById('learningLogModal');
     if (!modal) return;
     modal.style.display = 'flex';
 
-    // Mock Data for Preview Stats (Velocity & Future Vision)
+    // Real Data for Growth Pace
     if (document.getElementById('statVelocity')) {
-        // Example: 20 words / day
-        document.getElementById('statVelocity').textContent = "20";
-    }
-    if (document.getElementById('statFutureMilestone')) {
-        // Example: Can-do level
-        document.getElementById('statFutureMilestone').innerHTML =
-            `海外の子供向けニュースが<br>読めるレベル <span style="font-size:12px; color:#aaa;">(約450語)</span>`;
+        let pace = 0;
+        let total = 0;
+
+        if (typeof gameState !== 'undefined' && gameState.dailyStats) {
+            let totalAnswers = gameState.dailyStats.answers || 0;
+            let daysCount = 1;
+
+            if (gameState.dailyHistory && gameState.dailyHistory.length > 0) {
+                // Get last 7 entries
+                const recentHistory = gameState.dailyHistory.slice(-7);
+                recentHistory.forEach(h => {
+                    totalAnswers += (h.answers || 0);
+                });
+                daysCount += recentHistory.length;
+            }
+
+            const avgAnswers = totalAnswers / daysCount;
+            pace = avgAnswers / 5;
+
+            // For display usage
+            total = avgAnswers;
+        }
+
+        document.getElementById('statVelocity').textContent = pace.toFixed(1);
+
+        // Update Breakdown Area
+        const bdAttempts = document.getElementById('statBreakdownAttempts');
+        if (bdAttempts && bdAttempts.parentElement) {
+            // Simplify breakdown to Total / 5 formula
+            bdAttempts.parentElement.innerHTML = `平均取り組み数: ${total.toFixed(1)} 回 <span style="opacity:0.6;">(÷5)</span>`;
+        }
+
+        // Future Prediction Logic
+        if (document.getElementById('statFutureMilestone')) {
+            const currentTotal = gameState.wordsLearned || 0; // Total words currently mastered/perfect
+            // Future = Current + (Pace * 30 days)
+            const futureTotal = Math.floor(currentTotal + (pace * 30));
+
+            // Evaluation Tiers
+            let evaluation = "";
+            let color = "#aaa"; // default gray
+
+            if (pace < 3) {
+                evaluation = "🚶 マイペース";
+                color = "#95a5a6";
+            } else if (pace < 5) {
+                evaluation = "🏃 良い調子！";
+                color = "#f1c40f"; // Yellow/Orange
+            } else if (pace < 10) {
+                evaluation = "🚴 急上昇中！";
+                color = "#e67e22"; // Orange
+            } else {
+                evaluation = "🚀 ゾーン突入！";
+                color = "#e74c3c"; // Red/Fire
+            }
+
+            document.getElementById('statFutureMilestone').innerHTML =
+                `<div style="display: flex; align-items: baseline; gap: 3px;">` +
+                `<span style="font-size: 24px; font-weight: bold; color: ${color};">約 ${futureTotal.toLocaleString()}</span>` +
+                `<span style="font-size: 12px; color: #666;">語</span>` +
+                `</div>` +
+                `<div style="font-size:12px; color:${color}; font-weight:bold; margin-top:2px;">${evaluation}</div>`;
+        }
     }
 
     // Chart Render safely
@@ -86,55 +165,80 @@ window.openLearningLogModal = function () {
     }
 };
 
-// Mock Chart for Offline/Design Verification
-function renderMockChart() {
-    const canvas = document.getElementById('learningChart');
-    if (!canvas) return;
 
-    // Basic Mock Data Logic to simulate "Future Prediction"
-    // Since we don't have Chart.js in offline/file:// usually (CDN), we check first.
-    if (typeof Chart === 'undefined') {
-        drawSimpleMockChart(canvas);
-        return;
-    }
 
-    // If Chart.js IS cached or available, render mock data
+function renderRealChart(canvas) {
+    if (typeof Chart === 'undefined') return;
     const ctx = canvas.getContext('2d');
 
-    // Destroy previous instance if exists (hacky way without reference)
-    if (window.myChartInstance) {
-        window.myChartInstance.destroy();
-    }
+    // Destroy previous
+    if (window.myChartInstance) window.myChartInstance.destroy();
 
-    // Mock Data: 30 days history + 30 days prediction
     const labels = [];
     const dataHistory = [];
     const dataPrediction = [];
 
-    let current = 100;
-    for (let i = -29; i <= 0; i++) {
-        labels.push(i === 0 ? '今日' : `${i}日`);
-        current += Math.floor(Math.random() * 10) + 5;
-        dataHistory.push(current);
-        dataPrediction.push(null);
+    // 1. Build History Data
+    // History is [{date, answers, wordsLearned}, ...]
+
+    // --- DEBUG: INJECT MOCK DATA (REQUESTED) ---
+    // If history is empty, show 7 days of mock growth for visualization
+    let debugHistory = [];
+    if (!gameState.dailyHistory || gameState.dailyHistory.length === 0) {
+        const base = Math.max(0, (gameState.wordsLearned || 0) - 50);
+        for (let i = 7; i > 0; i--) {
+            debugHistory.push({
+                date: `1/${20 - i}`, // Fake date
+                wordsLearned: base + (i * 5) + Math.floor(Math.random() * 3)
+            });
+        }
+    } else {
+        debugHistory = gameState.dailyHistory;
     }
-    // Prediction start from today
+
+    // Add Past
+    if (debugHistory) {
+        debugHistory.forEach(h => {
+            // simplified date label (MM/DD)
+            const d = h.date ? h.date.slice(5).replace('-', '/') : '';
+            labels.push(d);
+            dataHistory.push(h.wordsLearned || 0);
+            dataPrediction.push(null);
+        });
+    }
+
+    // Add Today
+    labels.push('今日');
+    const current = gameState.wordsLearned || 0;
+    dataHistory.push(current);
+    dataPrediction.push(null); // Last point of history connects to prediction?
+
+    // 2. Build Prediction Data (Next 30 Days)
+    // Connect prediction line to today's value
     dataPrediction[dataPrediction.length - 1] = current;
 
-    for (let i = 1; i <= 30; i++) {
-        labels.push(`+${i}日`);
-        current += 15; // Velocity
-        dataHistory.push(null);
-        dataPrediction.push(current);
+    // Calculate Pace
+    let pace = 0;
+    if (document.getElementById('statVelocity')) {
+        pace = parseFloat(document.getElementById('statVelocity').textContent) || 0;
     }
 
+    // Create 3 milestone points (10 days, 20 days, 30 days) to keep chart clean
+    for (let i = 1; i <= 3; i++) {
+        const days = i * 10;
+        labels.push(`+${days}日`);
+        dataHistory.push(null);
+        dataPrediction.push(Math.floor(current + (pace * days)));
+    }
+
+    // Render
     window.myChartInstance = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
             datasets: [
                 {
-                    label: 'これまでの実績',
+                    label: 'これまでの軌跡',
                     data: dataHistory,
                     borderColor: '#6c5ce7',
                     backgroundColor: 'rgba(108, 92, 231, 0.1)',
@@ -142,7 +246,7 @@ function renderMockChart() {
                     tension: 0.3
                 },
                 {
-                    label: '未来の予測 (Best Self)',
+                    label: '未来の予測',
                     data: dataPrediction,
                     borderColor: '#fab1a0',
                     borderDash: [5, 5],
@@ -156,18 +260,22 @@ function renderMockChart() {
             maintainAspectRatio: false,
             interaction: { mode: 'index', intersect: false },
             plugins: {
-                title: { display: true, text: '学習ロードマップ (デモ表示)' },
+                title: { display: true, text: '学習ロードマップ' },
                 tooltip: { enabled: true }
             },
             scales: {
-                x: { display: false }, // Simplify
                 y: { beginAtZero: true }
             }
         }
     });
 }
 
-function drawSimpleMockChart(canvas) {
+// Keep Mock for fallback if needed (simplified)
+function renderMockChart(canvas) {
+    if (!canvas) canvas = document.getElementById('learningChart');
+    if (!canvas) return;
+
+
     const ctx = canvas.getContext('2d');
     const w = canvas.width;
     const h = canvas.height;

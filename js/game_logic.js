@@ -16,7 +16,9 @@ let gameState = {
     randomMode: true,
     posFilters: ['名', '動', '形', '副', '助', '前', '接', '代', 'other'], // Active POS filters
     vocabLevel: 1,
-    wordsLearned: 0 // Total words moved from unlearned
+    wordsLearned: 0, // Total words moved from unlearned
+    dailyStats: { date: null, answers: 0 }, // New: Track daily interactions for Growth Pace
+    dailyHistory: [] // New: Track past daily stats for averages
 };
 
 // Initialize with default or empty
@@ -261,7 +263,54 @@ function init() {
     }
 
     updateDisplay();
+    updateDisplay();
+    // Initialize Daily Stats date if missing
+    checkDailyReset();
+
+    // Initialize Trial System (Time Limit)
+    if (typeof initTrialSystem === 'function') {
+        initTrialSystem();
+    }
+
     showNextWord();
+}
+
+function checkDailyReset() {
+    // Robust YYYY-MM-DD format (Local Time)
+    const d = new Date();
+    const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    // Ensure dailyStats object exists
+    if (!gameState.dailyStats) {
+        gameState.dailyStats = { date: today, answers: 0 };
+    }
+
+    if (gameState.dailyStats.date !== today) {
+        console.log("Resetting Daily Stats for new day:", today);
+
+        // Push yesterday's stats to history if valid
+        if (gameState.dailyStats.answers > 0) {
+            if (!gameState.dailyHistory) gameState.dailyHistory = [];
+            gameState.dailyHistory.push({
+                ...gameState.dailyStats,
+                wordsLearned: gameState.wordsLearned // Save cumulative words count
+            });
+        }
+
+        gameState.dailyStats = {
+            date: today,
+            answers: 0
+        };
+        // Trigger save to persist the reset state
+        saveGame();
+    }
+}
+
+function incrementDailyStats() {
+    checkDailyReset();
+    if (!gameState.dailyStats.answers) gameState.dailyStats.answers = 0;
+    gameState.dailyStats.answers++;
+    // console.log("Daily Stats Incremented:", gameState.dailyStats.answers);
 }
 
 function setupEventListeners() {
@@ -273,6 +322,7 @@ function setupEventListeners() {
     document.querySelectorAll('.level-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const level = btn.dataset.level;
+            if (!level) return; // Skip buttons like Wordbook that don't switch level directly
             switchLevel(level);
         });
     });
@@ -482,6 +532,9 @@ function saveGame() {
         currentMode: gameState.currentMode,
         vocabLevel: gameState.vocabLevel,
         questionCount: gameState.questionCount,
+        wordsLearned: gameState.wordsLearned, // Ensure wordsLearned is saved
+        dailyStats: gameState.dailyStats, // Fix: Persist Daily Stats
+        dailyHistory: gameState.dailyHistory, // Persist History
         lastSaveTime: Date.now() // Track local save time for Sync Logic
     };
     localStorage.setItem('vocabClickerSave', JSON.stringify(data));
@@ -1012,7 +1065,10 @@ function handleVocabCardClick() {
     }
 
     // Save state for Undo
+    // Save state for Undo
     saveState();
+    saveState();
+    // incrementDailyStats(); // Moved below to exclude "Unlearned -> Perfect" cases
 
     const key = getWordKey(currentWord, gameState.currentLevel);
     let basePoints = 1;
@@ -1025,7 +1081,9 @@ function handleVocabCardClick() {
         gameState.wordStates[key] = 'perfect';
         gameState.wordsLearned++;
         checkLevelUp();
+        // Do NOT increment daily stats here (User logic: Known words don't count for growth)
     } else if (currentState === 'weak') {
+        incrementDailyStats(); // Count effort
         gameState.wordStates[key] = 'learned';
         basePoints = 2; // User Request: 2 points for weak (Priority)
         msg = "✅ 克服！";
@@ -1036,14 +1094,17 @@ function handleVocabCardClick() {
         gameState.wordStates[key] = 'perfect';
         basePoints = 1; // Default 1
         msg = "🏆 完璧マスター！";
+        incrementDailyStats(); // Count effort
     } else if (currentState === 'perfect') {
         // Stay perfect
         basePoints = 1; // Default 1
         msg = "✨ 完璧維持！";
+        incrementDailyStats(); // Count effort
     } else {
         // Fallback
         gameState.wordStates[key] = 'perfect';
         basePoints = 1;
+        incrementDailyStats();
     }
 
     const finalPoints = basePoints * gameState.vocabLevel;
@@ -1074,7 +1135,9 @@ function handleMeaningCardClick(e) {
 
     if (!gameState.meaningCardFlipped) {
         // Save state for Undo
+        // Save state for Undo
         saveState();
+        incrementDailyStats(); // Track interaction for Growth Pace
 
         // Flip = Incorrect / Check
         card.classList.add('flipped');

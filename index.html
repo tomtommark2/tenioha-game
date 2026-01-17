@@ -216,7 +216,9 @@
             <button class="level-btn active" data-level="basic">📚 基礎</button>
             <button class="level-btn" data-level="daily">🎬 標準</button>
             <button class="level-btn" data-level="exam1">📖 受験</button>
-            <button class="level-btn" id="wordbookBtn" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);">
+            <button class="level-btn" id="wordbookBtn"
+                onclick="document.getElementById('wordbookModal').style.display='flex'"
+                style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);">
                 <span class="pc-only">📘</span><span> 単語帳</span>
             </button>
         </div>
@@ -413,7 +415,7 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; justify-content: center; align-items: center;">
         <div class="modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 450px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-            <button id="closeHelpModal"
+            <button id="closeHelpModal" onclick="document.getElementById('helpModal').style.display='none'"
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
             <!-- Version Display (Top Left) -->
             <div style="position: absolute; top: 15px; left: 15px;">
@@ -528,20 +530,23 @@
             <h2 style="margin-top: 0; color: #333;">単語帳を選択</h2>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
                 <button class="wordbook-item-btn" data-level="selection1900"
+                    onclick="if(window.selectWordbook){selectWordbook('selection1900')}else{alert('システム読み込み中です。少々お待ち下さい。')}"
                     style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
                     <span style="font-size: 24px;">🦖</span> 厳選 1900+
                 </button>
                 <button class="wordbook-item-btn" data-level="selection1400"
+                    onclick="if(window.selectWordbook){selectWordbook('selection1400')}else{alert('システム読み込み中です。少々お待ち下さい。')}"
                     style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
                     <span style="font-size: 24px;">🐕</span> 厳選 1400+
                 </button>
                 <button class="wordbook-item-btn" data-level="sys_2000"
+                    onclick="if(window.selectWordbook){selectWordbook('sys_2000')}else{alert('システム読み込み中です。少々お待ち下さい。')}"
                     style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
                     <span style="font-size: 24px;">💻</span> システムWORDS (2077語)
                 </button>
                 <!-- Future wordbooks can be added here -->
             </div>
-            <button id="closeWordbookModal"
+            <button id="closeWordbookModal" onclick="document.getElementById('wordbookModal').style.display='none'"
                 style="margin-top: 20px; padding: 8px 20px; border: none; background: #ddd; border-radius: 5px; cursor: pointer;">閉じる</button>
         </div>
     </div>
@@ -640,25 +645,26 @@
                 <!-- Velocity Box (Left) -->
                 <div
                     style="flex: 1; background: linear-gradient(135deg, #ffffff, #f8f9fa); border-radius: 12px; padding: 15px; border: 1px solid #eee; text-align: left; position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: -5px; right: 5px; font-size: 30px; opacity: 0.1;">🚀</div>
-                    <div style="font-size: 11px; color: #888; margin-bottom: 5px; font-weight: bold;">現在の成長ペース</div>
+                    <div style="position: absolute; top: -5px; right: 5px; font-size: 30px; opacity: 0.4;">🚀</div>
+                    <div style="font-size: 11px; color: #888; margin-bottom: 5px; font-weight: bold;">
+                        新語習得力<br>
+                        <span style="font-size:9px; font-weight:normal; opacity:0.8;">(知らない単語を覚える力)</span>
+                    </div>
                     <div style="display: flex; align-items: baseline; gap: 3px;">
                         <span id="statVelocity" style="font-size: 24px; font-weight: bold; color: #2ecc71;">--</span>
                         <span style="font-size: 12px; color: #666;">語相当 / 日</span>
                     </div>
                     <!-- Breakdown -->
                     <div style="font-size: 9px; color: #aaa; margin-top: 5px;">
-                        <span id="statBreakdownAttempts">アタック 0</span> +
-                        <span id="statBreakdownCorrects">克服 0</span> +
-                        <span id="statBreakdownDiscovery">発見 0</span>
+                        <span id="statBreakdownAttempts">苦手取り組み数: 0 回 <span style="opacity:0.6;">(÷5)</span></span>
                     </div>
                 </div>
 
                 <!-- Future Box (Right) -->
                 <div
                     style="flex: 1.2; background: linear-gradient(135deg, #fff5e6, #fff); border-radius: 12px; padding: 15px; border: 1px solid #ffeaa7; text-align: left; position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: -5px; right: 5px; font-size: 30px; opacity: 0.1;">🌟</div>
-                    <div style="font-size: 11px; color: #e17055; margin-bottom: 5px; font-weight: bold;">1ヶ月後の到達地点 (予想)
+                    <div style="position: absolute; top: -5px; right: 5px; font-size: 30px; opacity: 0.4;">🌟</div>
+                    <div style="font-size: 11px; color: #e17055; margin-bottom: 5px; font-weight: bold;">1ヶ月後の習得語数 (予想)
                     </div>
                     <div id="statFutureMilestone"
                         style="font-size: 14px; font-weight: bold; color: #d35400; line-height: 1.4;">
@@ -848,10 +854,10 @@
     </div>
 
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/ui_manager.js"></script>
+    <script src="js/ui_manager.js?v=2.40"></script>
     <script type="module" src="js/firebase_app.js"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
-        id="currentVersion">v2.37</div>
+        id="currentVersion">v2.40</div>
 </body>
 
 </html>
