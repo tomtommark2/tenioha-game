@@ -1166,7 +1166,6 @@ window.updateChart = async function (type = 'total') {
         }
     });
 };
-};
 
 // Override Profile Modal Open to load Chart
 const originalOpenProfile = window.openProfileModal;
