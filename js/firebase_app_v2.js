@@ -994,24 +994,80 @@ window.getMonthlyStats = async function () {
     };
     let isRealData = new Array(30).fill(true);
 
-    dates.forEach((dateStr) => {
+    dates.forEach((dateStr, index) => {
         const dPart = new Date(dateStr);
         labels.push(`${dPart.getMonth() + 1}/${dPart.getDate()}`);
 
-        if (logMap.has(dateStr)) {
-            const data = logMap.get(dateStr);
-            datasets.total.push(data.total_learned || 0);
-            datasets.A1.push(data.cefr_breakdown?.A1 || 0);
-            datasets.A2.push(data.cefr_breakdown?.A2 || 0);
-            datasets.B1.push(data.cefr_breakdown?.B1 || 0);
-            datasets.B2.push(data.cefr_breakdown?.B2 || 0);
+        if (index < 29) {
+            // PAST: Use stored logs or 0
+            if (logMap.has(dateStr)) {
+                const data = logMap.get(dateStr);
+                isRealData.push(true);
+                datasets.total.push(data.total_learned || 0);
+                datasets.A1.push(data.cefr_breakdown?.A1 || 0);
+                datasets.A2.push(data.cefr_breakdown?.A2 || 0);
+                datasets.B1.push(data.cefr_breakdown?.B1 || 0);
+                datasets.B2.push(data.cefr_breakdown?.B2 || 0);
+            } else {
+                isRealData.push(false);
+                datasets.total.push(0);
+                datasets.A1.push(0);
+                datasets.A2.push(0);
+                datasets.B1.push(0);
+                datasets.B2.push(0);
+            }
         } else {
-            // Missing data = 0
-            datasets.total.push(0);
-            datasets.A1.push(0);
-            datasets.A2.push(0);
-            datasets.B1.push(0);
-            datasets.B2.push(0);
+            // TODAY: Live Calculation (Robust Match with Local)
+            const vDB = window.vocabularyDatabase || (typeof vocabularyDatabase !== 'undefined' ? vocabularyDatabase : null);
+            const gs = typeof gameState !== 'undefined' ? gameState : (window.gameState || null);
+
+            if (gs && gs.wordStates && vDB) {
+                // Helper to match getWordKey logic
+                const getKey = (wordObj, level) => {
+                    if (wordObj.ref && wordObj.ref !== level) {
+                        let refCategory = wordObj.ref;
+                        let refWordText = wordObj.word;
+                        if (wordObj.ref.includes(':')) {
+                            const parts = wordObj.ref.split(':');
+                            refCategory = parts[0];
+                            refWordText = parts[1];
+                        }
+                        return `${refCategory}_${refWordText}`;
+                    }
+                    return `${level}_${wordObj.word}`;
+                };
+
+                const countCategory = (catName) => {
+                    const words = vDB[catName] || [];
+                    let c = 0;
+                    words.forEach(w => {
+                        const k = getKey(w, catName);
+                        if (gs.wordStates[k] === 'perfect') c++;
+                    });
+                    return c;
+                };
+
+                let countA1 = countCategory('junior');
+                let countA2 = countCategory('basic');
+                let countB1 = countCategory('daily');
+                let countB2 = countCategory('exam1');
+                const countTotal = countA1 + countA2 + countB1 + countB2;
+
+                isRealData.push(true);
+                datasets.total.push(countTotal);
+                datasets.A1.push(countA1);
+                datasets.A2.push(countA2);
+                datasets.B1.push(countB1);
+                datasets.B2.push(countB2);
+            } else {
+                // Fallback if data missing (should be rare)
+                isRealData.push(false);
+                datasets.total.push(0);
+                datasets.A1.push(0);
+                datasets.A2.push(0);
+                datasets.B1.push(0);
+                datasets.B2.push(0);
+            }
         }
     });
 
