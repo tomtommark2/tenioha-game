@@ -20,6 +20,7 @@ let gameState = {
     dailyStats: { date: null, answers: 0 }, // New: Track daily interactions for Growth Pace
     dailyHistory: [] // New: Track past daily stats for averages
 };
+window.gameState = gameState; // Expose for fallback scripts
 
 // Initialize with default or empty
 let vocabularyDatabase = (typeof DEFAULT_VOCABULARY !== 'undefined') ? JSON.parse(JSON.stringify(DEFAULT_VOCABULARY)) : {
@@ -563,6 +564,8 @@ function loadGame() {
     if (saved) {
         const data = JSON.parse(saved);
         gameState = { ...gameState, ...data };
+        // Fix: Update global reference for fallback scripts
+        window.gameState = gameState;
     }
 }
 
@@ -639,6 +642,64 @@ function getWordsByMode(mode) {
     });
     return filterWordsByPOS(modeWords);
 }
+
+// --- HISTORY SYNC (v2.46.33) ---
+window.updateDailyHistory = function () {
+    const d = new Date();
+    const todayStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    // Robust Count Logic (Mirrors Chart Logic)
+    let countA1 = 0, countA2 = 0, countB1 = 0, countB2 = 0;
+
+    // Iterate specific categories to ensure accuracy
+    const getCount = (cat) => {
+        const words = vocabularyDatabase[cat] || [];
+        let c = 0;
+        words.forEach(w => {
+            const k = getWordKey(w, cat);
+            if (gameState.wordStates[k] === 'perfect') c++;
+        });
+        return c;
+    };
+
+    countA1 = getCount('junior');
+    countA2 = getCount('basic');
+    countB1 = getCount('daily');
+    countB2 = getCount('exam1');
+    const total = countA1 + countA2 + countB1 + countB2;
+
+    // Update Global WordsLearned just in case
+    gameState.wordsLearned = total;
+
+    // Find Today's Entry
+    if (!gameState.dailyHistory) gameState.dailyHistory = [];
+
+    const existingIndex = gameState.dailyHistory.findIndex(h => h.date === todayStr);
+
+    const entryData = {
+        date: todayStr,
+        wordsLearned: total,
+        answers: gameState.dailyStats ? gameState.dailyStats.answers : 0,
+        cefr_breakdown: {
+            A1: countA1,
+            A2: countA2,
+            B1: countB1,
+            B2: countB2
+        }
+    };
+
+    if (existingIndex !== -1) {
+        // Update
+        gameState.dailyHistory[existingIndex] = { ...gameState.dailyHistory[existingIndex], ...entryData };
+    } else {
+        // Create
+        gameState.dailyHistory.push(entryData);
+    }
+
+    // Persist immediately
+    saveGame();
+    console.log("History Synced:", entryData);
+};
 
 function getEligibleLearnedWords() {
     const learnedWords = getWordsByMode('learned');

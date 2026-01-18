@@ -18,7 +18,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
 // --- VERSION CONTROL ---
-const APP_VERSION = "v2.41"; // MASTER VERSION DEFINITION (Learning Log & Graph)
+const APP_VERSION = "v2.50"; // MASTER VERSION DEFINITION (Learning Log & Graph)
 // Immediately set version strings (DOM is ready due to module defer/position)
 const v1 = document.getElementById('helpVersionDisplay');
 const v2 = document.getElementById('leaderboardVersionDisplay');
@@ -913,7 +913,7 @@ const GRAPH_SCALES = {
     A1: { max: 1221, label: 'Junior (A1)' },
     A2: { max: 1448, label: 'Basic (A2)' },
     B1: { max: 2480, label: 'Daily (B1)' },
-    B2: { max: 2869, label: 'Exam1 (B2)' }
+    B2: { max: 2869, label: 'Exam1 (B2)', stepSize: 500 }
 };
 
 // Graph Data Logic - Simple Monthly Stats
@@ -948,48 +948,28 @@ window.getMonthlyStats = async function () {
         dates.push(`${yyyy}-${mm}-${dd}`);
     }
 
-    // DEMO DATA GENERATION (If no real data)
-    // Custom curves for each level to look realistic
-    if (!hasRealData) {
-        // Generators relative to max values
-        // Total: steady growth 200 -> 600
-        // A1: 50 -> 400
-        // A2: 0 -> 200
-        // B1: 0
-        // B2: 0
 
-        // Helper to generate a walk
-        const genWalk = (start, stepMax, limit) => {
-            let val = start;
-            let arr = [];
-            for (let i = 0; i < 30; i++) {
-                if (Math.random() > 0.4) val += Math.floor(Math.random() * stepMax);
-                if (val > limit) val = limit;
-                arr.push(val);
-            }
-            return arr;
-        };
 
-        const demoTotal = genWalk(250, 20, GRAPH_SCALES.total.max);
-        const demoA1 = genWalk(100, 15, GRAPH_SCALES.A1.max);
-        const demoA2 = genWalk(50, 10, GRAPH_SCALES.A2.max);
-        const demoB1 = genWalk(20, 5, GRAPH_SCALES.B1.max);
-        const demoB2 = genWalk(0, 5, GRAPH_SCALES.B2.max);
+    // CHECK LOCAL HISTORY (Merged with Cloud Data)
+    // We treat all data as "Real" (or 0 if missing). No more Demo.
+    const gs = typeof gameState !== 'undefined' ? gameState : null;
 
-        dates.forEach((dateStr, index) => {
-            logMap.set(dateStr, {
-                total_learned: demoTotal[index],
-                cefr_breakdown: {
-                    A1: demoA1[index],
-                    A2: demoA2[index],
-                    B1: demoB1[index],
-                    B2: demoB2[index]
+    if (gs && gs.dailyHistory && gs.dailyHistory.length > 0) {
+        // console.log("Graph: Using Local History for Guest/Offline");
+        gs.dailyHistory.forEach(h => {
+            if (h.date) {
+                if (!logMap.has(h.date)) {
+                    logMap.set(h.date, {
+                        total_learned: h.wordsLearned,
+                        cefr_breakdown: { A1: 0, A2: 0, B1: 0, B2: 0 } // Simplified
+                    });
+                    hasRealData = true;
                 }
-            });
+            }
         });
     }
 
-    // Build continuous datasets
+    // Initialize Arrays
     let labels = [];
     let datasets = {
         total: [],
@@ -998,37 +978,73 @@ window.getMonthlyStats = async function () {
         B1: [],
         B2: []
     };
-    let isRealData = [];
+    let isRealData = new Array(30).fill(true);
 
-    let lastKnown = { total: 0, A1: 0, A2: 0, B1: 0, B2: 0 };
-
-    dates.forEach(dateStr => {
-        // Label: M/D (No zero padding for better read)
+    dates.forEach((dateStr, index) => {
         const dPart = new Date(dateStr);
         labels.push(`${dPart.getMonth() + 1}/${dPart.getDate()}`);
 
-        if (logMap.has(dateStr)) {
-            const data = logMap.get(dateStr);
-            lastKnown.total = data.total_learned || 0;
-            if (data.cefr_breakdown) {
-                lastKnown.A1 = data.cefr_breakdown.A1 || 0;
-                lastKnown.A2 = data.cefr_breakdown.A2 || 0;
-                lastKnown.B1 = data.cefr_breakdown.B1 || 0;
-                lastKnown.B2 = data.cefr_breakdown.B2 || 0;
-            }
-            isRealData.push(true);
-        } else {
-            isRealData.push(false);
-        }
+        // Logic Split: History vs Today
+        if (index < 29) {
+            // PAST: Use stored logs
+            if (logMap.has(dateStr)) {
+                const data = logMap.get(dateStr);
+                datasets.total.push(data.total_learned || 0);
 
-        datasets.total.push(lastKnown.total);
-        datasets.A1.push(lastKnown.A1);
-        datasets.A2.push(lastKnown.A2);
-        datasets.B1.push(lastKnown.B1);
-        datasets.B2.push(lastKnown.B2);
+                if (data.cefr_breakdown) {
+                    datasets.A1.push(data.cefr_breakdown.A1 || 0);
+                    datasets.A2.push(data.cefr_breakdown.A2 || 0);
+                    datasets.B1.push(data.cefr_breakdown.B1 || 0);
+                    datasets.B2.push(data.cefr_breakdown.B2 || 0);
+                } else {
+                    datasets.A1.push(0);
+                    datasets.A2.push(0);
+                    datasets.B1.push(0);
+                    datasets.B2.push(0);
+                }
+            } else {
+                // If missing history, just show 0
+                datasets.total.push(0);
+                datasets.A1.push(0);
+                datasets.A2.push(0);
+                datasets.B1.push(0);
+                datasets.B2.push(0);
+            }
+        } else {
+            // TODAY (Index 29): Use Live Game State (Count Perfects)
+            if (gs && gs.wordStates) {
+                let countA1 = 0; // junior
+                let countA2 = 0; // basic
+                let countB1 = 0; // daily
+                let countB2 = 0; // exam1
+
+                Object.entries(gs.wordStates).forEach(([key, state]) => {
+                    if (state !== 'perfect') return;
+                    if (key.startsWith('junior_')) countA1++;
+                    else if (key.startsWith('basic_')) countA2++;
+                    else if (key.startsWith('daily_')) countB1++;
+                    else if (key.startsWith('exam1_')) countB2++;
+                });
+
+                const countTotal = countA1 + countA2 + countB1 + countB2;
+
+                datasets.total.push(countTotal);
+                datasets.A1.push(countA1);
+                datasets.A2.push(countA2);
+                datasets.B1.push(countB1);
+                datasets.B2.push(countB2);
+            } else {
+                // Fallback
+                datasets.total.push(0);
+                datasets.A1.push(0);
+                datasets.A2.push(0);
+                datasets.B1.push(0);
+                datasets.B2.push(0);
+            }
+        }
     });
 
-    return { labels, datasets, isRealData, isDemo: !hasRealData };
+    return { labels, datasets, isRealData, isDemo: false };
 };
 
 // UI: Render Chart
@@ -1144,10 +1160,18 @@ window.updateChart = async function (type = 'total') {
                 x: {
                     grid: { display: false },
                     ticks: {
-                        maxTicksLimit: 6, // Reduced to prevent crowding
+                        stepSize: scaleConfig.stepSize || undefined,
+                        maxTicksLimit: 20,
+                        autoSkip: false,
+                        callback: function (value) { if (value % 1 === 0) { return value; } },
                         maxRotation: 0,
                         font: { size: 10 },
                         color: '#aaa'
+                    },
+                    afterBuildTicks: function (axis) {
+                        if (scaleConfig.max === 2869) { // B2 Specific
+                            axis.ticks = [0, 500, 1000, 1500, 2000, 2500, 2869].map(v => ({ value: v }));
+                        }
                     }
                 },
                 y: {
@@ -1166,7 +1190,7 @@ window.updateChart = async function (type = 'total') {
         }
     });
 };
-};
+
 
 // Override Profile Modal Open to load Chart
 const originalOpenProfile = window.openProfileModal;
@@ -1361,6 +1385,10 @@ let qrCodeObj = null;
 //    initWelcomeSequence();
 //    initUI();
 // });
+
+// --- DEBUG / VERIFICATION HELPERS ---
+// Debug functions removed in v2.50
+
 
 // --- UPDATE HELPER ---
 // forceUpdateApp to ui_manager.js

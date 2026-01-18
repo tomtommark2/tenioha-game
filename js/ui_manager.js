@@ -6,7 +6,7 @@
 console.log("UI Manager Loaded");
 
 // --- VERSION & PWA INIT ---
-const APP_VERSION_UI = 'v2.40';
+const APP_VERSION_UI = 'v2.50';
 window.addEventListener('load', () => {
     // Version Display
     const v1 = document.getElementById('helpVersionDisplay');
@@ -131,7 +131,7 @@ window.openLearningLogModal = function () {
         const bdAttempts = document.getElementById('statBreakdownAttempts');
         if (bdAttempts && bdAttempts.parentElement) {
             // Simplify breakdown to Total / 5 formula
-            bdAttempts.parentElement.innerHTML = `平均取り組み数: ${total.toFixed(1)} 回 <span style="opacity:0.6;">(÷5)</span>`;
+            bdAttempts.parentElement.innerHTML = `苦手取り組み数: ${total.toFixed(1)} 回 <span style="opacity:0.6;">(÷5)</span>`;
         }
 
         // Future Prediction Logic
@@ -163,7 +163,7 @@ window.openLearningLogModal = function () {
                 `<span style="font-size: 24px; font-weight: bold; color: ${color};">約 ${futureTotal.toLocaleString()}</span>` +
                 `<span style="font-size: 12px; color: #666;">語</span>` +
                 `</div>` +
-                `<div style="font-size:12px; color:${color}; font-weight:bold; margin-top:2px;">${evaluation}</div>`;
+                `<div style="font-size:12px; color:${color}; font-weight:bold; margin-top:5px;">${evaluation}</div>`;
         }
     }
 
@@ -171,8 +171,15 @@ window.openLearningLogModal = function () {
     if (window.updateChart) {
         setTimeout(() => { window.updateChart('total'); }, 100);
     } else {
-        // Safe Fallback for offline/no-module: Render Mock Data
-        setTimeout(() => { renderMockChart(); }, 100);
+        // Fallback removed as per user request to avoid confusion
+        console.error("updateChart function not found. Graph scripts may have failed to load.");
+        const chartContainer = document.getElementById('learningGraphSection');
+        if (chartContainer) {
+            // Optional: Show error or just leave blank?
+            // User prefers no misleading graph.
+            // We can just leave it or show a text indicating loading error.
+            // For now, let's just log it. 
+        }
     }
 };
 
@@ -187,173 +194,125 @@ function renderRealChart(canvas) {
 
     const labels = [];
     const dataHistory = [];
-    const dataPrediction = [];
 
-    // 1. Build History Data
-    // History is [{date, answers, wordsLearned}, ...]
-
-    // --- DEBUG: INJECT MOCK DATA (REQUESTED) ---
-    // If history is empty, show 7 days of mock growth for visualization
-    let debugHistory = [];
-    if (!gameState.dailyHistory || gameState.dailyHistory.length === 0) {
-        const base = Math.max(0, (gameState.wordsLearned || 0) - 50);
-        for (let i = 7; i > 0; i--) {
-            debugHistory.push({
-                date: `1/${20 - i}`, // Fake date
-                wordsLearned: base + (i * 5) + Math.floor(Math.random() * 3)
-            });
-        }
-    } else {
-        debugHistory = gameState.dailyHistory;
+    // --- GAP FILL DATA (Past 30 Days) ---
+    // Generate dates
+    let dates = [];
+    let today = new Date();
+    for (let i = 29; i >= 0; i--) {
+        let d = new Date();
+        d.setDate(today.getDate() - i);
+        let yyyy = d.getFullYear();
+        let mm = String(d.getMonth() + 1).padStart(2, '0');
+        let dd = String(d.getDate()).padStart(2, '0');
+        dates.push(`${yyyy}-${mm}-${dd}`);
     }
 
-    // Add Past
-    if (debugHistory) {
-        debugHistory.forEach(h => {
-            // simplified date label (MM/DD)
-            const d = h.date ? h.date.slice(5).replace('-', '/') : '';
-            labels.push(d);
-            dataHistory.push(h.wordsLearned || 0);
-            dataPrediction.push(null);
+    // Map history
+    let historyMap = new Map();
+    if (gameState.dailyHistory) {
+        gameState.dailyHistory.forEach(h => {
+            // Standardize format if needed, assuming YYYY-MM-DD or similar
+            // If gameState uses M/D, we need to be careful.
+            // Let's assume gameState.dailyHistory keys are consistent.
+            // Actually, let's just use what we have or fill gaps.
+            historyMap.set(h.date, h.wordsLearned);
         });
     }
 
-    // Add Today
-    labels.push('今日');
-    const current = gameState.wordsLearned || 0;
-    dataHistory.push(current);
-    dataPrediction.push(null); // Last point of history connects to prediction?
+    let currentVal = gameState.wordsLearned || 0;
+    // Backfill from today?
+    // Simplified: Just use available history or hold steady
+    // If we rely on updateChart (Firebase) this is just a backup.
 
-    // 2. Build Prediction Data (Next 30 Days)
-    // Connect prediction line to today's value
-    dataPrediction[dataPrediction.length - 1] = current;
+    // Let's just plot what we have in gameState.dailyHistory + Today
+    // But aligning to 30 days is better.
 
-    // Calculate Pace
-    let pace = 0;
-    if (document.getElementById('statVelocity')) {
-        pace = parseFloat(document.getElementById('statVelocity').textContent) || 0;
+    // Simple version for "Offline/Guest" fallback:
+    dates.forEach(dStr => {
+        // Label M/D
+        labels.push(dStr.slice(5).replace('-', '/'));
+
+        // Find data
+        // Start with 0 or last known?
+        // Since gameState might be sparse, we just plot points we have?
+        // Or flat line.
+        let val = historyMap.get(dStr);
+        if (val === undefined) {
+            // If today, use currentVal
+            // If past, use previous known or 0
+            // This is complex for sync function.
+            // Just plotting linear progress between known points.
+        }
+    });
+
+    // RE-IMPLEMENTATION: Just use the data we have and Chart.js will connect lines
+    // But user wants 30 days X axis.
+
+    // Let's stick to the visual style update first:
+    // Purple Line, No Dashed Prediction, Gradient Fill.
+
+    // Re-do data prep simpler:
+    const simpleLabels = [];
+    const simpleData = [];
+
+    if (gameState.dailyHistory) {
+        gameState.dailyHistory.slice(-30).forEach(h => {
+            simpleLabels.push(h.date ? h.date.slice(5) : '');
+            simpleData.push(h.wordsLearned);
+        });
     }
+    simpleLabels.push(today.getMonth() + 1 + '/' + today.getDate());
+    simpleData.push(gameState.wordsLearned || 0);
 
-    // Create 3 milestone points (10 days, 20 days, 30 days) to keep chart clean
-    for (let i = 1; i <= 3; i++) {
-        const days = i * 10;
-        labels.push(`+${days}日`);
-        dataHistory.push(null);
-        dataPrediction.push(Math.floor(current + (pace * days)));
-    }
+    // Gradient
+    let grad = ctx.createLinearGradient(0, 0, 0, 200);
+    grad.addColorStop(0, "#6c5ce7");
+    grad.addColorStop(1, "rgba(255, 255, 255, 0)");
 
-    // Render
     window.myChartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: labels,
+            labels: simpleLabels,
             datasets: [
                 {
-                    label: 'これまでの軌跡',
-                    data: dataHistory,
+                    label: '習得単語数',
+                    data: simpleData,
                     borderColor: '#6c5ce7',
-                    backgroundColor: 'rgba(108, 92, 231, 0.1)',
-                    fill: true,
-                    tension: 0.3
-                },
-                {
-                    label: '未来の予測',
-                    data: dataPrediction,
-                    borderColor: '#fab1a0',
-                    borderDash: [5, 5],
-                    fill: false,
-                    tension: 0.3
+                    backgroundColor: grad,
+                    fill: 'start',
+                    tension: 0, // Straight
+                    pointRadius: 5,
+                    pointBackgroundColor: '#6c5ce7',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
                 }
             ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            interaction: { mode: 'index', intersect: false },
             plugins: {
-                title: { display: true, text: '学習ロードマップ' },
-                tooltip: { enabled: true }
+                legend: { display: false },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    titleColor: '#333',
+                    bodyColor: '#6c5ce7',
+                    bodyFont: { weight: 'bold' }
+                }
             },
             scales: {
+                x: {
+                    ticks: { maxTicksLimit: 10 }
+                },
                 y: { beginAtZero: true }
             }
         }
     });
 }
 
-// Keep Mock for fallback if needed (simplified)
-function renderMockChart(canvas) {
-    if (!canvas) canvas = document.getElementById('learningChart');
-    if (!canvas) return;
-
-
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width;
-    const h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-
-    // Background
-    ctx.fillStyle = "#f8f9fa";
-    ctx.fillRect(0, 0, w, h);
-
-    // Title
-    ctx.font = "bold 14px sans-serif";
-    ctx.fillStyle = "#333";
-    ctx.textAlign = "center";
-    ctx.fillText("学習ロードマップ (オフライン版)", w / 2, 20);
-
-    // Draw Grid
-    ctx.strokeStyle = "#e0e0e0";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (let i = 0; i < 5; i++) {
-        let y = 40 + i * ((h - 60) / 4);
-        ctx.moveTo(30, y);
-        ctx.lineTo(w - 10, y);
-    }
-    ctx.stroke();
-
-    // Draw History Line (Purple)
-    ctx.beginPath();
-    ctx.strokeStyle = "#6c5ce7";
-    ctx.lineWidth = 2;
-    let startX = 30;
-    let step = (w - 40) / 60; // 60 points
-    let currentY = h - 30;
-    ctx.moveTo(startX, currentY);
-
-    for (let i = 0; i < 30; i++) { // First 30 pts
-        currentY -= Math.random() * 2 + 1; // Slow growth
-        ctx.lineTo(startX + i * step, currentY);
-    }
-    let midX = startX + 30 * step;
-    let midY = currentY;
-    ctx.stroke();
-
-    // Draw Area
-    ctx.lineTo(midX, h - 20);
-    ctx.lineTo(startX, h - 20);
-    ctx.fillStyle = "rgba(108, 92, 231, 0.1)";
-    ctx.fill();
-
-    // Draw Future Line (Orange Dashed)
-    ctx.beginPath();
-    ctx.setLineDash([5, 5]);
-    ctx.strokeStyle = "#fab1a0";
-    ctx.moveTo(midX, midY);
-
-    for (let i = 1; i <= 30; i++) { // Next 30 pts
-        currentY -= 3; // Fast growth (Best Self)
-        ctx.lineTo(midX + i * step, currentY);
-    }
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    // Legend
-    ctx.fillStyle = "#666";
-    ctx.font = "10px sans-serif";
-    ctx.fillText("実線: 実績 / 点線: 未来の予測", w / 2, h - 5);
-}
+// Basic Chart Logic removed (renderMockChart)
 
 // --- OTHER MENU (New Toggle) ---
 window.toggleOtherMenu = function () {
@@ -656,4 +615,46 @@ window.cancelRename = function () {
     document.getElementById('nameInputParams').style.display = 'none';
     document.getElementById('leaderboardContent').style.display = 'block';
     document.getElementById('renameBtn').style.display = 'block';
+};
+
+// --- DEBUG / VERIFICATION HELPERS (Moved from firebase_app for Local Access) ---
+// debugInjectHistory removed in v2.50
+
+// --- CLEANUP HELPER (v2.46.32) ---
+// Use this to remove the injected test data (451, 551 words)
+window.cleanupDebugHistory = function () {
+    const gs = window.gameState || (typeof gameState !== 'undefined' ? gameState : null);
+
+    if (!gs || !gs.dailyHistory) {
+        alert("履歴データが見つかりません (No History)");
+        return;
+    }
+
+    const beforeCount = gs.dailyHistory.length;
+    // Remove entries strictly matching the debug values we injected
+    gs.dailyHistory = gs.dailyHistory.filter(h =>
+        h.wordsLearned !== 451 && h.wordsLearned !== 551
+    );
+    const afterCount = gs.dailyHistory.length;
+
+    // Save to LocalStorage
+    if (typeof saveGame === 'function') {
+        saveGame();
+    } else {
+        // PCR Save attempt
+        const data = localStorage.getItem('vocabClickerSave');
+        if (data) {
+            const parsed = JSON.parse(data);
+            parsed.dailyHistory = gs.dailyHistory;
+            localStorage.setItem('vocabClickerSave', JSON.stringify(parsed));
+        }
+    }
+
+    if (beforeCount !== afterCount) {
+        alert(`テストデータ削除完了: ${beforeCount - afterCount}件 削除しました。\nリロードしてグラフを確認してください。`);
+        // Refresh chart if open
+        if (typeof updateChart === 'function') updateChart('total');
+    } else {
+        alert("削除対象データ(451, 551)は見つかりませんでした。");
+    }
 };
