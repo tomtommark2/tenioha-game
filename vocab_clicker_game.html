@@ -646,9 +646,10 @@
                 <div
                     style="flex: 1; background: linear-gradient(135deg, #ffffff, #f8f9fa); border-radius: 12px; padding: 15px; border: 1px solid #eee; text-align: left; position: relative; overflow: hidden;">
                     <div style="position: absolute; top: -5px; right: 5px; font-size: 30px; opacity: 0.4;">🚀</div>
-                    <div style="font-size: 11px; color: #888; margin-bottom: 5px; font-weight: bold;">
+                    <div
+                        style="font-size: 11px; color: #888; margin-bottom: 5px; font-weight: bold; min-height: 28px; line-height: 1.4;">
                         新語習得力<br>
-                        <span style="font-size:9px; font-weight:normal; opacity:0.8;">(知らない単語を覚える力)</span>
+                        <span style="font-size:9px; font-weight:normal; opacity:0.8;">(苦手単語を覚える力)</span>
                     </div>
                     <div style="display: flex; align-items: baseline; gap: 3px;">
                         <span id="statVelocity" style="font-size: 24px; font-weight: bold; color: #2ecc71;">--</span>
@@ -662,9 +663,11 @@
 
                 <!-- Future Box (Right) -->
                 <div
-                    style="flex: 1.2; background: linear-gradient(135deg, #fff5e6, #fff); border-radius: 12px; padding: 15px; border: 1px solid #ffeaa7; text-align: left; position: relative; overflow: hidden;">
+                    style="flex: 1; background: linear-gradient(135deg, #fff5e6, #fff); border-radius: 12px; padding: 15px; border: 1px solid #ffeaa7; text-align: left; position: relative; overflow: hidden;">
                     <div style="position: absolute; top: -5px; right: 5px; font-size: 30px; opacity: 0.4;">🌟</div>
-                    <div style="font-size: 11px; color: #e17055; margin-bottom: 5px; font-weight: bold;">1ヶ月後の習得語数 (予想)
+                    <div
+                        style="font-size: 11px; color: #e17055; margin-bottom: 5px; font-weight: bold; min-height: 28px; line-height: 1.4;">
+                        1ヶ月後習得語数
                     </div>
                     <div id="statFutureMilestone"
                         style="font-size: 14px; font-weight: bold; color: #d35400; line-height: 1.4;">
@@ -854,10 +857,12 @@
     </div>
 
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/ui_manager.js?v=2.41"></script>
-    <script type="module" src="js/firebase_app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/chart_fallback.js?v=2.50"></script>
+    <script src="js/ui_manager.js?v=2.50"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2.50"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
-        id="currentVersion">v2.41</div>
+        id="currentVersion">v2.50</div>
 </body>
 
 </html>
