@@ -856,13 +856,20 @@
         </div>
     </div>
 
+    <script src="js/version.js?v=2.52"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=2.51"></script>
-    <script src="js/ui_manager.js?v=2.51"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2.51"></script>
+    <script src="js/chart_fallback.js?v=2.52"></script>
+    <script src="js/ui_manager.js?v=2.52"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2.52"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
-        id="currentVersion">v2.51</div>
+        id="currentVersion">loading...</div>
+    <script>
+        // Set Version Display from Global Variable
+        if (typeof GAME_VERSION !== 'undefined') {
+            document.getElementById('currentVersion').textContent = GAME_VERSION;
+        }
+    </script>
 </body>
 
 </html>

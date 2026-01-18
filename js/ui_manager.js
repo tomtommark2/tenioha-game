@@ -6,13 +6,13 @@
 console.log("UI Manager Loaded");
 
 // --- VERSION & PWA INIT ---
-const APP_VERSION_UI = 'v2.51';
+// const APP_VERSION_UI = 'v2.51'; // NOW USING GLOBAL GAME_VERSION
 window.addEventListener('load', () => {
     // Version Display
     const v1 = document.getElementById('helpVersionDisplay');
     const v2 = document.getElementById('leaderboardVersionDisplay');
-    if (v1) v1.textContent = APP_VERSION_UI;
-    if (v2) v2.textContent = `現在のバージョン: ${APP_VERSION_UI}`;
+    if (v1) v1.textContent = GAME_VERSION;
+    if (v2) v2.textContent = `現在のバージョン: ${GAME_VERSION}`;
 
     // Init PWA/Welcome
     initWelcomeSequence();

@@ -18,12 +18,12 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
 // --- VERSION CONTROL ---
-const APP_VERSION = "v2.51"; // MASTER VERSION DEFINITION (Learning Log & Graph)
+// const APP_VERSION = "v2.51"; // NOW USING GLOBAL GAME_VERSION
 // Immediately set version strings (DOM is ready due to module defer/position)
 const v1 = document.getElementById('helpVersionDisplay');
 const v2 = document.getElementById('leaderboardVersionDisplay');
-if (v1) v1.textContent = APP_VERSION;
-if (v2) v2.textContent = `現在のバージョン: ${APP_VERSION}`;
+if (v1) v1.textContent = GAME_VERSION;
+if (v2) v2.textContent = `現在のバージョン: ${GAME_VERSION}`;
 
 // Global Firebase References
 let db = null;

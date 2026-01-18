@@ -1,4 +1,5 @@
-const CACHE_NAME = 'vocab-clicker-v2.51';
+importScripts('./js/version.js');
+const CACHE_NAME = 'vocab-clicker-' + GAME_VERSION;
 const ASSETS = [
     './',
     './vocab_clicker_game.html',
