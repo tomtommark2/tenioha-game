@@ -466,12 +466,19 @@ if (auth) {
             if (modalEmail) modalEmail.textContent = user.email;
 
             if (authBtn) {
-                authBtn.innerHTML = `<span>ログアウト</span>`;
-                authBtn.style.background = "#bdc3c7";
+                if (syncSection) syncSection.style.display = 'block';
             }
-            if (syncSection) syncSection.style.display = 'block';
 
-            // --- SMART SYNC LOGIC ---
+            // GRAPH SCALES CONFIG
+            const GRAPH_SCALES = {
+                total: { max: 8018, label: '総合' },
+                A1: { max: 1221, label: 'Junior (A1)' },
+                A2: { max: 1448, label: 'Basic (A2)' },
+                B1: { max: 2480, label: 'Daily (B1)' },
+                B2: { max: 2869, label: 'Exam1 (B2)', stepSize: 500 }
+            };
+
+            // --- GRAPH DATA LOGIC (Unified History) ---
             try {
                 const userDoc = await getDoc(doc(db, "users", userId));
 
