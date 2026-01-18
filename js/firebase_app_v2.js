@@ -936,167 +936,129 @@ window.getMonthlyStats = async function () {
         }
     }
 
-    // Generate last 30 days of dates
-    let dates = [];
-    let today = new Date();
-    for (let i = 29; i >= 0; i--) {
-        let d = new Date();
-        d.setDate(today.getDate() - i);
-        let yyyy = d.getFullYear();
-        let mm = String(d.getMonth() + 1).padStart(2, '0');
-        let dd = String(d.getDate()).padStart(2, '0');
-        dates.push(`${yyyy}-${mm}-${dd}`);
-    }
+    window.getMonthlyStatsReal = async function () {
+        // 1. FORCE SYNC TODAY'S DATA
+        if (typeof window.updateDailyHistory === 'function') {
+            window.updateDailyHistory();
+        }
 
+        // 2. Generate Dates (30 Days)
+        let dates = [];
+        let today = new Date();
+        for (let i = 29; i >= 0; i--) {
+            let d = new Date();
+            d.setDate(today.getDate() - i);
+            let yyyy = d.getFullYear();
+            let mm = String(d.getMonth() + 1).padStart(2, '0');
+            let dd = String(d.getDate()).padStart(2, '0');
+            dates.push(`${yyyy}-${mm}-${dd}`);
+        }
 
+        // 3. Prepare Source Data (History Only)
+        let logMap = new Map();
+        // Prioritize Cloud/Module scope db but fallback to global gs
+        const gs = typeof gameState !== 'undefined' ? gameState : (window.gameState || null);
 
-    // CHECK LOCAL HISTORY (Merged with Cloud Data)
-    // We treat all data as "Real" (or 0 if missing). No more Demo.
-    const gs = typeof gameState !== 'undefined' ? gameState : null;
+        // Merge Cloud Snapshot if available (async logic above populates logMap usually, but here we unify)
+        // We will assume 'logMap' might be populated by Cloud in the future, but currently we rely on Local History.
 
-    if (gs && gs.dailyHistory && gs.dailyHistory.length > 0) {
-        // console.log("Graph: Using Local History for Guest/Offline");
-        gs.dailyHistory.forEach(h => {
-            if (h.date) {
-                if (!logMap.has(h.date)) {
+        if (gs && gs.dailyHistory && gs.dailyHistory.length > 0) {
+            gs.dailyHistory.forEach(h => {
+                if (h.date) {
+                    // Latest entry overrides
                     logMap.set(h.date, {
                         total_learned: h.wordsLearned,
-                        cefr_breakdown: { A1: 0, A2: 0, B1: 0, B2: 0 } // Simplified
+                        cefr_breakdown: h.cefr_breakdown || {}
                     });
-                    hasRealData = true;
                 }
-            }
-        });
-    }
+            });
+        }
 
-    // Initialize Arrays
-    let labels = [];
-    let datasets = {
-        total: [],
-        A1: [],
-        A2: [],
-        B1: [],
-        B2: []
-    };
-    let isRealData = new Array(30).fill(true);
+        // 4. Build Datasets
+        let labels = [];
+        let datasets = {
+            total: [],
+            A1: [],
+            A2: [],
+            B1: [],
+            B2: []
+        };
+        let isRealData = new Array(30).fill(true);
 
-    dates.forEach((dateStr, index) => {
-        const dPart = new Date(dateStr);
-        labels.push(`${dPart.getMonth() + 1}/${dPart.getDate()}`);
+        dates.forEach((dateStr) => {
+            const dPart = new Date(dateStr);
+            labels.push(`${dPart.getMonth() + 1}/${dPart.getDate()}`);
 
-        // Logic Split: History vs Today
-        if (index < 29) {
-            // PAST: Use stored logs
             if (logMap.has(dateStr)) {
                 const data = logMap.get(dateStr);
                 datasets.total.push(data.total_learned || 0);
-
-                if (data.cefr_breakdown) {
-                    datasets.A1.push(data.cefr_breakdown.A1 || 0);
-                    datasets.A2.push(data.cefr_breakdown.A2 || 0);
-                    datasets.B1.push(data.cefr_breakdown.B1 || 0);
-                    datasets.B2.push(data.cefr_breakdown.B2 || 0);
-                } else {
-                    datasets.A1.push(0);
-                    datasets.A2.push(0);
-                    datasets.B1.push(0);
-                    datasets.B2.push(0);
-                }
+                datasets.A1.push(data.cefr_breakdown?.A1 || 0);
+                datasets.A2.push(data.cefr_breakdown?.A2 || 0);
+                datasets.B1.push(data.cefr_breakdown?.B1 || 0);
+                datasets.B2.push(data.cefr_breakdown?.B2 || 0);
             } else {
-                // If missing history, just show 0
+                // Missing data = 0
                 datasets.total.push(0);
                 datasets.A1.push(0);
                 datasets.A2.push(0);
                 datasets.B1.push(0);
                 datasets.B2.push(0);
             }
-        } else {
-            // TODAY (Index 29): Use Live Game State (Count Perfects)
-            if (gs && gs.wordStates) {
-                let countA1 = 0; // junior
-                let countA2 = 0; // basic
-                let countB1 = 0; // daily
-                let countB2 = 0; // exam1
+        });
 
-                Object.entries(gs.wordStates).forEach(([key, state]) => {
-                    if (state !== 'perfect') return;
-                    if (key.startsWith('junior_')) countA1++;
-                    else if (key.startsWith('basic_')) countA2++;
-                    else if (key.startsWith('daily_')) countB1++;
-                    else if (key.startsWith('exam1_')) countB2++;
-                });
-
-                const countTotal = countA1 + countA2 + countB1 + countB2;
-
-                datasets.total.push(countTotal);
-                datasets.A1.push(countA1);
-                datasets.A2.push(countA2);
-                datasets.B1.push(countB1);
-                datasets.B2.push(countB2);
-            } else {
-                // Fallback
-                datasets.total.push(0);
-                datasets.A1.push(0);
-                datasets.A2.push(0);
-                datasets.B1.push(0);
-                datasets.B2.push(0);
-            }
-        }
-    });
-
-    return { labels, datasets, isRealData, isDemo: false };
-};
-
-// UI: Render Chart
-window.updateChart = async function (type = 'total') {
-    const ctx = document.getElementById('learningChart');
-    if (!ctx) return;
-
-    // Loading State
-    const ctx2d = ctx.getContext('2d');
-    ctx2d.clearRect(0, 0, ctx.width, ctx.height);
-
-    // Update Tabs
-    document.querySelectorAll('.chart-tab').forEach(b => {
-        b.classList.remove('active');
-        b.style.background = '#f1f2f6';
-        b.style.color = '#555';
-        if (b.dataset.tab === type) {
-            b.classList.add('active');
-            b.style.background = '#6c5ce7';
-            b.style.color = 'white';
-        }
-    });
-
-    const dataObj = await window.getMonthlyStats();
-    if (!dataObj) {
-        if (typeof renderMockChart === 'function') renderMockChart();
-        else ctx.getContext('2d').fillText("データがありません", 20, 50);
-        return;
-    }
-
-    // Colors
-    const colors = {
-        total: '#6c5ce7',
-        A1: '#00b894',
-        A2: '#0984e3',
-        B1: '#fdcb6e',
-        B2: '#e17055'
+        return { labels, datasets, isRealData, isDemo: false };
     };
 
-    // Prepare Gradient
-    const gradient = ctx2d.createLinearGradient(0, 0, 0, 200);
-    gradient.addColorStop(0, colors[type]);
-    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+    // UI: Render Chart
+    window.updateChart = async function (type = 'total') {
+        const ctx = document.getElementById('learningChart');
+        if (!ctx) return;
 
-    // Stats Text update
-    const currentVal = dataObj.datasets[type][dataObj.datasets[type].length - 1];
-    const demoBadge = dataObj.isDemo ? '<span style="color:#e67e22; margin-left:5px;">(Demo Data)</span>' : '';
+        // Loading State
+        const ctx2d = ctx.getContext('2d');
+        ctx2d.clearRect(0, 0, ctx.width, ctx.height);
 
-    // Get Scale Info
-    const scaleConfig = GRAPH_SCALES[type] || GRAPH_SCALES.total;
+        // Update Tabs
+        document.querySelectorAll('.chart-tab').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = '#f1f2f6';
+            b.style.color = '#555';
+            if (b.dataset.tab === type) {
+                b.classList.add('active');
+                b.style.background = '#6c5ce7';
+                b.style.color = 'white';
+            }
+        });
 
-    document.getElementById('chartStats').innerHTML = `
+        const dataObj = await window.getMonthlyStats();
+        if (!dataObj) {
+            if (typeof renderMockChart === 'function') renderMockChart();
+            else ctx.getContext('2d').fillText("データがありません", 20, 50);
+            return;
+        }
+
+        // Colors
+        const colors = {
+            total: '#6c5ce7',
+            A1: '#00b894',
+            A2: '#0984e3',
+            B1: '#fdcb6e',
+            B2: '#e17055'
+        };
+
+        // Prepare Gradient
+        const gradient = ctx2d.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, colors[type]);
+        gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+        // Stats Text update
+        const currentVal = dataObj.datasets[type][dataObj.datasets[type].length - 1];
+        const demoBadge = dataObj.isDemo ? '<span style="color:#e67e22; margin-left:5px;">(Demo Data)</span>' : '';
+
+        // Get Scale Info
+        const scaleConfig = GRAPH_SCALES[type] || GRAPH_SCALES.total;
+
+        document.getElementById('chartStats').innerHTML = `
         <div style="text-align: right; font-size: 10px; color: #999; margin-bottom: -5px;">過去30日間の推移${demoBadge}</div>
         <div style="text-align: right;">
             現在: <strong style="font-size: 16px; color: ${colors[type]}">${currentVal}語</strong> 
@@ -1104,276 +1066,276 @@ window.updateChart = async function (type = 'total') {
         </div>
     `;
 
-    if (myPageChart) myPageChart.destroy();
+        if (myPageChart) myPageChart.destroy();
 
-    myPageChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: dataObj.labels,
-            datasets: [
-                {
-                    label: scaleConfig.label,
-                    data: dataObj.datasets[type],
-                    borderColor: colors[type],
-                    backgroundColor: gradient,
-                    fill: 'start',
-                    tension: 0,
-                    pointRadius: (context) => {
-                        const index = context.dataIndex;
-                        if (dataObj.isRealData[index]) return 5;
-                        return 0;
-                    },
-                    pointBackgroundColor: colors[type],
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
-                    pointHoverRadius: 7,
-                    pointHoverBackgroundColor: colors[type],
-                    pointHoverBorderColor: '#fff'
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: { mode: 'index', intersect: false },
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    enabled: true,
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    titleColor: '#333',
-                    bodyColor: colors[type],
-                    titleFont: { size: 11 },
-                    bodyFont: { size: 14, weight: 'bold' },
-                    borderColor: '#ddd',
-                    borderWidth: 1,
-                    padding: 10,
-                    displayColors: false,
-                    callbacks: {
-                        label: function (context) {
-                            return context.parsed.y + ' / ' + scaleConfig.max;
-                        }
+        myPageChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dataObj.labels,
+                datasets: [
+                    {
+                        label: scaleConfig.label,
+                        data: dataObj.datasets[type],
+                        borderColor: colors[type],
+                        backgroundColor: gradient,
+                        fill: 'start',
+                        tension: 0,
+                        pointRadius: (context) => {
+                            const index = context.dataIndex;
+                            if (dataObj.isRealData[index]) return 5;
+                            return 0;
+                        },
+                        pointBackgroundColor: colors[type],
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointHoverRadius: 7,
+                        pointHoverBackgroundColor: colors[type],
+                        pointHoverBorderColor: '#fff'
                     }
-                }
+                ]
             },
-            scales: {
-                x: {
-                    grid: { display: false },
-                    ticks: {
-                        stepSize: scaleConfig.stepSize || undefined,
-                        maxTicksLimit: 20,
-                        autoSkip: false,
-                        callback: function (value) { if (value % 1 === 0) { return value; } },
-                        maxRotation: 0,
-                        font: { size: 10 },
-                        color: '#aaa'
-                    },
-                    afterBuildTicks: function (axis) {
-                        if (scaleConfig.max === 2869) { // B2 Specific
-                            axis.ticks = [0, 500, 1000, 1500, 2000, 2500, 2869].map(v => ({ value: v }));
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        titleColor: '#333',
+                        bodyColor: colors[type],
+                        titleFont: { size: 11 },
+                        bodyFont: { size: 14, weight: 'bold' },
+                        borderColor: '#ddd',
+                        borderWidth: 1,
+                        padding: 10,
+                        displayColors: false,
+                        callbacks: {
+                            label: function (context) {
+                                return context.parsed.y + ' / ' + scaleConfig.max;
+                            }
                         }
                     }
                 },
-                y: {
-                    beginAtZero: true,
-                    min: 0,
-                    max: scaleConfig.max, // Fixed Scale
-                    grid: { color: '#f5f5f5' },
-                    position: 'right',
-                    ticks: {
-                        font: { size: 9 },
-                        color: '#aaa',
-                        stepSize: Math.floor(scaleConfig.max / 5)
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            stepSize: scaleConfig.stepSize || undefined,
+                            maxTicksLimit: 20,
+                            autoSkip: false,
+                            callback: function (value) { if (value % 1 === 0) { return value; } },
+                            maxRotation: 0,
+                            font: { size: 10 },
+                            color: '#aaa'
+                        },
+                        afterBuildTicks: function (axis) {
+                            if (scaleConfig.max === 2869) { // B2 Specific
+                                axis.ticks = [0, 500, 1000, 1500, 2000, 2500, 2869].map(v => ({ value: v }));
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: scaleConfig.max, // Fixed Scale
+                        grid: { color: '#f5f5f5' },
+                        position: 'right',
+                        ticks: {
+                            font: { size: 9 },
+                            color: '#aaa',
+                            stepSize: Math.floor(scaleConfig.max / 5)
+                        }
                     }
                 }
             }
-        }
-    });
-};
+        });
+    };
 
 
-// Override Profile Modal Open to load Chart
-const originalOpenProfile = window.openProfileModal;
-window.openProfileModal = function () {
-    // Call original logic (UI toggle)
-    document.getElementById('profileModal').style.display = 'flex';
-    if (window.updatePremiumStatusDisplay) window.updatePremiumStatusDisplay();
+    // Override Profile Modal Open to load Chart
+    const originalOpenProfile = window.openProfileModal;
+    window.openProfileModal = function () {
+        // Call original logic (UI toggle)
+        document.getElementById('profileModal').style.display = 'flex';
+        if (window.updatePremiumStatusDisplay) window.updatePremiumStatusDisplay();
 
-    // New: Init Chart
-    // Defer slightly to ensure modal is rendered
-    setTimeout(() => {
-        updateChart('total');
-    }, 100);
-};
+        // New: Init Chart
+        // Defer slightly to ensure modal is rendered
+        setTimeout(() => {
+            updateChart('total');
+        }, 100);
+    };
 
-// FIX: Expose toggleProfileModal for HTML onclick
-window.toggleProfileModal = function () {
-    const modal = document.getElementById('profileModal');
-    if (modal.style.display === 'flex') {
-        window.closeProfileModal();
-    } else {
-        window.openProfileModal();
-    }
-};
-
-window.closeProfileModal = function () {
-    document.getElementById('profileModal').style.display = 'none';
-};
-
-// Expose openProfileModal (already defined but let's be explicit)
-// window.openProfileModal is defined above at line 1139
-
-
-// --- SIMPLE MODE LOGIC (Moved to ui_manager.js) ---
-/*
-window.openSimpleModeModal = ...
-window.startSimpleMode = ...
-window.exitSimpleMode = ...
-*/
-
-// --- SAFE UI INIT (v2.37) ---
-function initUI() {
-    console.log("initUI: Attaching listeners...");
-
-    // Help Modal
-    const helpBtn = document.getElementById('helpBtn');
-    const helpModal = document.getElementById('helpModal');
-    const closeHelpModal = document.getElementById('closeHelpModal');
-
-    if (helpBtn) helpBtn.onclick = () => helpModal.style.display = 'flex';
-    if (closeHelpModal) closeHelpModal.onclick = () => helpModal.style.display = 'none';
-    if (helpModal) helpModal.onclick = (e) => { if (e.target === helpModal) helpModal.style.display = 'none'; };
-
-    // Wordbook Modal (if elements exist)
-    const wbBtn = document.getElementById('wordbookBtn');
-    const wbModal = document.getElementById('wordbookModal');
-    const closeWb = document.getElementById('closeWordbookModal');
-    if (wbBtn && wbModal) wbBtn.onclick = () => wbModal.style.display = 'flex';
-    if (closeWb && wbModal) closeWb.onclick = () => wbModal.style.display = 'none';
-    if (wbModal) wbModal.onclick = (e) => { if (e.target === wbModal) wbModal.style.display = 'none'; };
-
-    // Wordbook Items
-    document.querySelectorAll('.wordbook-item-btn').forEach(btn => {
-        btn.onclick = () => {
-            const level = btn.dataset.level;
-            // Safe call to global switchLevel (game_logic.js)
-            if (typeof switchLevel === 'function') switchLevel(level);
-            if (wbModal) wbModal.style.display = 'none';
-        }
-    });
-
-    // Profile Modal (Extra Safety)
-    const profileBtn = document.getElementById('headerProfileIcon');
-    // Note: headerProfileIcon has onclick="toggleProfileModal()" in HTML, 
-    // which calls window.toggleProfileModal. That is fine.
-}
-
-
-// --- SERVICE WORKER LOGIC ---
-if ('serviceWorker' in navigator) {
-    let refreshing = false;
-
-    // 1. Listen for new version activation
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (refreshing) return;
-        refreshing = true;
-        console.log("New version detected. Saving and reloading...");
-        if (window.saveGame) window.saveGame(); // Safety Save
-        window.location.reload();
-    });
-
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service_worker.js').then(reg => {
-            console.log('Service Worker Registered!', reg);
-
-            // 1.5 Force check for updates immediately on load
-            reg.update().catch(e => console.log('SW initial update check failed', e));
-
-            // 2. Check for updates when app comes to foreground
-            document.addEventListener('visibilitychange', () => {
-                if (document.visibilityState === 'visible') {
-                    reg.update().catch(e => console.log('SW update check failed', e));
-                }
-            });
-        }).catch(err => console.log('Service Worker registration failed: ', err));
-    });
-}
-
-// --- PWA INSTALL LOGIC ---
-let deferredPrompt;
-const installContainer = document.getElementById('installAppContainer');
-const installBtnHelper = document.getElementById('pwaInstallBtn'); // Help Modal
-const installBtnProfile = document.getElementById('profileInstallBtn'); // Profile Modal
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e;
-
-    console.log("PWA Install Prompt ready");
-
-    // Enable Helper Button
-    if (installBtnHelper) {
-        installBtnHelper.style.background = "#e17055"; // Orange
-        installBtnHelper.style.cursor = "pointer";
-        installBtnHelper.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
-    }
-    const desc = document.getElementById('pwaInstallDesc');
-
-
-    // Enable Profile Button
-    if (installBtnProfile) {
-        installBtnProfile.style.display = 'block';
-        installBtnProfile.style.background = "#e17055";
-        installBtnProfile.style.color = "white";
-        installBtnProfile.style.border = "none";
-    }
-});
-
-window.installApp = () => {
-    // If not ready, show alert or do nothing
-    if (!deferredPrompt) {
-        alert("このブラウザでは自動インストールが利用できません。\nブラウザのメニュー「ホーム画面に追加」などからインストールしてください。");
-        return;
-    }
-
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt');
+    // FIX: Expose toggleProfileModal for HTML onclick
+    window.toggleProfileModal = function () {
+        const modal = document.getElementById('profileModal');
+        if (modal.style.display === 'flex') {
+            window.closeProfileModal();
         } else {
-            console.log('User dismissed the A2HS prompt');
+            window.openProfileModal();
         }
-        deferredPrompt = null;
+    };
+
+    window.closeProfileModal = function () {
+        document.getElementById('profileModal').style.display = 'none';
+    };
+
+    // Expose openProfileModal (already defined but let's be explicit)
+    // window.openProfileModal is defined above at line 1139
+
+
+    // --- SIMPLE MODE LOGIC (Moved to ui_manager.js) ---
+    /*
+    window.openSimpleModeModal = ...
+    window.startSimpleMode = ...
+    window.exitSimpleMode = ...
+    */
+
+    // --- SAFE UI INIT (v2.37) ---
+    function initUI() {
+        console.log("initUI: Attaching listeners...");
+
+        // Help Modal
+        const helpBtn = document.getElementById('helpBtn');
+        const helpModal = document.getElementById('helpModal');
+        const closeHelpModal = document.getElementById('closeHelpModal');
+
+        if (helpBtn) helpBtn.onclick = () => helpModal.style.display = 'flex';
+        if (closeHelpModal) closeHelpModal.onclick = () => helpModal.style.display = 'none';
+        if (helpModal) helpModal.onclick = (e) => { if (e.target === helpModal) helpModal.style.display = 'none'; };
+
+        // Wordbook Modal (if elements exist)
+        const wbBtn = document.getElementById('wordbookBtn');
+        const wbModal = document.getElementById('wordbookModal');
+        const closeWb = document.getElementById('closeWordbookModal');
+        if (wbBtn && wbModal) wbBtn.onclick = () => wbModal.style.display = 'flex';
+        if (closeWb && wbModal) closeWb.onclick = () => wbModal.style.display = 'none';
+        if (wbModal) wbModal.onclick = (e) => { if (e.target === wbModal) wbModal.style.display = 'none'; };
+
+        // Wordbook Items
+        document.querySelectorAll('.wordbook-item-btn').forEach(btn => {
+            btn.onclick = () => {
+                const level = btn.dataset.level;
+                // Safe call to global switchLevel (game_logic.js)
+                if (typeof switchLevel === 'function') switchLevel(level);
+                if (wbModal) wbModal.style.display = 'none';
+            }
+        });
+
+        // Profile Modal (Extra Safety)
+        const profileBtn = document.getElementById('headerProfileIcon');
+        // Note: headerProfileIcon has onclick="toggleProfileModal()" in HTML, 
+        // which calls window.toggleProfileModal. That is fine.
+    }
+
+
+    // --- SERVICE WORKER LOGIC ---
+    if ('serviceWorker' in navigator) {
+        let refreshing = false;
+
+        // 1. Listen for new version activation
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (refreshing) return;
+            refreshing = true;
+            console.log("New version detected. Saving and reloading...");
+            if (window.saveGame) window.saveGame(); // Safety Save
+            window.location.reload();
+        });
+
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./service_worker.js').then(reg => {
+                console.log('Service Worker Registered!', reg);
+
+                // 1.5 Force check for updates immediately on load
+                reg.update().catch(e => console.log('SW initial update check failed', e));
+
+                // 2. Check for updates when app comes to foreground
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible') {
+                        reg.update().catch(e => console.log('SW update check failed', e));
+                    }
+                });
+            }).catch(err => console.log('Service Worker registration failed: ', err));
+        });
+    }
+
+    // --- PWA INSTALL LOGIC ---
+    let deferredPrompt;
+    const installContainer = document.getElementById('installAppContainer');
+    const installBtnHelper = document.getElementById('pwaInstallBtn'); // Help Modal
+    const installBtnProfile = document.getElementById('profileInstallBtn'); // Profile Modal
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+
+        console.log("PWA Install Prompt ready");
+
+        // Enable Helper Button
+        if (installBtnHelper) {
+            installBtnHelper.style.background = "#e17055"; // Orange
+            installBtnHelper.style.cursor = "pointer";
+            installBtnHelper.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+        }
+        const desc = document.getElementById('pwaInstallDesc');
+
+
+        // Enable Profile Button
+        if (installBtnProfile) {
+            installBtnProfile.style.display = 'block';
+            installBtnProfile.style.background = "#e17055";
+            installBtnProfile.style.color = "white";
+            installBtnProfile.style.border = "none";
+        }
     });
-};
 
-if (installBtnHelper) installBtnHelper.addEventListener('click', installApp);
-if (installBtnProfile) installBtnProfile.addEventListener('click', installApp);
+    window.installApp = () => {
+        // If not ready, show alert or do nothing
+        if (!deferredPrompt) {
+            alert("このブラウザでは自動インストールが利用できません。\nブラウザのメニュー「ホーム画面に追加」などからインストールしてください。");
+            return;
+        }
 
-window.addEventListener('appinstalled', () => {
-    console.log('PWA was installed');
-    if (installContainer) installContainer.style.display = 'none';
-    if (installBtnProfile) installBtnProfile.style.display = 'none';
-});
-// --- WELCOME & PWA ENHANCEMENTS ---
-// Removed duplicate 'welcomeDeferredPrompt' and listener.
-// We will misuse the existing 'deferredPrompt' from line 4588.
+        // Show the prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+        });
+    };
 
-// initWelcomeSequence logic moved to ui_manager.js
+    if (installBtnHelper) installBtnHelper.addEventListener('click', installApp);
+    if (installBtnProfile) installBtnProfile.addEventListener('click', installApp);
 
-// window.triggerInstall moved to ui_manager.js
-// window.dismissWelcome moved to ui_manager.js
+    window.addEventListener('appinstalled', () => {
+        console.log('PWA was installed');
+        if (installContainer) installContainer.style.display = 'none';
+        if (installBtnProfile) installBtnProfile.style.display = 'none';
+    });
+    // --- WELCOME & PWA ENHANCEMENTS ---
+    // Removed duplicate 'welcomeDeferredPrompt' and listener.
+    // We will misuse the existing 'deferredPrompt' from line 4588.
 
-// --- SHARE & QR LOGIC ---
-// openShareModal and shareApp moved to ui_manager.js
+    // initWelcomeSequence logic moved to ui_manager.js
 
-// rename/cancel/register moved to ui_manager.js
+    // window.triggerInstall moved to ui_manager.js
+    // window.dismissWelcome moved to ui_manager.js
 
-let qrCodeObj = null;
+    // --- SHARE & QR LOGIC ---
+    // openShareModal and shareApp moved to ui_manager.js
+
+    // rename/cancel/register moved to ui_manager.js
+
+    let qrCodeObj = null;
 // toggleQRCode moved to ui_manager.js
 
 // Ensure qrcode library is loaded
