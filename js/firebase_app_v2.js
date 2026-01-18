@@ -1075,13 +1075,14 @@ window.getMonthlyStats = async function () {
 };
 
 // UI: Render Chart
+// UI: Render Chart
 window.updateChart = async function (type = 'total') {
     const ctx = document.getElementById('learningChart');
     if (!ctx) return;
 
-    // Loading State
+    // Loading State / Clear
     const ctx2d = ctx.getContext('2d');
-    ctx2d.clearRect(0, 0, ctx.width, ctx.height);
+    // ctx2d.clearRect(0, 0, ctx.width || 300, ctx.height || 200);
 
     // Update Tabs
     document.querySelectorAll('.chart-tab').forEach(b => {
@@ -1096,11 +1097,7 @@ window.updateChart = async function (type = 'total') {
     });
 
     const dataObj = await window.getMonthlyStats();
-    if (!dataObj) {
-        if (typeof renderMockChart === 'function') renderMockChart();
-        else ctx.getContext('2d').fillText("データがありません", 20, 50);
-        return;
-    }
+    if (!dataObj) return;
 
     // Colors
     const colors = {
@@ -1123,17 +1120,20 @@ window.updateChart = async function (type = 'total') {
     // Get Scale Info
     const scaleConfig = GRAPH_SCALES[type] || GRAPH_SCALES.total;
 
-    document.getElementById('chartStats').innerHTML = `
-        <div style="text-align: right; font-size: 10px; color: #999; margin-bottom: -5px;">過去30日間の推移${demoBadge}</div>
-        <div style="text-align: right;">
-            現在: <strong style="font-size: 16px; color: ${colors[type]}">${currentVal}語</strong> 
-            <span style="font-size:10px; color:#ccc;"> / ${scaleConfig.max}</span>
-        </div>
-    `;
+    const statsEl = document.getElementById('chartStats');
+    if (statsEl) {
+        statsEl.innerHTML = `
+            <div style="text-align: right; font-size: 10px; color: #999; margin-bottom: -5px;">過去30日間の推移${demoBadge}</div>
+            <div style="text-align: right;">
+                現在: <strong style="font-size: 16px; color: ${colors[type]}">${currentVal}語</strong> 
+                <span style="font-size:10px; color:#ccc;"> / ${scaleConfig.max}</span>
+            </div>
+        `;
+    }
 
-    if (myPageChart) myPageChart.destroy();
+    if (window.myPageChart) window.myPageChart.destroy();
 
-    myPageChart = new Chart(ctx, {
+    window.myPageChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: dataObj.labels,
@@ -1145,17 +1145,11 @@ window.updateChart = async function (type = 'total') {
                     backgroundColor: gradient,
                     fill: 'start',
                     tension: 0,
-                    pointRadius: (context) => {
-                        const index = context.dataIndex;
-                        if (dataObj.isRealData[index]) return 5;
-                        return 0;
-                    },
+                    pointRadius: 4, // Always show points
                     pointBackgroundColor: colors[type],
                     pointBorderColor: '#fff',
                     pointBorderWidth: 2,
-                    pointHoverRadius: 7,
-                    pointHoverBackgroundColor: colors[type],
-                    pointHoverBorderColor: '#fff'
+                    pointHoverRadius: 6
                 }
             ]
         },
@@ -1167,15 +1161,6 @@ window.updateChart = async function (type = 'total') {
                 legend: { display: false },
                 tooltip: {
                     enabled: true,
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    titleColor: '#333',
-                    bodyColor: colors[type],
-                    titleFont: { size: 11 },
-                    bodyFont: { size: 14, weight: 'bold' },
-                    borderColor: '#ddd',
-                    borderWidth: 1,
-                    padding: 10,
-                    displayColors: false,
                     callbacks: {
                         label: function (context) {
                             return context.parsed.y + ' / ' + scaleConfig.max;
@@ -1187,30 +1172,25 @@ window.updateChart = async function (type = 'total') {
                 x: {
                     grid: { display: false },
                     ticks: {
-                        stepSize: scaleConfig.stepSize || undefined,
-                        maxTicksLimit: 20,
-                        autoSkip: false,
-                        callback: function (value) { if (value % 1 === 0) { return value; } },
+                        maxTicksLimit: 6,
                         maxRotation: 0,
-                        font: { size: 10 },
-                        color: '#aaa'
-                    },
-                    afterBuildTicks: function (axis) {
-                        if (scaleConfig.max === 2869) { // B2 Specific
-                            axis.ticks = [0, 500, 1000, 1500, 2000, 2500, 2869].map(v => ({ value: v }));
-                        }
+                        font: { size: 10 }
                     }
                 },
                 y: {
                     beginAtZero: true,
                     min: 0,
-                    max: scaleConfig.max, // Fixed Scale
-                    grid: { color: '#f5f5f5' },
-                    position: 'right',
+                    max: scaleConfig.max, // ENFORCE MAX
                     ticks: {
-                        font: { size: 9 },
-                        color: '#aaa',
-                        stepSize: Math.floor(scaleConfig.max / 5)
+                        stepSize: scaleConfig.stepSize || undefined,
+                        maxTicksLimit: 12,
+                        autoSkip: false,
+                        callback: function (value) { if (value % 1 === 0) { return value; } }
+                    },
+                    afterBuildTicks: function (axis) {
+                        if (scaleConfig.max === 2869) { // B2 Specific
+                            axis.ticks = [0, 500, 1000, 1500, 2000, 2500, 2869].map(v => ({ value: v }));
+                        }
                     }
                 }
             }
