@@ -6,7 +6,7 @@
 console.log("UI Manager Loaded");
 
 // --- VERSION & PWA INIT ---
-const APP_VERSION_UI = 'v2.50';
+const APP_VERSION_UI = 'v2.51';
 window.addEventListener('load', () => {
     // Version Display
     const v1 = document.getElementById('helpVersionDisplay');
