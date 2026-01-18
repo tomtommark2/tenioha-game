@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vocab-clicker-v2.44';
+const CACHE_NAME = 'vocab-clicker-v2.50';
 const ASSETS = [
     './',
     './vocab_clicker_game.html',
@@ -9,6 +9,8 @@ const ASSETS = [
     './style.css',
     './js/game_logic.js',
     './js/ui_manager.js',
+    './js/chart_fallback.js',
+    './js/firebase_app_v2.js',
     './data/vocabulary.js'
 ];
 
