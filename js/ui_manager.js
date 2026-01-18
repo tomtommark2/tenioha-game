@@ -137,8 +137,8 @@ window.openLearningLogModal = function () {
         // Future Prediction Logic
         if (document.getElementById('statFutureMilestone')) {
             const currentTotal = gameState.wordsLearned || 0; // Total words currently mastered/perfect
-            // Future = Current + (Pace * 30 days)
-            const futureTotal = Math.floor(currentTotal + (pace * 30));
+            // Future = Pace * 30 days (User expects Increment, not Total)
+            const futureGain = Math.floor(pace * 30);
 
             // Evaluation Tiers
             let evaluation = "";
@@ -160,7 +160,7 @@ window.openLearningLogModal = function () {
 
             document.getElementById('statFutureMilestone').innerHTML =
                 `<div style="display: flex; align-items: baseline; gap: 3px;">` +
-                `<span style="font-size: 24px; font-weight: bold; color: ${color};">約 ${futureTotal.toLocaleString()}</span>` +
+                `<span style="font-size: 24px; font-weight: bold; color: ${color};">+${futureGain.toLocaleString()}</span>` +
                 `<span style="font-size: 12px; color: #666;">語</span>` +
                 `</div>` +
                 `<div style="font-size:12px; color:${color}; font-weight:bold; margin-top:5px;">${evaluation}</div>`;
