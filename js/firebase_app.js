@@ -175,31 +175,26 @@ window.fetchLeaderboard = async function (type, force = false) {
 // window.openPurchaseModal ...
 // window.closePurchaseModal ...
 
-window.updatePremiumStatusDisplay = function () {
+// v2.58: Centralized Premium Check (Legacy Helper)
+window.checkPremiumStatus = function () {
     const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
     const expiryTime = parseInt(localStorage.getItem('vocabGame_expiry') || '0');
-    const tag = document.getElementById('planStatusTag');
-    const activationSection = document.getElementById('premiumActivationSection');
-
-    // Expiration Check (Local Enforcement)
     const now = Date.now();
-    const isExpired = expiryTime > 0 && now > expiryTime;
+    return (isUnlocked && (expiryTime > now));
+};
 
-    if (isExpired && isUnlocked) {
-        // Auto-lock if expired locally
+window.updatePremiumStatusDisplay = function () {
+    const effectivePremium = window.checkPremiumStatus();
+    const expiryTime = parseInt(localStorage.getItem('vocabGame_expiry') || '0');
+
+    // Auto-Lock Logic
+    const isUnlockedStored = localStorage.getItem('vocabGame_isUnlocked') === 'true';
+    if (isUnlockedStored && !effectivePremium) {
         localStorage.setItem('vocabGame_isUnlocked', 'false');
     }
 
-    // BUGFIX v2.22: Always enforce trial lock if expired, regardless of previous local state.
-    if (isExpired) {
-        if (typeof trialState !== 'undefined' && trialState.unlocked) {
-            trialState.unlocked = false;
-            saveTrialState();
-            updateTrialUI();
-        }
-    }
-
-    const effectivePremium = isUnlocked && !isExpired;
+    const tag = document.getElementById('planStatusTag');
+    const activationSection = document.getElementById('premiumActivationSection');
 
     if (tag) {
         if (effectivePremium) {
@@ -208,11 +203,13 @@ window.updatePremiumStatusDisplay = function () {
             const dateStr = (expiryTime > 0 && !isPermanent) ? expiryDate.toLocaleDateString() : "無期限";
             tag.textContent = `プレミアム (期限: ${dateStr})`;
             tag.style.background = "#2ecc71"; // Green
-            if (activationSection) activationSection.style.display = 'block'; // Allow extending
+            if (activationSection) activationSection.style.display = 'block';
         } else {
-            tag.textContent = isExpired ? "期限切れ (再有効化が必要)" : "無料プラン (制限あり)";
+            const now = Date.now();
+            const wasExpired = (expiryTime > 0 && now > expiryTime);
+            tag.textContent = wasExpired ? "期限切れ (再有効化が必要)" : "無料プラン (制限あり)";
             tag.style.background = "#95a5a6"; // Gray
-            if (activationSection) activationSection.style.display = 'block'; // Show input
+            if (activationSection) activationSection.style.display = 'block';
         }
     }
 }
@@ -286,7 +283,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
 
             // 6. Perform Updates (Atomic)
             transaction.set(userRef, {
-                isPremium: true,
+                // isPremium: true, // Legacy removed
                 premiumExpiresAt: newExpiryTimestamp,
                 premiumSource: 'promo_code',
                 lastActivatedAt: serverTimestamp(),

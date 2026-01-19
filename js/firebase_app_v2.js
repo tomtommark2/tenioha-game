@@ -194,31 +194,44 @@ window.fetchLeaderboard = async function (type, force = false) {
 // window.openPurchaseModal ...
 // window.closePurchaseModal ...
 
-window.updatePremiumStatusDisplay = function () {
+
+// v2.58: Centralized Premium Check
+window.checkPremiumStatus = function () {
     const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
     const expiryTime = parseInt(localStorage.getItem('vocabGame_expiry') || '0');
-    const tag = document.getElementById('planStatusTag');
-    const activationSection = document.getElementById('premiumActivationSection');
-
-    // Expiration Check (Local Enforcement)
     const now = Date.now();
-    const isExpired = expiryTime > 0 && now > expiryTime;
 
-    if (isExpired && isUnlocked) {
-        // Auto-lock if expired locally
+    // Logic: Unlocked AND Not Expired
+    // (Permanent users have year > 3000, so expiryTime > now holds true)
+    if (isUnlocked && (expiryTime > now)) {
+        return true;
+    }
+    return false;
+};
+
+window.updatePremiumStatusDisplay = function () {
+    const effectivePremium = window.checkPremiumStatus();
+    const expiryTime = parseInt(localStorage.getItem('vocabGame_expiry') || '0');
+
+    // Auto-Lock if expired (Sync local state)
+    // Even if checkPremiumStatus returns false, we might need to update 'isUnlocked' 
+    // to false if it WAS true but is now expired.
+    // checkPremiumStatus protects against False Positives, but doesn't write.
+    // Let's write lock here if mismatched.
+    const isUnlockedStored = localStorage.getItem('vocabGame_isUnlocked') === 'true';
+    if (isUnlockedStored && !effectivePremium) {
         localStorage.setItem('vocabGame_isUnlocked', 'false');
     }
 
-    // BUGFIX v2.22: Always enforce trial lock if expired, regardless of previous local state.
-    if (isExpired) {
-        if (typeof trialState !== 'undefined' && trialState.unlocked) {
-            trialState.unlocked = false;
-            saveTrialState();
-            updateTrialUI();
-        }
+    // Trial State Sync
+    if (typeof trialState !== 'undefined' && trialState.unlocked && !effectivePremium) {
+        trialState.unlocked = false;
+        if (typeof saveTrialState === 'function') saveTrialState();
+        if (typeof updateTrialUI === 'function') updateTrialUI();
     }
 
-    const effectivePremium = isUnlocked && !isExpired;
+    const tag = document.getElementById('planStatusTag');
+    const activationSection = document.getElementById('premiumActivationSection');
 
     if (tag) {
         if (effectivePremium) {
@@ -229,7 +242,9 @@ window.updatePremiumStatusDisplay = function () {
             tag.style.background = "#2ecc71"; // Green
             if (activationSection) activationSection.style.display = 'block'; // Allow extending
         } else {
-            tag.textContent = isExpired ? "期限切れ (再有効化が必要)" : "無料プラン (制限あり)";
+            const now = Date.now();
+            const wasExpired = (expiryTime > 0 && now > expiryTime);
+            tag.textContent = wasExpired ? "期限切れ (再有効化が必要)" : "無料プラン (制限あり)";
             tag.style.background = "#95a5a6"; // Gray
             if (activationSection) activationSection.style.display = 'block'; // Show input
         }
@@ -305,7 +320,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
 
             // 6. Perform Updates (Atomic)
             transaction.set(userRef, {
-                isPremium: true,
+                // isPremium: true, // Removed v2.58: Reliance on premiumExpiresAt
                 premiumExpiresAt: newExpiryTimestamp,
                 premiumSource: 'promo_code',
                 lastActivatedAt: serverTimestamp(),
