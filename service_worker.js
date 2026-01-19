@@ -9,6 +9,8 @@ const ASSETS = [
     './scripts/qrcode.min.js',
     './style.css',
     './js/game_logic.js',
+    './js/config.js',
+    './js/utils.js',
     './js/ui_manager.js',
     './js/chart_fallback.js',
     './js/firebase_app_v2.js',
