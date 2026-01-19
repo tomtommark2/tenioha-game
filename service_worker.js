@@ -1,4 +1,5 @@
 importScripts('./js/version.js');
+// Force Update v2.60
 const CACHE_NAME = 'vocab-clicker-' + GAME_VERSION;
 const ASSETS = [
     './',
