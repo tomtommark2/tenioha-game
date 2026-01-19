@@ -84,21 +84,39 @@ let currentLeaderboardTab = 'top';
 
 window.switchTab = function (tab) {
     currentLeaderboardTab = tab;
-    window.fetchLeaderboard(tab, true).then(data => {
-        // Assuming renderLeaderboard is a global function defined elsewhere
-        if (typeof window.renderLeaderboard === 'function') {
-            window.renderLeaderboard(data.results);
-        }
-    });
-
-    // Update tab active state
-    document.querySelectorAll('.leaderboard-tab-btn').forEach(btn => {
-        if (btn.dataset.tab === tab) {
+    // Update tab active state (Use correct class .lb-tab)
+    document.querySelectorAll('.lb-tab').forEach(btn => {
+        // Simple check: text content or onclick attribute? 
+        // Best to rely on onclick or order.
+        // But index.html controls onclick.
+        // Let's just toggle 'active' based on clicked. 
+        // Actually, the button calling this IS the one to activate.
+        // But we need to toggle others off.
+        if (btn.getAttribute('onclick').includes(`'${tab}'`)) {
             btn.classList.add('active');
         } else {
             btn.classList.remove('active');
         }
     });
+
+    // Show/Hide Containers
+    const topList = document.getElementById('lb-list-top');
+    const aroundList = document.getElementById('lb-list-around');
+
+    if (topList) topList.style.display = (tab === 'top') ? 'block' : 'none';
+    if (aroundList) aroundList.style.display = (tab === 'around') ? 'block' : 'none';
+
+    // Load Data
+    if (typeof loadRankingData === 'function') {
+        loadRankingData(tab);
+    } else {
+        // Fallback if loadRankingData is missing (define it or fetch manual)
+        window.fetchLeaderboard(tab, true).then(data => {
+            if (typeof window.renderLeaderboard === 'function') {
+                window.renderLeaderboard(data.results, tab);
+            }
+        });
+    }
 };
 
 window.fetchLeaderboard = async function (type, force = false) {
