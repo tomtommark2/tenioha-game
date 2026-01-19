@@ -672,8 +672,9 @@ window.checkForceUpdate = async function () {
             const minVer = configDoc.data().min_required_version ? configDoc.data().min_required_version.trim() : null;
             if (minVer) {
                 // Simple Lexicographical Comparison
-                if (APP_VERSION.trim() < minVer) {
-                    console.error(`Version Mismatch: Current ${APP_VERSION} < Required ${minVer}`);
+                const appVer = window.GAME_VERSION || "v2.60";
+                if (appVer.trim() < minVer) {
+                    console.error(`Version Mismatch: Current ${appVer} < Required ${minVer}`);
                     document.getElementById('forceUpdateModal').style.display = 'flex';
                     // Stop Auto Save to prevent corrupting data with old logic
                     if (window.autoSaveInterval) clearInterval(window.autoSaveInterval);
