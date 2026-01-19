@@ -497,10 +497,11 @@ if (auth) {
 
             // GRAPH SCALES CONFIG
             // GRAPH SCALES CONFIG
-            const GRAPH_SCALES = window.GameConfig.GRAPH_SCALES;
-
             // --- GRAPH DATA LOGIC (Unified History) ---
             try {
+                if (!window.GameConfig) console.error("CRITICAL: GameConfig missing!");
+                const GRAPH_SCALES = window.GameConfig ? window.GameConfig.GRAPH_SCALES : {};
+
                 const userDoc = await getDoc(doc(db, "users", userId));
 
                 // 1. Premium Status Sync (Subscription Model)
@@ -559,6 +560,9 @@ if (auth) {
 
                     const localPoints = localData ? localData.points : 0;
                     const cloudPoints = cloudData.points || 0;
+
+                    console.log(`DEBUG SYNC: Cloud=${cloudPoints}, Local=${localPoints}`); // DEBUG
+                    console.log(`DEBUG SYNC: Cloud > Local? ${cloudPoints > localPoints}`); // DEBUG
 
                     // 1. Cloud has better progress (Score based)
                     if (cloudPoints > localPoints) {
