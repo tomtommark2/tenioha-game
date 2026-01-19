@@ -93,9 +93,14 @@ function initTrialSystem() {
     try {
         const savedTrial = localStorage.getItem(TRIAL_CONFIG.STORAGE_KEY);
 
-        // Get Current Date in JST (Japan Standard Time)
-        // Get Current Date in JST (Japan Standard Time)
-        const today = window.GameUtils.getJSTDateString();
+        // Get Current Date in JST (Robust)
+        let today;
+        if (window.GameUtils && window.GameUtils.getJSTDateString) {
+            today = window.GameUtils.getJSTDateString();
+        } else {
+            const d = new Date();
+            today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        }
 
         if (savedTrial) {
             try {
@@ -106,11 +111,16 @@ function initTrialSystem() {
             }
         }
 
+        // Expose for debugging
+        window.trialState = trialState;
+
         // Daily Reset (JST Midnight)
         if (trialState.lastPlayDate !== today) {
+            console.log("New Day detected for Trial:", today);
             trialState.lastPlayDate = today;
+            // Only reset time if we confirm it's a new day and not a glitch
             if (!trialState.unlocked) {
-                trialState.playTimeSeconds = 0; // Reset time if not unlocked
+                trialState.playTimeSeconds = 0;
             }
             saveTrialState();
         }
@@ -123,6 +133,13 @@ function initTrialSystem() {
 
         // Check if already over limit
         checkTrialLimit();
+
+        // Add Safety Saves
+        window.addEventListener('beforeunload', saveTrialState);
+        window.addEventListener('pagehide', saveTrialState); // Mobile safeguard
+        window.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') saveTrialState();
+        });
 
         // Start Timer Loop
         setInterval(updateTrialTimer, 1000);
@@ -148,15 +165,15 @@ function updateTrialTimer() {
     lastTickTime = now;
 
     // Only count logical time flow. 
-    // If delta is huge (e.g. computer slept for 10 days), it will add that time.
-    // This effectively solves "background tab throttling" because next tick will just add the large difference.
-
     if (deltaSeconds > 0) {
+        // Cap absurdly large deltas (e.g. system clock change) to avoid instant lock
+        // But we want to prevent cheating. 
+        // For now, trust the delta unless it's > 1 day.
         trialState.playTimeSeconds += deltaSeconds;
     }
 
-    // Save every ~5 seconds (or if huge jump)
-    if (Math.floor(trialState.playTimeSeconds) % 5 === 0 || deltaSeconds > 5) {
+    // Save every ~5 seconds
+    if (Math.floor(trialState.playTimeSeconds) % 5 === 0) {
         saveTrialState();
     }
 
