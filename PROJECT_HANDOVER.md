@@ -9,58 +9,31 @@
 *   **現状:** Web版としてGitHub Pagesで運用中。PWA対応済み。
 
 ## 2. 技術スタック & 構成
-*   **構成:** **モジュール分離構成 (Refactoring Phase 1 Completed)**
-    *   **HTML:** `vocab_clicker_game.html` (骨組みのみ), `index.html` (デプロイ用コピー)
-    *   **CSS:** `style.css` (全スタイル定義)
-    *   **JavaScript:**
-        *   `js/game_logic.js`: ゲームのメインロジック、単語データ
-        *   `js/firebase_app.js`: Firebase設定、Auth、ランキング、課金モーダル、設定関連
-    *   外部ファイル: `data/vocabulary.js` (旧データ), `service_worker.js`, `manifest.json`, `scripts/qrcode.min.js`
-*   **バックエンド:** Firebase
-    *   **Firestore:** ユーザーデータ (`users`), ランキング (`leaderboard`), プロモコード (`promocodes`)
-    *   **Auth:** Google認証
-    *   **Analytics:** Google Analytics (v2.11以降稼働)
+*   **構成:** **モジュール分離構成 (Refactored v2.60)**
+    *   **HTML:** `vocab_clicker_game.html` (Master), `index.html` (Replica for GitHub Pages)
+    *   **JS (Core):**
+        *   `js/version.js`: バージョン定義 (Universal Scope)
+        *   `js/config.js`: 定数・設定値 (Global `window.GameConfig`)
+        *   `js/utils.js`: 便利関数 (Global `window.GameUtils`)
+    *   **JS (Logic):**
+        *   `js/game_logic.js`: ゲームロジック (依存: Config, Utils)
+        *   `js/ui_manager.js`: UI操作
+        *   `js/firebase_app_v2.js`: クラウド連携 (Module)
 
 ## 3. 重要な開発ルール（絶対遵守）
-1.  **言語:** 会話、思考、計画はすべて **日本語** で行うこと。
-2.  **デプロイ:** `vocab_clicker_game.html` を修正したら、必ず `index.html` にコピーし、GitHub (`git push`) へデプロイすること。
-3.  **ユーザー体験:**
-    *   **強制リロード禁止:** 更新が必要な場合でも、勝手にリロードせず、必ずダイアログ (`confirm` や Modal) でユーザーに同意を求めること。
-    *   **デザイン:** モバイルファーストを意識。シンプルかつモダンなデザインを維持。
-    *   **UI制御:** ボタン内のテキストやアイコンなどは `style.css` のクラス (`.pc-only` 等) で制御すること。JSによる `innerHTML` 強制書き換えは禁止（スパゲッティ化防止）。
-4.  **バージョン管理 (厳守):**
-    *   **常に更新:** 修正を加えた場合は、必ずバージョン番号を更新すること。
-    *   **更新箇所:** `vocab_clicker_game.html` (Footer), `js/firebase_app.js` (`APP_VERSION` 定数) の2箇所。
-    *   **形式:** `v2.xx` 形式で、小数点以下第2位を +1 する (例: v2.31 → v2.32)。
-5.  **作業プロセス (厳守):**
-    *   **提案ファースト:** いきなりコードを修正せず、まずは修正案や改善案を提示すること。
-    *   **実行許可:** ユーザーから「実行して下さい」や「修正して下さい」と明示的に言われた場合にのみ、コードの改変を行うこと。
+1.  **HTML同期:** `vocab_clicker_game.html` を修正したら、必ず `index.html` にコピーすること。
+2.  **読み込み順序 (超重要):**
+    `version` -> `config` -> `utils` -> `chart_fallback` -> `game_logic` -> `ui_manager` -> `firebase_app_v2`
+    ※この順序を守らないと `ReferenceError` でゲームが起動しません。
+3.  **Service Worker (キャッシュの罠):**
+    新しいJSファイルを追加したら、必ず `service_worker.js` の `ASSETS` 配列にも追加すること。
+    忘れるとオフラインモードで新ファイルが見つからず壊れます。
 
-## 4. 現在のステータス (v2.41 - 2026/01/18)
-### 実装済み機能
-*   **データ正規化と欠損補完 (v2.41):**
-    *   `sys_2000` は参照ベースと自己完結データのハイブリッドで、全データの表示問題を解決。
-    *   `selection1900`, `selection1400` の不完全データ（意味はあるが品詞等がない）をスクリプトで一括補完。
-    *   品詞データの日本語化（`noun` → `名`）を完了。
-*   **学習記録 (Learning Log) & 未来予測 (v2.37 - v2.39):**
-    *   `Chart.js` を導入し、学習履歴（過去7日間）と未来の成長予測グラフを表示。
-    *   成長速度 (`statVelocity`) と推定到達レベルを算出するロジックを `ui_manager.js` に実装。
-    *   `dailyHistory` データの構造化と保存ロジックの実装。
-*   **重要バグ修正とUX改善 (v2.40):**
-    *   **単語帳ボタンの独立化:** 汎用 `level-btn` クラスから分離し、操作不能になるバグを解消。
-    *   **ソフトスイッチ:** 単語帳切り替え時のリロードを廃止し、即時切り替えを実装。
-    *   **無料制限タイマー:** `initTrialSystem` の呼び出し漏れを修正し、タイマー機能を復旧。
-*   **PWAキャッシュ問題の完全解決 (v2.33 - v2.40):**
-    *   `service_worker.js` の `CACHE_NAME` 更新運用を徹底。
-    *   主要アセット (`css`, `js`) を明示的にキャッシュリストに追加。
-
-### 既知の仕様・注意点
-*   **アプリ版のキャッシュ (重要):** PWAはキャッシュが非常に強いため、**アップデート時は必ず `service_worker.js` の `CACHE_NAME` のバージョン番号も更新すること**。これを忘れると、ユーザー側でHTML/JSの不整合（ボタン重複や古いクラス名の残留など）が発生します。
-*   **リファクタリング方針:** これ以上のファイル分割（`ui.js`, `data.js`等への分離）は、複雑な依存関係によるバグ（デグレ）のリスクが高いため、**推奨されません**。現在の「3ファイル構成」が最適解と判断されています。
-*   **【重要】Module Scopeの罠:** `js/firebase_app.js` は `type="module"` で読み込まれているため、トップレベルで定義した関数はグローバルスコープ (`window`) には公開されません。
-    *   **NG:** `function myFunction() { ... }` → HTMLの `onclick="myFunction()"` で「未定義エラー」になる。
-    *   **OK:** `window.myFunction = function() { ... }` → 明示的に `window` オブジェクトに代入すること。
-    *   バグ報告「アイコンがクリックできない」の大半はこれが原因です。
+## 4. 現在のステータス (v2.60 - 2026/01/19)
+### 完了したリファクタリング (Phase 1)
+*   **ファイル整理:** `js/config.js`, `js/utils.js` を新設し、`firebase_app.js` (Legacy) を `old/` に退避。
+*   **バグ修正:** Cloud Syncのクラッシュ問題、Service Workerの更新不良問題を解決。
+*   **安定化:** `game_logic.js` の分割はリスク過大のため**中止**。現状の構成で安定稼働中。
 
 
 ## 5. ⚠️ アップデート手順 (Release Checklist) ⚠️
