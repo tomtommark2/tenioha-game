@@ -131,7 +131,8 @@ window.fetchLeaderboard = async function (type, force = false) {
                 });
             });
         } else if (type === 'around') {
-            const myDoc = await getDoc(doc(db, "leaderboard", userId));
+            const targetId = (auth && auth.currentUser) ? auth.currentUser.uid : userId;
+            const myDoc = await getDoc(doc(db, "leaderboard", targetId));
             if (!myDoc.exists()) return { results: [] };
             const myScore = myDoc.data().score;
             const qAbove = query(leaderboardRef, where("score", ">", myScore), orderBy("score", "asc"), limit(4));

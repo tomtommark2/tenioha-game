@@ -131,7 +131,23 @@ window.openLearningLogModal = function () {
         const bdAttempts = document.getElementById('statBreakdownAttempts');
         if (bdAttempts && bdAttempts.parentElement) {
             // Simplify breakdown to Total / 5 formula
-            bdAttempts.parentElement.innerHTML = `苦手取り組み数: ${total.toFixed(1)} 回 <span style="opacity:0.6;">(÷5)</span>`;
+            // User Req: Weakness Attempts = Total Attempts - Correct From Unlearned
+            const attempts = total; // already avgAnswers
+            // We need daily learned count. Since 'total' here is avgAnswers, we should ideally use today's actual stats for breakdown.
+            // But 'total' variable comes from lines 109-126 which iterates recent history.
+            // Let's stick to "Today's" actual if available, or average.
+            // Actually, the user says "15.0 stuck". That suggests 'pace' / 5 logic.
+            // Let's use today's `dailyStats` if available for the breakdown number.
+
+            let weakAttempts = 0;
+            if (gameState.dailyStats) {
+                const ans = gameState.dailyStats.answers || 0;
+                const learned = gameState.dailyStats.learned || 0;
+                weakAttempts = ans - learned; // Formula
+                if (weakAttempts < 0) weakAttempts = 0;
+            }
+
+            bdAttempts.parentElement.innerHTML = `苦手取り組み数: ${weakAttempts} 回 <span style="opacity:0.6;">(総数-新規)</span>`;
         }
 
         // Future Prediction Logic

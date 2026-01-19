@@ -1232,6 +1232,10 @@ function handleMeaningCardClick(e) {
         } else if (currentState === 'unlearned') {
             gameState.wordStates[key] = 'weak';
             gameState.wordsLearned++;
+            // Track Daily Learned for Weakness Stats
+            if (gameState.dailyStats) {
+                gameState.dailyStats.learned = (gameState.dailyStats.learned || 0) + 1;
+            }
             checkLevelUp();
         }
         // If already weak, stay weak.
@@ -1820,3 +1824,8 @@ if (wbModalGlobal) {
     };
 }
 
+
+function incrementDailyStats() {
+    if (!gameState.dailyStats) gameState.dailyStats = { answers: 0, learned: 0 };
+    gameState.dailyStats.answers = (gameState.dailyStats.answers || 0) + 1;
+}
