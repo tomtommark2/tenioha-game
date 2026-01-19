@@ -94,20 +94,8 @@ function initTrialSystem() {
         const savedTrial = localStorage.getItem(TRIAL_CONFIG.STORAGE_KEY);
 
         // Get Current Date in JST (Japan Standard Time)
-        let today;
-        try {
-            const jstFormatter = new Intl.DateTimeFormat('en-CA', {
-                timeZone: 'Asia/Tokyo',
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-            });
-            today = jstFormatter.format(new Date());
-        } catch (e) {
-            // Fallback to local date if JST fails (e.g. invalid timeZone)
-            const d = new Date();
-            today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-        }
+        // Get Current Date in JST (Japan Standard Time)
+        const today = window.GameUtils.getJSTDateString();
 
         if (savedTrial) {
             try {
@@ -1409,20 +1397,23 @@ function updateProgress() {
         document.querySelectorAll('.js-progress-bar-fill').forEach(el => el.style.width = `${percent}%`);
 
         // Determine Title (Mage Theme) based on percentage
-        let title = "見習い魔術師"; // 0-9
-        if (percent >= 100) title = "魔法の神";
-        else if (percent >= 90) title = "賢者";
-        else if (percent >= 70) title = "大魔導士";
-        else if (percent >= 50) title = "王宮魔術師";
-        else if (percent >= 30) title = "手練れの魔導士";
-        else if (percent >= 10) title = "駆け出しの魔法使い";
+        // Determine Title (Mage Theme) based on percentage
+        let title = "見習い魔術師"; // Default
+        const configTitles = (window.GameConfig && window.GameConfig.TITLES) ? window.GameConfig.TITLES : [];
+
+        for (const t of configTitles) {
+            if (percent >= t.percent) {
+                title = t.title;
+                break;
+            }
+        }
 
         document.querySelectorAll('.js-current-title').forEach(el => el.textContent = title);
     }
 
     // --- World Level Calculation ---
     // Sum of levels from Junior, Basic, Daily, Exam1
-    const categories = ['junior', 'basic', 'daily', 'exam1'];
+    const categories = (window.GameConfig && window.GameConfig.CATEGORIES) ? window.GameConfig.CATEGORIES : ['junior', 'basic', 'daily', 'exam1'];
     let worldLevel = 0;
     categories.forEach(cat => {
         worldLevel += getCategoryLevel(cat);
@@ -1725,7 +1716,7 @@ async function loadRankingData(type, force = false) {
             html += `
                     <div class="ranking-item ${item.isMe ? 'is-me' : ''}">
                         <span class="rank-num ${isTop3 ? 'top3' : ''}">${rankDisplay}</span>
-                        <span class="rank-name">${escapeHtml(item.name)}</span>
+                        <span class="rank-name">${window.GameUtils.escapeHtml(item.name)}</span>
                         <span class="rank-score">${item.score.toLocaleString()} G</span>
                     </div>`;
         });
@@ -1736,18 +1727,7 @@ async function loadRankingData(type, force = false) {
     document.getElementById('lb-loading').style.display = 'none';
 }
 
-function escapeHtml(str) {
-    if (!str) return "";
-    return str.replace(/[&<>"']/g, function (m) {
-        return {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        }[m];
-    });
-}
+// escapeHtml removed: Use window.GameUtils.escapeHtml
 
 init();
 

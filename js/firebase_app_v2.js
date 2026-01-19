@@ -196,17 +196,9 @@ window.fetchLeaderboard = async function (type, force = false) {
 
 
 // v2.58: Centralized Premium Check
+// v2.58: Centralized Premium Check
 window.checkPremiumStatus = function () {
-    const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
-    const expiryTime = parseInt(localStorage.getItem('vocabGame_expiry') || '0');
-    const now = Date.now();
-
-    // Logic: Unlocked AND Not Expired
-    // (Permanent users have year > 3000, so expiryTime > now holds true)
-    if (isUnlocked && (expiryTime > now)) {
-        return true;
-    }
-    return false;
+    return window.GameUtils.checkPremiumStatus();
 };
 
 window.updatePremiumStatusDisplay = function () {
@@ -504,13 +496,8 @@ if (auth) {
             }
 
             // GRAPH SCALES CONFIG
-            const GRAPH_SCALES = {
-                total: { max: 8018, label: '総合' },
-                A1: { max: 1221, label: 'Junior (A1)' },
-                A2: { max: 1448, label: 'Basic (A2)' },
-                B1: { max: 2480, label: 'Daily (B1)' },
-                B2: { max: 2869, label: 'Exam1 (B2)', stepSize: 500 }
-            };
+            // GRAPH SCALES CONFIG
+            const GRAPH_SCALES = window.GameConfig.GRAPH_SCALES;
 
             // --- GRAPH DATA LOGIC (Unified History) ---
             try {
@@ -863,23 +850,11 @@ window.uploadSaveData = async function (silent = false, force = false) {
 // --- LEARNING LOG & GRAPH SYSTEM (v2.37) ---
 
 // Map Internal Levels to CEFR
-const CEFR_MAP = {
-    'junior': 'A1',
-    'basic': 'A2',
-    'daily': 'B1',
-    'exam1': 'B2',
-    'exam1_2': 'B2', // handling potential variants
-    'exam2': 'B2'
-};
+// Map Internal Levels to CEFR
+const CEFR_MAP = window.GameConfig.CEFR_MAP;
 
 // Max counts per CEFR level (Approximate for capping)
-const CEFR_MAX = {
-    'A1': 1100, // Junior
-    'A2': 1100, // Basic
-    'B1': 1500, // Daily
-    'B2': 2500, // Exam
-    'total': 6200
-};
+const CEFR_MAX = window.GameConfig.CEFR_MAX;
 
 window.saveDailyProgress = async function () {
     if (!db || !auth.currentUser || typeof gameState === 'undefined') return;
@@ -949,13 +924,8 @@ let myPageChart = null;
 // Graph Data & Prediction Logic
 // Graph Data Logic - Simple Monthly Stats
 // Graph Configuration (Scales)
-const GRAPH_SCALES = {
-    total: { max: 8018, label: '総合' },
-    A1: { max: 1221, label: 'Junior (A1)' },
-    A2: { max: 1448, label: 'Basic (A2)' },
-    B1: { max: 2480, label: 'Daily (B1)' },
-    B2: { max: 2869, label: 'Exam1 (B2)', stepSize: 500 }
-};
+// Graph Configuration (Scales)
+const GRAPH_SCALES = window.GameConfig.GRAPH_SCALES;
 
 // Graph Data Logic - Simple Monthly Stats
 window.getMonthlyStats = async function () {
