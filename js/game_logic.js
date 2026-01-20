@@ -1798,7 +1798,7 @@ async function loadRankingData(type, force = false) {
         }
 
         if (!data.results || data.results.length === 0) {
-            container.innerHTML = `<div style="padding:10px;">ランキングデータがありません</div>`;
+            container.innerHTML = `<div style="padding:10px; color:#555;">ランキングデータがありません。<br>プレイしてスコアを登録しましょう！</div>`;
             return;
         }
 
