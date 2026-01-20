@@ -269,7 +269,7 @@ window.openLearningLogModal = function () {
             ac.weak_correct + ac.weak_incorrect +
             ac.learned_correct + ac.learned_incorrect +
             ac.perfect_incorrect;
-        pace = acquisitionSum / realDays;
+        pace = (acquisitionSum / realDays) / 5;
 
 
     }

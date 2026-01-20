@@ -12,7 +12,7 @@ var gameState = window.gameState || {
     meaningCardFlipped: false,
     isReviewWord: false,
     autoMode: false,
-    randomMode: true,
+    randomMode: false,
     posFilters: ['名', '動', '形', '副', '助', '前', '接', '代', 'other'], // Active POS filters
     vocabLevel: 1,
     wordsLearned: 0, // Total words moved from unlearned
