@@ -1,42 +1,54 @@
-let gameState = {
+// Safe declaration to prevent duplicate errors
+var gameState = window.gameState || {
     points: 0,
     currentMode: 'unlearned',
     currentLevel: 'basic',
     currentWordIndex: 0,
     currentWord: null,
     wordStates: {},
-    weakWordProgress: {},
     learnedWordIntervals: {},
     globalQuestionCount: 0,
     sessionStartTime: Date.now(),
     meaningCardFlipped: false,
     isReviewWord: false,
-    questionCount: 0,
     autoMode: false,
     randomMode: true,
     posFilters: ['名', '動', '形', '副', '助', '前', '接', '代', 'other'], // Active POS filters
     vocabLevel: 1,
     wordsLearned: 0, // Total words moved from unlearned
-    dailyStats: { date: null, answers: 0 }, // New: Track daily interactions for Growth Pace
-    dailyHistory: [] // New: Track past daily stats for averages
+    dailyStats: { date: null }, // Only date tracking needed for Daily Reset logic
+    dailyHistory: [], // New: Track past daily stats for averages
+    firstPlayedAt: null, // New: Track start date for Real Average calc
+    actionCounts: { // New: Detailed Action Tracking for Stats
+        unlearned_correct: 0,
+        unlearned_incorrect: 0,
+        weak_correct: 0,
+        weak_incorrect: 0,
+        learned_correct: 0,
+        learned_incorrect: 0,
+        perfect_correct: 0,
+        perfect_incorrect: 0
+    }
 };
 window.gameState = gameState; // Expose for fallback scripts
 
 // Initialize with default or empty
-let vocabularyDatabase = (typeof DEFAULT_VOCABULARY !== 'undefined') ? JSON.parse(JSON.stringify(DEFAULT_VOCABULARY)) : {
+var vocabularyDatabase = (typeof vocabularyDatabase !== 'undefined') ? vocabularyDatabase : ((typeof DEFAULT_VOCABULARY !== 'undefined') ? JSON.parse(JSON.stringify(DEFAULT_VOCABULARY)) : {
     basic: [],
     daily: [],
     exam1: [],
     exam2: [],
     junior: []
-};
+});
+
 
 // Merge Junior data if loaded via temp variable
 
 
-let vocabulary = [];
-let autoTimer = null;
-let gameStateHistory = []; // Stack to store previous states
+var vocabulary = [];
+var autoTimer = null;
+var gameAudioContext = null; // Renamed to avoid collisions
+var gameStateHistory = []; // Stack to store previous states
 
 // Save current state to history (Max 1 step for now)
 function saveState() {
@@ -74,19 +86,19 @@ function updateUndoButton() {
 }
 
 // --- Trial System Config ---
-const TRIAL_CONFIG = {
+var TRIAL_CONFIG = (typeof TRIAL_CONFIG !== 'undefined') ? TRIAL_CONFIG : {
     LIMIT_SECONDS: 600, // 10 minutes
 
     STORAGE_KEY: "vocabGame_trialState_v2" // Changed key to force reset/migration if needed, or just keep same
 };
 
-let trialState = {
+var trialState = (typeof trialState !== 'undefined') ? trialState : {
     unlocked: false,
     lastPlayDate: null,
     playTimeSeconds: 0
 };
 
-let lastTickTime = Date.now();
+var lastTickTime = (typeof lastTickTime !== 'undefined') ? lastTickTime : Date.now();
 
 // Initialize Trial
 function initTrialSystem() {
@@ -155,6 +167,18 @@ function saveTrialState() {
 }
 
 function updateTrialTimer() {
+    // 1. Sync with global unlock status (Authority from Cloud/Login)
+    const globalUnlock = localStorage.getItem('vocabGame_isUnlocked') === 'true';
+
+    // Force sync if mismatch (Fixes "Timer Unlocked but Stats Locked" bug)
+    if (trialState.unlocked !== globalUnlock) {
+        // Only allow auto-lock/unlock if it's a clear mismatch with authority
+        console.log(`Syncing Trial State: ${trialState.unlocked} -> ${globalUnlock}`);
+        trialState.unlocked = globalUnlock;
+        saveTrialState();
+        updateTrialUI();
+    }
+
     if (trialState.unlocked) {
         updateTrialUI(); // Ensure UI is hidden
         return;
@@ -294,30 +318,18 @@ function checkDailyReset() {
     if (gameState.dailyStats.date !== today) {
         console.log("Resetting Daily Stats for new day:", today);
 
-        // Push yesterday's stats to history if valid
-        if (gameState.dailyStats.answers > 0) {
-            if (!gameState.dailyHistory) gameState.dailyHistory = [];
-            gameState.dailyHistory.push({
-                ...gameState.dailyStats,
-                wordsLearned: gameState.wordsLearned // Save cumulative words count
-            });
-        }
+        // Push yesterday's stats to history if valid (using wordsLearned diff if needed, but for now just date)
+        // Actually, updateDailyHistory() handles history sync. This just resets the temp tracker.
 
         gameState.dailyStats = {
-            date: today,
-            answers: 0
+            date: today
         };
         // Trigger save to persist the reset state
         saveGame();
     }
 }
 
-function incrementDailyStats() {
-    checkDailyReset();
-    if (!gameState.dailyStats.answers) gameState.dailyStats.answers = 0;
-    gameState.dailyStats.answers++;
-    // console.log("Daily Stats Incremented:", gameState.dailyStats.answers);
-}
+
 
 function setupEventListeners() {
     const fileInput = document.getElementById('fileInput');
@@ -500,12 +512,13 @@ function loadVocabularyForLevel() {
             if (typeof v.set !== 'number') return true;
             return v.set <= gameState.vocabLevel;
         });
+
     } else {
-        vocabulary = vocabularyDatabase[gameState.currentLevel].filter(v => {
-            if (typeof v.set !== 'number') return true;
-            return v.set <= gameState.vocabLevel;
-        });
+        // Standard Categories (Basic, Daily, etc.)
+        vocabulary = vocabularyDatabase[gameState.currentLevel] || [];
     }
+    // Expose Total for UI Prediction
+    gameState.currentLevelTotal = vocabulary.length;
 }
 
 function getWordKey(word, level) {
@@ -541,17 +554,17 @@ function saveGame() {
     const data = {
         points: gameState.points,
         wordStates: gameState.wordStates,
-        weakWordProgress: gameState.weakWordProgress,
         learnedWordIntervals: gameState.learnedWordIntervals,
         globalQuestionCount: gameState.globalQuestionCount,
         currentLevel: gameState.currentLevel,
         currentMode: gameState.currentMode,
         vocabLevel: gameState.vocabLevel,
-        questionCount: gameState.questionCount,
         wordsLearned: gameState.wordsLearned, // Ensure wordsLearned is saved
         dailyStats: gameState.dailyStats, // Fix: Persist Daily Stats
         dailyHistory: gameState.dailyHistory, // Persist History
-        lastSaveTime: Date.now() // Track local save time for Sync Logic
+        lastSaveTime: Date.now(), // Track local save time for Sync Logic
+        firstPlayedAt: gameState.firstPlayedAt, // Persist Start Date
+        actionCounts: gameState.actionCounts // Persist Detailed Action Counts
     };
     localStorage.setItem('vocabClickerSave', JSON.stringify(data));
 
@@ -569,10 +582,45 @@ function loadGame() {
     if (saved) {
         const data = JSON.parse(saved);
         gameState = { ...gameState, ...data };
+
+        // Backfill firstPlayedAt if missing
+        if (!gameState.firstPlayedAt) {
+            gameState.firstPlayedAt = Date.now();
+        }
+        if (!gameState.actionCounts) {
+            gameState.actionCounts = {
+                unlearned_correct: 0,
+                unlearned_incorrect: 0,
+                weak_correct: 0,
+                weak_incorrect: 0,
+                learned_correct: 0,
+                learned_incorrect: 0,
+                perfect_correct: 0,
+                perfect_incorrect: 0
+            };
+        }
+
         // Fix: Update global reference for fallback scripts
         window.gameState = gameState;
+    } else {
+        // First ever launch
+        if (!gameState.firstPlayedAt) {
+            gameState.firstPlayedAt = Date.now();
+        }
     }
 }
+
+// Hard Reset for Logout
+window.resetGameData = function () {
+    console.log("Hard Resetting Game Data...");
+    localStorage.removeItem('vocabClickerSave');
+    localStorage.removeItem('vocabGame_userId');
+    localStorage.removeItem('vocabGame_playerName');
+    localStorage.removeItem('vocabGame_isUnlocked');
+    localStorage.removeItem('vocabGame_expiry');
+    localStorage.removeItem('vocabGame_trialState_v2');
+    // We don't clear 'vocabGame_skipWelcome' so guests don't see tutorial every time if they just relog
+};
 
 function startPlayTimeCounter() {
     gameState.sessionStartTime = Date.now();
@@ -684,7 +732,7 @@ window.updateDailyHistory = function () {
     const entryData = {
         date: todayStr,
         wordsLearned: total,
-        answers: gameState.dailyStats ? gameState.dailyStats.answers : 0,
+        // answers: gameState.dailyStats ? gameState.dailyStats.answers : 0, // Removed usage
         cefr_breakdown: {
             A1: countA1,
             A2: countA2,
@@ -739,22 +787,22 @@ function enableAudioStayAwake() {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         if (!AudioContext) return;
 
-        audioContext = new AudioContext();
+        gameAudioContext = new AudioContext();
 
         // OPTIMIZATION: Use a looped empty buffer instead of an oscillator.
         // Oscillators can cause high CPU usage or "denormal" math issues on some PCs,
         // leading to slow/robotic speech. Buffers are lighter.
-        const buffer = audioContext.createBuffer(1, 1, 22050); // 1 sample
-        const source = audioContext.createBufferSource();
+        const buffer = gameAudioContext.createBuffer(1, 1, 22050); // 1 sample
+        const source = gameAudioContext.createBufferSource();
         source.buffer = buffer;
         source.loop = true;
 
         // Connect to destination (no gain node needed for empty buffer, but safety first)
-        const gainNode = audioContext.createGain();
+        const gainNode = gameAudioContext.createGain();
         gainNode.gain.value = 0.0001; // Just enough to be "active" but silent
 
         source.connect(gainNode);
-        gainNode.connect(audioContext.destination);
+        gainNode.connect(gameAudioContext.destination);
 
         source.start(0);
         audioWakeLockSet = true;
@@ -769,8 +817,8 @@ function speakWord(word) {
     if (!audioWakeLockSet) {
         enableAudioStayAwake();
     }
-    if (audioContext && audioContext.state === 'suspended') {
-        audioContext.resume();
+    if (typeof gameAudioContext !== 'undefined' && gameAudioContext && gameAudioContext.state === 'suspended') {
+        gameAudioContext.resume();
     }
 
     // Cancel previous speech
@@ -802,6 +850,8 @@ function speakWord(word) {
 }
 
 function showNextWord() {
+    if (window.resetFocusTimer) window.resetFocusTimer();
+
     gameState.meaningCardFlipped = false;
     clearAutoTimer();
 
@@ -1079,15 +1129,7 @@ function autoOpenMeaningCard() {
     if (!currentWord) return;
 
     const key = getWordKey(currentWord, gameState.currentLevel);
-    if (!gameState.isReviewWord && (gameState.currentMode === 'unlearned' || gameState.currentMode === 'weak')) {
-        gameState.questionCount++;
-    }
 
-    gameState.wordStates[key] = 'weak';
-
-    if (gameState.weakWordProgress[key]) {
-        delete gameState.weakWordProgress[key];
-    }
 
     const basePoints = 2;
     const finalPoints = basePoints * gameState.vocabLevel;
@@ -1110,15 +1152,21 @@ function setupCardListeners() {
     const meaningCard = document.getElementById('meaningCard');
 
     if (vocabCard) {
-        vocabCard.addEventListener('click', handleVocabCardClick);
+        const newVocab = vocabCard.cloneNode(true);
+        vocabCard.parentNode.replaceChild(newVocab, vocabCard);
+        newVocab.addEventListener('click', handleVocabCardClick);
     }
 
     if (meaningCard) {
-        meaningCard.addEventListener('click', handleMeaningCardClick);
+        const newMeaning = meaningCard.cloneNode(true);
+        meaningCard.parentNode.replaceChild(newMeaning, meaningCard);
+        newMeaning.addEventListener('click', handleMeaningCardClick);
     }
 }
 
 function handleVocabCardClick() {
+    if (window.resetFocusTimer) window.resetFocusTimer();
+
     const currentWord = gameState.currentWord;
     if (!currentWord) return;
 
@@ -1141,8 +1189,6 @@ function handleVocabCardClick() {
     }
 
     // Save state for Undo
-    // Save state for Undo
-    saveState();
     saveState();
     // incrementDailyStats(); // Moved below to exclude "Unlearned -> Perfect" cases
 
@@ -1154,33 +1200,37 @@ function handleVocabCardClick() {
     const currentState = gameState.wordStates[key];
 
     if (currentState === 'unlearned') {
+        gameState.actionCounts.unlearned_correct++;
         gameState.wordStates[key] = 'perfect';
         gameState.wordsLearned++;
         checkLevelUp();
-        // Do NOT increment daily stats here (User logic: Known words don't count for growth)
+        checkDailyReset(); // Count effort
+        // Track 'Known' (Unlearned->Perfect) to exclude from Velocity
     } else if (currentState === 'weak') {
-        incrementDailyStats(); // Count effort
+        gameState.actionCounts.weak_correct++;
+        checkDailyReset(); // Count effort
         gameState.wordStates[key] = 'learned';
         basePoints = 2; // User Request: 2 points for weak (Priority)
         msg = "✅ 克服！";
-        if (gameState.weakWordProgress[key]) delete gameState.weakWordProgress[key];
         gameState.learnedWordIntervals[key] = 0;
         gameState.learnedWordIntervals[`${key}_last`] = gameState.globalQuestionCount;
     } else if (currentState === 'learned') {
+        gameState.actionCounts.learned_correct++;
         gameState.wordStates[key] = 'perfect';
         basePoints = 1; // Default 1
         msg = "🏆 完璧マスター！";
-        incrementDailyStats(); // Count effort
+        checkDailyReset(); // Count effort
     } else if (currentState === 'perfect') {
+        gameState.actionCounts.perfect_correct++;
         // Stay perfect
         basePoints = 1; // Default 1
         msg = "✨ 完璧維持！";
-        incrementDailyStats(); // Count effort
+        checkDailyReset(); // Count effort
     } else {
         // Fallback
         gameState.wordStates[key] = 'perfect';
         basePoints = 1;
-        incrementDailyStats();
+        checkDailyReset();
     }
 
     const finalPoints = basePoints * gameState.vocabLevel;
@@ -1206,14 +1256,18 @@ function handleVocabCardClick() {
 }
 
 function handleMeaningCardClick(e) {
+    // If in Focus Mode, Pause Timer instead of reset
+    if (gameState.focusState && gameState.focusState.active) {
+        gameState.focusState.paused = true;
+    }
+
     const card = e.currentTarget;
     clearAutoTimer();
 
     if (!gameState.meaningCardFlipped) {
         // Save state for Undo
-        // Save state for Undo
         saveState();
-        incrementDailyStats(); // Track interaction for Growth Pace
+        checkDailyReset(); // Track interaction for Growth Pace
 
         // Flip = Incorrect / Check
         card.classList.add('flipped');
@@ -1228,22 +1282,26 @@ function handleMeaningCardClick(e) {
         // LOGIC: Learned -> Weak. Unlearned -> Weak. Perfect -> Learned (Soft landing).
 
         if (currentState === 'perfect') {
+            gameState.actionCounts.perfect_incorrect++;
             gameState.wordStates[key] = 'learned';
             // Reset learned interval as it's a "new" learned word effectively
             gameState.learnedWordIntervals[key] = 0;
             gameState.learnedWordIntervals[`${key}_last`] = gameState.globalQuestionCount;
         } else if (currentState === 'learned') {
+            gameState.actionCounts.learned_incorrect++;
             gameState.wordStates[key] = 'weak';
         } else if (currentState === 'unlearned') {
+            gameState.actionCounts.unlearned_incorrect++;
             gameState.wordStates[key] = 'weak';
             gameState.wordsLearned++;
             // Track Daily Learned for Weakness Stats
-            if (gameState.dailyStats) {
-                gameState.dailyStats.learned = (gameState.dailyStats.learned || 0) + 1;
-            }
+            gameState.wordsLearned++;
             checkLevelUp();
         }
         // If already weak, stay weak.
+        else if (currentState === 'weak') {
+            gameState.actionCounts.weak_incorrect++;
+        }
 
         // Points Logic: Unlearned=1, Weak=2, Others=1
         let basePoints = 1;
@@ -1322,7 +1380,6 @@ function updateDisplay() {
         displayPoints = Math.floor(rawPoints / 1000) + 'k';
     }
     document.getElementById('points').textContent = displayPoints;
-    updateWordStats();
     updateWordStats();
     updateModeButtons();
     updateProgress();
@@ -1709,7 +1766,12 @@ function switchTab(tab) {
 }
 
 async function loadRankingData(type, force = false) {
-    const container = (type === 'top') ? document.getElementById('lb-list-top') : document.getElementById('lb-list-around');
+    let container;
+    if (type === 'top') container = document.getElementById('lb-list-top');
+    else if (type === 'around') container = document.getElementById('lb-list-around');
+    else if (type === 'focus') container = document.getElementById('lb-list-focus');
+
+    if (!container) return;
     container.innerHTML = '<div style="padding:10px; color:#999;">データ取得中...</div>';
 
     if (window.fetchLeaderboard) {
@@ -1734,7 +1796,7 @@ async function loadRankingData(type, force = false) {
                     <div class="ranking-item ${item.isMe ? 'is-me' : ''}">
                         <span class="rank-num ${isTop3 ? 'top3' : ''}">${rankDisplay}</span>
                         <span class="rank-name">${window.GameUtils.escapeHtml(item.name)}</span>
-                        <span class="rank-score">${item.score.toLocaleString()} G</span>
+                        <span class="rank-score">${item.score.toLocaleString()}${typeof item.score === 'number' ? ' G' : ''}</span>
                     </div>`;
         });
         container.innerHTML = html;
@@ -1822,7 +1884,139 @@ if (wbModalGlobal) {
 }
 
 
-function incrementDailyStats() {
-    if (!gameState.dailyStats) gameState.dailyStats = { answers: 0, learned: 0 };
-    gameState.dailyStats.answers = (gameState.dailyStats.answers || 0) + 1;
+
+
+// --- INFINITE FOCUS MODE LOGIC ---
+let focusInterval = null;
+let lastFocusTick = 0;
+
+window.startFocusMode = function (customDuration = 7) {
+    const duration = Number(customDuration) || 7;
+
+    // Initialize or Reset State
+    if (!gameState.focusState) {
+        gameState.focusState = { active: false, initialTimer: duration, timer: duration, startTime: 0, currentDuration: 0, paused: false };
+    }
+
+    gameState.focusState.active = true;
+    gameState.focusState.initialTimer = duration;
+    gameState.focusState.timer = duration;
+    gameState.focusState.startTime = Date.now();
+    gameState.focusState.currentDuration = 0;
+    gameState.focusState.paused = false;
+
+    // Disable Auto Mode if active to prevent cheating/conflict
+    if (gameState.autoMode) {
+        toggleAutoMode();
+    }
+
+    // Show UI Overlay
+    if (window.updateFocusOverlay) window.updateFocusOverlay(true, duration, "00:00", false);
+
+    // Start Loop
+    lastFocusTick = Date.now();
+    if (focusInterval) clearInterval(focusInterval);
+    focusInterval = setInterval(updateFocusLoop, 100);
+
+    // prompt filtered out
+};
+
+window.stopFocusMode = function (reason) {
+    if (!gameState.focusState || !gameState.focusState.active) return;
+
+    gameState.focusState.active = false;
+    if (focusInterval) clearInterval(focusInterval);
+
+    // Submit Score (Weekly Focus Leaderboard)
+    if (window.submitFocusScore) {
+        window.submitFocusScore(gameState.focusState.currentDuration);
+    }
+
+    // Show Game Over Modal
+    if (window.showFocusGameOver) {
+        window.showFocusGameOver(gameState.focusState.currentDuration, reason);
+    } else {
+        alert(`Game Over! Duration: ${gameState.focusState.currentDuration.toFixed(1)}s`);
+    }
+
+    // Hide Overlay
+    if (window.updateFocusOverlay) window.updateFocusOverlay(false);
+};
+
+function updateFocusLoop() {
+    if (!gameState.focusState || !gameState.focusState.active) return;
+
+    const now = Date.now();
+    const delta = (now - lastFocusTick) / 1000;
+    lastFocusTick = now;
+
+    // Pause Check
+    if (gameState.focusState.paused) {
+        if (window.updateFocusOverlay) {
+            const fmt = formatDuration(gameState.focusState.currentDuration);
+            window.updateFocusOverlay(true, gameState.focusState.timer, fmt, true);
+        }
+        return; // Skip timer decrement
+    }
+
+    gameState.focusState.timer -= delta;
+    gameState.focusState.currentDuration = (now - gameState.focusState.startTime) / 1000; // Total survival time continues? 
+    // Wait, if paused, survival time should PROBABLY pause too?
+    // "Meaning time" shouldn't count towards "Survival High Score" if it pauses the death timer.
+    // Let's pause survival duration accumulation too.
+    gameState.focusState.currentDuration += delta; // Accumulate manually instead of diff? No, easier to just offset start time or pause duration.
+    // Let's fix this logic:
+    // If paused, we don't update currentDuration either.
+
+    // Re-calculating:
+    // Actually, simple way: only update if !paused.
+    // But `currentDuration` was based on `now - startTime`.
+    // If we pause, `now` advances.
+    // So on unpause, we must shift `startTime` forward by the paused amount.
+    // Or just switch to delta accumulation.
+    // Let's Switch to Delta Accumulation for currentDuration to be safe with pause.
+}
+// Rewriting updateFocusLoop properly below:
+
+function updateFocusLoop() {
+    if (!gameState.focusState || !gameState.focusState.active) return;
+
+    const now = Date.now();
+    const delta = (now - lastFocusTick) / 1000;
+    lastFocusTick = now;
+
+    if (gameState.focusState.paused) {
+        if (window.updateFocusOverlay) {
+            const fmt = formatDuration(gameState.focusState.currentDuration);
+            window.updateFocusOverlay(true, gameState.focusState.timer, fmt, true);
+        }
+        return;
+    }
+
+    gameState.focusState.timer -= delta;
+    gameState.focusState.currentDuration += delta; // Delta accumulation logic
+
+    if (gameState.focusState.timer <= 0) {
+        gameState.focusState.timer = 0;
+        window.stopFocusMode("timeup");
+    }
+
+    // Update UI
+    if (window.updateFocusOverlay) {
+        const fmt = formatDuration(gameState.focusState.currentDuration);
+        window.updateFocusOverlay(true, gameState.focusState.timer, fmt, false);
+    }
+}
+
+window.resetFocusTimer = function () {
+    if (gameState.focusState && gameState.focusState.active) {
+        gameState.focusState.timer = gameState.focusState.initialTimer || 7.00;
+        gameState.focusState.paused = false;
+    }
+};
+
+function formatDuration(sec) {
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }

@@ -100,86 +100,314 @@ window.openLearningLogModal = function () {
     if (!modal) return;
     modal.style.display = 'flex';
 
-    // Real Data for Growth Pace
-    if (document.getElementById('statVelocity')) {
-        let pace = 0;
-        let total = 0;
+    // 1. Calculate Eiken Level Diagnosis
+    let levelCounts = { junior: 0, basic: 0, daily: 0, exam1: 0 }; // Mastered
+    let playedCounts = { junior: 0, basic: 0, daily: 0, exam1: 0 }; // Played (Any interaction)
+    let levelTotals = { junior: 0, basic: 0, daily: 0, exam1: 0 };
 
-        if (typeof gameState !== 'undefined' && gameState.dailyStats) {
-            let totalAnswers = gameState.dailyStats.answers || 0;
-            let daysCount = 1;
-
-            if (gameState.dailyHistory && gameState.dailyHistory.length > 0) {
-                // Get last 7 entries
-                const recentHistory = gameState.dailyHistory.slice(-7);
-                recentHistory.forEach(h => {
-                    totalAnswers += (h.answers || 0);
-                });
-                daysCount += recentHistory.length;
+    // Helper: Robust Key Generation (Matches game_logic.js)
+    const resolveWordKey = (word, level) => {
+        if (typeof getWordKey === 'function') return getWordKey(word, level);
+        // Fallback Logic (Must match game_logic.js)
+        if (word.ref && word.ref !== level) {
+            let refCategory = word.ref;
+            let refWordText = word.word;
+            if (word.ref.includes(':')) {
+                const parts = word.ref.split(':');
+                refCategory = parts[0];
+                refWordText = parts[1];
             }
+            return `${refCategory}_${refWordText}`;
+        }
+        return `${level}_${word.word}`;
+    };
 
-            const avgAnswers = totalAnswers / daysCount;
-            pace = avgAnswers / 5;
+    // Count Mastery and Played
+    if (typeof vocabularyDatabase !== 'undefined') {
+        const cats = ['junior', 'basic', 'daily', 'exam1'];
+        cats.forEach(cat => {
+            const words = vocabularyDatabase[cat] || [];
+            levelTotals[cat] = words.length;
+            words.forEach(w => {
+                const key = resolveWordKey(w, cat);
+                const st = gameState.wordStates[key];
 
-            // For display usage
-            total = avgAnswers;
+                // Fix: 'unlearned' is default, so only count if state changed (weak, learned, perfect)
+                if (st && st !== 'unlearned') {
+                    playedCounts[cat]++;
+                }
+                if (st === 'learned' || st === 'perfect') {
+                    levelCounts[cat]++;
+                }
+            });
+        });
+    }
+
+    // --- NEW LOGIC: Total Vocabulary Estimation ---
+    let totalEstVocab = 0;
+    let breakdown = {};
+
+    ['junior', 'basic', 'daily', 'exam1'].forEach(cat => {
+        const total = levelTotals[cat] || 0;
+        const played = playedCounts[cat] || 0;
+        const mastered = levelCounts[cat] || 0;
+
+        // 1. Accuracy (Played > 0 ? Mastered / Played : 0)
+        const accuracy = played > 0 ? (mastered / played) : 0;
+
+        // 2. Confidence (0.8 ~ 1.0)
+        // linear from 0.8 at 0 play, to 1.0 at 200 play
+        let confidence = 0.8 + (0.2 * Math.min(played, 200) / 200);
+
+        // 3. Estimated Count for this level
+        // User Req: Ignore if played < 100
+        let estCount = 0;
+        if (played >= 100) {
+            estCount = Math.floor(total * accuracy * confidence);
         }
 
-        document.getElementById('statVelocity').textContent = pace.toFixed(1);
+        totalEstVocab += estCount;
+        breakdown[cat] = estCount;
+    });
 
-        // Update Breakdown Area
-        const bdAttempts = document.getElementById('statBreakdownAttempts');
-        if (bdAttempts && bdAttempts.parentElement) {
-            // Simplify breakdown to Total / 5 formula
-            // User Req: Weakness Attempts = Total Attempts - Correct From Unlearned
-            const attempts = total; // already avgAnswers
-            // We need daily learned count. Since 'total' here is avgAnswers, we should ideally use today's actual stats for breakdown.
-            // But 'total' variable comes from lines 109-126 which iterates recent history.
-            // Let's stick to "Today's" actual if available, or average.
-            // Actually, the user says "15.0 stuck". That suggests 'pace' / 5 logic.
-            // Let's use today's `dailyStats` if available for the breakdown number.
+    // Estimate Eiken Level based on Total Count (approx 8000 max)
+    let eikenLabel = "";
+    let eikenColor = "#95a5a6"; // Gray
 
-            let weakAttempts = 0;
-            if (gameState.dailyStats) {
-                const ans = gameState.dailyStats.answers || 0;
-                const learned = gameState.dailyStats.learned || 0;
-                weakAttempts = ans - learned; // Formula
-                if (weakAttempts < 0) weakAttempts = 0;
+    if (totalEstVocab >= 6500) {
+        eikenLabel = "英検準1級 相当";
+        eikenColor = "#f1c40f"; // Gold
+    } else if (totalEstVocab >= 4500) {
+        eikenLabel = "英検2級 相当";
+        eikenColor = "#bdc3c7"; // Silver
+    } else if (totalEstVocab >= 3000) {
+        eikenLabel = "英検準2級 相当";
+        eikenColor = "#e67e22"; // Bronze
+    } else if (totalEstVocab >= 1500) {
+        eikenLabel = "英検3級 相当";
+        eikenColor = "#2ecc71"; // Green
+    } else {
+        eikenLabel = "英検4級〜5級";
+        eikenColor = "#3498db"; // Blue
+    }
+
+    const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
+    const lockAction = 'onclick="window.openPurchaseModal(); event.stopPropagation();"';
+    const lockIcon = '<span style="font-size: 0.8em; opacity:0.7;">🔒</span>';
+
+    // Total: Blur effect (Mosaic) instead of Lock Icon
+    const displayTotal = isUnlocked ?
+        `約 ${totalEstVocab.toLocaleString()}語` :
+        `<span ${lockAction} title="プレミアム機能" style="cursor:pointer;">約 <span style="filter: blur(5px); user-select: none; pointer-events: none; display:inline-block;">${totalEstVocab.toLocaleString()}</span> 語</span>`;
+
+    // Other locks remain as icons
+    const displayEiken = isUnlocked ? eikenLabel : `<span ${lockAction} style="cursor:pointer; display:flex; align-items:center; gap:4px; justify-content:center;">${lockIcon} <span style="font-size:0.8em;">分析完了</span></span>`;
+
+    // Mask Breakdown
+    const mkBd = (val) => isUnlocked ? `<b>${val}語</b>` : `<b ${lockAction} style="cursor:pointer;">${lockIcon}</b>`;
+    const bdA1 = mkBd(breakdown.junior);
+    const bdA2 = mkBd(breakdown.basic);
+    const bdB1 = mkBd(breakdown.daily);
+    const bdB2 = mkBd(breakdown.exam1);
+
+    // Adjust colors for Locked state (Gray out)
+    const finalEikenColor = isUnlocked ? eikenColor : '#bdc3c7';
+    const finalEikenStyle = isUnlocked ? `color: ${finalEikenColor}; border:1px solid ${finalEikenColor};` : `color: #7f8c8d; border:1px dashed #bdc3c7; background:#f0f3f4;`;
+
+    // 2. Inject UI (Vocab Diagnosis)
+    const container = document.getElementById('vocabDiagnosisContainer');
+
+    if (container) {
+        container.innerHTML = `
+            <div style="margin-bottom: 20px; text-align: center; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); padding: 15px; border-radius: 12px; border: 1px solid #dfe6e9; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <div style="font-size: 12px; color: #7f8c8d; font-weight: bold; margin-bottom: 5px; letter-spacing: 1px;">推定語彙数</div>
+                <div style="font-size: 28px; font-weight: 900; color: #2c3e50; text-shadow: 1px 1px 0px rgba(0,0,0,0.1); margin-bottom: 2px;">
+                    ${displayTotal}
+                </div>
+                <div style="font-size: 14px; font-weight:bold; ${finalEikenStyle} margin-bottom: 8px; background:white; display:inline-block; padding:2px 10px; border-radius:10px; box-shadow:0 1px 2px rgba(0,0,0,0.1);">
+                    ${displayEiken}
+                </div>
+                <div style="display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; margin-top:5px;">
+                    <span style="font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid #ccc;">A1:${bdA1}</span>
+                    <span style="font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid #ccc;">A2:${bdA2}</span>
+                    <span style="font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid #ccc;">B1:${bdB1}</span>
+                    <span style="font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid #ccc;">B2:${bdB2}</span>
+                </div>
+                <div style="font-size: 10px; color: #999; margin-top: 8px; text-align: right;">
+                    ※推定の為に、各レベルで最低100語はプレイしてください。
+                </div>
+            </div>
+        `;
+    }
+
+
+    // --- Real Data Calculation (Lifetime & Recent) ---
+    // CLEANED: Removed legacy fallback logic as per user request (v2.65+)
+    let total = 0; // Daily Average
+    let pace = 0; // Velocity
+
+
+    // 1. Calculate Play Days
+    const now = Date.now();
+    const start = gameState.firstPlayedAt || now;
+    let realDays = Math.floor((now - start) / 86400000) + 1; // Days + 1 as allowed
+    if (realDays < 1) realDays = 1;
+
+    // 2. Calculate Stats from Action Counts (Strict Mode)
+    if (gameState.actionCounts) {
+        const ac = gameState.actionCounts;
+
+        // A. Average Learning Count (Total Actions / Days)
+        const sumAll = ac.unlearned_correct + ac.unlearned_incorrect +
+            ac.weak_correct + ac.weak_incorrect +
+            ac.learned_correct + ac.learned_incorrect +
+            ac.perfect_correct + ac.perfect_incorrect;
+        total = sumAll / realDays;
+
+        // B. Velocity (New Words Acquisition Capability) - EXCLUDES 'unlearned_correct'
+        const acquisitionSum = ac.unlearned_incorrect +
+            ac.weak_correct + ac.weak_incorrect +
+            ac.learned_correct + ac.learned_incorrect +
+            ac.perfect_incorrect;
+        pace = acquisitionSum / realDays;
+
+
+    }
+
+    // --- UI Updates ---
+
+    // 3. UI Updates
+
+    // Daily Average Display
+    const avgDisplay = document.getElementById('statDailyAverage');
+    if (avgDisplay) {
+        avgDisplay.textContent = total.toFixed(1);
+
+        // --- Completion Prediction (New) ---
+        // Formula: Remaining / (DailyAvg + Velocity)
+        const currentLvl = gameState.currentLevel || 'basic';
+
+        let tgtTotal = 0;
+        let tgtDone = 0;
+
+        // Try to get Dynamic Total (for Wordbooks)
+        if (gameState.currentLevelTotal) {
+            tgtTotal = gameState.currentLevelTotal;
+            // Get Done count from DOM (Active Wordbook Stats) if available
+            const learnedEl = document.getElementById('learnedCount');
+            const perfectEl = document.getElementById('perfectCount');
+            if (learnedEl && perfectEl) {
+                tgtDone = parseInt(learnedEl.textContent) + parseInt(perfectEl.textContent);
+            } else {
+                // Fallback to levelCounts map if DOM not ready (unlikely)
+                tgtDone = levelCounts[currentLvl] || 0;
             }
-
-            bdAttempts.parentElement.innerHTML = `苦手取り組み数: ${weakAttempts} 回 <span style="opacity:0.6;">(総数-新規)</span>`;
+        } else if (levelTotals && levelTotals[currentLvl]) {
+            // Fallback to static totals
+            tgtTotal = levelTotals[currentLvl] || 0;
+            tgtDone = levelCounts[currentLvl] || 0;
         }
+
+        if (tgtTotal > 0) {
+            const remaining = tgtTotal - tgtDone;
+            const speed = total + pace; // User Formula: Avg + Velocity
+
+            // Name Mapping
+            const LEVEL_NAMES = {
+                'junior': 'Junior (A1)', 'basic': 'Basic (A2)', 'daily': 'Daily (B1)', 'exam1': 'Exam (B2)',
+                'selection1900': '厳選1900+', 'selection1400': '厳選1400+', 'sys_2000': 'システムWORDS'
+            };
+            const lvlName = LEVEL_NAMES[currentLvl] || currentLvl;
+
+            const predContainer = document.getElementById('completionPredictionContainer');
+
+            if (predContainer) {
+                // Premium Lock Check
+                const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
+
+                if (!isUnlocked) {
+                    // Locked State (Teaser)
+                    predContainer.innerHTML = `
+                        <div style="cursor: pointer;" onclick="window.openPurchaseModal();">
+                            <div style="font-size: 10px; color: #7f8c8d; margin-bottom:2px;">達成予測</div>
+                            <div style="font-size: 12px; color: #2c3e50; font-weight: bold; background: #ecf0f1; border-radius: 4px; padding: 2px 8px; display: inline-flex; align-items: center; gap: 4px;">
+                                <span>あと 🔒 日</span>
+                            </div>
+                            <div style="font-size: 9px; color: #e67e22; margin-top:2px;">プレミアムで表示</div>
+                        </div>`;
+                } else if (remaining > 0 && speed > 0.1) {
+                    const daysLeft = Math.ceil(remaining / speed);
+                    predContainer.innerHTML = `
+                        <div style="line-height:1.2;">
+                            あと<b style="font-size:14px; color:#2980b9;">${daysLeft}日</b>で<br>
+                            <span style="font-size:9px; color:#7f8c8d;">${lvlName}制覇</span>
+                        </div>`;
+                } else if (remaining <= 0) {
+                    // Already done
+                    predContainer.innerHTML = `
+                        <div style="line-height:1.2; font-weight:bold; color:#f39c12;">
+                            🎉 ${lvlName}<br>制覇済み！
+                        </div>`;
+                } else {
+                    // Too slow or no data
+                    predContainer.innerHTML = `<span style="color:#dcdcdc;">--</span>`;
+                }
+            }
+        }
+    }
+
+    // 2. Velocity & Breakdown
+    const velDisplay = document.getElementById('statVelocity');
+    if (velDisplay) {
+        // Re-check lock status for this block scope (or use existing)
+        const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
+        const lockAction = 'onclick="window.openPurchaseModal(); event.stopPropagation();"';
+
+        // Locked Velocity
+        if (!isUnlocked) {
+            velDisplay.innerHTML = `<span ${lockAction} style="font-size:0.8em; color:#95a5a6; cursor:pointer;">🔒</span>`;
+        } else {
+            velDisplay.textContent = pace.toFixed(1);
+        }
+
+
 
         // Future Prediction Logic
         if (document.getElementById('statFutureMilestone')) {
-            const currentTotal = gameState.wordsLearned || 0; // Total words currently mastered/perfect
-            // Future = Pace * 30 days (User expects Increment, not Total)
             const futureGain = Math.floor(pace * 30);
-
-            // Evaluation Tiers
             let evaluation = "";
-            let color = "#aaa"; // default gray
+            let color = "#aaa";
 
             if (pace < 3) {
                 evaluation = "🚶 マイペース";
                 color = "#95a5a6";
             } else if (pace < 5) {
                 evaluation = "🏃 良い調子！";
-                color = "#f1c40f"; // Yellow/Orange
+                color = "#f1c40f";
             } else if (pace < 10) {
                 evaluation = "🚴 急上昇中！";
-                color = "#e67e22"; // Orange
+                color = "#e67e22";
             } else {
                 evaluation = "🚀 ゾーン突入！";
-                color = "#e74c3c"; // Red/Fire
+                color = "#e74c3c";
             }
 
-            document.getElementById('statFutureMilestone').innerHTML =
-                `<div style="display: flex; align-items: baseline; gap: 3px;">` +
-                `<span style="font-size: 24px; font-weight: bold; color: ${color};">+${futureGain.toLocaleString()}</span>` +
-                `<span style="font-size: 12px; color: #666;">語</span>` +
-                `</div>` +
-                `<div style="font-size:12px; color:${color}; font-weight:bold; margin-top:5px;">${evaluation}</div>`;
+            // Locked Future
+            if (!isUnlocked) {
+                document.getElementById('statFutureMilestone').innerHTML =
+                    `<div style="display: flex; align-items: baseline; gap: 3px; justify-content: center; cursor:pointer;" ${lockAction}>` +
+                    `<span style="font-size: 24px; font-weight: bold; color: #bdc3c7;">+🔒</span>` +
+                    `<span style="font-size: 12px; color: #bdc3c7;">語</span>` +
+                    `</div>` +
+                    `<div style="font-size:12px; color:#95a5a6; font-weight:bold; margin-top:5px;">プレミアムで表示</div>`;
+            } else {
+                document.getElementById('statFutureMilestone').innerHTML =
+                    `<div style="display: flex; align-items: baseline; gap: 3px;">` +
+                    `<span style="font-size: 24px; font-weight: bold; color: ${color};">+${futureGain.toLocaleString()}</span>` +
+                    `<span style="font-size: 12px; color: #666;">語</span>` +
+                    `</div>` +
+                    `<div style="font-size:12px; color:${color}; font-weight:bold; margin-top:5px;">${evaluation}</div>`;
+            }
         }
     }
 
@@ -208,67 +436,9 @@ function renderRealChart(canvas) {
     // Destroy previous
     if (window.myChartInstance) window.myChartInstance.destroy();
 
-    const labels = [];
-    const dataHistory = [];
+    // Used for current day plot
+    const today = new Date();
 
-    // --- GAP FILL DATA (Past 30 Days) ---
-    // Generate dates
-    let dates = [];
-    let today = new Date();
-    for (let i = 29; i >= 0; i--) {
-        let d = new Date();
-        d.setDate(today.getDate() - i);
-        let yyyy = d.getFullYear();
-        let mm = String(d.getMonth() + 1).padStart(2, '0');
-        let dd = String(d.getDate()).padStart(2, '0');
-        dates.push(`${yyyy}-${mm}-${dd}`);
-    }
-
-    // Map history
-    let historyMap = new Map();
-    if (gameState.dailyHistory) {
-        gameState.dailyHistory.forEach(h => {
-            // Standardize format if needed, assuming YYYY-MM-DD or similar
-            // If gameState uses M/D, we need to be careful.
-            // Let's assume gameState.dailyHistory keys are consistent.
-            // Actually, let's just use what we have or fill gaps.
-            historyMap.set(h.date, h.wordsLearned);
-        });
-    }
-
-    let currentVal = gameState.wordsLearned || 0;
-    // Backfill from today?
-    // Simplified: Just use available history or hold steady
-    // If we rely on updateChart (Firebase) this is just a backup.
-
-    // Let's just plot what we have in gameState.dailyHistory + Today
-    // But aligning to 30 days is better.
-
-    // Simple version for "Offline/Guest" fallback:
-    dates.forEach(dStr => {
-        // Label M/D
-        labels.push(dStr.slice(5).replace('-', '/'));
-
-        // Find data
-        // Start with 0 or last known?
-        // Since gameState might be sparse, we just plot points we have?
-        // Or flat line.
-        let val = historyMap.get(dStr);
-        if (val === undefined) {
-            // If today, use currentVal
-            // If past, use previous known or 0
-            // This is complex for sync function.
-            // Just plotting linear progress between known points.
-        }
-    });
-
-    // RE-IMPLEMENTATION: Just use the data we have and Chart.js will connect lines
-    // But user wants 30 days X axis.
-
-    // Let's stick to the visual style update first:
-    // Purple Line, No Dashed Prediction, Gradient Fill.
-
-    // Re-do data prep simpler:
     const simpleLabels = [];
     const simpleData = [];
 
@@ -278,7 +448,7 @@ function renderRealChart(canvas) {
             simpleData.push(h.wordsLearned);
         });
     }
-    simpleLabels.push(today.getMonth() + 1 + '/' + today.getDate());
+    simpleLabels.push((today.getMonth() + 1) + '/' + today.getDate());
     simpleData.push(gameState.wordsLearned || 0);
 
     // Gradient
@@ -374,7 +544,7 @@ window.openPurchaseModal = function () {
         const link = document.getElementById('stripePurchaseLink');
         if (link && userId) {
             const STRIPE_BASE_URL = "https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01";
-            link.href = `${STRIPE_BASE_URL}?client_reference_id=${userId}`;
+            link.href = `${STRIPE_BASE_URL}?client_reference_id = ${userId} `;
         }
     }
 };
@@ -454,7 +624,7 @@ window.startSimpleMode = function (level) {
             if (wbModal) wbModal.style.display = 'flex';
         }
     } else {
-        const btn = document.querySelector(`.level-btn[data-level="${level}"]`);
+        const btn = document.querySelector(`.level - btn[data - level="${level}"]`);
         if (btn) btn.click();
         else if (typeof switchLevel === 'function') switchLevel(level);
     }
@@ -673,4 +843,50 @@ window.cleanupDebugHistory = function () {
     } else {
         alert("削除対象データ(451, 551)は見つかりませんでした。");
     }
+};
+
+// --- FOCUS MODE UI ---
+window.updateFocusOverlay = function (active, timer, timeFormatted, isPaused = false) {
+    const overlay = document.getElementById('focusOverlay');
+    const timerDisplay = document.getElementById('focusTimerDisplay');
+    const durationDisplay = document.getElementById('focusDurationDisplay');
+
+    if (!overlay) return;
+
+    if (!active) {
+        overlay.style.display = 'none';
+        return;
+    }
+
+    overlay.style.display = 'flex';
+
+    // Timer Format: No decimals until 3s, then 1 decimal
+    if (timer > 3.0) {
+        timerDisplay.textContent = Math.ceil(timer);
+    } else {
+        timerDisplay.textContent = timer.toFixed(1);
+    }
+
+    if (durationDisplay) durationDisplay.textContent = timeFormatted;
+
+    // Pulse effect when low (Red), or Green if Paused
+    if (isPaused) {
+        timerDisplay.style.color = "#2ecc71"; // Green
+    } else {
+        timerDisplay.style.color = "#e74c3c"; // Red (No flashing)
+    }
+};
+
+window.showFocusGameOver = function (duration, reason) {
+    const modal = document.getElementById('focusGameOverModal');
+    if (!modal) return;
+
+    const minutes = Math.floor(duration / 60);
+    const seconds = Math.floor(duration % 60);
+    const resultStr = `${minutes}分 ${seconds} 秒`;
+
+    const resDiv = document.getElementById('focusResultDuration');
+    if (resDiv) resDiv.textContent = resultStr;
+
+    modal.style.display = 'flex';
 };
