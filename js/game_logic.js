@@ -1756,11 +1756,17 @@ function switchTab(tab) {
     const buttons = document.querySelectorAll('.lb-tab');
     if (buttons.length > 0) {
         if (tab === 'top') buttons[0].classList.add('active');
-        else if (buttons[1]) buttons[1].classList.add('active');
+        else if (buttons[1] && tab === 'around') buttons[1].classList.add('active');
+        else if (buttons[2] && tab === 'focus') buttons[2].classList.add('active');
     }
 
-    document.getElementById('lb-list-top').style.display = (tab === 'top') ? 'block' : 'none';
-    document.getElementById('lb-list-around').style.display = (tab === 'around') ? 'block' : 'none';
+    const topList = document.getElementById('lb-list-top');
+    const aroundList = document.getElementById('lb-list-around');
+    const focusList = document.getElementById('lb-list-focus');
+
+    if (topList) topList.style.display = (tab === 'top') ? 'block' : 'none';
+    if (aroundList) aroundList.style.display = (tab === 'around') ? 'block' : 'none';
+    if (focusList) focusList.style.display = (tab === 'focus') ? 'block' : 'none';
 
     loadRankingData(tab);
 }
