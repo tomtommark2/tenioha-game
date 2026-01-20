@@ -1798,7 +1798,20 @@ async function loadRankingData(type, force = false) {
         }
 
         if (!data.results || data.results.length === 0) {
-            container.innerHTML = `<div style="padding:10px; color:#555;">ランキングデータがありません。<br>プレイしてスコアを登録しましょう！</div>`;
+            console.warn("[Debug] Results empty. Showing empty message.");
+            container.style.border = "4px solid red"; // DEBUG: VISUAL CONFIRMATION
+            container.style.minHeight = "100px"; // DEBUG: Force height
+            container.style.setProperty('display', 'block', 'important'); // DEBUG: Force display again
+
+            container.innerHTML = `<div style="padding:10px; color:red; font-weight:bold; background:#ffe6e6;">
+                DEBUG MODE: DATA IS EMPTY.<br>
+                ランキングデータがありません。<br>
+                プレイしてスコアを登録しましょう！
+            </div>`;
+
+            // Log the final state
+            console.log("[Debug] Container OuterHTML:", container.outerHTML);
+            alert("DEBUG: Focus Leaderboard is EMPTY. You should see a red box.");
             return;
         }
 
