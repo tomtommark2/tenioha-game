@@ -27,14 +27,21 @@ service cloud.firestore {
     // --- Collection Rules ---
 
     // 1. Users Collection
-    // Users can only read/write their own document
-    match /users/{userId} {
+    // Users can only read/write their own document AND subcollections
+    match /users/{userId}/{document=**} {
       allow read, write: if isOwner(userId) && !isBanned();
     }
 
     // 2. Leaderboard Collection
     // Public read, Owner write
     match /leaderboard/{userId} {
+      allow read: if true;
+      allow write: if isOwner(userId) && !isBanned();
+    }
+
+    // 2.5 Focus Leaderboard (Weekly)
+    // Structure: leaderboard_focus_weekly/{weekId}/scores/{userId}
+    match /leaderboard_focus_weekly/{weekId}/scores/{userId} {
       allow read: if true;
       allow write: if isOwner(userId) && !isBanned();
     }

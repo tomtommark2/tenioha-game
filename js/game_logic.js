@@ -1765,10 +1765,10 @@ function switchTab(tab) {
     const aroundList = document.getElementById('lb-list-around');
     const focusList = document.getElementById('lb-list-focus');
 
-    // Force display with inline style to override any CSS
-    if (topList) topList.style.setProperty('display', (tab === 'top') ? 'block' : 'none', 'important');
-    if (aroundList) aroundList.style.setProperty('display', (tab === 'around') ? 'block' : 'none', 'important');
-    if (focusList) focusList.style.setProperty('display', (tab === 'focus') ? 'block' : 'none', 'important');
+    // Standard display toggle (CSS classes handle visibility, but explicit inline style ensures logic works)
+    if (topList) topList.style.display = (tab === 'top') ? 'block' : 'none';
+    if (aroundList) aroundList.style.display = (tab === 'around') ? 'block' : 'none';
+    if (focusList) focusList.style.display = (tab === 'focus') ? 'block' : 'none';
 
     loadRankingData(tab);
 }
@@ -1798,20 +1798,11 @@ async function loadRankingData(type, force = false) {
         }
 
         if (!data.results || data.results.length === 0) {
-            console.warn("[Debug] Results empty. Showing empty message.");
-            container.style.border = "4px solid red"; // DEBUG: VISUAL CONFIRMATION
-            container.style.minHeight = "100px"; // DEBUG: Force height
-            container.style.setProperty('display', 'block', 'important'); // DEBUG: Force display again
-
-            container.innerHTML = `<div style="padding:10px; color:red; font-weight:bold; background:#ffe6e6;">
-                DEBUG MODE: DATA IS EMPTY.<br>
-                ランキングデータがありません。<br>
-                プレイしてスコアを登録しましょう！
+            container.innerHTML = `<div style="padding:20px; color:#555; text-align:center;">
+                <div style="font-size:40px; margin-bottom:10px;">📉</div>
+                <div style="font-weight:bold; margin-bottom:5px;">まだランキングデータがありません</div>
+                <div style="font-size:12px; color:#888;">集中力モードをプレイして<br>最初のスコアを登録しましょう！</div>
             </div>`;
-
-            // Log the final state
-            console.log("[Debug] Container OuterHTML:", container.outerHTML);
-            alert("DEBUG: Focus Leaderboard is EMPTY. You should see a red box.");
             return;
         }
 
