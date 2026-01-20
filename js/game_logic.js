@@ -263,8 +263,8 @@ function init() {
         if (!audioWakeLockSet) {
             enableAudioStayAwake();
         }
-        if (audioContext && audioContext.state === 'suspended') {
-            audioContext.resume();
+        if (typeof gameAudioContext !== 'undefined' && gameAudioContext && gameAudioContext.state === 'suspended') {
+            gameAudioContext.resume();
         }
     }, { once: true }); // Only needs to run once
 
@@ -777,7 +777,7 @@ function getEligibleLearnedWords() {
 }
 
 // Web Audio API Context for keeping hardware awake
-let audioContext = null;
+// let audioContext = null; // Removed to avoid collision with global
 let audioWakeLockSet = false;
 
 function enableAudioStayAwake() {
