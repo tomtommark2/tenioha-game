@@ -1751,6 +1751,7 @@ if (!window.restoreSaveData) {
 let currentLeaderboardTab = 'top';
 
 function switchTab(tab) {
+    console.log("[Debug] Switching to tab:", tab); // DEBUG
     currentLeaderboardTab = tab;
     document.querySelectorAll('.lb-tab').forEach(b => b.classList.remove('active'));
     const buttons = document.querySelectorAll('.lb-tab');
@@ -1764,24 +1765,32 @@ function switchTab(tab) {
     const aroundList = document.getElementById('lb-list-around');
     const focusList = document.getElementById('lb-list-focus');
 
-    if (topList) topList.style.display = (tab === 'top') ? 'block' : 'none';
-    if (aroundList) aroundList.style.display = (tab === 'around') ? 'block' : 'none';
-    if (focusList) focusList.style.display = (tab === 'focus') ? 'block' : 'none';
+    // Force display with inline style to override any CSS
+    if (topList) topList.style.setProperty('display', (tab === 'top') ? 'block' : 'none', 'important');
+    if (aroundList) aroundList.style.setProperty('display', (tab === 'around') ? 'block' : 'none', 'important');
+    if (focusList) focusList.style.setProperty('display', (tab === 'focus') ? 'block' : 'none', 'important');
 
     loadRankingData(tab);
 }
 
 async function loadRankingData(type, force = false) {
+    console.log("[Debug] loadRankingData called for:", type); // DEBUG
     let container;
     if (type === 'top') container = document.getElementById('lb-list-top');
     else if (type === 'around') container = document.getElementById('lb-list-around');
     else if (type === 'focus') container = document.getElementById('lb-list-focus');
 
-    if (!container) return;
+    if (!container) {
+        console.error("[Debug] Container not found for:", type);
+        return;
+    }
+
+    // Reset content but keep display style valid
     container.innerHTML = '<div style="padding:10px; color:#999;">データ取得中...</div>';
 
     if (window.fetchLeaderboard) {
         const data = await window.fetchLeaderboard(type, force);
+        console.log("[Debug] Data fetched for", type, ":", data); // DEBUG
 
         if (data.error) {
             container.innerHTML = `<div style="color:red; padding:10px;">エラー: ${data.error}</div>`;
@@ -1806,6 +1815,7 @@ async function loadRankingData(type, force = false) {
                     </div>`;
         });
         container.innerHTML = html;
+        console.log("[Debug] HTML updated for", type); // DEBUG
     } else {
         container.innerHTML = `<div style="padding:10px;">接続できません (オフライン)</div>`;
     }
