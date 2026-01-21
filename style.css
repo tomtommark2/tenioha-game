@@ -1005,11 +1005,20 @@ body {
     }
 
     /* Compact Level Buttons for Mobile */
-    .level-selector .level-btn {
-        padding: 4px 8px;
-        font-size: 11px;
+    .level-selector .level-btn,
+    .level-selector .wordbook-opener-btn {
+        padding: 3px 6px;
+        /* 10% smaller than 4px 8px */
+        font-size: 10px;
+        /* 10% smaller than 11px */
         white-space: nowrap;
         min-width: unset;
+    }
+
+    /* Further reduce Wordbook button width */
+    .level-selector .wordbook-opener-btn {
+        padding-left: 2px;
+        padding-right: 2px;
     }
 
     /* Remove huge header margin on mobile */
@@ -1030,7 +1039,31 @@ body {
         position: absolute !important;
         top: 5px !important;
         left: 10px !important;
-        /* Ensure it's not overridden by flex layout */
+    }
+
+    /* Ensure it's not overridden by flex layout */
+
+    /* 6. Focus Overlay Mobile Resize (~30% smaller) */
+    #focusOverlay {
+        height: 42px !important;
+        /* 60px -> ~42px */
+        padding: 0 10px !important;
+    }
+
+    #focusOverlay>div:first-child {
+        /* Label */
+        font-size: 10px !important;
+        /* 14px -> ~10px */
+    }
+
+    #focusTimerDisplay {
+        font-size: 21px !important;
+        /* 30px -> ~21px */
+    }
+
+    #focusDurationDisplay {
+        font-size: 10px !important;
+        /* 14px -> ~10px */
     }
 }
 

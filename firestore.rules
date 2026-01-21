@@ -28,8 +28,16 @@ service cloud.firestore {
 
     // 1. Users Collection
     // Users can only read/write their own document AND subcollections
-    match /users/{userId}/{document=**} {
+    match /users/{userId} {
       allow read, write: if isOwner(userId) && !isBanned();
+      
+      match /daily_logs/{logId} {
+        allow read, write: if isOwner(userId) && !isBanned();
+      }
+      
+      match /{document=**} {
+        allow read, write: if isOwner(userId) && !isBanned();
+      }
     }
 
     // 2. Leaderboard Collection

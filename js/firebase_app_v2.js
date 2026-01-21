@@ -102,9 +102,11 @@ window.switchTab = function (tab) {
     // Show/Hide Containers
     const topList = document.getElementById('lb-list-top');
     const aroundList = document.getElementById('lb-list-around');
+    const focusList = document.getElementById('lb-list-focus');
 
     if (topList) topList.style.display = (tab === 'top') ? 'block' : 'none';
     if (aroundList) aroundList.style.display = (tab === 'around') ? 'block' : 'none';
+    if (focusList) focusList.style.display = (tab === 'focus') ? 'block' : 'none';
 
     // Load Data
     if (typeof loadRankingData === 'function') {
@@ -166,6 +168,23 @@ window.fetchLeaderboard = async function (type, force = false) {
                 { name: myDoc.data().name, score: myScore, rank: 'You', isMe: true },
                 ...below.map(u => ({ ...u, rank: '▼' }))
             ];
+        } else if (type === 'focus') {
+            const weekId = getWeekId();
+            const q = query(collection(db, "leaderboard_focus_weekly", weekId, "scores"), orderBy("duration", "desc"), limit(20));
+            const snapshot = await getDocs(q);
+            let rank = 1;
+            snapshot.forEach(doc => {
+                const s = doc.data().duration;
+                const m = Math.floor(s / 60);
+                const sec = Math.floor(s % 60);
+                const fmt = `${m}:${sec.toString().padStart(2, '0')}`;
+                results.push({
+                    rank: rank++,
+                    name: doc.data().name || "Unknown",
+                    score: fmt,
+                    isMe: (doc.id === userId)
+                });
+            });
         }
 
         // Update Cache
@@ -394,6 +413,7 @@ window.logoutGoogle = async function () {
     try {
         await signOut(auth);
         alert("ログアウトしました");
+        if (window.resetGameData) window.resetGameData(); // Clear Local Data
         location.reload();
     } catch (error) {
         console.error(error);
@@ -492,6 +512,8 @@ if (auth) {
             if (modalEmail) modalEmail.textContent = user.email;
 
             if (authBtn) {
+                authBtn.innerHTML = `<span>ログアウト</span>`;
+                authBtn.style.background = "#e74c3c"; // Red
                 if (syncSection) syncSection.style.display = 'block';
             }
 
@@ -1408,3 +1430,46 @@ let qrCodeObj = null;
 
 // --- UPDATE HELPER ---
 // forceUpdateApp to ui_manager.js
+
+// --- FOCUS LEADERBOARD HELPERS ---
+function getWeekId() {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + 4 - (d.getDay() || 7));
+    const yearStart = new Date(d.getFullYear(), 0, 1);
+    const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    return `${d.getFullYear()}-W${weekNo}`;
+}
+
+window.submitFocusScore = async function (duration) {
+    if (!db || !auth || !auth.currentUser) return;
+
+    // Validate Duration
+    if (!duration || duration < 3) return; // Min 3 seconds
+
+    const weekId = getWeekId();
+    const userId = auth.currentUser.uid;
+    const userRef = doc(db, "leaderboard_focus_weekly", weekId, "scores", userId);
+
+    try {
+        // Check if existing score is better
+        const snap = await getDoc(userRef);
+        if (snap.exists()) {
+            const oldDuration = snap.data().duration || 0;
+            if (duration <= oldDuration) {
+                console.log("Focus score not high enough to update.");
+                return;
+            }
+        }
+
+        await setDoc(userRef, {
+            name: localStorage.getItem('vocabGame_playerName') || "Unknown",
+            duration: Math.floor(duration),
+            updatedAt: serverTimestamp(),
+            userId: userId
+        }, { merge: true });
+        console.log("Focus score uploaded:", duration);
+    } catch (e) {
+        console.error("Error uploading focus score:", e);
+    }
+};
