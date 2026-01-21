@@ -448,6 +448,9 @@ function parseCSV(text) {
 
 function switchLevel(level) {
     gameState.currentLevel = level;
+    // v2.80: Reset Decks on Level Switch to prevent category mixing
+    gameState.decks = null;
+
     document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
 
     const targetBtn = document.querySelector(`.level-btn[data-level="${level}"]`);
@@ -602,6 +605,16 @@ function loadGame() {
 
         // Fix: Update global reference for fallback scripts
         window.gameState = gameState;
+
+        // Initialize Decks if missing (v2.79)
+        if (!gameState.decks) {
+            gameState.decks = {
+                weak: [],
+                learned: [],
+                perfect: [],
+                unlearned: [] // Optional
+            };
+        }
     } else {
         // First ever launch
         if (!gameState.firstPlayedAt) {
@@ -655,6 +668,8 @@ function updatePOSFilters() {
             gameState.posFilters.push(checkbox.dataset.pos);
         }
     });
+    // v2.80: Reset Decks on Filter Change to prevent filtered words from lingering
+    gameState.decks = null;
 }
 
 function filterWordsByPOS(words) {
@@ -849,21 +864,104 @@ function speakWord(word) {
     }, 50);
 }
 
+// --- SHUFFLE BAG HELPERS (v2.79) ---
+function createShuffledDeck(words) {
+    // Clone array to avoid modifying source
+    const deck = [...words];
+    // Fisher-Yates Shuffle
+    for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+    return deck;
+}
+
+function getWordFromDeck(category, sourceWords) {
+    // Ensure deck structure exists
+    if (!gameState.decks) gameState.decks = {};
+    if (!gameState.decks[category]) gameState.decks[category] = [];
+
+    const deck = gameState.decks[category];
+
+    // Refill if empty
+    if (deck.length === 0) {
+        if (sourceWords.length === 0) return null;
+        console.log(`[Deck] Refilling deck for ${category} (${sourceWords.length} words)`);
+
+        const newDeck = createShuffledDeck(sourceWords);
+
+        // Continuity Check: Prevent immediate repeat after refill
+        // If the new first card is the same as the LAST shown word
+        if (gameState.lastShownWordKey && newDeck.length > 1) {
+            const firstWordKey = getWordKey(newDeck[0], gameState.currentLevel);
+            if (firstWordKey === gameState.lastShownWordKey) {
+                console.log(`[Deck] Prevented immediate repeat for ${firstWordKey}. Swapping top card.`);
+                // Swap first and last
+                [newDeck[0], newDeck[newDeck.length - 1]] = [newDeck[newDeck.length - 1], newDeck[0]];
+            }
+        }
+
+        gameState.decks[category] = newDeck;
+    }
+
+    // Pop the next word
+    return gameState.decks[category].pop();
+}
+
 function showNextWord() {
     if (window.resetFocusTimer) window.resetFocusTimer();
 
     gameState.meaningCardFlipped = false;
     clearAutoTimer();
 
+
     let words;
     let shouldShowReview = false;
     let reviewType = null;
+    let selectedCategory = null; // 'unlearned', 'learned', 'weak'
 
     if (!gameState.randomMode) {
-        words = getWordsByMode(gameState.currentMode);
-        gameState.isReviewWord = false;
+        // STANDARD MODE
+        // For Review Modes (Weak/Learned/Perfect), use Deck Logic
+        const mode = gameState.currentMode;
+        if (mode === 'weak' || mode === 'learned' || mode === 'perfect') {
+            const pool = getWordsByMode(mode);
+            const word = getWordFromDeck(mode, pool);
+            if (word) {
+                words = [word]; // Wrap in array to match downstream logic
+                selectedCategory = mode;
+                if (mode === 'learned' || mode === 'perfect') {
+                    shouldShowReview = true;
+                    reviewType = 'learned'; // Use 'learned' badge for both learned/perfect
+                } else if (mode === 'weak') {
+                    shouldShowReview = true;
+                    reviewType = 'weak';
+                }
+            } else {
+                words = [];
+            }
+            gameState.isReviewWord = shouldShowReview;
+        } else {
+            // Unlearned or other modes -> Keep standard behavior (or use Deck if desired)
+            // User specific request was for Review modes. Unlearned is transient.
+            // Standard unlearned selection:
+            words = getWordsByMode(mode);
+            // We still shuffle/random pick from this list below?
+            // Existing logic: currentWordIndex = Random * length.
+            // That logic is potentially repetitive for small unlearned pools too.
+            // Let's use Deck for Unlearned too for consistency?
+            // A: Yes, let's use Deck for EVERYTHING to be safe.
+
+            // BUT: 'getWordsByMode' returns a fresh array.
+            // If we use deck logic, we must pass that fresh array to refill.
+            const word = getWordFromDeck(mode, words);
+            if (word) words = [word];
+            else words = [];
+            gameState.isReviewWord = false;
+        }
+
     } else {
-        // NEW: Adaptive Weighted Probability Logic
+        // NEW: Adaptive Weighted Probability Logic (v2.79)
         const unlearnedWords = getWordsByMode('unlearned');
         const learnedWords = getEligibleLearnedWords();
         const weakWords = getWordsByMode('weak');
@@ -877,23 +975,12 @@ function showNextWord() {
 
         // Dynamic Adjustment based on Weak Count
         if (weakCount >= 150) {
-            // Critical: Block new words almost entirely
-            weightUnlearned = 5;
-            weightLearned = 5;
-            weightWeak = 90;
+            weightUnlearned = 5; weightLearned = 5; weightWeak = 90;
         } else if (weakCount >= 100) {
-            // Warning: High priority on cleanup
-            weightUnlearned = 20;
-            weightLearned = 10;
-            weightWeak = 70;
+            weightUnlearned = 20; weightLearned = 10; weightWeak = 70;
         } else if (weakCount >= 50) {
-            // Caution: Shift balance
-            weightUnlearned = 50;
-            weightLearned = 10;
-            weightWeak = 40;
+            weightUnlearned = 50; weightLearned = 10; weightWeak = 40;
         }
-
-        // If a category is empty, set its weight to 0 to avoid selecting it
 
         if (unlearnedWords.length === 0) weightUnlearned = 0;
         if (learnedWords.length === 0) weightLearned = 0;
@@ -902,20 +989,26 @@ function showNextWord() {
         const totalWeight = weightUnlearned + weightLearned + weightWeak;
 
         if (totalWeight === 0) {
-            // Fallback if absolutely nothing is available
             words = [];
         } else {
             const r = Math.random() * totalWeight;
 
             if (r < weightUnlearned) {
-                words = unlearnedWords;
+                // Select Unlearned
+                // words = unlearnedWords; // OLD
+                const word = getWordFromDeck('unlearned', unlearnedWords);
+                words = word ? [word] : [];
                 gameState.isReviewWord = false;
             } else if (r < weightUnlearned + weightLearned) {
-                words = learnedWords;
+                // Select Learned
+                const word = getWordFromDeck('learned', learnedWords); // Note: Eligible subset
+                words = word ? [word] : [];
                 shouldShowReview = true;
                 reviewType = 'learned';
             } else {
-                words = weakWords;
+                // Select Weak
+                const word = getWordFromDeck('weak', weakWords);
+                words = word ? [word] : [];
                 shouldShowReview = true;
                 reviewType = 'weak';
             }
@@ -931,9 +1024,16 @@ function showNextWord() {
     }
 
     hideNoWordsMessage();
-    gameState.currentWordIndex = Math.floor(Math.random() * words.length);
-    const word = words[gameState.currentWordIndex];
+    // Since we now select a SINGLE word via Deck, existing logic needs adjustment
+    // Old: words = array, index = random.
+    // New: words = [singleWord]. index = 0.
+
+    gameState.currentWordIndex = 0;
+    const word = words[0];
     gameState.currentWord = word;
+
+    // Track Last Shown (for next continuity check)
+    gameState.lastShownWordKey = getWordKey(word, gameState.currentLevel);
 
     // MAP POS to Full Name
     const posMap = {
