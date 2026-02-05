@@ -544,7 +544,7 @@ window.openPurchaseModal = function () {
         const link = document.getElementById('stripePurchaseLink');
         if (link && userId) {
             const STRIPE_BASE_URL = "https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01";
-            link.href = `${STRIPE_BASE_URL}?client_reference_id = ${userId} `;
+            link.href = `${STRIPE_BASE_URL}?client_reference_id=${userId}`;
         }
     }
 };
