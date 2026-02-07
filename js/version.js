@@ -1,4 +1,4 @@
 // Universal Global Scope (Browser & Service Worker)
 (function (global) {
-    global.GAME_VERSION = "v2.81";
+    global.GAME_VERSION = "v2.82";
 })(typeof window !== 'undefined' ? window : self);

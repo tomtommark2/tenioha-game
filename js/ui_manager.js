@@ -536,6 +536,13 @@ window.closeProfileModal = function () {
 
 // --- PURCHASE MODAL ---
 window.openPurchaseModal = function () {
+    // Enforce Login
+    if (!window.firebaseAuth || !window.firebaseAuth.currentUser) {
+        alert("購入にはログインが必要です。\n(データの保全と復元のため)");
+        window.openProfileModal();
+        return;
+    }
+
     const modal = document.getElementById('purchaseModal');
     if (modal) {
         modal.style.display = 'flex';
