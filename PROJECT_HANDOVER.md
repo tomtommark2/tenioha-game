@@ -23,7 +23,7 @@
     *   レベル変更やPOSフィルタ変更時に山札 (`gameState.decks`) をリセットする処理を追加し、カテゴリ混入バグを修正。
 
 ### ⚠️ 現在のステータス
-*   **Current Version**: `v2.81`
+*   **Current Version**: `v2.82`
 *   **Firestore Rules**: v2.78で更新・適用済み。
 *   **Hosting**: v2.81 適用済み（予定）。
 
@@ -35,7 +35,7 @@
     *   特に `showNextWord` と新設の Shuffle Bag ロジックの分離推奨。
 
 ## 4. 技術スタック & 重要ルール
-*   **HTML同期:** `vocab_clicker_game.html` (Master) -> `index.html` (Replica)。必ず同期すること。
+*   **HTML同期:** `index.html` (Master) -> `vocab_clicker_game.html` (Replica)。必ず同期すること。
 *   **読み込み順序:** `version` -> `config` -> `utils` -> `game_logic` -> `ui_manager` -> `firebase_app_v2`。
 *   **デザイン:** Premium & Rich AI Design。単純なUIはNG。
 
