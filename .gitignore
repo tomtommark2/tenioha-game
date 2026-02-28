@@ -1,1 +1,12 @@
 node_modules
+
+# Local/secret files
+functions/.env
+*.local
+
+# Windows alternate data streams
+*:Zone.Identifier
+
+# Playwright artifacts
+test-results/
+playwright-report/

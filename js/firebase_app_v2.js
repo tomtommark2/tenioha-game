@@ -686,6 +686,29 @@ if (auth) {
 
 
 // --- VERSION ENFORCER (Kill Switch) ---
+function parseVersionParts(v) {
+    // Supports: v2.80, 2.80, v2.80.1 (non-numeric suffixes are ignored)
+    const clean = String(v || '').trim().replace(/^v/i, '');
+    const parts = clean.split('.').map(p => {
+        const n = parseInt(p, 10);
+        return Number.isFinite(n) ? n : 0;
+    });
+    return parts;
+}
+
+function isVersionLess(current, required) {
+    const a = parseVersionParts(current);
+    const b = parseVersionParts(required);
+    const len = Math.max(a.length, b.length);
+    for (let i = 0; i < len; i++) {
+        const av = a[i] || 0;
+        const bv = b[i] || 0;
+        if (av < bv) return true;
+        if (av > bv) return false;
+    }
+    return false; // equal
+}
+
 window.checkForceUpdate = async function () {
     if (!db) return;
     try {
@@ -693,9 +716,8 @@ window.checkForceUpdate = async function () {
         if (configDoc.exists()) {
             const minVer = configDoc.data().min_required_version ? configDoc.data().min_required_version.trim() : null;
             if (minVer) {
-                // Simple Lexicographical Comparison
-                const appVer = window.GAME_VERSION || "v2.60";
-                if (appVer.trim() < minVer) {
+                const appVer = (window.GAME_VERSION || "v2.60").trim();
+                if (isVersionLess(appVer, minVer)) {
                     console.error(`Version Mismatch: Current ${appVer} < Required ${minVer}`);
                     document.getElementById('forceUpdateModal').style.display = 'flex';
                     // Stop Auto Save to prevent corrupting data with old logic
@@ -893,30 +915,13 @@ window.saveDailyProgress = async function () {
         const dd = String(today.getDate()).padStart(2, '0');
         const docId = `${yyyy}-${mm}-${dd}`;
 
-        // 1. Calculate Stats
-        let stats = { A1: 0, A2: 0, B1: 0, B2: 0 };
-        let totalLearned = 0;
+        // 1. Calculate Stats (single source)
+        const counts = (window.StatsEngine && typeof window.StatsEngine.getPerfectCountsByCEFR === 'function')
+            ? window.StatsEngine.getPerfectCountsByCEFR(gameState, (typeof vocabularyDatabase !== 'undefined' ? vocabularyDatabase : window.vocabularyDatabase))
+            : { A1: 0, A2: 0, B1: 0, B2: 0, total: 0 };
 
-        // Iterate all wordStates
-        for (const [key, status] of Object.entries(gameState.wordStates)) {
-            // Count 'learned', 'proficient' (legacy?), 'perfect'
-            // In v2.x: 'learned' (blue) and 'perfect' (gold). 
-            // Note: 'proficient' is not used in current logic but maybe legacy.
-            // Let's count 'learned' and 'perfect'.
-            if (status === 'learned' || status === 'perfect') {
-                const parts = key.split('_');
-                const level = parts[0];
-                // Handle 'selection' special levels?
-                // If selection maps to standard levels, we count them based on reference?
-                // Current logic just prefixes level.
-
-                const cefr = CEFR_MAP[level];
-                if (cefr) {
-                    stats[cefr]++;
-                    totalLearned++;
-                }
-            }
-        }
+        let stats = { A1: counts.A1, A2: counts.A2, B1: counts.B1, B2: counts.B2 };
+        let totalLearned = counts.total;
 
         // 2. Save to Firestore Daily Log
         const logRef = doc(db, "users", auth.currentUser.uid, "daily_logs", docId);
@@ -974,135 +979,20 @@ window.getMonthlyStats = async function () {
         }
     }
 
-    // Merged getMonthlyStatsReal logic here
-
     // 1. FORCE SYNC TODAY'S DATA
     if (typeof window.updateDailyHistory === 'function') {
         window.updateDailyHistory();
     }
 
-    // 2. Generate Dates (30 Days)
-    let dates = [];
-    let today = new Date();
-    for (let i = 29; i >= 0; i--) {
-        let d = new Date();
-        d.setDate(today.getDate() - i);
-        let yyyy = d.getFullYear();
-        let mm = String(d.getMonth() + 1).padStart(2, '0');
-        let dd = String(d.getDate()).padStart(2, '0');
-        dates.push(`${yyyy}-${mm}-${dd}`);
-    }
-
-    // 3. Prepare Source Data (History Only)
-    // logMap already defined above
-
-    // Prioritize Cloud/Module scope db but fallback to global gs
     const gs = typeof gameState !== 'undefined' ? gameState : (window.gameState || null);
+    const vDB = window.vocabularyDatabase || (typeof vocabularyDatabase !== 'undefined' ? vocabularyDatabase : null);
 
-    // Merge Cloud Snapshot if available (async logic above populates logMap usually, but here we unify)
-    // We will assume 'logMap' might be populated by Cloud in the future, but currently we rely on Local History.
-
-    if (gs && gs.dailyHistory && gs.dailyHistory.length > 0) {
-        gs.dailyHistory.forEach(h => {
-            if (h.date) {
-                // Latest entry overrides
-                logMap.set(h.date, {
-                    total_learned: h.wordsLearned,
-                    cefr_breakdown: h.cefr_breakdown || {}
-                });
-            }
-        });
+    if (window.ChartDataAdapter) {
+        window.ChartDataAdapter.mergeLocalHistory(logMap, gs);
+        return window.ChartDataAdapter.buildMonthlyStats(logMap, gs, vDB);
     }
 
-    // 4. Build Datasets
-    let labels = [];
-    let datasets = {
-        total: [],
-        A1: [],
-        A2: [],
-        B1: [],
-        B2: []
-    };
-    let isRealData = new Array(30).fill(true);
-
-    dates.forEach((dateStr, index) => {
-        const dPart = new Date(dateStr);
-        labels.push(`${dPart.getMonth() + 1}/${dPart.getDate()}`);
-
-        if (index < 29) {
-            // PAST: Use stored logs or 0
-            if (logMap.has(dateStr)) {
-                const data = logMap.get(dateStr);
-                isRealData.push(true);
-                datasets.total.push(data.total_learned || 0);
-                datasets.A1.push(data.cefr_breakdown?.A1 || 0);
-                datasets.A2.push(data.cefr_breakdown?.A2 || 0);
-                datasets.B1.push(data.cefr_breakdown?.B1 || 0);
-                datasets.B2.push(data.cefr_breakdown?.B2 || 0);
-            } else {
-                isRealData.push(false);
-                datasets.total.push(0);
-                datasets.A1.push(0);
-                datasets.A2.push(0);
-                datasets.B1.push(0);
-                datasets.B2.push(0);
-            }
-        } else {
-            // TODAY: Live Calculation (Robust Match with Local)
-            const vDB = window.vocabularyDatabase || (typeof vocabularyDatabase !== 'undefined' ? vocabularyDatabase : null);
-            const gs = typeof gameState !== 'undefined' ? gameState : (window.gameState || null);
-
-            if (gs && gs.wordStates && vDB) {
-                // Helper to match getWordKey logic
-                const getKey = (wordObj, level) => {
-                    if (wordObj.ref && wordObj.ref !== level) {
-                        let refCategory = wordObj.ref;
-                        let refWordText = wordObj.word;
-                        if (wordObj.ref.includes(':')) {
-                            const parts = wordObj.ref.split(':');
-                            refCategory = parts[0];
-                            refWordText = parts[1];
-                        }
-                        return `${refCategory}_${refWordText}`;
-                    }
-                    return `${level}_${wordObj.word}`;
-                };
-
-                const countCategory = (catName) => {
-                    const words = vDB[catName] || [];
-                    let c = 0;
-                    words.forEach(w => {
-                        const k = getKey(w, catName);
-                        if (gs.wordStates[k] === 'perfect') c++;
-                    });
-                    return c;
-                };
-
-                let countA1 = countCategory('junior');
-                let countA2 = countCategory('basic');
-                let countB1 = countCategory('daily');
-                let countB2 = countCategory('exam1');
-                const countTotal = countA1 + countA2 + countB1 + countB2;
-
-                isRealData.push(true);
-                datasets.total.push(countTotal);
-                datasets.A1.push(countA1);
-                datasets.A2.push(countA2);
-                datasets.B1.push(countB1);
-                datasets.B2.push(countB2);
-            } else {
-                // Fallback if data missing (should be rare)
-                isRealData.push(false);
-                datasets.total.push(0);
-                datasets.A1.push(0);
-                datasets.A2.push(0);
-                datasets.B1.push(0);
-                datasets.B2.push(0);
-            }
-        }
-    });
-
-    return { labels, datasets, isRealData, isDemo: false };
+    return { labels: [], datasets: { total: [], A1: [], A2: [], B1: [], B2: [] }, isRealData: [], isDemo: false };
 };
 
 // UI: Render Chart
@@ -1314,7 +1204,17 @@ if ('serviceWorker' in navigator) {
     // 1. Listen for new version activation
     navigator.serviceWorker.addEventListener('controllerchange', () => {
         if (refreshing) return;
+
+        // Prevent accidental reload loops
+        const now = Date.now();
+        const last = parseInt(sessionStorage.getItem('sw_last_reload_ts') || '0', 10);
+        if (last && (now - last) < 10000) {
+            console.warn('Skip reload to avoid SW reload loop');
+            return;
+        }
+
         refreshing = true;
+        sessionStorage.setItem('sw_last_reload_ts', String(now));
         console.log("New version detected. Saving and reloading...");
         if (window.saveGame) window.saveGame(); // Safety Save
         window.location.reload();

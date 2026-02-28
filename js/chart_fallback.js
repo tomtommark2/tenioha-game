@@ -20,152 +20,17 @@ window.getMonthlyStats = async function () {
         return window.getMonthlyStatsReal();
     }
 
-    // Generate last 30 days of dates
-    let dates = [];
-    let today = new Date();
-    for (let i = 29; i >= 0; i--) {
-        let d = new Date();
-        d.setDate(today.getDate() - i);
-        let yyyy = d.getFullYear();
-        let mm = String(d.getMonth() + 1).padStart(2, '0');
-        let dd = String(d.getDate()).padStart(2, '0');
-        dates.push(`${yyyy}-${mm}-${dd}`);
-    }
-
-    // LOAD HISTORY
-    let logMap = new Map();
-    // Explicitly check window.gameState
     const gs = window.gameState || (typeof gameState !== 'undefined' ? gameState : null);
+    const vDB = (typeof vocabularyDatabase !== 'undefined') ? vocabularyDatabase : (window.vocabularyDatabase || null);
+    const logMap = new Map();
 
-    if (gs && gs.dailyHistory && gs.dailyHistory.length > 0) {
-        gs.dailyHistory.forEach(h => {
-            if (h.date) {
-                logMap.set(h.date, {
-                    total_learned: h.wordsLearned,
-                    cefr_breakdown: {}
-                });
-            }
-        });
+    if (window.ChartDataAdapter) {
+        window.ChartDataAdapter.mergeLocalHistory(logMap, gs);
+        return window.ChartDataAdapter.buildMonthlyStats(logMap, gs, vDB);
     }
 
-    // Initialize Arrays
-    let labels = [];
-    let datasets = {
-        total: [],
-        A1: [],
-        A2: [],
-        B1: [],
-        B2: []
-    };
-    let isRealData = [];
-
-    // Main Loop: ALWAYS run "Real" logic (History or Zero) + Today's Live Data
-    dates.forEach((dateStr, index) => {
-        const dPart = new Date(dateStr);
-        labels.push(`${dPart.getMonth() + 1}/${dPart.getDate()}`);
-
-        if (index < 29) {
-            // PAST: Use stored logs or 0
-            if (logMap.has(dateStr)) {
-                const data = logMap.get(dateStr);
-                isRealData.push(true);
-                datasets.total.push(data.total_learned || 0);
-                datasets.A1.push(data.cefr_breakdown?.A1 || 0);
-                datasets.A2.push(data.cefr_breakdown?.A2 || 0);
-                datasets.B1.push(data.cefr_breakdown?.B1 || 0);
-                datasets.B2.push(data.cefr_breakdown?.B2 || 0);
-            } else {
-                isRealData.push(false);
-                datasets.total.push(0);
-                datasets.A1.push(0);
-                datasets.A2.push(0);
-                datasets.B1.push(0);
-                datasets.B2.push(0);
-            }
-        } else {
-            // TODAY (Index 29): Live Calculation
-            // Always try to count from gameState
-            // TODAY (Index 29): Live Calculation
-            // TODAY (Index 29): Live Calculation
-            // Robust Approach: Iterate vocabularyDatabase like game_logic.js does
-            // Fix: vocabularyDatabase is 'let' so not on window. Check directly.
-            const vDB = (typeof vocabularyDatabase !== 'undefined') ? vocabularyDatabase : null;
-
-            if (gs && gs.wordStates && vDB) {
-                console.log("FallbackGraph: Calculating Today's Stats using vocabularyDatabase (Direct Access)...");
-
-                // DEBUG: Check Keys
-                const stateKeys = Object.keys(gs.wordStates);
-                if (stateKeys.length > 0) {
-                    console.log("FallbackGraph: Sample wordStates Keys:", stateKeys.slice(0, 3));
-                    console.log("FallbackGraph: Sample wordStates Values:", stateKeys.slice(0, 3).map(k => gs.wordStates[k]));
-                } else {
-                    console.warn("FallbackGraph: wordStates is EMPTY!");
-                }
-
-                // Helper to match getWordKey logic
-                const getKey = (wordObj, level) => {
-                    if (wordObj.ref && wordObj.ref !== level) {
-                        let refCategory = wordObj.ref;
-                        let refWordText = wordObj.word;
-                        if (wordObj.ref.includes(':')) {
-                            const parts = wordObj.ref.split(':');
-                            refCategory = parts[0];
-                            refWordText = parts[1];
-                        }
-                        return `${refCategory}_${refWordText}`;
-                    }
-                    return `${level}_${wordObj.word}`;
-                };
-
-                // DEBUG: Check Generated Key for first Junior word
-                if (vDB['junior'] && vDB['junior'].length > 0) {
-                    const firstW = vDB['junior'][0];
-                    console.log("FallbackGraph: First Junior Word:", firstW);
-                    console.log("FallbackGraph: Generated Key:", getKey(firstW, 'junior'));
-                }
-
-                const countCategory = (catName) => {
-                    const words = vDB[catName] || [];
-                    let c = 0;
-                    words.forEach(w => {
-                        const k = getKey(w, catName);
-                        if (gs.wordStates[k] === 'perfect') c++;
-                    });
-                    return c;
-                };
-
-                let countA1 = countCategory('junior');
-                let countA2 = countCategory('basic');
-                let countB1 = countCategory('daily');
-                let countB2 = countCategory('exam1');
-
-                const countTotal = countA1 + countA2 + countB1 + countB2;
-
-                console.log(`FallbackGraph: Today Result -> Total:${countTotal} (A1:${countA1}, A2:${countA2}, B1:${countB1}, B2:${countB2})`);
-
-                isRealData.push(true);
-                datasets.total.push(countTotal);
-                datasets.A1.push(countA1);
-                datasets.A2.push(countA2);
-                datasets.B1.push(countB1);
-                datasets.B2.push(countB2);
-            } else {
-                console.warn("FallbackGraph: Missing vocabularyDatabase or wordStates!", !!gs, (typeof vocabularyDatabase !== 'undefined'));
-                // Fallback (e.g. gs not loaded yet)
-                isRealData.push(false);
-                datasets.total.push(0);
-                datasets.A1.push(0);
-                // ... rest 0
-                // ... rest 0
-                datasets.A2.push(0);
-                datasets.B1.push(0);
-                datasets.B2.push(0);
-            }
-        }
-    });
-
-    return { labels, datasets, isRealData, isDemo: false };
+    // Fallback-safe empty response
+    return { labels: [], datasets: { total: [], A1: [], A2: [], B1: [], B2: [] }, isRealData: [], isDemo: false };
 };
 
 // 3. UI: Render Chart

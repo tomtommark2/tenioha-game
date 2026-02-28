@@ -433,6 +433,35 @@ function renderRealChart(canvas) {
     if (typeof Chart === 'undefined') return;
     const ctx = canvas.getContext('2d');
 
+    const getCurrentPerfectTotal = () => {
+        const gs = window.gameState || (typeof gameState !== 'undefined' ? gameState : null);
+        const vDB = (typeof vocabularyDatabase !== 'undefined') ? vocabularyDatabase : (window.vocabularyDatabase || null);
+        if (!gs || !gs.wordStates || !vDB) return 0;
+
+        const getKey = (wordObj, level) => {
+            if (wordObj.ref && wordObj.ref !== level) {
+                let refCategory = wordObj.ref;
+                let refWordText = wordObj.word;
+                if (wordObj.ref.includes(':')) {
+                    const parts = wordObj.ref.split(':');
+                    refCategory = parts[0];
+                    refWordText = parts[1];
+                }
+                return `${refCategory}_${refWordText}`;
+            }
+            return `${level}_${wordObj.word}`;
+        };
+
+        let total = 0;
+        ['junior', 'basic', 'daily', 'exam1'].forEach(cat => {
+            (vDB[cat] || []).forEach(w => {
+                const k = getKey(w, cat);
+                if (gs.wordStates[k] === 'perfect') total++;
+            });
+        });
+        return total;
+    };
+
     // Destroy previous
     if (window.myChartInstance) window.myChartInstance.destroy();
 
@@ -445,11 +474,11 @@ function renderRealChart(canvas) {
     if (gameState.dailyHistory) {
         gameState.dailyHistory.slice(-30).forEach(h => {
             simpleLabels.push(h.date ? h.date.slice(5) : '');
-            simpleData.push(h.wordsLearned);
+            simpleData.push(h.total_learned ?? h.wordsLearned ?? 0);
         });
     }
     simpleLabels.push((today.getMonth() + 1) + '/' + today.getDate());
-    simpleData.push(gameState.wordsLearned || 0);
+    simpleData.push(getCurrentPerfectTotal());
 
     // Gradient
     let grad = ctx.createLinearGradient(0, 0, 0, 200);
@@ -825,9 +854,10 @@ window.cleanupDebugHistory = function () {
 
     const beforeCount = gs.dailyHistory.length;
     // Remove entries strictly matching the debug values we injected
-    gs.dailyHistory = gs.dailyHistory.filter(h =>
-        h.wordsLearned !== 451 && h.wordsLearned !== 551
-    );
+    gs.dailyHistory = gs.dailyHistory.filter(h => {
+        const v = (h.total_learned ?? h.wordsLearned);
+        return v !== 451 && v !== 551;
+    });
     const afterCount = gs.dailyHistory.length;
 
     // Save to LocalStorage

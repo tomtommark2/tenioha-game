@@ -1,6 +1,6 @@
 importScripts('./js/version.js');
-// Force Update v2.77
-const CACHE_NAME = 'vocab-game-v2.82' + GAME_VERSION;
+// Cache key follows app version directly
+const CACHE_NAME = 'vocab-game-' + GAME_VERSION;
 const ASSETS = [
     './',
     './vocab_clicker_game.html',

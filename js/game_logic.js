@@ -15,7 +15,8 @@ var gameState = window.gameState || {
     randomMode: false,
     posFilters: ['名', '動', '形', '副', '助', '前', '接', '代', 'other'], // Active POS filters
     vocabLevel: 1,
-    wordsLearned: 0, // Total words moved from unlearned
+    // Deprecated: keep for backward compatibility in old saves/UI, but do not treat as source of truth.
+    wordsLearned: 0,
     dailyStats: { date: null }, // Only date tracking needed for Daily Reset logic
     dailyHistory: [], // New: Track past daily stats for averages
     firstPlayedAt: null, // New: Track start date for Real Average calc
@@ -711,50 +712,37 @@ function getWordsByMode(mode) {
     return filterWordsByPOS(modeWords);
 }
 
+function getPerfectCountsByCEFR() {
+    if (window.StatsEngine && typeof window.StatsEngine.getPerfectCountsByCEFR === 'function') {
+        return window.StatsEngine.getPerfectCountsByCEFR(gameState, vocabularyDatabase);
+    }
+    return { A1: 0, A2: 0, B1: 0, B2: 0, total: 0 };
+}
+
 // --- HISTORY SYNC (v2.46.33) ---
 window.updateDailyHistory = function () {
     const d = new Date();
     const todayStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
-    // Robust Count Logic (Mirrors Chart Logic)
-    let countA1 = 0, countA2 = 0, countB1 = 0, countB2 = 0;
+    // Single source of truth: perfect-only snapshot counts
+    const counts = getPerfectCountsByCEFR();
 
-    // Iterate specific categories to ensure accuracy
-    const getCount = (cat) => {
-        const words = vocabularyDatabase[cat] || [];
-        let c = 0;
-        words.forEach(w => {
-            const k = getWordKey(w, cat);
-            if (gameState.wordStates[k] === 'perfect') c++;
-        });
-        return c;
-    };
-
-    countA1 = getCount('junior');
-    countA2 = getCount('basic');
-    countB1 = getCount('daily');
-    countB2 = getCount('exam1');
-    const total = countA1 + countA2 + countB1 + countB2;
-
-    // Update Global WordsLearned just in case
-    gameState.wordsLearned = total;
+    // Back-compat mirror only (source of truth is computed counts)
+    gameState.wordsLearned = counts.total;
 
     // Find Today's Entry
     if (!gameState.dailyHistory) gameState.dailyHistory = [];
 
     const existingIndex = gameState.dailyHistory.findIndex(h => h.date === todayStr);
 
-    const entryData = {
-        date: todayStr,
-        wordsLearned: total,
-        // answers: gameState.dailyStats ? gameState.dailyStats.answers : 0, // Removed usage
-        cefr_breakdown: {
-            A1: countA1,
-            A2: countA2,
-            B1: countB1,
-            B2: countB2
-        }
-    };
+    const entryData = (window.StatsEngine && typeof window.StatsEngine.buildDailySnapshot === 'function')
+        ? window.StatsEngine.buildDailySnapshot(gameState, vocabularyDatabase, todayStr)
+        : {
+            date: todayStr,
+            total_learned: counts.total,
+            wordsLearned: counts.total,
+            cefr_breakdown: { A1: counts.A1, A2: counts.A2, B1: counts.B1, B2: counts.B2 }
+        };
 
     if (existingIndex !== -1) {
         // Update
@@ -1302,7 +1290,6 @@ function handleVocabCardClick() {
     if (currentState === 'unlearned') {
         gameState.actionCounts.unlearned_correct++;
         gameState.wordStates[key] = 'perfect';
-        gameState.wordsLearned++;
         checkLevelUp();
         checkDailyReset(); // Count effort
         // Track 'Known' (Unlearned->Perfect) to exclude from Velocity
@@ -1393,9 +1380,6 @@ function handleMeaningCardClick(e) {
         } else if (currentState === 'unlearned') {
             gameState.actionCounts.unlearned_incorrect++;
             gameState.wordStates[key] = 'weak';
-            gameState.wordsLearned++;
-            // Track Daily Learned for Weakness Stats
-            gameState.wordsLearned++;
             checkLevelUp();
         }
         // If already weak, stay weak.
