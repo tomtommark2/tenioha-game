@@ -802,6 +802,8 @@ function updateReviewQueueBadge() {
     const display = s.dueNow > 999 ? '999+' : s.dueNow;
     el.textContent = `復習 ${display}`;
     el.style.background = s.dueNow > 0 ? '#e74c3c' : '#95a5a6';
+    el.style.color = '#fff';
+    el.style.boxShadow = '';
     el.title = `要復習: ${s.dueNow} / 今日予定: ${s.dueToday}`;
 }
 
@@ -824,7 +826,7 @@ function getDueReviewWordsPool() {
 }
 
 function playQueuePopAnimation(container, text, kind = 'success') {
-    return; // animation disabled temporarily
+    return; // animation disabled by product decision
     if (!container) return;
 
     const color = kind === 'fail' ? '#5b9bd5' : '#8e9aaf';
@@ -859,6 +861,27 @@ function triggerReviewChipPop(wordText, isFail = false) {
     gameState.pendingQueuePop = { text: wordText, kind: isFail ? 'fail' : 'success' };
 }
 
+function flashReviewQueueDecrease(total) {
+    const badge = document.getElementById('dueCountBadge');
+    const label = document.getElementById('reviewProgressLabel');
+    if (badge) {
+        badge.animate([
+            { transform: 'scale(1)', filter: 'brightness(1)' },
+            { transform: 'scale(0.9)', filter: 'brightness(1.25)' },
+            { transform: 'scale(1)', filter: 'brightness(1)' }
+        ], { duration: 260, easing: 'ease-out' });
+    }
+    if (label) {
+        const prev = label.textContent;
+        label.textContent = `復習キュー ${total}件 ✓`;
+        label.style.color = '#2e7d32';
+        setTimeout(() => {
+            label.textContent = `復習キュー ${total}件`;
+            label.style.color = '#555';
+        }, 550);
+    }
+}
+
 function updateReviewProgressUI() {
     const wrap = document.getElementById('reviewProgressWrap');
     const list = document.getElementById('reviewQueuePreview');
@@ -869,6 +892,7 @@ function updateReviewProgressUI() {
 
     const dueWords = getDueReviewWordsPool();
     const total = dueWords.length;
+    const prevCount = (typeof gameState.lastReviewQueueCount === 'number') ? gameState.lastReviewQueueCount : total;
 
     const newHeadKey = total > 0 ? getWordKey(dueWords[0], gameState.currentLevel) : null;
     const oldHeadKey = gameState.lastReviewQueueHeadKey;
@@ -917,8 +941,13 @@ function updateReviewProgressUI() {
 
     // Keep head snapshot for debug/consistency checks
     gameState.lastReviewQueueHeadKey = newHeadKey;
+    gameState.lastReviewQueueCount = total;
 
-    // Play pending pop after render
+    if (total < prevCount) {
+        flashReviewQueueDecrease(total);
+    }
+
+    // Play pending pop after render (currently disabled)
     if (gameState.pendingQueuePop) {
         const p = gameState.pendingQueuePop;
         gameState.pendingQueuePop = null;
