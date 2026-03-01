@@ -811,6 +811,41 @@ window.forceRestore = async function () {
     } catch (e) { alert("エラー: " + e.message); }
 };
 
+// Build compact cloud payload to avoid Firestore 1MiB document limit
+function buildCompactSaveDataForCloud(rawSaveData) {
+    try {
+        const data = JSON.parse(rawSaveData);
+
+        // Keep only recent history for cloud backup
+        if (Array.isArray(data.dailyHistory) && data.dailyHistory.length > 120) {
+            data.dailyHistory = data.dailyHistory.slice(-120);
+        }
+
+        // Slim SRS payload (retain core scheduling / accuracy fields)
+        if (data.srsData && typeof data.srsData === 'object') {
+            const slim = {};
+            for (const [key, s] of Object.entries(data.srsData)) {
+                if (!s || typeof s !== 'object') continue;
+                const x = {};
+                if (typeof s.dueAt === 'number') x.dueAt = s.dueAt;
+                if (typeof s.successCount === 'number') x.successCount = s.successCount;
+                if (typeof s.failCount === 'number') x.failCount = s.failCount;
+                if (typeof s.reviewStep === 'number' && s.reviewStep > 0) x.reviewStep = s.reviewStep;
+                if (typeof s.lastReviewedAt === 'number' && s.lastReviewedAt > 0) x.lastReviewedAt = s.lastReviewedAt;
+                if (s.everWrong) x.everWrong = true;
+                if (s.firstTryPerfect) x.firstTryPerfect = true;
+                slim[key] = x;
+            }
+            data.srsData = slim;
+        }
+
+        return JSON.stringify(data);
+    } catch (e) {
+        console.warn('Compact save conversion failed, fallback to raw saveData', e);
+        return rawSaveData;
+    }
+}
+
 // Overwrite existing uploadSaveData to use Auth if available
 // Added 'force' parameter to bypass dirty check (for Manual Save)
 window.uploadSaveData = async function (silent = false, force = false) {
@@ -826,8 +861,31 @@ window.uploadSaveData = async function (silent = false, force = false) {
         return;
     }
 
-    const saveData = localStorage.getItem('vocabClickerSave');
-    if (!saveData) return;
+    const rawSaveData = localStorage.getItem('vocabClickerSave');
+    if (!rawSaveData) return;
+
+    let saveData = buildCompactSaveDataForCloud(rawSaveData);
+
+    // Firestore doc size guard (about 1,048,576 bytes total)
+    const measureBytes = (s) => new Blob([s]).size;
+    let saveBytes = measureBytes(saveData);
+    if (saveBytes > 1000000) {
+        // Last-resort trim: drop long dailyHistory in cloud backup
+        try {
+            const obj = JSON.parse(saveData);
+            delete obj.dailyHistory;
+            saveData = JSON.stringify(obj);
+            saveBytes = measureBytes(saveData);
+        } catch (_) {}
+    }
+
+    if (saveBytes > 1040000) {
+        if (!silent) {
+            alert('クラウド保存に失敗: データ量が大きすぎます（上限超過）。\n学習データは端末内に保持されています。');
+        }
+        console.warn(`Skip cloud save: payload too large (${saveBytes} bytes)`);
+        return;
+    }
 
     try {
         // Conflict Check Logic (Prevent Overwriting Higher Score)
