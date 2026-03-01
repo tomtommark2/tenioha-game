@@ -2,7 +2,7 @@
   "scripts": {
     "sync:html": "node scripts/sync-html.js",
     "check:html-sync": "node scripts/check-html-sync.js",
-    "test:unit": "playwright test tests/unit.spec.js",
+    "test:unit": "playwright test --config playwright.unit.config.js",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",

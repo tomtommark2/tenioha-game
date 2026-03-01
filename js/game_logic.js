@@ -29,7 +29,16 @@ var gameState = window.gameState || {
         learned_incorrect: 0,
         perfect_correct: 0,
         perfect_incorrect: 0
-    }
+    },
+    // Phase A (SRS foundation)
+    srsData: {},
+    srsBootstrapped: false,
+    srsSchemaVersion: 0,
+    activeReviewLevels: ['junior', 'basic', 'daily', 'exam1', 'selection1400', 'selection1900', 'sys_2000'],
+    reviewMode: 'random', // off | random | on
+    lastReviewQueueHeadKey: null,
+    pendingQueuePop: null,
+    mixCycleCounter: 0
 };
 window.gameState = gameState; // Expose for fallback scripts
 
@@ -293,6 +302,9 @@ function init() {
         }
     }
 
+    migrateSrsSchemaIfNeeded();
+    bootstrapSrsFromWordStates();
+
     updateDisplay();
     updateDisplay();
     // Initialize Daily Stats date if missing
@@ -349,6 +361,15 @@ function setupEventListeners() {
     document.querySelectorAll('.mode-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             if (btn.disabled) return;
+
+            // In review ON mode, category selection is locked (non-intuitive otherwise)
+            if (gameState.reviewMode === 'on') {
+                gameState.currentMode = 'unlearned';
+                showNextWord();
+                saveGame();
+                return;
+            }
+
             const mode = btn.dataset.mode;
             gameState.currentMode = mode;
             document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
@@ -370,18 +391,6 @@ function setupEventListeners() {
         }
     });
 
-    document.getElementById('randomToggle').addEventListener('click', () => {
-        gameState.randomMode = !gameState.randomMode;
-        const checkbox = document.getElementById('randomCheckbox');
-        if (gameState.randomMode) {
-            checkbox.classList.add('checked');
-        } else {
-            checkbox.classList.remove('checked');
-        }
-        updateModeButtons();
-        showNextWord();
-        saveGame();
-    });
 
     // POS Filter checkboxes
     setupPOSFilters();
@@ -525,21 +534,26 @@ function loadVocabularyForLevel() {
     gameState.currentLevelTotal = vocabulary.length;
 }
 
-function getWordKey(word, level) {
-    // Generalize shared progress for any word with a reference
+function getWordBaseLevel(word, level) {
+    if (word.__sourceLevel) return word.__sourceLevel;
     if (word.ref && word.ref !== level) {
-        let refCategory = word.ref;
-        let refWordText = word.word;
-
         if (word.ref.includes(':')) {
             const parts = word.ref.split(':');
-            refCategory = parts[0];
-            refWordText = parts[1];
+            return parts[0];
         }
-
-        return `${refCategory}_${refWordText}`;
+        return word.ref;
     }
-    return `${level}_${word.word}`;
+    return level;
+}
+
+function getWordKey(word, level) {
+    const baseLevel = getWordBaseLevel(word, level);
+    const baseWord = (word.ref && word.ref.includes(':')) ? word.ref.split(':')[1] : word.word;
+    return `${baseLevel}_${baseWord}`;
+}
+
+function getWordKeySafe(word, levelHint) {
+    return getWordKey(word, levelHint || gameState.currentLevel);
 }
 
 function initializeWordStates() {
@@ -548,7 +562,459 @@ function initializeWordStates() {
         if (!gameState.wordStates[key]) {
             gameState.wordStates[key] = 'unlearned';
         }
+        ensureSrsEntry(key);
     });
+}
+
+function ensureSrsEntry(key) {
+    if (!gameState.srsData) gameState.srsData = {};
+    if (!gameState.srsData[key]) {
+        gameState.srsData[key] = {
+            dueAt: Date.now(),
+            stability: 1,
+            successCount: 0,
+            failCount: 0,
+            streak: 0,
+            lastReviewedAt: 0,
+            reviewStep: 0,
+            everWrong: false,
+            firstTryPerfect: false
+        };
+    }
+    return gameState.srsData[key];
+}
+
+function applyDueJitter(minutes) {
+    // Spread same-day pileups: ±20%
+    const ratio = 0.8 + (Math.random() * 0.4);
+    return Math.max(5, Math.round(minutes * ratio));
+}
+
+function updateSrsForWord(key, isCorrect, currentState = null) {
+    const s = ensureSrsEntry(key);
+    const now = Date.now();
+
+    // Table-based intervals (Anki-like cadence)
+    // 1d -> 3d -> 7d -> 14d -> 30d -> 60d
+    const STEP_MINUTES = [1440, 4320, 10080, 20160, 43200, 86400];
+
+    if (isCorrect) {
+        const prevTotal = (s.successCount || 0) + (s.failCount || 0);
+        s.successCount = (s.successCount || 0) + 1;
+        s.streak = (s.streak || 0) + 1;
+
+        if (currentState === 'unlearned' && prevTotal === 0) {
+            s.firstTryPerfect = true;
+        }
+
+        // Advance interval step on success
+        s.reviewStep = Math.min(STEP_MINUTES.length - 1, (s.reviewStep || 0));
+        const intervalMin = STEP_MINUTES[s.reviewStep];
+        s.reviewStep = Math.min(STEP_MINUTES.length - 1, s.reviewStep + 1);
+
+        // Keep stability for compatibility with existing UI/logic
+        s.stability = Math.min(120, Math.max(1, (s.stability || 1) * 1.35));
+        const jittered = applyDueJitter(intervalMin);
+        s.dueAt = now + jittered * 60 * 1000;
+    } else {
+        s.failCount = (s.failCount || 0) + 1;
+        s.streak = 0;
+        s.everWrong = true;
+        s.firstTryPerfect = false;
+
+        // Quick relearn loop after fail
+        s.reviewStep = Math.max(0, (s.reviewStep || 0) - 1);
+        s.stability = Math.max(0.4, (s.stability || 1) * 0.6);
+        s.dueAt = now + 5 * 60 * 1000;
+    }
+
+    s.lastReviewedAt = now;
+}
+
+function isReviewLevelEnabledForWord(word, level) {
+    const active = gameState.activeReviewLevels || [];
+    const base = getWordBaseLevel(word, level);
+    return active.includes(base);
+}
+
+function renderReviewLevelCheckboxes() {
+    const host = document.getElementById('reviewLevelCheckboxes');
+    if (!host) return;
+
+    const defs = [
+        ['junior', '中学'],
+        ['basic', '基礎'],
+        ['daily', '標準'],
+        ['exam1', '受験'],
+        ['selection1400', '1400'],
+        ['selection1900', '1900'],
+        ['sys_2000', 'Sys2000'],
+    ];
+
+    host.innerHTML = '';
+    defs.forEach(([key, label]) => {
+        const checked = (gameState.activeReviewLevels || []).includes(key);
+        const wrap = document.createElement('label');
+        wrap.style.cssText = 'display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid #dbe2f4; border-radius:999px; background:#fff; font-size:12px; color:#42506b; cursor:pointer;';
+        wrap.innerHTML = `<input type="checkbox" data-review-level="${key}" ${checked ? 'checked' : ''} style="accent-color:#6c5ce7;"> ${label}`;
+        host.appendChild(wrap);
+    });
+
+    host.querySelectorAll('input[data-review-level]').forEach(el => {
+        el.addEventListener('change', () => {
+            const selected = Array.from(host.querySelectorAll('input[data-review-level]:checked')).map(i => i.dataset.reviewLevel);
+            gameState.activeReviewLevels = selected.length ? selected : ['daily', 'exam1'];
+            saveGame();
+            updateReviewQueueBadge();
+            updateReviewProgressUI();
+        });
+    });
+}
+
+window.openStudyModeModal = function () {
+    const m = document.getElementById('studyModeModal');
+    if (m) {
+        renderReviewLevelCheckboxes();
+        updateReviewProgressUI();
+        m.style.display = 'flex';
+    }
+};
+
+window.closeStudyModeModal = function () {
+    const m = document.getElementById('studyModeModal');
+    if (m) m.style.display = 'none';
+};
+
+window.toggleDueOnlyMode = function () {
+    const order = ['off', 'random', 'on'];
+    const cur = order.includes(gameState.reviewMode) ? gameState.reviewMode : 'random';
+    gameState.reviewMode = order[(order.indexOf(cur) + 1) % order.length];
+    saveGame();
+    updateReviewQueueBadge();
+    updateReviewProgressUI();
+    showNextWord();
+};
+
+window.openReviewLevelSettings = function () {
+    const all = ['junior', 'basic', 'daily', 'exam1', 'selection1400', 'selection1900', 'sys_2000'];
+    const current = (gameState.activeReviewLevels || all).join(',');
+    const raw = prompt('復習対象レベルをカンマ区切りで入力\n例: daily,exam1\n利用可能: ' + all.join(','), current);
+    if (raw === null) return;
+    const set = raw.split(',').map(s => s.trim()).filter(Boolean);
+    const valid = set.filter(v => all.includes(v));
+    gameState.activeReviewLevels = valid.length ? valid : ['daily', 'exam1'];
+    saveGame();
+    updateReviewQueueBadge();
+    alert('復習対象: ' + gameState.activeReviewLevels.join(', '));
+};
+
+function getAccuracyStatsByKey(key) {
+    const s = ensureSrsEntry(key);
+    let success = s.successCount || 0;
+    let fail = s.failCount || 0;
+
+    // Migration fallback
+    if (success + fail === 0) {
+        const state = gameState.wordStates[key];
+        if (state === 'perfect') {
+            success = 1; fail = 0;
+        } else if (state === 'learned') {
+            success = 1; fail = 1;
+        } else if (state === 'weak') {
+            success = 0; fail = 1;
+        }
+    }
+
+    const total = success + fail;
+    const rate = total > 0 ? Math.round((success / total) * 100) : null;
+    return { success, fail, total, rate };
+}
+
+function deriveStateFromAccuracy(key) {
+    const prev = gameState.wordStates[key] || 'unlearned';
+    const a = getAccuracyStatsByKey(key);
+    if (a.total === 0) return prev === 'unlearned' ? 'unlearned' : prev;
+
+    if (a.rate >= 80) return 'perfect';
+    if (a.rate >= 50) return 'learned';
+    return 'weak';
+}
+
+function getAccuracyTagInfoByKey(key) {
+    const a = getAccuracyStatsByKey(key);
+    if (a.total === 0 || a.rate == null) {
+        return { text: '正答率 --', color: '#95a5a6' };
+    }
+
+    if (a.rate >= 80) {
+        return { text: `正答率 ${a.rate}%`, color: '#f1c40f' };
+    }
+    if (a.rate >= 50) {
+        return { text: `正答率 ${a.rate}%`, color: '#2ecc71' };
+    }
+    return { text: `正答率 ${a.rate}%`, color: '#e74c3c' };
+}
+
+function isRetiredWordByKey(key) {
+    const s = ensureSrsEntry(key);
+    return !!(s.firstTryPerfect && !s.everWrong);
+}
+
+function getReviewWordsByModeAcrossLevels(mode) {
+    const levels = gameState.activeReviewLevels || [];
+    let out = [];
+    levels.forEach(level => {
+        const words = vocabularyDatabase[level] || [];
+        words.forEach(w => {
+            const wrapped = { ...w, __sourceLevel: level };
+            const key = getWordKeySafe(wrapped, level);
+            if (isRetiredWordByKey(key)) return; // first-try perfect words are permanently excluded
+            if (gameState.wordStates[key] === mode) out.push(wrapped);
+        });
+    });
+    return filterWordsByPOS(out);
+}
+
+function getCurrentReviewStats() {
+    const now = Date.now();
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999);
+    const endMs = endOfDay.getTime();
+
+    let dueNow = 0;
+    let dueToday = 0;
+
+    const pool = [...getReviewWordsByModeAcrossLevels('weak'), ...getReviewWordsByModeAcrossLevels('learned')];
+    pool.forEach(v => {
+        const key = getWordKeySafe(v, v.__sourceLevel);
+        const s = ensureSrsEntry(key);
+        if (s.dueAt <= now) dueNow++;
+        if (s.dueAt <= endMs) dueToday++;
+    });
+
+    return { dueNow, dueToday };
+}
+
+function updateReviewQueueBadge() {
+    const el = document.getElementById('dueCountBadge');
+    if (!el) return;
+    const s = getCurrentReviewStats();
+    const display = s.dueNow > 999 ? '999+' : s.dueNow;
+    el.textContent = `復習 ${display}`;
+    el.style.background = s.dueNow > 0 ? '#e74c3c' : '#95a5a6';
+    el.title = `要復習: ${s.dueNow} / 今日予定: ${s.dueToday}`;
+}
+
+function getDueReviewWordsPool() {
+    const weakDue = getDueOnlyPool('weak', getReviewWordsByModeAcrossLevels('weak'));
+    const learnedDue = getDueOnlyPool('learned', getReviewWordsByModeAcrossLevels('learned'));
+
+    // Deterministic order: weak first, then learned; each by dueAt asc
+    const byDue = (a, b) => {
+        const ak = getWordKeySafe(a, a.__sourceLevel || gameState.currentLevel);
+        const bk = getWordKeySafe(b, b.__sourceLevel || gameState.currentLevel);
+        const ad = (ensureSrsEntry(ak).dueAt || 0);
+        const bd = (ensureSrsEntry(bk).dueAt || 0);
+        return ad - bd;
+    };
+
+    weakDue.sort(byDue);
+    learnedDue.sort(byDue);
+    return [...weakDue, ...learnedDue];
+}
+
+function playQueuePopAnimation(container, text, kind = 'success') {
+    return; // animation disabled temporarily
+    if (!container) return;
+
+    const color = kind === 'fail' ? '#5b9bd5' : '#8e9aaf';
+    const bg = kind === 'fail' ? '#f2f8ff' : '#f8f9fb';
+    const fg = kind === 'fail' ? '#2f5f8f' : '#5c6573';
+
+    const chip = document.createElement('span');
+    chip.textContent = text || '✓';
+    chip.style.cssText = `position:absolute; left:0; top:0; display:inline-flex; align-items:center; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:700; background:${bg}; border:1px solid ${color}; color:${fg}; pointer-events:none; z-index:3; filter:drop-shadow(0 1px 1px rgba(0,0,0,.06));`;
+    container.appendChild(chip);
+
+    // subtle trail for "task cleared" feel
+    const trail = document.createElement('span');
+    trail.style.cssText = `position:absolute; left:2px; top:4px; width:34px; height:16px; border-radius:999px; background:linear-gradient(90deg, ${color}22, transparent); pointer-events:none; z-index:2;`;
+    container.appendChild(trail);
+
+    chip.animate([
+        { transform: 'translateX(0) scale(1)', opacity: 1 },
+        { transform: 'translateX(-10px) scale(0.98)', opacity: 0.95, offset: 0.25 },
+        { transform: 'translateX(-34px) scale(0.92)', opacity: 0 }
+    ], { duration: 450, easing: 'cubic-bezier(.22,.61,.36,1)' }).onfinish = () => chip.remove();
+
+    trail.animate([
+        { transform: 'translateX(0)', opacity: 0.35 },
+        { transform: 'translateX(-20px)', opacity: 0 }
+    ], { duration: 420, easing: 'ease-out' }).onfinish = () => trail.remove();
+}
+
+function triggerReviewChipPop(wordText, isFail = false) {
+    if (!wordText) return;
+    // Defer until after UI re-render to avoid being wiped by innerHTML refresh
+    gameState.pendingQueuePop = { text: wordText, kind: isFail ? 'fail' : 'success' };
+}
+
+function updateReviewProgressUI() {
+    const wrap = document.getElementById('reviewProgressWrap');
+    const list = document.getElementById('reviewQueuePreview');
+    const label = document.getElementById('reviewProgressLabel');
+    const mode = document.getElementById('dueOnlyModeLabel');
+    const modeModal = document.getElementById('dueOnlyModeLabelModal');
+    if (!wrap || !list || !label || !mode) return;
+
+    const dueWords = getDueReviewWordsPool();
+    const total = dueWords.length;
+
+    const newHeadKey = total > 0 ? getWordKey(dueWords[0], gameState.currentLevel) : null;
+    const oldHeadKey = gameState.lastReviewQueueHeadKey;
+
+    const modeMap = {
+        on: { text: '復習モード:ON', color: '#e74c3c' },
+        random: { text: '復習モード:MIX', color: '#f39c12' },
+        off: { text: '復習モード:OFF', color: '#888' }
+    };
+    const m = modeMap[gameState.reviewMode] || modeMap.random;
+    const modeText = m.text;
+    const modeColor = m.color;
+    mode.textContent = modeText;
+    mode.style.color = modeColor;
+    if (modeModal) {
+        modeModal.textContent = modeText;
+        modeModal.style.color = modeColor;
+    }
+
+    label.textContent = `復習キュー ${total}件`;
+
+    const preview = dueWords.slice(0, 10);
+    list.innerHTML = '';
+    preview.forEach((w, i) => {
+        const chip = document.createElement('span');
+        chip.textContent = w.word;
+        chip.style.cssText = 'display:inline-flex; align-items:center; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:600; border:1px solid #e3e7f2; background:#fff; color:#4a5568; white-space:nowrap;';
+        if (i === 0) {
+            chip.style.borderColor = '#f39c12';
+            chip.style.boxShadow = '0 0 0 2px rgba(243,156,18,0.15) inset';
+        }
+        list.appendChild(chip);
+    });
+    if (total > 10) {
+        const more = document.createElement('span');
+        more.textContent = `+${total - 10}`;
+        more.style.cssText = 'display:inline-flex; align-items:center; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:700; border:1px dashed #cfd6ea; color:#7f8c8d; white-space:nowrap;';
+        list.appendChild(more);
+    }
+
+    const isOn = gameState.reviewMode === 'on';
+    wrap.style.display = total > 0 ? 'block' : (isOn ? 'block' : 'none');
+    if (total === 0 && isOn) {
+        list.innerHTML = '<span style="font-size:12px; color:#7f8c8d;">今は due 切れ復習がありません ✅</span>';
+    }
+
+    // Keep head snapshot for debug/consistency checks
+    gameState.lastReviewQueueHeadKey = newHeadKey;
+
+    // Play pending pop after render
+    if (gameState.pendingQueuePop) {
+        const p = gameState.pendingQueuePop;
+        gameState.pendingQueuePop = null;
+        requestAnimationFrame(() => playQueuePopAnimation(list, p.text, p.kind));
+    }
+}
+
+function getBootstrapParamsByState(state) {
+    if (state === 'perfect') return { dueDelta: 30 * 24 * 60 * 60 * 1000, stability: 12 };
+    if (state === 'learned') return { dueDelta: 3 * 24 * 60 * 60 * 1000, stability: 4 };
+    if (state === 'weak') return { dueDelta: 0, stability: 1 };
+    return { dueDelta: 0, stability: 1 };
+}
+
+function bootstrapSrsFromWordStates() {
+    if (!gameState.srsData) gameState.srsData = {};
+    const now = Date.now();
+
+    for (const [key, state] of Object.entries(gameState.wordStates || {})) {
+        if (gameState.srsData[key]) continue;
+        const p = getBootstrapParamsByState(state);
+        gameState.srsData[key] = {
+            dueAt: now + p.dueDelta,
+            stability: p.stability,
+            successCount: 0,
+            failCount: 0,
+            streak: 0,
+            lastReviewedAt: 0
+        };
+    }
+
+    gameState.srsBootstrapped = true;
+}
+
+function migrateSrsSchemaIfNeeded() {
+    const target = 3;
+    if (!gameState.srsData) gameState.srsData = {};
+    if ((gameState.srsSchemaVersion || 0) >= target) return;
+
+    const now = Date.now();
+    for (const [key, state] of Object.entries(gameState.wordStates || {})) {
+        const p = getBootstrapParamsByState(state);
+        const existing = gameState.srsData[key] || {};
+
+        let success = existing.successCount || 0;
+        let fail = existing.failCount || 0;
+
+        // Migration normalization policy:
+        // learned => at least 1/2 equivalent, weak => at least 0/1 equivalent
+        const total = success + fail;
+        if (state === 'learned' && total < 2) {
+            success = 1;
+            fail = 1;
+        } else if (state === 'weak' && total === 0) {
+            success = 0;
+            fail = 1;
+        } else if (state === 'perfect' && total === 0) {
+            success = 1;
+            fail = 0;
+        }
+
+        gameState.srsData[key] = {
+            dueAt: existing.dueAt || (now + p.dueDelta),
+            stability: existing.stability || p.stability,
+            successCount: success,
+            failCount: fail,
+            streak: existing.streak || 0,
+            lastReviewedAt: existing.lastReviewedAt || 0,
+            reviewStep: existing.reviewStep || 0,
+            everWrong: !!existing.everWrong,
+            firstTryPerfect: !!existing.firstTryPerfect
+        };
+    }
+
+    gameState.srsSchemaVersion = target;
+}
+
+function getDueOnlyPool(mode, pool) {
+    const now = Date.now();
+    let basePool = pool;
+    if (mode === 'weak' || mode === 'learned') {
+        basePool = pool.filter(w => isReviewLevelEnabledForWord(w, w.__sourceLevel || gameState.currentLevel));
+    }
+    return basePool.filter(w => {
+        const key = getWordKeySafe(w, w.__sourceLevel || gameState.currentLevel);
+        const s = ensureSrsEntry(key);
+        return s.dueAt <= now;
+    });
+}
+
+function getDueFilteredPool(mode, pool) {
+    const basePool = (mode === 'weak' || mode === 'learned')
+        ? pool.filter(w => isReviewLevelEnabledForWord(w, gameState.currentLevel))
+        : pool;
+    const due = getDueOnlyPool(mode, basePool);
+    return due.length > 0 ? due : basePool;
 }
 
 // --- CLOUD SYNC HELPERS (v2.15) ---
@@ -568,7 +1034,13 @@ function saveGame() {
         dailyHistory: gameState.dailyHistory, // Persist History
         lastSaveTime: Date.now(), // Track local save time for Sync Logic
         firstPlayedAt: gameState.firstPlayedAt, // Persist Start Date
-        actionCounts: gameState.actionCounts // Persist Detailed Action Counts
+        actionCounts: gameState.actionCounts, // Persist Detailed Action Counts
+        srsData: gameState.srsData, // Phase A: SRS foundation
+        srsBootstrapped: gameState.srsBootstrapped,
+        srsSchemaVersion: gameState.srsSchemaVersion,
+        activeReviewLevels: gameState.activeReviewLevels,
+        reviewMode: gameState.reviewMode,
+        mixCycleCounter: gameState.mixCycleCounter
     };
     localStorage.setItem('vocabClickerSave', JSON.stringify(data));
 
@@ -603,6 +1075,29 @@ function loadGame() {
                 perfect_incorrect: 0
             };
         }
+        if (!gameState.srsData) {
+            gameState.srsData = {};
+        }
+        if (typeof gameState.srsBootstrapped !== 'boolean') {
+            gameState.srsBootstrapped = false;
+        }
+        if (typeof gameState.srsSchemaVersion !== 'number') {
+            gameState.srsSchemaVersion = 0;
+        }
+        if (!Array.isArray(gameState.activeReviewLevels)) {
+            gameState.activeReviewLevels = ['junior', 'basic', 'daily', 'exam1', 'selection1400', 'selection1900', 'sys_2000'];
+        }
+        // migrate old boolean dueOnlyMode -> reviewMode
+        if (typeof gameState.reviewMode !== 'string') {
+            gameState.reviewMode = gameState.dueOnlyMode ? 'on' : 'random';
+        }
+        if (!['off','random','on'].includes(gameState.reviewMode)) gameState.reviewMode = 'random';
+        if (typeof gameState.lastReviewQueueHeadKey !== 'string') gameState.lastReviewQueueHeadKey = null;
+        if (typeof gameState.mixCycleCounter !== 'number') gameState.mixCycleCounter = 0;
+        gameState.randomMode = false; // random mode retired
+
+        migrateSrsSchemaIfNeeded();
+        bootstrapSrsFromWordStates();
 
         // Fix: Update global reference for fallback scripts
         window.gameState = gameState;
@@ -762,7 +1257,7 @@ function getEligibleLearnedWords() {
     const eligibleWords = [];
 
     for (const word of learnedWords) {
-        const key = getWordKey(word, gameState.currentLevel);
+        const key = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
         const interval = gameState.learnedWordIntervals[key] || 0;
         const requiredInterval = Math.pow(2, interval) * 12;
         const lastShown = gameState.learnedWordIntervals[`${key}_last`] || 0;
@@ -902,6 +1397,10 @@ function showNextWord() {
     gameState.meaningCardFlipped = false;
     clearAutoTimer();
 
+    // In review ON mode, force unified mixed lane for intuition
+    if (gameState.reviewMode === 'on' && gameState.currentMode !== 'unlearned') {
+        gameState.currentMode = 'unlearned';
+    }
 
     let words;
     let shouldShowReview = false;
@@ -912,8 +1411,8 @@ function showNextWord() {
         // STANDARD MODE
         // For Review Modes (Weak/Learned/Perfect), use Deck Logic
         const mode = gameState.currentMode;
-        if (mode === 'weak' || mode === 'learned' || mode === 'perfect') {
-            const pool = getWordsByMode(mode);
+        if (mode === 'weak' || mode === 'learned') {
+            const pool = getDueFilteredPool(mode, getWordsByMode(mode));
             const word = getWordFromDeck(mode, pool);
             if (word) {
                 words = [word]; // Wrap in array to match downstream logic
@@ -929,30 +1428,62 @@ function showNextWord() {
                 words = [];
             }
             gameState.isReviewWord = shouldShowReview;
-        } else {
-            // Unlearned or other modes -> Keep standard behavior (or use Deck if desired)
-            // User specific request was for Review modes. Unlearned is transient.
-            // Standard unlearned selection:
+        } else if (mode === 'perfect') {
+            // Perfect is not part of routine review queue; manual mode only
             words = getWordsByMode(mode);
-            // We still shuffle/random pick from this list below?
-            // Existing logic: currentWordIndex = Random * length.
-            // That logic is potentially repetitive for small unlearned pools too.
-            // Let's use Deck for Unlearned too for consistency?
-            // A: Yes, let's use Deck for EVERYTHING to be safe.
-
-            // BUT: 'getWordsByMode' returns a fresh array.
-            // If we use deck logic, we must pass that fresh array to refill.
             const word = getWordFromDeck(mode, words);
-            if (word) words = [word];
-            else words = [];
-            gameState.isReviewWord = false;
+            words = word ? [word] : [];
+            gameState.isReviewWord = true;
+            reviewType = 'learned';
+        } else {
+            // Unlearned mode behaves as MIXED queue:
+            // - reviewMode=on: review 100%
+            // - reviewMode=random: review:new = 7:3 cycle
+            // - reviewMode=off: new 100%
+            const dueQueue = getDueReviewWordsPool();
+            const newPool = getWordsByMode(mode);
+
+            let pickReview = false;
+            if (gameState.reviewMode === 'on') {
+                pickReview = (dueQueue.length > 0);
+            } else if (gameState.reviewMode === 'off') {
+                pickReview = false;
+            } else {
+                const cycle = gameState.mixCycleCounter % 10; // 0..9
+                const reviewSlot = cycle < 7;
+                pickReview = reviewSlot && dueQueue.length > 0;
+                if (!pickReview && newPool.length === 0 && dueQueue.length > 0) {
+                    pickReview = true;
+                }
+            }
+
+            if (pickReview) {
+                const word = dueQueue[0]; // strict queue
+                words = word ? [word] : [];
+                const k = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
+                const st = gameState.wordStates[k];
+                shouldShowReview = true;
+                reviewType = (st === 'weak') ? 'weak' : 'learned';
+                gameState.isReviewWord = true;
+                gameState.mixCycleCounter = (gameState.mixCycleCounter + 1) % 10;
+            } else {
+                if (gameState.reviewMode === 'on') {
+                    words = [];
+                    gameState.isReviewWord = false;
+                } else {
+                    const word = getWordFromDeck(mode, newPool);
+                    words = word ? [word] : [];
+                    gameState.isReviewWord = false;
+                    gameState.mixCycleCounter = (gameState.mixCycleCounter + 1) % 10;
+                }
+            }
         }
 
     } else {
         // NEW: Adaptive Weighted Probability Logic (v2.79)
         const unlearnedWords = getWordsByMode('unlearned');
-        const learnedWords = getEligibleLearnedWords();
-        const weakWords = getWordsByMode('weak');
+        const learnedWords = getDueFilteredPool('learned', getEligibleLearnedWords());
+        const weakWords = getDueFilteredPool('weak', getWordsByMode('weak'));
 
         // Weights defaults: Unlearned(75), Learned(10), Weak(15)
         let weightUnlearned = 75;
@@ -1008,6 +1539,7 @@ function showNextWord() {
 
     if (words.length === 0) {
         showNoWordsMessage();
+        updateReviewProgressUI();
         return;
     }
 
@@ -1021,7 +1553,7 @@ function showNextWord() {
     gameState.currentWord = word;
 
     // Track Last Shown (for next continuity check)
-    gameState.lastShownWordKey = getWordKey(word, gameState.currentLevel);
+    gameState.lastShownWordKey = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
 
     // MAP POS to Full Name
     const posMap = {
@@ -1073,13 +1605,9 @@ function showNextWord() {
     if (gameState.isReviewWord) {
         const badge = document.createElement('div');
         badge.className = 'review-badge';
-        if (reviewType === 'learned') {
-            badge.textContent = '得意';
-            badge.style.backgroundColor = '#4caf50'; // Green
-        } else {
-            badge.textContent = '苦手';
-            badge.style.backgroundColor = '#f44336'; // Red
-        }
+        const info = getAccuracyTagInfoByKey(gameState.lastShownWordKey || getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel));
+        badge.textContent = info.text;
+        badge.style.backgroundColor = info.color;
         vocabCard.appendChild(badge);
     }
 
@@ -1093,6 +1621,8 @@ function showNextWord() {
     }
 
     checkLevelUp();
+    // Keep preview aligned with the next actual pick
+    updateReviewProgressUI();
 }
 
 // NEW: Function to show a SPECIFIC word (for Undo/Restore)
@@ -1163,7 +1693,13 @@ function showNoWordsMessage() {
         'perfect': '完璧',
         'weak': '苦手'
     };
-    cardsArea.innerHTML = `<div class="no-words">この${modeNames[gameState.currentMode] || gameState.currentMode}モードには単語がありません</div>`;
+
+    let message = `この${modeNames[gameState.currentMode] || gameState.currentMode}モードには単語がありません`;
+    if (gameState.reviewMode === 'on' && gameState.currentMode === 'unlearned') {
+        message = '復習集中モード中: 今はdue切れ復習がありません ✅';
+    }
+
+    cardsArea.innerHTML = `<div class="no-words">${message}</div>`;
     document.getElementById('exampleArea').style.display = 'none';
 }
 
@@ -1216,8 +1752,9 @@ function autoOpenMeaningCard() {
     const currentWord = gameState.currentWord;
     if (!currentWord) return;
 
-    const key = getWordKey(currentWord, gameState.currentLevel);
+    const key = getWordKeySafe(currentWord, currentWord.__sourceLevel || gameState.currentLevel);
 
+    updateSrsForWord(key, true, gameState.wordStates[key]);
 
     const basePoints = 2;
     const finalPoints = basePoints * gameState.vocabLevel;
@@ -1254,9 +1791,14 @@ function setupCardListeners() {
 
 function handleVocabCardClick() {
     if (window.resetFocusTimer) window.resetFocusTimer();
+    if (typeof window.liveTutorialEvent === 'function') window.liveTutorialEvent('vocab_correct');
 
     const currentWord = gameState.currentWord;
     if (!currentWord) return;
+
+    if (gameState.isReviewWord) {
+        triggerReviewChipPop(currentWord.word, false);
+    }
 
     clearAutoTimer();
 
@@ -1280,45 +1822,32 @@ function handleVocabCardClick() {
     saveState();
     // incrementDailyStats(); // Moved below to exclude "Unlearned -> Perfect" cases
 
-    const key = getWordKey(currentWord, gameState.currentLevel);
+    const key = getWordKeySafe(currentWord, currentWord.__sourceLevel || gameState.currentLevel);
     let basePoints = 1;
     let msg = "";
 
-    // LOGIC: Unlearned -> Perfect, Weak -> Learned, Learned -> Perfect, Perfect -> Perfect
     const currentState = gameState.wordStates[key];
 
     if (currentState === 'unlearned') {
         gameState.actionCounts.unlearned_correct++;
-        gameState.wordStates[key] = 'perfect';
         checkLevelUp();
-        checkDailyReset(); // Count effort
-        // Track 'Known' (Unlearned->Perfect) to exclude from Velocity
     } else if (currentState === 'weak') {
         gameState.actionCounts.weak_correct++;
-        checkDailyReset(); // Count effort
-        gameState.wordStates[key] = 'learned';
-        basePoints = 2; // User Request: 2 points for weak (Priority)
+        basePoints = 2;
         msg = "✅ 克服！";
         gameState.learnedWordIntervals[key] = 0;
         gameState.learnedWordIntervals[`${key}_last`] = gameState.globalQuestionCount;
     } else if (currentState === 'learned') {
         gameState.actionCounts.learned_correct++;
-        gameState.wordStates[key] = 'perfect';
-        basePoints = 1; // Default 1
-        msg = "🏆 完璧マスター！";
-        checkDailyReset(); // Count effort
+        msg = "👍 進捗アップ！";
     } else if (currentState === 'perfect') {
         gameState.actionCounts.perfect_correct++;
-        // Stay perfect
-        basePoints = 1; // Default 1
         msg = "✨ 完璧維持！";
-        checkDailyReset(); // Count effort
-    } else {
-        // Fallback
-        gameState.wordStates[key] = 'perfect';
-        basePoints = 1;
-        checkDailyReset();
     }
+
+    checkDailyReset();
+    updateSrsForWord(key, true, currentState);
+    gameState.wordStates[key] = deriveStateFromAccuracy(key);
 
     const finalPoints = basePoints * gameState.vocabLevel;
     gameState.points += finalPoints;
@@ -1359,33 +1888,34 @@ function handleMeaningCardClick(e) {
         // Flip = Incorrect / Check
         card.classList.add('flipped');
         gameState.meaningCardFlipped = true;
+        if (typeof window.liveTutorialEvent === 'function') window.liveTutorialEvent('meaning_open');
 
         const currentWord = gameState.currentWord;
         if (!currentWord) return;
 
-        const key = getWordKey(currentWord, gameState.currentLevel);
+        if (gameState.isReviewWord) {
+            triggerReviewChipPop(currentWord.word, true);
+        }
+
+        const key = getWordKeySafe(currentWord, currentWord.__sourceLevel || gameState.currentLevel);
         const currentState = gameState.wordStates[key];
 
-        // LOGIC: Learned -> Weak. Unlearned -> Weak. Perfect -> Learned (Soft landing).
+        updateSrsForWord(key, false, currentState);
 
         if (currentState === 'perfect') {
             gameState.actionCounts.perfect_incorrect++;
-            gameState.wordStates[key] = 'learned';
-            // Reset learned interval as it's a "new" learned word effectively
             gameState.learnedWordIntervals[key] = 0;
             gameState.learnedWordIntervals[`${key}_last`] = gameState.globalQuestionCount;
         } else if (currentState === 'learned') {
             gameState.actionCounts.learned_incorrect++;
-            gameState.wordStates[key] = 'weak';
         } else if (currentState === 'unlearned') {
             gameState.actionCounts.unlearned_incorrect++;
-            gameState.wordStates[key] = 'weak';
             checkLevelUp();
-        }
-        // If already weak, stay weak.
-        else if (currentState === 'weak') {
+        } else if (currentState === 'weak') {
             gameState.actionCounts.weak_incorrect++;
         }
+
+        gameState.wordStates[key] = deriveStateFromAccuracy(key);
 
         // Points Logic: Unlearned=1, Weak=2, Others=1
         let basePoints = 1;
@@ -1467,13 +1997,17 @@ function updateDisplay() {
     updateWordStats();
     updateModeButtons();
     updateProgress();
+    updateReviewQueueBadge();
+    updateReviewProgressUI();
 }
 
 // --- RPG Animation Logic ---
 // --- RPG Animation Logic ---
+const ENABLE_BATTLE_ANIMATION = false;
 let animTimer = null;
 
 function playAnimation(type) {
+    if (!ENABLE_BATTLE_ANIMATION) return;
     const hero = document.getElementById('heroCharacter');
     const slime = document.getElementById('enemySlime');
 
@@ -1630,6 +2164,10 @@ function updateWordStats() {
 }
 
 function updateModeButtons() {
+    if (gameState.reviewMode === 'on') {
+        gameState.currentMode = 'unlearned';
+    }
+
     document.querySelectorAll('.mode-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.mode === gameState.currentMode) {
@@ -1637,21 +2175,20 @@ function updateModeButtons() {
         }
     });
 
-    if (gameState.randomMode) {
-        document.getElementById('randomCheckbox').classList.add('checked');
-        // document.getElementById('randomNotice').style.display = 'inline'; // Removed as requested
-        // Disable mode buttons visually
-        document.querySelectorAll('.mode-btn').forEach(btn => {
+    // Random mode retired
+    gameState.randomMode = false;
+    const randomNotice = document.getElementById('randomNotice');
+    if (randomNotice) randomNotice.style.display = 'none';
+    const lockModeSelect = gameState.reviewMode === 'on';
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        if (lockModeSelect) {
             btn.classList.add('disabled');
-        });
-    } else {
-        document.getElementById('randomCheckbox').classList.remove('checked');
-        document.getElementById('randomNotice').style.display = 'none';
-        // Enable mode buttons
-        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.disabled = true;
+        } else {
             btn.classList.remove('disabled');
-        });
-    }
+            btn.disabled = false;
+        }
+    });
 
     if (gameState.autoMode) {
         document.getElementById('autoCheckbox').classList.add('checked');

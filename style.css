@@ -601,14 +601,15 @@ body {
 
 .review-badge {
     position: absolute;
-    top: 50px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
     background: #4caf50;
     color: white;
     padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
+    border-radius: 6px;
+    font-size: 11px;
     font-weight: bold;
+    z-index: 5;
 }
 
 @keyframes bounce {

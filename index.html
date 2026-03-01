@@ -88,6 +88,19 @@
     </div>
     <!-- WELCOME_LP_END -->
 
+    <!-- LIVE TUTORIAL START (Card Bubble) -->
+    <div id="liveTutorialHint" style="display:none; position:fixed; z-index:3200; max-width:320px; background:#ffffff; border:1px solid #dfe5f5; box-shadow:0 10px 24px rgba(25,35,58,.2); border-radius:12px; padding:10px 12px;">
+        <button onclick="skipLiveTutorial()" style="position:absolute; top:6px; right:8px; border:none; background:transparent; color:#94a0b8; cursor:pointer; font-size:14px;">✕</button>
+        <div id="liveTutorialHintText" style="font-size:13px; color:#2d3748; line-height:1.5; padding-right:18px;"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:8px;">
+            <label style="font-size:11px; color:#6b7280; display:flex; align-items:center; gap:6px;">
+                <input type="checkbox" id="dontShowLiveTutorialAgain" style="accent-color:#6c5ce7;"> 次回以降は表示しない
+            </label>
+            <button id="liveTutorialActionBtn" onclick="liveTutorialAction()" style="display:none; padding:5px 10px; border:1px solid #d9dff2; border-radius:8px; background:#f7f9ff; color:#3f4b66; font-size:11px; cursor:pointer;">次へ</button>
+        </div>
+    </div>
+    <!-- LIVE TUTORIAL END -->
+
     <!-- SHARE_MODAL_START -->
     <div id="shareModal" class="trial-overlay">
         <div class="trial-content" style="max-width: 450px;">
@@ -183,6 +196,14 @@
                 <span style="font-size: 14px; font-weight: bold; color: #444;">ランキング</span>
             </div>
 
+            <!-- Study Mode Settings -->
+            <div onclick="openStudyModeModal(); toggleOtherMenu();"
+                style="padding: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background='white'">
+                <span style="font-size: 20px;">🧭</span>
+                <span style="font-size: 14px; font-weight: bold; color: #444;">出題モード</span>
+            </div>
+
             <!-- Focused Mode -->
             <div onclick="document.getElementById('focusSetupModal').style.display='flex'; toggleOtherMenu();"
                 style="padding: 15px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: background 0.1s;"
@@ -203,12 +224,6 @@
                 <div class="auto-checkbox" id="autoCheckbox"></div>
                 <div class="auto-label">
                     <span>オート</span>
-                </div>
-            </div>
-            <div class="auto-mode-container" id="randomToggle" style="margin-right: 5px;">
-                <div class="auto-checkbox checked" id="randomCheckbox"></div>
-                <div class="auto-label">
-                    <span>ランダム</span>
                 </div>
             </div>
 
@@ -246,6 +261,14 @@
                 <!-- Gold Display (Above Level) -->
                 <div class="char-level-display" style="top: -42px; color: #f1c40f;">
                     💰 <span id="points">0</span>
+                </div>
+                <div id="dueCountBadge" class="char-level-display"
+                    style="top: 2px; right: -78px; font-size: 11px; color: #fff; background:#95a5a6; padding:2px 8px; border-radius:10px; z-index:12;">
+                    復習 0
+                </div>
+                <div id="dueOnlyModeLabel" class="char-level-display"
+                    style="top: 24px; right: -78px; font-size: 10px; color: #888; background:#fff; padding:1px 6px; border-radius:10px; z-index:12;">
+                    復習モード:MIX
                 </div>
 
                 <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
@@ -298,35 +321,62 @@
             </div>
         </div>
 
-        <div class="pos-filter-container">
-            <div class="filter-label">フィルタ:</div>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="名" checked> 名詞
-            </label>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="動" checked> 動詞
-            </label>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詞
-            </label>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="副" checked> 副詞
-            </label>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="助" checked> 助動詞
-            </label>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="前" checked> 前置詞
-            </label>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="接" checked> 接続詞
-            </label>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="代" checked> 代名詞
-            </label>
-            <label class="pos-checkbox-item">
-                <input type="checkbox" class="pos-filter" data-pos="other" checked> その他
-            </label>
+        <div id="reviewProgressWrap" style="display:none; margin: 6px 0 8px 0; background:#f6f7fb; border:1px solid #e5e8f3; border-radius:10px; padding:8px 10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span id="reviewProgressLabel" style="font-size:12px; font-weight:bold; color:#555;">復習キュー 0件</span>
+                <span style="font-size:11px; color:#999;">解くと左から消える</span>
+            </div>
+            <div id="reviewQueuePreview" style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; position:relative; min-height:28px;"></div>
+        </div>
+
+        
+        <!-- Study Mode Modal -->
+        <div id="studyModeModal" class="modal" onclick="closeStudyModeModal()"
+            style="display:none; position:fixed; inset:0; z-index:3000; background:radial-gradient(circle at 20% 20%, rgba(108,92,231,0.18), rgba(0,0,0,0.55)); align-items:center; justify-content:center; padding:16px; backdrop-filter: blur(2px);">
+            <div class="modal-content" onclick="event.stopPropagation()"
+                style="max-width: 580px; width:min(580px, 100%); max-height:85vh; overflow:auto; background:linear-gradient(180deg,#ffffff,#fafbff); border-radius:18px; border:1px solid #e9ebf5; box-shadow:0 22px 44px rgba(24,29,45,0.22); padding:18px 18px 14px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h2 style="margin:0; font-size:20px; color:#2d3436; letter-spacing:0.2px;">🧭 出題モード</h2>
+                    <button onclick="closeStudyModeModal()" style="border:none; background:#f1f3fb; color:#6b7280; width:32px; height:32px; border-radius:10px; cursor:pointer; font-size:18px; line-height:1;">×</button>
+                </div>
+                <div style="font-size:12px; color:#8a92a6; margin-bottom:8px;">復習と新規の出題ルールをここでまとめて管理します。</div>
+                <div style="font-size:11px; color:#7b8397; line-height:1.6; margin-bottom:12px; background:#f8faff; border:1px solid #e7ecfb; border-radius:10px; padding:8px 10px;">
+                    ・初回一発正解の単語は復習キューに出ません。<br>
+                    ・より苦手な単語が自動で復習キューに登場します。<br>
+                    ・正答を重ねると、その単語は復習キューに登場しなくなります。<br>
+                    ・復習モードは ON / MIX / OFF を切替できます。<br>
+                    ・分類基準：完璧 80%以上 / 得意 50〜79% / 苦手 0〜49%
+                </div>
+
+                <div style="background:#fff; border:1px solid #eceff7; border-radius:12px; padding:10px; margin-bottom:10px;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px;">
+                        <div style="font-size:12px; font-weight:700; color:#6b7280;">復習設定</div>
+                        <span id="dueOnlyModeLabelModal" style="display:inline-block; font-size:11px; color:#888; background:#f5f7ff; border:1px solid #e2e7fb; border-radius:999px; padding:3px 8px;">復習モード:MIX</span>
+                    </div>
+
+                    <button onclick="toggleDueOnlyMode()" style="width:100%; padding:8px 10px; border-radius:10px; border:1px solid #d9dff2; background:#fff; cursor:pointer; font-weight:600; color:#3f4b66; margin-bottom:6px;">🧹 配信モード切替</button>
+
+                    <div style="padding-top:8px; border-top:1px dashed #e5e9f5;">
+                        <div style="font-size:12px; font-weight:700; color:#6b7280; margin-bottom:6px;">🎯 復習レベル設定</div>
+                        <div id="reviewLevelCheckboxes" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+                    </div>
+                </div>
+
+                <div style="background:#fff; border:1px solid #eceff7; border-radius:14px; padding:12px;">
+                    <div class="filter-label" style="font-size:12px; font-weight:700; color:#6b7280; margin-bottom:8px;">品詞フィルター</div>
+                    <div class="pos-filter-container" style="margin-top: 0; background:transparent; border:none; padding:0;">
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="名" checked> 名詞</label>
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="動" checked> 動詞</label>
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詞</label>
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="副" checked> 副詞</label>
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="助" checked> 助動詞</label>
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="前" checked> 前置詞</label>
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="接" checked> 接続詞</label>
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="代" checked> 代名詞</label>
+                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="other" checked> その他</label>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="addWordsContainer" style="text-align: center; display: none; margin-bottom: 20px;">

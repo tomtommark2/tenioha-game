@@ -82,6 +82,122 @@ test('プロフィールモーダルを開閉できる', async ({ page }) => {
   }, { timeout: 5000 }).toBe(true);
 });
 
+test('復習モード切替が ON→MIX→OFF で循環する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  await page.evaluate(() => {
+    if (typeof window.openStudyModeModal === 'function') window.openStudyModeModal();
+  });
+
+  const label = page.locator('#dueOnlyModeLabelModal');
+  const toggleBtn = page.getByRole('button', { name: '🧹 配信モード切替' });
+
+  await expect(label).toContainText('MIX');
+  await toggleBtn.click();
+  await expect(label).toContainText('ON');
+  await toggleBtn.click();
+  await expect(label).toContainText('OFF');
+  await toggleBtn.click();
+  await expect(label).toContainText('MIX');
+});
+
+test('復習モードONでは新規のみの遷移にならない（復習優先）', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  // Ensure there is at least one review candidate
+  await page.evaluate(() => {
+    const gs = window.gameState;
+    if (!gs || !gs.currentWord) return;
+    const w = gs.currentWord;
+    const key = (window.getWordKeySafe ? window.getWordKeySafe(w, w.__sourceLevel || gs.currentLevel) : null);
+    if (!key) return;
+    gs.wordStates[key] = 'weak';
+    if (!gs.srsData) gs.srsData = {};
+    if (!gs.srsData[key]) gs.srsData[key] = {};
+    gs.srsData[key].dueAt = Date.now() - 1000;
+  });
+
+  await page.evaluate(() => {
+    if (typeof window.openStudyModeModal === 'function') window.openStudyModeModal();
+  });
+
+  const label = page.locator('#dueOnlyModeLabelModal');
+  const toggleBtn = page.getByRole('button', { name: '🧹 配信モード切替' });
+
+  // Move to ON
+  while (!(await label.textContent()).includes('ON')) {
+    await toggleBtn.click();
+  }
+
+  await page.locator('#vocabCard').click({ force: true });
+  await expect(page.locator('#vocabCard .review-badge')).toBeVisible();
+});
+
+test('復習モードOFFでは新規が出題される', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  await page.evaluate(() => {
+    if (typeof window.openStudyModeModal === 'function') window.openStudyModeModal();
+  });
+
+  const label = page.locator('#dueOnlyModeLabelModal');
+  const toggleBtn = page.getByRole('button', { name: '🧹 配信モード切替' });
+
+  // Move to OFF
+  while (!(await label.textContent()).includes('OFF')) {
+    await toggleBtn.click();
+  }
+
+  // In OFF, should behave as new-first (badge absent on first tap flow)
+  await page.locator('#vocabCard').click({ force: true });
+  await expect(page.locator('#vocabCard .review-badge')).toHaveCount(0);
+});
+
+test('正答率閾値(80/50)で状態分類される', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const result = await page.evaluate(() => {
+    if (!window.gameState || typeof window.deriveStateFromAccuracy !== 'function') return null;
+    window.gameState.srsData = window.gameState.srsData || {};
+    window.gameState.wordStates = window.gameState.wordStates || {};
+
+    window.gameState.srsData.k1 = { successCount: 8, failCount: 2 };
+    window.gameState.srsData.k2 = { successCount: 5, failCount: 5 };
+    window.gameState.srsData.k3 = { successCount: 4, failCount: 6 };
+    window.gameState.wordStates.k1 = 'weak';
+    window.gameState.wordStates.k2 = 'weak';
+    window.gameState.wordStates.k3 = 'learned';
+
+    return {
+      k1: window.deriveStateFromAccuracy('k1'),
+      k2: window.deriveStateFromAccuracy('k2'),
+      k3: window.deriveStateFromAccuracy('k3'),
+    };
+  });
+
+  expect(result).toEqual({ k1: 'perfect', k2: 'learned', k3: 'weak' });
+});
+
 test('致命的な console error / page error が出ない', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');

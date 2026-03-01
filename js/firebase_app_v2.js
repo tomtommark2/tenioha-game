@@ -1205,16 +1205,29 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('controllerchange', () => {
         if (refreshing) return;
 
-        // Prevent accidental reload loops
+        // During localhost development, avoid auto-reload loops.
+        const isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+        if (isLocal) {
+            console.log('SW controller changed (dev mode): skip auto-reload');
+            return;
+        }
+
+        // Prevent accidental reload loops in production too
         const now = Date.now();
         const last = parseInt(sessionStorage.getItem('sw_last_reload_ts') || '0', 10);
-        if (last && (now - last) < 10000) {
+        if (last && (now - last) < 120000) {
             console.warn('Skip reload to avoid SW reload loop');
+            return;
+        }
+
+        if (sessionStorage.getItem('sw_reloaded_once') === '1') {
+            console.warn('Skip additional SW reload in same session');
             return;
         }
 
         refreshing = true;
         sessionStorage.setItem('sw_last_reload_ts', String(now));
+        sessionStorage.setItem('sw_reloaded_once', '1');
         console.log("New version detected. Saving and reloading...");
         if (window.saveGame) window.saveGame(); // Safety Save
         window.location.reload();
