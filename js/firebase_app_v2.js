@@ -568,8 +568,10 @@ if (auth) {
                 }
 
                 // 2. Data Sync
-                if (userDoc.exists() && userDoc.data().saveData) {
-                    const cloudData = JSON.parse(userDoc.data().saveData);
+                if (userDoc.exists() && hasCloudSaveData(userDoc.data())) {
+                    const cloudRaw = await fetchCloudSaveData(doc(db, "users", userId), userDoc.data());
+                    if (!cloudRaw) throw new Error('Cloud saveData missing');
+                    const cloudData = JSON.parse(cloudRaw);
                     const cloudTime = cloudData.lastSaveTime || 0;
 
                     if (lastSync) lastSync.textContent = new Date(cloudTime).toLocaleString();
@@ -591,7 +593,7 @@ if (auth) {
                         console.log("Cloud has better score. Prompting restore...");
                         const msg = `クラウドに現在より進んだデータがあります。\n(Cloud: ${cloudPoints} pts vs Local: ${localPoints} pts)\n\n復元しますか？`;
                         if (confirm(msg)) {
-                            localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
+                            localStorage.setItem('vocabClickerSave', cloudRaw);
                             alert("復元しました。リロードします。");
                             location.reload();
                         } else {
@@ -786,10 +788,13 @@ window.forceRestore = async function () {
     // But restore implies "I want Cloud Data".
 
     try {
-        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
-        if (!userDoc.exists() || !userDoc.data().saveData) { alert("クラウドにデータがありません"); return; }
+        const userDocRef = doc(db, "users", auth.currentUser.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (!userDoc.exists() || !hasCloudSaveData(userDoc.data())) { alert("クラウドにデータがありません"); return; }
 
-        const cloudData = JSON.parse(userDoc.data().saveData);
+        const cloudRaw = await fetchCloudSaveData(userDocRef, userDoc.data());
+        if (!cloudRaw) { alert("クラウドデータの読み込みに失敗しました"); return; }
+        const cloudData = JSON.parse(cloudRaw);
         const localPoints = (typeof gameState !== 'undefined') ? gameState.points : -1;
         const cloudPoints = cloudData.points || 0;
 
@@ -805,45 +810,89 @@ window.forceRestore = async function () {
         if (!confirm(msg)) return;
 
         // Restore Logic
-        localStorage.setItem('vocabClickerSave', userDoc.data().saveData);
+        localStorage.setItem('vocabClickerSave', cloudRaw);
         alert("復元しました。リロードします。");
         location.reload();
     } catch (e) { alert("エラー: " + e.message); }
 };
 
-// Build compact cloud payload to avoid Firestore 1MiB document limit
-function buildCompactSaveDataForCloud(rawSaveData) {
-    try {
-        const data = JSON.parse(rawSaveData);
+// --- Large cloud save helpers (avoid Firestore 1MiB doc limit) ---
+const CLOUD_SAVE_DOC_LIMIT_BYTES = 1040000;
+const CLOUD_SAVE_CHUNK_BYTES = 350000; // safe margin for doc overhead
 
-        // Keep only recent history for cloud backup
-        if (Array.isArray(data.dailyHistory) && data.dailyHistory.length > 120) {
-            data.dailyHistory = data.dailyHistory.slice(-120);
-        }
+function getByteSize(str) {
+    return new Blob([str]).size;
+}
 
-        // Slim SRS payload (retain core scheduling / accuracy fields)
-        if (data.srsData && typeof data.srsData === 'object') {
-            const slim = {};
-            for (const [key, s] of Object.entries(data.srsData)) {
-                if (!s || typeof s !== 'object') continue;
-                const x = {};
-                if (typeof s.dueAt === 'number') x.dueAt = s.dueAt;
-                if (typeof s.successCount === 'number') x.successCount = s.successCount;
-                if (typeof s.failCount === 'number') x.failCount = s.failCount;
-                if (typeof s.reviewStep === 'number' && s.reviewStep > 0) x.reviewStep = s.reviewStep;
-                if (typeof s.lastReviewedAt === 'number' && s.lastReviewedAt > 0) x.lastReviewedAt = s.lastReviewedAt;
-                if (s.everWrong) x.everWrong = true;
-                if (s.firstTryPerfect) x.firstTryPerfect = true;
-                slim[key] = x;
+function splitStringByBytes(str, maxBytes) {
+    const chunks = [];
+    let i = 0;
+    while (i < str.length) {
+        let lo = i + 1;
+        let hi = str.length;
+        let best = lo;
+        while (lo <= hi) {
+            const mid = (lo + hi) >> 1;
+            const part = str.slice(i, mid);
+            if (getByteSize(part) <= maxBytes) {
+                best = mid;
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
             }
-            data.srsData = slim;
         }
-
-        return JSON.stringify(data);
-    } catch (e) {
-        console.warn('Compact save conversion failed, fallback to raw saveData', e);
-        return rawSaveData;
+        if (best <= i) throw new Error('Failed to split saveData safely by bytes');
+        chunks.push(str.slice(i, best));
+        i = best;
     }
+    return chunks;
+}
+
+function hasCloudSaveData(userData) {
+    if (!userData) return false;
+    return !!(userData.saveData || (userData.saveStorage === 'chunked' && userData.saveChunkCount > 0));
+}
+
+async function fetchCloudSaveData(userDocRef, userData) {
+    if (!userData) return null;
+    if (userData.saveStorage === 'chunked' && userData.saveChunkCount > 0) {
+        const chunks = [];
+        const prefix = userData.saveChunkPrefix;
+        const count = userData.saveChunkCount;
+        for (let i = 0; i < count; i++) {
+            const chunkRef = doc(db, 'users', userDocRef.id, 'save_chunks', `${prefix}_${i}`);
+            const snap = await getDoc(chunkRef);
+            if (!snap.exists()) throw new Error(`Cloud chunk missing: ${i + 1}/${count}`);
+            chunks.push(snap.data().data || '');
+        }
+        return chunks.join('');
+    }
+    return userData.saveData || null;
+}
+
+async function writeChunkedSaveData(userDocRef, rawSaveData, pwaVer) {
+    const chunks = splitStringByBytes(rawSaveData, CLOUD_SAVE_CHUNK_BYTES);
+    const prefix = String(Date.now());
+
+    for (let i = 0; i < chunks.length; i++) {
+        const chunkRef = doc(db, 'users', userDocRef.id, 'save_chunks', `${prefix}_${i}`);
+        await setDoc(chunkRef, {
+            idx: i,
+            data: chunks[i],
+            updatedAt: serverTimestamp()
+        }, { merge: true });
+    }
+
+    await setDoc(userDocRef, {
+        saveStorage: 'chunked',
+        saveChunkPrefix: prefix,
+        saveChunkCount: chunks.length,
+        updatedAt: serverTimestamp(),
+        name: auth.currentUser.displayName,
+        email: auth.currentUser.email,
+        appVersion: pwaVer,
+        cloudSaveTooLarge: false
+    }, { merge: true });
 }
 
 // Overwrite existing uploadSaveData to use Auth if available
@@ -864,28 +913,8 @@ window.uploadSaveData = async function (silent = false, force = false) {
     const rawSaveData = localStorage.getItem('vocabClickerSave');
     if (!rawSaveData) return;
 
-    let saveData = buildCompactSaveDataForCloud(rawSaveData);
-
-    // Firestore doc size guard (about 1,048,576 bytes total)
-    const measureBytes = (s) => new Blob([s]).size;
-    let saveBytes = measureBytes(saveData);
-    if (saveBytes > 1000000) {
-        // Last-resort trim: drop long dailyHistory in cloud backup
-        try {
-            const obj = JSON.parse(saveData);
-            delete obj.dailyHistory;
-            saveData = JSON.stringify(obj);
-            saveBytes = measureBytes(saveData);
-        } catch (_) {}
-    }
-
-    if (saveBytes > 1040000) {
-        if (!silent) {
-            alert('クラウド保存に失敗: データ量が大きすぎます（上限超過）。\n学習データは端末内に保持されています。');
-        }
-        console.warn(`Skip cloud save: payload too large (${saveBytes} bytes)`);
-        return;
-    }
+    const saveData = rawSaveData;
+    const saveBytes = getByteSize(saveData);
 
     try {
         // Conflict Check Logic (Prevent Overwriting Higher Score)
@@ -902,14 +931,17 @@ window.uploadSaveData = async function (silent = false, force = false) {
         // Let's implement checking for Manual Save Only (silent=false) to show alert.
         if (!silent) {
             const docSnap = await getDoc(userDocRef);
-            if (docSnap.exists() && docSnap.data().saveData) {
-                const cloudExisting = JSON.parse(docSnap.data().saveData);
-                const localDataObj = JSON.parse(saveData);
+            if (docSnap.exists() && hasCloudSaveData(docSnap.data())) {
+                const cloudRaw = await fetchCloudSaveData(userDocRef, docSnap.data());
+                if (cloudRaw) {
+                    const cloudExisting = JSON.parse(cloudRaw);
+                    const localDataObj = JSON.parse(saveData);
 
-                if (cloudExisting.points > localDataObj.points) {
-                    if (!confirm(`⚠️ 警告: クラウドの方がスコアが高いです！\n(Cloud: ${cloudExisting.points} vs Local: ${localDataObj.points})\n\n本当に現在の低いスコアで上書きしますか？`)) {
-                        console.log("Upload aborted by user.");
-                        return;
+                    if (cloudExisting.points > localDataObj.points) {
+                        if (!confirm(`⚠️ 警告: クラウドの方がスコアが高いです！\n(Cloud: ${cloudExisting.points} vs Local: ${localDataObj.points})\n\n本当に現在の低いスコアで上書きしますか？`)) {
+                            console.log("Upload aborted by user.");
+                            return;
+                        }
                     }
                 }
             }
@@ -918,13 +950,23 @@ window.uploadSaveData = async function (silent = false, force = false) {
         const verElem = document.getElementById('helpVersionDisplay');
         const pwaVer = verElem ? verElem.textContent : 'unknown';
 
-        await setDoc(userDocRef, {
-            saveData: saveData,
-            updatedAt: serverTimestamp(),
-            name: auth.currentUser.displayName,
-            email: auth.currentUser.email,
-            appVersion: pwaVer
-        }, { merge: true });
+        if (saveBytes > CLOUD_SAVE_DOC_LIMIT_BYTES) {
+            await writeChunkedSaveData(userDocRef, saveData, pwaVer);
+            console.log(`Upload success (chunked): ${saveBytes} bytes`);
+        } else {
+            await setDoc(userDocRef, {
+                saveData: saveData,
+                saveStorage: 'inline',
+                saveChunkPrefix: null,
+                saveChunkCount: 0,
+                updatedAt: serverTimestamp(),
+                name: auth.currentUser.displayName,
+                email: auth.currentUser.email,
+                appVersion: pwaVer,
+                cloudSaveTooLarge: false
+            }, { merge: true });
+            console.log(`Upload success (inline): ${saveBytes} bytes`);
+        }
 
         // Reset Dirty Flag on success
         window.isDirty = false;
