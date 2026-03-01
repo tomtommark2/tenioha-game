@@ -848,6 +848,42 @@ function splitStringByBytes(str, maxBytes) {
     return chunks;
 }
 
+// A段階: 機能を削らずにクラウド送信データだけ軽量化
+function buildCloudSaveData(rawSaveData) {
+    try {
+        const data = JSON.parse(rawSaveData);
+
+        // dailyHistoryは日次ログ(daily_logs)が正本のためクラウドsaveDataから除外
+        delete data.dailyHistory;
+
+        // SRSのデフォルト値を省略してサイズ削減
+        if (data.srsData && typeof data.srsData === 'object') {
+            const compactSrs = {};
+            for (const [key, s] of Object.entries(data.srsData)) {
+                if (!s || typeof s !== 'object') continue;
+                const c = {};
+                if (typeof s.dueAt === 'number') c.dueAt = s.dueAt;
+                if (typeof s.successCount === 'number') c.successCount = s.successCount;
+                if (typeof s.failCount === 'number') c.failCount = s.failCount;
+                if (typeof s.reviewStep === 'number' && s.reviewStep !== 0) c.reviewStep = s.reviewStep;
+                if (typeof s.lastReviewedAt === 'number' && s.lastReviewedAt !== 0) c.lastReviewedAt = s.lastReviewedAt;
+                if (typeof s.stability === 'number' && s.stability !== 1) c.stability = s.stability;
+                if (typeof s.streak === 'number' && s.streak !== 0) c.streak = s.streak;
+                if (s.everWrong === true) c.everWrong = true;
+                if (s.firstTryPerfect === true) c.firstTryPerfect = true;
+                compactSrs[key] = c;
+            }
+            data.srsData = compactSrs;
+        }
+
+        data.cloudCompactVersion = 1;
+        return JSON.stringify(data);
+    } catch (e) {
+        console.warn('buildCloudSaveData failed, fallback to raw', e);
+        return rawSaveData;
+    }
+}
+
 function hasCloudSaveData(userData) {
     if (!userData) return false;
     return !!(userData.saveData || (userData.saveStorage === 'chunked' && userData.saveChunkCount > 0));
@@ -913,7 +949,7 @@ window.uploadSaveData = async function (silent = false, force = false) {
     const rawSaveData = localStorage.getItem('vocabClickerSave');
     if (!rawSaveData) return;
 
-    const saveData = rawSaveData;
+    const saveData = buildCloudSaveData(rawSaveData);
     const saveBytes = getByteSize(saveData);
 
     try {
