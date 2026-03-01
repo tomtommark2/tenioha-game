@@ -943,7 +943,8 @@ window.saveDailyProgress = async function () {
             currentStats: {
                 total: totalLearned,
                 cefr: stats
-            }
+            },
+            updatedAt: serverTimestamp()
         }, { merge: true });
 
     } catch (e) {
