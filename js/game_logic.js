@@ -886,9 +886,9 @@ function updateReviewProgressUI() {
     const wrap = document.getElementById('reviewProgressWrap');
     const list = document.getElementById('reviewQueuePreview');
     const label = document.getElementById('reviewProgressLabel');
-    const mode = document.getElementById('dueOnlyModeLabel');
+    const mode = document.getElementById('reviewModeInlineLabel');
     const modeModal = document.getElementById('dueOnlyModeLabelModal');
-    if (!wrap || !list || !label || !mode) return;
+    if (!wrap || !list || !label) return;
 
     const dueWords = getDueReviewWordsPool();
     const total = dueWords.length;
@@ -898,15 +898,19 @@ function updateReviewProgressUI() {
     const oldHeadKey = gameState.lastReviewQueueHeadKey;
 
     const modeMap = {
-        on: { text: '復習モード:ON', color: '#e74c3c' },
-        random: { text: '復習モード:MIX', color: '#f39c12' },
-        off: { text: '復習モード:OFF', color: '#888' }
+        on: { text: '復習モード:ON', color: '#b42318', bg: '#fff1f1', border: '#fecaca' },
+        random: { text: '復習モード:MIX', color: '#a16207', bg: '#fffbeb', border: '#fde68a' },
+        off: { text: '復習モード:OFF', color: '#475467', bg: '#f3f4f6', border: '#d1d5db' }
     };
     const m = modeMap[gameState.reviewMode] || modeMap.random;
     const modeText = m.text;
     const modeColor = m.color;
-    mode.textContent = modeText;
-    mode.style.color = modeColor;
+    if (mode) {
+        mode.textContent = modeText;
+        mode.style.color = modeColor;
+        mode.style.background = m.bg;
+        mode.style.borderColor = m.border;
+    }
     if (modeModal) {
         modeModal.textContent = modeText;
         modeModal.style.color = modeColor;

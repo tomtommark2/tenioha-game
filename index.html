@@ -262,14 +262,6 @@
                 <div class="char-level-display" style="top: -42px; color: #f1c40f;">
                     💰 <span id="points">0</span>
                 </div>
-                <div id="dueCountBadge" class="char-level-display"
-                    style="top: 2px; right: -78px; font-size: 11px; color: #fff; background:#95a5a6; padding:2px 8px; border-radius:10px; z-index:12;">
-                    復習 0
-                </div>
-                <div id="dueOnlyModeLabel" class="char-level-display"
-                    style="top: 24px; right: -78px; font-size: 10px; color: #888; background:#fff; padding:1px 6px; border-radius:10px; z-index:12;">
-                    復習モード:MIX
-                </div>
 
                 <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
 
@@ -322,8 +314,9 @@
         </div>
 
         <div id="reviewProgressWrap" style="display:none; margin: 6px 0 8px 0; background:#f6f7fb; border:1px solid #e5e8f3; border-radius:10px; padding:8px 10px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
                 <span id="reviewProgressLabel" style="font-size:12px; font-weight:bold; color:#555;">復習キュー 0件</span>
+                <span id="reviewModeInlineLabel" style="font-size:11px; color:#6b7280; background:#f3f4f6; border:1px solid #e5e7eb; border-radius:999px; padding:2px 8px; font-weight:700; letter-spacing:0.2px;">復習モード:MIX</span>
                 <span style="font-size:11px; color:#999;">解くと左から消える</span>
             </div>
             <div id="reviewQueuePreview" style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; position:relative; min-height:28px;"></div>
