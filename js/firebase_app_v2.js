@@ -1371,7 +1371,7 @@ if ('serviceWorker' in navigator) {
     });
 
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service_worker.js').then(reg => {
+        navigator.serviceWorker.register('./service_worker.js', { updateViaCache: 'none' }).then(reg => {
             console.log('Service Worker Registered!', reg);
 
             // 1.5 Force check for updates immediately on load

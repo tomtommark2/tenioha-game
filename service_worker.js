@@ -3,6 +3,7 @@ importScripts('./js/version.js');
 const CACHE_NAME = 'vocab-game-' + GAME_VERSION;
 const ASSETS = [
     './',
+    './index.html',
     './vocab_clicker_game.html',
     './icon-512.png',
     './icon-192.png',
@@ -28,22 +29,30 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    // Database requests should not be cached or should be handled by Firestore sdk
+    // Skip non-GET and Firebase traffic
+    if (event.request.method !== 'GET') return;
     if (event.request.url.includes('firebase') || event.request.url.includes('firestore')) {
         return;
     }
 
+    // Navigation requests: network-first (prevents stale HTML on normal reload)
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request)
+                .then((networkResponse) => {
+                    const copy = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy)).catch(() => {});
+                    return networkResponse;
+                })
+                .catch(() => caches.match(event.request).then((r) => r || caches.match('./index.html') || caches.match('./vocab_clicker_game.html')))
+        );
+        return;
+    }
+
+    // Static assets: cache-first + network fallback
     event.respondWith(
         caches.match(event.request)
-            .then((response) => {
-                return response || fetch(event.request).catch(() => {
-                    // Offline fallback?
-                    // If offline and request is for navigation, return html
-                    if (event.request.mode === 'navigate') {
-                        return caches.match('./vocab_clicker_game.html');
-                    }
-                });
-            })
+            .then((response) => response || fetch(event.request))
     );
 });
 
