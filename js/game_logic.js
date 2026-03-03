@@ -1822,6 +1822,22 @@ function setupCardListeners() {
     }
 }
 
+function recordLearningLogPerfectizedStrict(prevState, nextState) {
+    if (!((prevState === 'weak' || prevState === 'learned') && nextState === 'perfect')) return;
+    try {
+        const d = new Date();
+        const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        const key = 'learningLog_daily_metrics_v1';
+        const raw = localStorage.getItem(key) || '{}';
+        const metrics = JSON.parse(raw);
+        if (!metrics[today]) metrics[today] = { answers: 0, review: 0, perfectized: 0, perfectizedStrict: 0 };
+        metrics[today].perfectizedStrict = Number(metrics[today].perfectizedStrict || 0) + 1;
+        localStorage.setItem(key, JSON.stringify(metrics));
+    } catch (e) {
+        console.warn('recordLearningLogPerfectizedStrict failed', e);
+    }
+}
+
 function handleVocabCardClick() {
     if (window.resetFocusTimer) window.resetFocusTimer();
     if (typeof window.liveTutorialEvent === 'function') window.liveTutorialEvent('vocab_correct');
@@ -1881,6 +1897,7 @@ function handleVocabCardClick() {
     checkDailyReset();
     updateSrsForWord(key, true, currentState);
     gameState.wordStates[key] = deriveStateFromAccuracy(key);
+    recordLearningLogPerfectizedStrict(currentState, gameState.wordStates[key]);
 
     const finalPoints = basePoints * gameState.vocabLevel;
     gameState.points += finalPoints;

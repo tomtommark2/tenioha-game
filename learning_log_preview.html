@@ -284,8 +284,11 @@
         last7DateSet.add(ymd(d));
       }
       let perfectWeek = 0;
-      for (const d of Object.keys(perfectizedByDate)) {
-        if (last7DateSet.has(d)) perfectWeek += Number(perfectizedByDate[d] || 0);
+      // strict definition: only learned/weak -> perfect (tracked from app runtime)
+      let metricsForWeek = {};
+      try { metricsForWeek = JSON.parse(localStorage.getItem('learningLog_daily_metrics_v1') || '{}'); } catch {}
+      for (const d of last7DateSet) {
+        perfectWeek += Number((metricsForWeek[d] && metricsForWeek[d].perfectizedStrict) || 0);
       }
       const perfectWeekEl = document.getElementById('perfectWeek');
       if (perfectWeekEl) perfectWeekEl.textContent = perfectWeek.toLocaleString();
@@ -342,10 +345,14 @@
         dailyBase = { date: todayStr, answers: answersTotal, review: reviewTotal, perfect: perfectTotal };
         localStorage.setItem(baseKey, JSON.stringify(dailyBase));
       }
+      const prevStrict = Number((metrics[todayStr] && metrics[todayStr].perfectizedStrict) || 0);
       metrics[todayStr] = {
         answers: Math.max(0, answersTotal - Number(dailyBase.answers || 0)),
         review: Math.max(0, reviewTotal - Number(dailyBase.review || 0)),
-        perfectized: Math.max(0, perfectTotal - Number(dailyBase.perfect || 0))
+        // legacy fallback metric (may include unlearned->perfect)
+        perfectized: Math.max(0, perfectTotal - Number(dailyBase.perfect || 0)),
+        // strict metric (learned/weak -> perfect only), recorded by app runtime
+        perfectizedStrict: prevStrict
       };
       localStorage.setItem(metricsKey, JSON.stringify(metrics));
 
@@ -353,7 +360,7 @@
         date: d,
         answers: Number((metrics[d] && metrics[d].answers) || 0),
         review: Number((metrics[d] && metrics[d].review) || 0),
-        perfectized: Number((metrics[d] && metrics[d].perfectized) || perfectized[d] || 0)
+        perfectized: Number((metrics[d] && metrics[d].perfectizedStrict) || 0)
       }));
 
       const max = Math.max(1, ...series.flatMap(x => [x.answers, x.review, x.perfectized]));
