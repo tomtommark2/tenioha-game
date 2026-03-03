@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>学習ログ</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --line: #e7e9ee;
+      --text: #1f2937;
+      --sub: #6b7280;
+      --accent: #0a84ff;
+      --ok: #16a34a;
+      --warn: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 20px 14px 40px; }
+    .top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    h1 { font-size: 22px; margin: 0; letter-spacing: .2px; }
+    .sub { color: var(--sub); font-size: 13px; margin-top: 4px; }
+    .btn {
+      border: 1px solid var(--line); background: #fff; border-radius: 10px;
+      padding: 8px 12px; font-size: 13px; color: #374151; cursor: pointer;
+      text-decoration: none;
+    }
+    .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
+    .grid2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 10px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .label { font-size: 12px; color: var(--sub); margin-bottom: 8px; }
+    .value { font-size: 24px; font-weight: 700; line-height: 1; }
+    .hint { font-size: 12px; color: var(--sub); margin-top: 8px; }
+    .kpi-flow { display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; line-height:1.1; }
+    .kpi-flow .from, .kpi-flow .to { font-size: 24px; font-weight: 800; color:#1f2937; }
+    .kpi-flow .arr { font-size: 18px; color:#9ca3af; }
+    .kpi-flow .delta { font-size: 18px; font-weight: 700; }
+    .ok { color: var(--ok); }
+    .warn { color: var(--warn); }
+
+    .section-title { font-size: 14px; font-weight: 700; margin: 14px 2px 8px; color: #374151; }
+    .forecast {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; align-items: end;
+      height: 150px;
+    }
+    .bar-wrap { display:flex; flex-direction:column; align-items:center; gap:6px; }
+    .bar-group { display:flex; gap:3px; width:100%; align-items:end; height:96px; }
+    .bar {
+      flex:1; min-height: 4px;
+      border-radius: 5px 5px 2px 2px;
+      background: #0a84ff;
+    }
+    .bar.answers { background:#0a84ff; }
+    .bar.review { background:#8b5cf6; }
+    .bar.perfect { background:#f1c40f; }
+    .day { font-size: 11px; color: var(--sub); }
+    .num { font-size: 11px; color: #334155; }
+    .bar-col { position:relative; flex:1; display:flex; align-items:flex-end; justify-content:center; }
+    .bar-num {
+      position:absolute; bottom: calc(100% + 3px);
+      font-size: 10px; font-weight: 700; line-height: 1;
+      padding: 1px 4px; border-radius: 4px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.06);
+      pointer-events:none;
+      white-space: nowrap;
+    }
+    .bar-num.answers { color:#0a84ff; }
+    .bar-num.review { color:#7c3aed; }
+    .bar-num.perfect { color:#a16207; }
+
+    .list { display:flex; flex-direction:column; gap:8px; }
+    .row {
+      display:flex; justify-content:space-between; align-items:center;
+      border:1px solid var(--line); border-radius:10px; padding:10px;
+      background:#fff;
+    }
+    .row .left { font-size: 13px; color:#374151; }
+    .row .right { font-size: 13px; font-weight:700; }
+
+    @media (max-width: 700px) {
+      .grid3, .grid2 { grid-template-columns: 1fr; }
+      .top { align-items: flex-start; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>学習ログ</h1>
+      </div>
+
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="label">今日の達成</div>
+        <div class="value" id="todayDone">-</div>
+        <div class="hint">今日の回答数（本日開始時との差分）</div>
+      </div>
+      <div class="card">
+        <div class="label">連続日数（Streak）</div>
+        <div class="value" id="streak">-</div>
+      </div>
+      <div class="card">
+        <div class="label">今日の要復習単語数</div>
+        <div class="value kpi-flow" id="overdue">
+          <span class="from">-</span><span class="arr">→</span><span class="to">-</span><span class="delta">(↓0)</span>
+        </div>
+        <div class="hint" id="overdueDelta">開始時→現在（当日）</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="label">完璧化単語数（1 week）</div>
+        <div class="value ok" id="perfectWeek">-</div>
+        <div class="hint" id="perfectWeekHint">直近7日で苦手・得意→完璧になった語数</div>
+      </div>
+      <div class="card">
+        <div class="label">週間ベスト</div>
+        <div class="value" id="weeklyBest">-</div>
+        <div class="hint" id="weeklyBestDetail">-</div>
+      </div>
+    </div>
+
+    <div class="section-title">7日記録（回答 / 復習 / 完璧化）</div>
+    <div class="card" style="margin-bottom:10px;">
+      <div id="forecast" class="forecast"></div>
+      <div class="hint" style="margin-top:8px;">青:回答 / 紫:復習 / 黄:完璧化（苦手・得意→完璧）</div>
+    </div>
+
+  </div>
+
+  <script>
+    function getSave() {
+      try {
+        return JSON.parse(localStorage.getItem('vocabClickerSave') || '{}');
+      } catch {
+        return {};
+      }
+    }
+
+    function ymd(date) {
+      return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+    }
+
+    function calcStreak(history) {
+      const set = new Set((history || []).map(x => x.date));
+      let d = new Date();
+      let count = 0;
+      while (true) {
+        const key = ymd(d);
+        if (!set.has(key)) break;
+        count++;
+        d.setDate(d.getDate() - 1);
+      }
+      return count;
+    }
+
+    function getCurrentDueCount(gs) {
+      // Prefer parent app's exact review queue logic
+      try {
+        const p = window.parent;
+        if (p && p !== window) {
+          if (typeof p.getCurrentReviewStats === 'function') {
+            const s = p.getCurrentReviewStats();
+            if (s && typeof s.dueNow === 'number') return s.dueNow;
+          }
+          if (typeof p.getDueReviewWordsPool === 'function') {
+            const arr = p.getDueReviewWordsPool();
+            if (Array.isArray(arr)) return arr.length;
+          }
+        }
+      } catch (_) {}
+
+      // Fallback: local approximation (weak/learned due only)
+      const srs = (gs && gs.srsData) || {};
+      const ws = (gs && gs.wordStates) || {};
+      const now = Date.now();
+      let cnt = 0;
+      for (const k in srs) {
+        const state = ws[k];
+        if (state !== 'weak' && state !== 'learned') continue;
+        const dueAt = Number((srs[k] || {}).dueAt || 0);
+        if (dueAt > 0 && dueAt <= now) cnt++;
+      }
+      return cnt;
+    }
+
+    function init() {
+      const gs = getSave();
+      const action = gs.actionCounts || {};
+      const actionTotal = Object.values(action).reduce((a,b)=>a + (Number(b)||0), 0);
+      const todayKey = ymd(new Date());
+
+      // Today done = delta from today's first baseline
+      const actionBaseDateKey = 'learningLog_action_base_date';
+      const actionBaseValueKey = 'learningLog_action_base_value';
+      const prevActionDate = localStorage.getItem(actionBaseDateKey);
+      let actionBase = Number(localStorage.getItem(actionBaseValueKey));
+      if (prevActionDate !== todayKey || Number.isNaN(actionBase)) {
+        actionBase = actionTotal;
+        localStorage.setItem(actionBaseDateKey, todayKey);
+        localStorage.setItem(actionBaseValueKey, String(actionBase));
+      }
+      const todayDone = Math.max(0, actionTotal - actionBase);
+      document.getElementById('todayDone').textContent = todayDone.toLocaleString();
+
+      const overdue = getCurrentDueCount(gs);
+
+      // Overdue transition: 123→42(↓81)
+      const baseDateKey = 'learningLog_overdue_base_date';
+      const baseValueKey = 'learningLog_overdue_base_value';
+      const baseSourceKey = 'learningLog_overdue_base_source';
+      const BASE_SOURCE = 'queue_v2';
+
+      const prevDate = localStorage.getItem(baseDateKey);
+      const prevSource = localStorage.getItem(baseSourceKey);
+      let base = Number(localStorage.getItem(baseValueKey));
+
+      // Reset baseline when date changed, data source changed, or old invalid large value remained
+      const looksLegacyCorrupt = Number.isFinite(base) && base > overdue * 3 && base - overdue > 1000;
+      if (prevDate !== todayKey || Number.isNaN(base) || prevSource !== BASE_SOURCE || looksLegacyCorrupt) {
+        base = overdue;
+        localStorage.setItem(baseDateKey, todayKey);
+        localStorage.setItem(baseValueKey, String(base));
+        localStorage.setItem(baseSourceKey, BASE_SOURCE);
+      }
+      const diff = base - overdue; // positive means reduced
+      const overdueEl = document.getElementById('overdue');
+      if (overdueEl) {
+        const deltaText = diff >= 0 ? `↓${diff}` : `↑${Math.abs(diff)}`;
+        overdueEl.innerHTML = `<span class="from">${base}</span><span class="arr">→</span><span class="to">${overdue}</span><span class="delta ${diff >= 0 ? 'ok' : 'warn'}">(${deltaText})</span>`;
+      }
+      const deltaEl = document.getElementById('overdueDelta');
+      if (deltaEl) {
+        deltaEl.textContent = '開始時→現在（当日）';
+        deltaEl.className = diff >= 0 ? 'hint ok' : 'hint warn';
+      }
+
+      // Perfect words tracking
+      const wordStates = gs.wordStates || {};
+      let perfectTotal = 0;
+      for (const k in wordStates) {
+        if (wordStates[k] === 'perfect') perfectTotal++;
+      }
+
+      const history = Array.isArray(gs.dailyHistory) ? gs.dailyHistory : [];
+      const sorted = [...history].sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+      document.getElementById('streak').textContent = calcStreak(sorted) + '日';
+
+      // Perfectized in last 7 days (from snapshot diffs, only positive increments)
+      const byDateForPerfect = new Map(sorted.map(h => [h.date, Number(h.total_learned ?? h.wordsLearned ?? 0)]));
+      const dateKeys = [...new Set(sorted.map(h => h.date))].sort();
+      const perfectizedByDate = {};
+      let prevPerfectSnapshot = null;
+      dateKeys.forEach(dt => {
+        const cur = byDateForPerfect.get(dt) ?? 0;
+        if (prevPerfectSnapshot == null) perfectizedByDate[dt] = 0;
+        else perfectizedByDate[dt] = Math.max(0, cur - prevPerfectSnapshot);
+        prevPerfectSnapshot = cur;
+      });
+      const last7DateSet = new Set([]);
+      const todayRef = new Date();
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(todayRef);
+        d.setDate(d.getDate() - i);
+        last7DateSet.add(ymd(d));
+      }
+      let perfectWeek = 0;
+      for (const d of Object.keys(perfectizedByDate)) {
+        if (last7DateSet.has(d)) perfectWeek += Number(perfectizedByDate[d] || 0);
+      }
+      const perfectWeekEl = document.getElementById('perfectWeek');
+      if (perfectWeekEl) perfectWeekEl.textContent = perfectWeek.toLocaleString();
+
+      // weekly best
+      const last7 = sorted.slice(-7);
+      let best = null;
+      for (const h of last7) {
+        const v = Number(h.total_learned ?? h.wordsLearned ?? 0);
+        if (!best || v > best.v) best = { d: h.date, v };
+      }
+      document.getElementById('weeklyBest').textContent = best ? `${best.v}語` : '0語';
+      document.getElementById('weeklyBestDetail').textContent = best ? `${best.d} の記録` : '記録なし';
+
+      // 7-day records (answers / review / perfectized)
+      const days = [];
+      const today = new Date();
+      for (let i = 6; i >= 0; i--) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        days.push(ymd(d));
+      }
+
+      // build perfectized history from dailyHistory snapshots
+      const byDate = new Map(sorted.map(h => [h.date, Number(h.total_learned ?? h.wordsLearned ?? 0)]));
+      const perfectized = {};
+      let prevTotal = null;
+      const allDates = [...new Set(sorted.map(h => h.date))].sort();
+      allDates.forEach(dt => {
+        const cur = byDate.get(dt) ?? 0;
+        if (prevTotal == null) {
+          perfectized[dt] = 0;
+        } else {
+          perfectized[dt] = Math.max(0, cur - prevTotal);
+        }
+        prevTotal = cur;
+      });
+
+      // answers/review are tracked from now on with daily local baselines
+      const answersTotal = Object.values(action).reduce((a,b)=>a + (Number(b)||0), 0);
+      const reviewTotal =
+        Number(action.weak_correct||0) + Number(action.weak_incorrect||0) +
+        Number(action.learned_correct||0) + Number(action.learned_incorrect||0) +
+        Number(action.perfect_correct||0) + Number(action.perfect_incorrect||0);
+
+      const baseKey = 'learningLog_daily_base_v1';
+      const metricsKey = 'learningLog_daily_metrics_v1';
+      const todayStr = ymd(today);
+      let dailyBase = {};
+      let metrics = {};
+      try { dailyBase = JSON.parse(localStorage.getItem(baseKey) || '{}'); } catch {}
+      try { metrics = JSON.parse(localStorage.getItem(metricsKey) || '{}'); } catch {}
+      if (dailyBase.date !== todayStr) {
+        dailyBase = { date: todayStr, answers: answersTotal, review: reviewTotal, perfect: perfectTotal };
+        localStorage.setItem(baseKey, JSON.stringify(dailyBase));
+      }
+      metrics[todayStr] = {
+        answers: Math.max(0, answersTotal - Number(dailyBase.answers || 0)),
+        review: Math.max(0, reviewTotal - Number(dailyBase.review || 0)),
+        perfectized: Math.max(0, perfectTotal - Number(dailyBase.perfect || 0))
+      };
+      localStorage.setItem(metricsKey, JSON.stringify(metrics));
+
+      const series = days.map(d => ({
+        date: d,
+        answers: Number((metrics[d] && metrics[d].answers) || 0),
+        review: Number((metrics[d] && metrics[d].review) || 0),
+        perfectized: Number((metrics[d] && metrics[d].perfectized) || perfectized[d] || 0)
+      }));
+
+      const max = Math.max(1, ...series.flatMap(x => [x.answers, x.review, x.perfectized]));
+      const forecast = document.getElementById('forecast');
+      forecast.innerHTML = '';
+      series.forEach((r, i) => {
+        const wrap = document.createElement('div');
+        wrap.className='bar-wrap';
+        const num = document.createElement('div');
+        num.className='num';
+        num.textContent = '';
+
+        const group = document.createElement('div');
+        group.className = 'bar-group';
+
+        const makeBar = (kind, val) => {
+          const col = document.createElement('div');
+          col.className = 'bar-col';
+          const bar = document.createElement('div');
+          bar.className = `bar ${kind}`;
+          bar.style.height = `${Math.max(6, Math.round((val/max)*92))}px`;
+
+          const n = document.createElement('span');
+          n.className = `bar-num ${kind}`;
+          n.textContent = val;
+
+          col.append(bar, n);
+          return col;
+        };
+
+        group.append(
+          makeBar('answers', r.answers),
+          makeBar('review', r.review),
+          makeBar('perfect', r.perfectized)
+        );
+
+        const day = document.createElement('div');
+        day.className='day';
+        day.textContent = (i === 6) ? '今日' : r.date.slice(5);
+        wrap.append(num, group, day);
+        forecast.appendChild(wrap);
+      });
+
+    }
+
+    init();
+  </script>
+</body>
+</html>

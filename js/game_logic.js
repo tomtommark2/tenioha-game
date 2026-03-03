@@ -2494,19 +2494,6 @@ window.openProfileModal = function () {
         try { window.updatePremiumStatusDisplay(); } catch (e) { }
     }
 
-    // Attempt to render chart if function exists (Chart.js / Firebase)
-    if (window.updateChart) {
-        setTimeout(() => { window.updateChart('total'); }, 100);
-    } else {
-        const canvas = document.getElementById('learningChart');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.font = "12px sans-serif";
-            ctx.fillStyle = "#666";
-            ctx.fillText("読み込み中...", 20, 50);
-        }
-    }
 };
 
 window.closeProfileModal = function () {

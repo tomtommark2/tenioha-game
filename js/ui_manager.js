@@ -411,20 +411,6 @@ window.openLearningLogModal = function () {
         }
     }
 
-    // Chart Render safely
-    if (window.updateChart) {
-        setTimeout(() => { window.updateChart('total'); }, 100);
-    } else {
-        // Fallback removed as per user request to avoid confusion
-        console.error("updateChart function not found. Graph scripts may have failed to load.");
-        const chartContainer = document.getElementById('learningGraphSection');
-        if (chartContainer) {
-            // Optional: Show error or just leave blank?
-            // User prefers no misleading graph.
-            // We can just leave it or show a text indicating loading error.
-            // For now, let's just log it. 
-        }
-    }
 };
 
 
@@ -715,10 +701,98 @@ window.dismissWelcome = function () {
     if (checkbox && checkbox.checked) {
         localStorage.setItem('vocabGame_skipWelcome', 'true');
     }
+
+    // Start live tutorial after welcome closes
+    setTimeout(() => {
+        if (typeof window.startLiveTutorial === 'function') window.startLiveTutorial();
+    }, 350);
 };
 
 // Also logic for buttons that call installApp
 window.triggerInstall = window.installApp; // Alias
+
+const LIVE_TUTORIAL_KEY = 'vocabGame_skipLiveTutorial';
+window.liveTutorialState = { active: false, step: 0 };
+
+window.renderLiveTutorial = function () {
+    const box = document.getElementById('liveTutorialHint');
+    const text = document.getElementById('liveTutorialHintText');
+    const actionBtn = document.getElementById('liveTutorialActionBtn');
+    if (!box || !text || !actionBtn) return;
+
+    const step = window.liveTutorialState.step;
+    const steps = [
+        { text: '意味が分かる場合は 英単語カード👇️をタップ。※意味は表示されません。', anchor: '#vocabCard', waitAction: false },
+        { text: '意味を確認したい場合は 意味カード👇️を開く（不正解扱い）', anchor: '#meaningCard', waitAction: false },
+        { text: '出題レベルの変更はココ👇️', anchor: '#levelContainer', waitAction: true },
+        { text: '学習した単語は自動で分類👇️（選択出来ます）', anchor: '.mode-buttons', waitAction: true },
+        { text: '復習すべき単語はココ👇️に溜まります。', anchor: '#reviewQueuePreview', waitAction: true },
+        { text: '復習モードの変更は「その他」→「出題モード」から。', anchor: '#otherMenuBtn', waitAction: true },
+    ];
+
+    const current = steps[Math.min(step, steps.length - 1)];
+    text.textContent = current.text;
+
+    actionBtn.style.display = current.waitAction ? 'inline-block' : 'none';
+    actionBtn.textContent = (step >= steps.length - 1) ? '完了' : '次へ';
+
+    const anchor = document.querySelector(current.anchor);
+    if (anchor) {
+      const r = anchor.getBoundingClientRect();
+      const left = Math.max(10, Math.min(window.innerWidth - 340, r.left + (r.width / 2) - 160));
+      const top = Math.max(10, r.top - 90);
+      box.style.left = `${left}px`;
+      box.style.top = `${top}px`;
+    } else {
+      box.style.left = '12px';
+      box.style.top = '12px';
+    }
+}
+
+window.startLiveTutorial = function () {
+    if (localStorage.getItem(LIVE_TUTORIAL_KEY) === 'true') return;
+    const box = document.getElementById('liveTutorialHint');
+    if (!box) return;
+    window.liveTutorialState = { active: true, step: 0 };
+    box.style.display = 'block';
+    window.renderLiveTutorial();
+}
+
+window.completeLiveTutorial = function () {
+    const box = document.getElementById('liveTutorialHint');
+    const chk = document.getElementById('dontShowLiveTutorialAgain');
+    if (chk && chk.checked) localStorage.setItem(LIVE_TUTORIAL_KEY, 'true');
+    if (box) box.style.display = 'none';
+    window.liveTutorialState = { active: false, step: 0 };
+}
+
+window.skipLiveTutorial = function () { window.completeLiveTutorial(); }
+window.liveTutorialAction = function () {
+    if (!window.liveTutorialState || !window.liveTutorialState.active) return;
+    const maxStep = 5;
+    if (window.liveTutorialState.step >= maxStep) {
+        window.completeLiveTutorial();
+        return;
+    }
+    window.liveTutorialState.step += 1;
+    window.renderLiveTutorial();
+}
+window.addEventListener('resize', () => {
+    if (window.liveTutorialState && window.liveTutorialState.active) {
+        window.renderLiveTutorial();
+    }
+});
+
+window.liveTutorialEvent = function (eventName) {
+    if (!window.liveTutorialState || !window.liveTutorialState.active) return;
+    if (window.liveTutorialState.step === 0 && eventName === 'vocab_correct') {
+        window.liveTutorialState.step = 1;
+        window.renderLiveTutorial();
+    } else if (window.liveTutorialState.step === 1 && eventName === 'meaning_open') {
+        window.liveTutorialState.step = 2;
+        window.renderLiveTutorial();
+    }
+}
 
 function initWelcomeSequence() {
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
@@ -738,12 +812,20 @@ function initWelcomeSequence() {
 
     if (isStandalone) {
         if (welcomeOverlay) welcomeOverlay.style.display = 'none';
+        // In standalone, start tutorial directly (unless skipped)
+        setTimeout(() => {
+            if (typeof window.startLiveTutorial === 'function') window.startLiveTutorial();
+        }, 250);
         return;
     }
     if (!hasSkipped && welcomeOverlay) {
         welcomeOverlay.style.display = 'flex';
     } else if (welcomeOverlay) {
         welcomeOverlay.style.display = 'none';
+        // Welcome hidden -> tutorial can start
+        setTimeout(() => {
+            if (typeof window.startLiveTutorial === 'function') window.startLiveTutorial();
+        }, 250);
     }
 }
 
@@ -874,9 +956,7 @@ window.cleanupDebugHistory = function () {
     }
 
     if (beforeCount !== afterCount) {
-        alert(`テストデータ削除完了: ${beforeCount - afterCount}件 削除しました。\nリロードしてグラフを確認してください。`);
-        // Refresh chart if open
-        if (typeof updateChart === 'function') updateChart('total');
+        alert(`テストデータ削除完了: ${beforeCount - afterCount}件 削除しました。`);
     } else {
         alert("削除対象データ(451, 551)は見つかりませんでした。");
     }
