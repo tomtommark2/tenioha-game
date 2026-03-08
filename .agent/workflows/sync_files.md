@@ -1,6 +1,8 @@
 ---
 description: Synchronize index.html to vocab_clicker_game.html
 ---
+Legacy reference only. Current operational source of truth is `docs/operations.md`.
+
 # Sync Entry Points
 
 Run this command after ANY edit to `index.html` to ensure the live URL (`vocab_clicker_game.html`) is updated.
