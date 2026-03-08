@@ -68,3 +68,10 @@ self.addEventListener('activate', (event) => {
         }).then(() => self.clients.claim())
     );
 });
+
+// Manual update trigger from UI
+self.addEventListener('message', (event) => {
+    if (event && event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+});

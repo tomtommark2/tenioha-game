@@ -874,21 +874,31 @@ window.forceUpdateApp = async () => {
         if ('serviceWorker' in navigator) {
             const reg = await navigator.serviceWorker.getRegistration();
             if (reg) {
+                // 1) waiting SW exists -> activate immediately
                 if (reg.waiting) {
                     reg.waiting.postMessage({ type: 'SKIP_WAITING' });
-                    setTimeout(() => window.location.reload(), 500);
-                } else {
-                    reg.update().then(() => {
-                        alert('更新を確認しました。最新版であればリロードされます。');
-                        setTimeout(() => window.location.reload(), 500);
-                    });
+                    setTimeout(() => window.location.reload(), 400);
+                    return;
                 }
-                return; // Return if SW logic ran
+
+                // 2) check for new SW
+                await reg.update();
+
+                // If update produced a waiting worker, activate it
+                if (reg.waiting) {
+                    reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+                    setTimeout(() => window.location.reload(), 400);
+                    return;
+                }
+
+                alert('更新を確認しました。最新版です。');
+                setTimeout(() => window.location.reload(), 300);
+                return;
             }
         }
     } catch (e) {
         console.log("SW Check Failed (Local/Offline):", e);
-        // Fallthrough to alert
+        // Fallthrough to offline modal
     }
 
     // Fallback for No SW, Local file, or Security Error
@@ -896,7 +906,6 @@ window.forceUpdateApp = async () => {
     if (offlineModal) {
         offlineModal.style.display = 'flex';
     } else {
-        // Ultimate fallback if modal missing
         if (confirm('現在はオフラインです。リロードしますか？')) {
             window.location.reload();
         }
