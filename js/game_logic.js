@@ -1029,10 +1029,11 @@ function migrateSrsSchemaIfNeeded() {
     gameState.srsSchemaVersion = target;
 }
 
-function getDueOnlyPool(mode, pool) {
+function getDueOnlyPool(mode, pool, options = {}) {
     const now = Date.now();
+    const { respectReviewLevels = true } = options;
     let basePool = pool;
-    if (mode === 'weak' || mode === 'learned') {
+    if (respectReviewLevels && (mode === 'weak' || mode === 'learned')) {
         basePool = pool.filter(w => isReviewLevelEnabledForWord(w, w.__sourceLevel || gameState.currentLevel));
     }
     return basePool.filter(w => {
@@ -1043,10 +1044,8 @@ function getDueOnlyPool(mode, pool) {
 }
 
 function getDueFilteredPool(mode, pool) {
-    const basePool = (mode === 'weak' || mode === 'learned')
-        ? pool.filter(w => isReviewLevelEnabledForWord(w, gameState.currentLevel))
-        : pool;
-    const due = getDueOnlyPool(mode, basePool);
+    const basePool = pool;
+    const due = getDueOnlyPool(mode, basePool, { respectReviewLevels: false });
     return due.length > 0 ? due : basePool;
 }
 

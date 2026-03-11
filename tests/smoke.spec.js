@@ -106,6 +106,36 @@ test('復習モード切替が ON→MIX→OFF で循環する', async ({ page })
   await expect(label).toContainText('MIX');
 });
 
+test('復習キュー右上ラベルのタップで復習モードを切り替えられる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  await page.evaluate(() => {
+    const gs = window.gameState;
+    if (!gs || !gs.currentWord) return;
+    const key = (window.getWordKeySafe ? window.getWordKeySafe(gs.currentWord, gs.currentWord.__sourceLevel || gs.currentLevel) : null);
+    if (!key) return;
+    gs.wordStates[key] = 'weak';
+    gs.srsData = gs.srsData || {};
+    gs.srsData[key] = { ...(gs.srsData[key] || {}), dueAt: Date.now() - 1000 };
+    if (typeof window.updateReviewProgressUI === 'function') window.updateReviewProgressUI();
+  });
+
+  const inlineLabel = page.locator('#reviewModeInlineLabel');
+  await expect(page.locator('#reviewProgressWrap')).toBeVisible();
+  await expect(inlineLabel).toContainText('MIX');
+  await inlineLabel.click();
+  await expect(inlineLabel).toContainText('ON');
+  await inlineLabel.click();
+  await expect(inlineLabel).toContainText('OFF');
+  await inlineLabel.click();
+  await expect(inlineLabel).toContainText('MIX');
+});
+
 test('復習モードONでは新規のみの遷移にならない（復習優先）', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
@@ -230,4 +260,46 @@ test('致命的な console error / page error が出ない', async ({ page }) =>
 
   expect.soft(consoleErrors, `Console errors:\n${consoleErrors.join('\n')}`).toEqual([]);
   expect(pageErrors, `Page errors:\n${pageErrors.join('\n')}`).toEqual([]);
+});
+
+test('manual weak mode ignores review queue level filters', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('繝輔ぃ繧､繝ｫ繧定ｪｭ縺ｿ霎ｼ繧薙〒縺上□縺輔＞');
+
+  const targetWord = await page.evaluate(() => {
+    const gs = window.gameState;
+    if (!gs || !window.vocabulary || window.vocabulary.length === 0) return null;
+
+    for (const word of window.vocabulary) {
+      const key = window.getWordKey(word, gs.currentLevel);
+      gs.wordStates[key] = 'unlearned';
+      if (gs.srsData && gs.srsData[key]) {
+        gs.srsData[key].dueAt = Date.now() + 86400000;
+      }
+    }
+
+    const target = window.vocabulary[0];
+    const targetKey = window.getWordKey(target, gs.currentLevel);
+    gs.wordStates[targetKey] = 'weak';
+    gs.activeReviewLevels = ['daily'];
+    gs.decks = null;
+    gs.srsData = gs.srsData || {};
+    gs.srsData[targetKey] = { ...(gs.srsData[targetKey] || {}), dueAt: Date.now() - 1000 };
+
+    if (typeof window.updateWordStats === 'function') window.updateWordStats();
+    if (typeof window.updateModeButtons === 'function') window.updateModeButtons();
+
+    return target.word;
+  });
+
+  expect(targetWord).not.toBeNull();
+
+  const weakBtn = page.locator('.mode-btn[data-mode="weak"]').first();
+  await weakBtn.click({ force: true });
+  await expect(weakBtn).toHaveClass(/active/);
+  await expect(page.locator('#vocabWord')).toContainText(targetWord);
 });
