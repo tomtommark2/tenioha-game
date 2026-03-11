@@ -4,11 +4,11 @@
     "check:html-sync": "node scripts/check-html-sync.js",
     "check:version-sync": "node scripts/check-version-sync.js",
     "release:patch": "node scripts/release-patch.js && npm run sync:html && npm run check:html-sync && npm run check:version-sync",
-    "test:unit": "playwright test --config playwright.unit.config.js",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:headed": "playwright test --headed",
-    "test:e2e:safe": "npm run sync:html && npm run check:html-sync && npm run check:version-sync && npm run test:unit && playwright test"
+    "test:unit": "node node_modules/playwright/cli.js test --config playwright.unit.config.js",
+    "test:e2e": "node node_modules/playwright/cli.js test",
+    "test:e2e:ui": "node node_modules/playwright/cli.js test --ui",
+    "test:e2e:headed": "node node_modules/playwright/cli.js test --headed",
+    "test:e2e:safe": "npm run sync:html && npm run check:html-sync && npm run check:version-sync && npm run test:unit && node node_modules/playwright/cli.js test"
   },
   "dependencies": {
     "firebase-tools": "^15.2.1"

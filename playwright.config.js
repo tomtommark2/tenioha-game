@@ -1,5 +1,6 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+const isWindows = process.platform === 'win32';
 
 module.exports = defineConfig({
   testDir: './tests',
@@ -20,7 +21,7 @@ module.exports = defineConfig({
     },
   ],
   webServer: {
-    command: 'python3 local_server.py',
+    command: isWindows ? 'py -3 local_server.py' : 'python3 local_server.py',
     port: 8000,
     reuseExistingServer: true,
     timeout: 120 * 1000,

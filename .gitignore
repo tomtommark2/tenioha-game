@@ -1,8 +1,10 @@
 node_modules
+.firebase/
 
 # Local/secret files
 functions/.env
 *.local
+*.bak
 
 # Windows alternate data streams
 *:Zone.Identifier
