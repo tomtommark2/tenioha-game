@@ -871,6 +871,14 @@ window.toggleQRCode = function () {
 // --- SERVICE WORKER UPDATE ---
 window.forceUpdateApp = async () => {
     try {
+        if (window.appUpdateManager) {
+            const remoteVersion = await window.appUpdateManager.fetchRemoteVersion();
+            if (window.appUpdateManager.compareVersions(remoteVersion, window.GAME_VERSION || 'v0.0') > 0) {
+                await window.appUpdateManager.applyAppUpdate(remoteVersion, { force: true });
+                return;
+            }
+        }
+
         if ('serviceWorker' in navigator) {
             const reg = await navigator.serviceWorker.getRegistration();
             if (reg) {

@@ -20,7 +20,9 @@ const expected = m[1];
 const targets = [
   'style.css',
   'data/vocabulary.js',
+  'data/ipa_overrides.js',
   'js/version.js',
+  'js/update_manager.js',
   'js/config.js',
   'js/utils.js',
   'js/stats_engine.js',

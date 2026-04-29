@@ -3,16 +3,24 @@
 ## Source Data
 
 - Runtime vocabulary dataset: `data/vocabulary.js`
+- IPA overlay dataset: `data/ipa_overrides.js`
 - CEFR CSV inputs at repo root are source materials, not runtime files
 
 ## Current Runtime Categories
 
-- `junior`
-- `basic`
-- `daily`
-- `exam1`
+- `junior` (`A1`)
+- `basic` (`A2`)
+- `daily` (`B1`)
+- `exam1` (`B2`)
 
-The runtime code also contains references to review and expansion buckets such as `selection1400`, `selection1900`, and `sys_2000`. Treat those as implementation details unless the current code actively uses them.
+Additional wordbook datasets also exist:
+
+- `exam2`
+- `selection1400`
+- `selection1900`
+- `sys_2000`
+
+`selection1400`, `selection1900`, and `sys_2000` are not the primary CEFR source layers. They rely heavily on word-level references into the main datasets.
 
 ## Content Scripts
 
@@ -27,6 +35,15 @@ Useful current scripts:
 - `scripts/check-version-sync.js`
 
 Special-purpose or historical scripts should only be used after reading them and confirming they still match the current dataset shape.
+
+## Pronunciation Workflow
+
+- Pronunciation notation is optional display data, not a required runtime field.
+- Keep pronunciation data in `data/ipa_overrides.js` until a larger import pipeline is ready.
+- Follow `docs/ipa-style-guide.md` for notation rules.
+- Use American English as the default pronunciation standard.
+- Prefer a Duolingo-like learner-facing IPA subset over textbook-specific notation systems.
+- Prefer adding pronunciation data in small verified batches rather than bulk editing without review.
 
 ## Legacy Content Scripts
 

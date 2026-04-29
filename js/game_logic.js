@@ -51,11 +51,106 @@ var vocabularyDatabase = (typeof vocabularyDatabase !== 'undefined') ? vocabular
     junior: []
 });
 
+function applyIpaOverrides(database, overrides) {
+    if (!database || !overrides) return;
+
+    Object.entries(overrides).forEach(([level, entries]) => {
+        if (!Array.isArray(entries) || !Array.isArray(database[level])) return;
+
+        entries.forEach((override) => {
+            if (!override || !override.word || !override.ipa) return;
+
+            const targets = database[level].filter((word) => {
+                if (!word || word.word !== override.word) return false;
+                if (override.pos && word.pos !== override.pos) return false;
+                if (override.meaning && word.meaning !== override.meaning) return false;
+                if (override.phrase && word.phrase !== override.phrase) return false;
+                return true;
+            });
+
+            targets.forEach((target) => {
+                target.ipa = override.ipa;
+            });
+        });
+    });
+}
+
+applyIpaOverrides(vocabularyDatabase, window.IPA_OVERRIDES);
 
 // Merge Junior data if loaded via temp variable
 
 
 var vocabulary = [];
+
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function formatIpaForDisplay(ipaValue) {
+    const raw = String(ipaValue ?? '').trim();
+    if (!raw) return '';
+    if (raw.startsWith('/') || raw.startsWith('[')) {
+        return raw;
+    }
+    return `/${raw}/`;
+}
+
+function cleanMeaningForDisplay(meaningValue) {
+    return String(meaningValue ?? '')
+        .replace(/（[^）]*(?:⇔|⇒\s*\d+)[^）]*）/g, '')
+        .replace(/\([^)]*(?:⇔|⇒\s*\d+)[^)]*\)/g, '')
+        .replace(/\s+([；;,，])/g, '$1')
+        .replace(/^[；;,，]\s*/, '')
+        .trim();
+}
+
+function renderVocabWordMarkup(word) {
+    if (!word) return '';
+
+    const posMap = {
+        "名": "名詞",
+        "動": "動詞",
+        "形": "形容詞",
+        "副": "副詞",
+        "助": "助動詞",
+        "接": "接続詞",
+        "前": "前置詞",
+        "代": "代名詞"
+    };
+    const fullPos = posMap[word.pos] || word.pos;
+    const ipaDisplay = formatIpaForDisplay(word.ipa);
+
+    return `
+                <div class="vocab-word-stack" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-10%);">
+                    <div class="word-pos-label" style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 5px;">${escapeHtml(fullPos)}</div>
+                    <div class="word-text-main" style="font-size: 42px; font-weight: bold; line-height: 1.2; text-align: center;">${escapeHtml(word.word)}</div>
+                    ${ipaDisplay ? `<div class="word-ipa">${escapeHtml(ipaDisplay)}</div>` : ''}
+                </div>
+            `;
+}
+
+function renderMeaningMarkup(word) {
+    const meaning = cleanMeaningForDisplay(word?.meaning);
+    const phrase = String(word?.phrase ?? '').trim();
+    const phraseLabel = `<span style="font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 4px;">PHRASE</span>`;
+
+    return `
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                    <div style="font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">${escapeHtml(meaning)}</div>
+                    ${phrase ? `
+                        <div style="text-align: center; background: #f8f9fa; padding: 10px 20px; border-radius: 12px; border: 1px solid #eef0f5;">
+                            ${phraseLabel}
+                            <div style="font-size: 18px; color: #444; font-weight: 500;">${escapeHtml(phrase)}</div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+}
 var autoTimer = null;
 var gameAudioContext = null; // Renamed to avoid collisions
 var gameStateHistory = []; // Stack to store previous states
@@ -505,7 +600,8 @@ function loadVocabularyForLevel() {
                             meaning: refWord.meaning,
                             phrase: refWord.phrase,
                             example: refWord.example,
-                            pos: refWord.pos
+                            pos: refWord.pos,
+                            ipa: v.ipa || refWord.ipa
                         };
                     }
                 }
@@ -1587,45 +1683,9 @@ function showNextWord() {
     // Track Last Shown (for next continuity check)
     gameState.lastShownWordKey = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
 
-    // MAP POS to Full Name
-    const posMap = {
-        "名": "名詞",
-        "動": "動詞",
-        "形": "形容詞",
-        "副": "副詞",
-        "助": "助動詞",
-        "接": "接続詞",
-        "前": "前置詞",
-        "代": "代名詞"
-    };
-    const fullPos = posMap[word.pos] || word.pos;
+    document.getElementById('vocabWord').innerHTML = renderVocabWordMarkup(word);
 
-    // UPDATE: Display POS above Word (Full Name)
-    // Visual Adjustment: shift up slightly so the WORD looks centered, not the whole block
-    document.getElementById('vocabWord').innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; transform: translateY(-10%);">
-                    <div style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 5px;">${fullPos}</div>
-                    <div style="font-size: 42px; font-weight: bold; line-height: 1.2;">${word.word}</div>
-                </div>
-            `;
-
-    // UPDATE: Display Meaning (Large) + Minimal Phrase (Small below)
-
-    // Label Idea: Use English "Phrase" in small caps for a cleaner look
-    const phraseLabel = `<span style="font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 4px;">PHRASE</span>`;
-
-    // Layout: Meaning (Center/Large) -> Phrase (Below/Small)
-    document.getElementById('meaningText').innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <div style="font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">${word.meaning}</div>
-                    ${word.phrase ? `
-                        <div style="text-align: center; background: #f8f9fa; padding: 10px 20px; border-radius: 12px; border: 1px solid #eef0f5;">
-                            ${phraseLabel}
-                            <div style="font-size: 18px; color: #444; font-weight: 500;">${word.phrase}</div>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
+    document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
     document.getElementById('exampleSentence').textContent = word.example;
     document.getElementById('meaningCard').classList.remove('flipped');
@@ -1665,42 +1725,9 @@ function showWord(word) {
     gameState.meaningCardFlipped = false;
     document.getElementById('meaningCard').classList.remove('flipped');
 
-    // Map POS
-    const posMap = {
-        "名": "名詞",
-        "動": "動詞",
-        "形": "形容詞",
-        "副": "副詞",
-        "助": "助動詞",
-        "接": "接続詞",
-        "前": "前置詞",
-        "代": "代名詞"
-    };
-    const fullPos = posMap[word.pos] || word.pos;
+    document.getElementById('vocabWord').innerHTML = renderVocabWordMarkup(word);
 
-    // Update DOM (MATCHING showNextWord STRUCTURE EXACTLY)
-    document.getElementById('vocabWord').innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; transform: translateY(-10%);">
-                    <div style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 5px;">${fullPos}</div>
-                    <div style="font-size: 42px; font-weight: bold; line-height: 1.2;">${word.word}</div>
-                </div>
-            `;
-
-    // Update Meaning (MATCHING showNextWord STRUCTURE)
-    // Label Idea: Use English "Phrase" in small caps for a cleaner look
-    const phraseLabel = `<span style="font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 4px;">PHRASE</span>`;
-
-    document.getElementById('meaningText').innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <div style="font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">${word.meaning}</div>
-                    ${word.phrase ? `
-                        <div style="text-align: center; background: #f8f9fa; padding: 10px 20px; border-radius: 12px; border: 1px solid #eef0f5;">
-                            ${phraseLabel}
-                            <div style="font-size: 18px; color: #444; font-weight: 500;">${word.phrase}</div>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
+    document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
     document.getElementById('exampleSentence').textContent = word.example;
 
@@ -2310,17 +2337,6 @@ function exitSimpleMode() {
 
 // --- Leaderboard & Cloud Modal UI Logic (Moved from Module) ---
 async function openLeaderboard() {
-    // Version Check (Semi-Auto Update)
-    if (typeof checkForUpdates === 'function') {
-        if (await checkForUpdates()) {
-            const updateModal = document.getElementById('updatePromptModal');
-            if (updateModal) {
-                updateModal.style.display = 'flex';
-                return; // Stop execution
-            }
-        }
-    }
-
     document.getElementById('leaderboardModal').style.display = 'flex';
 
     // Check Auth State (Global auth object exposed in window.firebaseAuth)

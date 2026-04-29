@@ -14,6 +14,7 @@ Entry points:
 - `ARCHITECTURE.md`: runtime structure and file map
 - `docs/operations.md`: day-to-day workflow
 - `docs/data-workflow.md`: vocabulary and content maintenance
+- `docs/prompting-playbook.md`: prompt patterns for working with Codex in this repo
 - `docs/legacy-reference.md`: how to treat OpenClaw-era assets
 
 Working rules:
@@ -21,6 +22,7 @@ Working rules:
 - Keep docs concise and non-duplicated.
 - Prefer progressive disclosure: short entry docs, detailed docs under `docs/`.
 - Do not promote legacy instructions over current implementation.
-
-
+- Prefer concise, decision-oriented answers.
+- Avoid repeating points that are already established.
+- Prefer grounded reasoning over speculative suggestions.
 

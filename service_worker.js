@@ -13,10 +13,12 @@ const ASSETS = [
     './js/game_logic.js',
     './js/config.js',
     './js/utils.js',
+    './js/update_manager.js',
     './js/ui_manager.js',
     './js/chart_fallback.js',
     './js/firebase_app_v2.js',
-    './data/vocabulary.js'
+    './data/vocabulary.js',
+    './data/ipa_overrides.js'
 ];
 
 self.addEventListener('install', (event) => {

@@ -19,6 +19,13 @@
 - Use `local_server.py` instead of a generic static server because it forces MIME types and disables caching.
 - E2E tests expect `http://localhost:8000`.
 
+## Prompting
+
+- For complex requests, use the structure and templates in `docs/prompting-playbook.md`.
+- Keep requests specific about outcome, success criteria, constraints, and output shape.
+- Prefer outcome-first instructions over step-by-step process guidance unless the exact path matters.
+- If output format matters, state it explicitly instead of relying on implication.
+
 ## When HTML Changes
 
 - `index.html` is the master file.

@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.87">
+    <link rel="stylesheet" href="style.css?v=2.97">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -424,7 +424,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2.87"></script>
+    <script src="data/vocabulary.js?v=2.97"></script>
+<script src="data/ipa_overrides.js?v=2.97"></script>
 
     <!-- Simple Mode Category Selection Modal -->
     <div id="simpleModeModal" class="modal-overlay"
@@ -559,7 +560,7 @@
             <div style="font-size: 40px; margin-bottom: 10px;">🔄</div>
             <h3 style="margin-top: 0; color: #333; margin-bottom: 10px;">新しいバージョンがあります</h3>
             <p id="updateVersionMsg" style="color: #666; font-size: 14px; margin-bottom: 20px;">
-                ランキング機能を利用するには<br>アプリの更新が必要です。
+                自動更新を完了できませんでした。<br>ボタンを押して最新版へ更新してください。
             </p>
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 <button onclick="forceUpdateApp()"
@@ -959,17 +960,18 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2.87"></script>
-    <script src="js/config.js?v=2.87"></script>
-    <script src="js/utils.js?v=2.87"></script>
-    <script src="js/stats_engine.js?v=2.87"></script>
-    <script src="js/chart_data_adapter.js?v=2.87"></script>
+    <script src="js/version.js?v=2.97"></script>
+    <script src="js/update_manager.js?v=2.97"></script>
+    <script src="js/config.js?v=2.97"></script>
+    <script src="js/utils.js?v=2.97"></script>
+    <script src="js/stats_engine.js?v=2.97"></script>
+    <script src="js/chart_data_adapter.js?v=2.97"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=2.87"></script>
-    <script src="js/game_logic.js?v=2.87"></script>
-    <script src="js/ui_manager.js?v=2.87"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2.87"></script>
+    <script src="js/chart_fallback.js?v=2.97"></script>
+    <script src="js/game_logic.js?v=2.97"></script>
+    <script src="js/ui_manager.js?v=2.97"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2.97"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

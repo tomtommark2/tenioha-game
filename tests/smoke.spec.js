@@ -18,6 +18,7 @@ test('トップ画面が表示される', async ({ page }) => {
 test('意味カードをクリックすると反転する', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
   });
 
   // SW/リダイレクト揺れを減らすため、実ページへ直接アクセス
@@ -302,4 +303,198 @@ test('manual weak mode ignores review queue level filters', async ({ page }) => 
   await weakBtn.click({ force: true });
   await expect(weakBtn).toHaveClass(/active/);
   await expect(page.locator('#vocabWord')).toContainText(targetWord);
+});
+
+test('ipa がある単語はカード下に表示される', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const ipaText = await page.evaluate(() => {
+    if (!window.vocabularyDatabase || typeof window.showWord !== 'function') return null;
+    const word = (window.vocabularyDatabase.basic || []).find((item) => item.word === 'ability' && item.pos === '名');
+    if (!word || !word.ipa) return null;
+    if (window.gameState) {
+      window.gameState.currentWord = word;
+    }
+    window.showWord(word);
+    return `/${word.ipa}/`;
+  });
+
+  expect(ipaText).not.toBeNull();
+  await expect(page.locator('#vocabWord .word-ipa')).toHaveText(ipaText);
+});
+
+test('junior(A1) の ipa がカード下に表示される', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const ipaText = await page.evaluate(() => {
+    if (!window.vocabularyDatabase || typeof window.showWord !== 'function') return null;
+    const word = (window.vocabularyDatabase.junior || []).find((item) => item.word === 'read' && item.pos === '動');
+    if (!word || !word.ipa) return null;
+    if (window.gameState) {
+      window.gameState.currentLevel = 'junior';
+      window.gameState.currentWord = word;
+    }
+    window.showWord(word);
+    return `/${word.ipa}/`;
+  });
+
+  expect(ipaText).toBe('/rid/');
+  await expect(page.locator('#vocabWord .word-ipa')).toHaveText('/rid/');
+});
+
+test('daily(B1) の ipa がカード下に表示される', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const ipaText = await page.evaluate(() => {
+    if (!window.vocabularyDatabase || typeof window.showWord !== 'function') return null;
+    const word = (window.vocabularyDatabase.daily || []).find((item) => item.word === 'upload' && item.pos === '動');
+    if (!word || !word.ipa) return null;
+    if (window.gameState) {
+      window.gameState.currentLevel = 'daily';
+      window.gameState.currentWord = word;
+    }
+    window.showWord(word);
+    return `/${word.ipa}/`;
+  });
+
+  expect(ipaText).toBe('/ʌpˈloʊd/');
+  await expect(page.locator('#vocabWord .word-ipa')).toHaveText('/ʌpˈloʊd/');
+});
+
+test('exam1(B2) の ipa がカード下に表示される', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const ipaText = await page.evaluate(() => {
+    if (!window.vocabularyDatabase || typeof window.showWord !== 'function') return null;
+    const word = (window.vocabularyDatabase.exam1 || []).find((item) => item.word === 'attribute' && item.pos === '動');
+    if (!word || !word.ipa) return null;
+    if (window.gameState) {
+      window.gameState.currentLevel = 'exam1';
+      window.gameState.currentWord = word;
+    }
+    window.showWord(word);
+    return `/${word.ipa}/`;
+  });
+
+  expect(ipaText).toBe('/əˈtrɪbjut/');
+  await expect(page.locator('#vocabWord .word-ipa')).toHaveText('/əˈtrɪbjut/');
+});
+
+test('selection1900 の直接 ipa がカード下に表示される', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const ipaText = await page.evaluate(() => {
+    if (!window.vocabularyDatabase || typeof window.showWord !== 'function') return null;
+    const word = (window.vocabularyDatabase.selection1900 || []).find((item) => item.word === 'technology');
+    if (!word || !word.ipa) return null;
+    if (window.gameState) {
+      window.gameState.currentLevel = 'selection1900';
+      window.gameState.currentWord = word;
+    }
+    window.showWord(word);
+    return `/${word.ipa}/`;
+  });
+
+  expect(ipaText).toBe('/tekˈnɑlədʒi/');
+  await expect(page.locator('#vocabWord .word-ipa')).toHaveText('/tekˈnɑlədʒi/');
+});
+
+test('sys_2000 の直接 ipa がカード下に表示される', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const ipaText = await page.evaluate(() => {
+    if (!window.vocabularyDatabase || typeof window.showWord !== 'function') return null;
+    const word = (window.vocabularyDatabase.sys_2000 || []).find((item) => item.word === 'sight');
+    if (!word || !word.ipa) return null;
+    if (window.gameState) {
+      window.gameState.currentLevel = 'sys_2000';
+      window.gameState.currentWord = word;
+    }
+    window.showWord(word);
+    return `/${word.ipa}/`;
+  });
+
+  expect(ipaText).toBe('/saɪt/');
+  await expect(page.locator('#vocabWord .word-ipa')).toHaveText('/saɪt/');
+});
+
+test('公開版の version.js が新しければ更新ありと判定する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.route(/\/js\/version\.js\?update-check=/, async (route) => {
+    await route.fulfill({
+      contentType: 'application/javascript',
+      body: '(function (global) { global.GAME_VERSION = "v9.99"; })(window);',
+    });
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const hasUpdate = await page.evaluate(async () => {
+    if (!window.appUpdateManager) return null;
+    return window.appUpdateManager.checkForUpdates();
+  });
+
+  expect(hasUpdate).toBe(true);
+});
+
+test('selection1900 の参照番号は意味カードに表示しない', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const found = await page.evaluate(() => {
+    if (!window.vocabularyDatabase || typeof window.showWord !== 'function') return false;
+    const word = (window.vocabularyDatabase.selection1900 || []).find((item) => item.word === 'voluntary');
+    if (!word) return false;
+    if (window.gameState) {
+      window.gameState.currentLevel = 'selection1900';
+      window.gameState.currentWord = word;
+    }
+    window.showWord(word);
+    return true;
+  });
+
+  expect(found).toBe(true);
+  await expect(page.locator('#meaningText')).toContainText('自発的な');
+  await expect(page.locator('#meaningText')).toContainText('無償の');
+  await expect(page.locator('#meaningText')).not.toContainText('1384');
+  await expect(page.locator('#meaningText')).not.toContainText('compulsory');
 });
