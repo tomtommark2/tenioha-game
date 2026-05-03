@@ -330,6 +330,41 @@ body {
     /* Prevent text wrapping */
 }
 
+.study-mode-card {
+    background: #fff;
+    border: 1px solid #eceff7;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.study-auto-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.study-mode-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+}
+
+.study-mode-card-desc {
+    margin-top: 3px;
+    font-size: 11px;
+    color: #8a92a6;
+    line-height: 1.4;
+}
+
+.study-auto-toggle {
+    flex-shrink: 0;
+    background: #f8faff;
+    border: 1px solid #e2e7fb;
+    padding: 6px 10px;
+}
+
 .pos-filter-container {
     display: flex;
     align-items: center;
@@ -882,10 +917,6 @@ body {
     z-index: 200;
 }
 
-.header-auto-toggle {
-    margin-right: 5px;
-}
-
 .file-info-small {
     font-size: 12px;
     color: #888;
@@ -1091,7 +1122,7 @@ body {
 
     #autoModeToggle {
         position: relative;
-        left: 10px;
+        left: 0;
     }
 
     .mode-buttons {
@@ -1372,9 +1403,7 @@ body.simple-mode .simple-switch-container,
 body.simple-mode .progress-section,
 body.simple-mode .mobile-progress-wrapper,
 body.simple-mode .pos-filter-container,
-body.simple-mode #trialTimerDisplay,
 body.simple-mode .mobile-only.header-profile-icon,
-/* If any specific profile icon class exists */
 body.simple-mode #headerProfileIcon {
     display: none !important;
 }
