@@ -14,6 +14,13 @@
 - HTML asset query strings are validated by `scripts/check-version-sync.js`.
 - `npm run release:patch` bumps the patch version, syncs HTML, and runs the sync checks.
 
+## Deployment Targets
+
+- Production app UI: GitHub Pages, served from `main` at [https://tomtommark2.github.io/tenioha-game/](https://tomtommark2.github.io/tenioha-game/).
+- Firebase: backend only for Auth, Firestore, and Functions.
+- Do not deploy the app UI to Firebase Hosting. Hosting has been disabled for the `tenioha-game` Firebase project.
+- For backend changes, prefer explicit deploy targets such as `npx firebase deploy --only functions --project tenioha-game` or `npx firebase deploy --only firestore:rules --project tenioha-game`.
+
 ## Local Development
 
 - Use `local_server.py` instead of a generic static server because it forces MIME types and disables caching.
@@ -39,7 +46,7 @@
 - `firebase.json`
 - `functions/index.js`
 
-Change these carefully because they affect installability, caching, hosting, and payments.
+Change these carefully because they affect installability, caching, backend services, and payments.
 
 ## Firestore Cost Checks
 

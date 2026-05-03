@@ -4,7 +4,7 @@
 
 - Node.js 20+ for app scripts and Playwright
 - Python 3 for the local static server
-- Firebase CLI if you deploy Hosting / Functions
+- Firebase CLI if you deploy Functions or Firestore rules
 
 ## Install
 
@@ -48,9 +48,14 @@ npm run test:e2e:safe
 
 `test:e2e:safe` runs the standard preflight checks before the browser suite.
 
+## Deployment
+
+- App UI is published by GitHub Pages from `main` at [https://tomtommark2.github.io/tenioha-game/](https://tomtommark2.github.io/tenioha-game/).
+- Do not deploy the app UI to Firebase Hosting.
+- Firebase is for Auth, Firestore, and Functions.
+
 ## Firebase
 
-- Hosting config: `firebase.json`
 - Firestore rules: `firestore.rules`
 - Functions source: `functions/index.js`
 - Stripe webhook secrets are expected through Firebase Functions secrets / environment variables
