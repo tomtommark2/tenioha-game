@@ -66,10 +66,10 @@ exports.stripeWebhook = onRequest(async (req, res) => {
     const signature = req.headers['stripe-signature'];
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-    // If secrets aren't set yet (initial deploy), just return 200 to confirm endpoint exists
+    // Fail closed so Stripe retries instead of marking an unprocessed purchase as delivered.
     if (!process.env.STRIPE_SECRET_KEY || !endpointSecret) {
-        logger.warn("Stripe Keys missing. Waiting for configuration.");
-        res.status(200).send("Endpoint ready. Please configure keys.");
+        logger.error("Stripe keys missing. Refusing to acknowledge webhook delivery.");
+        res.status(503).send("Stripe webhook is not configured.");
         return;
     }
 

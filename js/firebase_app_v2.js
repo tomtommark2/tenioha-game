@@ -12,7 +12,7 @@ const firebaseConfig = {
 // (Moved APP_VERSION to post-imports)
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, doc, setDoc, getDoc, getDocs, query, orderBy, limit, where, Timestamp, serverTimestamp, arrayUnion, runTransaction, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, collection, doc, setDoc, getDoc, getDocs, deleteDoc, deleteField, query, orderBy, limit, where, Timestamp, serverTimestamp, arrayUnion, runTransaction, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
@@ -819,6 +819,8 @@ window.forceRestore = async function () {
 // --- Large cloud save helpers (avoid Firestore 1MiB doc limit) ---
 const CLOUD_SAVE_DOC_LIMIT_BYTES = 1040000;
 const CLOUD_SAVE_CHUNK_BYTES = 350000; // safe margin for doc overhead
+const CLOUD_SAVE_CLEANUP_BATCH_SIZE = 50;
+const CLOUD_SAVE_CLEANUP_MAX_BATCHES = 5;
 
 function getByteSize(str) {
     return new Blob([str]).size;
@@ -856,11 +858,22 @@ function buildCloudSaveData(rawSaveData) {
         // dailyHistoryは日次ログ(daily_logs)が正本のためクラウドsaveDataから除外
         delete data.dailyHistory;
 
+        // 未学習は初期値として復元時に補完できるため、クラウド保存から除外
+        if (data.wordStates && typeof data.wordStates === 'object') {
+            const compactWordStates = {};
+            for (const [key, state] of Object.entries(data.wordStates)) {
+                if (state && state !== 'unlearned') compactWordStates[key] = state;
+            }
+            data.wordStates = compactWordStates;
+        }
+
         // SRSのデフォルト値を省略してサイズ削減
         if (data.srsData && typeof data.srsData === 'object') {
             const compactSrs = {};
             for (const [key, s] of Object.entries(data.srsData)) {
                 if (!s || typeof s !== 'object') continue;
+                const hasReviewHistory = (s.successCount || 0) > 0 || (s.failCount || 0) > 0 || s.everWrong === true || s.firstTryPerfect === true;
+                if (!hasReviewHistory) continue;
                 const c = {};
                 if (typeof s.dueAt === 'number') c.dueAt = s.dueAt;
                 if (typeof s.successCount === 'number') c.successCount = s.successCount;
@@ -876,7 +889,7 @@ function buildCloudSaveData(rawSaveData) {
             data.srsData = compactSrs;
         }
 
-        data.cloudCompactVersion = 1;
+        data.cloudCompactVersion = 2;
         return JSON.stringify(data);
     } catch (e) {
         console.warn('buildCloudSaveData failed, fallback to raw', e);
@@ -906,6 +919,36 @@ async function fetchCloudSaveData(userDocRef, userData) {
     return userData.saveData || null;
 }
 
+async function cleanupSaveChunks(userDocRef, activePrefix = null) {
+    try {
+        const chunksRef = collection(db, 'users', userDocRef.id, 'save_chunks');
+        let totalDeleted = 0;
+
+        for (let batch = 0; batch < CLOUD_SAVE_CLEANUP_MAX_BATCHES; batch++) {
+            const snap = await getDocs(query(chunksRef, limit(CLOUD_SAVE_CLEANUP_BATCH_SIZE)));
+            if (snap.empty) break;
+
+            const deletions = [];
+            snap.forEach(chunkDoc => {
+                const keep = activePrefix && chunkDoc.id.startsWith(`${activePrefix}_`);
+                if (!keep) deletions.push(deleteDoc(chunkDoc.ref));
+            });
+
+            if (deletions.length === 0) break;
+            await Promise.all(deletions);
+            totalDeleted += deletions.length;
+
+            if (snap.size < CLOUD_SAVE_CLEANUP_BATCH_SIZE) break;
+        }
+
+        if (totalDeleted > 0) {
+            console.log(`Cloud save cleanup: deleted ${totalDeleted} stale chunks`);
+        }
+    } catch (e) {
+        console.warn('Cloud save cleanup failed; upload remains valid', e);
+    }
+}
+
 async function writeChunkedSaveData(userDocRef, rawSaveData, pwaVer) {
     const chunks = splitStringByBytes(rawSaveData, CLOUD_SAVE_CHUNK_BYTES);
     const prefix = String(Date.now());
@@ -920,6 +963,7 @@ async function writeChunkedSaveData(userDocRef, rawSaveData, pwaVer) {
     }
 
     await setDoc(userDocRef, {
+        saveData: deleteField(),
         saveStorage: 'chunked',
         saveChunkPrefix: prefix,
         saveChunkCount: chunks.length,
@@ -929,6 +973,8 @@ async function writeChunkedSaveData(userDocRef, rawSaveData, pwaVer) {
         appVersion: pwaVer,
         cloudSaveTooLarge: false
     }, { merge: true });
+
+    await cleanupSaveChunks(userDocRef, prefix);
 }
 
 // Overwrite existing uploadSaveData to use Auth if available
@@ -957,6 +1003,8 @@ window.uploadSaveData = async function (silent = false, force = false) {
         // We must READ before WRITE.
         const userDocRef = doc(db, "users", auth.currentUser.uid);
 
+        let existingData = null;
+
         // Only check conflict if NOT silent (Manual Save) OR if we want to be super safe.
         // For 'Manual Save' (force=true, silent=false), we MUST check.
         // For 'Auto Save' (silent=true), ideally we check too, but reading every 60s is extra reads.
@@ -966,9 +1014,10 @@ window.uploadSaveData = async function (silent = false, force = false) {
 
         // Let's implement checking for Manual Save Only (silent=false) to show alert.
         if (!silent) {
-            const docSnap = await getDoc(userDocRef);
-            if (docSnap.exists() && hasCloudSaveData(docSnap.data())) {
-                const cloudRaw = await fetchCloudSaveData(userDocRef, docSnap.data());
+            const existingSnap = await getDoc(userDocRef);
+            existingData = existingSnap.exists() ? existingSnap.data() : null;
+            if (existingData && hasCloudSaveData(existingData)) {
+                const cloudRaw = await fetchCloudSaveData(userDocRef, existingData);
                 if (cloudRaw) {
                     const cloudExisting = JSON.parse(cloudRaw);
                     const localDataObj = JSON.parse(saveData);
@@ -1001,6 +1050,9 @@ window.uploadSaveData = async function (silent = false, force = false) {
                 appVersion: pwaVer,
                 cloudSaveTooLarge: false
             }, { merge: true });
+            if (existingData && existingData.saveStorage === 'chunked') {
+                await cleanupSaveChunks(userDocRef, null);
+            }
             console.log(`Upload success (inline): ${saveBytes} bytes`);
         }
 

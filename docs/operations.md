@@ -40,3 +40,10 @@
 - `functions/index.js`
 
 Change these carefully because they affect installability, caching, hosting, and payments.
+
+## Firestore Cost Checks
+
+- Use `node scripts/inventory_firestore_storage.js --limit-docs 50000` to estimate current Firestore document volume by collection.
+- Use `node scripts/compact_firestore_saves.js --limit 1000` as a dry-run before any cloud save compaction.
+- Add `--execute` only after reviewing the dry-run output.
+- `--delete-all-save-chunks` is only safe after the script confirms there are no users still using chunked cloud saves.

@@ -391,10 +391,8 @@ function init() {
     // MUST load vocabulary before updateDisplay
     if (vocabulary.length === 0 && vocabularyDatabase[gameState.currentLevel].length > 0) {
         loadVocabularyForLevel();
-        // If states are empty, init them
-        if (Object.keys(gameState.wordStates).filter(k => k.startsWith(gameState.currentLevel)).length === 0) {
-            initializeWordStates();
-        }
+        // Fill omitted default states from compact cloud saves.
+        initializeWordStates();
     }
 
     migrateSrsSchemaIfNeeded();
@@ -1330,7 +1328,7 @@ function updateVocabLevelDisplay() {
 function getWordsByMode(mode) {
     const modeWords = vocabulary.filter(v => {
         const key = getWordKey(v, gameState.currentLevel);
-        return gameState.wordStates[key] === mode;
+        return (gameState.wordStates[key] || 'unlearned') === mode;
     });
     return filterWordsByPOS(modeWords);
 }
