@@ -4,6 +4,11 @@
 
 この repo の標準運用では、`index.html` を編集元とし、`vocab_clicker_game.html` は配信用の同期コピーとして扱います。
 
+Production app URL:
+- [https://tomtommark2.github.io/tenioha-game/](https://tomtommark2.github.io/tenioha-game/)
+
+Firebase is used for backend services such as Auth, Firestore, and Functions. Do not use Firebase Hosting as the app's public deployment target.
+
 ## Quickstart
 
 1. 依存関係を入れる
@@ -34,6 +39,10 @@
 - `npm run check:html-sync`
 - `npm run check:version-sync`
 - `npm run release:patch`
+
+Deployments:
+- App UI: merge `main` to GitHub; GitHub Pages serves the app from the repository root.
+- Firebase backend: use `npx firebase deploy --only functions,firestore:rules --project tenioha-game` when backend changes require it.
 
 ## Repo Policy
 
