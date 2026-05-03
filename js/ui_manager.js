@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
 
     // Init Simple UI Listeners
     initGlobalUIListeners();
+    initAnnouncements();
 });
 
 function initGlobalUIListeners() {
@@ -39,6 +40,92 @@ function initGlobalUIListeners() {
         // Removed JS loop for wordbook-item-btn to allow inline onclick to work
     }
 }
+
+const ANNOUNCEMENT_READ_KEY = 'vocabGame_lastReadAnnouncementId';
+
+function getAnnouncements() {
+    return Array.isArray(window.APP_ANNOUNCEMENTS) ? window.APP_ANNOUNCEMENTS : [];
+}
+
+function getLatestAnnouncementId() {
+    const announcements = getAnnouncements();
+    return announcements.length > 0 ? announcements[0].id : null;
+}
+
+function escapeAnnouncementText(value) {
+    return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function updateAnnouncementBadge() {
+    const dot = document.getElementById('announcementUnreadDot');
+    const btn = document.getElementById('announcementBtn');
+    if (!dot || !btn) return;
+
+    const latestId = getLatestAnnouncementId();
+    const lastReadId = localStorage.getItem(ANNOUNCEMENT_READ_KEY);
+    const hasUnread = Boolean(latestId && latestId !== lastReadId);
+    dot.style.display = hasUnread ? 'block' : 'none';
+    btn.setAttribute('aria-label', hasUnread ? '未読のお知らせがあります' : 'お知らせ');
+}
+
+function renderAnnouncements() {
+    const list = document.getElementById('announcementList');
+    if (!list) return;
+
+    const announcements = getAnnouncements();
+    if (announcements.length === 0) {
+        list.innerHTML = '<div style="text-align:center; color:#667085; font-size:13px;">現在、新しいお知らせはありません。</div>';
+        return;
+    }
+
+    list.innerHTML = announcements.map(item => {
+        const body = Array.isArray(item.body) ? item.body : [item.body || ''];
+        const bodyHtml = body.map(line => `<div>${escapeAnnouncementText(line)}</div>`).join('');
+        return `
+            <div class="announcement-card">
+                <div class="announcement-meta">${escapeAnnouncementText(item.version)} / ${escapeAnnouncementText(item.date)}</div>
+                <div class="announcement-title">${escapeAnnouncementText(item.title || 'お知らせ')}</div>
+                <div class="announcement-body">${bodyHtml}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+function initAnnouncements() {
+    renderAnnouncements();
+    updateAnnouncementBadge();
+
+    const modal = document.getElementById('announcementModal');
+    if (modal) {
+        modal.onclick = (e) => {
+            if (e.target === modal) window.closeAnnouncementModal();
+        };
+    }
+}
+
+window.openAnnouncementModal = function () {
+    const modal = document.getElementById('announcementModal');
+    if (!modal) return;
+
+    renderAnnouncements();
+    modal.style.display = 'flex';
+
+    const latestId = getLatestAnnouncementId();
+    if (latestId) {
+        localStorage.setItem(ANNOUNCEMENT_READ_KEY, latestId);
+    }
+    updateAnnouncementBadge();
+};
+
+window.closeAnnouncementModal = function () {
+    const modal = document.getElementById('announcementModal');
+    if (modal) modal.style.display = 'none';
+};
 
 // --- PROFILE MODAL ---
 window.toggleProfileModal = function () {

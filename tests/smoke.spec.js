@@ -83,6 +83,24 @@ test('プロフィールモーダルを開閉できる', async ({ page }) => {
   }, { timeout: 5000 }).toBe(true);
 });
 
+test('未読お知らせはベルに通知マークを出し、開くと既読になる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.removeItem('vocabGame_lastReadAnnouncementId');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  await expect(page.locator('#announcementUnreadDot')).toBeVisible();
+
+  await page.locator('#announcementBtn').click();
+  await expect(page.locator('#announcementModal')).toBeVisible();
+  await expect(page.locator('#announcementList')).toContainText('発音表記を追加しました');
+  await expect(page.locator('#announcementList')).toContainText('Duolingo標準');
+  await expect(page.locator('#announcementUnreadDot')).toBeHidden();
+});
+
 test('復習モード切替が ON→MIX→OFF で循環する', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');

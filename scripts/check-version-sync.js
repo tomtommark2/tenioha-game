@@ -21,6 +21,7 @@ const targets = [
   'style.css',
   'data/vocabulary.js',
   'data/ipa_overrides.js',
+  'data/announcements.js',
   'js/version.js',
   'js/update_manager.js',
   'js/config.js',
