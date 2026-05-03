@@ -6,18 +6,7 @@
 
 body {
     font-family: 'Poppins', 'Noto Sans JP', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    /* Deep Space / Magic Purple */
-    background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
-    /* Let's try a fresh "Mystic Teal" or keep purple? 
-               User liked the purple but maybe "Magic" needs more depth. 
-               Let's go nicely deep purple/blue: */
-    background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
-    /* Deep Blue */
-    background: linear-gradient(135deg, #9796f0 0%, #fbc7d4 100%);
-    /* Pastel? No. */
     background: linear-gradient(135deg, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
-    /* Sunset Magic - nice breadth */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -27,19 +16,18 @@ body {
 
 .container {
     background: rgba(255, 255, 255, 0.85);
-    /* Semi-transparent */
     backdrop-filter: blur(12px);
-    /* Frosted Glass */
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.4);
-    /* Subtle edge */
     border-radius: 24px;
-    /* More modern roundness */
     padding: 57px 30px 30px 30px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
-    /* Colored shadow for depth */
     max-width: 900px;
     width: 100%;
+}
+
+.app-shell {
+    position: relative;
 }
 
 .level-selector {
@@ -56,7 +44,6 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.05);
     padding: 8px 20px;
     border-radius: 50px;
-    /* Pill shape */
     cursor: pointer;
     font-size: 13px;
     font-weight: 700;
@@ -667,11 +654,139 @@ body {
     transform: scale(1.1);
 }
 
+.simple-switch-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 200;
+}
+
+.other-menu-button {
+    background: white;
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.other-menu-icon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    width: 22px;
+    height: 22px;
+}
+
+.other-menu-icon-grid div {
+    background: #555;
+    border-radius: 2px;
+}
+
+.other-menu-caption {
+    font-size: 10px;
+    color: #666;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.other-menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    z-index: 201;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.other-menu-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.other-menu-item:hover {
+    background: #f9f9f9;
+}
+
+.other-menu-item:last-child {
+    border-bottom: none;
+}
+
+.other-menu-item.external:hover {
+    background: #f5fbff;
+}
+
+.other-menu-item.focus:hover {
+    background: #fff5f5;
+}
+
+.other-menu-icon {
+    font-size: 20px;
+}
+
+.other-menu-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+}
+
+.other-menu-label.external {
+    color: #2c5a87;
+}
+
+.other-menu-label.focus {
+    color: #e74c3c;
+}
+
+.header-profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #eee;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-profile-initials {
+    font-weight: bold;
+    color: #888;
+    font-size: 14px;
+}
+
+.header-profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
 .announcement-btn {
     position: relative;
 }
 
 .announcement-dot {
+    display: none;
     position: absolute;
     top: 2px;
     right: 2px;
@@ -709,6 +824,54 @@ body {
     line-height: 1.65;
 }
 
+.announcement-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 10008;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.announcement-modal-content {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    max-width: 90%;
+    width: 420px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    position: relative;
+}
+
+.announcement-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.announcement-heading {
+    margin: 0 0 16px 0;
+    color: #333;
+    text-align: center;
+    font-size: 18px;
+}
+
+.announcement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .header-controls {
     position: absolute;
     top: 10px;
@@ -717,6 +880,10 @@ body {
     align-items: center;
     gap: 10px;
     z-index: 200;
+}
+
+.header-auto-toggle {
+    margin-right: 5px;
 }
 
 .file-info-small {
@@ -858,61 +1025,45 @@ body {
 }
 
 /* --- MOBILE RESPONSIVE STYLES --- */
-/* --- MOBILE RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
     body {
         padding: 20px 0px;
-        /* Vertical 20px, Horizontal 0px (Full Width) */
     }
 
-    /* 1. Container & Layout */
     .container {
         width: 100%;
-        /* Fill available space */
         max-width: 100%;
         padding: 15px 10px;
         padding-top: 90px;
-        /* Reverted to 90px */
         margin: 0 auto;
     }
 
-    /* 2. Stack Cards Vertically */
     .header-controls {
         gap: 5px !important;
-        /* Reduce gap on mobile */
     }
 
     .cards-area {
         flex-direction: column;
-        /* Stack top-to-bottom */
         gap: 15px;
         align-items: stretch;
-        /* Cards take full width */
     }
 
     .card {
         width: 100%;
-        /* Full width */
         min-height: 160px;
-        /* Slightly shorter default */
     }
 
     .card .card-content {
         font-size: 28px;
-        /* Slightly smaller text for long words */
     }
 
-    /* 3. Adjust Header */
     .header {
         flex-direction: column;
         gap: 10px;
         align-items: flex-start;
         margin-top: 0px;
-        /* Removed 50px margin to close gap */
-        /* Space for EXP/Stats at top */
     }
 
-    /* Right Header Controls (Mode, etc) */
     .header>div:last-child {
         width: 100%;
         margin: 0;
@@ -920,24 +1071,16 @@ body {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        /* Stack auto-toggles above modes */
         align-items: flex-start !important;
         position: relative;
-        /* For absolute character positioning inside */
     }
 
-    /* ALIGNED TOGGLES (Mobile) */
-    /* ALIGNED TOGGLES (Mobile) - OLD Styles Removed/cleaned */
-
     .auto-mode-container {
-        /* Equal Width */
         display: flex;
         align-items: center;
         justify-content: center;
         background: transparent;
-        /* Transparent as requested */
         border: none;
-        /* Border removed */
         border-radius: 8px;
         padding: 5px;
         gap: 5px;
@@ -947,27 +1090,19 @@ body {
     }
 
     #autoModeToggle {
-        /* margin-left was ineffective due to right-anchoring */
         position: relative;
         left: 10px;
     }
 
-    /* Mode Buttons: 2x2 Grid on RIGHT (40% width) */
     .mode-buttons {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        /* 2 cols */
         gap: 8px;
         width: 100%;
-        /* Changed from auto to 100% */
-        /* Leave 60% for character on Left */
         min-width: 150px;
-        /* Safe minimum size */
         margin-top: 10px;
         margin-left: 0;
-        /* Push to Right side */
         margin-right: 5px;
-        /* New: Visual spacing from edge */
     }
 
     .mode-btn {
@@ -975,7 +1110,6 @@ body {
         width: auto;
         min-width: unset;
         height: 50px;
-        /* Uniform height */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -983,29 +1117,23 @@ body {
         font-size: 13px;
     }
 
-    /* Hide counts if too cramped, or keep small */
     .mode-count {
         font-size: 11px;
     }
 
-    /* Character: Absolute LEFT of Mode Buttons */
     .rpg-inline {
         position: absolute;
         bottom: -20px;
-        /* Moved down 20px */
         right: auto;
         top: auto;
         left: 20px;
-        /* Moved right 10px (10+10) */
         transform: scale(0.8);
-        /* Increased by ~20% */
         transform-origin: bottom left;
         margin-bottom: 0;
         z-index: 50;
         pointer-events: none;
     }
 
-    /* 4. EXP & Stats: Keep at Top Left */
     .stats-absolute {
         transform: scale(0.85);
         top: 10px;
@@ -1015,92 +1143,66 @@ body {
         width: auto;
     }
 
-    /* Level Selector: Move DOWN below Stats to prevent overlap */
     .level-selector {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: flex-end;
         gap: 3px;
-        /* Even tighter gap */
         padding-right: 0px;
         overflow-x: auto;
-        /* Allow scroll if needed */
         padding-bottom: 5px;
         position: absolute;
         top: 70px;
-        /* NEW: Reverted to 60px */
         right: 5px;
-        /* Slightly more space on right */
         width: auto;
         max-width: 100%;
-        /* Ensure it doesn't overflow screen width logically */
         margin: 0;
     }
 
-    /* Compact Level Buttons for Mobile */
     .level-selector .level-btn {
         padding: 4px 8px;
-        /* Extremely compact vertical/horizontal */
         font-size: 11px;
-        /* Smaller text */
         white-space: nowrap;
         min-width: unset;
-        /* Remove any min-width */
     }
 
-    /* Fix Container padding to account for TALLER fixed header zone */
     .container {
         width: 95%;
         padding: 15px;
         padding-top: 95px;
-        /* Adjusted to 95px (Shifted up 45px total with margin fix) */
-        /* NEW: Adjusted to 90px (User Req: -20px further) */
         margin: 0 auto;
     }
 
-    /* Compact Level Buttons for Mobile */
     .level-selector .level-btn,
     .level-selector .wordbook-opener-btn {
         padding: 3px 6px;
-        /* 10% smaller than 4px 8px */
         font-size: 10px;
-        /* 10% smaller than 11px */
         white-space: nowrap;
         min-width: unset;
     }
 
-    /* Further reduce Wordbook button width */
     .level-selector .wordbook-opener-btn {
         padding-left: 2px;
         padding-right: 2px;
     }
 
-    /* Remove huge header margin on mobile */
     .header {
         margin-bottom: 5px;
     }
 
-
-
-    /* 5. Filter Scroll */
     .pos-filter-container {
         -webkit-overflow-scrolling: touch;
         padding-bottom: 5px;
     }
 
-    /* Fix Simple/Ranking Buttons for Mobile (Top Align) */
     .simple-switch-container {
         position: absolute !important;
         top: 5px !important;
         left: 10px !important;
     }
 
-    /* Ensure it's not overridden by flex layout */
-
-    /* 6. Focus Overlay Mobile Resize (~30% smaller) */
     #focusOverlay {
         height: 42px !important;
-        /* 60px -> ~42px */
         padding: 0 10px !important;
     }
 
