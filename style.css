@@ -667,6 +667,48 @@ body {
     transform: scale(1.1);
 }
 
+.announcement-btn {
+    position: relative;
+}
+
+.announcement-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #ff4757;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.announcement-card {
+    border: 1px solid #dfe7ff;
+    border-radius: 12px;
+    padding: 14px;
+    background: #f6f8ff;
+}
+
+.announcement-meta {
+    color: #667085;
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+.announcement-title {
+    color: #333;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.announcement-body {
+    color: #344054;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
 .header-controls {
     position: absolute;
     top: 10px;
