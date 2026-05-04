@@ -1146,6 +1146,208 @@ body {
     box-shadow: 0 14px 28px rgba(0, 169, 130, 0.23);
 }
 
+/* Purchase Modal */
+.purchase-modal {
+    background: rgba(14, 21, 38, 0.64) !important;
+    backdrop-filter: blur(4px);
+}
+
+.purchase-modal-content {
+    width: min(440px, 94vw) !important;
+    max-width: 94vw !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.62) !important;
+    border-radius: 28px !important;
+    background: #f8fbff !important;
+    overflow: hidden;
+    box-shadow: 0 30px 86px rgba(16, 25, 45, 0.34) !important;
+}
+
+.purchase-close-btn {
+    top: 14px;
+    right: 14px;
+    background: rgba(255, 255, 255, 0.17);
+    color: #fff;
+}
+
+.purchase-hero {
+    padding: 30px 28px 26px;
+    text-align: left;
+    background:
+        radial-gradient(circle at top right, rgba(255, 210, 132, 0.36), transparent 36%),
+        linear-gradient(135deg, #172033, #30446a);
+    color: white;
+}
+
+.purchase-kicker {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.purchase-title {
+    margin: 14px 0 8px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.25;
+}
+
+.purchase-lead {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.7;
+}
+
+.purchase-legal-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 14px 18px 12px;
+    min-height: 18px;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.purchase-legal-row a {
+    color: #8a6f52;
+    font-size: 10px;
+    text-decoration: underline;
+}
+
+.purchase-primary-link,
+.purchase-secondary-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.purchase-primary-link {
+    gap: 12px;
+    margin: 0 18px 12px;
+    padding: 15px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #5567d8, #7d8cf0);
+    color: #fff;
+    box-shadow: 0 18px 34px rgba(85, 103, 216, 0.27);
+}
+
+.purchase-link-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.18);
+    font-size: 20px;
+}
+
+.purchase-link-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    text-align: left;
+}
+
+.purchase-link-copy strong {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.purchase-link-copy small {
+    margin-top: 3px;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.purchase-secondary-link {
+    gap: 9px;
+    margin: 0 18px 9px;
+    padding: 12px 13px;
+    border-radius: 15px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    box-shadow: 0 10px 22px rgba(32, 43, 70, 0.07);
+}
+
+.purchase-secondary-link small {
+    margin-left: auto;
+    color: #7da58c;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.purchase-note-link {
+    border: 1px solid #cdebd9;
+    color: #15865c;
+}
+
+.purchase-qa-link {
+    border: 1px solid #dde3ef;
+    color: #5f6c83;
+}
+
+.purchase-promo-panel {
+    margin: 16px 18px 18px;
+    padding-top: 14px;
+    border-top: 1px solid #e4eaf5;
+}
+
+.purchase-promo-title {
+    margin-bottom: 8px;
+    color: #546176;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.purchase-promo-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.purchase-promo-input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid #dbe2ee;
+    border-radius: 12px;
+    background: #fff;
+    color: #26324a;
+    font-size: 14px;
+}
+
+.purchase-promo-input:focus {
+    outline: none;
+    border-color: #9ca9f4;
+    box-shadow: 0 0 0 3px rgba(85, 103, 216, 0.12);
+}
+
+.purchase-promo-btn {
+    padding: 11px 14px;
+    border: none;
+    border-radius: 12px;
+    background: #00a982;
+    color: white;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
 @media (max-width: 420px) {
     .help-redesign .help-list-container {
         grid-template-columns: 1fr;

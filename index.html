@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.06">
+    <link rel="stylesheet" href="style.css?v=3.07">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -403,8 +403,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.06"></script>
-<script src="data/ipa_overrides.js?v=3.06"></script>
+    <script src="data/vocabulary.js?v=3.07"></script>
+<script src="data/ipa_overrides.js?v=3.07"></script>
 
     <!-- Simple Mode Category Selection Modal -->
     <div id="simpleModeModal" class="modal-overlay"
@@ -706,49 +706,50 @@
     </div>
 
     <!-- Purchase Modal -->
-    <div id="purchaseModal" class="modal-overlay"
+    <div id="purchaseModal" class="modal-overlay purchase-modal"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10003; justify-content: center; align-items: center; padding: 20px;">
-        <div class="modal-content"
+        <div class="modal-content purchase-modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-            <button onclick="closePurchaseModal()"
-                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+            <button class="modal-close-btn purchase-close-btn" onclick="closePurchaseModal()">&times;</button>
 
-            <h2 style="margin-top: 10px; color: #6c5ce7; margin-bottom: 20px; font-weight: bold;">💎 プレミアムプラン</h2>
-            <p style="font-size: 13px; color: #666; margin-bottom: 20px; text-align: left; line-height: 1.6;">
-                1日10分の制限を解除して、無制限に学習できます。<br>
-                <span style="color: #e74c3c; font-weight: bold;">⚠️ログイン後の購入を強く勧めます⚠️</span><br>
-                <a href="legal.html" target="_blank"
-                    style="font-size: 11px; color: #999; text-decoration: underline;">特定商取引法に基づく表記</a>
-            </p>
-
-            <a id="stripePurchaseLink" href="https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01" target="_blank"
-                style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 15px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; border-radius: 8px; font-weight: bold; text-decoration: none; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);">
-                <span style="font-size: 20px;">💳</span>
-                <span style="font-size: 16px;">買い切り版を購入 (¥1,800)</span>
-            </a>
-            <div style="font-size: 10px; color: #999; margin-bottom: 20px; text-align: center;">
-                ※支払完了後、自動で制限が解除されます。
+            <div class="purchase-hero">
+                <div class="purchase-kicker">Premium</div>
+                <h2 class="purchase-title">💎 プレミアムプラン</h2>
+                <p class="purchase-lead">全ての制限を解除出来ます。</p>
             </div>
 
+            <div class="purchase-legal-row">
+                <a href="legal.html" target="_blank">特定商取引法に基づく表記</a>
+            </div>
+
+            <a id="stripePurchaseLink" href="https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01" target="_blank"
+                class="purchase-primary-link">
+                <span class="purchase-link-icon">💳</span>
+                <span class="purchase-link-copy">
+                    <strong>買い切り版を購入</strong>
+                    <small>¥1,800 / 支払完了後、自動で解除</small>
+                </span>
+            </a>
+
             <a href="https://note.com/tenioha_eng/n/n823dfa17b5c7?sub_rt=share_pw" target="_blank"
-                style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; background: white; border: 1px solid #2ecc71; color: #2ecc71; border-radius: 8px; font-weight: bold; text-decoration: none; margin-bottom: 10px;">
-                <span style="font-size: 18px;">🔓</span>
-                <span style="font-size: 14px;">メンバーシップで解除 (初月無料)</span>
+                class="purchase-secondary-link purchase-note-link">
+                <span>🔓</span>
+                <strong>メンバーシップで解除</strong>
+                <small>初月無料</small>
             </a>
 
             <a href="https://note.com/tenioha_eng/n/n84f2f394b674?sub_rt=share_pw" target="_blank"
-                style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; background: white; border: 1px solid #95a5a6; color: #7f8c8d; border-radius: 8px; font-weight: bold; text-decoration: none; margin-bottom: 25px;">
-                <span style="font-size: 18px;">❓</span>
-                <span style="font-size: 14px;">買い切り版Q&A</span>
+                class="purchase-secondary-link purchase-qa-link">
+                <span>❓</span>
+                <strong>買い切り版Q&A</strong>
             </a>
 
-            <div style="border-top: 1px solid #eee; padding-top: 15px;">
-                <div style="font-size: 12px; color: #666; margin-bottom: 8px; text-align: left; font-weight: bold;">解除コードをお持ちの方</div>
-                <div style="display: flex; gap: 5px; align-items: center;">
+            <div class="purchase-promo-panel">
+                <div class="purchase-promo-title">解除コードをお持ちの方</div>
+                <div class="purchase-promo-form">
                     <input type="text" id="purchasePromoCodeInput" placeholder="コード入力"
-                        style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; background: #fafafa;">
-                    <button onclick="redeemPromoCode('purchasePromoCodeInput')"
-                        style="padding: 10px 15px; background: #2ecc71; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 14px;">
+                        class="purchase-promo-input">
+                    <button onclick="redeemPromoCode('purchasePromoCodeInput')" class="purchase-promo-btn">
                         有効化
                     </button>
                 </div>
@@ -849,19 +850,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.06"></script>
-    <script src="js/update_manager.js?v=3.06"></script>
-    <script src="js/config.js?v=3.06"></script>
-    <script src="data/announcements.js?v=3.06"></script>
-    <script src="js/utils.js?v=3.06"></script>
-    <script src="js/stats_engine.js?v=3.06"></script>
-    <script src="js/chart_data_adapter.js?v=3.06"></script>
+    <script src="js/version.js?v=3.07"></script>
+    <script src="js/update_manager.js?v=3.07"></script>
+    <script src="js/config.js?v=3.07"></script>
+    <script src="data/announcements.js?v=3.07"></script>
+    <script src="js/utils.js?v=3.07"></script>
+    <script src="js/stats_engine.js?v=3.07"></script>
+    <script src="js/chart_data_adapter.js?v=3.07"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.06"></script>
-    <script src="js/game_logic.js?v=3.06"></script>
-    <script src="js/ui_manager.js?v=3.06"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.06"></script>
+    <script src="js/chart_fallback.js?v=3.07"></script>
+    <script src="js/game_logic.js?v=3.07"></script>
+    <script src="js/ui_manager.js?v=3.07"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.07"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

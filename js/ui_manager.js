@@ -638,10 +638,7 @@ window.closeProfileModal = function () {
 
 // --- PURCHASE MODAL ---
 window.openPurchaseModal = function () {
-    // Enforce Login
-    if (!window.firebaseAuth || !window.firebaseAuth.currentUser) {
-        alert("購入にはログインが必要です。\n(データの保全と復元のため)");
-        window.openProfileModal();
+    if (!requireLoginForPurchase()) {
         return;
     }
 
@@ -658,10 +655,31 @@ window.openPurchaseModal = function () {
     }
 };
 
+function requireLoginForPurchase() {
+    if (window.firebaseAuth && window.firebaseAuth.currentUser) {
+        return true;
+    }
+    alert("購入にはGoogleログインが必要です。\n先にアカウント画面からログインしてください。");
+    if (typeof window.openProfileModal === 'function') {
+        window.openProfileModal();
+    }
+    return false;
+}
+
 window.closePurchaseModal = function () {
     const modal = document.getElementById('purchaseModal');
     if (modal) modal.style.display = 'none';
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+    const purchaseLink = document.getElementById('stripePurchaseLink');
+    if (!purchaseLink) return;
+    purchaseLink.addEventListener('click', (event) => {
+        if (!requireLoginForPurchase()) {
+            event.preventDefault();
+        }
+    });
+});
 
 // --- LEADERBOARD MODAL ---
 window.openLeaderboard = async function () {
