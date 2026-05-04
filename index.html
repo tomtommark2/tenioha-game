@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.04">
+    <link rel="stylesheet" href="style.css?v=3.05">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -403,8 +403,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.04"></script>
-<script src="data/ipa_overrides.js?v=3.04"></script>
+    <script src="data/vocabulary.js?v=3.05"></script>
+<script src="data/ipa_overrides.js?v=3.05"></script>
 
     <!-- Simple Mode Category Selection Modal -->
     <div id="simpleModeModal" class="modal-overlay"
@@ -618,19 +618,18 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: center;">
         <div class="modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 450px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-            <button onclick="closeLeaderboard()"
-                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+            <button class="modal-close-btn" onclick="closeLeaderboard()">&times;</button>
 
             <!-- Rename Button (Top Left) -->
-            <button id="renameBtn" onclick="renamePlayer()"
-                style="position: absolute; top: 15px; left: 15px; background: none; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 11px; cursor: pointer; color: #888; display: none;">
+            <button id="renameBtn" class="subtle-action-btn" onclick="renamePlayer()" style="display: none;">
                 ✏️ 名前変更
             </button>
 
 
-            <h2 style="margin-top: 0; padding-bottom: 10px; color: #f1c40f; text-shadow: 1px 1px 0px #e67e22;">
+            <h2 class="leaderboard-title">
                 🏆 ランキング
             </h2>
+            <p class="leaderboard-subtitle">学習の積み重ねを確認できます</p>
 
             <!-- Login Required Message (New) -->
             <div id="loginRequiredMessage" style="display: none; padding: 20px;">
@@ -642,8 +641,7 @@
                 <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
                     ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
                 </p>
-                <button onclick="closeLeaderboard(); openProfileModal();"
-                    style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                <button class="primary-action-btn" onclick="closeLeaderboard(); openProfileModal();">
                     ログイン画面へ移動
                 </button>
             </div>
@@ -652,13 +650,10 @@
             <!-- Name Input Overlay (Initial Only) -->
             <div id="nameInputParams" style="display: none; margin-bottom: 20px;">
                 <p style="font-size: 14px; color: #666; margin-bottom: 10px;">ランキングに参加するには名前を登録してください</p>
-                <input type="text" id="playerNameInput" placeholder="ニックネーム（８文字以内）" maxlength="8"
-                    style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; text-align: center;">
+                <input class="soft-input" type="text" id="playerNameInput" placeholder="ニックネーム（８文字以内）" maxlength="8">
                 <div style="margin-top: 10px;">
-                    <button onclick="registerName()"
-                        style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">登録して参加</button>
-                    <button id="cancelRenameBtn" onclick="cancelRename()"
-                        style="display: none; padding: 8px 15px; background: #ddd; color: #555; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">キャンセル</button>
+                    <button class="primary-action-btn" onclick="registerName()">登録して参加</button>
+                    <button id="cancelRenameBtn" class="secondary-action-btn" onclick="cancelRename()" style="display: none;">キャンセル</button>
                 </div>
             </div>
 
@@ -861,19 +856,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.04"></script>
-    <script src="js/update_manager.js?v=3.04"></script>
-    <script src="js/config.js?v=3.04"></script>
-    <script src="data/announcements.js?v=3.04"></script>
-    <script src="js/utils.js?v=3.04"></script>
-    <script src="js/stats_engine.js?v=3.04"></script>
-    <script src="js/chart_data_adapter.js?v=3.04"></script>
+    <script src="js/version.js?v=3.05"></script>
+    <script src="js/update_manager.js?v=3.05"></script>
+    <script src="js/config.js?v=3.05"></script>
+    <script src="data/announcements.js?v=3.05"></script>
+    <script src="js/utils.js?v=3.05"></script>
+    <script src="js/stats_engine.js?v=3.05"></script>
+    <script src="js/chart_data_adapter.js?v=3.05"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.04"></script>
-    <script src="js/game_logic.js?v=3.04"></script>
-    <script src="js/ui_manager.js?v=3.04"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.04"></script>
+    <script src="js/chart_fallback.js?v=3.05"></script>
+    <script src="js/game_logic.js?v=3.05"></script>
+    <script src="js/ui_manager.js?v=3.05"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.05"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
