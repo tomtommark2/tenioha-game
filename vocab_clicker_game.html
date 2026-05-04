@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.05">
+    <link rel="stylesheet" href="style.css?v=3.06">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -403,8 +403,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.05"></script>
-<script src="data/ipa_overrides.js?v=3.05"></script>
+    <script src="data/vocabulary.js?v=3.06"></script>
+<script src="data/ipa_overrides.js?v=3.06"></script>
 
     <!-- Simple Mode Category Selection Modal -->
     <div id="simpleModeModal" class="modal-overlay"
@@ -463,68 +463,61 @@
     </div>
 
     <!-- Help Modal -->
-    <div id="helpModal" class="modal-overlay"
+    <div id="helpModal" class="modal-overlay help-modal help-redesign"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; justify-content: center; align-items: center;">
-        <div class="modal-content"
+        <div class="modal-content help-modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 450px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-            <button id="closeHelpModal" onclick="document.getElementById('helpModal').style.display='none'"
-                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+            <button id="closeHelpModal" class="modal-close-btn" onclick="document.getElementById('helpModal').style.display='none'">&times;</button>
             <!-- Version Display (Top Left) -->
-            <div style="position: absolute; top: 15px; left: 15px;">
-                <div style="font-size: 11px; color: #ccc;" id="helpVersionDisplay"></div>
+            <div class="help-version-wrap">
+                <div class="help-version" id="helpVersionDisplay"></div>
             </div>
 
             <!-- Share Button (Top Right, styled) -->
-            <button onclick="document.getElementById('helpModal').style.display='none'; window.openShareModal()"
-                style="position: absolute; top: 15px; right: 50px; background: #6c5ce7; border: none; font-size: 12px; cursor: pointer; padding: 5px 12px; border-radius: 20px; color: white; font-weight: bold; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 5px rgba(108, 92, 231, 0.3);">
+            <button class="help-share-btn" onclick="document.getElementById('helpModal').style.display='none'; window.openShareModal()">
                 🔗 シェア
             </button>
 
-            <h2
-                style="margin-top: 0; margin-bottom: 20px; color: #333; text-align: center; font-size: 18px; font-weight: bold;">
+            <h2 class="help-heading">
                 ヘルプ
             </h2>
+            <p class="help-subheading">ここから管理できます。</p>
 
-            <div class="help-list-container" style="text-align: left; padding: 0 10px;">
-                <div onclick="forceUpdateApp()"
-                    style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
-                    <span style="font-size: 20px;">🔄</span>
-                    <div>
-                        <div style="font-weight: bold; font-size: 13px; color: #333;">最新版への更新</div>
-                        <div style="font-size: 11px; color: #555;">ここをタップして更新を確認・実行</div>
+            <div class="help-list-container">
+                <div class="help-list-item" onclick="forceUpdateApp()">
+                    <span class="help-list-icon">🔄</span>
+                    <div class="help-list-copy">
+                        <div class="help-list-title">最新版への更新</div>
+                        <div class="help-list-desc">ここをタップして更新を確認・実行</div>
                     </div>
                 </div>
 
-                <div onclick="window.installApp()"
-                    style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
-                    <span style="font-size: 20px;">📲</span>
-                    <div>
-                        <div style="font-weight: bold; font-size: 13px; color: #333;">アプリインストール</div>
-                        <div style="font-size: 11px; color: #555;">タップしてインストール (プレミア権限付与)</div>
+                <div class="help-list-item" onclick="window.installApp()">
+                    <span class="help-list-icon">📲</span>
+                    <div class="help-list-copy">
+                        <div class="help-list-title">アプリインストール</div>
+                        <div class="help-list-desc">タップしてインストール (プレミア権限付与)</div>
                     </div>
                 </div>
 
-                <div onclick="document.getElementById('helpModal').style.display='none'; openPurchaseModal();"
-                    style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
-                    <span style="font-size: 20px;">💎</span>
-                    <div>
-                        <div style="font-weight: bold; font-size: 13px; color: #333;">制限の解除</div>
-                        <div style="font-size: 11px; color: #555;">タップして購入ページを表示</div>
+                <div class="help-list-item" onclick="document.getElementById('helpModal').style.display='none'; openPurchaseModal();">
+                    <span class="help-list-icon">💎</span>
+                    <div class="help-list-copy">
+                        <div class="help-list-title">制限の解除</div>
+                        <div class="help-list-desc">タップして購入ページを表示</div>
                     </div>
                 </div>
 
-                <div onclick="location.href='mailto:tenioha.eng@gmail.com'"
-                    style="margin-bottom: 5px; display: flex; align-items: center; gap: 10px; border: 1px solid #ddd; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer; transition: background 0.2s;">
-                    <span style="font-size: 20px;">📧</span>
-                    <div>
-                        <div style="font-weight: bold; font-size: 13px; color: #333;">お問い合わせ（質問・バグ報告）</div>
-                        <div style="font-size: 11px; color: #555;">タップしてメールを送信</div>
+                <div class="help-list-item" onclick="location.href='mailto:tenioha.eng@gmail.com'">
+                    <span class="help-list-icon">📧</span>
+                    <div class="help-list-copy">
+                        <div class="help-list-title">お問い合わせ（質問・バグ報告）</div>
+                        <div class="help-list-desc">タップしてメールを送信</div>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 25px;">
-                <a href="https://note.com/tenioha_eng/n/n5918d72138bd?sub_rt=share_pb" target="_blank"
-                    style="display: inline-block; background: #00b894; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+            <div class="help-footer">
+                <a class="help-note-link" href="https://note.com/tenioha_eng/n/n5918d72138bd?sub_rt=share_pb" target="_blank">
                     📚 詳しい使い方はこちら (Note)
                 </a>
             </div>
@@ -856,25 +849,51 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.05"></script>
-    <script src="js/update_manager.js?v=3.05"></script>
-    <script src="js/config.js?v=3.05"></script>
-    <script src="data/announcements.js?v=3.05"></script>
-    <script src="js/utils.js?v=3.05"></script>
-    <script src="js/stats_engine.js?v=3.05"></script>
-    <script src="js/chart_data_adapter.js?v=3.05"></script>
+    <script src="js/version.js?v=3.06"></script>
+    <script src="js/update_manager.js?v=3.06"></script>
+    <script src="js/config.js?v=3.06"></script>
+    <script src="data/announcements.js?v=3.06"></script>
+    <script src="js/utils.js?v=3.06"></script>
+    <script src="js/stats_engine.js?v=3.06"></script>
+    <script src="js/chart_data_adapter.js?v=3.06"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.05"></script>
-    <script src="js/game_logic.js?v=3.05"></script>
-    <script src="js/ui_manager.js?v=3.05"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.05"></script>
+    <script src="js/chart_fallback.js?v=3.06"></script>
+    <script src="js/game_logic.js?v=3.06"></script>
+    <script src="js/ui_manager.js?v=3.06"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.06"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
         // Set Version Display from Global Variable
         if (typeof GAME_VERSION !== 'undefined') {
             document.getElementById('currentVersion').textContent = GAME_VERSION;
+        }
+
+        window.setHelpDesignVariant = function (variant = 'tune') {
+            const modal = document.getElementById('helpModal');
+            if (!modal) return;
+            const normalized = variant === 'redesign' ? 'redesign' : 'tune';
+            modal.classList.toggle('help-redesign', normalized === 'redesign');
+            modal.classList.toggle('help-tune', normalized !== 'redesign');
+            try {
+                localStorage.setItem('vocabGame_helpDesignVariant', normalized);
+            } catch (_) { }
+        };
+
+        const helpDesignParam = new URLSearchParams(location.search).get('helpDesign');
+        const savedHelpDesign = (() => {
+            try {
+                return localStorage.getItem('vocabGame_helpDesignVariant');
+            } catch (_) {
+                return null;
+            }
+        })();
+        window.setHelpDesignVariant(helpDesignParam || savedHelpDesign || 'redesign');
+
+        if (new URLSearchParams(location.search).get('helpOpen') === '1') {
+            const helpModal = document.getElementById('helpModal');
+            if (helpModal) helpModal.style.display = 'flex';
         }
 
         window.openLearningLogPreviewModal = function () {
