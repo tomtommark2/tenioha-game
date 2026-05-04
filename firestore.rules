@@ -47,13 +47,6 @@ service cloud.firestore {
       allow write: if isOwner(userId) && !isBanned();
     }
 
-    // 2.5 Focus Leaderboard (Weekly)
-    // Structure: leaderboard_focus_weekly/{weekId}/scores/{userId}
-    match /leaderboard_focus_weekly/{weekId}/scores/{userId} {
-      allow read: if true;
-      allow write: if isOwner(userId) && !isBanned();
-    }
-
     // 3. Promo Codes Collection
     // Read: Authenticated users (to check code)
     // Write: Authenticated users (ONLY to increment count)

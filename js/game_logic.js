@@ -1518,8 +1518,6 @@ function getWordFromDeck(category, sourceWords) {
 }
 
 function showNextWord() {
-    if (window.resetFocusTimer) window.resetFocusTimer();
-
     gameState.meaningCardFlipped = false;
     clearAutoTimer();
 
@@ -1863,7 +1861,6 @@ function recordLearningLogPerfectizedStrict(prevState, nextState) {
 }
 
 function handleVocabCardClick() {
-    if (window.resetFocusTimer) window.resetFocusTimer();
     if (typeof window.liveTutorialEvent === 'function') window.liveTutorialEvent('vocab_correct');
 
     const currentWord = gameState.currentWord;
@@ -1946,11 +1943,6 @@ function handleVocabCardClick() {
 }
 
 function handleMeaningCardClick(e) {
-    // If in Focus Mode, Pause Timer instead of reset
-    if (gameState.focusState && gameState.focusState.active) {
-        gameState.focusState.paused = true;
-    }
-
     const card = e.currentTarget;
     clearAutoTimer();
 
@@ -2442,17 +2434,14 @@ function switchTab(tab) {
     if (buttons.length > 0) {
         if (tab === 'top') buttons[0].classList.add('active');
         else if (buttons[1] && tab === 'around') buttons[1].classList.add('active');
-        else if (buttons[2] && tab === 'focus') buttons[2].classList.add('active');
     }
 
     const topList = document.getElementById('lb-list-top');
     const aroundList = document.getElementById('lb-list-around');
-    const focusList = document.getElementById('lb-list-focus');
 
     // Standard display toggle (CSS classes handle visibility, but explicit inline style ensures logic works)
     if (topList) topList.style.display = (tab === 'top') ? 'block' : 'none';
     if (aroundList) aroundList.style.display = (tab === 'around') ? 'block' : 'none';
-    if (focusList) focusList.style.display = (tab === 'focus') ? 'block' : 'none';
 
     loadRankingData(tab);
 }
@@ -2462,7 +2451,6 @@ async function loadRankingData(type, force = false) {
     let container;
     if (type === 'top') container = document.getElementById('lb-list-top');
     else if (type === 'around') container = document.getElementById('lb-list-around');
-    else if (type === 'focus') container = document.getElementById('lb-list-focus');
 
     if (!container) {
         console.error("[Debug] Container not found for:", type);
@@ -2485,7 +2473,7 @@ async function loadRankingData(type, force = false) {
             container.innerHTML = `<div style="padding:20px; color:#555; text-align:center;">
                 <div style="font-size:40px; margin-bottom:10px;">📉</div>
                 <div style="font-weight:bold; margin-bottom:5px;">まだランキングデータがありません</div>
-                <div style="font-size:12px; color:#888;">集中力モードをプレイして<br>最初のスコアを登録しましょう！</div>
+                <div style="font-size:12px; color:#888;">学習を進めるとランキングに反映されます</div>
             </div>`;
             return;
         }
@@ -2574,140 +2562,3 @@ if (wbModalGlobal) {
     };
 }
 
-
-
-
-// --- INFINITE FOCUS MODE LOGIC ---
-let focusInterval = null;
-let lastFocusTick = 0;
-
-window.startFocusMode = function (customDuration = 7) {
-    const duration = Number(customDuration) || 7;
-
-    // Initialize or Reset State
-    if (!gameState.focusState) {
-        gameState.focusState = { active: false, initialTimer: duration, timer: duration, startTime: 0, currentDuration: 0, paused: false };
-    }
-
-    gameState.focusState.active = true;
-    gameState.focusState.initialTimer = duration;
-    gameState.focusState.timer = duration;
-    gameState.focusState.startTime = Date.now();
-    gameState.focusState.currentDuration = 0;
-    gameState.focusState.paused = false;
-
-    // Disable Auto Mode if active to prevent cheating/conflict
-    if (gameState.autoMode) {
-        toggleAutoMode();
-    }
-
-    // Show UI Overlay
-    if (window.updateFocusOverlay) window.updateFocusOverlay(true, duration, "00:00", false);
-
-    // Start Loop
-    lastFocusTick = Date.now();
-    if (focusInterval) clearInterval(focusInterval);
-    focusInterval = setInterval(updateFocusLoop, 100);
-
-    // prompt filtered out
-};
-
-window.stopFocusMode = function (reason) {
-    if (!gameState.focusState || !gameState.focusState.active) return;
-
-    gameState.focusState.active = false;
-    if (focusInterval) clearInterval(focusInterval);
-
-    // Submit Score (Weekly Focus Leaderboard)
-    if (window.submitFocusScore) {
-        window.submitFocusScore(gameState.focusState.currentDuration);
-    }
-
-    // Show Game Over Modal
-    if (window.showFocusGameOver) {
-        window.showFocusGameOver(gameState.focusState.currentDuration, reason);
-    } else {
-        alert(`Game Over! Duration: ${gameState.focusState.currentDuration.toFixed(1)}s`);
-    }
-
-    // Hide Overlay
-    if (window.updateFocusOverlay) window.updateFocusOverlay(false);
-};
-
-function updateFocusLoop() {
-    if (!gameState.focusState || !gameState.focusState.active) return;
-
-    const now = Date.now();
-    const delta = (now - lastFocusTick) / 1000;
-    lastFocusTick = now;
-
-    // Pause Check
-    if (gameState.focusState.paused) {
-        if (window.updateFocusOverlay) {
-            const fmt = formatDuration(gameState.focusState.currentDuration);
-            window.updateFocusOverlay(true, gameState.focusState.timer, fmt, true);
-        }
-        return; // Skip timer decrement
-    }
-
-    gameState.focusState.timer -= delta;
-    gameState.focusState.currentDuration = (now - gameState.focusState.startTime) / 1000; // Total survival time continues? 
-    // Wait, if paused, survival time should PROBABLY pause too?
-    // "Meaning time" shouldn't count towards "Survival High Score" if it pauses the death timer.
-    // Let's pause survival duration accumulation too.
-    gameState.focusState.currentDuration += delta; // Accumulate manually instead of diff? No, easier to just offset start time or pause duration.
-    // Let's fix this logic:
-    // If paused, we don't update currentDuration either.
-
-    // Re-calculating:
-    // Actually, simple way: only update if !paused.
-    // But `currentDuration` was based on `now - startTime`.
-    // If we pause, `now` advances.
-    // So on unpause, we must shift `startTime` forward by the paused amount.
-    // Or just switch to delta accumulation.
-    // Let's Switch to Delta Accumulation for currentDuration to be safe with pause.
-}
-// Rewriting updateFocusLoop properly below:
-
-function updateFocusLoop() {
-    if (!gameState.focusState || !gameState.focusState.active) return;
-
-    const now = Date.now();
-    const delta = (now - lastFocusTick) / 1000;
-    lastFocusTick = now;
-
-    if (gameState.focusState.paused) {
-        if (window.updateFocusOverlay) {
-            const fmt = formatDuration(gameState.focusState.currentDuration);
-            window.updateFocusOverlay(true, gameState.focusState.timer, fmt, true);
-        }
-        return;
-    }
-
-    gameState.focusState.timer -= delta;
-    gameState.focusState.currentDuration += delta; // Delta accumulation logic
-
-    if (gameState.focusState.timer <= 0) {
-        gameState.focusState.timer = 0;
-        window.stopFocusMode("timeup");
-    }
-
-    // Update UI
-    if (window.updateFocusOverlay) {
-        const fmt = formatDuration(gameState.focusState.currentDuration);
-        window.updateFocusOverlay(true, gameState.focusState.timer, fmt, false);
-    }
-}
-
-window.resetFocusTimer = function () {
-    if (gameState.focusState && gameState.focusState.active) {
-        gameState.focusState.timer = gameState.focusState.initialTimer || 7.00;
-        gameState.focusState.paused = false;
-    }
-};
-
-function formatDuration(sec) {
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60);
-    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-}

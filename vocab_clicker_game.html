@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.03">
+    <link rel="stylesheet" href="style.css?v=3.04">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -170,51 +170,42 @@
         <!-- Other Menu Dropdown (Hidden) -->
         <div id="otherMenuDropdown" class="other-menu-dropdown">
 
-            <!-- Simple Mode -->
+            <div class="other-menu-section-title">学習設定</div>
+
             <div class="other-menu-item" onclick="openSimpleModeModal(); toggleOtherMenu();">
                 <span class="other-menu-icon">📱</span>
                 <span class="other-menu-label">シンプル表示</span>
             </div>
 
-            <!-- Vocabulary Estimation (Modal) -->
-            <div class="other-menu-item" onclick="openLearningLogModal(); toggleOtherMenu();">
-                <span class="other-menu-icon">📊</span>
-                <span class="other-menu-label">語彙力推定</span>
-            </div>
-
-            <!-- Learning Log Page -->
-            <div class="other-menu-item" onclick="openLearningLogPreviewModal(); toggleOtherMenu();">
-                <span class="other-menu-icon">📝</span>
-                <span class="other-menu-label">学習ログ</span>
-            </div>
-
-            <!-- Ranking -->
-            <div class="other-menu-item" onclick="openLeaderboard(); toggleOtherMenu();">
-                <span class="other-menu-icon">👑</span>
-                <span class="other-menu-label">ランキング</span>
-            </div>
-
-            <!-- Study Mode Settings -->
             <div class="other-menu-item" onclick="openStudyModeModal(); toggleOtherMenu();">
                 <span class="other-menu-icon">🧭</span>
                 <span class="other-menu-label">出題モード</span>
             </div>
 
-            <!-- Phrasal Verb Dictionary -->
+            <div class="other-menu-section-title">記録</div>
+
+            <div class="other-menu-item" onclick="openLearningLogModal(); toggleOtherMenu();">
+                <span class="other-menu-icon">📊</span>
+                <span class="other-menu-label">語彙力推定</span>
+            </div>
+
+            <div class="other-menu-item" onclick="openLearningLogPreviewModal(); toggleOtherMenu();">
+                <span class="other-menu-icon">📝</span>
+                <span class="other-menu-label">学習ログ</span>
+            </div>
+
+            <div class="other-menu-item" onclick="openLeaderboard(); toggleOtherMenu();">
+                <span class="other-menu-icon">👑</span>
+                <span class="other-menu-label">ランキング</span>
+            </div>
+
+            <div class="other-menu-section-title">関連アプリ</div>
+
             <div class="other-menu-item external"
                 onclick="window.open('https://phrasalverbapp-d5fa7.web.app/index.html', '_blank', 'noopener'); toggleOtherMenu();">
                 <span class="other-menu-icon">📘</span>
                 <span class="other-menu-label external">動く！てにをは英語図鑑</span>
             </div>
-
-            <!-- Focused Mode -->
-            <div class="other-menu-item focus"
-                onclick="document.getElementById('focusSetupModal').style.display='flex'; toggleOtherMenu();">
-                <span class="other-menu-icon">🔥</span>
-                <span class="other-menu-label focus">無限フォーカス</span>
-            </div>
-
-            <!-- Account (Profile) Removed -->
         </div>
 
         <!-- Top Right Navigation -->
@@ -412,8 +403,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.03"></script>
-<script src="data/ipa_overrides.js?v=3.03"></script>
+    <script src="data/vocabulary.js?v=3.04"></script>
+<script src="data/ipa_overrides.js?v=3.04"></script>
 
     <!-- Simple Mode Category Selection Modal -->
     <div id="simpleModeModal" class="modal-overlay"
@@ -676,7 +667,6 @@
                 <div class="leaderboard-tabs">
                     <button class="lb-tab active" onclick="switchTab('top')">TOP 20</button>
                     <button class="lb-tab" onclick="switchTab('around')">自分の順位</button>
-                    <button class="lb-tab" onclick="switchTab('focus')" style="color: #e74c3c;">🔥 集中力</button>
                 </div>
 
                 <div id="lb-loading" style="color: #999; padding: 20px;">読み込み中...</div>
@@ -692,10 +682,6 @@
 
                 <div id="lb-list-around" class="ranking-list" style="display: none;">
                     <!-- Users + Neighbors -->
-                </div>
-
-                <div id="lb-list-focus" class="ranking-list" style="display: none;">
-                    <!-- Weekly Focus Ranking -->
                 </div>
             </div>
         </div>
@@ -866,89 +852,6 @@
     </div>
     </div>
 
-    <!-- Focus Setup Modal -->
-    <div id="focusSetupModal" class="modal-overlay"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10005; justify-content: center; align-items: center;">
-        <div class="modal-content"
-            style="background: white; padding: 25px; border-radius: 12px; max-width: 90%; width: 350px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <div style="font-size: 40px; margin-bottom: 10px;">🔥</div>
-            <h2 style="margin: 0 0 10px 0; color: #e74c3c;">無限フォーカス設定</h2>
-            <div
-                style="margin-bottom: 20px; text-align: left; background: #fff8e1; padding: 15px; border-radius: 12px; border: 1px solid #ffecb3; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);">
-                <div style="display:flex; gap:10px; align-items:center; margin-bottom:10px;">
-                    <span style="font-size:24px;">🏆</span>
-                    <div style="font-size: 13px; color: #7f6000; line-height: 1.5; font-weight: bold;">
-                        勉強を続けられた時間がスコアとなり、<br>ランキングに掲載されます。
-                    </div>
-                </div>
-                <div style="text-align:center; border-top:1px dashed #ffd54f; padding-top:10px; margin-top:5px;">
-                    <span style="font-size:12px; color:#e67e22; font-weight:bold;">制限時間を選択してください</span>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <input type="range" id="focusDurationInput" min="3" max="10" value="7"
-                    oninput="document.getElementById('focusDurationValue').textContent = this.value + '秒'"
-                    style="width: 80%; cursor: pointer;">
-                <div style="font-size: 24px; font-weight: bold; color: #e74c3c; margin-top: 10px;"
-                    id="focusDurationValue">
-                    7秒
-                </div>
-            </div>
-
-            <div style="display: flex; gap: 10px; justify-content: center;">
-                <button
-                    onclick="startFocusMode(parseInt(document.getElementById('focusDurationInput').value)); document.getElementById('focusSetupModal').style.display='none';"
-                    style="flex: 2; padding: 12px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 0 #c0392b;">
-                    スタート
-                </button>
-                <button onclick="document.getElementById('focusSetupModal').style.display='none'"
-                    style="flex: 1; padding: 12px; background: #ddd; color: #555; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
-                    閉じる
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Focus Mode Overlay -->
-    <div id="focusOverlay"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 60px; background: rgba(0,0,0,0.85); z-index: 99999; align-items: center; justify-content: space-between; padding: 0 20px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-        <div style="font-weight: bold; font-size: 14px; color: #ff7675;">🔥 INFINITE FOCUS</div>
-        <div id="focusTimerDisplay"
-            style="font-size: 30px; font-weight: bold; font-family: monospace; color: #e74c3c; text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);">
-            7.00</div>
-        <div id="focusDurationDisplay" style="font-size: 14px; color: #fff; font-weight:bold;">00:00</div>
-    </div>
-
-    <!-- Focus Game Over Modal -->
-    <div id="focusGameOverModal" class="modal-overlay"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 10005; justify-content: center; align-items: center;">
-        <div class="modal-content"
-            style="background: white; padding: 30px; border-radius: 15px; max-width: 90%; width: 350px; text-align: center; box-shadow: 0 0 50px rgba(231, 76, 60, 0.5); border: 2px solid #e74c3c;">
-            <div style="font-size: 50px; margin-bottom: 10px;">💀</div>
-            <h2 style="color: #c0392b; margin: 0 0 10px 0; font-weight: 900; font-size: 28px;">GAME OVER</h2>
-            <div style="font-size: 14px; color: #555; margin-bottom: 20px;">集中力が切れました...</div>
-
-            <div
-                style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #eee;">
-                <div style="font-size: 12px; color: #888; font-weight: bold;">今回の記録</div>
-                <div id="focusResultDuration" style="font-size: 32px; font-weight: bold; color: #2c3e50;">00:00</div>
-            </div>
-
-            <div style="display: flex; gap: 10px; justify-content: center;">
-                <button onclick="document.getElementById('focusGameOverModal').style.display='none'; startFocusMode();"
-                    style="flex: 1; padding: 12px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 0 #c0392b;">
-                    もう一度
-                </button>
-                <button
-                    onclick="document.getElementById('focusGameOverModal').style.display='none'; document.getElementById('focusOverlay').style.display='none';"
-                    style="flex: 1; padding: 12px; background: #95a5a6; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
-                    終了
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Learning Log Preview Modal -->
     <div id="learningLogPreviewModal" class="modal-overlay"
         style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 10006; justify-content:center; align-items:center; padding: 16px;">
@@ -958,19 +861,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.03"></script>
-    <script src="js/update_manager.js?v=3.03"></script>
-    <script src="js/config.js?v=3.03"></script>
-    <script src="data/announcements.js?v=3.03"></script>
-    <script src="js/utils.js?v=3.03"></script>
-    <script src="js/stats_engine.js?v=3.03"></script>
-    <script src="js/chart_data_adapter.js?v=3.03"></script>
+    <script src="js/version.js?v=3.04"></script>
+    <script src="js/update_manager.js?v=3.04"></script>
+    <script src="js/config.js?v=3.04"></script>
+    <script src="data/announcements.js?v=3.04"></script>
+    <script src="js/utils.js?v=3.04"></script>
+    <script src="js/stats_engine.js?v=3.04"></script>
+    <script src="js/chart_data_adapter.js?v=3.04"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.03"></script>
-    <script src="js/game_logic.js?v=3.03"></script>
-    <script src="js/ui_manager.js?v=3.03"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.03"></script>
+    <script src="js/chart_fallback.js?v=3.04"></script>
+    <script src="js/game_logic.js?v=3.04"></script>
+    <script src="js/ui_manager.js?v=3.04"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.04"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

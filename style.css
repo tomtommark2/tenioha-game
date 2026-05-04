@@ -763,12 +763,23 @@ body {
     border-bottom: none;
 }
 
-.other-menu-item.external:hover {
-    background: #f5fbff;
+.other-menu-section-title {
+    padding: 9px 15px 6px;
+    background: #f6f7fb;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    color: #8a92a6;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
 }
 
-.other-menu-item.focus:hover {
-    background: #fff5f5;
+.other-menu-section-title:first-child {
+    border-top: none;
+}
+
+.other-menu-item.external:hover {
+    background: #f5fbff;
 }
 
 .other-menu-icon {
@@ -783,10 +794,6 @@ body {
 
 .other-menu-label.external {
     color: #2c5a87;
-}
-
-.other-menu-label.focus {
-    color: #e74c3c;
 }
 
 .header-profile-icon {
@@ -1232,26 +1239,6 @@ body {
         left: 10px !important;
     }
 
-    #focusOverlay {
-        height: 42px !important;
-        padding: 0 10px !important;
-    }
-
-    #focusOverlay>div:first-child {
-        /* Label */
-        font-size: 10px !important;
-        /* 14px -> ~10px */
-    }
-
-    #focusTimerDisplay {
-        font-size: 21px !important;
-        /* 30px -> ~21px */
-    }
-
-    #focusDurationDisplay {
-        font-size: 10px !important;
-        /* 14px -> ~10px */
-    }
 }
 
 /* Trial Overlay Styles */
