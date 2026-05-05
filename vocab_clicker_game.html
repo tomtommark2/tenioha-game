@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.07">
+    <link rel="stylesheet" href="style.css?v=3.08">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -306,21 +306,22 @@
 
         
         <!-- Study Mode Modal -->
-        <div id="studyModeModal" class="modal" onclick="closeStudyModeModal()"
-            style="display:none; position:fixed; inset:0; z-index:3000; background:radial-gradient(circle at 20% 20%, rgba(108,92,231,0.18), rgba(0,0,0,0.55)); align-items:center; justify-content:center; padding:16px; backdrop-filter: blur(2px);">
-            <div class="modal-content" onclick="event.stopPropagation()"
-                style="max-width: 580px; width:min(580px, 100%); max-height:85vh; overflow:auto; background:linear-gradient(180deg,#ffffff,#fafbff); border-radius:18px; border:1px solid #e9ebf5; box-shadow:0 22px 44px rgba(24,29,45,0.22); padding:18px 18px 14px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                    <h2 style="margin:0; font-size:20px; color:#2d3436; letter-spacing:0.2px;">🧭 出題モード</h2>
-                    <button onclick="closeStudyModeModal()" style="border:none; background:#f1f3fb; color:#6b7280; width:32px; height:32px; border-radius:10px; cursor:pointer; font-size:18px; line-height:1;">×</button>
+        <div id="studyModeModal" class="modal study-mode-modal" onclick="closeStudyModeModal()"
+            style="display:none;">
+            <div class="modal-content study-mode-modal-content" onclick="event.stopPropagation()">
+                <div class="study-mode-hero">
+                    <div>
+                        <div class="study-mode-kicker">Study Mode</div>
+                        <h2 class="study-mode-title">🧭 出題モード</h2>
+                        <p class="study-mode-subtitle">復習と新規の出題ルールをここでまとめて管理します。</p>
+                    </div>
+                    <button class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()">×</button>
                 </div>
-                <div style="font-size:12px; color:#8a92a6; margin-bottom:8px;">復習と新規の出題ルールをここでまとめて管理します。</div>
-                <div style="font-size:11px; color:#7b8397; line-height:1.6; margin-bottom:12px; background:#f8faff; border:1px solid #e7ecfb; border-radius:10px; padding:8px 10px;">
-                    ・初回一発正解の単語は復習キューに出ません。<br>
-                    ・より苦手な単語が自動で復習キューに登場します。<br>
-                    ・正答を重ねると、その単語は復習キューに登場しなくなります。<br>
-                    ・復習モードは ON / MIX / OFF を切替できます。<br>
-                    ・分類基準：完璧 80%以上 / 得意 50〜79% / 苦手 0〜49%
+                <div class="study-mode-guide">
+                    <span>初回一発正解の単語は復習キューに出ません。</span>
+                    <span>より苦手な単語が自動で復習キューに登場します。</span>
+                    <span>正答を重ねると、その単語は復習キューに登場しなくなります。</span>
+                    <span>分類基準：完璧 80%以上 / 得意 50〜79% / 苦手 0〜49%</span>
                 </div>
 
                 <div class="study-mode-card study-auto-card">
@@ -336,23 +337,27 @@
                     </div>
                 </div>
 
-                <div style="background:#fff; border:1px solid #eceff7; border-radius:12px; padding:10px; margin-bottom:10px;">
-                    <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px;">
-                        <div style="font-size:12px; font-weight:700; color:#6b7280;">復習設定</div>
-                        <span id="dueOnlyModeLabelModal" style="display:inline-block; font-size:11px; color:#888; background:#f5f7ff; border:1px solid #e2e7fb; border-radius:999px; padding:3px 8px;">復習モード:MIX</span>
+                <div class="study-mode-card study-review-card">
+                    <div class="study-mode-card-header">
+                        <div>
+                            <div class="study-mode-card-title">復習設定</div>
+                            <div class="study-mode-card-desc">復習キューの出し方と対象レベルを調整します。</div>
+                        </div>
+                        <span id="dueOnlyModeLabelModal" class="study-mode-status-pill">復習モード:MIX</span>
                     </div>
 
-                    <button onclick="toggleDueOnlyMode()" style="width:100%; padding:8px 10px; border-radius:10px; border:1px solid #d9dff2; background:#fff; cursor:pointer; font-weight:600; color:#3f4b66; margin-bottom:6px;">🧹 配信モード切替</button>
+                    <button onclick="toggleDueOnlyMode()" class="study-mode-switch-btn">🧹 配信モード切替</button>
 
-                    <div style="padding-top:8px; border-top:1px dashed #e5e9f5;">
-                        <div style="font-size:12px; font-weight:700; color:#6b7280; margin-bottom:6px;">🎯 復習レベル設定</div>
-                        <div id="reviewLevelCheckboxes" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+                    <div class="study-review-level-block">
+                        <div class="study-mode-mini-title">🎯 復習レベル設定</div>
+                        <div id="reviewLevelCheckboxes" class="study-review-level-grid"></div>
                     </div>
                 </div>
 
-                <div style="background:#fff; border:1px solid #eceff7; border-radius:14px; padding:12px;">
-                    <div class="filter-label" style="font-size:12px; font-weight:700; color:#6b7280; margin-bottom:8px;">品詞フィルター</div>
-                    <div class="pos-filter-container" style="margin-top: 0; background:transparent; border:none; padding:0;">
+                <div class="study-mode-card study-pos-card">
+                    <div class="study-mode-card-title">品詞フィルター</div>
+                    <div class="study-mode-card-desc">出題に含める品詞を選びます。</div>
+                    <div class="pos-filter-container study-pos-filter-container">
                         <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="名" checked> 名詞</label>
                         <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="動" checked> 動詞</label>
                         <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詞</label>
@@ -403,38 +408,58 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.07"></script>
-<script src="data/ipa_overrides.js?v=3.07"></script>
+    <script src="data/vocabulary.js?v=3.08"></script>
+<script src="data/ipa_overrides.js?v=3.08"></script>
 
     <!-- Simple Mode Category Selection Modal -->
-    <div id="simpleModeModal" class="modal-overlay"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10001; justify-content: center; align-items: center;">
-        <div class="modal-content"
-            style="background: white; padding: 30px; border-radius: 12px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-            <h2 style="margin-top: 0; color: #333; margin-bottom: 20px;">📱 シンプルモード設定</h2>
-            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">出題範囲を選択してスタート！</p>
+    <div id="simpleModeModal" class="modal-overlay simple-mode-modal" style="display: none;">
+        <div class="modal-content simple-mode-modal-content">
+            <button class="modal-close-btn simple-mode-close-btn"
+                onclick="document.getElementById('simpleModeModal').style.display='none'">&times;</button>
 
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <button onclick="startSimpleMode('junior')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">🔰
-                    中学レベル</button>
-                <button onclick="startSimpleMode('basic')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">📚
-                    基礎レベル</button>
-                <button onclick="startSimpleMode('daily')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">🎬
-                    標準レベル</button>
-                <button onclick="startSimpleMode('exam1')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-weight: bold; color: #333;">📖
-                    受験レベル</button>
-                <!-- Wordbook Option -->
-                <button onclick="startSimpleMode('wordbook')" class="simple-select-btn"
-                    style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; cursor: pointer; font-weight: bold;">📘
-                    単語帳</button>
+            <div class="simple-mode-hero">
+                <div class="simple-mode-kicker">Simple mode</div>
+                <h2 class="simple-mode-title">📱 シンプルモード設定</h2>
+                <p class="simple-mode-subtitle">出題範囲を一つ選んで、画面を簡略化します。</p>
             </div>
 
-            <button onclick="document.getElementById('simpleModeModal').style.display='none'"
-                style="margin-top: 20px; background: none; border: none; color: #999; text-decoration: underline; cursor: pointer;">キャンセル</button>
+            <div class="simple-mode-list">
+                <button onclick="startSimpleMode('junior')" class="simple-select-btn">
+                    <span class="simple-mode-icon">🔰</span>
+                    <span class="simple-mode-copy">
+                        <strong>中学レベル</strong>
+                        <small>A1の基本語から始めます</small>
+                    </span>
+                </button>
+                <button onclick="startSimpleMode('basic')" class="simple-select-btn">
+                    <span class="simple-mode-icon">📚</span>
+                    <span class="simple-mode-copy">
+                        <strong>基礎レベル</strong>
+                        <small>A2のよく使う語を練習</small>
+                    </span>
+                </button>
+                <button onclick="startSimpleMode('daily')" class="simple-select-btn">
+                    <span class="simple-mode-icon">🎬</span>
+                    <span class="simple-mode-copy">
+                        <strong>標準レベル</strong>
+                        <small>B1の日常語・実用語</small>
+                    </span>
+                </button>
+                <button onclick="startSimpleMode('exam1')" class="simple-select-btn">
+                    <span class="simple-mode-icon">📖</span>
+                    <span class="simple-mode-copy">
+                        <strong>受験レベル</strong>
+                        <small>B2の発展語まで含めます</small>
+                    </span>
+                </button>
+                <button onclick="startSimpleMode('wordbook')" class="simple-select-btn simple-select-wordbook">
+                    <span class="simple-mode-icon">📘</span>
+                    <span class="simple-mode-copy">
+                        <strong>単語帳</strong>
+                        <small>ターゲット・システム英単語から選択</small>
+                    </span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -578,86 +603,100 @@
         </div>
     </div>
 
-    <div id="wordbookModal" class="modal-overlay"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
-        <div class="modal-content"
-            style="background: white; padding: 20px; border-radius: 12px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <h2 style="margin-top: 0; color: #333;">単語帳を選択</h2>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
-                <button class="wordbook-item-btn" data-level="selection1900"
-                    onclick="if(window.selectWordbook){selectWordbook('selection1900')}else{alert('システム読み込み中です。少々お待ち下さい。')}"
-                    style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <span style="font-size: 24px;">🦖</span> 厳選 1900+
-                </button>
-                <button class="wordbook-item-btn" data-level="selection1400"
-                    onclick="if(window.selectWordbook){selectWordbook('selection1400')}else{alert('システム読み込み中です。少々お待ち下さい。')}"
-                    style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <span style="font-size: 24px;">🐕</span> 厳選 1400+
-                </button>
-                <button class="wordbook-item-btn" data-level="sys_2000"
-                    onclick="if(window.selectWordbook){selectWordbook('sys_2000')}else{alert('システム読み込み中です。少々お待ち下さい。')}"
-                    style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f8f9fa; cursor: pointer; font-size: 16px; font-weight: bold; color: #555; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <span style="font-size: 24px;">💻</span> システムWORDS (2077語)
-                </button>
-                <!-- Future wordbooks can be added here -->
+    <div id="wordbookModal" class="modal-overlay wordbook-modal" style="display: none;">
+        <div class="modal-content wordbook-modal-content">
+            <button id="closeWordbookModal" class="modal-close-btn wordbook-close-btn"
+                onclick="document.getElementById('wordbookModal').style.display='none'">×</button>
+
+            <div class="wordbook-hero">
+                <div class="wordbook-kicker">Wordbooks</div>
+                <h2 class="wordbook-title">📘 単語帳を選択</h2>
+                <p class="wordbook-subtitle">メイン4レベルとは別に、目的別の単語帳で出題します。</p>
             </div>
-            <button id="closeWordbookModal" onclick="document.getElementById('wordbookModal').style.display='none'"
-                style="margin-top: 20px; padding: 8px 20px; border: none; background: #ddd; border-radius: 5px; cursor: pointer;">閉じる</button>
+
+            <div class="wordbook-list">
+                <button class="wordbook-item-btn wordbook-card" data-level="selection1900"
+                    onclick="if(window.selectWordbook){selectWordbook('selection1900')}else{alert('システム読み込み中です。少々お待ち下さい。')}">
+                    <span class="wordbook-icon">🦖</span>
+                    <span class="wordbook-copy">
+                        <strong>厳選 1900+</strong>
+                        <small>標準から受験寄りまで広く確認</small>
+                    </span>
+                    <span class="wordbook-badge">1900</span>
+                </button>
+                <button class="wordbook-item-btn wordbook-card" data-level="selection1400"
+                    onclick="if(window.selectWordbook){selectWordbook('selection1400')}else{alert('システム読み込み中です。少々お待ち下さい。')}">
+                    <span class="wordbook-icon">🐕</span>
+                    <span class="wordbook-copy">
+                        <strong>厳選 1400+</strong>
+                        <small>頻出語をコンパクトに確認</small>
+                    </span>
+                    <span class="wordbook-badge">1400</span>
+                </button>
+                <button class="wordbook-item-btn wordbook-card" data-level="sys_2000"
+                    onclick="if(window.selectWordbook){selectWordbook('sys_2000')}else{alert('システム読み込み中です。少々お待ち下さい。')}">
+                    <span class="wordbook-icon">💻</span>
+                    <span class="wordbook-copy">
+                        <strong>システムWORDS</strong>
+                        <small>2077語の単語帳データ</small>
+                    </span>
+                    <span class="wordbook-badge">2077</span>
+                </button>
+            </div>
+
+            <div class="wordbook-note">
+                中学・基礎・標準・受験は上部のレベルボタンから選択できます。
+            </div>
         </div>
     </div>
 
     <!-- Leaderboard Modal -->
-    <div id="leaderboardModal" class="modal-overlay"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: center;">
-        <div class="modal-content"
-            style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 450px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-            <button class="modal-close-btn" onclick="closeLeaderboard()">&times;</button>
+    <div id="leaderboardModal" class="modal-overlay leaderboard-modal" style="display: none;">
+        <div class="modal-content leaderboard-modal-content">
+            <button class="modal-close-btn leaderboard-close-btn" onclick="closeLeaderboard()">&times;</button>
 
-            <!-- Rename Button (Top Left) -->
-            <button id="renameBtn" class="subtle-action-btn" onclick="renamePlayer()" style="display: none;">
+            <button id="renameBtn" class="subtle-action-btn leaderboard-rename-btn" onclick="renamePlayer()"
+                style="display: none;">
                 ✏️ 名前変更
             </button>
 
+            <div class="leaderboard-hero">
+                <div class="leaderboard-kicker">Leaderboard</div>
+                <h2 class="leaderboard-title">🏆 ランキング</h2>
+                <p class="leaderboard-subtitle">学習の積み重ねを確認できます。</p>
+            </div>
 
-            <h2 class="leaderboard-title">
-                🏆 ランキング
-            </h2>
-            <p class="leaderboard-subtitle">学習の積み重ねを確認できます</p>
-
-            <!-- Login Required Message (New) -->
-            <div id="loginRequiredMessage" style="display: none; padding: 20px;">
-                <p style="font-size: 16px; color: #555; font-weight: bold; margin-bottom: 10px;">
-                    未ログインのため、閲覧不可
+            <div id="loginRequiredMessage" class="leaderboard-state-card" style="display: none;">
+                <div class="leaderboard-state-icon">🔐</div>
+                <div class="leaderboard-state-title">ログインが必要です</div>
+                <p id="leaderboardVersionDisplay" class="leaderboard-version">現在のバージョン: -</p>
+                <p class="leaderboard-state-copy">
+                    ランキング機能を利用するにはGoogleアカウントでのログインが必要です。
                 </p>
-                <p id="leaderboardVersionDisplay">現在のバージョン: -</p>
-
-                <p style="font-size: 12px; color: #888; margin-bottom: 20px;">
-                    ランキング機能を利用するには<br>Googleアカウントでのログインが必要です。
-                </p>
-                <button class="primary-action-btn" onclick="closeLeaderboard(); openProfileModal();">
-                    ログイン画面へ移動
+                <button class="primary-action-btn leaderboard-login-btn" onclick="closeLeaderboard(); openProfileModal();">
+                    ログイン画面へ
                 </button>
             </div>
 
-            <!-- Name Input Overlay (Initial Only) -->
-            <!-- Name Input Overlay (Initial Only) -->
-            <div id="nameInputParams" style="display: none; margin-bottom: 20px;">
-                <p style="font-size: 14px; color: #666; margin-bottom: 10px;">ランキングに参加するには名前を登録してください</p>
-                <input class="soft-input" type="text" id="playerNameInput" placeholder="ニックネーム（８文字以内）" maxlength="8">
-                <div style="margin-top: 10px;">
+            <div id="nameInputParams" class="leaderboard-name-card" style="display: none;">
+                <div class="leaderboard-state-title">ランキング名を登録</div>
+                <p class="leaderboard-state-copy">ランキングに表示するニックネームを8文字以内で入力してください。</p>
+                <input class="soft-input leaderboard-name-input" type="text" id="playerNameInput"
+                    placeholder="ニックネーム" maxlength="8">
+                <div class="leaderboard-name-actions">
                     <button class="primary-action-btn" onclick="registerName()">登録して参加</button>
-                    <button id="cancelRenameBtn" class="secondary-action-btn" onclick="cancelRename()" style="display: none;">キャンセル</button>
+                    <button id="cancelRenameBtn" class="secondary-action-btn" onclick="cancelRename()"
+                        style="display: none;">キャンセル</button>
                 </div>
             </div>
 
-            <!-- Tab Content -->
-            <div id="leaderboardContent" style="display: none;">
+            <div id="leaderboardContent" class="leaderboard-content" style="display: none;">
                 <div class="leaderboard-tabs">
                     <button class="lb-tab active" onclick="switchTab('top')">TOP 20</button>
                     <button class="lb-tab" onclick="switchTab('around')">自分の順位</button>
                 </div>
 
-                <div id="lb-loading" style="color: #999; padding: 20px;">読み込み中...</div>
+                <div id="lb-loading" class="leaderboard-loading">読み込み中...</div>
 
                 <div id="lb-list-top" class="ranking-list">
                     <!-- Dynamic Content -->
@@ -676,32 +715,22 @@
     </div>
 
     <!-- Learning Log Modal (New) -->
-    <div id="learningLogModal" class="modal-overlay"
+    <div id="learningLogModal" class="modal-overlay learning-log-modal"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: flex-start; padding-top: 50px; overflow-y: auto;">
-        <div class="modal-content"
+        <div class="modal-content learning-log-modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; margin-bottom: 50px;">
-            <button onclick="document.getElementById('learningLogModal').style.display='none'"
-                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+            <button class="modal-close-btn learning-log-close-btn"
+                onclick="document.getElementById('learningLogModal').style.display='none'">&times;</button>
 
-            <h2 style="margin-top: 20px; color: #6c5ce7; margin-bottom: 20px;">📊 語彙力推定</h2>
+            <div class="learning-log-hero">
+                <div class="learning-log-kicker">Progress</div>
+                <h2 class="learning-log-title">📊 語彙力推定</h2>
+                <p class="learning-log-subtitle">学習履歴から現在の語彙力を確認できます。</p>
+            </div>
 
             <!-- Vocab Diagnosis Injection Container -->
-            <div id="vocabDiagnosisContainer"></div>
+            <div id="vocabDiagnosisContainer" class="learning-log-diagnosis"></div>
 
-
-            <!-- 3. Promo Code Input -->
-            <div style="border-top: 1px solid #eee; padding-top: 15px;">
-                <div style="font-size: 12px; color: #666; margin-bottom: 8px; text-align: left; font-weight: bold;">
-                    解除コードをお持ちの方</div>
-                <div style="display: flex; gap: 5px; align-items: center;">
-                    <input type="text" id="purchasePromoCodeInput" placeholder="コード入力"
-                        style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; background: #fafafa;">
-                    <button onclick="redeemPromoCode('purchasePromoCodeInput')"
-                        style="padding: 10px 15px; background: #2ecc71; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 14px;">
-                        有効化
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -758,83 +787,79 @@
     </div>
 
     <!-- Profile Modal -->
-    <div id="profileModal" class="modal-overlay"
+    <div id="profileModal" class="modal-overlay profile-modal"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: flex-start; padding-top: 50px; overflow-y: auto;">
-        <div class="modal-content"
+        <div class="modal-content profile-modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; margin-bottom: 50px;">
-            <button onclick="closeProfileModal()"
-                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888;">&times;</button>
+            <button class="modal-close-btn profile-close-btn" onclick="closeProfileModal()">&times;</button>
 
-            <h2 style="margin-top: 20px; color: #667eea; margin-bottom: 20px;">アカウント</h2>
+            <div class="profile-hero">
+                <div class="profile-kicker">Account</div>
+                <h2 class="profile-title">アカウント</h2>
+                <p class="profile-subtitle">ログイン、購入、データ同期を管理します。</p>
+            </div>
+
+            <div id="profileLoginNotice" class="profile-login-notice" style="display: none;">
+                <strong>購入にはGoogleログインが必要です。</strong>
+                <span>先にログインすると、購入後の権限復元が安定します。</span>
+            </div>
 
             <!-- User Info Section -->
-            <div
-                style="background: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 20px; text-align: center;">
-                <div
-                    style="width: 80px; height: 80px; margin: 0 auto 10px; border-radius: 50%; background: #eee; overflow: hidden; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
-                    <img id="modalProfileImage" src=""
-                        style="width: 100%; height: 100%; object-fit: cover; display: none;">
-                    <span id="modalProfileInitials" style="font-size: 32px;">👤</span>
+            <div class="profile-user-card">
+                <div class="profile-avatar">
+                    <img id="modalProfileImage" src="" class="profile-avatar-image" style="display: none;">
+                    <span id="modalProfileInitials" class="profile-avatar-initials">👤</span>
                 </div>
-                <div id="modalUserName" style="font-weight: bold; font-size: 18px; color: #333;">ゲストユーザー</div>
-                <div id="modalUserEmail" style="font-size: 12px; color: #888; margin-bottom: 10px;">未ログイン</div>
+                <div id="modalUserName" class="profile-user-name">ゲストユーザー</div>
+                <div id="modalUserEmail" class="profile-user-email">未ログイン</div>
 
                 <!-- Plan Status -->
-                <div id="planStatusTag"
-                    style="display: inline-block; padding: 5px 15px; background: #95a5a6; color: white; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 15px;">
+                <div id="planStatusTag" class="profile-plan-tag">
                     無料プラン (制限あり)
                 </div>
 
                 <!-- Promo Code (Profile) -->
-                <div style="display: flex; gap: 5px; align-items: center; margin-bottom: 20px;">
+                <div class="profile-promo-form">
                     <input type="text" id="profilePromoCodeInput" placeholder="解除コードをお持ちの方"
-                        style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; background: #fafafa;">
-                    <button onclick="redeemPromoCode('profilePromoCodeInput')"
-                        style="padding: 10px 15px; background: #2ecc71; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 13px;">
+                        class="profile-promo-input">
+                    <button onclick="redeemPromoCode('profilePromoCodeInput')" class="profile-promo-btn">
                         有効化
                     </button>
                 </div>
 
                 <!-- Link to Purchase Modal (Clean) -->
                 <button id="premiumActivationSection" onclick="closeProfileModal(); openPurchaseModal();"
-                    style="display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 10px; background: transparent; border: 1px solid #6c5ce7; color: #6c5ce7; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
+                    class="profile-purchase-btn">
                     <span>💎 制限を解除 (購入ページへ)</span>
                 </button>
             </div>
 
-
-
-
-            <div id="profileSyncSection"
-                style="display: none; background: #eef2ff; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <span style="font-size: 14px; font-weight: bold; color: #333;">☁️ データの同期</span>
-                    <span id="profileLastSync" style="font-size: 11px; color: #666;">-</span>
+            <div id="profileSyncSection" class="profile-sync-card" style="display: none;">
+                <div class="profile-sync-header">
+                    <span>☁️ データの同期</span>
+                    <span id="profileLastSync">-</span>
                 </div>
 
-                <div style="display: flex; gap: 10px;">
-                    <button onclick="forceBackup()"
-                        style="flex: 1; padding: 8px; background: #6c5ce7; color: white; border: none; border-radius: 5px; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                <div class="profile-sync-actions">
+                    <button onclick="forceBackup()" class="profile-sync-save-btn">
                         ⬆️ 手動セーブ
                     </button>
-                    <button onclick="forceRestore()"
-                        style="flex: 1; padding: 8px; background: white; border: 1px solid #6c5ce7; color: #6c5ce7; border-radius: 5px; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                    <button onclick="forceRestore()" class="profile-sync-load-btn">
                         ⬇️ 手動ロード
                     </button>
                 </div>
-                <div style="font-size: 10px; color: #888; margin-top: 5px; text-align: center;">
+                <div class="profile-sync-note">
                     ※端末変更時は「手動セーブ」を押して下さい。
                 </div>
             </div>
 
             <!-- Login / Logout Btn -->
-            <button id="profileAuthBtn" onclick="handleProfileAuth()"
-                style="width: 100%; padding: 12px; background: #667eea; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <button id="profileAuthBtn" onclick="handleProfileAuth()" class="profile-auth-btn">
                 <img id="googleIconEntry" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
                     width="18" height="18">
                 <span>Googleでログイン</span>
             </button>
-            <div id="loginIncentiveText" style="font-size: 11px; color: #888; text-align: center; margin-top: 5px;">
+            <div id="loginIncentiveText" class="profile-login-incentive">
                 データをクラウドに保存出来ます。
             </div>
         </div>
@@ -850,19 +875,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.07"></script>
-    <script src="js/update_manager.js?v=3.07"></script>
-    <script src="js/config.js?v=3.07"></script>
-    <script src="data/announcements.js?v=3.07"></script>
-    <script src="js/utils.js?v=3.07"></script>
-    <script src="js/stats_engine.js?v=3.07"></script>
-    <script src="js/chart_data_adapter.js?v=3.07"></script>
+    <script src="js/version.js?v=3.08"></script>
+    <script src="js/update_manager.js?v=3.08"></script>
+    <script src="js/config.js?v=3.08"></script>
+    <script src="data/announcements.js?v=3.08"></script>
+    <script src="js/utils.js?v=3.08"></script>
+    <script src="js/stats_engine.js?v=3.08"></script>
+    <script src="js/chart_data_adapter.js?v=3.08"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.07"></script>
-    <script src="js/game_logic.js?v=3.07"></script>
-    <script src="js/ui_manager.js?v=3.07"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.07"></script>
+    <script src="js/chart_fallback.js?v=3.08"></script>
+    <script src="js/game_logic.js?v=3.08"></script>
+    <script src="js/ui_manager.js?v=3.08"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.08"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

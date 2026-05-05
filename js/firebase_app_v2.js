@@ -494,7 +494,8 @@ if (auth) {
 
             if (authBtn) {
                 authBtn.innerHTML = `<span>ログアウト</span>`;
-                authBtn.style.background = "#e74c3c"; // Red
+                authBtn.classList.add('profile-auth-logout');
+                authBtn.style.background = "";
                 if (syncSection) syncSection.style.display = 'block';
             }
 
@@ -657,7 +658,8 @@ if (auth) {
 
             if (authBtn) {
                 authBtn.innerHTML = `<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" height="18"> <span>Googleでログイン</span>`;
-                authBtn.style.background = "#667eea";
+                authBtn.classList.remove('profile-auth-logout');
+                authBtn.style.background = "";
             }
             if (syncSection) syncSection.style.display = 'none';
 
@@ -1295,6 +1297,7 @@ const originalOpenProfile = window.openProfileModal;
 window.openProfileModal = function () {
     // Call original logic (UI toggle)
     document.getElementById('profileModal').style.display = 'flex';
+    if (window.hideProfileLoginNotice) window.hideProfileLoginNotice();
     if (window.updatePremiumStatusDisplay) window.updatePremiumStatusDisplay();
 
     // New: Init Chart
@@ -1316,6 +1319,7 @@ window.toggleProfileModal = function () {
 
 window.closeProfileModal = function () {
     document.getElementById('profileModal').style.display = 'none';
+    if (window.hideProfileLoginNotice) window.hideProfileLoginNotice();
 };
 
 // Expose openProfileModal (already defined but let's be explicit)

@@ -19,8 +19,10 @@ if (!m) fail('Could not parse GAME_VERSION in js/version.js');
 
 const major = Number(m[1]);
 const patch = Number(m[2]);
-const next = `v${major}.${patch + 1}`;
-const nextNum = `${major}.${patch + 1}`;
+const patchWidth = m[2].length;
+const nextPatch = String(patch + 1).padStart(patchWidth, '0');
+const next = `v${major}.${nextPatch}`;
+const nextNum = `${major}.${nextPatch}`;
 
 const nextVersionSrc = versionSrc.replace(/GAME_VERSION\s*=\s*"v\d+\.\d+"/, `GAME_VERSION = "${next}"`);
 fs.writeFileSync(versionFile, nextVersionSrc, 'utf8');

@@ -142,6 +142,7 @@ window.openProfileModal = function () {
     const modal = document.getElementById('profileModal');
     if (!modal) return;
     modal.style.display = 'flex';
+    setProfileLoginNotice(false);
 
     // Attempt update premium display (if logic exists elsewhere or we move it here)
     if (window.updatePremiumStatusDisplay) {
@@ -259,68 +260,81 @@ window.openLearningLogModal = function () {
 
     // Estimate Eiken Level based on Total Count (approx 8000 max)
     let eikenLabel = "";
-    let eikenColor = "#95a5a6"; // Gray
+    let eikenTier = "blue";
 
     if (totalEstVocab >= 6500) {
         eikenLabel = "英検準1級 相当";
-        eikenColor = "#f1c40f"; // Gold
+        eikenTier = "gold";
     } else if (totalEstVocab >= 4500) {
         eikenLabel = "英検2級 相当";
-        eikenColor = "#bdc3c7"; // Silver
+        eikenTier = "silver";
     } else if (totalEstVocab >= 3000) {
         eikenLabel = "英検準2級 相当";
-        eikenColor = "#e67e22"; // Bronze
+        eikenTier = "bronze";
     } else if (totalEstVocab >= 1500) {
         eikenLabel = "英検3級 相当";
-        eikenColor = "#2ecc71"; // Green
+        eikenTier = "green";
     } else {
         eikenLabel = "英検4級〜5級";
-        eikenColor = "#3498db"; // Blue
+        eikenTier = "blue";
     }
 
     const isUnlocked = localStorage.getItem('vocabGame_isUnlocked') === 'true';
-    const lockAction = 'onclick="window.openPurchaseModal(); event.stopPropagation();"';
-    const lockIcon = '<span style="font-size: 0.8em; opacity:0.7;">🔒</span>';
-
-    // Total: Blur effect (Mosaic) instead of Lock Icon
+    const lockClick = 'onclick="window.openPurchaseModal(); event.stopPropagation();"';
     const displayTotal = isUnlocked ?
-        `約 ${totalEstVocab.toLocaleString()}語` :
-        `<span ${lockAction} title="プレミアム機能" style="cursor:pointer;">約 <span style="filter: blur(5px); user-select: none; pointer-events: none; display:inline-block;">${totalEstVocab.toLocaleString()}</span> 語</span>`;
+        `<span class="vocab-diagnosis-total-text">約 ${totalEstVocab.toLocaleString()}語</span>` :
+        `<button type="button" class="vocab-diagnosis-locked-total" ${lockClick} title="プレミアム機能">
+            <span>約</span>
+            <span class="vocab-diagnosis-blur">${totalEstVocab.toLocaleString()}</span>
+            <span>語</span>
+        </button>`;
 
-    // Other locks remain as icons
-    const displayEiken = isUnlocked ? eikenLabel : `<span ${lockAction} style="cursor:pointer; display:flex; align-items:center; gap:4px; justify-content:center;">${lockIcon} <span style="font-size:0.8em;">分析完了</span></span>`;
+    const displayEiken = isUnlocked ?
+        `<span class="vocab-diagnosis-eiken vocab-diagnosis-eiken-${eikenTier}">${eikenLabel}</span>` :
+        `<button type="button" class="vocab-diagnosis-locked-pill" ${lockClick}>
+            <span class="vocab-diagnosis-lock-icon">🔒</span>
+            <span>詳細分析は未解放</span>
+        </button>`;
+    const lockedNotice = isUnlocked ? '' :
+        `<button type="button" class="vocab-diagnosis-premium-notice" ${lockClick}>
+            <span class="vocab-diagnosis-premium-title">詳細な語彙力分析はプレミアムで表示</span>
+            <span class="vocab-diagnosis-premium-copy">推定語彙数、英検目安、CEFR別内訳を確認できます。</span>
+            <span class="vocab-diagnosis-premium-cta">制限を解除する</span>
+        </button>`;
 
     // Mask Breakdown
-    const mkBd = (val) => isUnlocked ? `<b>${val}語</b>` : `<b ${lockAction} style="cursor:pointer;">${lockIcon}</b>`;
+    const mkBd = (val) => isUnlocked ?
+        `<b>${val.toLocaleString()}語</b>` :
+        `<button type="button" class="vocab-diagnosis-small-lock" ${lockClick}>
+            <span>🔒</span>
+            <small>内訳</small>
+        </button>`;
     const bdA1 = mkBd(breakdown.junior);
     const bdA2 = mkBd(breakdown.basic);
     const bdB1 = mkBd(breakdown.daily);
     const bdB2 = mkBd(breakdown.exam1);
-
-    // Adjust colors for Locked state (Gray out)
-    const finalEikenColor = isUnlocked ? eikenColor : '#bdc3c7';
-    const finalEikenStyle = isUnlocked ? `color: ${finalEikenColor}; border:1px solid ${finalEikenColor};` : `color: #7f8c8d; border:1px dashed #bdc3c7; background:#f0f3f4;`;
 
     // 2. Inject UI (Vocab Diagnosis)
     const container = document.getElementById('vocabDiagnosisContainer');
 
     if (container) {
         container.innerHTML = `
-            <div style="margin-bottom: 20px; text-align: center; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); padding: 15px; border-radius: 12px; border: 1px solid #dfe6e9; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <div style="font-size: 12px; color: #7f8c8d; font-weight: bold; margin-bottom: 5px; letter-spacing: 1px;">推定語彙数</div>
-                <div style="font-size: 28px; font-weight: 900; color: #2c3e50; text-shadow: 1px 1px 0px rgba(0,0,0,0.1); margin-bottom: 2px;">
+            <div class="vocab-diagnosis-card ${isUnlocked ? 'is-unlocked' : 'is-locked'}">
+                <div class="vocab-diagnosis-label">推定語彙数</div>
+                <div class="vocab-diagnosis-total">
                     ${displayTotal}
                 </div>
-                <div style="font-size: 14px; font-weight:bold; ${finalEikenStyle} margin-bottom: 8px; background:white; display:inline-block; padding:2px 10px; border-radius:10px; box-shadow:0 1px 2px rgba(0,0,0,0.1);">
+                <div class="vocab-diagnosis-eiken-row">
                     ${displayEiken}
                 </div>
-                <div style="display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; margin-top:5px;">
-                    <span style="font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid #ccc;">A1:${bdA1}</span>
-                    <span style="font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid #ccc;">A2:${bdA2}</span>
-                    <span style="font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid #ccc;">B1:${bdB1}</span>
-                    <span style="font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid #ccc;">B2:${bdB2}</span>
+                ${lockedNotice}
+                <div class="vocab-diagnosis-breakdown ${isUnlocked ? '' : 'is-locked'}" aria-label="CEFR別の推定語彙数">
+                    <span class="vocab-diagnosis-chip"><span>A1</span>${bdA1}</span>
+                    <span class="vocab-diagnosis-chip"><span>A2</span>${bdA2}</span>
+                    <span class="vocab-diagnosis-chip"><span>B1</span>${bdB1}</span>
+                    <span class="vocab-diagnosis-chip"><span>B2</span>${bdB2}</span>
                 </div>
-                <div style="font-size: 10px; color: #999; margin-top: 8px; text-align: right;">
+                <div class="vocab-diagnosis-note">
                     ※推定の為に、各レベルで最低100語はプレイしてください。
                 </div>
             </div>
@@ -634,6 +648,7 @@ function closeOtherMenuOutside(e) {
 window.closeProfileModal = function () {
     const modal = document.getElementById('profileModal');
     if (modal) modal.style.display = 'none';
+    setProfileLoginNotice(false);
 };
 
 // --- PURCHASE MODAL ---
@@ -659,12 +674,26 @@ function requireLoginForPurchase() {
     if (window.firebaseAuth && window.firebaseAuth.currentUser) {
         return true;
     }
-    alert("購入にはGoogleログインが必要です。\n先にアカウント画面からログインしてください。");
     if (typeof window.openProfileModal === 'function') {
         window.openProfileModal();
     }
+    setProfileLoginNotice(true);
     return false;
 }
+
+function setProfileLoginNotice(visible) {
+    const notice = document.getElementById('profileLoginNotice');
+    if (!notice) return;
+    notice.style.display = visible ? 'block' : 'none';
+}
+
+window.showProfileLoginNotice = function () {
+    setProfileLoginNotice(true);
+};
+
+window.hideProfileLoginNotice = function () {
+    setProfileLoginNotice(false);
+};
 
 window.closePurchaseModal = function () {
     const modal = document.getElementById('purchaseModal');
@@ -751,7 +780,7 @@ window.startSimpleMode = function (level) {
             if (wbModal) wbModal.style.display = 'flex';
         }
     } else {
-        const btn = document.querySelector(`.level - btn[data - level="${level}"]`);
+        const btn = document.querySelector(`.level-btn[data-level="${level}"]`);
         if (btn) btn.click();
         else if (typeof switchLevel === 'function') switchLevel(level);
     }
@@ -819,6 +848,17 @@ window.triggerInstall = window.installApp; // Alias
 const LIVE_TUTORIAL_KEY = 'vocabGame_skipLiveTutorial';
 window.liveTutorialState = { active: false, step: 0 };
 
+function isDeveloperPreviewMode() {
+    const params = new URLSearchParams(window.location.search);
+    return window.location.protocol === 'file:'
+        || ['localhost', '127.0.0.1'].includes(window.location.hostname)
+        || params.has('dev')
+        || params.has('debug')
+        || params.has('preview')
+        || params.has('helpDesign')
+        || params.has('helpOpen');
+}
+
 window.renderLiveTutorial = function () {
     const box = document.getElementById('liveTutorialHint');
     const text = document.getElementById('liveTutorialHintText');
@@ -855,6 +895,7 @@ window.renderLiveTutorial = function () {
 }
 
 window.startLiveTutorial = function () {
+    if (isDeveloperPreviewMode()) return;
     if (localStorage.getItem(LIVE_TUTORIAL_KEY) === 'true') return;
     const box = document.getElementById('liveTutorialHint');
     if (!box) return;
@@ -900,6 +941,14 @@ window.liveTutorialEvent = function (eventName) {
 }
 
 function initWelcomeSequence() {
+    if (isDeveloperPreviewMode()) {
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+        const liveTutorial = document.getElementById('liveTutorialHint');
+        if (welcomeOverlay) welcomeOverlay.style.display = 'none';
+        if (liveTutorial) liveTutorial.style.display = 'none';
+        return;
+    }
+
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
     const hasSkipped = localStorage.getItem('vocabGame_skipWelcome');
     const welcomeOverlay = document.getElementById('welcomeOverlay');

@@ -379,11 +379,12 @@ function init() {
     const activeBtn = document.querySelector(`.level-btn[data-level="${gameState.currentLevel}"]`);
     if (activeBtn) {
         activeBtn.classList.add('active');
-    } else if (gameState.currentLevel.startsWith('selection')) {
+    } else if (isWordbookLevel(gameState.currentLevel)) {
         // Check for Wordbook button
         const wbBtn = document.getElementById('wordbookBtn');
         if (wbBtn) wbBtn.classList.add('active');
     }
+    updateWordbookSelectionUI();
 
     setupEventListeners();
     setupPOSFilters(); // Need to call this to attach listeners to new checkboxes
@@ -559,17 +560,28 @@ function switchLevel(level) {
     const targetBtn = document.querySelector(`.level-btn[data-level="${level}"]`);
     if (targetBtn) {
         targetBtn.classList.add('active');
-    } else if (level.startsWith('selection')) {
+    } else if (isWordbookLevel(level)) {
         // Highlight Wordbook button if we are in a special wordbook mode
         const wbBtn = document.getElementById('wordbookBtn');
         if (wbBtn) wbBtn.classList.add('active');
     }
+    updateWordbookSelectionUI();
 
     loadVocabularyForLevel();
     initializeWordStates();
     updateDisplay();
     showNextWord();
     saveGame();
+}
+
+function isWordbookLevel(level) {
+    return level === 'selection1400' || level === 'selection1900' || level === 'sys_2000';
+}
+
+function updateWordbookSelectionUI() {
+    document.querySelectorAll('.wordbook-item-btn[data-level]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.level === gameState.currentLevel);
+    });
 }
 
 function loadVocabularyForLevel() {
@@ -749,8 +761,8 @@ function renderReviewLevelCheckboxes() {
     defs.forEach(([key, label]) => {
         const checked = (gameState.activeReviewLevels || []).includes(key);
         const wrap = document.createElement('label');
-        wrap.style.cssText = 'display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid #dbe2f4; border-radius:999px; background:#fff; font-size:12px; color:#42506b; cursor:pointer;';
-        wrap.innerHTML = `<input type="checkbox" data-review-level="${key}" ${checked ? 'checked' : ''} style="accent-color:#6c5ce7;"> ${label}`;
+        wrap.className = 'study-review-level-chip';
+        wrap.innerHTML = `<input type="checkbox" data-review-level="${key}" ${checked ? 'checked' : ''}> <span>${label}</span>`;
         host.appendChild(wrap);
     });
 
@@ -2548,6 +2560,7 @@ const closeWbGlobal = document.getElementById('closeWordbookModal');
 
 if (wbBtnGlobal && wbModalGlobal) {
     wbBtnGlobal.onclick = function () {
+        updateWordbookSelectionUI();
         wbModalGlobal.style.display = 'flex';
     };
 }
@@ -2561,4 +2574,3 @@ if (wbModalGlobal) {
         if (e.target === wbModalGlobal) wbModalGlobal.style.display = 'none';
     };
 }
-
