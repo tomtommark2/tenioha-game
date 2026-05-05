@@ -38,6 +38,10 @@ body {
     margin-right: -10px;
 }
 
+.level-current-btn {
+    display: none;
+}
+
 .level-btn {
     background: white;
     color: #555;
@@ -3559,6 +3563,7 @@ body {
 
     .simple-switch-container,
     .header-controls,
+    .level-current-btn,
     .level-selector {
         z-index: 2;
     }
@@ -3594,32 +3599,81 @@ body {
     }
 
     .level-selector {
-        top: calc(72px + env(safe-area-inset-top));
-        right: 6px;
-        left: 92px;
-        justify-content: flex-start;
-        padding: 1px 0 6px 8px;
-        mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
-        -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
+        display: none;
+        position: absolute;
+        top: calc(54px + env(safe-area-inset-top));
+        right: 10px;
+        left: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 18px 38px rgba(28, 33, 83, 0.22);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        mask-image: none;
+        -webkit-mask-image: none;
     }
 
     .level-selector .level-btn,
     .level-selector .wordbook-opener-btn {
-        border: 1px solid rgba(255, 255, 255, 0.72);
-        background: rgba(255, 255, 255, 0.86);
-        box-shadow: 0 9px 20px rgba(34, 38, 96, 0.17);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        justify-content: center;
+        min-height: 38px;
+        border: 1px solid rgba(101, 116, 233, 0.18);
+        background: rgba(248, 250, 255, 0.94);
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 
     .level-selector .level-btn.active,
     .level-selector .wordbook-opener-btn.active {
         border-color: rgba(102, 126, 234, 0.5);
+        background: #7165ea;
+        color: #ffffff;
         box-shadow: 0 10px 20px rgba(102, 126, 234, 0.24);
     }
 
+    body.level-selector-open .level-selector {
+        display: grid;
+    }
+
+    .level-current-btn {
+        display: inline-flex;
+        position: absolute;
+        top: calc(14px + env(safe-area-inset-top));
+        left: 62px;
+        align-items: center;
+        gap: 6px;
+        min-height: 28px;
+        max-width: 72px;
+        padding: 4px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.74);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.88);
+        color: #4a4f86;
+        font-size: 11px;
+        font-weight: 900;
+        white-space: nowrap;
+        box-shadow: 0 9px 20px rgba(34, 38, 96, 0.17);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        cursor: pointer;
+    }
+
+    .level-current-caret {
+        color: #7a85d9;
+        font-size: 10px;
+        line-height: 1;
+    }
+
     .header {
-        min-height: 124px;
+        min-height: 116px;
         margin: 2px 0 0;
         padding: 0 0 4px;
     }

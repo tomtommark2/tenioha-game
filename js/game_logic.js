@@ -375,16 +375,18 @@ function init() {
 
     // BUG FIX: Sync Level Buttons with Loaded State
     document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+    const initialWbBtn = document.getElementById('wordbookBtn');
+    if (initialWbBtn) initialWbBtn.classList.remove('active');
     // Check for standard level buttons
     const activeBtn = document.querySelector(`.level-btn[data-level="${gameState.currentLevel}"]`);
     if (activeBtn) {
         activeBtn.classList.add('active');
     } else if (isWordbookLevel(gameState.currentLevel)) {
         // Check for Wordbook button
-        const wbBtn = document.getElementById('wordbookBtn');
-        if (wbBtn) wbBtn.classList.add('active');
+        if (initialWbBtn) initialWbBtn.classList.add('active');
     }
     updateWordbookSelectionUI();
+    updateLevelCurrentButton();
 
     setupEventListeners();
     setupPOSFilters(); // Need to call this to attach listeners to new checkboxes
@@ -449,7 +451,16 @@ function setupEventListeners() {
             const level = btn.dataset.level;
             if (!level) return; // Skip buttons like Wordbook that don't switch level directly
             switchLevel(level);
+            closeLevelSelector();
         });
+    });
+
+    document.addEventListener('click', (event) => {
+        const selector = document.getElementById('levelContainer');
+        const trigger = document.getElementById('levelCurrentBtn');
+        if (!selector || !trigger) return;
+        if (selector.contains(event.target) || trigger.contains(event.target)) return;
+        closeLevelSelector();
     });
 
     document.querySelectorAll('.mode-btn').forEach(btn => {
@@ -556,16 +567,19 @@ function switchLevel(level) {
     gameState.decks = null;
 
     document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+    const wbBtn = document.getElementById('wordbookBtn');
+    if (wbBtn) wbBtn.classList.remove('active');
 
     const targetBtn = document.querySelector(`.level-btn[data-level="${level}"]`);
     if (targetBtn) {
         targetBtn.classList.add('active');
     } else if (isWordbookLevel(level)) {
         // Highlight Wordbook button if we are in a special wordbook mode
-        const wbBtn = document.getElementById('wordbookBtn');
         if (wbBtn) wbBtn.classList.add('active');
     }
     updateWordbookSelectionUI();
+    updateLevelCurrentButton();
+    closeLevelSelector();
 
     loadVocabularyForLevel();
     initializeWordStates();
@@ -582,6 +596,37 @@ function updateWordbookSelectionUI() {
     document.querySelectorAll('.wordbook-item-btn[data-level]').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.level === gameState.currentLevel);
     });
+    const wbBtn = document.getElementById('wordbookBtn');
+    if (wbBtn) wbBtn.classList.toggle('active', isWordbookLevel(gameState.currentLevel));
+}
+
+const LEVEL_DISPLAY_LABELS = {
+    junior: '中学',
+    basic: '基礎',
+    daily: '標準',
+    exam1: '受験',
+    selection1400: '単語帳',
+    selection1900: '単語帳',
+    sys_2000: '単語帳'
+};
+
+function updateLevelCurrentButton() {
+    const label = document.getElementById('levelCurrentLabel');
+    if (!label) return;
+    label.textContent = LEVEL_DISPLAY_LABELS[gameState.currentLevel] || '📚 基礎';
+}
+
+function toggleLevelSelector(event) {
+    if (event) event.stopPropagation();
+    const isOpen = document.body.classList.toggle('level-selector-open');
+    const trigger = document.getElementById('levelCurrentBtn');
+    if (trigger) trigger.setAttribute('aria-expanded', String(isOpen));
+}
+
+function closeLevelSelector() {
+    document.body.classList.remove('level-selector-open');
+    const trigger = document.getElementById('levelCurrentBtn');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
 }
 
 function loadVocabularyForLevel() {
@@ -2534,6 +2579,7 @@ const closeWbGlobal = document.getElementById('closeWordbookModal');
 
 if (wbBtnGlobal && wbModalGlobal) {
     wbBtnGlobal.onclick = function () {
+        closeLevelSelector();
         updateWordbookSelectionUI();
         wbModalGlobal.style.display = 'flex';
     };

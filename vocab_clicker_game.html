@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.10">
+    <link rel="stylesheet" href="style.css?v=3.11">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -218,7 +218,11 @@
             </div>
         </div>
 
-
+        <button id="levelCurrentBtn" class="level-current-btn" type="button" onclick="toggleLevelSelector(event)"
+            aria-expanded="false" aria-controls="levelContainer">
+            <span id="levelCurrentLabel">基礎</span>
+            <span class="level-current-caret">▾</span>
+        </button>
         <div class="level-selector" id="levelContainer">
             <button class="level-btn" data-level="junior">🔰 中学</button>
             <button class="level-btn active" data-level="basic">📚 基礎</button>
@@ -403,8 +407,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.10"></script>
-<script src="data/ipa_overrides.js?v=3.10"></script>
+    <script src="data/vocabulary.js?v=3.11"></script>
+<script src="data/ipa_overrides.js?v=3.11"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -812,19 +816,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.10"></script>
-    <script src="js/update_manager.js?v=3.10"></script>
-    <script src="js/config.js?v=3.10"></script>
-    <script src="data/announcements.js?v=3.10"></script>
-    <script src="js/utils.js?v=3.10"></script>
-    <script src="js/stats_engine.js?v=3.10"></script>
-    <script src="js/chart_data_adapter.js?v=3.10"></script>
+    <script src="js/version.js?v=3.11"></script>
+    <script src="js/update_manager.js?v=3.11"></script>
+    <script src="js/config.js?v=3.11"></script>
+    <script src="data/announcements.js?v=3.11"></script>
+    <script src="js/utils.js?v=3.11"></script>
+    <script src="js/stats_engine.js?v=3.11"></script>
+    <script src="js/chart_data_adapter.js?v=3.11"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.10"></script>
-    <script src="js/game_logic.js?v=3.10"></script>
-    <script src="js/ui_manager.js?v=3.10"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.10"></script>
+    <script src="js/chart_fallback.js?v=3.11"></script>
+    <script src="js/game_logic.js?v=3.11"></script>
+    <script src="js/ui_manager.js?v=3.11"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.11"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
