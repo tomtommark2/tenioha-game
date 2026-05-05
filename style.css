@@ -3047,6 +3047,22 @@ body.level-selector-open .level-selector {
     transform-origin: center;
 }
 
+#heroCharacter.pixel-art {
+    width: 96px;
+    height: 128px;
+    background-image: url('assets/char_sprite_hero_v3.png?v=1');
+    background-size: 576px 384px;
+    image-rendering: pixelated;
+    position: relative;
+    top: -80px;
+    transform: scaleX(-1) scale(1.18);
+}
+
+#enemySlime.pixel-art {
+    background-image: url('assets/char_sprite.png?v=17');
+    background-size: 300px 256px;
+}
+
 /* Frames: 0px to -300px via steps(6) */
 @keyframes sprite-play {
     from {
@@ -3055,6 +3071,16 @@ body.level-selector-open .level-selector {
 
     to {
         background-position-x: -300px;
+    }
+}
+
+@keyframes hero-sprite-play {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: -576px;
     }
 }
 
@@ -3078,6 +3104,30 @@ body.level-selector-open .level-selector {
     animation: sprite-play 0.8s steps(6) infinite;
     transform: scaleX(1) scale(2.2);
     /* Flip back to face opposite of Idle */
+}
+
+#heroCharacter.anim-idle {
+    background-position-y: 0px;
+    animation: hero-sprite-play 1.2s steps(6) infinite;
+    transform: scaleX(-1) scale(1.18);
+}
+
+#heroCharacter.anim-attack {
+    background-position-y: -256px;
+    animation: hero-sprite-play 0.8s steps(6) infinite;
+    transform: scaleX(1) scale(1.18);
+}
+
+#heroCharacter.anim-cheer {
+    background-position-y: -256px;
+    animation: hero-sprite-play 0.8s steps(6) infinite;
+    transform: scaleX(1) scale(1.08);
+}
+
+#heroCharacter.anim-walk {
+    background-position-y: -128px;
+    animation: hero-sprite-play 0.9s steps(6) infinite;
+    transform: scaleX(1) scale(1.18);
 }
 
 .anim-slime {
@@ -4121,6 +4171,26 @@ body.level-selector-open .level-selector {
     .rpg-inline {
         left: 20px;
         bottom: -10px;
+    }
+
+    #heroCharacter.pixel-art {
+        top: -56px;
+    }
+
+    #heroCharacter.anim-idle {
+        transform: scaleX(-1) scale(1.3);
+    }
+
+    #heroCharacter.anim-attack {
+        transform: scaleX(1) scale(1.3);
+    }
+
+    #heroCharacter.anim-cheer {
+        transform: scaleX(1) scale(1.19);
+    }
+
+    #heroCharacter.anim-walk {
+        transform: scaleX(1) scale(1.3);
     }
 
     .header>div:last-child {
