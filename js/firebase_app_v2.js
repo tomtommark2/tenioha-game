@@ -1326,13 +1326,6 @@ window.closeProfileModal = function () {
 // window.openProfileModal is defined above at line 1139
 
 
-// --- SIMPLE MODE LOGIC (Moved to ui_manager.js) ---
-/*
-window.openSimpleModeModal = ...
-window.startSimpleMode = ...
-window.exitSimpleMode = ...
-*/
-
 // --- SAFE UI INIT (v2.37) ---
 function initUI() {
     console.log("initUI: Attaching listeners...");

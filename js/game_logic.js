@@ -2311,32 +2311,6 @@ window.closePurchaseModal = function () {
     }
 };
 
-// --- SIMPLE MODE LOGIC ---
-function openSimpleModeModal() {
-    document.getElementById('simpleModeModal').style.display = 'flex';
-}
-
-function startSimpleMode(level) {
-    document.getElementById('simpleModeModal').style.display = 'none';
-    document.body.classList.add('simple-mode');
-
-    if (level === 'wordbook') {
-        // Open Wordbook Selection Modal
-        // Assuming openWordbookModal() exists or we find the logic.
-        // Re-using existing button click logic is safest if function undefined.
-        const wbBtn = document.getElementById('wordbookBtn');
-        if (wbBtn) wbBtn.click();
-    } else {
-        // Set Level
-        const btn = document.querySelector(`.level-btn[data-level="${level}"]`);
-        if (btn) btn.click();
-    }
-}
-
-function exitSimpleMode() {
-    document.body.classList.remove('simple-mode');
-}
-
 // --- Leaderboard & Cloud Modal UI Logic (Moved from Module) ---
 async function openLeaderboard() {
     document.getElementById('leaderboardModal').style.display = 'flex';

@@ -89,150 +89,6 @@ body {
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
-.simple-mode-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 3000;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    background:
-        radial-gradient(circle at 12% 18%, rgba(122, 211, 255, 0.18), transparent 28%),
-        linear-gradient(135deg, rgba(14, 26, 48, 0.78), rgba(34, 47, 73, 0.68));
-    backdrop-filter: blur(5px);
-}
-
-.simple-mode-modal-content {
-    position: relative;
-    width: min(460px, 96vw);
-    max-height: 92vh;
-    overflow: auto;
-    padding: 0 18px 18px !important;
-    border: 1px solid rgba(255, 255, 255, 0.74) !important;
-    border-radius: 28px !important;
-    background: #f8fbff !important;
-    text-align: left !important;
-    box-shadow: 0 30px 86px rgba(16, 25, 45, 0.34) !important;
-}
-
-.simple-mode-close-btn {
-    top: 14px;
-    right: 14px;
-    background: rgba(255, 255, 255, 0.18);
-    color: #fff;
-}
-
-.simple-mode-hero {
-    margin: 0 -18px 16px;
-    padding: 28px 52px 22px 26px;
-    border-radius: 28px 28px 0 0;
-    background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 36%),
-        linear-gradient(135deg, #16263f, #2f8aa9);
-    color: #fff;
-}
-
-.simple-mode-kicker {
-    display: inline-flex;
-    align-items: center;
-    height: 24px;
-    padding: 0 10px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.84);
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.simple-mode-title {
-    margin: 13px 0 5px;
-    color: #fff;
-    font-size: 25px;
-    font-weight: 900;
-    line-height: 1.25;
-}
-
-.simple-mode-subtitle {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.6;
-}
-
-.simple-mode-list {
-    display: grid;
-    gap: 10px;
-}
-
-.simple-select-btn {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    min-height: 70px;
-    padding: 12px 14px;
-    border: 1px solid #dfe6f2;
-    border-radius: 18px;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 247, 255, 0.92));
-    color: #26354f;
-    cursor: pointer;
-    text-align: left;
-    box-shadow: 0 10px 22px rgba(25, 42, 70, 0.06);
-    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-}
-
-.simple-select-btn:hover {
-    transform: translateY(-2px);
-    border-color: rgba(47, 138, 169, 0.42);
-    box-shadow: 0 16px 30px rgba(25, 42, 70, 0.11);
-}
-
-.simple-mode-icon {
-    display: grid;
-    place-items: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
-    background: #eaf6fb;
-    color: #1d6f8d;
-    font-size: 22px;
-}
-
-.simple-mode-copy {
-    display: grid;
-    gap: 3px;
-}
-
-.simple-mode-copy strong {
-    color: #26354f;
-    font-size: 15px;
-    font-weight: 900;
-}
-
-.simple-mode-copy small {
-    color: #7b8798;
-    font-size: 11px;
-    font-weight: 700;
-    line-height: 1.4;
-}
-
-.simple-select-wordbook {
-    border-color: rgba(255, 180, 84, 0.45);
-    background:
-        radial-gradient(circle at right top, rgba(255, 221, 126, 0.24), transparent 34%),
-        linear-gradient(135deg, #fffaf0, #ffffff);
-}
-
-.simple-select-wordbook .simple-mode-icon {
-    background: #fff0d3;
-    color: #b66a00;
-}
-
 .wordbook-modal {
     position: fixed;
     inset: 0;
@@ -2482,45 +2338,6 @@ body {
 }
 
 @media (max-width: 420px) {
-    .simple-mode-modal {
-        padding: 10px;
-    }
-
-    .simple-mode-modal-content {
-        width: min(420px, 96vw);
-        max-height: calc(100vh - 20px);
-        padding: 0 13px 13px !important;
-        border-radius: 22px !important;
-    }
-
-    .simple-mode-hero {
-        margin: 0 -13px 12px;
-        padding: 22px 46px 17px 20px;
-        border-radius: 22px 22px 0 0;
-    }
-
-    .simple-mode-title {
-        margin-top: 10px;
-        font-size: 22px;
-    }
-
-    .simple-mode-subtitle {
-        font-size: 11px;
-    }
-
-    .simple-select-btn {
-        min-height: 66px;
-        padding: 10px 11px;
-        gap: 10px;
-        border-radius: 17px;
-    }
-
-    .simple-mode-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 13px;
-    }
-
     #leaderboardModal.leaderboard-modal {
         padding: 10px;
     }
@@ -3153,59 +2970,6 @@ body {
 }
 
 
-/* --- SIMPLE MODE STYLES --- */
-/* --- SIMPLE MODE STYLES --- */
-/* Specified to BE HIDDEN */
-body.simple-mode .level-selector,
-body.simple-mode .header-controls,
-body.simple-mode .simple-switch-container,
-body.simple-mode .progress-section,
-body.simple-mode .mobile-progress-wrapper,
-body.simple-mode .pos-filter-container,
-body.simple-mode .mobile-only.header-profile-icon,
-body.simple-mode #headerProfileIcon {
-    display: none !important;
-}
-
-body.simple-mode .container {
-    margin-top: 60px;
-    /* Reset reduced padding */
-    max-width: 900px;
-    /* Keep it focused */
-    padding-top: 70px !important;
-    /* Push content down so Gold (top: -42px) has ~30px clear space from container top */
-    /* Gold is relative to .rpg-inline (absolute). 
-               .rpg-inline is at bottom: -20px. 
-               Wait, mobile layout differs. */
-}
-
-/* Mobile Specific Adjustment for Simple Mode Layout */
-@media (max-width: 768px) {
-    body.simple-mode .container {
-        /* On mobile, .rpg-inline is absolute at bottom. 
-                   Gold is top: -42px relative to character.
-                   If we want Gold to be "Top of frame", we might need to shift the character or container.
-                   
-                   Actually, let's look at the Mobile Layout again.
-                   Character is Bottom-Left. Buttons are Right.
-                   Use didn't ask to move Character.
-                   
-                   "Gold notation top 30pix around -> Main frame top edge".
-                   This sounds like "Cut off everything above Gold".
-                   
-                   If the Character is unchanged:
-                   We just hide the header buttons.
-                   The container top edge is defined by .container.
-                */
-        padding-top: 20px !important;
-        /* Standard padding */
-    }
-}
-
-body.simple-mode #exitSimpleModeBtn {
-    display: block !important;
-}
-
 /* Leaderboard Styles */
 .ranking-btn {
     background: linear-gradient(135deg, #f1c40f, #f39c12);
@@ -3538,10 +3302,6 @@ body.simple-mode #exitSimpleModeBtn {
 .rank-score {
     font-weight: bold;
     color: #667eea;
-}
-
-body.simple-mode .cards-area {
-    margin-top: 20px;
 }
 
 /* --- NEW MINI PROGRESS BAR --- */
@@ -3953,9 +3713,6 @@ body.simple-mode .cards-area {
         box-shadow: 0 8px 18px rgba(30, 41, 59, 0.08);
     }
 
-    body.simple-mode .container {
-        padding-top: calc(28px + env(safe-area-inset-top)) !important;
-    }
 }
 
 @media (max-width: 360px) {

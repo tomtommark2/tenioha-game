@@ -17,7 +17,6 @@ window.addEventListener('load', () => {
     // Init PWA/Welcome
     initWelcomeSequence();
 
-    // Init Simple UI Listeners
     initGlobalUIListeners();
     initAnnouncements();
 });
@@ -761,33 +760,6 @@ window.switchTab = function (tab) {
         // Fallback UI update only
         document.querySelectorAll('.lb-tab').forEach(b => b.classList.remove('active'));
     }
-};
-
-// --- SIMPLE MODE ---
-window.openSimpleModeModal = function () {
-    document.getElementById('simpleModeModal').style.display = 'flex';
-};
-
-window.startSimpleMode = function (level) {
-    document.getElementById('simpleModeModal').style.display = 'none';
-    document.body.classList.add('simple-mode');
-
-    if (level === 'wordbook') {
-        const wbBtn = document.getElementById('wordbookBtn');
-        if (wbBtn) wbBtn.click();
-        else {
-            const wbModal = document.getElementById('wordbookModal');
-            if (wbModal) wbModal.style.display = 'flex';
-        }
-    } else {
-        const btn = document.querySelector(`.level-btn[data-level="${level}"]`);
-        if (btn) btn.click();
-        else if (typeof switchLevel === 'function') switchLevel(level);
-    }
-};
-
-window.exitSimpleMode = function () {
-    document.body.classList.remove('simple-mode');
 };
 
 // --- PWA / WELCOME ---

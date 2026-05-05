@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.09">
+    <link rel="stylesheet" href="style.css?v=3.10">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -171,11 +171,6 @@
         <div id="otherMenuDropdown" class="other-menu-dropdown">
 
             <div class="other-menu-section-title">学習設定</div>
-
-            <div class="other-menu-item" onclick="openSimpleModeModal(); toggleOtherMenu();">
-                <span class="other-menu-icon">📱</span>
-                <span class="other-menu-label">シンプル表示</span>
-            </div>
 
             <div class="other-menu-item" onclick="openStudyModeModal(); toggleOtherMenu();">
                 <span class="other-menu-icon">🧭</span>
@@ -408,66 +403,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.09"></script>
-<script src="data/ipa_overrides.js?v=3.09"></script>
-
-    <!-- Simple Mode Category Selection Modal -->
-    <div id="simpleModeModal" class="modal-overlay simple-mode-modal" style="display: none;">
-        <div class="modal-content simple-mode-modal-content">
-            <button class="modal-close-btn simple-mode-close-btn"
-                onclick="document.getElementById('simpleModeModal').style.display='none'">&times;</button>
-
-            <div class="simple-mode-hero">
-                <div class="simple-mode-kicker">Simple mode</div>
-                <h2 class="simple-mode-title">📱 シンプルモード設定</h2>
-                <p class="simple-mode-subtitle">出題範囲を一つ選んで、画面を簡略化します。</p>
-            </div>
-
-            <div class="simple-mode-list">
-                <button onclick="startSimpleMode('junior')" class="simple-select-btn">
-                    <span class="simple-mode-icon">🔰</span>
-                    <span class="simple-mode-copy">
-                        <strong>中学レベル</strong>
-                        <small>A1の基本語から始めます</small>
-                    </span>
-                </button>
-                <button onclick="startSimpleMode('basic')" class="simple-select-btn">
-                    <span class="simple-mode-icon">📚</span>
-                    <span class="simple-mode-copy">
-                        <strong>基礎レベル</strong>
-                        <small>A2のよく使う語を練習</small>
-                    </span>
-                </button>
-                <button onclick="startSimpleMode('daily')" class="simple-select-btn">
-                    <span class="simple-mode-icon">🎬</span>
-                    <span class="simple-mode-copy">
-                        <strong>標準レベル</strong>
-                        <small>B1の日常語・実用語</small>
-                    </span>
-                </button>
-                <button onclick="startSimpleMode('exam1')" class="simple-select-btn">
-                    <span class="simple-mode-icon">📖</span>
-                    <span class="simple-mode-copy">
-                        <strong>受験レベル</strong>
-                        <small>B2の発展語まで含めます</small>
-                    </span>
-                </button>
-                <button onclick="startSimpleMode('wordbook')" class="simple-select-btn simple-select-wordbook">
-                    <span class="simple-mode-icon">📘</span>
-                    <span class="simple-mode-copy">
-                        <strong>単語帳</strong>
-                        <small>ターゲット・システム英単語から選択</small>
-                    </span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Simple Mode Exit Button (Hidden by default) -->
-    <button id="exitSimpleModeBtn" onclick="exitSimpleMode()"
-        style="display: none; position: fixed; top: 15px; right: 15px; z-index: 300; background: #333; color: white; border: none; padding: 5px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; opacity: 0.8;">
-        ✕ 通常モードへ戻る
-    </button>
+    <script src="data/vocabulary.js?v=3.10"></script>
+<script src="data/ipa_overrides.js?v=3.10"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -875,19 +812,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.09"></script>
-    <script src="js/update_manager.js?v=3.09"></script>
-    <script src="js/config.js?v=3.09"></script>
-    <script src="data/announcements.js?v=3.09"></script>
-    <script src="js/utils.js?v=3.09"></script>
-    <script src="js/stats_engine.js?v=3.09"></script>
-    <script src="js/chart_data_adapter.js?v=3.09"></script>
+    <script src="js/version.js?v=3.10"></script>
+    <script src="js/update_manager.js?v=3.10"></script>
+    <script src="js/config.js?v=3.10"></script>
+    <script src="data/announcements.js?v=3.10"></script>
+    <script src="js/utils.js?v=3.10"></script>
+    <script src="js/stats_engine.js?v=3.10"></script>
+    <script src="js/chart_data_adapter.js?v=3.10"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.09"></script>
-    <script src="js/game_logic.js?v=3.09"></script>
-    <script src="js/ui_manager.js?v=3.09"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.09"></script>
+    <script src="js/chart_fallback.js?v=3.10"></script>
+    <script src="js/game_logic.js?v=3.10"></script>
+    <script src="js/ui_manager.js?v=3.10"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.10"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
