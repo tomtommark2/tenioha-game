@@ -3514,7 +3514,7 @@ body {
         min-height: 100dvh;
         margin: 0;
         padding: 12px 8px calc(16px + env(safe-area-inset-bottom));
-        padding-top: calc(90px + env(safe-area-inset-top));
+        padding-top: calc(78px + env(safe-area-inset-top));
         border: none;
         border-radius: 0;
         background: transparent;
@@ -3530,7 +3530,7 @@ body {
         top: 0;
         left: 0;
         right: 0;
-        height: 244px;
+        height: 232px;
         pointer-events: none;
         background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%),
@@ -3541,7 +3541,7 @@ body {
     .container::after {
         content: "";
         position: absolute;
-        top: 220px;
+        top: 208px;
         left: 0;
         right: 0;
         bottom: 0;
