@@ -3734,3 +3734,241 @@ body.simple-mode .cards-area {
         display: none !important;
     }
 }
+
+/* Mobile app-canvas: keep the rich brand header without wasting space on an outer frame. */
+@media (max-width: 768px) {
+    body {
+        align-items: stretch;
+        padding: 0;
+        background: #f8faff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        margin: 0;
+        padding: 12px 8px calc(16px + env(safe-area-inset-bottom));
+        padding-top: calc(90px + env(safe-area-inset-top));
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        overflow-x: hidden;
+    }
+
+    .container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 244px;
+        pointer-events: none;
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%),
+            linear-gradient(140deg, #4f46c7 0%, #6d5cc7 56%, #7b69c7 100%);
+        z-index: 0;
+    }
+
+    .container::after {
+        content: "";
+        position: absolute;
+        top: 220px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        border-radius: 0;
+        background:
+            linear-gradient(180deg, rgba(248, 250, 255, 0.98), #ffffff 36%);
+        box-shadow: 0 -10px 30px rgba(34, 41, 92, 0.1);
+        z-index: 0;
+    }
+
+    .header,
+    #reviewProgressWrap,
+    .cards-area,
+    .example-area {
+        position: relative;
+        z-index: 1;
+    }
+
+    .simple-switch-container,
+    .header-controls,
+    .level-selector {
+        z-index: 2;
+    }
+
+    .simple-switch-container {
+        top: calc(8px + env(safe-area-inset-top)) !important;
+        left: 8px !important;
+    }
+
+    .other-menu-caption {
+        color: rgba(255, 255, 255, 0.88);
+        text-shadow: 0 1px 4px rgba(41, 42, 92, 0.28);
+    }
+
+    .header-controls {
+        top: calc(8px + env(safe-area-inset-top));
+        right: 8px;
+    }
+
+    .icon-btn,
+    .other-menu-button,
+    .header-profile-icon {
+        border-color: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 12px 24px rgba(34, 38, 96, 0.22);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .trial-timer {
+        background: rgba(255, 255, 255, 0.84);
+        box-shadow: 0 10px 20px rgba(146, 42, 90, 0.16);
+    }
+
+    .level-selector {
+        top: calc(72px + env(safe-area-inset-top));
+        right: 6px;
+        left: 92px;
+        justify-content: flex-start;
+        padding: 1px 0 6px 8px;
+        mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
+        -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
+    }
+
+    .level-selector .level-btn,
+    .level-selector .wordbook-opener-btn {
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 9px 20px rgba(34, 38, 96, 0.17);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .level-selector .level-btn.active,
+    .level-selector .wordbook-opener-btn.active {
+        border-color: rgba(102, 126, 234, 0.5);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.24);
+    }
+
+    .header {
+        min-height: 124px;
+        margin: 2px 0 0;
+        padding: 0 0 4px;
+    }
+
+    .rpg-inline {
+        left: 20px;
+        bottom: -10px;
+    }
+
+    .header>div:last-child {
+        align-items: stretch !important;
+    }
+
+    .right-controls-container {
+        width: min(176px, 48vw) !important;
+        align-self: flex-end !important;
+    }
+
+    .mode-buttons {
+        gap: 8px;
+        margin: 4px 0 0;
+    }
+
+    .mode-btn {
+        height: 50px;
+        border-radius: 14px;
+        box-shadow: 0 12px 24px rgba(31, 36, 90, 0.16);
+    }
+
+    #reviewProgressWrap {
+        margin: 14px 0 10px !important;
+    }
+
+    .cards-area {
+        gap: 16px;
+        margin-top: 12px;
+        margin-bottom: 16px;
+    }
+
+    .card {
+        min-height: 162px;
+        border: 1px solid rgba(224, 230, 243, 0.96);
+        border-radius: 24px;
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(249, 252, 255, 0.96));
+        box-shadow:
+            0 18px 38px rgba(35, 48, 78, 0.11),
+            inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    }
+
+    .card-label {
+        top: 14px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: rgba(239, 244, 255, 0.88);
+        color: #6174e9;
+        font-size: 13px;
+    }
+
+    .card-content {
+        color: #202839;
+    }
+
+    .word-ipa {
+        color: #536388;
+    }
+
+    .example-area {
+        border-width: 1px;
+        border-radius: 18px;
+        background:
+            linear-gradient(135deg, #fff8dd, #fffdf4);
+        box-shadow: 0 12px 26px rgba(143, 111, 0, 0.08);
+    }
+
+    .example-text {
+        min-width: 0;
+    }
+
+    .speaker-btn {
+        box-shadow: 0 8px 18px rgba(102, 126, 234, 0.2);
+    }
+
+    .undo-btn {
+        position: static;
+        flex-shrink: 0;
+        align-self: center;
+        min-width: 70px;
+        border-radius: 10px;
+        background: rgba(248, 250, 252, 0.82);
+        box-shadow: 0 8px 18px rgba(30, 41, 59, 0.08);
+    }
+
+    body.simple-mode .container {
+        padding-top: calc(28px + env(safe-area-inset-top)) !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .right-controls-container {
+        width: 164px !important;
+    }
+
+    .mode-buttons {
+        gap: 6px;
+    }
+
+    .mode-btn {
+        height: 48px;
+        font-size: 11px;
+    }
+}
