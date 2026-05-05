@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.12">
+    <link rel="stylesheet" href="style.css?v=3.13">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -31,7 +31,7 @@
 
             <button onclick="openPurchaseModal();"
                 style="margin-bottom: 20px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; padding: 15px 30px; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; width: 100%; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); display: flex; flex-direction: column; align-items: center; gap: 5px;">
-                <span>💎 制限を解除</span>
+                <span><span class="inline-picto app-picto icon-diamond" aria-hidden="true"></span>制限を解除</span>
                 <span style="font-size: 12px; opacity: 0.9;">(買い切り¥1,800)</span>
             </button>
 
@@ -64,10 +64,10 @@
 
             <div class="welcome-actions">
                 <button id="installAppBtn" class="install-btn" onclick="triggerInstall()">
-                    📲 アプリをインストールして開始<br>
+                    アプリをインストールして開始<br>
                     <span style="font-size: 11px; opacity: 0.9; margin-top: 5px; line-height: 1.4;">
-                        💎 プレミアム権限もらえる！<br>
-                        🚀 オフライン対応
+                        プレミアム権限もらえる！<br>
+                        オフライン対応
                     </span>
                 </button>
                 <div class="divider">または</div>
@@ -173,24 +173,24 @@
             <div class="other-menu-section-title">学習設定</div>
 
             <div class="other-menu-item" onclick="openStudyModeModal(); toggleOtherMenu();">
-                <span class="other-menu-icon">🧭</span>
+                <span class="other-menu-icon app-picto icon-compass" aria-hidden="true"></span>
                 <span class="other-menu-label">出題モード</span>
             </div>
 
             <div class="other-menu-section-title">記録</div>
 
             <div class="other-menu-item" onclick="openLearningLogModal(); toggleOtherMenu();">
-                <span class="other-menu-icon">📊</span>
+                <span class="other-menu-icon app-picto icon-chart" aria-hidden="true"></span>
                 <span class="other-menu-label">語彙力推定</span>
             </div>
 
             <div class="other-menu-item" onclick="openLearningLogPreviewModal(); toggleOtherMenu();">
-                <span class="other-menu-icon">📝</span>
+                <span class="other-menu-icon app-picto icon-log" aria-hidden="true"></span>
                 <span class="other-menu-label">学習ログ</span>
             </div>
 
             <div class="other-menu-item" onclick="openLeaderboard(); toggleOtherMenu();">
-                <span class="other-menu-icon">👑</span>
+                <span class="other-menu-icon app-picto icon-crown" aria-hidden="true"></span>
                 <span class="other-menu-label">ランキング</span>
             </div>
 
@@ -198,7 +198,7 @@
 
             <div class="other-menu-item external"
                 onclick="window.open('https://phrasalverbapp-d5fa7.web.app/index.html', '_blank', 'noopener'); toggleOtherMenu();">
-                <span class="other-menu-icon">📘</span>
+                <span class="other-menu-icon app-picto icon-book" aria-hidden="true"></span>
                 <span class="other-menu-label external">動く！てにをは英語図鑑</span>
             </div>
         </div>
@@ -206,16 +206,18 @@
         <!-- Top Right Navigation -->
         <div class="header-controls">
             <div id="trialTimerDisplay" class="trial-timer">残り 10:00</div>
-            <button class="icon-btn announcement-btn" id="announcementBtn" title="お知らせ"
+            <button class="icon-btn top-icon-btn announcement-btn" id="announcementBtn" title="お知らせ"
                 onclick="openAnnouncementModal()">
-                🔔
+                <svg class="top-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18 9.8c0-3.3-2.1-5.8-5.1-6.4V2.7c0-.5-.4-.9-.9-.9s-.9.4-.9.9v.7C8.1 4 6 6.5 6 9.8v3.7l-1.3 2.1c-.3.5 0 1.1.6 1.1h13.4c.6 0 .9-.6.6-1.1L18 13.5V9.8Z" />
+                    <path d="M9.6 18.2c.3 1.1 1.2 1.9 2.4 1.9s2.1-.8 2.4-1.9" />
+                </svg>
                 <span id="announcementUnreadDot" class="announcement-dot"></span>
             </button>
-            <button class="icon-btn" id="helpBtn" title="遊び方">❓</button>
-            <div id="headerProfileIcon" class="header-profile-icon" onclick="toggleProfileModal()" title="アカウント">
-                <span id="headerProfileInitials" class="header-profile-initials">👤</span>
-                <img id="headerProfileImage" class="header-profile-image" src="">
-            </div>
+            <button class="icon-btn top-icon-btn top-action-menu-btn" id="topActionMenuBtn" title="管理メニュー"
+                aria-controls="helpModal" onclick="document.getElementById('helpModal').style.display='flex'">
+                <span class="vertical-dots-icon" aria-hidden="true"></span>
+            </button>
         </div>
 
         <button id="levelCurrentBtn" class="level-current-btn" type="button" onclick="toggleLevelSelector(event)"
@@ -224,14 +226,14 @@
             <span class="level-current-caret">▾</span>
         </button>
         <div class="level-selector" id="levelContainer">
-            <button class="level-btn" data-level="junior">🔰 中学</button>
-            <button class="level-btn active" data-level="basic">📚 基礎</button>
-            <button class="level-btn" data-level="daily">🎬 標準</button>
-            <button class="level-btn" data-level="exam1">📖 受験</button>
+            <button class="level-btn" data-level="junior">中学</button>
+            <button class="level-btn active" data-level="basic">基礎</button>
+            <button class="level-btn" data-level="daily">標準</button>
+            <button class="level-btn" data-level="exam1">受験</button>
             <button class="wordbook-opener-btn" id="wordbookBtn"
                 onclick="document.getElementById('wordbookModal').style.display='flex'"
                 style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);">
-                <span class="pc-only">📘</span><span> 単語帳</span>
+                <span>単語帳</span>
             </button>
         </div>
 
@@ -245,14 +247,6 @@
                 </div>
 
                 <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
-
-                <!-- NEW: Compact Progress Bar (90px) -->
-                <div class="mini-progress-container">
-                    <div class="mini-title js-current-title">見習い</div>
-                    <div class="mini-bar-bg">
-                        <div class="mini-bar-fill js-progress-bar-fill" style="width: 0%;"></div>
-                    </div>
-                </div>
 
                 <div id="heroCharacter" class="pixel-art anim-idle"></div>
             </div>
@@ -278,15 +272,15 @@
                             <span class="mode-count" id="unlearnedCount">0</span>
                         </button>
                         <button class="mode-btn learned" data-mode="learned" id="learnedBtn">
-                            <span>✅ 得意</span>
+                            <span>得意</span>
                             <span class="mode-count" id="learnedCount">0</span>
                         </button>
                         <button class="mode-btn perfect" data-mode="perfect" id="perfectBtn">
-                            <span>🏆 完璧</span>
+                            <span>完璧</span>
                             <span class="mode-count" id="perfectCount">0</span>
                         </button>
                         <button class="mode-btn weak" data-mode="weak" id="weakBtn">
-                            <span>📚 苦手</span>
+                            <span>苦手</span>
                             <span class="mode-count" id="weakCount">0</span>
                         </button>
                     </div>
@@ -311,7 +305,7 @@
                 <div class="study-mode-hero">
                     <div>
                         <div class="study-mode-kicker">Study Mode</div>
-                        <h2 class="study-mode-title">🧭 出題モード</h2>
+                        <h2 class="study-mode-title"><span class="title-picto app-picto icon-compass" aria-hidden="true"></span>出題モード</h2>
                         <p class="study-mode-subtitle">復習と新規の出題ルールをここでまとめて管理します。</p>
                     </div>
                     <button class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()">×</button>
@@ -345,10 +339,10 @@
                         <span id="dueOnlyModeLabelModal" class="study-mode-status-pill">復習モード:MIX</span>
                     </div>
 
-                    <button onclick="toggleDueOnlyMode()" class="study-mode-switch-btn">🧹 配信モード切替</button>
+                    <button onclick="toggleDueOnlyMode()" class="study-mode-switch-btn"><span class="button-picto app-picto icon-route" aria-hidden="true"></span>配信モード切替</button>
 
                     <div class="study-review-level-block">
-                        <div class="study-mode-mini-title">🎯 復習レベル設定</div>
+                        <div class="study-mode-mini-title"><span class="inline-picto app-picto icon-target" aria-hidden="true"></span>復習レベル設定</div>
                         <div id="reviewLevelCheckboxes" class="study-review-level-grid"></div>
                     </div>
                 </div>
@@ -372,7 +366,7 @@
         </div>
 
         <div id="addWordsContainer" style="text-align: center; display: none; margin-bottom: 20px;">
-            <button class="add-words-btn" id="addWordsBtn">➕ 次のセットを追加（レベルアップ）</button>
+            <button class="add-words-btn" id="addWordsBtn"><span class="inline-picto app-picto icon-plus" aria-hidden="true"></span>次のセットを追加（レベルアップ）</button>
         </div>
 
         <div class="main-content">
@@ -386,7 +380,7 @@
                     <div class="card meaning-card" id="meaningCard">
                         <div class="card-label">意味カード</div>
                         <div class="card-front">
-                            <div class="card-content">❓</div>
+                            <div class="card-content">?</div>
                         </div>
                         <div class="card-back">
                             <div class="card-content" id="meaningText">意味</div>
@@ -395,20 +389,20 @@
                 </div>
 
                 <div class="example-area" id="exampleArea">
-                    <button class="speaker-btn" id="speakerBtn">🔊</button>
+                    <button class="speaker-btn" id="speakerBtn" aria-label="例文を再生"><span class="speaker-icon" aria-hidden="true"></span></button>
                     <div class="example-text">
                         <div class="example-label">例文</div>
                         <div class="example-sentence" id="exampleSentence">ファイルを読み込んでください</div>
                     </div>
-                    <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled>↩️ 戻る</button>
+                    <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled><span class="undo-icon" aria-hidden="true"></span>戻る</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.12"></script>
-<script src="data/ipa_overrides.js?v=3.12"></script>
+    <script src="data/vocabulary.js?v=3.13"></script>
+<script src="data/ipa_overrides.js?v=3.13"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -423,12 +417,12 @@
             </p>
             <button onclick="forceUpdateApp()"
                 style="width: 100%; padding: 15px; background: #e74c3c; color: white; border: none; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);">
-                🔄 今すぐアップデート
+                <span class="inline-picto app-picto icon-refresh" aria-hidden="true"></span>今すぐアップデート
             </button>
         </div>
     </div>
 
-    <!-- Help Modal -->
+    <!-- Management Menu Modal -->
     <div id="helpModal" class="modal-overlay help-modal help-redesign"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; justify-content: center; align-items: center;">
         <div class="modal-content help-modal-content"
@@ -445,21 +439,33 @@
             </button>
 
             <h2 class="help-heading">
-                ヘルプ
+                管理メニュー
             </h2>
-            <p class="help-subheading">ここから管理できます。</p>
+            <p class="help-subheading">アカウント・更新・購入・お問い合わせ</p>
 
             <div class="help-list-container">
-                <div class="help-list-item" onclick="forceUpdateApp()">
-                    <span class="help-list-icon">🔄</span>
+                <div class="help-list-item" onclick="document.getElementById('helpModal').style.display='none'; openProfileModal();">
+                    <span id="headerProfileIcon" class="help-list-icon header-profile-icon help-profile-icon"
+                        title="アカウント">
+                        <span id="headerProfileInitials" class="header-profile-initials"></span>
+                        <img id="headerProfileImage" class="header-profile-image" src="">
+                    </span>
                     <div class="help-list-copy">
-                        <div class="help-list-title">最新版への更新</div>
-                        <div class="help-list-desc">ここをタップして更新を確認・実行</div>
+                        <div class="help-list-title">アカウント</div>
+                        <div class="help-list-desc">ログイン・同期・購入状態を確認</div>
+                    </div>
+                </div>
+
+                <div class="help-list-item" onclick="forceUpdateApp()">
+                    <span class="help-list-icon app-picto icon-refresh" aria-hidden="true"></span>
+                    <div class="help-list-copy">
+                        <div class="help-list-title">更新を確認</div>
+                        <div class="help-list-desc">表示が古い時に最新版へ更新</div>
                     </div>
                 </div>
 
                 <div class="help-list-item" onclick="window.installApp()">
-                    <span class="help-list-icon">📲</span>
+                    <span class="help-list-icon app-picto icon-phone" aria-hidden="true"></span>
                     <div class="help-list-copy">
                         <div class="help-list-title">アプリインストール</div>
                         <div class="help-list-desc">タップしてインストール (プレミア権限付与)</div>
@@ -467,7 +473,7 @@
                 </div>
 
                 <div class="help-list-item" onclick="document.getElementById('helpModal').style.display='none'; openPurchaseModal();">
-                    <span class="help-list-icon">💎</span>
+                    <span class="help-list-icon app-picto icon-diamond" aria-hidden="true"></span>
                     <div class="help-list-copy">
                         <div class="help-list-title">制限の解除</div>
                         <div class="help-list-desc">タップして購入ページを表示</div>
@@ -475,7 +481,7 @@
                 </div>
 
                 <div class="help-list-item" onclick="location.href='mailto:tenioha.eng@gmail.com'">
-                    <span class="help-list-icon">📧</span>
+                    <span class="help-list-icon app-picto icon-mail" aria-hidden="true"></span>
                     <div class="help-list-copy">
                         <div class="help-list-title">お問い合わせ（質問・バグ報告）</div>
                         <div class="help-list-desc">タップしてメールを送信</div>
@@ -484,7 +490,7 @@
             </div>
             <div class="help-footer">
                 <a class="help-note-link" href="https://note.com/tenioha_eng/n/n5918d72138bd?sub_rt=share_pb" target="_blank">
-                    📚 詳しい使い方はこちら (Note)
+                    詳しい使い方はこちら (Note)
                 </a>
             </div>
         </div>
@@ -495,7 +501,7 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 20000; justify-content: center; align-items: center;">
         <div class="modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 350px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-            <div style="font-size: 40px; margin-bottom: 10px;">🔄</div>
+            <div class="update-modal-picto app-picto icon-refresh" aria-hidden="true"></div>
             <h3 style="margin-top: 0; color: #333; margin-bottom: 10px;">新しいバージョンがあります</h3>
             <p id="updateVersionMsg" style="color: #666; font-size: 14px; margin-bottom: 20px;">
                 自動更新を完了できませんでした。<br>ボタンを押して最新版へ更新してください。<br>
@@ -551,7 +557,7 @@
 
             <div class="wordbook-hero">
                 <div class="wordbook-kicker">Wordbooks</div>
-                <h2 class="wordbook-title">📘 単語帳を選択</h2>
+                <h2 class="wordbook-title"><span class="title-picto app-picto icon-book" aria-hidden="true"></span>単語帳を選択</h2>
                 <p class="wordbook-subtitle">メイン4レベルとは別に、目的別の単語帳で出題します。</p>
             </div>
 
@@ -665,7 +671,7 @@
 
             <div class="learning-log-hero">
                 <div class="learning-log-kicker">Progress</div>
-                <h2 class="learning-log-title">📊 語彙力推定</h2>
+                <h2 class="learning-log-title"><span class="title-picto app-picto icon-chart" aria-hidden="true"></span>語彙力推定</h2>
                 <p class="learning-log-subtitle">学習履歴から現在の語彙力を確認できます。</p>
             </div>
 
@@ -684,7 +690,7 @@
 
             <div class="purchase-hero">
                 <div class="purchase-kicker">Premium</div>
-                <h2 class="purchase-title">💎 プレミアムプラン</h2>
+                <h2 class="purchase-title"><span class="title-picto app-picto icon-diamond" aria-hidden="true"></span>プレミアムプラン</h2>
                 <p class="purchase-lead">全ての制限を解除出来ます。</p>
             </div>
 
@@ -710,7 +716,7 @@
 
             <a href="https://note.com/tenioha_eng/n/n84f2f394b674?sub_rt=share_pw" target="_blank"
                 class="purchase-secondary-link purchase-qa-link">
-                <span>❓</span>
+                <span class="purchase-faq-mark">Q</span>
                 <strong>買い切り版Q&A</strong>
             </a>
 
@@ -771,7 +777,7 @@
                 <!-- Link to Purchase Modal (Clean) -->
                 <button id="premiumActivationSection" onclick="closeProfileModal(); openPurchaseModal();"
                     class="profile-purchase-btn">
-                    <span>💎 制限を解除 (購入ページへ)</span>
+                    <span><span class="inline-picto app-picto icon-diamond" aria-hidden="true"></span>制限を解除 (購入ページへ)</span>
                 </button>
             </div>
 
@@ -816,19 +822,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.12"></script>
-    <script src="js/update_manager.js?v=3.12"></script>
-    <script src="js/config.js?v=3.12"></script>
-    <script src="data/announcements.js?v=3.12"></script>
-    <script src="js/utils.js?v=3.12"></script>
-    <script src="js/stats_engine.js?v=3.12"></script>
-    <script src="js/chart_data_adapter.js?v=3.12"></script>
+    <script src="js/version.js?v=3.13"></script>
+    <script src="js/update_manager.js?v=3.13"></script>
+    <script src="js/config.js?v=3.13"></script>
+    <script src="data/announcements.js?v=3.13"></script>
+    <script src="js/utils.js?v=3.13"></script>
+    <script src="js/stats_engine.js?v=3.13"></script>
+    <script src="js/chart_data_adapter.js?v=3.13"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.12"></script>
-    <script src="js/game_logic.js?v=3.12"></script>
-    <script src="js/ui_manager.js?v=3.12"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.12"></script>
+    <script src="js/chart_fallback.js?v=3.13"></script>
+    <script src="js/game_logic.js?v=3.13"></script>
+    <script src="js/ui_manager.js?v=3.13"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.13"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

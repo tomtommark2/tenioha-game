@@ -556,7 +556,7 @@ function parseCSV(text) {
 
     loadVocabularyForLevel();
     initializeWordStates();
-    document.getElementById('fileInfo').textContent = `✅ ${vocabularyDatabase[level].length}語を読み込みました`;
+    document.getElementById('fileInfo').textContent = `${vocabularyDatabase[level].length}語を読み込みました`;
     showNextWord();
     saveGame();
 }
@@ -613,7 +613,7 @@ const LEVEL_DISPLAY_LABELS = {
 function updateLevelCurrentButton() {
     const label = document.getElementById('levelCurrentLabel');
     if (!label) return;
-    label.textContent = LEVEL_DISPLAY_LABELS[gameState.currentLevel] || '📚 基礎';
+    label.textContent = LEVEL_DISPLAY_LABELS[gameState.currentLevel] || '基礎';
 }
 
 function toggleLevelSelector(event) {
@@ -1074,24 +1074,23 @@ function updateReviewProgressUI() {
     preview.forEach((w, i) => {
         const chip = document.createElement('span');
         chip.textContent = w.word;
-        chip.style.cssText = 'display:inline-flex; align-items:center; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:600; border:1px solid #e3e7f2; background:#fff; color:#4a5568; white-space:nowrap;';
+        chip.className = 'review-queue-chip';
         if (i === 0) {
-            chip.style.borderColor = '#f39c12';
-            chip.style.boxShadow = '0 0 0 2px rgba(243,156,18,0.15) inset';
+            chip.classList.add('is-head');
         }
         list.appendChild(chip);
     });
     if (total > 10) {
         const more = document.createElement('span');
         more.textContent = `+${total - 10}`;
-        more.style.cssText = 'display:inline-flex; align-items:center; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:700; border:1px dashed #cfd6ea; color:#7f8c8d; white-space:nowrap;';
+        more.className = 'review-queue-more';
         list.appendChild(more);
     }
 
     const isOn = gameState.reviewMode === 'on';
     wrap.style.display = total > 0 ? 'block' : (isOn ? 'block' : 'none');
     if (total === 0 && isOn) {
-        list.innerHTML = '<span style="font-size:12px; color:#7f8c8d;">今は due 切れ復習がありません ✅</span>';
+        list.innerHTML = '<span class="review-queue-empty">今は due 切れ復習がありません</span>';
     }
 
     // Keep head snapshot for debug/consistency checks
@@ -1808,7 +1807,7 @@ function showNoWordsMessage() {
 
     let message = `この${modeNames[gameState.currentMode] || gameState.currentMode}モードには単語がありません`;
     if (gameState.reviewMode === 'on' && gameState.currentMode === 'unlearned') {
-        message = '復習集中モード中: 今はdue切れ復習がありません ✅';
+        message = '復習集中モード中: 今はdue切れ復習がありません';
     }
 
     cardsArea.innerHTML = `<div class="no-words">${message}</div>`;
@@ -1826,7 +1825,7 @@ function hideNoWordsMessage() {
                     <div class="card meaning-card" id="meaningCard">
                         <div class="card-label">意味カード</div>
                         <div class="card-front">
-                            <div class="card-content">❓</div>
+                            <div class="card-content">?</div>
                         </div>
                         <div class="card-back">
                             <div class="card-content" id="meaningText">意味</div>
@@ -1961,7 +1960,7 @@ function handleVocabCardClick() {
     } else if (currentState === 'weak') {
         gameState.actionCounts.weak_correct++;
         basePoints = 2;
-        msg = "✅ 克服！";
+        msg = "克服！";
         gameState.learnedWordIntervals[key] = 0;
         gameState.learnedWordIntervals[`${key}_last`] = gameState.globalQuestionCount;
     } else if (currentState === 'learned') {
@@ -2194,38 +2193,6 @@ function getCategoryLevel(category) {
 }
 
 function updateProgress() {
-    // Calculate Progress based on Valid Words in current level
-    const validWords = vocabulary; // Currently loaded vocabulary array
-    if (!validWords || validWords.length === 0) {
-        document.querySelectorAll('.js-progress-percent').forEach(el => el.textContent = "0");
-        document.querySelectorAll('.js-progress-bar-fill').forEach(el => el.style.width = "0%");
-    } else {
-        const total = validWords.length;
-        const learnedCount = getWordsByMode('learned').length;
-        const perfectCount = getWordsByMode('perfect').length;
-        const learnedTotal = learnedCount + perfectCount;
-
-        const percent = Math.floor((learnedTotal / total) * 100);
-
-        // Update DOM - Support multiple instances (PC/Mobile)
-        document.querySelectorAll('.js-progress-percent').forEach(el => el.textContent = percent);
-        document.querySelectorAll('.js-progress-bar-fill').forEach(el => el.style.width = `${percent}%`);
-
-        // Determine Title (Mage Theme) based on percentage
-        // Determine Title (Mage Theme) based on percentage
-        let title = "見習い魔術師"; // Default
-        const configTitles = (window.GameConfig && window.GameConfig.TITLES) ? window.GameConfig.TITLES : [];
-
-        for (const t of configTitles) {
-            if (percent >= t.percent) {
-                title = t.title;
-                break;
-            }
-        }
-
-        document.querySelectorAll('.js-current-title').forEach(el => el.textContent = title);
-    }
-
     // --- World Level Calculation ---
     // Sum of levels from Junior, Basic, Daily, Exam1
     const categories = (window.GameConfig && window.GameConfig.CATEGORIES) ? window.GameConfig.CATEGORIES : ['junior', 'basic', 'daily', 'exam1'];

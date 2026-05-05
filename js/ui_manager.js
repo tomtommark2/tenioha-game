@@ -488,7 +488,7 @@ window.openLearningLogModal = function () {
                 evaluation = "🚴 急上昇中！";
                 color = "#e67e22";
             } else {
-                evaluation = "🚀 ゾーン突入！";
+                evaluation = "ゾーン突入！";
                 color = "#e74c3c";
             }
 
@@ -621,7 +621,8 @@ window.toggleOtherMenu = function () {
     const overlay = document.getElementById('otherMenuOverlay'); // Optional: for clicking outside
 
     if (menu) {
-        if (menu.style.display === 'none') {
+        const isHidden = getComputedStyle(menu).display === 'none';
+        if (isHidden) {
             menu.style.display = 'block';
             // Add click-outside listener if needed, or simple toggle
             setTimeout(() => {
@@ -642,7 +643,6 @@ function closeOtherMenuOutside(e) {
         document.removeEventListener('click', closeOtherMenuOutside);
     }
 }
-
 
 window.closeProfileModal = function () {
     const modal = document.getElementById('profileModal');

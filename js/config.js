@@ -35,17 +35,6 @@ window.GameConfig = {
     // --- GAMEPLAY CONSTANTS ---
     CATEGORIES: ['junior', 'basic', 'daily', 'exam1'],
 
-    // --- TITLE RANKS (Mage Theme) ---
-    TITLES: [
-        { percent: 100, title: "魔法の神" },
-        { percent: 90, title: "賢者" },
-        { percent: 70, title: "大魔導士" },
-        { percent: 50, title: "王宮魔術師" },
-        { percent: 30, title: "手練れの魔導士" },
-        { percent: 10, title: "駆け出しの魔法使い" },
-        { percent: 0, title: "見習い魔術師" }
-    ],
-
     // --- SYSTEM ---
     VERSION: window.GAME_VERSION || "v2.58", // Fallback
     CACHE_DURATION: 5 * 60 * 1000, // 5 Minutes

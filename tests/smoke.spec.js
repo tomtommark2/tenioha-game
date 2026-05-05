@@ -114,7 +114,7 @@ test('復習モード切替が ON→MIX→OFF で循環する', async ({ page })
   });
 
   const label = page.locator('#dueOnlyModeLabelModal');
-  const toggleBtn = page.getByRole('button', { name: '🧹 配信モード切替' });
+  const toggleBtn = page.getByRole('button', { name: /配信モード切替/ });
 
   await expect(label).toContainText('MIX');
   await toggleBtn.click();
@@ -181,7 +181,7 @@ test('復習モードONでは新規のみの遷移にならない（復習優先
   });
 
   const label = page.locator('#dueOnlyModeLabelModal');
-  const toggleBtn = page.getByRole('button', { name: '🧹 配信モード切替' });
+  const toggleBtn = page.getByRole('button', { name: /配信モード切替/ });
 
   // Move to ON
   while (!(await label.textContent()).includes('ON')) {
@@ -205,7 +205,7 @@ test('復習モードOFFでは新規が出題される', async ({ page }) => {
   });
 
   const label = page.locator('#dueOnlyModeLabelModal');
-  const toggleBtn = page.getByRole('button', { name: '🧹 配信モード切替' });
+  const toggleBtn = page.getByRole('button', { name: /配信モード切替/ });
 
   // Move to OFF
   while (!(await label.textContent()).includes('OFF')) {
