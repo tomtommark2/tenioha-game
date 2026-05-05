@@ -3970,7 +3970,7 @@ body.level-selector-open .level-selector {
         top: 0;
         left: 0;
         right: 0;
-        height: 232px;
+        height: 217px;
         pointer-events: none;
         background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%),
@@ -3981,7 +3981,7 @@ body.level-selector-open .level-selector {
     .container::after {
         content: "";
         position: absolute;
-        top: 208px;
+        top: 193px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -4113,14 +4113,14 @@ body.level-selector-open .level-selector {
     }
 
     .header {
-        min-height: 116px;
+        min-height: 101px;
         margin: 2px 0 0;
         padding: 0 0 4px;
     }
 
     .rpg-inline {
         left: 30px;
-        bottom: -10px;
+        bottom: 5px;
     }
 
     .header>div:last-child {
@@ -4149,7 +4149,7 @@ body.level-selector-open .level-selector {
 
     .cards-area {
         gap: 16px;
-        margin-top: 12px;
+        margin-top: -3px;
         margin-bottom: 16px;
     }
 
