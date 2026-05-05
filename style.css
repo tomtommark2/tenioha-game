@@ -3250,7 +3250,7 @@ body.level-selector-open .level-selector {
         bottom: -20px;
         right: auto;
         top: auto;
-        left: 20px;
+        left: 30px;
         transform: scale(0.8);
         transform-origin: bottom left;
         margin-bottom: 0;
@@ -4119,7 +4119,7 @@ body.level-selector-open .level-selector {
     }
 
     .rpg-inline {
-        left: 20px;
+        left: 30px;
         bottom: -10px;
     }
 
