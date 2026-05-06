@@ -26,6 +26,15 @@
 - Use `local_server.py` instead of a generic static server because it forces MIME types and disables caching.
 - E2E tests expect `http://localhost:8000`.
 
+## Screenshot Workflow
+
+- Save temporary visual-check screenshots under `screenshots/`.
+- Link only necessary images in chat, using absolute paths with `/` separators.
+- For large comparisons, show representative images and list the rest by filename.
+- When asked to delete unnecessary screenshots, remove unneeded files under `screenshots/`.
+- Move only long-term reference images into `docs/`.
+- Keep `screenshots/` out of Git.
+
 ## Prompting
 
 - For complex requests, use the structure and templates in `docs/prompting-playbook.md`.
