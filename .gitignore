@@ -12,3 +12,6 @@ functions/.env
 # Playwright artifacts
 test-results/
 playwright-report/
+
+# Local visual check artifacts
+screenshots/

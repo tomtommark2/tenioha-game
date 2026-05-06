@@ -397,6 +397,12 @@ body.level-selector-open .level-selector {
     gap: 10px;
 }
 
+@media (min-width: 769px) {
+    .mode-buttons {
+        transform: translateY(20px);
+    }
+}
+
 .mode-btn {
     background: #e0e0e0;
     color: #2f3a52;
@@ -3030,7 +3036,7 @@ body.level-selector-open .level-selector {
     width: 140px;
     height: 100px;
     /* Keep the character clear of the top-left navigation cluster on desktop. */
-    top: 58px;
+    top: 53px;
     left: 40px;
 }
 
@@ -3970,7 +3976,7 @@ body.level-selector-open .level-selector {
         top: 0;
         left: 0;
         right: 0;
-        height: 217px;
+        height: 212px;
         pointer-events: none;
         background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%),
@@ -3981,7 +3987,7 @@ body.level-selector-open .level-selector {
     .container::after {
         content: "";
         position: absolute;
-        top: 193px;
+        top: 188px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -4120,7 +4126,7 @@ body.level-selector-open .level-selector {
 
     .rpg-inline {
         left: 30px;
-        bottom: 5px;
+        bottom: -5px;
     }
 
     .header>div:last-child {
@@ -4135,6 +4141,7 @@ body.level-selector-open .level-selector {
     .mode-buttons {
         gap: 8px;
         margin: 4px 0 0;
+        transform: translateY(-10px);
     }
 
     .mode-btn {
