@@ -499,10 +499,9 @@ function setupEventListeners() {
 
     // POS Filter checkboxes
     setupPOSFilters();
-    document.getElementById('speakerBtn').addEventListener('click', () => {
-        if (gameState.currentWord) {
-            speakWord(gameState.currentWord.word);
-        }
+    document.getElementById('speakerBtn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        speakCurrentExample();
     });
 
     document.getElementById('addWordsBtn').addEventListener('click', addNextWordSet);
@@ -1492,7 +1491,24 @@ function enableAudioStayAwake() {
     }
 }
 
-function speakWord(word) {
+function getPreferredEnglishVoice() {
+    const voices = speechSynthesis.getVoices();
+    return voices.find(v => v.name === 'Google US English') ||
+        voices.find(v => v.name === 'Samantha') ||
+        voices.find(v => v.name.includes('Google') && v.lang.startsWith('en')) ||
+        voices.find(v => v.lang === 'en-US') ||
+        voices.find(v => v.lang && v.lang.startsWith('en'));
+}
+
+function speakEnglishText(text, options = {}) {
+    const value = String(text || '').trim();
+    if (!value) return;
+
+    if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
+        console.warn('Speech synthesis is not supported in this browser.');
+        return;
+    }
+
     // Ensure audio engine is awake
     if (!audioWakeLockSet) {
         enableAudioStayAwake();
@@ -1501,32 +1517,42 @@ function speakWord(word) {
         gameAudioContext.resume();
     }
 
-    // Cancel previous speech
-    speechSynthesis.cancel();
-
-    // Small delay to allow cancellation to clear
-    setTimeout(() => {
-        const utterance = new SpeechSynthesisUtterance(word);
+    const speak = () => {
+        const utterance = new SpeechSynthesisUtterance(value);
         utterance.lang = 'en-US';
 
-        // Try to select a better voice
-        const voices = speechSynthesis.getVoices();
-        // Priority list: Google US English, Samantha (iOS/Mac), Microsoft Zira (Win)
-        const preferredVoice = voices.find(v => v.name === 'Google US English') ||
-            voices.find(v => v.name === 'Samantha') ||
-            voices.find(v => v.name.includes('Google') && v.lang.startsWith('en')) ||
-            voices.find(v => v.lang === 'en-US');
-
+        const preferredVoice = getPreferredEnglishVoice();
         if (preferredVoice) {
             utterance.voice = preferredVoice;
         }
 
-        utterance.rate = 0.9;
-        utterance.pitch = 1.0;
-        utterance.volume = 1.0;
+        utterance.rate = options.rate || 0.9;
+        utterance.pitch = options.pitch || 1.0;
+        utterance.volume = options.volume || 1.0;
 
         speechSynthesis.speak(utterance);
-    }, 50);
+    };
+
+    if (speechSynthesis.speaking || speechSynthesis.pending) {
+        speechSynthesis.cancel();
+        setTimeout(speak, 25);
+    } else {
+        speechSynthesis.cancel();
+        speak();
+    }
+}
+
+function speakWord(word) {
+    speakEnglishText(word);
+}
+
+function speakText(text) {
+    speakEnglishText(text);
+}
+
+function speakCurrentExample() {
+    if (!gameState.currentWord) return;
+    speakText(gameState.currentWord.example || gameState.currentWord.word);
 }
 
 // --- SHUFFLE BAG HELPERS (v2.79) ---
