@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.23">
+    <link rel="stylesheet" href="style.css?v=3.24">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -285,20 +285,24 @@
                     <!-- Mode Buttons -->
                     <div class="mode-buttons">
                         <button class="mode-btn unlearned active" data-mode="unlearned" id="unlearnedBtn">
+                            <span class="mode-picto app-picto icon-book" aria-hidden="true"></span>
                             <span>未学習</span>
                             <span class="mode-count" id="unlearnedCount">0</span>
                         </button>
+                        <button class="mode-btn weak" data-mode="weak" id="weakBtn">
+                            <span class="mode-picto app-picto icon-target" aria-hidden="true"></span>
+                            <span>苦手</span>
+                            <span class="mode-count" id="weakCount">0</span>
+                        </button>
                         <button class="mode-btn learned" data-mode="learned" id="learnedBtn">
+                            <span class="mode-picto app-picto icon-check" aria-hidden="true"></span>
                             <span>得意</span>
                             <span class="mode-count" id="learnedCount">0</span>
                         </button>
                         <button class="mode-btn perfect" data-mode="perfect" id="perfectBtn">
+                            <span class="mode-picto app-picto icon-star" aria-hidden="true"></span>
                             <span>完璧</span>
                             <span class="mode-count" id="perfectCount">0</span>
-                        </button>
-                        <button class="mode-btn weak" data-mode="weak" id="weakBtn">
-                            <span>苦手</span>
-                            <span class="mode-count" id="weakCount">0</span>
                         </button>
                     </div>
                 </div>
@@ -460,8 +464,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.23"></script>
-<script src="data/ipa_overrides.js?v=3.23"></script>
+    <script src="data/vocabulary.js?v=3.24"></script>
+<script src="data/ipa_overrides.js?v=3.24"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -496,14 +500,15 @@
             <button class="help-share-btn" onclick="document.getElementById('helpModal').style.display='none'; window.openShareModal()">
                 🔗 シェア
             </button>
+            <div class="help-sheet-handle" aria-hidden="true"></div>
 
             <h2 class="help-heading">
                 管理メニュー
             </h2>
-            <p class="help-subheading">アカウント・更新・購入・お問い合わせ</p>
+            <p class="help-subheading">必要な操作だけすぐ開く</p>
 
             <div class="help-list-container">
-                <div class="help-list-item" onclick="document.getElementById('helpModal').style.display='none'; openProfileModal();">
+                <div class="help-list-item help-list-item-primary" onclick="document.getElementById('helpModal').style.display='none'; openProfileModal();">
                     <span id="headerProfileIcon" class="help-list-icon header-profile-icon help-profile-icon"
                         title="アカウント">
                         <span id="headerProfileInitials" class="header-profile-initials"></span>
@@ -512,6 +517,14 @@
                     <div class="help-list-copy">
                         <div class="help-list-title">アカウント</div>
                         <div class="help-list-desc">ログイン・同期・購入状態を確認</div>
+                    </div>
+                </div>
+
+                <div class="help-list-item help-list-item-primary" onclick="document.getElementById('helpModal').style.display='none'; openPurchaseModal();">
+                    <span class="help-list-icon app-picto icon-diamond" aria-hidden="true"></span>
+                    <div class="help-list-copy">
+                        <div class="help-list-title">制限の解除</div>
+                        <div class="help-list-desc">タップして購入ページを表示</div>
                     </div>
                 </div>
 
@@ -531,20 +544,26 @@
                     </div>
                 </div>
 
-                <div class="help-list-item" onclick="document.getElementById('helpModal').style.display='none'; openPurchaseModal();">
-                    <span class="help-list-icon app-picto icon-diamond" aria-hidden="true"></span>
-                    <div class="help-list-copy">
-                        <div class="help-list-title">制限の解除</div>
-                        <div class="help-list-desc">タップして購入ページを表示</div>
-                    </div>
-                </div>
-
                 <div class="help-list-item" onclick="location.href='mailto:tenioha.eng@gmail.com'">
                     <span class="help-list-icon app-picto icon-mail" aria-hidden="true"></span>
                     <div class="help-list-copy">
                         <div class="help-list-title">お問い合わせ（質問・バグ報告）</div>
                         <div class="help-list-desc">タップしてメールを送信</div>
                     </div>
+                </div>
+            </div>
+            <div class="help-related-apps" aria-label="関連アプリ">
+                <div class="help-related-title">関連アプリ</div>
+                <div class="help-related-links">
+                    <button type="button" onclick="window.open('https://phrasalverbapp-d5fa7.web.app/index.html', '_blank', 'noopener')">
+                        動く！図鑑
+                    </button>
+                    <button type="button" onclick="window.open('https://grammar-zukan.web.app', '_blank', 'noopener')">
+                        英文図解
+                    </button>
+                    <button type="button" onclick="window.open('https://tomtommark2.github.io/tenioha-products/', '_blank', 'noopener')">
+                        Products
+                    </button>
                 </div>
             </div>
             <div class="help-footer">
@@ -881,19 +900,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.23"></script>
-    <script src="js/update_manager.js?v=3.23"></script>
-    <script src="js/config.js?v=3.23"></script>
-    <script src="data/announcements.js?v=3.23"></script>
-    <script src="js/utils.js?v=3.23"></script>
-    <script src="js/stats_engine.js?v=3.23"></script>
-    <script src="js/chart_data_adapter.js?v=3.23"></script>
+    <script src="js/version.js?v=3.24"></script>
+    <script src="js/update_manager.js?v=3.24"></script>
+    <script src="js/config.js?v=3.24"></script>
+    <script src="data/announcements.js?v=3.24"></script>
+    <script src="js/utils.js?v=3.24"></script>
+    <script src="js/stats_engine.js?v=3.24"></script>
+    <script src="js/chart_data_adapter.js?v=3.24"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.23"></script>
-    <script src="js/game_logic.js?v=3.23"></script>
-    <script src="js/ui_manager.js?v=3.23"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.23"></script>
+    <script src="js/chart_fallback.js?v=3.24"></script>
+    <script src="js/game_logic.js?v=3.24"></script>
+    <script src="js/ui_manager.js?v=3.24"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.24"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

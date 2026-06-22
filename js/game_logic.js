@@ -126,8 +126,8 @@ function renderVocabWordMarkup(word) {
     const ipaDisplay = formatIpaForDisplay(word.ipa);
 
     return `
-                <div class="vocab-word-stack" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-10%);">
-                    <div class="word-pos-label" style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 5px;">${escapeHtml(fullPos)}</div>
+                <div class="vocab-word-stack" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-4%);">
+                    <div class="word-pos-label" style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 9px;">${escapeHtml(fullPos)}</div>
                     <div class="word-text-main" style="font-size: 42px; font-weight: bold; line-height: 1.2; text-align: center;">${escapeHtml(word.word)}</div>
                     ${ipaDisplay ? `<div class="word-ipa">${escapeHtml(ipaDisplay)}</div>` : ''}
                 </div>
