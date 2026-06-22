@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.21">
+    <link rel="stylesheet" href="style.css?v=3.22">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -179,6 +179,11 @@
 
             <div class="other-menu-section-title">記録</div>
 
+            <div class="other-menu-item" onclick="openWordListModal(); toggleOtherMenu();">
+                <span class="other-menu-icon app-picto icon-list" aria-hidden="true"></span>
+                <span class="other-menu-label">英単語一覧</span>
+            </div>
+
             <div class="other-menu-item" onclick="openLearningLogModal(); toggleOtherMenu();">
                 <span class="other-menu-icon app-picto icon-chart" aria-hidden="true"></span>
                 <span class="other-menu-label">語彙力推定</span>
@@ -300,6 +305,48 @@
             </div>
         </div>
 
+        <!-- Word List Modal -->
+        <div id="wordListModal" class="modal-overlay word-list-modal" style="display: none;">
+            <div class="modal-content word-list-modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close-btn word-list-close-btn" onclick="closeWordListModal()">×</button>
+
+                <div class="word-list-hero">
+                    <div>
+                        <div class="word-list-kicker">Vocabulary Browser</div>
+                        <h2 class="word-list-title">英単語一覧</h2>
+                    </div>
+                </div>
+
+                <div class="word-list-tabs" id="wordListLevelTabs" aria-label="単語一覧レベル"></div>
+
+                <div class="word-list-toolbar" id="wordListToolbar">
+                    <button type="button" class="word-list-tool-btn" id="wordListSearchToggle" onclick="toggleWordListSearch()">
+                        <span class="app-picto icon-search" aria-hidden="true"></span>
+                        <span>検索</span>
+                    </button>
+                    <button type="button" class="word-list-toggle-btn" id="wordListMeaningToggle" onclick="toggleWordListMeaning()">
+                        和訳 <span id="wordListMeaningState">OFF</span>
+                    </button>
+                    <div class="word-list-sort" aria-label="並び替え">
+                        <span class="word-list-sort-label">並び替え</span>
+                        <button type="button" class="word-list-sort-btn active" data-sort="abc" onclick="setWordListSort('abc')">ABC順</button>
+                        <button type="button" class="word-list-sort-btn" data-sort="pos" onclick="setWordListSort('pos')">品詞順</button>
+                    </div>
+                </div>
+
+                <div class="word-list-search-row" id="wordListSearchRow" style="display: none;">
+                    <input id="wordListSearchInput" class="word-list-search-input" type="search" placeholder="単語・意味を検索"
+                        oninput="setWordListSearch(this.value)" autocomplete="off">
+                    <button type="button" class="word-list-search-clear" onclick="clearWordListSearch()">×</button>
+                </div>
+
+                <div class="word-list-filter-row" id="wordListFilterRow" aria-label="学習状態フィルター"></div>
+
+                <div class="word-list-count" id="wordListCount">0語</div>
+                <div class="word-list-grid" id="wordListGrid"></div>
+            </div>
+        </div>
+
         <div id="reviewProgressWrap" style="display:none; margin: 6px 0 8px 0; background:#f6f7fb; border:1px solid #e5e8f3; border-radius:10px; padding:8px 10px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
                 <span id="reviewProgressLabel" style="font-size:12px; font-weight:bold; color:#555;">復習キュー 0件</span>
@@ -413,8 +460,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=3.21"></script>
-<script src="data/ipa_overrides.js?v=3.21"></script>
+    <script src="data/vocabulary.js?v=3.22"></script>
+<script src="data/ipa_overrides.js?v=3.22"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -834,19 +881,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=3.21"></script>
-    <script src="js/update_manager.js?v=3.21"></script>
-    <script src="js/config.js?v=3.21"></script>
-    <script src="data/announcements.js?v=3.21"></script>
-    <script src="js/utils.js?v=3.21"></script>
-    <script src="js/stats_engine.js?v=3.21"></script>
-    <script src="js/chart_data_adapter.js?v=3.21"></script>
+    <script src="js/version.js?v=3.22"></script>
+    <script src="js/update_manager.js?v=3.22"></script>
+    <script src="js/config.js?v=3.22"></script>
+    <script src="data/announcements.js?v=3.22"></script>
+    <script src="js/utils.js?v=3.22"></script>
+    <script src="js/stats_engine.js?v=3.22"></script>
+    <script src="js/chart_data_adapter.js?v=3.22"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=3.21"></script>
-    <script src="js/game_logic.js?v=3.21"></script>
-    <script src="js/ui_manager.js?v=3.21"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=3.21"></script>
+    <script src="js/chart_fallback.js?v=3.22"></script>
+    <script src="js/game_logic.js?v=3.22"></script>
+    <script src="js/ui_manager.js?v=3.22"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=3.22"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

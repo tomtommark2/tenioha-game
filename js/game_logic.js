@@ -905,6 +905,297 @@ function getAccuracyTagInfoByKey(key) {
     return { text: `正答率 ${a.rate}%`, color: '#e74c3c' };
 }
 
+const WORD_LIST_LEVELS = [
+    ['junior', '中学', 'A1'],
+    ['basic', '基礎', 'A2'],
+    ['daily', '標準', 'B1'],
+    ['exam1', '受験', 'B2']
+];
+
+const WORD_LIST_FILTERS = [
+    ['all', 'すべて'],
+    ['unlearned', '未学習'],
+    ['learned', '得意'],
+    ['perfect', '完璧'],
+    ['weak', '苦手']
+];
+
+const WORD_LIST_POS_ORDER = ['名', '動', '形', '副', '助', '前', '接', '代', 'other'];
+
+const WORD_LIST_POS_CLASS = {
+    '名': 'word-list-pos-noun',
+    '動': 'word-list-pos-verb',
+    '形': 'word-list-pos-adj',
+    '副': 'word-list-pos-adv',
+    '助': 'word-list-pos-aux',
+    '前': 'word-list-pos-prep',
+    '接': 'word-list-pos-conj',
+    '代': 'word-list-pos-pron',
+    'other': 'word-list-pos-other'
+};
+
+const WORD_LIST_POS_LABEL = {
+    '名': '名',
+    '動': '動',
+    '形': '形',
+    '副': '副',
+    '助': '助',
+    '前': '前',
+    '接': '接',
+    '代': '代',
+    'other': '他'
+};
+
+var wordListState = {
+    level: 'basic',
+    filter: 'all',
+    sort: 'abc',
+    showMeaning: localStorage.getItem('vocabGame_wordListShowMeaning') === 'true',
+    searchOpen: false,
+    query: ''
+};
+
+function normalizeWordListLevel(level) {
+    return WORD_LIST_LEVELS.some(([key]) => key === level) ? level : 'basic';
+}
+
+function getWordListStateForKey(key) {
+    return gameState.wordStates[key] || 'unlearned';
+}
+
+function getWordListAccuracyInfo(key) {
+    const state = getWordListStateForKey(key);
+    const s = gameState.srsData && gameState.srsData[key];
+    const success = s ? Number(s.successCount || 0) : 0;
+    const fail = s ? Number(s.failCount || 0) : 0;
+    const total = success + fail;
+
+    if (total > 0) {
+        return {
+            state,
+            rate: Math.round((success / total) * 100)
+        };
+    }
+
+    const fallback = {
+        unlearned: 0,
+        weak: 30,
+        learned: 65,
+        perfect: 100
+    };
+    return {
+        state,
+        rate: fallback[state] ?? 0
+    };
+}
+
+function renderWordListControls() {
+    const levelHost = document.getElementById('wordListLevelTabs');
+    if (levelHost) {
+        levelHost.innerHTML = WORD_LIST_LEVELS.map(([key, label, cefr]) => `
+            <button type="button" class="word-list-level-btn ${wordListState.level === key ? 'active' : ''}"
+                onclick="setWordListLevel('${key}')">
+                ${escapeHtml(label)}<span>${escapeHtml(cefr)}</span>
+            </button>
+        `).join('');
+    }
+
+    const filterHost = document.getElementById('wordListFilterRow');
+    if (filterHost) {
+        filterHost.innerHTML = WORD_LIST_FILTERS.map(([key, label]) => `
+            <button type="button" class="word-list-chip ${wordListState.filter === key ? 'active' : ''}"
+                onclick="setWordListFilter('${key}')">${escapeHtml(label)}</button>
+        `).join('');
+    }
+
+    const meaningState = document.getElementById('wordListMeaningState');
+    if (meaningState) meaningState.textContent = wordListState.showMeaning ? 'ON' : 'OFF';
+
+    document.querySelectorAll('.word-list-sort-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.sort === wordListState.sort);
+    });
+
+    const searchRow = document.getElementById('wordListSearchRow');
+    if (searchRow) searchRow.style.display = wordListState.searchOpen ? 'flex' : 'none';
+
+    const searchInput = document.getElementById('wordListSearchInput');
+    if (searchInput && searchInput.value !== wordListState.query) {
+        searchInput.value = wordListState.query;
+    }
+}
+
+function getSortedWordListItems() {
+    const level = normalizeWordListLevel(wordListState.level);
+    const query = String(wordListState.query || '').trim().toLowerCase();
+    let words = [...(vocabularyDatabase[level] || [])];
+
+    words = words.filter(word => {
+        const key = getWordKey(word, level);
+        const state = getWordListStateForKey(key);
+        if (wordListState.filter !== 'all' && state !== wordListState.filter) return false;
+
+        if (!query) return true;
+        const haystack = [
+            word.word,
+            cleanMeaningForDisplay(word.meaning),
+            word.phrase,
+            word.pos
+        ].join(' ').toLowerCase();
+        return haystack.includes(query);
+    });
+
+    words.sort((a, b) => {
+        if (wordListState.sort === 'pos') {
+            const ai = WORD_LIST_POS_ORDER.indexOf(a.pos || 'other');
+            const bi = WORD_LIST_POS_ORDER.indexOf(b.pos || 'other');
+            const apos = ai === -1 ? WORD_LIST_POS_ORDER.length : ai;
+            const bpos = bi === -1 ? WORD_LIST_POS_ORDER.length : bi;
+            if (apos !== bpos) return apos - bpos;
+        }
+        return String(a.word || '').localeCompare(String(b.word || ''), 'en', { sensitivity: 'base' });
+    });
+
+    return words;
+}
+
+function renderWordList() {
+    const modal = document.getElementById('wordListModal');
+    if (!modal || modal.style.display === 'none') return;
+
+    renderWordListControls();
+
+    const grid = document.getElementById('wordListGrid');
+    const count = document.getElementById('wordListCount');
+    if (!grid) return;
+
+    const level = normalizeWordListLevel(wordListState.level);
+    const allCount = (vocabularyDatabase[level] || []).length;
+    const words = getSortedWordListItems();
+    if (count) count.textContent = `${words.length.toLocaleString()} / ${allCount.toLocaleString()}語`;
+
+    if (words.length === 0) {
+        grid.innerHTML = '<div class="word-list-empty">条件に合う単語がありません</div>';
+        return;
+    }
+
+    grid.innerHTML = words.map(word => {
+        const key = getWordKey(word, level);
+        const info = getWordListAccuracyInfo(key);
+        const pos = word.pos || 'other';
+        const posClass = WORD_LIST_POS_CLASS[pos] || WORD_LIST_POS_CLASS.other;
+        const posLabel = WORD_LIST_POS_LABEL[pos] || pos;
+        const meaning = cleanMeaningForDisplay(word.meaning);
+        const accuracy = Math.max(0, Math.min(100, Number(info.rate || 0)));
+        return `
+            <button type="button"
+                class="word-list-card word-list-card-state-${escapeHtml(info.state)} ${wordListState.showMeaning ? '' : 'hide-meaning'}"
+                onclick="openWordFromList('${encodeURIComponent(level)}', '${encodeURIComponent(key)}')">
+                <div class="word-list-card-word">${escapeHtml(word.word)}</div>
+                ${wordListState.showMeaning ? `<div class="word-list-card-meaning">${escapeHtml(meaning || word.phrase || '')}</div>` : ''}
+                <div class="word-list-card-meta">
+                    <span class="word-list-pos-badge ${posClass}">${escapeHtml(posLabel)}</span>
+                    <span class="word-list-accuracy" aria-label="正答度 ${accuracy}%">
+                        <span class="word-list-accuracy-fill" style="--accuracy:${accuracy}%"></span>
+                    </span>
+                </div>
+            </button>
+        `;
+    }).join('');
+}
+
+function findWordListItemByKey(level, key) {
+    return (vocabularyDatabase[level] || []).find(word => getWordKey(word, level) === key) || null;
+}
+
+window.openWordListModal = function () {
+    wordListState.level = normalizeWordListLevel(gameState.currentLevel);
+    const modal = document.getElementById('wordListModal');
+    if (!modal) return;
+    modal.style.display = 'flex';
+    renderWordList();
+};
+
+window.closeWordListModal = function () {
+    const modal = document.getElementById('wordListModal');
+    if (modal) modal.style.display = 'none';
+};
+
+window.setWordListLevel = function (level) {
+    wordListState.level = normalizeWordListLevel(level);
+    renderWordList();
+};
+
+window.setWordListFilter = function (filter) {
+    wordListState.filter = WORD_LIST_FILTERS.some(([key]) => key === filter) ? filter : 'all';
+    renderWordList();
+};
+
+window.setWordListSort = function (sort) {
+    wordListState.sort = sort === 'pos' ? 'pos' : 'abc';
+    renderWordList();
+};
+
+window.toggleWordListMeaning = function () {
+    wordListState.showMeaning = !wordListState.showMeaning;
+    localStorage.setItem('vocabGame_wordListShowMeaning', wordListState.showMeaning ? 'true' : 'false');
+    renderWordList();
+};
+
+window.toggleWordListSearch = function () {
+    wordListState.searchOpen = !wordListState.searchOpen;
+    if (!wordListState.searchOpen) wordListState.query = '';
+    renderWordList();
+    if (wordListState.searchOpen) {
+        setTimeout(() => {
+            const input = document.getElementById('wordListSearchInput');
+            if (input) input.focus();
+        }, 0);
+    }
+};
+
+window.setWordListSearch = function (value) {
+    wordListState.query = value || '';
+    renderWordList();
+};
+
+window.clearWordListSearch = function () {
+    wordListState.query = '';
+    wordListState.searchOpen = false;
+    renderWordList();
+};
+
+window.openWordFromList = function (level, key) {
+    const safeLevel = normalizeWordListLevel(decodeURIComponent(level || ''));
+    const decodedKey = decodeURIComponent(key || '');
+    const word = findWordListItemByKey(safeLevel, decodedKey);
+    if (!word) return;
+
+    if (gameState.currentLevel !== safeLevel) {
+        gameState.currentLevel = safeLevel;
+        gameState.decks = null;
+        document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+        const activeBtn = document.querySelector(`.level-btn[data-level="${safeLevel}"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+        const wbBtn = document.getElementById('wordbookBtn');
+        if (wbBtn) wbBtn.classList.remove('active');
+        updateWordbookSelectionUI();
+        updateLevelCurrentButton();
+        loadVocabularyForLevel();
+        initializeWordStates();
+    }
+
+    clearAutoTimer();
+    hideNoWordsMessage();
+    gameState.isReviewWord = false;
+    gameState.currentWordIndex = 0;
+    gameState.currentWord = word;
+    gameState.lastShownWordKey = getWordKey(word, safeLevel);
+    showWord(word);
+    updateDisplay();
+    saveGame();
+    closeWordListModal();
+};
+
 function isRetiredWordByKey(key) {
     const s = ensureSrsEntry(key);
     return !!(s.firstTryPerfect && !s.everWrong);
@@ -2147,6 +2438,7 @@ function updateDisplay() {
     updateProgress();
     updateReviewQueueBadge();
     updateReviewProgressUI();
+    renderWordList();
 }
 
 // --- RPG Animation Logic ---
@@ -2585,5 +2877,12 @@ if (closeWbGlobal && wbModalGlobal) {
 if (wbModalGlobal) {
     wbModalGlobal.onclick = function (e) {
         if (e.target === wbModalGlobal) wbModalGlobal.style.display = 'none';
+    };
+}
+
+const wordListModalGlobal = document.getElementById('wordListModal');
+if (wordListModalGlobal) {
+    wordListModalGlobal.onclick = function (e) {
+        if (e.target === wordListModalGlobal) closeWordListModal();
     };
 }

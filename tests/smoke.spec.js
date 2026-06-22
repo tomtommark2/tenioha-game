@@ -563,3 +563,27 @@ test('selection1900 の参照番号は意味カードに表示しない', async 
   await expect(page.locator('#meaningText')).not.toContainText('1384');
   await expect(page.locator('#meaningText')).not.toContainText('compulsory');
 });
+
+test('英単語一覧から検索して単語カードへ移動できる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    localStorage.setItem('vocabGame_wordListShowMeaning', 'false');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  await page.evaluate(() => window.openWordListModal());
+  await expect(page.locator('#wordListModal')).toBeVisible();
+  await expect(page.locator('#wordListGrid .word-list-card').first()).toBeVisible();
+  await expect(page.locator('#wordListMeaningState')).toHaveText('OFF');
+
+  await page.locator('#wordListSearchToggle').click();
+  await page.locator('#wordListSearchInput').fill('ability');
+  await expect(page.locator('#wordListGrid .word-list-card').first()).toContainText('ability');
+
+  await page.locator('#wordListGrid .word-list-card').first().click();
+  await expect(page.locator('#wordListModal')).toBeHidden();
+  await expect(page.locator('#vocabWord')).toContainText('ability');
+});
