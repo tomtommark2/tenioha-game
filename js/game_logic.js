@@ -840,6 +840,7 @@ window.toggleDueOnlyMode = function () {
     const cur = order.includes(gameState.reviewMode) ? gameState.reviewMode : 'random';
     gameState.reviewMode = order[(order.indexOf(cur) + 1) % order.length];
     saveGame();
+    updateModeButtons();
     updateReviewQueueBadge();
     updateReviewProgressUI();
     showNextWord();
@@ -1061,6 +1062,8 @@ function getSortedWordListItems() {
 function renderWordList() {
     const modal = document.getElementById('wordListModal');
     if (!modal || modal.style.display === 'none') return;
+    const denseCompareMode = new URLSearchParams(window.location.search).get('wordListDense') === '1';
+    modal.classList.toggle('word-list-dense-compare', denseCompareMode);
 
     renderWordListControls();
 
@@ -1086,11 +1089,15 @@ function renderWordList() {
         const posLabel = WORD_LIST_POS_LABEL[pos] || pos;
         const meaning = cleanMeaningForDisplay(word.meaning);
         const accuracy = Math.max(0, Math.min(100, Number(info.rate || 0)));
+        const wordLength = String(word.word || '').length;
+        const denseLengthClass = denseCompareMode
+            ? (wordLength >= 13 ? 'word-list-word-xl' : wordLength >= 10 ? 'word-list-word-long' : '')
+            : '';
         return `
             <button type="button"
                 class="word-list-card word-list-card-state-${escapeHtml(info.state)} ${wordListState.showMeaning ? '' : 'hide-meaning'}"
                 onclick="openWordFromList('${encodeURIComponent(level)}', '${encodeURIComponent(key)}')">
-                <div class="word-list-card-word">${escapeHtml(word.word)}</div>
+                <div class="word-list-card-word ${denseLengthClass}">${escapeHtml(word.word)}</div>
                 ${wordListState.showMeaning ? `<div class="word-list-card-meaning">${escapeHtml(meaning || word.phrase || '')}</div>` : ''}
                 <div class="word-list-card-meta">
                     <span class="word-list-pos-badge ${posClass}">${escapeHtml(posLabel)}</span>

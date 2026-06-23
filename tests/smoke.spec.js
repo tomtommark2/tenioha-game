@@ -172,6 +172,34 @@ test('復習モード切替が ON→MIX→OFF で循環する', async ({ page })
   await expect(label).toContainText('MIX');
 });
 
+test('復習モードON/OFF切替に分類ボタンの無効状態が即時同期する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  await page.evaluate(() => {
+    window.gameState.reviewMode = 'random';
+    if (typeof window.updateModeButtons === 'function') window.updateModeButtons();
+  });
+
+  const modeButtons = page.locator('.mode-btn');
+  await expect(modeButtons.first()).not.toBeDisabled();
+  await expect(modeButtons.first()).not.toHaveClass(/disabled/);
+
+  await page.evaluate(() => window.toggleDueOnlyMode());
+  await expect.poll(async () => page.evaluate(() => window.gameState.reviewMode)).toBe('on');
+  await expect(modeButtons.first()).toBeDisabled();
+  await expect(modeButtons.first()).toHaveClass(/disabled/);
+
+  await page.evaluate(() => window.toggleDueOnlyMode());
+  await expect.poll(async () => page.evaluate(() => window.gameState.reviewMode)).toBe('off');
+  await expect(modeButtons.first()).not.toBeDisabled();
+  await expect(modeButtons.first()).not.toHaveClass(/disabled/);
+});
+
 test('復習キュー右上ラベルのタップで復習モードを切り替えられる', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');

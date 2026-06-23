@@ -2109,62 +2109,58 @@ body.level-selector-open .level-selector {
 .word-list-modal-content {
     display: flex;
     flex-direction: column;
-    width: min(460px, 94vw) !important;
+    width: min(760px, 94vw) !important;
     max-width: 94vw !important;
-    height: min(88vh, 820px);
+    height: min(88dvh, 760px);
     padding: 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.62) !important;
-    border-radius: 28px !important;
-    background: #f8fbff !important;
+    border-radius: 24px !important;
+    background: #fffaf0 !important;
     overflow: hidden;
     box-shadow: 0 30px 86px rgba(16, 25, 45, 0.34) !important;
 }
 
 .word-list-close-btn {
-    top: 14px;
-    right: 14px;
-    background: rgba(255, 255, 255, 0.17);
+    top: 10px;
+    right: 10px;
+    z-index: 4;
+    background: #4F3AA7;
     color: #fff;
+    box-shadow: 0 8px 18px rgba(79, 58, 167, 0.22);
 }
 
 .word-list-hero {
-    flex: 0 0 auto;
-    padding: 24px 24px 16px;
-    text-align: left;
-    background:
-        radial-gradient(circle at top right, rgba(255, 210, 132, 0.30), transparent 38%),
-        linear-gradient(135deg, #172033, #3d4d86 54%, #6e68c9);
-    color: white;
+    display: none;
 }
 
 .word-list-kicker {
     display: inline-flex;
     align-items: center;
-    height: 23px;
+    height: 22px;
     padding: 0 10px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.88);
     font-size: 10px;
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
 .word-list-title {
-    margin: 12px 0 0;
+    margin: 10px 0 0;
     color: #fff;
-    font-size: 25px;
-    font-weight: 900;
+    font-size: 24px;
+    font-weight: 800;
     line-height: 1.2;
 }
 
 .word-list-tabs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
-    padding: 10px 12px 8px;
-    background: #f8fbff;
+    gap: 7px;
+    padding: 12px 56px 8px 14px;
+    background: #fffaf0;
 }
 
 .word-list-level-btn,
@@ -2180,14 +2176,14 @@ body.level-selector-open .level-selector {
 .word-list-level-btn {
     min-height: 36px;
     padding: 5px 4px;
-    border: 1px solid #dfe6f4;
+    border: 1px solid rgba(124, 92, 255, 0.18);
     border-radius: 12px;
     background: #fff;
-    color: #526079;
+    color: #4a3d75;
     font-size: 11px;
-    font-weight: 900;
+    font-weight: 800;
     line-height: 1.15;
-    box-shadow: 0 7px 14px rgba(31, 42, 72, 0.05);
+    box-shadow: 0 7px 14px rgba(79, 58, 167, 0.06);
 }
 
 .word-list-level-btn span {
@@ -2199,18 +2195,18 @@ body.level-selector-open .level-selector {
 }
 
 .word-list-level-btn.active {
-    border-color: #6b76df;
-    background: #eef2ff;
-    color: #4350b8;
-    box-shadow: inset 0 0 0 1px rgba(107, 118, 223, 0.16);
+    border-color: #7C5CFF;
+    background: #E8E2FF;
+    color: #4F3AA7;
+    box-shadow: inset 0 0 0 1px rgba(124, 92, 255, 0.16);
 }
 
 .word-list-toolbar {
     display: flex;
     align-items: center;
     gap: 7px;
-    padding: 0 12px 8px;
-    background: #f8fbff;
+    padding: 0 14px 8px;
+    background: #fffaf0;
 }
 
 .word-list-tool-btn,
@@ -2221,12 +2217,12 @@ body.level-selector-open .level-selector {
     gap: 5px;
     min-height: 34px;
     padding: 7px 10px;
-    border: 1px solid #dfe6f4;
+    border: 1px solid rgba(124, 92, 255, 0.18);
     border-radius: 12px;
     background: #fff;
-    color: #4f5f7e;
+    color: #4F3AA7;
     font-size: 11px;
-    font-weight: 900;
+    font-weight: 800;
     white-space: nowrap;
 }
 
@@ -2236,7 +2232,7 @@ body.level-selector-open .level-selector {
 }
 
 .word-list-toggle-btn span {
-    color: #5262d2;
+    color: #7C5CFF;
 }
 
 .word-list-sort {
@@ -2245,16 +2241,16 @@ body.level-selector-open .level-selector {
     min-width: 0;
     margin-left: auto;
     padding: 3px;
-    border: 1px solid #dfe6f4;
+    border: 1px solid rgba(124, 92, 255, 0.16);
     border-radius: 13px;
-    background: #edf2fb;
+    background: #F6E8C8;
 }
 
 .word-list-sort-label {
     margin: 0 5px 0 4px;
-    color: #8290a9;
+    color: #806f52;
     font-size: 9px;
-    font-weight: 900;
+    font-weight: 800;
     white-space: nowrap;
 }
 
@@ -2264,24 +2260,24 @@ body.level-selector-open .level-selector {
     border: none;
     border-radius: 10px;
     background: transparent;
-    color: #647188;
+    color: #5e5140;
     font-size: 10px;
-    font-weight: 900;
+    font-weight: 800;
     white-space: nowrap;
 }
 
 .word-list-sort-btn.active {
     background: #fff;
-    color: #4350b8;
-    box-shadow: 0 5px 12px rgba(31, 42, 72, 0.09);
+    color: #4F3AA7;
+    box-shadow: 0 5px 12px rgba(79, 58, 167, 0.10);
 }
 
 .word-list-search-row {
     display: flex;
     flex: 0 0 auto;
     gap: 7px;
-    padding: 0 12px 8px;
-    background: #f8fbff;
+    padding: 0 14px 8px;
+    background: #fffaf0;
 }
 
 .word-list-search-input {
@@ -2289,7 +2285,7 @@ body.level-selector-open .level-selector {
     min-width: 0;
     min-height: 36px;
     padding: 8px 11px;
-    border: 1px solid #cfd8ee;
+    border: 1px solid rgba(124, 92, 255, 0.24);
     border-radius: 12px;
     background: #fff;
     color: #26324a;
@@ -2317,8 +2313,8 @@ body.level-selector-open .level-selector {
     display: flex;
     flex: 0 0 auto;
     gap: 5px;
-    padding: 0 12px 7px;
-    background: #f8fbff;
+    padding: 0 14px 7px;
+    background: #fffaf0;
     overflow-x: auto;
     scrollbar-width: none;
 }
@@ -2331,65 +2327,65 @@ body.level-selector-open .level-selector {
     flex: 0 0 auto;
     min-height: 28px;
     padding: 5px 9px;
-    border: 1px solid #dfe6f4;
+    border: 1px solid rgba(124, 92, 255, 0.18);
     border-radius: 999px;
     background: #fff;
-    color: #67748c;
+    color: #574a78;
     font-size: 10px;
-    font-weight: 900;
+    font-weight: 800;
 }
 
 .word-list-chip.active {
-    border-color: #6270e1;
-    background: #eef2ff;
-    color: #4350b8;
+    border-color: #7C5CFF;
+    background: #E8E2FF;
+    color: #4F3AA7;
 }
 
 .word-list-count {
     flex: 0 0 auto;
-    padding: 0 14px 7px;
-    background: #f8fbff;
-    color: #8995aa;
+    padding: 0 16px 7px;
+    background: #fffaf0;
+    color: #806f52;
     font-size: 10px;
-    font-weight: 900;
+    font-weight: 800;
     text-align: right;
 }
 
 .word-list-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
     align-content: start;
     gap: 8px;
     flex: 1 1 auto;
     min-height: 0;
-    padding: 0 12px 14px;
+    padding: 0 14px 14px;
     overflow-y: auto;
     background:
-        linear-gradient(180deg, rgba(248, 251, 255, 0), #f8fbff 36px),
-        #f8fbff;
+        linear-gradient(180deg, rgba(255, 250, 240, 0), #fffaf0 36px),
+        #fffaf0;
 }
 
 .word-list-card {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    min-height: 68px;
-    padding: 10px 9px 8px;
-    border: 1px solid #e2e8f4;
+    gap: 6px;
+    min-height: 70px;
+    padding: 10px 10px 9px;
+    border: 1px solid rgba(124, 92, 255, 0.14);
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.98);
-    color: #27324a;
+    color: #2F2A24;
     text-align: left;
     cursor: pointer;
-    box-shadow: 0 8px 18px rgba(31, 42, 72, 0.06);
+    box-shadow: 0 8px 18px rgba(79, 58, 167, 0.06);
     transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
 }
 
 .word-list-card:hover {
     transform: translateY(-1px);
-    border-color: #cbd5f0;
-    box-shadow: 0 12px 22px rgba(31, 42, 72, 0.1);
+    border-color: rgba(124, 92, 255, 0.34);
+    box-shadow: 0 12px 22px rgba(79, 58, 167, 0.10);
 }
 
 .word-list-card:focus-visible {
@@ -2399,21 +2395,22 @@ body.level-selector-open .level-selector {
 
 .word-list-card-word {
     min-width: 0;
-    color: #26324a;
-    font-size: 15px;
-    font-weight: 900;
+    color: #2F2A24;
+    font-size: 16px;
+    font-weight: 800;
     line-height: 1.28;
-    min-height: 20px;
+    min-height: 21px;
     padding-top: 1px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-feature-settings: "palt";
 }
 
 .word-list-card-meaning {
-    color: #6a7589;
-    font-size: 10px;
-    font-weight: 800;
+    color: #6d6254;
+    font-size: 10.5px;
+    font-weight: 700;
     line-height: 1.25;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -2422,8 +2419,8 @@ body.level-selector-open .level-selector {
 }
 
 .word-list-card.hide-meaning {
-    min-height: 60px;
-    gap: 5px;
+    min-height: 62px;
+    gap: 6px;
     padding-top: 9px;
     padding-bottom: 7px;
 }
@@ -2446,7 +2443,7 @@ body.level-selector-open .level-selector {
     border-radius: 7px;
     background: #f7f9ff;
     font-size: 10px;
-    font-weight: 900;
+    font-weight: 800;
     line-height: 1;
 }
 
@@ -2492,6 +2489,233 @@ body.level-selector-open .level-selector {
     text-align: center;
     font-size: 13px;
     font-weight: 800;
+}
+
+@media (max-width: 768px) {
+    .word-list-modal-content {
+        width: calc(100vw - 22px) !important;
+        max-width: calc(100vw - 22px) !important;
+        height: min(88dvh, 620px);
+        border-radius: 24px !important;
+    }
+
+    .word-list-tabs {
+        gap: 6px;
+        padding: 10px 54px 7px 12px;
+    }
+
+    .word-list-level-btn {
+        min-height: 34px;
+        font-size: 10.5px;
+    }
+
+    .word-list-toolbar {
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 0 12px 7px;
+    }
+
+    .word-list-tool-btn,
+    .word-list-toggle-btn {
+        min-height: 32px;
+        padding: 6px 9px;
+        font-size: 10.5px;
+    }
+
+    .word-list-sort {
+        margin-left: auto;
+    }
+
+    .word-list-sort-label {
+        display: none;
+    }
+
+    .word-list-filter-row {
+        padding: 0 12px 6px;
+    }
+
+    .word-list-count {
+        padding: 0 14px 6px;
+    }
+
+    .word-list-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 0 12px 14px;
+    }
+
+    .word-list-card {
+        min-height: 64px;
+        padding: 9px 8px 8px;
+        border-radius: 14px;
+    }
+
+    .word-list-card-word {
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.22;
+        min-height: 19px;
+    }
+
+    .word-list-card-meaning {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    .word-list-pos-badge {
+        min-width: 23px;
+        height: 19px;
+        padding: 0 5px;
+        font-size: 9.5px;
+    }
+}
+
+/* Comparison preview: dense vocabulary grid (?wordListDense=1). */
+.word-list-dense-compare .word-list-modal-content {
+    width: min(900px, 96vw) !important;
+}
+
+.word-list-dense-compare .word-list-tabs {
+    padding-bottom: 6px;
+}
+
+.word-list-dense-compare .word-list-toolbar,
+.word-list-dense-compare .word-list-filter-row,
+.word-list-dense-compare .word-list-count {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.word-list-dense-compare .word-list-toggle-btn {
+    display: none;
+}
+
+.word-list-dense-compare .word-list-grid {
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: 4px;
+    padding: 0 8px 10px;
+}
+
+.word-list-dense-compare .word-list-card {
+    min-height: 39px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0;
+    padding: 5px 24px 7px 7px;
+    border-radius: 7px;
+    border-width: 1.5px;
+    box-shadow: 0 3px 8px rgba(47, 42, 36, 0.045);
+}
+
+.word-list-dense-compare .word-list-card-word {
+    font-size: 13.5px;
+    font-weight: 800;
+    line-height: 1;
+    min-height: 14px;
+    width: 100%;
+}
+
+.word-list-dense-compare .word-list-card-word.word-list-word-long {
+    font-size: 12.2px;
+    letter-spacing: -0.02em;
+}
+
+.word-list-dense-compare .word-list-card-word.word-list-word-xl {
+    font-size: 11px;
+    letter-spacing: -0.04em;
+}
+
+.word-list-dense-compare .word-list-card-meaning,
+.word-list-dense-compare .word-list-accuracy {
+    display: none !important;
+}
+
+.word-list-dense-compare .word-list-card-meta {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    justify-content: flex-end;
+}
+
+.word-list-dense-compare .word-list-pos-badge {
+    min-width: 18px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.78);
+    font-size: 8.5px;
+    font-weight: 800;
+}
+
+.word-list-dense-compare .word-list-card-state-unlearned {
+    border-color: rgba(136, 146, 162, 0.52);
+    background: linear-gradient(180deg, #f0f2f5, #e1e5eb);
+}
+
+.word-list-dense-compare .word-list-card-state-weak {
+    border-color: rgba(244, 103, 94, 0.50);
+    background: linear-gradient(180deg, #fff7f3, #ffe7df);
+}
+
+.word-list-dense-compare .word-list-card-state-learned {
+    border-color: rgba(55, 190, 119, 0.48);
+    background: linear-gradient(180deg, #f2fff7, #ddf8e9);
+}
+
+.word-list-dense-compare .word-list-card-state-perfect {
+    border-color: rgba(231, 169, 35, 0.58);
+    background: linear-gradient(180deg, #fff9dc, #ffedac);
+}
+
+@media (max-width: 768px) {
+    .word-list-dense-compare .word-list-tabs {
+        padding-right: 54px;
+    }
+
+    .word-list-dense-compare .word-list-toolbar {
+        gap: 5px;
+        padding-bottom: 6px;
+    }
+
+    .word-list-dense-compare .word-list-tool-btn,
+    .word-list-dense-compare .word-list-toggle-btn {
+        min-height: 30px;
+        padding: 5px 8px;
+    }
+
+    .word-list-dense-compare .word-list-filter-row {
+        padding-bottom: 5px;
+    }
+
+    .word-list-dense-compare .word-list-count {
+        padding-bottom: 5px;
+    }
+
+    .word-list-dense-compare .word-list-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+        padding: 0 8px 10px;
+    }
+
+    .word-list-dense-compare .word-list-card {
+        min-height: 36px;
+        padding: 5px 22px 7px 7px;
+    }
+
+    .word-list-dense-compare .word-list-card-word {
+        font-size: 12.5px;
+        line-height: 1;
+    }
+
+    .word-list-dense-compare .word-list-card-word.word-list-word-long {
+        font-size: 11.2px;
+        letter-spacing: -0.03em;
+    }
+
+    .word-list-dense-compare .word-list-card-word.word-list-word-xl {
+        font-size: 10.2px;
+        letter-spacing: -0.045em;
+    }
 }
 
 /* Purchase Modal */

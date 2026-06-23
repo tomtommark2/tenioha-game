@@ -73,6 +73,8 @@ function initHelpModalSwipeToClose(helpModal) {
         if (e.pointerType === 'mouse' && e.button !== 0) return;
 
         const startedOnHandle = Boolean(e.target.closest('.help-sheet-handle'));
+        const startedOnControl = Boolean(e.target.closest('button, a, input, select, textarea, [role="button"], .help-list-item'));
+        if (!startedOnHandle && startedOnControl) return;
         if (!startedOnHandle && sheet.scrollTop > 0) return;
 
         startY = e.clientY;
