@@ -28,6 +28,7 @@ function initGlobalUIListeners() {
     if (helpModal) {
         helpModal.onclick = (e) => { if (e.target === helpModal) helpModal.style.display = 'none'; };
         if (closeHelpBtn) closeHelpBtn.onclick = () => helpModal.style.display = 'none';
+        initHelpModalSwipeToClose(helpModal);
     }
 
     const wbModal = document.getElementById('wordbookModal');
@@ -38,6 +39,86 @@ function initGlobalUIListeners() {
 
         // Removed JS loop for wordbook-item-btn to allow inline onclick to work
     }
+}
+
+function initHelpModalSwipeToClose(helpModal) {
+    const sheet = helpModal.querySelector('.help-modal-content');
+    if (!sheet || sheet.dataset.swipeCloseReady === 'true') return;
+    sheet.dataset.swipeCloseReady = 'true';
+
+    let startY = 0;
+    let startX = 0;
+    let currentY = 0;
+    let dragging = false;
+    let active = false;
+
+    const resetSheet = () => {
+        sheet.style.transition = '';
+        sheet.style.transform = '';
+        sheet.style.opacity = '';
+    };
+
+    const closeWithSwipe = () => {
+        sheet.style.transition = 'transform 160ms ease, opacity 160ms ease';
+        sheet.style.transform = 'translateY(100%)';
+        sheet.style.opacity = '0.96';
+        window.setTimeout(() => {
+            helpModal.style.display = 'none';
+            resetSheet();
+        }, 160);
+    };
+
+    sheet.addEventListener('pointerdown', (e) => {
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+        const startedOnHandle = Boolean(e.target.closest('.help-sheet-handle'));
+        if (!startedOnHandle && sheet.scrollTop > 0) return;
+
+        startY = e.clientY;
+        startX = e.clientX;
+        currentY = startY;
+        dragging = true;
+        active = false;
+        sheet.style.transition = '';
+        if (sheet.setPointerCapture) sheet.setPointerCapture(e.pointerId);
+    });
+
+    sheet.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        currentY = e.clientY;
+        const dy = currentY - startY;
+        const dx = Math.abs(e.clientX - startX);
+
+        if (!active) {
+            if (dy < 8 || dy < dx) return;
+            active = true;
+        }
+
+        if (dy <= 0) return;
+        e.preventDefault();
+        sheet.style.transform = `translateY(${Math.min(dy, 220)}px)`;
+        sheet.style.opacity = String(Math.max(0.82, 1 - dy / 600));
+    }, { passive: false });
+
+    const finishSwipe = () => {
+        if (!dragging) return;
+        const dy = currentY - startY;
+        dragging = false;
+
+        if (active && dy > 72) {
+            closeWithSwipe();
+            return;
+        }
+
+        sheet.style.transition = 'transform 160ms ease, opacity 160ms ease';
+        sheet.style.transform = '';
+        sheet.style.opacity = '';
+        window.setTimeout(resetSheet, 170);
+    };
+
+    sheet.addEventListener('pointerup', finishSwipe);
+    sheet.addEventListener('pointercancel', finishSwipe);
 }
 
 const ANNOUNCEMENT_READ_KEY = 'vocabGame_lastReadAnnouncementId';

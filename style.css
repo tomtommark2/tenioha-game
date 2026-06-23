@@ -4622,7 +4622,7 @@ body.level-selector-open .level-selector {
     }
 
     .rpg-inline {
-        left: 30px;
+        left: 27px;
         bottom: -5px;
     }
 
@@ -5009,12 +5009,14 @@ body.level-selector-open .level-selector {
 
     .rpg-inline > .char-level-display:nth-of-type(2) {
         top: 10px !important;
-        left: 92px;
+        right: 4px;
+        left: auto;
     }
 
     .rpg-inline > .char-level-display:nth-of-type(3) {
         top: 36px;
-        left: 92px;
+        right: 4px;
+        left: auto;
     }
 
     .mode-buttons {
@@ -5081,9 +5083,9 @@ body.level-selector-open .level-selector {
     }
 
     .mode-btn {
-        flex: 0 0 55px !important;
-        width: 55px !important;
-        min-width: 55px !important;
+        flex: 1 1 0 !important;
+        width: auto !important;
+        min-width: 0 !important;
         height: 88px !important;
         min-height: 88px !important;
         padding: 9px 4px 8px !important;
@@ -5146,7 +5148,15 @@ body.level-selector-open .level-selector {
     --picto-url: url("assets/icons/share-2.svg");
 }
 
-.app-picto::before {
+.app-picto.icon-book::before,
+.app-picto.icon-check::before,
+.app-picto.icon-star::before,
+.app-picto.icon-target::before,
+.app-picto.icon-refresh::before,
+.app-picto.icon-phone::before,
+.app-picto.icon-diamond::before,
+.app-picto.icon-mail::before,
+.app-picto.icon-share::before {
     width: 100% !important;
     height: 100% !important;
     border: 0 !important;
@@ -5159,7 +5169,15 @@ body.level-selector-open .level-selector {
     mask: var(--picto-url) center / contain no-repeat;
 }
 
-.app-picto::after {
+.app-picto.icon-book::after,
+.app-picto.icon-check::after,
+.app-picto.icon-star::after,
+.app-picto.icon-target::after,
+.app-picto.icon-refresh::after,
+.app-picto.icon-phone::after,
+.app-picto.icon-diamond::after,
+.app-picto.icon-mail::after,
+.app-picto.icon-share::after {
     display: none !important;
 }
 
