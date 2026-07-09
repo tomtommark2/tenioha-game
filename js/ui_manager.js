@@ -734,6 +734,45 @@ window.closeProfileModal = function () {
 };
 
 // --- PURCHASE MODAL ---
+const STRIPE_PAYMENT_LINK_URL = "https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01";
+const STRIPE_CHECKOUT_SESSION_ENDPOINT = window.TENIOHA_STRIPE_CHECKOUT_ENDPOINT
+    || "https://us-central1-tenioha-game.cloudfunctions.net/createStripeCheckoutSession";
+
+function stripeFallbackPurchaseUrl(userId) {
+    if (!userId) return STRIPE_PAYMENT_LINK_URL;
+    return `${STRIPE_PAYMENT_LINK_URL}?client_reference_id=${encodeURIComponent(userId)}`;
+}
+
+function checkoutReturnUrl() {
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.hash = "";
+    return url.toString();
+}
+
+async function createStripeCheckoutSession(user) {
+    const idToken = await user.getIdToken();
+    const response = await fetch(STRIPE_CHECKOUT_SESSION_ENDPOINT, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${idToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            app: "tenioha-game",
+            purchaseType: "tenioha_premium",
+            returnUrl: checkoutReturnUrl()
+        })
+    });
+    if (!response.ok) {
+        const message = await response.text();
+        throw new Error(`Checkout session failed: ${response.status} ${message}`);
+    }
+    const data = await response.json();
+    if (!data.url) throw new Error("Checkout session response did not include url.");
+    return data.url;
+}
+
 window.openPurchaseModal = function () {
     if (!requireLoginForPurchase()) {
         return;
@@ -743,11 +782,12 @@ window.openPurchaseModal = function () {
     if (modal) {
         modal.style.display = 'flex';
         // Check for userId for Stripe link (userId is in localStorage usually)
-        const userId = localStorage.getItem('vocabGame_userId');
+        const userId = (window.firebaseAuth && window.firebaseAuth.currentUser)
+            ? window.firebaseAuth.currentUser.uid
+            : localStorage.getItem('vocabGame_userId');
         const link = document.getElementById('stripePurchaseLink');
         if (link && userId) {
-            const STRIPE_BASE_URL = "https://buy.stripe.com/9B66oIbMidxG5M32Kl7ok01";
-            link.href = `${STRIPE_BASE_URL}?client_reference_id=${userId}`;
+            link.href = stripeFallbackPurchaseUrl(userId);
         }
     }
 };
@@ -785,9 +825,33 @@ window.closePurchaseModal = function () {
 document.addEventListener('DOMContentLoaded', () => {
     const purchaseLink = document.getElementById('stripePurchaseLink');
     if (!purchaseLink) return;
-    purchaseLink.addEventListener('click', (event) => {
+    purchaseLink.addEventListener('click', async (event) => {
         if (!requireLoginForPurchase()) {
             event.preventDefault();
+            return;
+        }
+
+        const user = window.firebaseAuth && window.firebaseAuth.currentUser;
+        if (!user) {
+            event.preventDefault();
+            return;
+        }
+
+        event.preventDefault();
+        const fallbackUrl = stripeFallbackPurchaseUrl(user.uid);
+        purchaseLink.href = fallbackUrl;
+        purchaseLink.classList.add('is-loading');
+        purchaseLink.setAttribute('aria-busy', 'true');
+
+        try {
+            const checkoutUrl = await createStripeCheckoutSession(user);
+            window.location.href = checkoutUrl;
+        } catch (error) {
+            console.warn("Stripe Checkout Session failed. Falling back to Payment Link.", error);
+            window.location.href = fallbackUrl;
+        } finally {
+            purchaseLink.classList.remove('is-loading');
+            purchaseLink.removeAttribute('aria-busy');
         }
     });
 });
