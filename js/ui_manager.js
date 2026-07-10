@@ -278,18 +278,7 @@ window.openLearningLogModal = function () {
     // Helper: Robust Key Generation (Matches game_logic.js)
     const resolveWordKey = (word, level) => {
         if (typeof getWordKey === 'function') return getWordKey(word, level);
-        // Fallback Logic (Must match game_logic.js)
-        if (word.ref && word.ref !== level) {
-            let refCategory = word.ref;
-            let refWordText = word.word;
-            if (word.ref.includes(':')) {
-                const parts = word.ref.split(':');
-                refCategory = parts[0];
-                refWordText = parts[1];
-            }
-            return `${refCategory}_${refWordText}`;
-        }
-        return `${level}_${word.word}`;
+        return window.GameUtils.getWordKey(word, level, vocabularyDatabase);
     };
 
     // Count Mastery and Played
@@ -607,24 +596,10 @@ function renderRealChart(canvas) {
         const vDB = (typeof vocabularyDatabase !== 'undefined') ? vocabularyDatabase : (window.vocabularyDatabase || null);
         if (!gs || !gs.wordStates || !vDB) return 0;
 
-        const getKey = (wordObj, level) => {
-            if (wordObj.ref && wordObj.ref !== level) {
-                let refCategory = wordObj.ref;
-                let refWordText = wordObj.word;
-                if (wordObj.ref.includes(':')) {
-                    const parts = wordObj.ref.split(':');
-                    refCategory = parts[0];
-                    refWordText = parts[1];
-                }
-                return `${refCategory}_${refWordText}`;
-            }
-            return `${level}_${wordObj.word}`;
-        };
-
         let total = 0;
         ['junior', 'basic', 'daily', 'exam1'].forEach(cat => {
             (vDB[cat] || []).forEach(w => {
-                const k = getKey(w, cat);
+                const k = window.GameUtils.getWordKey(w, cat, vDB);
                 if (gs.wordStates[k] === 'perfect') total++;
             });
         });

@@ -322,6 +322,125 @@ test('正答率閾値(80/50)で状態分類される', async ({ page }) => {
   expect(result).toEqual({ k1: 'perfect', k2: 'learned', k3: 'weak' });
 });
 
+test('旧セーブの同綴り語を品詞別キーへ安全に移行する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    localStorage.setItem('vocabClickerSave', JSON.stringify({
+      points: 10,
+      currentLevel: 'exam1',
+      currentMode: 'unlearned',
+      wordStates: { exam1_attribute: 'weak' },
+      srsData: {
+        exam1_attribute: {
+          dueAt: 12345,
+          successCount: 0,
+          failCount: 2,
+          reviewStep: 0,
+          everWrong: true,
+        },
+      },
+      learnedWordIntervals: { exam1_attribute: 2, exam1_attribute_last: 7 },
+      lastSaveTime: Date.now(),
+    }));
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => (
+    window.gameState &&
+    window.vocabularyDatabase &&
+    typeof window.getWordKey === 'function' &&
+    window.gameState.wordKeySchemaVersion === 2
+  ));
+
+  const result = await page.evaluate(() => {
+    const entries = window.vocabularyDatabase.exam1.filter(word => word.word === 'attribute');
+    const noun = entries.find(word => word.pos === '名');
+    const verb = entries.find(word => word.pos === '動');
+    const nounKey = window.getWordKey(noun, 'exam1');
+    const verbKey = window.getWordKey(verb, 'exam1');
+    const before = {
+      nounKey,
+      verbKey,
+      nounState: window.gameState.wordStates[nounKey],
+      verbState: window.gameState.wordStates[verbKey],
+      nounFails: window.gameState.srsData[nounKey]?.failCount,
+      verbFails: window.gameState.srsData[verbKey]?.failCount,
+      nounInterval: window.gameState.learnedWordIntervals[nounKey],
+      verbInterval: window.gameState.learnedWordIntervals[verbKey],
+    };
+    window.gameState.wordStates[nounKey] = 'perfect';
+    return {
+      before,
+      nounAfter: window.gameState.wordStates[nounKey],
+      verbAfter: window.gameState.wordStates[verbKey],
+      schemaVersion: window.gameState.wordKeySchemaVersion,
+    };
+  });
+
+  expect(result.before.nounKey).not.toBe(result.before.verbKey);
+  expect(result.before).toMatchObject({
+    nounState: 'weak',
+    verbState: 'weak',
+    nounFails: 2,
+    verbFails: 2,
+    nounInterval: 2,
+    verbInterval: 2,
+  });
+  expect(result.nounAfter).toBe('perfect');
+  expect(result.verbAfter).toBe('weak');
+  expect(result.schemaVersion).toBe(2);
+});
+
+test('単語帳参照語は基底語と同じ復習項目として重複しない', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => (
+    window.gameState &&
+    window.vocabularyDatabase &&
+    typeof window.getDueReviewWordsPool === 'function'
+  ));
+
+  const result = await page.evaluate(() => {
+    const selectionLevel = 'selection1900';
+    const selected = window.vocabularyDatabase[selectionLevel]
+      .find(word => typeof word.ref === 'string' && word.ref.includes(':'));
+    const baseLevel = selected.ref.split(':')[0];
+    const key = window.getWordKey(selected, selectionLevel);
+
+    window.gameState.activeReviewLevels = [baseLevel, selectionLevel];
+    window.gameState.wordStates[key] = 'weak';
+    window.gameState.srsData[key] = {
+      dueAt: Date.now() - 1000,
+      successCount: 0,
+      failCount: 1,
+      everWrong: true,
+      firstTryPerfect: false,
+    };
+
+    const pool = window.getDueReviewWordsPool();
+    const matching = pool.filter(word => (
+      window.getWordKey(word, word.__sourceLevel || baseLevel) === key
+    ));
+    return {
+      key,
+      matchingCount: matching.length,
+      meaning: matching[0]?.meaning,
+      pos: matching[0]?.pos,
+    };
+  });
+
+  expect(result.key).toMatch(/^word-v2:/);
+  expect(result.matchingCount).toBe(1);
+  expect(result.meaning).toBeTruthy();
+  expect(result.meaning).not.toBe('（データ準備中）');
+  expect(result.pos).not.toBe('unknown');
+});
+
 test('致命的な console error / page error が出ない', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
@@ -550,7 +669,7 @@ test('公開版の version.js が新しければ更新ありと判定する', as
   await page.route(/\/js\/version\.js\?update-check=/, async (route) => {
     await route.fulfill({
       contentType: 'application/javascript',
-      body: '(function (global) { global.GAME_VERSION = "v9.99"; })(window);',
+      body: '(function (global) { global.GAME_VERSION = "9999.1231.2359"; })(window);',
     });
   });
 
@@ -563,6 +682,13 @@ test('公開版の version.js が新しければ更新ありと判定する', as
   });
 
   expect(hasUpdate).toBe(true);
+
+  const comparisons = await page.evaluate(() => ({
+    timestampOrder: window.appUpdateManager.compareVersions('2026.0710.0839', '2026.0710.0838'),
+    legacyMigration: window.appUpdateManager.compareVersions('2026.0710.0838', 'v3.28'),
+  }));
+  expect(comparisons.timestampOrder).toBe(1);
+  expect(comparisons.legacyMigration).toBe(1);
 });
 
 test('selection1900 の参照番号は意味カードに表示しない', async ({ page }) => {

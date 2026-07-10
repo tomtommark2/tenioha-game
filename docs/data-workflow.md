@@ -22,6 +22,14 @@ Additional wordbook datasets also exist:
 
 `selection1400`, `selection1900`, and `sys_2000` are not the primary CEFR source layers. They rely heavily on word-level references into the main datasets.
 
+## Learning-State Identity
+
+- Runtime learning keys use the referenced base level, spelling, and part of speech.
+- Homographs with different parts of speech have independent classification and SRS history.
+- Wordbook references share learning state with the matching entry in the primary CEFR layer.
+- Changing an existing entry's `word`, `pos`, or `ref` changes its learning identity and requires an explicit save-data migration.
+- Legacy spelling-only keys are retained during the v2 key transition so existing progress can be copied without data loss.
+
 ## Content Scripts
 
 Useful current scripts:

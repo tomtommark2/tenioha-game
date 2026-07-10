@@ -1,15 +1,8 @@
 // Stats Engine: single source for learning metrics (perfect-only)
 (function (global) {
-  function resolveWordKey(wordObj, level) {
-    if (wordObj && wordObj.ref && wordObj.ref !== level) {
-      let refCategory = wordObj.ref;
-      let refWordText = wordObj.word;
-      if (wordObj.ref.includes(':')) {
-        const parts = wordObj.ref.split(':');
-        refCategory = parts[0];
-        refWordText = parts[1];
-      }
-      return `${refCategory}_${refWordText}`;
+  function resolveWordKey(wordObj, level, vocabularyDatabase) {
+    if (global.GameUtils && typeof global.GameUtils.getWordKey === 'function') {
+      return global.GameUtils.getWordKey(wordObj, level, vocabularyDatabase);
     }
     return `${level}_${wordObj.word}`;
   }
@@ -18,7 +11,7 @@
     const words = (vocabularyDatabase && vocabularyDatabase[category]) || [];
     let count = 0;
     words.forEach((w) => {
-      const k = resolveWordKey(w, category);
+      const k = resolveWordKey(w, category, vocabularyDatabase);
       if (gameState && gameState.wordStates && gameState.wordStates[k] === 'perfect') count++;
     });
     return count;

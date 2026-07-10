@@ -12,7 +12,9 @@
 
 - App version lives in `js/version.js`.
 - HTML asset query strings are validated by `scripts/check-version-sync.js`.
-- `npm run release:patch` bumps the patch version, syncs HTML, and runs the sync checks.
+- Versions use the related apps' deployment timestamp format: `YYYY.MMDD.HHMM`.
+- `npm run release:version` generates the local timestamp, updates asset queries, syncs HTML, and runs the sync checks.
+- `npm run release:patch` remains as a compatibility alias.
 
 ## Deployment Targets
 
@@ -63,3 +65,11 @@ Change these carefully because they affect installability, caching, backend serv
 - Use `node scripts/compact_firestore_saves.js --limit 1000` as a dry-run before any cloud save compaction.
 - Add `--execute` only after reviewing the dry-run output.
 - `--delete-all-save-chunks` is only safe after the script confirms there are no users still using chunked cloud saves.
+
+## Cloud Save Consistency
+
+- `users/{uid}.saveRevision` is the optimistic-lock revision for cloud saves. Existing documents without it start at revision `0`.
+- Automatic saves stop when another device advances the revision; they never silently overwrite that device's data.
+- A manual save shows an overwrite confirmation when the revision changed or the cloud score is higher.
+- Chunked saves write a new immutable generation first, then atomically switch the parent manifest. A generation that loses the revision race is deleted, and successful saves delete only the previous manifest's generation.
+- Orphan chunks older than 24 hours are cleaned at most once per user per day, with a bounded five-page loop; the active generation is always excluded.

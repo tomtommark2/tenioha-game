@@ -24,18 +24,48 @@ service cloud.firestore {
       return isSignedIn() && request.auth.uid == userId;
     }
 
+    function protectedUserFields() {
+      return [
+        'isPremium',
+        'premiumExpiresAt',
+        'premiumSource',
+        'premiumSince',
+        'premiumMatchReason',
+        'lastActivatedAt',
+        'stripeCustomerId',
+        'stripeCustomerIdTest',
+        'stripeCustomerIdLive',
+        'stripeEnvironment',
+        'stripePaymentId',
+        'stripeCheckoutSessionId',
+        'stripePaymentLinkId',
+        'stripePaymentStatus',
+        'usedCode',
+        'redeemedCodes'
+      ];
+    }
+
     // --- Collection Rules ---
 
     // 1. Users Collection
-    // Users can only read/write their own document AND subcollections
+    // Clients can manage learning data, but only Admin SDK code may change billing state.
     match /users/{userId} {
-      allow read, write: if isOwner(userId) && !isBanned();
+      allow read: if isOwner(userId) && !isBanned();
+      allow create: if isOwner(userId)
+                    && !isBanned()
+                    && !request.resource.data.keys().hasAny(protectedUserFields());
+      allow update: if isOwner(userId)
+                    && !isBanned()
+                    && !request.resource.data.diff(resource.data).affectedKeys().hasAny(protectedUserFields());
+      allow delete: if false;
       
       match /daily_logs/{logId} {
         allow read, write: if isOwner(userId) && !isBanned();
       }
       
-      match /{document=**} {
+      // Require at least one subcollection segment so this cannot also match
+      // the parent /users/{userId} document under rules_version = '2'.
+      match /{collectionId}/{document=**} {
         allow read, write: if isOwner(userId) && !isBanned();
       }
     }
@@ -48,16 +78,9 @@ service cloud.firestore {
     }
 
     // 3. Promo Codes Collection
-    // Read: Authenticated users (to check code)
-    // Write: Authenticated users (ONLY to increment count)
-    // Note: In a strict environment, this logic should be moved to Cloud Functions.
-    // tailored to allow client-side transaction updates for now.
+    // Promo codes are validated and redeemed only by redeemTeniohaPromoCode.
     match /promocodes/{code} {
-      allow read: if isSignedIn();
-      allow update: if isSignedIn() 
-                    && !isBanned()
-                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['redemptionCount']); // Only allow count update
-      allow create, delete: if false; // Admin only
+      allow read, write: if false;
     }
 
     // 4. Config Collection

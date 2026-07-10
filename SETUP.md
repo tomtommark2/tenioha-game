@@ -60,10 +60,12 @@ npm run test:e2e:safe
 - Functions source: `functions/index.js`
 - Stripe webhook secrets are expected through Firebase Functions secrets / environment variables.
 - Purchase checkout endpoint: `https://us-central1-tenioha-game.cloudfunctions.net/createStripeCheckoutSession`
+- Promo code endpoint: `https://us-central1-tenioha-game.cloudfunctions.net/redeemTeniohaPromoCode`
 - Stripe webhook endpoint: `https://us-central1-tenioha-game.cloudfunctions.net/stripeWebhook`
 - Required Stripe webhook events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`
 - Required Stripe metadata for new Checkout Sessions: `app=tenioha-game`, `purchaseType=tenioha_premium`
 - Customer IDs are stored separately as `stripeCustomerIdTest` or `stripeCustomerIdLive` based on the Stripe secret key mode.
+- Premium, Stripe, and promo redemption fields are server-managed; clients may not write them directly.
 
 ## Notes
 

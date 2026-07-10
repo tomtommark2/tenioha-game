@@ -38,7 +38,8 @@ var gameState = window.gameState || {
     reviewMode: 'random', // off | random | on
     lastReviewQueueHeadKey: null,
     pendingQueuePop: null,
-    mixCycleCounter: 0
+    mixCycleCounter: 0,
+    wordKeySchemaVersion: 0
 };
 window.gameState = gameState; // Expose for fallback scripts
 
@@ -628,49 +629,47 @@ function closeLevelSelector() {
     if (trigger) trigger.setAttribute('aria-expanded', 'false');
 }
 
+function resolveReferencedVocabularyWord(word, level) {
+    let processed = { ...word };
+    if (word.ref && word.ref !== level) {
+        let refCategory = word.ref;
+        let refWordText = word.word;
+
+        if (word.ref.includes(':')) {
+            const parts = word.ref.split(':');
+            refCategory = parts[0];
+            refWordText = parts[1];
+        }
+
+        const refArray = vocabularyDatabase[refCategory];
+        const refWord = Array.isArray(refArray)
+            ? refArray.find(candidate => candidate.word === refWordText)
+            : null;
+        if (refWord) {
+            processed = {
+                ...word,
+                meaning: refWord.meaning,
+                phrase: refWord.phrase,
+                example: refWord.example,
+                pos: refWord.pos,
+                ipa: word.ipa || refWord.ipa,
+            };
+        }
+    }
+
+    if (!processed.pos || processed.pos === 'unknown') {
+        processed.pos = 'other';
+    }
+    if (!processed.meaning) {
+        processed.meaning = '（データ準備中）';
+    }
+    return processed;
+}
+
 function loadVocabularyForLevel() {
     if (gameState.currentLevel.startsWith('selection') || gameState.currentLevel === 'sys_2000') {
         const rawWords = vocabularyDatabase[gameState.currentLevel] || [];
-        vocabulary = rawWords.map(v => {
-            let processed = v;
-            if (v.ref && v.ref !== gameState.currentLevel) {
-                let refCategory = v.ref;
-                let refWordText = v.word;
-
-                if (v.ref.includes(':')) {
-                    const parts = v.ref.split(':');
-                    refCategory = parts[0];
-                    refWordText = parts[1];
-                }
-
-                const refArray = vocabularyDatabase[refCategory];
-                if (refArray) {
-                    // Find match by word text
-                    const refWord = refArray.find(r => r.word === refWordText);
-                    if (refWord) {
-                        // Merge referenced data (meanings, examples) but keep selection-specific metadata (set, id)
-                        processed = {
-                            ...v,
-                            meaning: refWord.meaning,
-                            phrase: refWord.phrase,
-                            example: refWord.example,
-                            pos: refWord.pos,
-                            ipa: v.ipa || refWord.ipa
-                        };
-                    }
-                }
-            }
-
-            // Fallback for missing data
-            if (!processed.pos || processed.pos === 'unknown') {
-                processed.pos = 'other';
-            }
-            if (!processed.meaning) {
-                processed.meaning = '（データ準備中）';
-            }
-
-            return processed;
-        }).filter(v => {
+        vocabulary = rawWords.map(v => resolveReferencedVocabularyWord(v, gameState.currentLevel)).filter(v => {
             // Always include if set is not a number (e.g. "system") or matches current level logic
             if (typeof v.set !== 'number') return true;
             return v.set <= gameState.vocabLevel;
@@ -684,22 +683,12 @@ function loadVocabularyForLevel() {
     gameState.currentLevelTotal = vocabulary.length;
 }
 
-function getWordBaseLevel(word, level) {
-    if (word.__sourceLevel) return word.__sourceLevel;
-    if (word.ref && word.ref !== level) {
-        if (word.ref.includes(':')) {
-            const parts = word.ref.split(':');
-            return parts[0];
-        }
-        return word.ref;
-    }
-    return level;
+function getWordSourceLevel(word, level) {
+    return (word && word.__sourceLevel) || level;
 }
 
 function getWordKey(word, level) {
-    const baseLevel = getWordBaseLevel(word, level);
-    const baseWord = (word.ref && word.ref.includes(':')) ? word.ref.split(':')[1] : word.word;
-    return `${baseLevel}_${baseWord}`;
+    return window.GameUtils.getWordKey(word, level, vocabularyDatabase);
 }
 
 function getWordKeySafe(word, levelHint) {
@@ -783,8 +772,7 @@ function updateSrsForWord(key, isCorrect, currentState = null) {
 
 function isReviewLevelEnabledForWord(word, level) {
     const active = gameState.activeReviewLevels || [];
-    const base = getWordBaseLevel(word, level);
-    return active.includes(base);
+    return active.includes(getWordSourceLevel(word, level));
 }
 
 function renderReviewLevelCheckboxes() {
@@ -1211,13 +1199,21 @@ function isRetiredWordByKey(key) {
 function getReviewWordsByModeAcrossLevels(mode) {
     const levels = gameState.activeReviewLevels || [];
     let out = [];
+    const seenKeys = new Set();
     levels.forEach(level => {
         const words = vocabularyDatabase[level] || [];
         words.forEach(w => {
-            const wrapped = { ...w, __sourceLevel: level };
+            const resolved = (level.startsWith('selection') || level === 'sys_2000')
+                ? resolveReferencedVocabularyWord(w, level)
+                : w;
+            const wrapped = { ...resolved, __sourceLevel: level };
             const key = getWordKeySafe(wrapped, level);
+            if (seenKeys.has(key)) return;
             if (isRetiredWordByKey(key)) return; // first-try perfect words are permanently excluded
-            if (gameState.wordStates[key] === mode) out.push(wrapped);
+            if (gameState.wordStates[key] === mode) {
+                seenKeys.add(key);
+                out.push(wrapped);
+            }
         });
     });
     return filterWordsByPOS(out);
@@ -1433,6 +1429,49 @@ function bootstrapSrsFromWordStates() {
     gameState.srsBootstrapped = true;
 }
 
+function migrateWordKeySchemaIfNeeded() {
+    const target = 2;
+    if ((gameState.wordKeySchemaVersion || 0) >= target) return;
+
+    if (!gameState.wordStates) gameState.wordStates = {};
+    if (!gameState.srsData) gameState.srsData = {};
+    if (!gameState.learnedWordIntervals) gameState.learnedWordIntervals = {};
+
+    Object.entries(vocabularyDatabase || {}).forEach(([level, words]) => {
+        if (!Array.isArray(words)) return;
+        words.forEach(word => {
+            if (!word || !word.word) return;
+            const newKey = getWordKey(word, level);
+            const legacyKeys = window.GameUtils.getLegacyWordKeys(word, level, vocabularyDatabase);
+
+            if (!Object.prototype.hasOwnProperty.call(gameState.wordStates, newKey)) {
+                const oldKey = legacyKeys.find(key => Object.prototype.hasOwnProperty.call(gameState.wordStates, key));
+                if (oldKey) gameState.wordStates[newKey] = gameState.wordStates[oldKey];
+            }
+
+            if (!Object.prototype.hasOwnProperty.call(gameState.srsData, newKey)) {
+                const oldKey = legacyKeys.find(key => Object.prototype.hasOwnProperty.call(gameState.srsData, key));
+                if (oldKey) gameState.srsData[newKey] = { ...gameState.srsData[oldKey] };
+            }
+
+            if (!Object.prototype.hasOwnProperty.call(gameState.learnedWordIntervals, newKey)) {
+                const oldKey = legacyKeys.find(key => Object.prototype.hasOwnProperty.call(gameState.learnedWordIntervals, key));
+                if (oldKey) gameState.learnedWordIntervals[newKey] = gameState.learnedWordIntervals[oldKey];
+            }
+
+            const newLastKey = `${newKey}_last`;
+            if (!Object.prototype.hasOwnProperty.call(gameState.learnedWordIntervals, newLastKey)) {
+                const oldLastKey = legacyKeys
+                    .map(key => `${key}_last`)
+                    .find(key => Object.prototype.hasOwnProperty.call(gameState.learnedWordIntervals, key));
+                if (oldLastKey) gameState.learnedWordIntervals[newLastKey] = gameState.learnedWordIntervals[oldLastKey];
+            }
+        });
+    });
+
+    gameState.wordKeySchemaVersion = target;
+}
+
 function migrateSrsSchemaIfNeeded() {
     const target = 3;
     if (!gameState.srsData) gameState.srsData = {};
@@ -1519,7 +1558,8 @@ function saveGame() {
         srsSchemaVersion: gameState.srsSchemaVersion,
         activeReviewLevels: gameState.activeReviewLevels,
         reviewMode: gameState.reviewMode,
-        mixCycleCounter: gameState.mixCycleCounter
+        mixCycleCounter: gameState.mixCycleCounter,
+        wordKeySchemaVersion: gameState.wordKeySchemaVersion
     };
     localStorage.setItem('vocabClickerSave', JSON.stringify(data));
 
@@ -1575,6 +1615,7 @@ function loadGame() {
         if (typeof gameState.mixCycleCounter !== 'number') gameState.mixCycleCounter = 0;
         gameState.randomMode = false; // random mode retired
 
+        migrateWordKeySchemaIfNeeded();
         migrateSrsSchemaIfNeeded();
         bootstrapSrsFromWordStates();
 
@@ -1592,6 +1633,7 @@ function loadGame() {
         }
     } else {
         // First ever launch
+        gameState.wordKeySchemaVersion = 2;
         if (!gameState.firstPlayedAt) {
             gameState.firstPlayedAt = Date.now();
         }

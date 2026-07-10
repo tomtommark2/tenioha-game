@@ -18,6 +18,7 @@ const TENIOHA_CHECKOUT_PRODUCT_NAME = process.env.TENIOHA_CHECKOUT_PRODUCT_NAME 
 const TENIOHA_CHECKOUT_UNIT_AMOUNT = Number(process.env.TENIOHA_CHECKOUT_UNIT_AMOUNT || 1800);
 const DEFAULT_CHECKOUT_RETURN_URL = "https://tomtommark2.github.io/tenioha-game/";
 const CHECKOUT_FUNCTION_REGION = "us-central1";
+const PROMO_CODE_MAX_LENGTH = 128;
 const ALLOWED_CHECKOUT_ORIGINS = new Set([
     "https://tomtommark2.github.io",
     "https://tenioha-game.web.app",
@@ -65,6 +66,14 @@ function requestBody(req) {
     if (typeof req.body === "string" && req.body) return JSON.parse(req.body);
     if (req.rawBody?.length) return JSON.parse(req.rawBody.toString("utf8"));
     return {};
+}
+
+class PromoCodeError extends Error {
+    constructor(message, status = 400) {
+        super(message);
+        this.name = "PromoCodeError";
+        this.status = status;
+    }
 }
 
 function normalizedCheckoutReturnUrl(value) {
@@ -322,6 +331,104 @@ exports.createStripeCheckoutSession = onRequest({ region: CHECKOUT_FUNCTION_REGI
     } catch (error) {
         logger.error("Failed to create tenioha Stripe Checkout Session.", error);
         res.status(500).json({ error: "Failed to create checkout session." });
+    }
+});
+
+exports.redeemTeniohaPromoCode = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
+    setCheckoutCorsHeaders(req, res);
+
+    if (req.method === "OPTIONS") {
+        res.status(204).send("");
+        return;
+    }
+
+    if (req.method !== "POST") {
+        res.status(405).json({ error: "Method Not Allowed" });
+        return;
+    }
+
+    try {
+        const body = requestBody(req);
+        const authHeader = req.headers.authorization || "";
+        const idToken = authHeader.startsWith("Bearer ") ? authHeader.slice("Bearer ".length) : body.idToken;
+        if (!idToken) {
+            res.status(401).json({ error: "ログインが必要です。" });
+            return;
+        }
+
+        const code = typeof body.code === "string" ? body.code.trim() : "";
+        if (!code || code.length > PROMO_CODE_MAX_LENGTH) {
+            throw new PromoCodeError("コードが無効か、期限切れです。");
+        }
+
+        const decodedToken = await admin.auth().verifyIdToken(idToken);
+        const userRef = db.collection("users").doc(decodedToken.uid);
+        const codeRef = db.collection("promocodes").doc(code);
+
+        const result = await db.runTransaction(async (transaction) => {
+            const [codeSnapshot, userSnapshot] = await Promise.all([
+                transaction.get(codeRef),
+                transaction.get(userRef),
+            ]);
+
+            if (!codeSnapshot.exists || codeSnapshot.data().active !== true) {
+                throw new PromoCodeError("コードが無効か、期限切れです。");
+            }
+
+            const codeData = codeSnapshot.data();
+            const currentCount = Number(codeData.redemptionCount || 0);
+            const maxRedemptions = Number(codeData.maxRedemptions || 0);
+            if (maxRedemptions > 0 && currentCount >= maxRedemptions) {
+                throw new PromoCodeError("このコードの利用上限に達しました。");
+            }
+
+            const userData = userSnapshot.exists ? userSnapshot.data() : {};
+            const redeemedCodes = Array.isArray(userData.redeemedCodes) ? userData.redeemedCodes : [];
+            if (redeemedCodes.includes(code)) {
+                throw new PromoCodeError("このコードは既に使用済みです。");
+            }
+
+            const configuredDuration = Number(codeData.durationDays || 30);
+            const durationDays = Number.isFinite(configuredDuration) && configuredDuration > 0
+                ? Math.floor(configuredDuration)
+                : 30;
+            const currentExpiry = userData.premiumExpiresAt && typeof userData.premiumExpiresAt.toMillis === "function"
+                ? userData.premiumExpiresAt.toMillis()
+                : 0;
+            const now = Date.now();
+            const baseTime = currentExpiry > now ? currentExpiry : now;
+            const newExpiryTime = baseTime + (durationDays * 24 * 60 * 60 * 1000);
+
+            transaction.set(userRef, {
+                premiumExpiresAt: admin.firestore.Timestamp.fromMillis(newExpiryTime),
+                premiumSource: "promo_code",
+                lastActivatedAt: admin.firestore.FieldValue.serverTimestamp(),
+                usedCode: code,
+                redeemedCodes: admin.firestore.FieldValue.arrayUnion(code),
+            }, { merge: true });
+            transaction.update(codeRef, {
+                redemptionCount: admin.firestore.FieldValue.increment(1),
+            });
+
+            return { newExpiryTime, durationDays };
+        });
+
+        logger.info("Redeemed tenioha promo code.", {
+            uid: decodedToken.uid,
+            durationDays: result.durationDays,
+        });
+        res.json(result);
+    } catch (error) {
+        if (error instanceof PromoCodeError) {
+            res.status(error.status).json({ error: error.message });
+            return;
+        }
+        if (error && error.code && String(error.code).startsWith("auth/")) {
+            res.status(401).json({ error: "ログイン情報の確認に失敗しました。再ログインしてください。" });
+            return;
+        }
+        logger.error("Failed to redeem tenioha promo code.", error);
+        res.status(500).json({ error: "コードの適用に失敗しました。時間をおいて再度お試しください。" });
     }
 });
 

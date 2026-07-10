@@ -13,7 +13,7 @@ function fail(msg) {
 if (!fs.existsSync(versionFile)) fail('js/version.js not found');
 
 const versionSrc = fs.readFileSync(versionFile, 'utf8');
-const m = versionSrc.match(/GAME_VERSION\s*=\s*"v(\d+\.\d+)"/);
+const m = versionSrc.match(/GAME_VERSION\s*=\s*["'](\d{4}\.\d{4}\.\d{4})["']/);
 if (!m) fail('Could not parse GAME_VERSION in js/version.js');
 const expected = m[1];
 
@@ -39,7 +39,7 @@ for (const file of htmlFiles) {
   const src = fs.readFileSync(file, 'utf8');
   for (const t of targets) {
     const escaped = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const re = new RegExp(`${escaped}\\?v=(\\d+\\.\\d+)`, 'g');
+    const re = new RegExp(`${escaped}\\?v=([^"'&\\s>]+)`, 'g');
     const found = [...src.matchAll(re)].map(x => x[1]);
     if (found.length === 0) {
       fail(`${path.basename(file)} missing version query for ${t}`);
@@ -52,4 +52,4 @@ for (const file of htmlFiles) {
   }
 }
 
-console.log(`OK: version sync passed (expected v${expected})`);
+console.log(`OK: version sync passed (expected ${expected})`);
