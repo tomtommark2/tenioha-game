@@ -14,6 +14,7 @@ var gameState = window.gameState || {
     sessionStartTime: Date.now(),
     meaningCardFlipped: false,
     isReviewWord: false,
+    currentQuestionReason: null,
     autoMode: false,
     randomMode: false,
     posFilters: ['名', '動', '形', '副', '助', '前', '接', '代', 'other'], // Active POS filters
@@ -831,7 +832,12 @@ window.closeStudyModeModal = function () {
 window.toggleDueOnlyMode = function () {
     const order = ['off', 'random', 'on'];
     const cur = order.includes(gameState.reviewMode) ? gameState.reviewMode : 'random';
-    gameState.reviewMode = order[(order.indexOf(cur) + 1) % order.length];
+    window.setReviewMode(order[(order.indexOf(cur) + 1) % order.length]);
+};
+
+window.setReviewMode = function (mode) {
+    if (!['off', 'random', 'on'].includes(mode)) return;
+    gameState.reviewMode = mode;
     saveGame();
     updateModeButtons();
     updateReviewQueueBadge();
@@ -897,6 +903,31 @@ function getAccuracyTagInfoByKey(key) {
         return { text: `正答率 ${a.rate}%`, color: '#2ecc71' };
     }
     return { text: `正答率 ${a.rate}%`, color: '#e74c3c' };
+}
+
+const QUESTION_REASON_INFO = {
+    'due-weak': { text: '苦手の復習', tone: 'weak' },
+    'due-learned': { text: '得意の定着チェック', tone: 'learned' },
+    'manual-weak': { text: '苦手から出題', tone: 'weak' },
+    'manual-learned': { text: '得意から出題', tone: 'learned' },
+    'manual-perfect': { text: '完璧から出題', tone: 'perfect' }
+};
+
+function updateQuestionReasonUI() {
+    const label = document.getElementById('questionReasonLabel');
+    if (!label) return;
+
+    const info = QUESTION_REASON_INFO[gameState.currentQuestionReason];
+    if (!gameState.isReviewWord || !info) {
+        label.style.display = 'none';
+        label.textContent = '';
+        label.removeAttribute('data-tone');
+        return;
+    }
+
+    label.textContent = info.text;
+    label.dataset.tone = info.tone;
+    label.style.display = 'inline-flex';
 }
 
 const WORD_LIST_LEVELS = [
@@ -1251,6 +1282,7 @@ window.openWordFromList = function (level, key) {
     clearAutoTimer();
     hideNoWordsMessage();
     gameState.isReviewWord = false;
+    gameState.currentQuestionReason = null;
     gameState.currentWordIndex = 0;
     gameState.currentWord = word;
     gameState.lastShownWordKey = getWordKey(word, safeLevel);
@@ -1401,6 +1433,7 @@ function updateReviewProgressUI() {
     const label = document.getElementById('reviewProgressLabel');
     const mode = document.getElementById('reviewModeInlineLabel');
     const modeModal = document.getElementById('dueOnlyModeLabelModal');
+    const modeDescription = document.getElementById('reviewModeDescription');
     if (!wrap || !list || !label) return;
 
     const dueWords = getDueReviewWordsPool();
@@ -1411,9 +1444,9 @@ function updateReviewProgressUI() {
     const oldHeadKey = gameState.lastReviewQueueHeadKey;
 
     const modeMap = {
-        on: { text: '復習モード:ON', color: '#b42318', bg: '#fff1f1', border: '#fecaca' },
-        random: { text: '復習モード:MIX', color: '#a16207', bg: '#fffbeb', border: '#fde68a' },
-        off: { text: '復習モード:OFF', color: '#475467', bg: '#f3f4f6', border: '#d1d5db' }
+        on: { text: '復習だけ', description: '復習キューの単語だけを出題します。', color: '#b42318', bg: '#fff1f1', border: '#fecaca' },
+        random: { text: '新規＋復習', description: '復習を優先し、新しい単語もまぜて出題します。', color: '#a16207', bg: '#fffbeb', border: '#fde68a' },
+        off: { text: '新規だけ', description: '未学習では新しい単語だけを出題します。', color: '#475467', bg: '#f3f4f6', border: '#d1d5db' }
     };
     const m = modeMap[gameState.reviewMode] || modeMap.random;
     const modeText = m.text;
@@ -1428,6 +1461,12 @@ function updateReviewProgressUI() {
         modeModal.textContent = modeText;
         modeModal.style.color = modeColor;
     }
+    if (modeDescription) modeDescription.textContent = m.description;
+    document.querySelectorAll('[data-review-mode-option]').forEach(button => {
+        const active = button.dataset.reviewModeOption === gameState.reviewMode;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
 
     label.textContent = `復習キュー ${total}件`;
 
@@ -1452,7 +1491,7 @@ function updateReviewProgressUI() {
     const isOn = gameState.reviewMode === 'on';
     wrap.style.display = total > 0 ? 'block' : (isOn ? 'block' : 'none');
     if (total === 0 && isOn) {
-        list.innerHTML = '<span class="review-queue-empty">今は due 切れ復習がありません</span>';
+        list.innerHTML = '<span class="review-queue-empty">今、復習する単語はありません</span>';
     }
 
     // Keep head snapshot for debug/consistency checks
@@ -2021,6 +2060,7 @@ function showNextWord() {
     let shouldShowReview = false;
     let reviewType = null;
     let selectedCategory = null; // 'unlearned', 'learned', 'weak'
+    gameState.currentQuestionReason = null;
 
     if (!gameState.randomMode) {
         // STANDARD MODE
@@ -2039,6 +2079,7 @@ function showNextWord() {
                     shouldShowReview = true;
                     reviewType = 'weak';
                 }
+                gameState.currentQuestionReason = mode === 'weak' ? 'manual-weak' : 'manual-learned';
             } else {
                 words = [];
             }
@@ -2050,6 +2091,7 @@ function showNextWord() {
             words = word ? [word] : [];
             gameState.isReviewWord = true;
             reviewType = 'learned';
+            gameState.currentQuestionReason = 'manual-perfect';
         } else {
             // Unlearned mode behaves as MIXED queue:
             // - reviewMode=on: review 100%
@@ -2080,6 +2122,7 @@ function showNextWord() {
                 shouldShowReview = true;
                 reviewType = (st === 'weak') ? 'weak' : 'learned';
                 gameState.isReviewWord = true;
+                gameState.currentQuestionReason = st === 'weak' ? 'due-weak' : 'due-learned';
                 gameState.mixCycleCounter = (gameState.mixCycleCounter + 1) % 10;
             } else {
                 if (gameState.reviewMode === 'on') {
@@ -2139,12 +2182,14 @@ function showNextWord() {
                 words = word ? [word] : [];
                 shouldShowReview = true;
                 reviewType = 'learned';
+                gameState.currentQuestionReason = 'due-learned';
             } else {
                 // Select Weak
                 const word = getWordFromDeck('weak', weakWords);
                 words = word ? [word] : [];
                 shouldShowReview = true;
                 reviewType = 'weak';
+                gameState.currentQuestionReason = 'due-weak';
             }
         }
     }
@@ -2189,6 +2234,7 @@ function showNextWord() {
         badge.style.backgroundColor = info.color;
         vocabCard.appendChild(badge);
     }
+    updateQuestionReasonUI();
 
     // DOM更新後、少し待ってから音声再生
     setTimeout(() => {
@@ -2217,6 +2263,7 @@ function showWord(word) {
     document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
     document.getElementById('exampleSentence').textContent = word.example;
+    updateQuestionReasonUI();
 
     // Re-bind speaker button for this word
     const speakerBtn = document.getElementById('speakerBtn');
@@ -2242,7 +2289,7 @@ function showNoWordsMessage() {
 
     let message = `この${modeNames[gameState.currentMode] || gameState.currentMode}モードには単語がありません`;
     if (gameState.reviewMode === 'on' && gameState.currentMode === 'unlearned') {
-        message = '復習集中モード中: 今はdue切れ復習がありません';
+        message = '復習だけモード中: 今、復習する単語はありません';
     }
 
     cardsArea.innerHTML = `<div class="no-words">${message}</div>`;
@@ -2256,6 +2303,7 @@ function hideNoWordsMessage() {
                     <div class="card vocab-card" id="vocabCard">
                         <div class="card-label">英単語カード</div>
                         <div class="card-content" id="vocabWord">Loading...</div>
+                        <div class="question-reason-label" id="questionReasonLabel" style="display:none;"></div>
                     </div>
                     <div class="card meaning-card" id="meaningCard">
                         <div class="card-label">意味カード</div>

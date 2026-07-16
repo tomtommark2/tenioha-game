@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0717.0018">
+    <link rel="stylesheet" href="style.css?v=2026.0717.0040">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -304,7 +304,7 @@
         <div id="reviewProgressWrap" style="display:none; margin: 6px 0 8px 0; background:#f6f7fb; border:1px solid #e5e8f3; border-radius:10px; padding:8px 10px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
                 <span id="reviewProgressLabel" style="font-size:12px; font-weight:bold; color:#555;">復習キュー 0件</span>
-                <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(); event.stopPropagation();" title="復習モードを切り替え" style="font-size:11px; color:#6b7280; background:#f3f4f6; border:1px solid #e5e7eb; border-radius:999px; padding:2px 8px; font-weight:700; letter-spacing:0.2px; cursor:pointer;">復習モード:MIX</button>
+                <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(); event.stopPropagation();" title="出題モードを切り替え" style="font-size:11px; color:#6b7280; background:#f3f4f6; border:1px solid #e5e7eb; border-radius:999px; padding:2px 8px; font-weight:700; letter-spacing:0.2px; cursor:pointer;">新規＋復習</button>
 
             </div>
             <div id="reviewQueuePreview" style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; position:relative; min-height:28px;"></div>
@@ -349,10 +349,24 @@
                             <div class="study-mode-card-title">復習設定</div>
                             <div class="study-mode-card-desc">復習キューの出し方と対象レベルを調整します。</div>
                         </div>
-                        <span id="dueOnlyModeLabelModal" class="study-mode-status-pill">復習モード:MIX</span>
+                        <span id="dueOnlyModeLabelModal" class="study-mode-status-pill">新規＋復習</span>
                     </div>
 
-                    <button onclick="toggleDueOnlyMode()" class="study-mode-switch-btn"><span class="button-picto app-picto icon-route" aria-hidden="true"></span>配信モード切替</button>
+                    <div class="study-review-mode-options" role="group" aria-label="復習の出し方">
+                        <button type="button" data-review-mode-option="off" onclick="setReviewMode('off')">
+                            <strong>新規だけ</strong>
+                            <small>自動復習なし</small>
+                        </button>
+                        <button type="button" data-review-mode-option="random" onclick="setReviewMode('random')">
+                            <strong>新規＋復習</strong>
+                            <small>復習をまぜる</small>
+                        </button>
+                        <button type="button" data-review-mode-option="on" onclick="setReviewMode('on')">
+                            <strong>復習だけ</strong>
+                            <small>キューを集中</small>
+                        </button>
+                    </div>
+                    <p id="reviewModeDescription" class="study-review-mode-description">復習を優先し、新しい単語もまぜて出題します。</p>
 
                     <div class="study-review-level-block">
                         <div class="study-mode-mini-title"><span class="inline-picto app-picto icon-target" aria-hidden="true"></span>復習レベル設定</div>
@@ -388,6 +402,7 @@
                     <div class="card vocab-card" id="vocabCard">
                         <div class="card-label">英単語カード</div>
                         <div class="card-content" id="vocabWord">ファイルを読み込んでください</div>
+                        <div class="question-reason-label" id="questionReasonLabel" style="display:none;"></div>
                     </div>
 
                     <div class="card meaning-card" id="meaningCard">
@@ -414,8 +429,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0717.0018"></script>
-<script src="data/ipa_overrides.js?v=2026.0717.0018"></script>
+    <script src="data/vocabulary.js?v=2026.0717.0040"></script>
+<script src="data/ipa_overrides.js?v=2026.0717.0040"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -861,19 +876,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2026.0717.0018"></script>
-    <script src="js/update_manager.js?v=2026.0717.0018"></script>
-    <script src="js/config.js?v=2026.0717.0018"></script>
-    <script src="data/announcements.js?v=2026.0717.0018"></script>
-    <script src="js/utils.js?v=2026.0717.0018"></script>
-    <script src="js/stats_engine.js?v=2026.0717.0018"></script>
-    <script src="js/chart_data_adapter.js?v=2026.0717.0018"></script>
+    <script src="js/version.js?v=2026.0717.0040"></script>
+    <script src="js/update_manager.js?v=2026.0717.0040"></script>
+    <script src="js/config.js?v=2026.0717.0040"></script>
+    <script src="data/announcements.js?v=2026.0717.0040"></script>
+    <script src="js/utils.js?v=2026.0717.0040"></script>
+    <script src="js/stats_engine.js?v=2026.0717.0040"></script>
+    <script src="js/chart_data_adapter.js?v=2026.0717.0040"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=2026.0717.0018"></script>
-    <script src="js/game_logic.js?v=2026.0717.0018"></script>
-    <script src="js/ui_manager.js?v=2026.0717.0018"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0717.0018"></script>
+    <script src="js/chart_fallback.js?v=2026.0717.0040"></script>
+    <script src="js/game_logic.js?v=2026.0717.0040"></script>
+    <script src="js/ui_manager.js?v=2026.0717.0040"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0717.0040"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

@@ -270,7 +270,7 @@ test('未読お知らせはベルに通知マークを出し、開くと既読�
   await expect(page.locator('#announcementUnreadDot')).toBeHidden();
 });
 
-test('復習モード切替が ON→MIX→OFF で循環する', async ({ page }) => {
+test('復習の出し方を3択から直接選べる', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
   });
@@ -283,15 +283,20 @@ test('復習モード切替が ON→MIX→OFF で循環する', async ({ page })
   });
 
   const label = page.locator('#dueOnlyModeLabelModal');
-  const toggleBtn = page.getByRole('button', { name: /配信モード切替/ });
+  const offButton = page.locator('[data-review-mode-option="off"]');
+  const mixButton = page.locator('[data-review-mode-option="random"]');
+  const onButton = page.locator('[data-review-mode-option="on"]');
 
-  await expect(label).toContainText('MIX');
-  await toggleBtn.click();
-  await expect(label).toContainText('ON');
-  await toggleBtn.click();
-  await expect(label).toContainText('OFF');
-  await toggleBtn.click();
-  await expect(label).toContainText('MIX');
+  await expect(label).toContainText('新規＋復習');
+  await expect(mixButton).toHaveAttribute('aria-pressed', 'true');
+  await onButton.click();
+  await expect(label).toContainText('復習だけ');
+  await expect(onButton).toHaveAttribute('aria-pressed', 'true');
+  await offButton.click();
+  await expect(label).toContainText('新規だけ');
+  await expect(offButton).toHaveAttribute('aria-pressed', 'true');
+  await mixButton.click();
+  await expect(label).toContainText('新規＋復習');
 });
 
 test('復習モードON/OFF切替に分類ボタンの無効状態が即時同期する', async ({ page }) => {
@@ -343,13 +348,13 @@ test('復習キュー右上ラベルのタップで復習モードを切り替�
 
   const inlineLabel = page.locator('#reviewModeInlineLabel');
   await expect(page.locator('#reviewProgressWrap')).toBeVisible();
-  await expect(inlineLabel).toContainText('MIX');
+  await expect(inlineLabel).toContainText('新規＋復習');
   await inlineLabel.click();
-  await expect(inlineLabel).toContainText('ON');
+  await expect(inlineLabel).toContainText('復習だけ');
   await inlineLabel.click();
-  await expect(inlineLabel).toContainText('OFF');
+  await expect(inlineLabel).toContainText('新規だけ');
   await inlineLabel.click();
-  await expect(inlineLabel).toContainText('MIX');
+  await expect(inlineLabel).toContainText('新規＋復習');
 });
 
 test('復習モードONでは新規のみの遷移にならない（復習優先）', async ({ page }) => {
@@ -373,20 +378,10 @@ test('復習モードONでは新規のみの遷移にならない（復習優先
     gs.srsData[key].dueAt = Date.now() - 1000;
   });
 
-  await page.evaluate(() => {
-    if (typeof window.openStudyModeModal === 'function') window.openStudyModeModal();
-  });
-
-  const label = page.locator('#dueOnlyModeLabelModal');
-  const toggleBtn = page.getByRole('button', { name: /配信モード切替/ });
-
-  // Move to ON
-  while (!(await label.textContent()).includes('ON')) {
-    await toggleBtn.click();
-  }
-
-  await page.locator('#vocabCard').click({ force: true });
+  await page.evaluate(() => window.setReviewMode('on'));
   await expect(page.locator('#vocabCard .review-badge')).toBeVisible();
+  await expect(page.locator('#questionReasonLabel')).toHaveText('苦手の復習');
+  await expect(page.locator('#questionReasonLabel')).toBeVisible();
 });
 
 test('復習モードOFFでは新規が出題される', async ({ page }) => {
@@ -397,21 +392,9 @@ test('復習モードOFFでは新規が出題される', async ({ page }) => {
   await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
 
-  await page.evaluate(() => {
-    if (typeof window.openStudyModeModal === 'function') window.openStudyModeModal();
-  });
-
-  const label = page.locator('#dueOnlyModeLabelModal');
-  const toggleBtn = page.getByRole('button', { name: /配信モード切替/ });
-
-  // Move to OFF
-  while (!(await label.textContent()).includes('OFF')) {
-    await toggleBtn.click();
-  }
-
-  // In OFF, should behave as new-first (badge absent on first tap flow)
-  await page.locator('#vocabCard').click({ force: true });
+  await page.evaluate(() => window.setReviewMode('off'));
   await expect(page.locator('#vocabCard .review-badge')).toHaveCount(0);
+  await expect(page.locator('#questionReasonLabel')).toBeHidden();
 });
 
 test('正答率閾値(80/50)で状態分類される', async ({ page }) => {
