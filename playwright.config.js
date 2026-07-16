@@ -4,6 +4,7 @@ const isWindows = process.platform === 'win32';
 
 module.exports = defineConfig({
   testDir: './tests',
+  testIgnore: /unit\.spec\.js/,
   timeout: 30 * 1000,
   expect: { timeout: 5000 },
   fullyParallel: false,
