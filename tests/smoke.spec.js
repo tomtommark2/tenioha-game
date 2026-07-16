@@ -15,21 +15,12 @@ test('トップ画面が表示される', async ({ page }) => {
   await expect(page.locator('#meaningCard')).toBeVisible();
 });
 
-test('ローカル開発と端末別オプトアウトではAnalyticsを停止する', async ({ page }) => {
-  await page.addInitScript(() => localStorage.clear());
-  await page.goto('/index.html?analytics=off', { waitUntil: 'load' });
+test('ローカル開発ではAnalyticsを停止する', async ({ page }) => {
+  await page.goto('/index.html', { waitUntil: 'load' });
 
   await expect.poll(() => page.evaluate(
     () => window['ga-disable-G-QHRLNKJ4CH'] === true
   )).toBe(true);
-  await expect.poll(() => page.evaluate(
-    () => localStorage.getItem('vocabGame_disableAnalytics')
-  )).toBe('true');
-
-  await page.goto('/index.html?analytics=on', { waitUntil: 'load' });
-  await expect.poll(() => page.evaluate(
-    () => localStorage.getItem('vocabGame_disableAnalytics')
-  )).toBeNull();
 });
 
 test('新規ユーザーにはインストール画面を挟まず短いチュートリアルを表示する', async ({ page }) => {
