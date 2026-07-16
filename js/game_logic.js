@@ -1,3 +1,6 @@
+// Capture this before initialization creates the first local save.
+window.__hadExistingVocabSaveAtBoot = localStorage.getItem('vocabClickerSave') !== null;
+
 // Safe declaration to prevent duplicate errors
 var gameState = window.gameState || {
     points: 0,
@@ -338,6 +341,7 @@ function updateTrialUI() {
 }
 
 function checkTrialLimit() {
+    if (['localhost', '127.0.0.1'].includes(window.location.hostname)) return;
     if (trialState.unlocked) return;
 
     if (trialState.playTimeSeconds >= TRIAL_CONFIG.LIMIT_SECONDS) {
@@ -346,6 +350,7 @@ function checkTrialLimit() {
 }
 
 function showLockScreen() {
+    if (['localhost', '127.0.0.1'].includes(window.location.hostname)) return;
     const overlay = document.getElementById('trialOverlay');
     if (overlay.style.display !== 'flex') {
         overlay.style.display = 'flex';
@@ -904,10 +909,12 @@ const WORD_LIST_LEVELS = [
 const WORD_LIST_FILTERS = [
     ['all', 'すべて'],
     ['unlearned', '未学習'],
+    ['weak', '苦手'],
     ['learned', '得意'],
-    ['perfect', '完璧'],
-    ['weak', '苦手']
+    ['perfect', '完璧']
 ];
+
+const WORD_LIST_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 const WORD_LIST_POS_ORDER = ['名', '動', '形', '副', '助', '前', '接', '代', 'other'];
 
@@ -952,39 +959,23 @@ function getWordListStateForKey(key) {
     return gameState.wordStates[key] || 'unlearned';
 }
 
-function getWordListAccuracyInfo(key) {
-    const state = getWordListStateForKey(key);
-    const s = gameState.srsData && gameState.srsData[key];
-    const success = s ? Number(s.successCount || 0) : 0;
-    const fail = s ? Number(s.failCount || 0) : 0;
-    const total = success + fail;
-
-    if (total > 0) {
-        return {
-            state,
-            rate: Math.round((success / total) * 100)
-        };
-    }
-
-    const fallback = {
-        unlearned: 0,
-        weak: 30,
-        learned: 65,
-        perfect: 100
-    };
-    return {
-        state,
-        rate: fallback[state] ?? 0
-    };
-}
-
 function renderWordListControls() {
+    const level = normalizeWordListLevel(wordListState.level);
+    const levelInfo = WORD_LIST_LEVELS.find(([key]) => key === level) || WORD_LIST_LEVELS[1];
+    const levelWords = vocabularyDatabase[level] || [];
+    const filterCounts = levelWords.reduce((counts, word) => {
+        const state = getWordListStateForKey(getWordKey(word, level));
+        counts.all += 1;
+        if (Object.prototype.hasOwnProperty.call(counts, state)) counts[state] += 1;
+        return counts;
+    }, { all: 0, unlearned: 0, weak: 0, learned: 0, perfect: 0 });
+
     const levelHost = document.getElementById('wordListLevelTabs');
     if (levelHost) {
         levelHost.innerHTML = WORD_LIST_LEVELS.map(([key, label, cefr]) => `
             <button type="button" class="word-list-level-btn ${wordListState.level === key ? 'active' : ''}"
                 onclick="setWordListLevel('${key}')">
-                ${escapeHtml(label)}<span>${escapeHtml(cefr)}</span>
+                ${escapeHtml(label)} <span>${escapeHtml(cefr)}</span>
             </button>
         `).join('');
     }
@@ -992,9 +983,17 @@ function renderWordListControls() {
     const filterHost = document.getElementById('wordListFilterRow');
     if (filterHost) {
         filterHost.innerHTML = WORD_LIST_FILTERS.map(([key, label]) => `
-            <button type="button" class="word-list-chip ${wordListState.filter === key ? 'active' : ''}"
-                onclick="setWordListFilter('${key}')">${escapeHtml(label)}</button>
+            <button type="button" class="word-list-chip word-list-chip-${key} ${wordListState.filter === key ? 'active' : ''}"
+                onclick="setWordListFilter('${key}')">
+                <span class="word-list-chip-label"><span class="word-list-state-dot" aria-hidden="true"></span>${escapeHtml(label)}</span>
+                <span class="word-list-chip-count">${filterCounts[key].toLocaleString()}</span>
+            </button>
         `).join('');
+    }
+
+    const meta = document.getElementById('wordListMeta');
+    if (meta) {
+        meta.textContent = `${levelInfo[1]} ${levelInfo[2]} ・ ${levelWords.length.toLocaleString()}語`;
     }
 
     const meaningState = document.getElementById('wordListMeaningState');
@@ -1010,6 +1009,13 @@ function renderWordListControls() {
     const searchInput = document.getElementById('wordListSearchInput');
     if (searchInput && searchInput.value !== wordListState.query) {
         searchInput.value = wordListState.query;
+    }
+
+    const alphabet = document.getElementById('wordListAlphabet');
+    if (alphabet && !alphabet.childElementCount) {
+        alphabet.innerHTML = WORD_LIST_LETTERS.map(letter => `
+            <button type="button" onclick="jumpWordListToLetter('${letter}')">${letter}</button>
+        `).join('');
     }
 }
 
@@ -1050,52 +1056,80 @@ function getSortedWordListItems() {
 function renderWordList() {
     const modal = document.getElementById('wordListModal');
     if (!modal || modal.style.display === 'none') return;
-    const denseCompareMode = new URLSearchParams(window.location.search).get('wordListDense') === '1';
-    modal.classList.toggle('word-list-dense-compare', denseCompareMode);
 
     renderWordListControls();
 
     const grid = document.getElementById('wordListGrid');
-    const count = document.getElementById('wordListCount');
     if (!grid) return;
 
     const level = normalizeWordListLevel(wordListState.level);
-    const allCount = (vocabularyDatabase[level] || []).length;
     const words = getSortedWordListItems();
-    if (count) count.textContent = `${words.length.toLocaleString()} / ${allCount.toLocaleString()}語`;
 
     if (words.length === 0) {
         grid.innerHTML = '<div class="word-list-empty">条件に合う単語がありません</div>';
+        updateWordListPosition();
         return;
     }
 
-    grid.innerHTML = words.map(word => {
+    grid.innerHTML = words.map((word, index) => {
         const key = getWordKey(word, level);
-        const info = getWordListAccuracyInfo(key);
+        const state = getWordListStateForKey(key);
         const pos = word.pos || 'other';
         const posClass = WORD_LIST_POS_CLASS[pos] || WORD_LIST_POS_CLASS.other;
         const posLabel = WORD_LIST_POS_LABEL[pos] || pos;
         const meaning = cleanMeaningForDisplay(word.meaning);
-        const accuracy = Math.max(0, Math.min(100, Number(info.rate || 0)));
         const wordLength = String(word.word || '').length;
-        const denseLengthClass = denseCompareMode
-            ? (wordLength >= 13 ? 'word-list-word-xl' : wordLength >= 10 ? 'word-list-word-long' : '')
-            : '';
+        const lengthClass = wordLength >= 13 ? 'word-list-word-xl' : wordLength >= 10 ? 'word-list-word-long' : '';
+        const firstLetter = String(word.word || '').trim().charAt(0).toUpperCase();
         return `
             <button type="button"
-                class="word-list-card word-list-card-state-${escapeHtml(info.state)} ${wordListState.showMeaning ? '' : 'hide-meaning'}"
+                class="word-list-card word-list-card-state-${escapeHtml(state)} ${wordListState.showMeaning ? '' : 'hide-meaning'}"
+                data-word-list-index="${index}"
+                data-word-list-letter="${escapeHtml(firstLetter)}"
                 onclick="openWordFromList('${encodeURIComponent(level)}', '${encodeURIComponent(key)}')">
-                <div class="word-list-card-word ${denseLengthClass}">${escapeHtml(word.word)}</div>
-                ${wordListState.showMeaning ? `<div class="word-list-card-meaning">${escapeHtml(meaning || word.phrase || '')}</div>` : ''}
-                <div class="word-list-card-meta">
+                <span class="word-list-card-primary">
+                    <span class="word-list-card-word ${lengthClass}">${escapeHtml(word.word)}</span>
                     <span class="word-list-pos-badge ${posClass}">${escapeHtml(posLabel)}</span>
-                    <span class="word-list-accuracy" aria-label="正答度 ${accuracy}%">
-                        <span class="word-list-accuracy-fill" style="--accuracy:${accuracy}%"></span>
-                    </span>
-                </div>
+                </span>
+                ${wordListState.showMeaning ? `<div class="word-list-card-meaning">${escapeHtml(meaning || word.phrase || '')}</div>` : ''}
             </button>
         `;
     }).join('');
+
+    grid.scrollTop = 0;
+    requestAnimationFrame(updateWordListPosition);
+}
+
+function updateWordListPosition() {
+    const grid = document.getElementById('wordListGrid');
+    const position = document.getElementById('wordListPosition');
+    if (!grid || !position) return;
+
+    const cards = Array.from(grid.querySelectorAll('.word-list-card'));
+    if (!cards.length) {
+        position.textContent = '– ・ 0 / 0';
+        return;
+    }
+
+    const top = grid.scrollTop + 1;
+    const firstVisible = cards.find(card => card.offsetTop + card.offsetHeight > top) || cards[0];
+    const index = Number(firstVisible.dataset.wordListIndex || 0);
+    const letter = firstVisible.dataset.wordListLetter || '–';
+    position.textContent = `${letter} ・ ${(index + 1).toLocaleString()} / ${cards.length.toLocaleString()}`;
+}
+
+function bindWordListScroll() {
+    const grid = document.getElementById('wordListGrid');
+    if (!grid || grid.dataset.positionBound === 'true') return;
+    grid.addEventListener('scroll', updateWordListPosition, { passive: true });
+    grid.dataset.positionBound = 'true';
+}
+
+function closeWordListAlphabet() {
+    const alphabet = document.getElementById('wordListAlphabet');
+    const button = document.getElementById('wordListAlphaButton');
+    if (alphabet) alphabet.style.display = 'none';
+    if (button) button.setAttribute('aria-expanded', 'false');
 }
 
 function findWordListItemByKey(level, key) {
@@ -1106,13 +1140,16 @@ window.openWordListModal = function () {
     wordListState.level = normalizeWordListLevel(gameState.currentLevel);
     const modal = document.getElementById('wordListModal');
     if (!modal) return;
+    if (modal.parentElement !== document.body) document.body.appendChild(modal);
     modal.style.display = 'flex';
+    bindWordListScroll();
     renderWordList();
 };
 
 window.closeWordListModal = function () {
     const modal = document.getElementById('wordListModal');
     if (modal) modal.style.display = 'none';
+    closeWordListAlphabet();
 };
 
 window.setWordListLevel = function (level) {
@@ -1128,6 +1165,38 @@ window.setWordListFilter = function (filter) {
 window.setWordListSort = function (sort) {
     wordListState.sort = sort === 'pos' ? 'pos' : 'abc';
     renderWordList();
+};
+
+window.toggleWordListAlphabet = function () {
+    const alphabet = document.getElementById('wordListAlphabet');
+    const button = document.getElementById('wordListAlphaButton');
+    if (!alphabet || !button) return;
+    const opening = alphabet.style.display === 'none';
+    alphabet.style.display = opening ? 'grid' : 'none';
+    button.setAttribute('aria-expanded', opening ? 'true' : 'false');
+};
+
+window.jumpWordListToLetter = function (letter) {
+    const targetLetter = String(letter || '').toUpperCase();
+    if (!WORD_LIST_LETTERS.includes(targetLetter)) return;
+
+    if (wordListState.sort !== 'abc') {
+        wordListState.sort = 'abc';
+        renderWordList();
+    }
+
+    const grid = document.getElementById('wordListGrid');
+    const cards = grid ? Array.from(grid.querySelectorAll('.word-list-card')) : [];
+    const firstCard = cards[0];
+    const letterCards = cards.filter(card => card.dataset.wordListLetter === targetLetter);
+    const target = letterCards.find(card => firstCard && Math.abs(card.offsetLeft - firstCard.offsetLeft) < 1)
+        || letterCards[0];
+    if (grid && target) {
+        const listTop = firstCard ? firstCard.offsetTop : 0;
+        grid.scrollTop = Math.max(0, target.offsetTop - listTop);
+        updateWordListPosition();
+    }
+    closeWordListAlphabet();
 };
 
 window.toggleWordListMeaning = function () {
@@ -2871,6 +2940,7 @@ window.openProfileModal = function () {
     const modal = document.getElementById('profileModal');
     if (!modal) return;
     modal.style.display = 'flex';
+    document.body.classList.add('profile-modal-open');
 
     // Attempt to update premium status display if function exists
     if (window.updatePremiumStatusDisplay) {
@@ -2882,6 +2952,7 @@ window.openProfileModal = function () {
 window.closeProfileModal = function () {
     const modal = document.getElementById('profileModal');
     if (modal) modal.style.display = 'none';
+    document.body.classList.remove('profile-modal-open');
 };
 
 // Help Modal Fix

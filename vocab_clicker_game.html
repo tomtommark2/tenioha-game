@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英単語学習クリッカー</title>
+    <title>てにをは英単語</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6c5ce7">
     <link rel="icon" href="icon-512.png" type="image/png">
@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0710.1150">
+    <link rel="stylesheet" href="style.css?v=2026.0716.2329">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -48,55 +48,12 @@
     </div>
     <!-- TRIAL_END -->
 
-    <!-- WELCOME_LP_START -->
-    <div id="welcomeOverlay" class="welcome-overlay" style="display: none;">
-        <div class="welcome-content">
-            <div class="welcome-icon">🎮</div>
-            <h1 class="welcome-title">英単語クリッカー</h1>
-            <p class="welcome-desc">
-                スキマ時間で楽しく覚える<br>
-                英単語学習ゲーム
-            </p>
-
-            <div id="inviteMessage" class="invite-message" style="display: none;">
-                🎁 招待コード<br><span id="welcomeInviteCode" style="color: #fdcb6e; font-weight: bold;"></span> が適用されました！
-            </div>
-
-            <div class="welcome-actions">
-                <button id="installAppBtn" class="install-btn" onclick="triggerInstall()">
-                    アプリをインストールして開始<br>
-                    <span style="font-size: 11px; opacity: 0.9; margin-top: 5px; line-height: 1.4;">
-                        プレミアム権限もらえる！<br>
-                        オフライン対応
-                    </span>
-                </button>
-                <div class="divider">または</div>
-                <button id="browserPlayBtn" class="browser-btn" onclick="dismissWelcome()">
-                    ブラウザでそのまま遊ぶ
-                </button>
-                <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 5px;">
-                    <input type="checkbox" id="dontShowWelcomeAgain"
-                        style="width: 16px; height: 16px; cursor: pointer;">
-                    <label for="dontShowWelcomeAgain"
-                        style="font-size: 13px; color: rgba(255,255,255,0.8); cursor: pointer;">次回はこのページを表示しない</label>
-                </div>
-            </div>
-            <div style="margin-top:20px; font-size: 10px; color: #aaa;">
-                ※インストールは無料です
-            </div>
-        </div>
-    </div>
-    <!-- WELCOME_LP_END -->
-
     <!-- LIVE TUTORIAL START (Card Bubble) -->
     <div id="liveTutorialHint" style="display:none; position:fixed; z-index:3200; max-width:320px; background:#ffffff; border:1px solid #dfe5f5; box-shadow:0 10px 24px rgba(25,35,58,.2); border-radius:12px; padding:10px 12px;">
-        <button onclick="skipLiveTutorial()" style="position:absolute; top:6px; right:8px; border:none; background:transparent; color:#94a0b8; cursor:pointer; font-size:14px;">✕</button>
+        <button type="button" aria-label="チュートリアルを閉じる" onclick="skipLiveTutorial()" style="position:absolute; top:6px; right:8px; border:none; background:transparent; color:#94a0b8; cursor:pointer; font-size:14px;">✕</button>
         <div id="liveTutorialHintText" style="font-size:13px; color:#2d3748; line-height:1.5; padding-right:18px;"></div>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:8px;">
-            <label style="font-size:11px; color:#6b7280; display:flex; align-items:center; gap:6px;">
-                <input type="checkbox" id="dontShowLiveTutorialAgain" style="accent-color:#6c5ce7;"> 次回以降は表示しない
-            </label>
-            <button id="liveTutorialActionBtn" onclick="liveTutorialAction()" style="display:none; padding:5px 10px; border:1px solid #d9dff2; border-radius:8px; background:#f7f9ff; color:#3f4b66; font-size:11px; cursor:pointer;">次へ</button>
+        <div style="display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-top:8px;">
+            <button id="liveTutorialActionBtn" type="button" onclick="liveTutorialAction()" style="display:none; padding:5px 10px; border:1px solid #d9dff2; border-radius:8px; background:#f7f9ff; color:#3f4b66; font-size:11px; cursor:pointer;">次へ</button>
         </div>
     </div>
     <!-- LIVE TUTORIAL END -->
@@ -156,7 +113,8 @@
 
         <!-- Other Menu Button (Top Left) -->
         <div class="simple-switch-container">
-            <button id="otherMenuBtn" class="other-menu-button" onclick="toggleOtherMenu()">
+            <button id="otherMenuBtn" class="other-menu-button" type="button" aria-label="その他メニュー"
+                aria-expanded="false" aria-controls="otherMenuDropdown" onclick="toggleOtherMenu()">
                 <div class="other-menu-icon-grid">
                     <div></div>
                     <div></div>
@@ -168,36 +126,36 @@
         </div>
 
         <!-- Other Menu Dropdown (Hidden) -->
-        <div id="otherMenuDropdown" class="other-menu-dropdown">
+        <div id="otherMenuDropdown" class="other-menu-dropdown" role="group" aria-label="学習・記録メニュー">
 
             <div class="other-menu-section-title">学習設定</div>
 
-            <div class="other-menu-item" onclick="openStudyModeModal(); toggleOtherMenu();">
+            <button type="button" class="other-menu-item" onclick="openStudyModeModal(); toggleOtherMenu();">
                 <span class="other-menu-icon app-picto icon-compass" aria-hidden="true"></span>
                 <span class="other-menu-label">出題モード</span>
-            </div>
+            </button>
 
             <div class="other-menu-section-title">記録</div>
 
-            <div class="other-menu-item" onclick="openWordListModal(); toggleOtherMenu();">
+            <button type="button" class="other-menu-item" onclick="openWordListModal(); toggleOtherMenu();">
                 <span class="other-menu-icon app-picto icon-list" aria-hidden="true"></span>
                 <span class="other-menu-label">英単語一覧</span>
-            </div>
+            </button>
 
-            <div class="other-menu-item" onclick="openLearningLogModal(); toggleOtherMenu();">
+            <button type="button" class="other-menu-item" onclick="openLearningLogModal(); toggleOtherMenu();">
                 <span class="other-menu-icon app-picto icon-chart" aria-hidden="true"></span>
                 <span class="other-menu-label">語彙力推定</span>
-            </div>
+            </button>
 
-            <div class="other-menu-item" onclick="openLearningLogPreviewModal(); toggleOtherMenu();">
+            <button type="button" class="other-menu-item" onclick="openLearningLogPreviewModal(); toggleOtherMenu();">
                 <span class="other-menu-icon app-picto icon-log" aria-hidden="true"></span>
                 <span class="other-menu-label">学習ログ</span>
-            </div>
+            </button>
 
-            <div class="other-menu-item" onclick="openLeaderboard(); toggleOtherMenu();">
+            <button type="button" class="other-menu-item" onclick="openLeaderboard(); toggleOtherMenu();">
                 <span class="other-menu-icon app-picto icon-crown" aria-hidden="true"></span>
                 <span class="other-menu-label">ランキング</span>
-            </div>
+            </button>
 
         </div>
 
@@ -213,7 +171,9 @@
                 <span id="announcementUnreadDot" class="announcement-dot"></span>
             </button>
             <button class="icon-btn top-icon-btn top-action-menu-btn" id="topActionMenuBtn" title="管理メニュー"
-                aria-controls="helpModal" onclick="document.getElementById('helpModal').style.display='flex'">
+                aria-label="管理メニュー"
+                aria-haspopup="dialog" aria-controls="helpModal"
+                onclick="document.getElementById('helpModal').style.display='flex'">
                 <span class="vertical-dots-icon" aria-hidden="true"></span>
             </button>
         </div>
@@ -293,22 +253,23 @@
         <!-- Word List Modal -->
         <div id="wordListModal" class="modal-overlay word-list-modal" style="display: none;">
             <div class="modal-content word-list-modal-content" onclick="event.stopPropagation()">
-                <button class="modal-close-btn word-list-close-btn" onclick="closeWordListModal()">×</button>
-
-                <div class="word-list-hero">
-                    <div>
-                        <div class="word-list-kicker">Vocabulary Browser</div>
-                        <h2 class="word-list-title">英単語一覧</h2>
+                <div class="word-list-header">
+                    <div class="word-list-heading">
+                        <h2 class="word-list-title">単語一覧</h2>
+                        <div class="word-list-meta" id="wordListMeta">基礎 A2 ・ 0語</div>
+                    </div>
+                    <div class="word-list-header-actions">
+                        <button type="button" class="word-list-header-btn" id="wordListSearchToggle"
+                            onclick="toggleWordListSearch()" aria-label="単語を検索">
+                            <span class="app-picto icon-search" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="word-list-close-btn" onclick="closeWordListModal()" aria-label="単語一覧を閉じる">×</button>
                     </div>
                 </div>
 
                 <div class="word-list-tabs" id="wordListLevelTabs" aria-label="単語一覧レベル"></div>
 
                 <div class="word-list-toolbar" id="wordListToolbar">
-                    <button type="button" class="word-list-tool-btn" id="wordListSearchToggle" onclick="toggleWordListSearch()">
-                        <span class="app-picto icon-search" aria-hidden="true"></span>
-                        <span>検索</span>
-                    </button>
                     <button type="button" class="word-list-toggle-btn" id="wordListMeaningToggle" onclick="toggleWordListMeaning()">
                         和訳 <span id="wordListMeaningState">OFF</span>
                     </button>
@@ -327,8 +288,16 @@
 
                 <div class="word-list-filter-row" id="wordListFilterRow" aria-label="学習状態フィルター"></div>
 
-                <div class="word-list-count" id="wordListCount">0語</div>
-                <div class="word-list-grid" id="wordListGrid"></div>
+                <div class="word-list-grid-shell">
+                    <div class="word-list-grid" id="wordListGrid"></div>
+                    <div class="word-list-position" id="wordListPosition" aria-live="polite">A ・ 0 / 0</div>
+                    <button type="button" class="word-list-alpha-btn" id="wordListAlphaButton"
+                        onclick="toggleWordListAlphabet()" aria-expanded="false" aria-controls="wordListAlphabet">
+                        <span class="app-picto icon-list" aria-hidden="true"></span>
+                        <span>A–Z</span>
+                    </button>
+                    <div class="word-list-alphabet" id="wordListAlphabet" style="display: none;" aria-label="頭文字へ移動"></div>
+                </div>
             </div>
         </div>
 
@@ -445,8 +414,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0710.1150"></script>
-<script src="data/ipa_overrides.js?v=2026.0710.1150"></script>
+    <script src="data/vocabulary.js?v=2026.0716.2329"></script>
+<script src="data/ipa_overrides.js?v=2026.0716.2329"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -470,68 +439,73 @@
     <div id="helpModal" class="modal-overlay help-modal help-redesign"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10000; justify-content: center; align-items: center;">
         <div class="modal-content help-modal-content"
+            role="dialog" aria-modal="true" aria-labelledby="helpModalTitle"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 450px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-            <button id="closeHelpModal" class="modal-close-btn" onclick="document.getElementById('helpModal').style.display='none'">&times;</button>
+            <button id="closeHelpModal" class="modal-close-btn" type="button" aria-label="管理メニューを閉じる"
+                onclick="document.getElementById('helpModal').style.display='none'">&times;</button>
             <!-- Version Display (Top Left) -->
             <div class="help-version-wrap">
                 <div class="help-version" id="helpVersionDisplay"></div>
             </div>
 
             <!-- Share Button (Top Right, styled) -->
-            <button class="help-share-btn" onclick="document.getElementById('helpModal').style.display='none'; window.openShareModal()">
+            <button class="help-share-btn" type="button"
+                onclick="document.getElementById('helpModal').style.display='none'; window.openShareModal()">
                 🔗 シェア
             </button>
             <div class="help-sheet-handle" aria-hidden="true"></div>
 
-            <h2 class="help-heading">
+            <h2 class="help-heading" id="helpModalTitle">
                 管理メニュー
             </h2>
             <p class="help-subheading">必要な操作だけすぐ開く</p>
 
             <div class="help-list-container">
-                <div class="help-list-item help-list-item-primary" onclick="document.getElementById('helpModal').style.display='none'; openProfileModal();">
+                <button type="button" class="help-list-item help-list-item-primary"
+                    onclick="document.getElementById('helpModal').style.display='none'; openProfileModal();">
                     <span id="headerProfileIcon" class="help-list-icon header-profile-icon help-profile-icon"
-                        title="アカウント">
+                        title="アカウント" aria-hidden="true">
                         <span id="headerProfileInitials" class="header-profile-initials"></span>
-                        <img id="headerProfileImage" class="header-profile-image" src="">
+                        <img id="headerProfileImage" class="header-profile-image" src="" alt="">
                     </span>
-                    <div class="help-list-copy">
-                        <div class="help-list-title">アカウント</div>
-                        <div class="help-list-desc">ログイン・同期・購入状態を確認</div>
-                    </div>
-                </div>
+                    <span class="help-list-copy">
+                        <span class="help-list-title">アカウント</span>
+                        <span class="help-list-desc">ログイン・同期・購入状態を確認</span>
+                    </span>
+                </button>
 
-                <div class="help-list-item help-list-item-primary" onclick="document.getElementById('helpModal').style.display='none'; openPurchaseModal();">
+                <button type="button" class="help-list-item help-list-item-primary"
+                    onclick="document.getElementById('helpModal').style.display='none'; openPurchaseModal();">
                     <span class="help-list-icon app-picto icon-diamond" aria-hidden="true"></span>
-                    <div class="help-list-copy">
-                        <div class="help-list-title">制限の解除</div>
-                        <div class="help-list-desc">タップして購入ページを表示</div>
-                    </div>
-                </div>
+                    <span class="help-list-copy">
+                        <span class="help-list-title">制限の解除</span>
+                        <span class="help-list-desc">タップして購入ページを表示</span>
+                    </span>
+                </button>
 
-                <div class="help-list-item" onclick="forceUpdateApp()">
+                <button type="button" class="help-list-item" onclick="forceUpdateApp()">
                     <span class="help-list-icon app-picto icon-refresh" aria-hidden="true"></span>
-                    <div class="help-list-copy">
-                        <div class="help-list-title">更新を確認</div>
-                        <div class="help-list-desc">表示が古い時に最新版へ更新</div>
-                    </div>
-                </div>
+                    <span class="help-list-copy">
+                        <span class="help-list-title">更新を確認</span>
+                        <span class="help-list-desc">表示が古い時に最新版へ更新</span>
+                    </span>
+                </button>
 
-                <div class="help-list-item" onclick="window.installApp()">
+                <button type="button" class="help-list-item" onclick="window.installApp()">
                     <span class="help-list-icon app-picto icon-phone" aria-hidden="true"></span>
-                    <div class="help-list-copy">
-                        <div class="help-list-title">アプリインストール</div>
-                        <div class="help-list-desc">タップしてインストール (プレミア権限付与)</div>
-                    </div>
-                </div>
+                    <span class="help-list-copy">
+                        <span class="help-list-title">アプリインストール</span>
+                        <span class="help-list-desc">タップしてインストール (プレミア権限付与)</span>
+                    </span>
+                </button>
 
-                <div class="help-list-item" onclick="location.href='mailto:tenioha.eng@gmail.com'">
+                <button type="button" class="help-list-item" onclick="location.href='mailto:tenioha.eng@gmail.com'">
                     <span class="help-list-icon app-picto icon-mail" aria-hidden="true"></span>
-                    <div class="help-list-copy">
-                        <div class="help-list-title">お問い合わせ（質問・バグ報告）</div>
-                        <div class="help-list-desc">タップしてメールを送信</div>
-                    </div>
-                </div>
+                    <span class="help-list-copy">
+                        <span class="help-list-title">お問い合わせ（質問・バグ報告）</span>
+                        <span class="help-list-desc">タップしてメールを送信</span>
+                    </span>
+                </button>
             </div>
             <div class="help-related-apps" aria-label="関連アプリ">
                 <div class="help-related-title">関連アプリ</div>
@@ -795,14 +769,18 @@
 
     <!-- Profile Modal -->
     <div id="profileModal" class="modal-overlay profile-modal"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: flex-start; padding-top: 50px; overflow-y: auto;">
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: center; padding: 16px; overflow: hidden;">
         <div class="modal-content profile-modal-content"
-            style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; margin-bottom: 50px;">
-            <button class="modal-close-btn profile-close-btn" onclick="closeProfileModal()">&times;</button>
+            role="dialog" aria-modal="true" aria-labelledby="profileModalTitle"
+            style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
+            <button class="modal-close-btn profile-close-btn" type="button" aria-label="アカウントを閉じる"
+                onclick="closeProfileModal()">&times;</button>
+
+            <div class="profile-scroll-area">
 
             <div class="profile-hero">
                 <div class="profile-kicker">Account</div>
-                <h2 class="profile-title">アカウント</h2>
+                <h2 class="profile-title" id="profileModalTitle">アカウント</h2>
                 <p class="profile-subtitle">ログイン、購入、データ同期を管理します。</p>
             </div>
 
@@ -869,6 +847,7 @@
             <div id="loginIncentiveText" class="profile-login-incentive">
                 データをクラウドに保存出来ます。
             </div>
+            </div>
         </div>
     </div>
     </div>
@@ -882,19 +861,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2026.0710.1150"></script>
-    <script src="js/update_manager.js?v=2026.0710.1150"></script>
-    <script src="js/config.js?v=2026.0710.1150"></script>
-    <script src="data/announcements.js?v=2026.0710.1150"></script>
-    <script src="js/utils.js?v=2026.0710.1150"></script>
-    <script src="js/stats_engine.js?v=2026.0710.1150"></script>
-    <script src="js/chart_data_adapter.js?v=2026.0710.1150"></script>
+    <script src="js/version.js?v=2026.0716.2329"></script>
+    <script src="js/update_manager.js?v=2026.0716.2329"></script>
+    <script src="js/config.js?v=2026.0716.2329"></script>
+    <script src="data/announcements.js?v=2026.0716.2329"></script>
+    <script src="js/utils.js?v=2026.0716.2329"></script>
+    <script src="js/stats_engine.js?v=2026.0716.2329"></script>
+    <script src="js/chart_data_adapter.js?v=2026.0716.2329"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=2026.0710.1150"></script>
-    <script src="js/game_logic.js?v=2026.0710.1150"></script>
-    <script src="js/ui_manager.js?v=2026.0710.1150"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0710.1150"></script>
+    <script src="js/chart_fallback.js?v=2026.0716.2329"></script>
+    <script src="js/game_logic.js?v=2026.0716.2329"></script>
+    <script src="js/ui_manager.js?v=2026.0716.2329"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0716.2329"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

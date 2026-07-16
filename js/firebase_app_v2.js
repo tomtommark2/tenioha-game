@@ -1398,9 +1398,14 @@ window.updateChart = async function (type = 'total') {
 
 // Override Profile Modal Open to load Chart
 const originalOpenProfile = window.openProfileModal;
+const originalCloseProfile = window.closeProfileModal;
 window.openProfileModal = function () {
-    // Call original logic (UI toggle)
-    document.getElementById('profileModal').style.display = 'flex';
+    if (typeof originalOpenProfile === 'function') {
+        originalOpenProfile();
+    } else {
+        document.getElementById('profileModal').style.display = 'flex';
+        document.body.classList.add('profile-modal-open');
+    }
     if (window.hideProfileLoginNotice) window.hideProfileLoginNotice();
     if (window.updatePremiumStatusDisplay) window.updatePremiumStatusDisplay();
 
@@ -1422,7 +1427,12 @@ window.toggleProfileModal = function () {
 };
 
 window.closeProfileModal = function () {
-    document.getElementById('profileModal').style.display = 'none';
+    if (typeof originalCloseProfile === 'function') {
+        originalCloseProfile();
+    } else {
+        document.getElementById('profileModal').style.display = 'none';
+        document.body.classList.remove('profile-modal-open');
+    }
     if (window.hideProfileLoginNotice) window.hideProfileLoginNotice();
 };
 
@@ -1586,9 +1596,6 @@ window.addEventListener('appinstalled', () => {
 // We will misuse the existing 'deferredPrompt' from line 4588.
 
 // initWelcomeSequence logic moved to ui_manager.js
-
-// window.triggerInstall moved to ui_manager.js
-// window.dismissWelcome moved to ui_manager.js
 
 // --- SHARE & QR LOGIC ---
 // openShareModal and shareApp moved to ui_manager.js

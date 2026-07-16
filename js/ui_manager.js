@@ -224,6 +224,7 @@ window.openProfileModal = function () {
     const modal = document.getElementById('profileModal');
     if (!modal) return;
     modal.style.display = 'flex';
+    document.body.classList.add('profile-modal-open');
     setProfileLoginNotice(false);
 
     // Attempt update premium display (if logic exists elsewhere or we move it here)
@@ -676,18 +677,20 @@ function renderRealChart(canvas) {
 // --- OTHER MENU (New Toggle) ---
 window.toggleOtherMenu = function () {
     const menu = document.getElementById('otherMenuDropdown');
-    const overlay = document.getElementById('otherMenuOverlay'); // Optional: for clicking outside
+    const btn = document.getElementById('otherMenuBtn');
 
     if (menu) {
         const isHidden = getComputedStyle(menu).display === 'none';
         if (isHidden) {
             menu.style.display = 'block';
+            btn?.setAttribute('aria-expanded', 'true');
             // Add click-outside listener if needed, or simple toggle
             setTimeout(() => {
                 document.addEventListener('click', closeOtherMenuOutside);
             }, 0);
         } else {
             menu.style.display = 'none';
+            btn?.setAttribute('aria-expanded', 'false');
             document.removeEventListener('click', closeOtherMenuOutside);
         }
     }
@@ -698,6 +701,7 @@ function closeOtherMenuOutside(e) {
     const btn = document.getElementById('otherMenuBtn');
     if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
         menu.style.display = 'none';
+        btn.setAttribute('aria-expanded', 'false');
         document.removeEventListener('click', closeOtherMenuOutside);
     }
 }
@@ -705,6 +709,7 @@ function closeOtherMenuOutside(e) {
 window.closeProfileModal = function () {
     const modal = document.getElementById('profileModal');
     if (modal) modal.style.display = 'none';
+    document.body.classList.remove('profile-modal-open');
     setProfileLoginNotice(false);
 };
 
@@ -912,34 +917,13 @@ window.installApp = () => {
     }
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choice) => {
-        if (choice.outcome === 'accepted') {
-            window.dismissWelcome();
-        }
         deferredPrompt = null;
     });
 };
 
-window.dismissWelcome = function () {
-    const welcomeOverlay = document.getElementById('welcomeOverlay');
-    const checkbox = document.getElementById('dontShowWelcomeAgain');
-    if (welcomeOverlay) {
-        welcomeOverlay.style.opacity = '0';
-        setTimeout(() => { welcomeOverlay.style.display = 'none'; }, 300);
-    }
-    if (checkbox && checkbox.checked) {
-        localStorage.setItem('vocabGame_skipWelcome', 'true');
-    }
-
-    // Start live tutorial after welcome closes
-    setTimeout(() => {
-        if (typeof window.startLiveTutorial === 'function') window.startLiveTutorial();
-    }, 350);
-};
-
-// Also logic for buttons that call installApp
-window.triggerInstall = window.installApp; // Alias
-
 const LIVE_TUTORIAL_KEY = 'vocabGame_skipLiveTutorial';
+const ONBOARDING_VERSION_KEY = 'vocabGame_onboardingVersion';
+const CURRENT_ONBOARDING_VERSION = '2';
 window.liveTutorialState = { active: false, step: 0 };
 
 function isDeveloperPreviewMode() {
@@ -953,6 +937,10 @@ function isDeveloperPreviewMode() {
         || params.has('helpOpen');
 }
 
+function isTutorialPreviewRequested() {
+    return new URLSearchParams(window.location.search).has('tutorialPreview');
+}
+
 window.renderLiveTutorial = function () {
     const box = document.getElementById('liveTutorialHint');
     const text = document.getElementById('liveTutorialHintText');
@@ -961,12 +949,10 @@ window.renderLiveTutorial = function () {
 
     const step = window.liveTutorialState.step;
     const steps = [
-        { text: '意味が分かる場合は 英単語カード👇️をタップ。※意味は表示されません。', anchor: '#vocabCard', waitAction: false },
-        { text: '意味を確認したい場合は 意味カード👇️を開く（不正解扱い）', anchor: '#meaningCard', waitAction: false },
-        { text: '出題レベルの変更はココ👇️', anchor: '#levelContainer', waitAction: true },
-        { text: '学習した単語は自動で分類👇️（選択出来ます）', anchor: '.mode-buttons', waitAction: true },
-        { text: '復習すべき単語はココ👇️に溜まります。', anchor: '#reviewQueuePreview', waitAction: true },
-        { text: '復習モードの変更は「その他」→「出題モード」から。', anchor: '#otherMenuBtn', waitAction: true },
+        { text: '意味が分かるなら、英単語カードをタップします。', anchor: '#vocabCard', waitAction: false },
+        { text: '分からない場合は、意味カードを開きます（不正解として記録）。', anchor: '#meaningCard', waitAction: false },
+        { text: '回答履歴から「未学習・苦手・得意・完璧」へ自動分類されます。', anchor: '.mode-buttons', waitAction: true },
+        { text: '苦手な単語は復習キューへ戻ります。設定は「その他」→「出題モード」から変更できます。', anchor: '#reviewQueuePreview', waitAction: true },
     ];
 
     const current = steps[Math.min(step, steps.length - 1)];
@@ -975,11 +961,32 @@ window.renderLiveTutorial = function () {
     actionBtn.style.display = current.waitAction ? 'inline-block' : 'none';
     actionBtn.textContent = (step >= steps.length - 1) ? '完了' : '次へ';
 
-    const anchor = document.querySelector(current.anchor);
+    let anchor = document.querySelector(current.anchor);
+    let usedFallbackAnchor = false;
     if (anchor) {
-      const r = anchor.getBoundingClientRect();
-      const left = Math.max(10, Math.min(window.innerWidth - 340, r.left + (r.width / 2) - 160));
-      const top = Math.max(10, r.top - 90);
+      const candidateRect = anchor.getBoundingClientRect();
+      if (candidateRect.width === 0 || candidateRect.height === 0) {
+        anchor = document.querySelector('#otherMenuBtn');
+        usedFallbackAnchor = true;
+      }
+    }
+    if (anchor) {
+      if (usedFallbackAnchor && window.scrollY > 0) {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+      const anchorRect = anchor.getBoundingClientRect();
+      const boxRect = box.getBoundingClientRect();
+      const gap = 10;
+      const horizontalMargin = 10;
+      const centeredLeft = anchorRect.left + (anchorRect.width / 2) - (boxRect.width / 2);
+      const maxLeft = Math.max(horizontalMargin, window.innerWidth - boxRect.width - horizontalMargin);
+      const left = Math.max(horizontalMargin, Math.min(maxLeft, centeredLeft));
+      const fitsAbove = anchorRect.top >= boxRect.height + gap + horizontalMargin;
+      const preferredTop = fitsAbove
+        ? anchorRect.top - boxRect.height - gap
+        : anchorRect.bottom + gap;
+      const maxTop = Math.max(horizontalMargin, window.innerHeight - boxRect.height - horizontalMargin);
+      const top = Math.max(horizontalMargin, Math.min(maxTop, preferredTop));
       box.style.left = `${left}px`;
       box.style.top = `${top}px`;
     } else {
@@ -989,8 +996,10 @@ window.renderLiveTutorial = function () {
 }
 
 window.startLiveTutorial = function () {
-    if (isDeveloperPreviewMode()) return;
-    if (localStorage.getItem(LIVE_TUTORIAL_KEY) === 'true') return;
+    const isTutorialPreview = isTutorialPreviewRequested();
+    if (isDeveloperPreviewMode() && !isTutorialPreview) return;
+    if (!isTutorialPreview && localStorage.getItem(ONBOARDING_VERSION_KEY) === CURRENT_ONBOARDING_VERSION) return;
+    if (!isTutorialPreview && localStorage.getItem(LIVE_TUTORIAL_KEY) === 'true') return;
     const box = document.getElementById('liveTutorialHint');
     if (!box) return;
     window.liveTutorialState = { active: true, step: 0 };
@@ -1000,8 +1009,8 @@ window.startLiveTutorial = function () {
 
 window.completeLiveTutorial = function () {
     const box = document.getElementById('liveTutorialHint');
-    const chk = document.getElementById('dontShowLiveTutorialAgain');
-    if (chk && chk.checked) localStorage.setItem(LIVE_TUTORIAL_KEY, 'true');
+    localStorage.setItem(LIVE_TUTORIAL_KEY, 'true');
+    localStorage.setItem(ONBOARDING_VERSION_KEY, CURRENT_ONBOARDING_VERSION);
     if (box) box.style.display = 'none';
     window.liveTutorialState = { active: false, step: 0 };
 }
@@ -1009,7 +1018,7 @@ window.completeLiveTutorial = function () {
 window.skipLiveTutorial = function () { window.completeLiveTutorial(); }
 window.liveTutorialAction = function () {
     if (!window.liveTutorialState || !window.liveTutorialState.active) return;
-    const maxStep = 5;
+    const maxStep = 3;
     if (window.liveTutorialState.step >= maxStep) {
         window.completeLiveTutorial();
         return;
@@ -1035,46 +1044,44 @@ window.liveTutorialEvent = function (eventName) {
 }
 
 function initWelcomeSequence() {
+    if (isTutorialPreviewRequested()) {
+        setTimeout(() => window.startLiveTutorial(), 250);
+        return;
+    }
+
+    const onboardingComplete = localStorage.getItem(ONBOARDING_VERSION_KEY) === CURRENT_ONBOARDING_VERSION;
+    const legacyWelcomeSeen = localStorage.getItem('vocabGame_skipWelcome') === 'true';
+    const legacyTutorialComplete = localStorage.getItem(LIVE_TUTORIAL_KEY) === 'true';
+    const hasExistingSave = window.__hadExistingVocabSaveAtBoot === true;
+
+    // Users who already used the previous flow are migrated without seeing onboarding again.
+    if (!onboardingComplete && (legacyWelcomeSeen || legacyTutorialComplete || hasExistingSave)) {
+        localStorage.setItem(LIVE_TUTORIAL_KEY, 'true');
+        localStorage.setItem(ONBOARDING_VERSION_KEY, CURRENT_ONBOARDING_VERSION);
+        return;
+    }
+
+    if (onboardingComplete) return;
+
     if (isDeveloperPreviewMode()) {
-        const welcomeOverlay = document.getElementById('welcomeOverlay');
         const liveTutorial = document.getElementById('liveTutorialHint');
-        if (welcomeOverlay) welcomeOverlay.style.display = 'none';
         if (liveTutorial) liveTutorial.style.display = 'none';
         return;
     }
 
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-    const hasSkipped = localStorage.getItem('vocabGame_skipWelcome');
-    const welcomeOverlay = document.getElementById('welcomeOverlay');
-
-    // Invite Code Logic (Keep basic parsing here)
+    // Preserve promo URLs even though the old install-first screen has been removed.
     const urlParams = new URLSearchParams(window.location.search);
     const inviteCode = urlParams.get('invite') || urlParams.get('promo');
     if (inviteCode) {
-        const mainInput = document.getElementById('promoCodeInput');
-        if (mainInput) mainInput.value = inviteCode;
-        const msg = document.getElementById('inviteMessage');
-        const span = document.getElementById('welcomeInviteCode');
-        if (msg && span) { span.textContent = inviteCode; msg.style.display = 'block'; }
+        ['purchasePromoCodeInput', 'profilePromoCodeInput'].forEach((inputId) => {
+            const input = document.getElementById(inputId);
+            if (input) input.value = inviteCode;
+        });
     }
 
-    if (isStandalone) {
-        if (welcomeOverlay) welcomeOverlay.style.display = 'none';
-        // In standalone, start tutorial directly (unless skipped)
-        setTimeout(() => {
-            if (typeof window.startLiveTutorial === 'function') window.startLiveTutorial();
-        }, 250);
-        return;
-    }
-    if (!hasSkipped && welcomeOverlay) {
-        welcomeOverlay.style.display = 'flex';
-    } else if (welcomeOverlay) {
-        welcomeOverlay.style.display = 'none';
-        // Welcome hidden -> tutorial can start
-        setTimeout(() => {
-            if (typeof window.startLiveTutorial === 'function') window.startLiveTutorial();
-        }, 250);
-    }
+    setTimeout(() => {
+        if (typeof window.startLiveTutorial === 'function') window.startLiveTutorial();
+    }, 250);
 }
 
 // --- SHARE / QR ---
@@ -1088,7 +1095,7 @@ window.openShareModal = function () {
 };
 
 window.shareApp = async function () {
-    const data = { title: '英単語学習クリッカー', text: '一緒にやろう！', url: window.location.href };
+    const data = { title: 'てにをは英単語', text: '一緒にやろう！', url: window.location.href };
     if (navigator.share) {
         try { await navigator.share(data); } catch (e) { }
     } else {

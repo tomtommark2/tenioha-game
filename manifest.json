@@ -1,6 +1,6 @@
 {
-  "name": "英語単語クリッカー - Tenioha Game",
-  "short_name": "英単語Clicker",
+  "name": "てにをは英単語",
+  "short_name": "てにをは英単語",
   "start_url": "./vocab_clicker_game.html",
   "display": "standalone",
   "background_color": "#ffffff",

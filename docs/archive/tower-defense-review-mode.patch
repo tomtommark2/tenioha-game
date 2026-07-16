@@ -1,0 +1,605 @@
+diff --git a/index.html b/index.html
+index 8953d65..8ac7b6b 100644
+--- a/index.html
++++ b/index.html
+@@ -286,6 +286,14 @@
+                             <span class="mode-count" id="perfectCount">0</span>
+                         </button>
+                     </div>
++                    <div id="tdModeHud" class="td-mode-hud" aria-live="polite" style="display:none;">
++                        <div class="td-hud-kicker">復習防衛</div>
++                        <div class="td-hud-title">キャラが拠点を防衛中</div>
++                        <div class="td-hud-stats">
++                            <span><b id="tdTowerHp">100</b> HP</span>
++                            <span>接近 <b id="tdApproachingCount">0</b></span>
++                        </div>
++                    </div>
+                 </div>
+             </div>
+         </div>
+diff --git a/js/game_logic.js b/js/game_logic.js
+index bbbbd4b..a4fac04 100644
+--- a/js/game_logic.js
++++ b/js/game_logic.js
+@@ -1270,7 +1270,85 @@ function getDueReviewWordsPool() {
+ 
+     weakDue.sort(byDue);
+     learnedDue.sort(byDue);
+-    return [...weakDue, ...learnedDue];
++    const seen = new Set();
++    return [...weakDue, ...learnedDue].filter(word => {
++        const key = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
++        if (seen.has(key)) return false;
++        seen.add(key);
++        return true;
++    });
++}
++
++function getReviewLaneWordsPool(limit = 12) {
++    const now = Date.now();
++    const pool = [
++        ...getReviewWordsByModeAcrossLevels('weak'),
++        ...getReviewWordsByModeAcrossLevels('learned')
++    ];
++
++    const seen = new Set();
++    return pool
++        .map(word => {
++            const key = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
++            if (seen.has(key)) return null;
++            seen.add(key);
++            const s = ensureSrsEntry(key);
++            return {
++                word,
++                key,
++                dueAt: s.dueAt || now,
++                state: gameState.wordStates[key] || 'unlearned'
++            };
++        })
++        .filter(Boolean)
++        .sort((a, b) => {
++            const aDue = a.dueAt <= now ? 0 : 1;
++            const bDue = b.dueAt <= now ? 0 : 1;
++            if (aDue !== bDue) return aDue - bDue;
++            if (a.state !== b.state) {
++                if (a.state === 'weak') return -1;
++                if (b.state === 'weak') return 1;
++            }
++            return a.dueAt - b.dueAt;
++        })
++        .slice(0, limit);
++}
++
++function formatReviewEnemyEta(dueAt) {
++    const diff = Number(dueAt || 0) - Date.now();
++    if (diff <= 0) return 'NOW';
++    const min = Math.ceil(diff / 60000);
++    if (min < 60) return `${min}m`;
++    const hours = Math.ceil(min / 60);
++    if (hours < 24) return `${hours}h`;
++    return `${Math.ceil(hours / 24)}d`;
++}
++
++function updateTowerDefenseHUD(dueWords = null, laneWords = null) {
++    const isActive = gameState.reviewMode === 'on';
++    if (document.body) {
++        document.body.classList.toggle('td-mode-active', isActive);
++    }
++
++    const hud = document.getElementById('tdModeHud');
++    if (!hud) return;
++
++    hud.style.display = isActive ? 'grid' : 'none';
++    if (!isActive) return;
++
++    const duePool = Array.isArray(dueWords) ? dueWords : getDueReviewWordsPool();
++    const lanePool = Array.isArray(laneWords) ? laneWords : getReviewLaneWordsPool(12);
++    const now = Date.now();
++    const dueNow = duePool.length;
++    const approaching = lanePool.filter(entry => entry.dueAt > now).length;
++    const soon = lanePool.filter(entry => entry.dueAt > now && (entry.dueAt - now) <= 60 * 60 * 1000).length;
++    const towerHp = Math.max(20, Math.min(100, 100 - (dueNow * 8) - (soon * 3)));
++
++    const hpEl = document.getElementById('tdTowerHp');
++    const approachingEl = document.getElementById('tdApproachingCount');
++    if (hpEl) hpEl.textContent = String(towerHp);
++    if (approachingEl) approachingEl.textContent = String(approaching);
++    hud.dataset.pressure = dueNow > 0 ? 'danger' : (soon > 0 ? 'soon' : 'calm');
+ }
+ 
+ function playQueuePopAnimation(container, text, kind = 'success') {
+@@ -1339,10 +1417,12 @@ function updateReviewProgressUI() {
+     if (!wrap || !list || !label) return;
+ 
+     const dueWords = getDueReviewWordsPool();
++    const laneWords = getReviewLaneWordsPool(12);
+     const total = dueWords.length;
+     const prevCount = (typeof gameState.lastReviewQueueCount === 'number') ? gameState.lastReviewQueueCount : total;
++    updateTowerDefenseHUD(dueWords, laneWords);
+ 
+-    const newHeadKey = total > 0 ? getWordKey(dueWords[0], gameState.currentLevel) : null;
++    const newHeadKey = total > 0 ? getWordKeySafe(dueWords[0], dueWords[0].__sourceLevel || gameState.currentLevel) : null;
+     const oldHeadKey = gameState.lastReviewQueueHeadKey;
+ 
+     const modeMap = {
+@@ -1364,29 +1444,61 @@ function updateReviewProgressUI() {
+         modeModal.style.color = modeColor;
+     }
+ 
+-    label.textContent = `復習キュー ${total}件`;
++    const nowForLabel = Date.now();
++    const approachingCount = laneWords.filter(entry => entry.dueAt > nowForLabel).length;
++    label.textContent = approachingCount > 0 ? `復習キュー ${total}件 / 接近中 ${approachingCount}` : `復習キュー ${total}件`;
+ 
+-    const preview = dueWords.slice(0, 10);
+     list.innerHTML = '';
+-    preview.forEach((w, i) => {
+-        const chip = document.createElement('span');
+-        chip.textContent = w.word;
+-        chip.className = 'review-queue-chip';
+-        if (i === 0) {
+-            chip.classList.add('is-head');
++    if (laneWords.length > 0) {
++        const lane = document.createElement('div');
++        lane.className = 'review-td-lane';
++
++        const base = document.createElement('div');
++        base.className = 'review-td-base';
++        base.innerHTML = '<span class="review-td-base-mark">守</span><span class="review-td-base-label">拠点</span>';
++        lane.appendChild(base);
++
++        const track = document.createElement('div');
++        track.className = 'review-td-track';
++        laneWords.forEach((entry, i) => {
++            const enemy = document.createElement('span');
++            const due = entry.dueAt <= Date.now();
++            const soon = !due && (entry.dueAt - Date.now()) <= 60 * 60 * 1000;
++            enemy.className = [
++                'review-td-enemy',
++                `review-td-enemy-${entry.state}`,
++                due ? 'is-due' : '',
++                soon ? 'is-soon' : '',
++                i === 0 ? 'is-head' : ''
++            ].filter(Boolean).join(' ');
++            enemy.title = `${entry.word.word} / ${due ? '復習可能' : 'あと' + formatReviewEnemyEta(entry.dueAt)}`;
++
++            const word = document.createElement('span');
++            word.className = 'review-td-word';
++            word.textContent = entry.word.word;
++            const eta = document.createElement('span');
++            eta.className = 'review-td-eta';
++            eta.textContent = formatReviewEnemyEta(entry.dueAt);
++
++            enemy.appendChild(word);
++            enemy.appendChild(eta);
++            track.appendChild(enemy);
++        });
++
++        if (laneWords.length > 8) {
++            const more = document.createElement('span');
++            more.textContent = `+${laneWords.length - 8}`;
++            more.className = 'review-td-more';
++            track.appendChild(more);
+         }
+-        list.appendChild(chip);
+-    });
+-    if (total > 10) {
+-        const more = document.createElement('span');
+-        more.textContent = `+${total - 10}`;
+-        more.className = 'review-queue-more';
+-        list.appendChild(more);
++
++        lane.appendChild(track);
++        list.appendChild(lane);
+     }
+ 
+     const isOn = gameState.reviewMode === 'on';
+-    wrap.style.display = total > 0 ? 'block' : (isOn ? 'block' : 'none');
+-    if (total === 0 && isOn) {
++    wrap.style.display = laneWords.length > 0 ? 'block' : (isOn ? 'block' : 'none');
++    if (laneWords.length === 0 && isOn) {
+         list.innerHTML = '<span class="review-queue-empty">今は due 切れ復習がありません</span>';
+     }
+ 
+@@ -2582,6 +2694,7 @@ function updateModeButtons() {
+     if (gameState.reviewMode === 'on') {
+         gameState.currentMode = 'unlearned';
+     }
++    updateTowerDefenseHUD();
+ 
+     document.querySelectorAll('.mode-btn').forEach(btn => {
+         btn.classList.remove('active');
+diff --git a/style.css b/style.css
+index 9d2a863..6df90d5 100644
+--- a/style.css
++++ b/style.css
+@@ -1210,7 +1210,10 @@ body.level-selector-open .level-selector {
+ }
+ 
+ #reviewQueuePreview {
++    display: block !important;
++    min-height: 58px !important;
+     padding: 2px 2px 4px !important;
++    overflow: hidden !important;
+ }
+ 
+ .review-queue-chip,
+@@ -1251,6 +1254,153 @@ body.level-selector-open .level-selector {
+     font-weight: 700;
+ }
+ 
++.review-td-lane {
++    position: relative;
++    display: grid;
++    grid-template-columns: 44px minmax(0, 1fr);
++    align-items: center;
++    min-height: 56px;
++    overflow: hidden;
++    border: 1px solid rgba(124, 92, 255, 0.16);
++    border-radius: 14px;
++    background:
++        radial-gradient(circle at 12% 50%, rgba(124, 92, 255, 0.16), transparent 22%),
++        linear-gradient(90deg, rgba(255, 247, 227, 0.98), rgba(248, 246, 255, 0.98));
++}
++
++.review-td-lane::before {
++    content: "";
++    position: absolute;
++    left: 48px;
++    right: 12px;
++    top: 50%;
++    height: 3px;
++    border-radius: 999px;
++    background: linear-gradient(90deg, rgba(244, 78, 69, 0.38), rgba(124, 92, 255, 0.18), rgba(124, 132, 148, 0.14));
++    transform: translateY(-50%);
++}
++
++.review-td-base {
++    position: relative;
++    z-index: 1;
++    display: grid;
++    place-items: center;
++    align-content: center;
++    gap: 1px;
++    height: 100%;
++    color: #4F3AA7;
++    background: linear-gradient(180deg, rgba(232, 226, 255, 0.86), rgba(255, 255, 255, 0.68));
++    border-right: 1px solid rgba(124, 92, 255, 0.14);
++}
++
++.review-td-base-mark {
++    display: grid;
++    place-items: center;
++    width: 24px;
++    height: 24px;
++    border-radius: 9px;
++    background: #7C5CFF;
++    color: #fff;
++    font-size: 13px;
++    font-weight: 900;
++    box-shadow: 0 7px 14px rgba(79, 58, 167, 0.18);
++}
++
++.review-td-base-label {
++    font-size: 8px;
++    font-weight: 900;
++    letter-spacing: 0.02em;
++}
++
++.review-td-track {
++    position: relative;
++    z-index: 1;
++    display: flex;
++    align-items: center;
++    gap: 5px;
++    min-width: 0;
++    padding: 8px 8px 8px 9px;
++    overflow: hidden;
++}
++
++.review-td-enemy {
++    position: relative;
++    display: grid;
++    align-content: center;
++    min-width: 58px;
++    max-width: 72px;
++    height: 38px;
++    padding: 5px 6px 4px;
++    border: 1.4px solid rgba(124, 132, 148, 0.32);
++    border-radius: 10px;
++    background: linear-gradient(180deg, #ffffff, #f4f6fa);
++    color: #2f2a24;
++    box-shadow: 0 5px 12px rgba(47, 42, 36, 0.06);
++}
++
++.review-td-enemy.is-due {
++    min-width: 66px;
++    border-color: rgba(244, 78, 69, 0.62);
++    background: linear-gradient(180deg, #fff6f2, #ffe2da);
++    box-shadow:
++        0 0 0 2px rgba(244, 78, 69, 0.08),
++        0 7px 15px rgba(196, 70, 51, 0.12);
++}
++
++.review-td-enemy.is-head {
++    transform: translateY(-1px);
++}
++
++.review-td-enemy.is-soon:not(.is-due) {
++    border-color: rgba(226, 151, 0, 0.50);
++    background: linear-gradient(180deg, #fff9dc, #fff1bd);
++}
++
++.review-td-enemy-weak {
++    border-color: rgba(244, 78, 69, 0.48);
++}
++
++.review-td-enemy-learned {
++    border-color: rgba(55, 190, 119, 0.44);
++}
++
++.review-td-word {
++    overflow: hidden;
++    color: inherit;
++    font-size: 10.5px;
++    font-weight: 900;
++    line-height: 1.05;
++    text-overflow: ellipsis;
++    white-space: nowrap;
++}
++
++.review-td-eta {
++    margin-top: 2px;
++    color: rgba(47, 42, 36, 0.60);
++    font-size: 8px;
++    font-weight: 900;
++    line-height: 1;
++}
++
++.review-td-enemy.is-due .review-td-eta {
++    color: #d33b31;
++}
++
++.review-td-more {
++    display: inline-flex;
++    align-items: center;
++    justify-content: center;
++    flex: 0 0 auto;
++    min-width: 28px;
++    height: 28px;
++    border-radius: 9px;
++    border: 1px dashed rgba(124, 92, 255, 0.32);
++    background: rgba(255, 255, 255, 0.70);
++    color: #6b5cc9;
++    font-size: 10px;
++    font-weight: 900;
++}
++
+ .example-area {
+     background:
+         linear-gradient(135deg, #fff8dd, #fffdf4);
+@@ -5639,3 +5789,114 @@ body.level-selector-open .level-selector {
+         font-size: 12px;
+     }
+ }
++
++/* Tower-defense review mode: reuse the current character as the defender. */
++body.td-mode-active .mode-buttons {
++    display: none !important;
++}
++
++body.td-mode-active .td-mode-hud {
++    display: grid !important;
++}
++
++body:not(.td-mode-active) .td-mode-hud {
++    display: none !important;
++}
++
++.td-mode-hud {
++    width: 100%;
++    min-width: 248px;
++    max-width: 360px;
++    padding: 12px 14px 13px;
++    border-radius: 16px;
++    background:
++        radial-gradient(circle at 16% 0%, rgba(255, 255, 255, 0.98), transparent 42%),
++        linear-gradient(135deg, rgba(255, 247, 227, 0.96), rgba(232, 226, 255, 0.96));
++    border: 1.5px solid rgba(124, 92, 255, 0.28);
++    box-shadow:
++        0 12px 25px rgba(32, 18, 90, 0.13),
++        inset 0 1px 0 rgba(255, 255, 255, 0.88);
++    color: #2F2A24;
++    gap: 4px;
++    transform: translateY(-4px);
++}
++
++.td-hud-kicker {
++    justify-self: start;
++    padding: 2px 8px;
++    border-radius: 999px;
++    background: rgba(124, 92, 255, 0.14);
++    color: #4F3AA7;
++    font-size: 11px;
++    font-weight: 900;
++    letter-spacing: 0.05em;
++}
++
++.td-hud-title {
++    font-family: 'Noto Sans JP', sans-serif;
++    font-size: 15px;
++    font-weight: 900;
++    line-height: 1.2;
++    color: #2F2A24;
++}
++
++.td-hud-stats {
++    display: flex;
++    align-items: center;
++    justify-content: space-between;
++    gap: 10px;
++    font-size: 12px;
++    font-weight: 800;
++    color: rgba(47, 42, 36, 0.72);
++}
++
++.td-hud-stats b {
++    color: #4F3AA7;
++    font-size: 16px;
++    font-weight: 950;
++}
++
++.td-mode-hud[data-pressure="danger"] {
++    border-color: rgba(244, 78, 69, 0.45);
++    background:
++        radial-gradient(circle at 16% 0%, rgba(255, 255, 255, 0.98), transparent 42%),
++        linear-gradient(135deg, rgba(255, 247, 227, 0.98), rgba(255, 232, 226, 0.96));
++}
++
++.td-mode-hud[data-pressure="danger"] .td-hud-kicker,
++.td-mode-hud[data-pressure="danger"] .td-hud-stats b {
++    color: #b42318;
++}
++
++.td-mode-hud[data-pressure="danger"] .td-hud-kicker {
++    background: rgba(244, 78, 69, 0.13);
++}
++
++body.td-mode-active #heroCharacter {
++    filter:
++        drop-shadow(0 0 9px rgba(255, 224, 114, 0.48))
++        drop-shadow(0 12px 12px rgba(32, 18, 90, 0.16));
++}
++
++@media (max-width: 768px) {
++    .td-mode-hud {
++        min-width: 0;
++        max-width: none;
++        width: 100%;
++        padding: 10px 11px 11px;
++        border-radius: 14px;
++        transform: translateY(-8px);
++    }
++
++    .td-hud-title {
++        font-size: 13px;
++    }
++
++    .td-hud-stats {
++        font-size: 11px;
++    }
++
++    .td-hud-stats b {
++        font-size: 15px;
++    }
++}
+diff --git a/tests/smoke.spec.js b/tests/smoke.spec.js
+index 16d1c8a..b7f25a5 100644
+--- a/tests/smoke.spec.js
++++ b/tests/smoke.spec.js
+@@ -200,6 +200,42 @@ test('復習モードON/OFF切替に分類ボタンの無効状態が即時同
+   await expect(modeButtons.first()).not.toHaveClass(/disabled/);
+ });
+ 
++test('復習モードONでは分類カードを畳んでTD HUDを表示する', async ({ page }) => {
++  await page.addInitScript(() => {
++    localStorage.setItem('vocabGame_skipWelcome', 'true');
++  });
++
++  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
++  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
++
++  await page.evaluate(() => {
++    window.gameState.reviewMode = 'random';
++    if (typeof window.updateModeButtons === 'function') window.updateModeButtons();
++  });
++
++  await expect(page.locator('.mode-buttons')).toBeVisible();
++  await expect(page.locator('#tdModeHud')).toBeHidden();
++
++  await page.evaluate(() => {
++    window.gameState.reviewMode = 'on';
++    if (typeof window.updateModeButtons === 'function') window.updateModeButtons();
++  });
++
++  await expect(page.locator('body')).toHaveClass(/td-mode-active/);
++  await expect(page.locator('.mode-buttons')).toBeHidden();
++  await expect(page.locator('#tdModeHud')).toBeVisible();
++  await expect(page.locator('#tdModeHud')).toContainText('キャラが拠点を防衛中');
++
++  await page.evaluate(() => {
++    window.gameState.reviewMode = 'off';
++    if (typeof window.updateModeButtons === 'function') window.updateModeButtons();
++  });
++
++  await expect(page.locator('body')).not.toHaveClass(/td-mode-active/);
++  await expect(page.locator('.mode-buttons')).toBeVisible();
++  await expect(page.locator('#tdModeHud')).toBeHidden();
++});
++
+ test('復習キュー右上ラベルのタップで復習モードを切り替えられる', async ({ page }) => {
+   await page.addInitScript(() => {
+     localStorage.setItem('vocabGame_skipWelcome', 'true');
+@@ -230,6 +266,43 @@ test('復習キュー右上ラベルのタップで復習モードを切り替
+   await expect(inlineLabel).toContainText('MIX');
+ });
+ 
++test('復習予定の単語がdue前でもTDレーンに接近表示される', async ({ page }) => {
++  await page.addInitScript(() => {
++    localStorage.setItem('vocabGame_skipWelcome', 'true');
++  });
++
++  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
++  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
++
++  await page.evaluate(() => {
++    const gs = window.gameState;
++    const now = Date.now();
++    gs.reviewMode = 'random';
++    gs.activeReviewLevels = [gs.currentLevel];
++    gs.srsData = gs.srsData || {};
++
++    for (const word of window.vocabulary) {
++      const key = window.getWordKey(word, gs.currentLevel);
++      gs.wordStates[key] = 'unlearned';
++      gs.srsData[key] = { ...(gs.srsData[key] || {}), dueAt: now + 7 * 86400000 };
++    }
++
++    window.vocabulary.slice(0, 3).forEach((word, i) => {
++      const key = window.getWordKey(word, gs.currentLevel);
++      gs.wordStates[key] = i === 0 ? 'weak' : 'learned';
++      gs.srsData[key] = { ...(gs.srsData[key] || {}), dueAt: now + (i + 1) * 15 * 60000 };
++    });
++
++    if (typeof window.updateReviewProgressUI === 'function') window.updateReviewProgressUI();
++  });
++
++  await expect(page.locator('#reviewProgressWrap')).toBeVisible();
++  await expect(page.locator('#reviewProgressLabel')).toContainText('接近中');
++  await expect(page.locator('.review-td-lane')).toBeVisible();
++  await expect(page.locator('.review-td-enemy')).toHaveCount(3);
++  await expect(page.locator('.review-td-enemy.is-due')).toHaveCount(0);
++});
++
+ test('復習モードONでは新規のみの遷移にならない（復習優先）', async ({ page }) => {
+   await page.addInitScript(() => {
+     localStorage.setItem('vocabGame_skipWelcome', 'true');
+diff --git a/vocab_clicker_game.html b/vocab_clicker_game.html
+index 8953d65..8ac7b6b 100644
+--- a/vocab_clicker_game.html
++++ b/vocab_clicker_game.html
+@@ -286,6 +286,14 @@
+                             <span class="mode-count" id="perfectCount">0</span>
+                         </button>
+                     </div>
++                    <div id="tdModeHud" class="td-mode-hud" aria-live="polite" style="display:none;">
++                        <div class="td-hud-kicker">復習防衛</div>
++                        <div class="td-hud-title">キャラが拠点を防衛中</div>
++                        <div class="td-hud-stats">
++                            <span><b id="tdTowerHp">100</b> HP</span>
++                            <span>接近 <b id="tdApproachingCount">0</b></span>
++                        </div>
++                    </div>
+                 </div>
+             </div>
+         </div>

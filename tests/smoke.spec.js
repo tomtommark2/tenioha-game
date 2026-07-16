@@ -15,6 +15,100 @@ test('トップ画面が表示される', async ({ page }) => {
   await expect(page.locator('#meaningCard')).toBeVisible();
 });
 
+test('新規ユーザーにはインストール画面を挟まず短いチュートリアルを表示する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.clear();
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html?tutorialPreview=1', { waitUntil: 'load' });
+
+  await expect(page).toHaveTitle('てにをは英単語');
+  await expect(page.locator('#welcomeOverlay')).toHaveCount(0);
+  await expect(page.locator('#liveTutorialHint')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'チュートリアルを閉じる' })).toBeVisible();
+
+  const manifest = await page.evaluate(async () => (await fetch('/manifest.json')).json());
+  expect(manifest.name).toBe('てにをは英単語');
+  expect(manifest.short_name).toBe('てにをは英単語');
+});
+
+test('旧導線を通過済みのユーザーにはチュートリアルを再表示しない', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.clear();
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'load' });
+
+  await expect(page.locator('#liveTutorialHint')).toBeHidden();
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('vocabGame_onboardingVersion'))).toBe('2');
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('vocabGame_skipLiveTutorial'))).toBe('true');
+});
+
+test('チュートリアルを閉じると完了状態を保存する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.clear();
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html?tutorialPreview=1', { waitUntil: 'load' });
+  await expect(page.locator('#liveTutorialHint')).toBeVisible();
+
+  await page.getByRole('button', { name: 'チュートリアルを閉じる' }).click({ force: true });
+
+  await expect(page.locator('#liveTutorialHint')).toBeHidden();
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('vocabGame_onboardingVersion'))).toBe('2');
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('vocabGame_skipLiveTutorial'))).toBe('true');
+});
+
+test('その他メニューは読み上げ名とキーボード操作に対応する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+
+  const trigger = page.getByRole('button', { name: 'その他メニュー' });
+  const items = page.locator('#otherMenuDropdown .other-menu-item');
+
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await trigger.press('Enter');
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  await expect(items).toHaveCount(5);
+  await expect(items.first()).toBeVisible();
+  await expect.poll(() => items.evaluateAll((elements) => elements.every((element) => element.tagName === 'BUTTON'))).toBe(true);
+
+  await trigger.press('Enter');
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await expect(items.first()).toBeHidden();
+});
+
+test('管理メニューはダイアログとしてキーボード操作できる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+
+  const trigger = page.getByRole('button', { name: '管理メニュー' });
+  const dialog = page.getByRole('dialog', { name: '管理メニュー' });
+
+  await expect(trigger).toHaveAttribute('aria-haspopup', 'dialog');
+  await trigger.press('Enter');
+  await expect(dialog).toBeVisible();
+
+  const items = dialog.locator('.help-list-item');
+  await expect(items).toHaveCount(5);
+  await expect.poll(() => items.evaluateAll((elements) => elements.every((element) => element.tagName === 'BUTTON'))).toBe(true);
+
+  await dialog.getByRole('button', { name: '管理メニューを閉じる' }).click();
+  await expect(dialog).toBeHidden();
+});
+
 test('意味カードをクリックすると反転する', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
@@ -105,10 +199,14 @@ test('プロフィールモーダルを開閉できる', async ({ page }) => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
   });
 
+  await page.setViewportSize({ width: 375, height: 667 });
   await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
 
   const modal = page.locator('#profileModal');
+  const dialog = page.locator('.profile-modal-content');
+  const scroller = page.locator('.profile-scroll-area');
+  const closeButton = page.getByRole('button', { name: 'アカウントを閉じる' });
   await expect(modal).toBeHidden();
 
   // 開く
@@ -116,6 +214,21 @@ test('プロフィールモーダルを開閉できる', async ({ page }) => {
     if (typeof window.openProfileModal === 'function') window.openProfileModal();
   });
   await expect(modal).toBeVisible();
+  await expect(dialog).toHaveAttribute('role', 'dialog');
+  await expect(dialog).toHaveAttribute('aria-modal', 'true');
+  await expect(page.locator('body')).toHaveClass(/profile-modal-open/);
+  await expect.poll(() => page.locator('body').evaluate((el) => getComputedStyle(el).overflowY)).toBe('hidden');
+  await expect.poll(() => modal.evaluate((el) => getComputedStyle(el).overflowY)).toBe('hidden');
+  await expect.poll(() => scroller.evaluate((el) => getComputedStyle(el).overflowY)).toBe('auto');
+
+  // ログイン後に同期欄が増えても、閉じるボタンはスクロール領域の外に残る。
+  await page.evaluate(() => {
+    const syncSection = document.getElementById('profileSyncSection');
+    const scrollArea = document.querySelector('.profile-scroll-area');
+    if (syncSection) syncSection.style.display = 'block';
+    if (scrollArea) scrollArea.scrollTop = scrollArea.scrollHeight;
+  });
+  await expect(closeButton).toBeVisible();
 
   // 閉じる（リロードなどで実行コンテキストが切れてもリトライ）
   await expect.poll(async () => {
@@ -128,6 +241,7 @@ test('プロフィールモーダルを開閉できる', async ({ page }) => {
     }
     return await modal.evaluate((el) => getComputedStyle(el).display === 'none');
   }, { timeout: 5000 }).toBe(true);
+  await expect(page.locator('body')).not.toHaveClass(/profile-modal-open/);
 });
 
 test('未読お知らせはベルに通知マークを出し、開くと既読になる', async ({ page }) => {
@@ -732,6 +846,27 @@ test('英単語一覧から検索して単語カードへ移動できる', async
   await expect(page.locator('#wordListModal')).toBeVisible();
   await expect(page.locator('#wordListGrid .word-list-card').first()).toBeVisible();
   await expect(page.locator('#wordListMeaningState')).toHaveText('OFF');
+
+  const desktopGeometry = await page.locator('#wordListGrid').evaluate((grid) => {
+    const card = grid.querySelector('.word-list-card');
+    return {
+      columns: getComputedStyle(grid).gridTemplateColumns.split(' ').length,
+      cardRadius: getComputedStyle(card).borderRadius,
+      stateBarRadius: getComputedStyle(card, '::before').borderRadius,
+    };
+  });
+  expect(desktopGeometry).toEqual({ columns: 5, cardRadius: '0px', stateBarRadius: '0px' });
+
+  await page.locator('#wordListAlphaButton').click();
+  await expect(page.locator('#wordListAlphabet')).toBeVisible();
+  await page.getByRole('button', { name: 'B', exact: true }).click();
+  await expect(page.locator('#wordListPosition')).toContainText('B');
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const mobileColumns = await page.locator('#wordListGrid').evaluate(
+    (grid) => getComputedStyle(grid).gridTemplateColumns.split(' ').length
+  );
+  expect(mobileColumns).toBe(2);
 
   await page.locator('#wordListSearchToggle').click();
   await page.locator('#wordListSearchInput').fill('ability');
