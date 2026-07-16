@@ -9,6 +9,23 @@ const firebaseConfig = {
     measurementId: "G-QHRLNKJ4CH"
 };
 
+const ANALYTICS_OPT_OUT_KEY = 'vocabGame_disableAnalytics';
+const analyticsPreference = new URLSearchParams(window.location.search).get('analytics');
+if (analyticsPreference === 'off') {
+    localStorage.setItem(ANALYTICS_OPT_OUT_KEY, 'true');
+} else if (analyticsPreference === 'on') {
+    localStorage.removeItem(ANALYTICS_OPT_OUT_KEY);
+}
+
+const isLocalDevelopment = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+const isAnalyticsDisabled = isLocalDevelopment
+    || localStorage.getItem(ANALYTICS_OPT_OUT_KEY) === 'true';
+
+if (isAnalyticsDisabled) {
+    // GA also checks this global flag before sending collection requests.
+    window[`ga-disable-${firebaseConfig.measurementId}`] = true;
+}
+
 // (Moved APP_VERSION to post-imports)
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -46,7 +63,9 @@ try {
     const app = initializeApp(firebaseConfig);
     db = getFirestore(app);
     auth = getAuth(app);
-    analytics = getAnalytics(app); // Initialize Analytics
+    if (!isAnalyticsDisabled) {
+        analytics = getAnalytics(app);
+    }
     window.firestoreDb = db; // Expose DB
     window.firebaseAuth = auth; // Expose Auth
     console.log("Firebase initialized successfully");

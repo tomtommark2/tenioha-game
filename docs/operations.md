@@ -27,6 +27,8 @@
 
 - Use `local_server.py` instead of a generic static server because it forces MIME types and disables caching.
 - E2E tests expect `http://localhost:8000`.
+- Firebase Analytics is disabled automatically on `localhost` and `127.0.0.1`.
+- To exclude one browser from production analytics, open the app once with `?analytics=off`. Use `?analytics=on` to remove that browser preference.
 
 ## Screenshot Workflow
 
