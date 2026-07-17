@@ -1015,7 +1015,8 @@ window.closeStudyModeModal = function () {
     if (m) m.style.display = 'none';
 };
 
-window.toggleDueOnlyMode = function () {
+window.toggleDueOnlyMode = function (event) {
+    if (event) event.stopPropagation();
     const order = ['off', 'random', 'on'];
     const cur = order.includes(gameState.reviewMode) ? gameState.reviewMode : 'random';
     window.setReviewMode(order[(order.indexOf(cur) + 1) % order.length]);
@@ -1024,10 +1025,12 @@ window.toggleDueOnlyMode = function () {
 window.setReviewMode = function (mode) {
     if (!['off', 'random', 'on'].includes(mode)) return;
     gameState.reviewMode = mode;
-    saveGame();
     updateModeButtons();
     const reviewSnapshot = buildReviewQueueSnapshot();
     updateReviewQueueBadge(reviewSnapshot);
+    // Reflect the selected mode immediately instead of relying on the next question render.
+    updateReviewProgressUI(reviewSnapshot);
+    saveGame();
     showNextWord(reviewSnapshot);
 };
 

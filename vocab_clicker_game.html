@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0718.0015">
+    <link rel="stylesheet" href="style.css?v=2026.0718.0048">
 </head>
 
 <body>
@@ -314,7 +314,7 @@
                     <span id="reviewProgressLabel">復習キュー 0件</span>
                     <span id="reviewTomorrowForecast" class="review-tomorrow-forecast">（明日0件）</span>
                 </div>
-                <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(); event.stopPropagation();" title="出題モードを切り替え">新規＋復習</button>
+                <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(event)" title="出題モードを切り替え">新規＋復習</button>
             </div>
             <div id="reviewQueuePreview" style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; position:relative; min-height:28px;"></div>
         </div>
@@ -438,8 +438,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0718.0015"></script>
-<script src="data/ipa_overrides.js?v=2026.0718.0015"></script>
+    <script src="data/vocabulary.js?v=2026.0718.0048"></script>
+<script src="data/ipa_overrides.js?v=2026.0718.0048"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -901,19 +901,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2026.0718.0015"></script>
-    <script src="js/update_manager.js?v=2026.0718.0015"></script>
-    <script src="js/config.js?v=2026.0718.0015"></script>
-    <script src="data/announcements.js?v=2026.0718.0015"></script>
-    <script src="js/utils.js?v=2026.0718.0015"></script>
-    <script src="js/stats_engine.js?v=2026.0718.0015"></script>
-    <script src="js/chart_data_adapter.js?v=2026.0718.0015"></script>
+    <script src="js/version.js?v=2026.0718.0048"></script>
+    <script src="js/update_manager.js?v=2026.0718.0048"></script>
+    <script src="js/config.js?v=2026.0718.0048"></script>
+    <script src="data/announcements.js?v=2026.0718.0048"></script>
+    <script src="js/utils.js?v=2026.0718.0048"></script>
+    <script src="js/stats_engine.js?v=2026.0718.0048"></script>
+    <script src="js/chart_data_adapter.js?v=2026.0718.0048"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=2026.0718.0015"></script>
-    <script src="js/game_logic.js?v=2026.0718.0015"></script>
-    <script src="js/ui_manager.js?v=2026.0718.0015"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.0015"></script>
+    <script src="js/chart_fallback.js?v=2026.0718.0048"></script>
+    <script src="js/game_logic.js?v=2026.0718.0048"></script>
+    <script src="js/ui_manager.js?v=2026.0718.0048"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.0048"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
