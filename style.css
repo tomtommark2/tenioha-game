@@ -3244,7 +3244,7 @@ body.level-selector-open .level-selector {
 
 .review-avatar-picker {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     gap: 6px;
     margin: 13px 0;
 }
@@ -3519,6 +3519,10 @@ body.level-selector-open .level-selector {
         width: 38px;
         height: 38px;
     }
+
+    .review-avatar-picker {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @media (max-width: 360px) {
@@ -3545,7 +3549,7 @@ body.level-selector-open .level-selector {
     }
 
     .review-avatar-picker {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 

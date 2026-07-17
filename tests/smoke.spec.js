@@ -997,7 +997,7 @@ test('旧ゴールド表示を廃止し学習後も互換値を増やさない',
   expect(result).toBe(321);
 });
 
-test('ランキングプロフィールで6種類の実画像アバターを選べる', async ({ page }) => {
+test('ランキングプロフィールで犬と猫を含む8種類の実画像アバターを選べる', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -1005,19 +1005,39 @@ test('ランキングプロフィールで6種類の実画像アバターを選�
 
   await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
   const options = page.locator('.review-avatar-option');
-  await expect(options).toHaveCount(6);
-  await expect(options.locator('img')).toHaveCount(6);
+  await expect(options).toHaveCount(8);
+  await expect(options.locator('img')).toHaveCount(8);
+  for (const avatarId of ['dog', 'cat']) {
+    const image = page.locator(`.review-avatar-option[data-avatar-id="${avatarId}"] img`);
+    await expect.poll(() => image.evaluate(
+      (element) => element.complete ? element.naturalWidth : 0
+    )).toBe(128);
+  }
+  await page.locator('#leaderboardModal').evaluate((element) => {
+    element.style.display = 'flex';
+  });
+  await page.locator('#nameInputParams').evaluate((element) => {
+    element.style.display = 'block';
+  });
+  await page.setViewportSize({ width: 1280, height: 800 });
+  expect(await page.locator('#reviewAvatarPicker').evaluate(
+    (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
+  )).toBe(8);
+  await page.setViewportSize({ width: 375, height: 667 });
+  expect(await page.locator('#reviewAvatarPicker').evaluate(
+    (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
+  )).toBe(4);
 
   await page.evaluate(async () => {
     window.updateReviewRankingProfile = async () => ({ success: true });
     window.fetchReviewLeaderboard = async () => ({ results: [], me: null });
     document.getElementById('playerNameInput').value = 'テスト';
-    window.selectReviewAvatar('blue');
+    window.selectReviewAvatar('dog');
     await window.registerName();
   });
 
-  expect(await page.evaluate(() => localStorage.getItem('vocabGame_reviewAvatarId'))).toBe('blue');
-  await expect(page.locator('.review-avatar-option[data-avatar-id="blue"]')).toHaveClass(/active/);
+  expect(await page.evaluate(() => localStorage.getItem('vocabGame_reviewAvatarId'))).toBe('dog');
+  await expect(page.locator('.review-avatar-option[data-avatar-id="dog"]')).toHaveClass(/active/);
 });
 
 test('正答率閾値(80/50)で状態分類される', async ({ page }) => {

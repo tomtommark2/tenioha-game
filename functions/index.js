@@ -28,7 +28,7 @@ const TENIOHA_CHECKOUT_UNIT_AMOUNT = Number(process.env.TENIOHA_CHECKOUT_UNIT_AM
 const DEFAULT_CHECKOUT_RETURN_URL = "https://tomtommark2.github.io/tenioha-game/";
 const CHECKOUT_FUNCTION_REGION = "us-central1";
 const PROMO_CODE_MAX_LENGTH = 128;
-const REVIEW_AVATAR_IDS = new Set(["hero", "rose", "blue", "green", "violet", "auburn"]);
+const REVIEW_AVATAR_IDS = new Set(["hero", "rose", "blue", "green", "violet", "auburn", "dog", "cat"]);
 const ALLOWED_CHECKOUT_ORIGINS = new Set([
     "https://tomtommark2.github.io",
     "https://tenioha-game.web.app",

@@ -581,14 +581,15 @@ function getReviewWeekPoints() {
     }, 0);
 }
 
+const REVIEW_AVATAR_IDS = Object.freeze(['hero', 'rose', 'blue', 'green', 'violet', 'auburn', 'dog', 'cat']);
+
 function getReviewAvatarId() {
-    const allowed = new Set(['hero', 'rose', 'blue', 'green', 'violet', 'auburn']);
     const saved = localStorage.getItem('vocabGame_reviewAvatarId') || 'hero';
-    return allowed.has(saved) ? saved : 'hero';
+    return REVIEW_AVATAR_IDS.includes(saved) ? saved : 'hero';
 }
 
 function getReviewAvatarPath(avatarId = getReviewAvatarId()) {
-    const safeId = ['hero', 'rose', 'blue', 'green', 'violet', 'auburn'].includes(avatarId) ? avatarId : 'hero';
+    const safeId = REVIEW_AVATAR_IDS.includes(avatarId) ? avatarId : 'hero';
     return `assets/avatars/avatar-${safeId}.png`;
 }
 
@@ -3220,7 +3221,7 @@ function updateReviewAvatarPicker() {
 }
 
 function selectReviewAvatar(avatarId) {
-    selectedReviewAvatarId = ['hero', 'rose', 'blue', 'green', 'violet', 'auburn'].includes(avatarId) ? avatarId : 'hero';
+    selectedReviewAvatarId = REVIEW_AVATAR_IDS.includes(avatarId) ? avatarId : 'hero';
     updateReviewAvatarPicker();
 }
 
