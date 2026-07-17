@@ -13,5 +13,9 @@ functions/.env
 test-results/
 playwright-report/
 
+# Python artifacts
+__pycache__/
+*.py[cod]
+
 # Local visual check artifacts
 screenshots/

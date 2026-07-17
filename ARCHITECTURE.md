@@ -25,6 +25,7 @@ This is a static web app with Firebase-backed features.
 - `vocab_clicker_game.html` is a synchronized copy used by the manifest, service worker, tests, and some links.
 - `learning_log_preview.html` is embedded by `index.html` and `vocab_clicker_game.html`.
 - `service_worker.js` caches both HTML entry points and core assets.
+- `docs/review-system.md` defines the SRS cadence and review-score invariants.
 
 ## Firebase Surface
 

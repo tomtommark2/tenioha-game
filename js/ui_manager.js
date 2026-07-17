@@ -124,6 +124,7 @@ function initHelpModalSwipeToClose(helpModal) {
 }
 
 const ANNOUNCEMENT_READ_KEY = 'vocabGame_lastReadAnnouncementId';
+const ANNOUNCEMENT_AUTO_SHOWN_KEY = 'vocabGame_lastAutoShownAnnouncementId';
 
 function getAnnouncements() {
     return Array.isArray(window.APP_ANNOUNCEMENTS) ? window.APP_ANNOUNCEMENTS : [];
@@ -132,6 +133,10 @@ function getAnnouncements() {
 function getLatestAnnouncementId() {
     const announcements = getAnnouncements();
     return announcements.length > 0 ? announcements[0].id : null;
+}
+
+function getFeaturedAnnouncement() {
+    return getAnnouncements().find(item => item && item.featured && item.autoOpenOnce) || null;
 }
 
 function escapeAnnouncementText(value) {
@@ -155,27 +160,74 @@ function updateAnnouncementBadge() {
     btn.setAttribute('aria-label', hasUnread ? '未読のお知らせがあります' : 'お知らせ');
 }
 
-function renderAnnouncements() {
+function renderAnnouncements({ featuredOnly = false } = {}) {
     const list = document.getElementById('announcementList');
     if (!list) return;
 
-    const announcements = getAnnouncements();
+    const announcements = featuredOnly
+        ? getAnnouncements().filter(item => item && item.featured)
+        : getAnnouncements();
     if (announcements.length === 0) {
         list.innerHTML = '<div style="text-align:center; color:#667085; font-size:13px;">現在、新しいお知らせはありません。</div>';
         return;
     }
 
     list.innerHTML = announcements.map(item => {
-        const body = Array.isArray(item.body) ? item.body : [item.body || ''];
+        const selectedBody = featuredOnly && item.featuredBody ? item.featuredBody : item.body;
+        const body = Array.isArray(selectedBody) ? selectedBody : [selectedBody || ''];
         const bodyHtml = body.map(line => `<div>${escapeAnnouncementText(line)}</div>`).join('');
+        const visualHtml = featuredOnly && item.image
+            ? `<img class="announcement-feature-visual" src="${escapeAnnouncementText(item.image)}" alt="${escapeAnnouncementText(item.imageAlt || '')}">`
+            : '';
         return `
-            <div class="announcement-card">
-                <div class="announcement-meta">${escapeAnnouncementText(item.version)} / ${escapeAnnouncementText(item.date)}</div>
-                <div class="announcement-title">${escapeAnnouncementText(item.title || 'お知らせ')}</div>
-                <div class="announcement-body">${bodyHtml}</div>
+            <div class="announcement-card ${item.featured ? 'is-featured' : ''} ${featuredOnly ? 'is-popup-featured' : ''}">
+                ${visualHtml}
+                <div class="announcement-card-copy">
+                    <div class="announcement-meta">${escapeAnnouncementText(item.version)} / ${escapeAnnouncementText(item.date)}</div>
+                    <div class="announcement-title">${escapeAnnouncementText(item.title || 'お知らせ')}</div>
+                    <div class="announcement-body">${bodyHtml}</div>
+                </div>
             </div>
         `;
     }).join('');
+}
+
+function setAnnouncementModalMode(featuredAutoOpen) {
+    const heading = document.getElementById('announcementHeading');
+    const actions = document.getElementById('announcementFeaturedActions');
+    const actionButton = document.getElementById('announcementPrimaryAction');
+    const featured = getFeaturedAnnouncement();
+
+    document.getElementById('announcementModal')?.classList.toggle('is-featured-mode', featuredAutoOpen);
+    if (heading) heading.textContent = featuredAutoOpen ? '大型アップデート' : 'お知らせ';
+    if (actions) actions.style.display = featuredAutoOpen ? 'flex' : 'none';
+    if (actionButton && featured) {
+        actionButton.textContent = featured.actionLabel || '新機能を見る';
+    }
+}
+
+function shouldAutoOpenFeaturedAnnouncement(featured) {
+    if (!featured) return false;
+
+    const params = new URLSearchParams(window.location.search);
+    const isExplicitPreview = params.get('announcementPreview') === '1';
+    if (isExplicitPreview) return true;
+    if (localStorage.getItem(ANNOUNCEMENT_AUTO_SHOWN_KEY) === featured.id) return false;
+    if (isDeveloperPreviewMode() && !isExplicitPreview) return false;
+
+    return window.__hadExistingVocabSaveAtBoot === true
+        || localStorage.getItem('vocabGame_skipWelcome') === 'true'
+        || localStorage.getItem(ONBOARDING_VERSION_KEY) === CURRENT_ONBOARDING_VERSION;
+}
+
+function openFeaturedAnnouncement(featured) {
+    const modal = document.getElementById('announcementModal');
+    if (!modal || !featured) return;
+
+    renderAnnouncements({ featuredOnly: true });
+    setAnnouncementModalMode(true);
+    localStorage.setItem(ANNOUNCEMENT_AUTO_SHOWN_KEY, featured.id);
+    modal.style.display = 'flex';
 }
 
 function initAnnouncements() {
@@ -188,6 +240,11 @@ function initAnnouncements() {
             if (e.target === modal) window.closeAnnouncementModal();
         };
     }
+
+    const featured = getFeaturedAnnouncement();
+    if (shouldAutoOpenFeaturedAnnouncement(featured)) {
+        window.setTimeout(() => openFeaturedAnnouncement(featured), 700);
+    }
 }
 
 window.openAnnouncementModal = function () {
@@ -195,6 +252,7 @@ window.openAnnouncementModal = function () {
     if (!modal) return;
 
     renderAnnouncements();
+    setAnnouncementModalMode(false);
     modal.style.display = 'flex';
 
     const latestId = getLatestAnnouncementId();
@@ -207,6 +265,14 @@ window.openAnnouncementModal = function () {
 window.closeAnnouncementModal = function () {
     const modal = document.getElementById('announcementModal');
     if (modal) modal.style.display = 'none';
+};
+
+window.openAnnouncementFeature = function () {
+    const latestId = getLatestAnnouncementId();
+    if (latestId) localStorage.setItem(ANNOUNCEMENT_READ_KEY, latestId);
+    updateAnnouncementBadge();
+    window.closeAnnouncementModal();
+    if (typeof window.openLeaderboard === 'function') window.openLeaderboard();
 };
 
 // --- PROFILE MODAL ---
@@ -846,6 +912,13 @@ window.openLeaderboard = async function () {
 
     const modal = document.getElementById('leaderboardModal');
     if (modal) modal.style.display = 'flex';
+    if (typeof updateReviewRankingSummary === 'function') updateReviewRankingSummary();
+    const weekLabel = document.getElementById('leaderboardWeekLabel');
+    if (weekLabel && typeof getWeekStartDate === 'function') {
+        const start = getWeekStartDate();
+        weekLabel.textContent = `${start.getMonth() + 1}月${start.getDate()}日から今日まで`;
+    }
+    if (window.showReviewRankingPreview && window.showReviewRankingPreview()) return;
 
     // UI State based on Auth
     // We check window.firebaseAuth or localStorage?
@@ -881,12 +954,7 @@ window.closeLeaderboard = function () {
 };
 
 window.switchTab = function (tab) {
-    if (window.fetchLeaderboard) {
-        window.switchTabFB(tab); // Call the firebase one if exists
-    } else {
-        // Fallback UI update only
-        document.querySelectorAll('.lb-tab').forEach(b => b.classList.remove('active'));
-    }
+    if (typeof loadRankingData === 'function') loadRankingData('top', true);
 };
 
 // --- PWA / WELCOME ---
@@ -1178,6 +1246,9 @@ window.forceUpdateApp = async () => {
 // --- NAME REGISTRATION (Simple UI part) ---
 window.renamePlayer = function () {
     document.getElementById('playerNameInput').value = localStorage.getItem('vocabGame_playerName') || "";
+    if (window.selectReviewAvatar) {
+        window.selectReviewAvatar(localStorage.getItem('vocabGame_reviewAvatarId') || 'hero');
+    }
     document.getElementById('nameInputParams').style.display = 'block';
     document.getElementById('leaderboardContent').style.display = 'none';
     document.getElementById('renameBtn').style.display = 'none';
@@ -1185,12 +1256,9 @@ window.renamePlayer = function () {
 };
 
 window.cancelRename = function () {
-    // We need checkNameRegistration logic. 
-    // If it's in Firebase Module, we can't call it easily if module failed.
-    // We simply reset UI
-    document.getElementById('nameInputParams').style.display = 'none';
-    document.getElementById('leaderboardContent').style.display = 'block';
-    document.getElementById('renameBtn').style.display = 'block';
+    if (typeof checkNameRegistration === 'function') {
+        checkNameRegistration();
+    }
 };
 
 // --- DEBUG / VERIFICATION HELPERS (Moved from firebase_app for Local Access) ---

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-labelledby="title desc">
+  <title id="title">新ランキングシステム導入</title>
+  <desc id="desc">苦手単語の復習でポイントを獲得し、アバターを設定して週間ランキングを競える新機能</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3f2b91"/>
+      <stop offset=".58" stop-color="#6f52dc"/>
+      <stop offset="1" stop-color="#9a7cff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#241458" flood-opacity=".25"/>
+    </filter>
+    <clipPath id="avatar1"><circle cx="481" cy="197" r="26"/></clipPath>
+    <clipPath id="avatar2"><circle cx="481" cy="258" r="26"/></clipPath>
+    <clipPath id="avatar3"><circle cx="481" cy="319" r="26"/></clipPath>
+  </defs>
+
+  <rect width="720" height="400" rx="30" fill="url(#bg)"/>
+  <circle cx="665" cy="40" r="82" fill="#fff" opacity=".07"/>
+  <circle cx="32" cy="384" r="100" fill="#fff" opacity=".05"/>
+
+  <g font-family="'Noto Sans JP','Yu Gothic',sans-serif">
+    <rect x="38" y="25" width="62" height="28" rx="14" fill="#fff7e3"/>
+    <text x="69" y="45" text-anchor="middle" fill="#4f3aa7" font-size="13" font-weight="900" letter-spacing="1.5">NEW</text>
+    <text x="112" y="45" fill="#eee9ff" font-size="13" font-weight="800" letter-spacing="1.2">WEEKLY REVIEW RANKING</text>
+    <text x="38" y="94" fill="#fff" font-size="33" font-weight="900">新ランキングシステム、導入！</text>
+
+    <g filter="url(#shadow)">
+      <rect x="38" y="120" width="372" height="240" rx="24" fill="#fff" opacity=".97"/>
+
+      <g>
+        <circle cx="75" cy="166" r="21" fill="#eee9ff"/>
+        <path d="M67 166h16m-8-8v16" stroke="#6f52dc" stroke-width="3.5" stroke-linecap="round"/>
+        <text x="110" y="158" fill="#2f2a24" font-size="15" font-weight="900">苦手単語を復習して、</text>
+        <text x="110" y="179" fill="#6f52dc" font-size="18" font-weight="900">ポイントを稼ごう</text>
+      </g>
+
+      <line x1="61" y1="203" x2="386" y2="203" stroke="#ece8f5" stroke-width="2"/>
+
+      <g>
+        <circle cx="75" cy="240" r="21" fill="#fff2d4"/>
+        <path d="M66 247v-14h18v14M70 233v-5h10v5" fill="none" stroke="#d49b19" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="110" y="232" fill="#2f2a24" font-size="15" font-weight="900">ポイントで、</text>
+        <text x="110" y="253" fill="#ad7510" font-size="18" font-weight="900">ランキングを競おう</text>
+      </g>
+
+      <line x1="61" y1="277" x2="386" y2="277" stroke="#ece8f5" stroke-width="2"/>
+
+      <g>
+        <circle cx="75" cy="314" r="21" fill="#e9f8ef"/>
+        <circle cx="75" cy="309" r="6" fill="none" stroke="#299f62" stroke-width="3"/>
+        <path d="M64 326c2-8 20-8 22 0" fill="none" stroke="#299f62" stroke-width="3" stroke-linecap="round"/>
+        <text x="110" y="306" fill="#2f2a24" font-size="15" font-weight="900">6種類から選んで、</text>
+        <text x="110" y="327" fill="#248b58" font-size="18" font-weight="900">自分のアバターを設定</text>
+      </g>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="430" y="120" width="252" height="240" rx="24" fill="#f8f6ff"/>
+      <text x="456" y="151" fill="#4f3aa7" font-size="15" font-weight="900">今週のランキング</text>
+      <text x="657" y="151" text-anchor="end" fill="#8f84aa" font-size="11" font-weight="700">WEEKLY</text>
+
+      <rect x="447" y="168" width="218" height="56" rx="16" fill="#fff6d8"/>
+      <circle cx="481" cy="197" r="28" fill="#fff" stroke="#e4b033" stroke-width="3"/>
+      <image href="avatars/avatar-rose.png" x="455" y="171" width="52" height="52" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatar1)"/>
+      <circle cx="463" cy="178" r="13" fill="#d49b19"/>
+      <text x="463" y="183" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">1</text>
+      <text x="520" y="192" fill="#51431f" font-size="14" font-weight="900">Haru</text>
+      <text x="644" y="202" text-anchor="end" fill="#9b6c0b" font-size="17" font-weight="900">184pt</text>
+
+      <rect x="447" y="231" width="218" height="56" rx="16" fill="#eef2ff"/>
+      <circle cx="481" cy="258" r="28" fill="#fff" stroke="#96a7d0" stroke-width="3"/>
+      <image href="avatars/avatar-blue.png" x="455" y="232" width="52" height="52" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatar2)"/>
+      <circle cx="463" cy="239" r="13" fill="#8796bd"/>
+      <text x="463" y="244" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">2</text>
+      <text x="520" y="253" fill="#3d465f" font-size="14" font-weight="900">Sora</text>
+      <text x="644" y="263" text-anchor="end" fill="#65739b" font-size="17" font-weight="900">163pt</text>
+
+      <rect x="447" y="294" width="218" height="49" rx="16" fill="#eee8ff" stroke="#8a6ad2" stroke-width="2"/>
+      <circle cx="481" cy="319" r="28" fill="#fff" stroke="#8a6ad2" stroke-width="3"/>
+      <image href="avatars/avatar-hero.png" x="455" y="293" width="52" height="52" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatar3)"/>
+      <circle cx="463" cy="301" r="13" fill="#7758c0"/>
+      <text x="463" y="306" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">3</text>
+      <text x="520" y="315" fill="#473665" font-size="14" font-weight="900">あなた</text>
+      <text x="644" y="325" text-anchor="end" fill="#7659bd" font-size="17" font-weight="900">142pt</text>
+    </g>
+
+    <text x="360" y="386" text-anchor="middle" fill="#fff7e3" font-size="14" font-weight="900">苦手に向き合った成果を、みんなと競おう。</text>
+  </g>
+</svg>

@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0717.0040">
+    <link rel="stylesheet" href="style.css?v=2026.0717.2232">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -198,15 +198,23 @@
         <div class="header">
             <div class="rpg-inline">
                 <div id="enemySlime" class="pixel-art anim-slime" style="opacity: 0;"></div>
-
-                <!-- Gold Display (Above Level) -->
-                <div class="char-level-display" style="top: -42px; color: #f1c40f;">
-                    💰 <span id="points">0</span>
-                </div>
-
-                <div class="char-level-display">Lv.<span class="js-vocab-level-value">1</span></div>
-
                 <div id="heroCharacter" class="pixel-art anim-idle"></div>
+                <div class="review-score-summary" aria-label="復習スコア">
+                    <div class="review-score-summary-row">
+                        <span>今日</span>
+                        <strong id="reviewScoreHeaderToday">0pt</strong>
+                    </div>
+                    <div class="review-score-summary-row">
+                        <span>週</span>
+                        <strong id="reviewScoreHeaderWeek">0pt</strong>
+                    </div>
+                    <button id="reviewRankButton" class="review-score-summary-row review-rank-button" type="button"
+                        onclick="openLeaderboard()" aria-label="復習ランキングを開く">
+                        <span>順位</span>
+                        <strong id="reviewRankHeader">--位</strong>
+                        <span class="review-rank-caret" aria-hidden="true">›</span>
+                    </button>
+                </div>
             </div>
             <div class="header-controls-wrapper">
 
@@ -301,11 +309,13 @@
             </div>
         </div>
 
-        <div id="reviewProgressWrap" style="display:none; margin: 6px 0 8px 0; background:#f6f7fb; border:1px solid #e5e8f3; border-radius:10px; padding:8px 10px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
-                <span id="reviewProgressLabel" style="font-size:12px; font-weight:bold; color:#555;">復習キュー 0件</span>
-                <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(); event.stopPropagation();" title="出題モードを切り替え" style="font-size:11px; color:#6b7280; background:#f3f4f6; border:1px solid #e5e7eb; border-radius:999px; padding:2px 8px; font-weight:700; letter-spacing:0.2px; cursor:pointer;">新規＋復習</button>
-
+        <div id="reviewProgressWrap" style="display:none;">
+            <div class="review-progress-header">
+                <div class="review-progress-title-line">
+                    <span id="reviewProgressLabel">復習キュー 0件</span>
+                    <span id="reviewTomorrowForecast" class="review-tomorrow-forecast">（明日0件）</span>
+                </div>
+                <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(); event.stopPropagation();" title="出題モードを切り替え">新規＋復習</button>
             </div>
             <div id="reviewQueuePreview" style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; position:relative; min-height:28px;"></div>
         </div>
@@ -429,8 +439,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0717.0040"></script>
-<script src="data/ipa_overrides.js?v=2026.0717.0040"></script>
+    <script src="data/vocabulary.js?v=2026.0717.2232"></script>
+<script src="data/ipa_overrides.js?v=2026.0717.2232"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -590,11 +600,17 @@
     <!-- OFFLINE_ALERT_MODAL_END -->
 
     <!-- Announcement Modal -->
-    <div id="announcementModal" class="modal-overlay announcement-modal">
+    <div id="announcementModal" class="modal-overlay announcement-modal" role="dialog" aria-modal="true"
+        aria-labelledby="announcementHeading">
         <div class="modal-content announcement-modal-content">
-            <button class="announcement-close-btn" onclick="closeAnnouncementModal()">&times;</button>
-            <h2 class="announcement-heading">お知らせ</h2>
+            <button class="announcement-close-btn" onclick="closeAnnouncementModal()" aria-label="閉じる">&times;</button>
+            <h2 id="announcementHeading" class="announcement-heading">お知らせ</h2>
             <div id="announcementList" class="announcement-list"></div>
+            <div id="announcementFeaturedActions" class="announcement-featured-actions" style="display: none;">
+                <button type="button" class="announcement-secondary-action" onclick="closeAnnouncementModal()">あとで</button>
+                <button id="announcementPrimaryAction" type="button" class="announcement-primary-action"
+                    onclick="openAnnouncementFeature()">ランキングを見る</button>
+            </div>
         </div>
     </div>
 
@@ -652,21 +668,20 @@
 
             <button id="renameBtn" class="subtle-action-btn leaderboard-rename-btn" onclick="renamePlayer()"
                 style="display: none;">
-                ✏️ 名前変更
+                プロフィール編集
             </button>
 
             <div class="leaderboard-hero">
-                <div class="leaderboard-kicker">Leaderboard</div>
-                <h2 class="leaderboard-title">🏆 ランキング</h2>
-                <p class="leaderboard-subtitle">学習の積み重ねを確認できます。</p>
+                <div class="leaderboard-kicker">Review score</div>
+                <h2 class="leaderboard-title">今週のランキング</h2>
+                <p id="leaderboardWeekLabel" class="leaderboard-subtitle">月曜日から今日まで</p>
             </div>
 
             <div id="loginRequiredMessage" class="leaderboard-state-card" style="display: none;">
-                <div class="leaderboard-state-icon">🔐</div>
                 <div class="leaderboard-state-title">ログインが必要です</div>
                 <p id="leaderboardVersionDisplay" class="leaderboard-version">現在のバージョン: -</p>
                 <p class="leaderboard-state-copy">
-                    ランキング機能を利用するにはGoogleアカウントでのログインが必要です。
+                    復習ランキングへの参加にはGoogleアカウントでのログインが必要です。
                 </p>
                 <button class="primary-action-btn leaderboard-login-btn" onclick="closeLeaderboard(); openProfileModal();">
                     ログイン画面へ
@@ -674,8 +689,16 @@
             </div>
 
             <div id="nameInputParams" class="leaderboard-name-card" style="display: none;">
-                <div class="leaderboard-state-title">ランキング名を登録</div>
-                <p class="leaderboard-state-copy">ランキングに表示するニックネームを8文字以内で入力してください。</p>
+                <div class="leaderboard-state-title">ランキングプロフィール</div>
+                <p class="leaderboard-state-copy">表示するアバターと8文字以内の名前を選んでください。</p>
+                <div id="reviewAvatarPicker" class="review-avatar-picker" aria-label="アバターを選択">
+                    <button class="review-avatar-option active" type="button" data-avatar-id="hero" onclick="selectReviewAvatar('hero')" aria-pressed="true"><img src="assets/avatars/avatar-hero.png" alt="てにをはキャラクター"></button>
+                    <button class="review-avatar-option" type="button" data-avatar-id="rose" onclick="selectReviewAvatar('rose')" aria-pressed="false"><img src="assets/avatars/avatar-rose.png" alt="ローズの冒険者"></button>
+                    <button class="review-avatar-option" type="button" data-avatar-id="blue" onclick="selectReviewAvatar('blue')" aria-pressed="false"><img src="assets/avatars/avatar-blue.png" alt="ブルーの冒険者"></button>
+                    <button class="review-avatar-option" type="button" data-avatar-id="green" onclick="selectReviewAvatar('green')" aria-pressed="false"><img src="assets/avatars/avatar-green.png" alt="グリーンの冒険者"></button>
+                    <button class="review-avatar-option" type="button" data-avatar-id="violet" onclick="selectReviewAvatar('violet')" aria-pressed="false"><img src="assets/avatars/avatar-violet.png" alt="バイオレットの冒険者"></button>
+                    <button class="review-avatar-option" type="button" data-avatar-id="auburn" onclick="selectReviewAvatar('auburn')" aria-pressed="false"><img src="assets/avatars/avatar-auburn.png" alt="オーバーンの冒険者"></button>
+                </div>
                 <input class="soft-input leaderboard-name-input" type="text" id="playerNameInput"
                     placeholder="ニックネーム" maxlength="8">
                 <div class="leaderboard-name-actions">
@@ -686,24 +709,27 @@
             </div>
 
             <div id="leaderboardContent" class="leaderboard-content" style="display: none;">
-                <div class="leaderboard-tabs">
-                    <button class="lb-tab active" onclick="switchTab('top')">TOP 20</button>
-                    <button class="lb-tab" onclick="switchTab('around')">自分の順位</button>
+                <div class="review-ranking-summary">
+                    <img id="reviewRankingMyAvatar" class="review-ranking-summary-avatar" src="assets/avatars/avatar-hero.png" alt="選択中のアバター">
+                    <div class="review-ranking-summary-copy">
+                        <strong id="reviewRankingMyName">あなた</strong>
+                        <span>今週の復習スコア</span>
+                    </div>
+                    <div class="review-ranking-summary-values">
+                        <strong id="reviewRankingWeekPoints">0pt</strong>
+                        <span id="reviewRankingTodayPoints">今日 0pt</span>
+                    </div>
+                    <div id="reviewRankingMyRank" class="review-ranking-summary-rank">--位</div>
                 </div>
 
                 <div id="lb-loading" class="leaderboard-loading">読み込み中...</div>
 
                 <div id="lb-list-top" class="ranking-list">
-                    <!-- Dynamic Content -->
-                    <div class="ranking-item">
-                        <span class="rank-num top3">1</span>
-                        <span class="rank-name">No Data</span>
-                        <span class="rank-score">- G</span>
-                    </div>
+                    <div class="leaderboard-empty">ランキングを読み込んでいます</div>
                 </div>
-
-                <div id="lb-list-around" class="ranking-list" style="display: none;">
-                    <!-- Users + Neighbors -->
+                <div id="reviewRankingPinned" class="review-ranking-pinned" style="display:none;">
+                    <div class="review-ranking-pinned-label">あなたの順位</div>
+                    <div id="reviewRankingPinnedRow"></div>
                 </div>
             </div>
         </div>
@@ -876,19 +902,19 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2026.0717.0040"></script>
-    <script src="js/update_manager.js?v=2026.0717.0040"></script>
-    <script src="js/config.js?v=2026.0717.0040"></script>
-    <script src="data/announcements.js?v=2026.0717.0040"></script>
-    <script src="js/utils.js?v=2026.0717.0040"></script>
-    <script src="js/stats_engine.js?v=2026.0717.0040"></script>
-    <script src="js/chart_data_adapter.js?v=2026.0717.0040"></script>
+    <script src="js/version.js?v=2026.0717.2232"></script>
+    <script src="js/update_manager.js?v=2026.0717.2232"></script>
+    <script src="js/config.js?v=2026.0717.2232"></script>
+    <script src="data/announcements.js?v=2026.0717.2232"></script>
+    <script src="js/utils.js?v=2026.0717.2232"></script>
+    <script src="js/stats_engine.js?v=2026.0717.2232"></script>
+    <script src="js/chart_data_adapter.js?v=2026.0717.2232"></script>
     <script src="scripts/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart_fallback.js?v=2026.0717.0040"></script>
-    <script src="js/game_logic.js?v=2026.0717.0040"></script>
-    <script src="js/ui_manager.js?v=2026.0717.0040"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0717.0040"></script>
+    <script src="js/chart_fallback.js?v=2026.0717.2232"></script>
+    <script src="js/game_logic.js?v=2026.0717.2232"></script>
+    <script src="js/ui_manager.js?v=2026.0717.2232"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0717.2232"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

@@ -2,6 +2,15 @@ const { setGlobalOptions } = require("firebase-functions");
 const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 const admin = require("firebase-admin");
+const {
+    REVIEW_SCORE_INTERVALS,
+    REVIEW_SCORE_OUTCOMES,
+    calculateReviewEventPoints,
+    nextRecentReviewEventIds,
+    reviewEventIdHash,
+    reviewWordKeyHash,
+} = require("./review-score-policy");
+const REVIEW_WORD_KEY_HASHES = new Set(require("./review_word_hashes.json"));
 
 // Initialize Firebase Admin
 admin.initializeApp();
@@ -19,6 +28,7 @@ const TENIOHA_CHECKOUT_UNIT_AMOUNT = Number(process.env.TENIOHA_CHECKOUT_UNIT_AM
 const DEFAULT_CHECKOUT_RETURN_URL = "https://tomtommark2.github.io/tenioha-game/";
 const CHECKOUT_FUNCTION_REGION = "us-central1";
 const PROMO_CODE_MAX_LENGTH = 128;
+const REVIEW_AVATAR_IDS = new Set(["hero", "rose", "blue", "green", "violet", "auburn"]);
 const ALLOWED_CHECKOUT_ORIGINS = new Set([
     "https://tomtommark2.github.io",
     "https://tenioha-game.web.app",
@@ -66,6 +76,52 @@ function requestBody(req) {
     if (typeof req.body === "string" && req.body) return JSON.parse(req.body);
     if (req.rawBody?.length) return JSON.parse(req.rawBody.toString("utf8"));
     return {};
+}
+
+function jstDateKey(date = new Date()) {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Tokyo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).formatToParts(date);
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+}
+
+function reviewWeekKey(dateKey) {
+    const date = new Date(`${dateKey}T12:00:00Z`);
+    const mondayOffset = (date.getUTCDay() + 6) % 7;
+    date.setUTCDate(date.getUTCDate() - mondayOffset);
+    return date.toISOString().slice(0, 10);
+}
+
+function normalizeReviewProfile(body, userRecord) {
+    const rawName = typeof body.name === "string" ? body.name.trim() : "";
+    const fallbackName = (userRecord.name || "学習者").trim().slice(0, 8);
+    const name = (rawName || fallbackName).slice(0, 8);
+    const avatarId = REVIEW_AVATAR_IDS.has(body.avatarId) ? body.avatarId : "hero";
+    return { name, avatarId };
+}
+
+async function verifyRequestUser(req) {
+    const authHeader = req.headers.authorization || "";
+    const idToken = authHeader.startsWith("Bearer ") ? authHeader.slice("Bearer ".length) : "";
+    if (!idToken) throw Object.assign(new Error("ログインが必要です。"), { status: 401 });
+    return admin.auth().verifyIdToken(idToken);
+}
+
+function rejectNonPost(req, res) {
+    setCheckoutCorsHeaders(req, res);
+    if (req.method === "OPTIONS") {
+        res.status(204).send("");
+        return true;
+    }
+    if (req.method !== "POST") {
+        res.status(405).json({ error: "Method not allowed" });
+        return true;
+    }
+    return false;
 }
 
 class PromoCodeError extends Error {
@@ -429,6 +485,208 @@ exports.redeemTeniohaPromoCode = onRequest({ region: CHECKOUT_FUNCTION_REGION },
         }
         logger.error("Failed to redeem tenioha promo code.", error);
         res.status(500).json({ error: "コードの適用に失敗しました。時間をおいて再度お試しください。" });
+    }
+});
+
+exports.submitReviewScore = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
+    if (rejectNonPost(req, res)) return;
+
+    try {
+        const user = await verifyRequestUser(req);
+        const body = requestBody(req);
+        const wordKey = typeof body.wordKey === "string" ? body.wordKey.trim() : "";
+        const eventId = typeof body.eventId === "string" ? body.eventId.trim() : "";
+        const outcome = typeof body.outcome === "string" ? body.outcome.trim() : "";
+        const intervalDays = Math.round(Number(body.previousIntervalDays));
+
+        if (
+            !wordKey
+            || wordKey.length > 240
+            || !/^[a-zA-Z0-9._-]{8,96}$/.test(eventId)
+            || !REVIEW_SCORE_OUTCOMES.has(outcome)
+            || typeof body.isCorrect !== "boolean"
+            || !REVIEW_SCORE_INTERVALS.has(intervalDays)
+        ) {
+            res.status(400).json({ error: "復習データが不正です。" });
+            return;
+        }
+        if ((outcome === "incorrect") === body.isCorrect) {
+            res.status(400).json({ error: "復習結果が不正です。" });
+            return;
+        }
+        const pointsAwarded = calculateReviewEventPoints(outcome, intervalDays);
+        if (pointsAwarded <= 0) {
+            res.status(400).json({ error: "復習ポイントが不正です。" });
+            return;
+        }
+        const wordHash = reviewWordKeyHash(wordKey);
+        if (!REVIEW_WORD_KEY_HASHES.has(wordHash)) {
+            res.status(400).json({ error: "登録されていない単語です。" });
+            return;
+        }
+        const eventIdHash = reviewEventIdHash(eventId);
+
+        // Offline events are credited on the server's current JST date.
+        const earnedDate = jstDateKey();
+        const profile = normalizeReviewProfile(body, user);
+        const weekKey = reviewWeekKey(earnedDate);
+        const eventRef = db.collection("review_score_events").doc(user.uid).collection("events").doc(`word-${wordHash}`);
+        const dailyRef = db.collection("review_score_daily").doc(earnedDate).collection("users").doc(user.uid);
+        const weeklyRef = db.collection("review_score_weekly").doc(weekKey).collection("users").doc(user.uid);
+        const userRef = db.collection("users").doc(user.uid);
+
+        const result = await db.runTransaction(async (transaction) => {
+            const [eventSnapshot, dailySnapshot, weeklySnapshot] = await Promise.all([
+                transaction.get(eventRef),
+                transaction.get(dailyRef),
+                transaction.get(weeklyRef),
+            ]);
+
+            const eventData = eventSnapshot.data() || {};
+            const recentEventIds = nextRecentReviewEventIds(eventData.recentEventIds, eventIdHash);
+            if (!recentEventIds) {
+                return {
+                    duplicate: true,
+                    reason: "event-already-recorded",
+                    pointsAwarded: 0,
+                    todayPoints: Number(dailySnapshot.data()?.score || 0),
+                    weekPoints: Number(weeklySnapshot.data()?.score || 0),
+                };
+            }
+
+            const dailyScore = Number(dailySnapshot.data()?.score || 0);
+            const weeklyScore = Number(weeklySnapshot.data()?.score || 0);
+            const now = admin.firestore.FieldValue.serverTimestamp();
+
+            transaction.set(eventRef, {
+                recentEventIds,
+                wordHash,
+                lastEarnedDate: earnedDate,
+                lastWeekKey: weekKey,
+                outcome,
+                isCorrect: body.isCorrect,
+                previousIntervalDays: intervalDays,
+                pointsAwarded,
+                updatedAt: now,
+                ...(!eventSnapshot.exists ? { createdAt: now } : {}),
+            }, { merge: true });
+            transaction.set(dailyRef, {
+                score: dailyScore + pointsAwarded,
+                updatedAt: now,
+            }, { merge: true });
+            transaction.set(weeklyRef, {
+                name: profile.name,
+                avatarId: profile.avatarId,
+                score: weeklyScore + pointsAwarded,
+                updatedAt: now,
+            }, { merge: true });
+            transaction.set(userRef, {
+                reviewRankingName: profile.name,
+                reviewAvatarId: profile.avatarId,
+                reviewRankingUpdatedAt: now,
+            }, { merge: true });
+
+            return {
+                duplicate: false,
+                pointsAwarded,
+                todayPoints: dailyScore + pointsAwarded,
+                weekPoints: weeklyScore + pointsAwarded,
+            };
+        });
+
+        res.json({ ...result, weekKey });
+    } catch (error) {
+        const status = error.status || (String(error.code || "").startsWith("auth/") ? 401 : 500);
+        logger.error("Review score submission failed.", { error: error.message, status });
+        res.status(status).json({ error: status === 500 ? "復習スコアの送信に失敗しました。" : error.message });
+    }
+});
+
+exports.updateReviewProfile = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
+    if (rejectNonPost(req, res)) return;
+
+    try {
+        const user = await verifyRequestUser(req);
+        const body = requestBody(req);
+        const profile = normalizeReviewProfile(body, user);
+        if (!profile.name) {
+            res.status(400).json({ error: "名前を入力してください。" });
+            return;
+        }
+
+        const weekKey = reviewWeekKey(jstDateKey());
+        const userRef = db.collection("users").doc(user.uid);
+        const weeklyRef = db.collection("review_score_weekly").doc(weekKey).collection("users").doc(user.uid);
+        await db.runTransaction(async (transaction) => {
+            const weeklySnapshot = await transaction.get(weeklyRef);
+            const now = admin.firestore.FieldValue.serverTimestamp();
+            transaction.set(userRef, {
+                reviewRankingName: profile.name,
+                reviewAvatarId: profile.avatarId,
+                reviewRankingUpdatedAt: now,
+            }, { merge: true });
+            if (weeklySnapshot.exists) {
+                transaction.update(weeklyRef, {
+                    name: profile.name,
+                    avatarId: profile.avatarId,
+                    updatedAt: now,
+                });
+            }
+        });
+        res.json({ success: true, ...profile });
+    } catch (error) {
+        const status = error.status || (String(error.code || "").startsWith("auth/") ? 401 : 500);
+        logger.error("Review profile update failed.", { error: error.message, status });
+        res.status(status).json({ error: status === 500 ? "プロフィールの更新に失敗しました。" : error.message });
+    }
+});
+
+exports.getReviewLeaderboard = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
+    if (rejectNonPost(req, res)) return;
+
+    try {
+        let user = null;
+        const authHeader = req.headers.authorization || "";
+        if (authHeader.startsWith("Bearer ")) {
+            user = await admin.auth().verifyIdToken(authHeader.slice("Bearer ".length));
+        }
+
+        const weekKey = reviewWeekKey(jstDateKey());
+        const usersRef = db.collection("review_score_weekly").doc(weekKey).collection("users");
+        const topSnapshot = await usersRef.orderBy("score", "desc").limit(20).get();
+        const results = topSnapshot.docs.map((snapshot, index) => {
+            const data = snapshot.data();
+            return {
+                rank: index + 1,
+                name: data.name || "学習者",
+                avatarId: REVIEW_AVATAR_IDS.has(data.avatarId) ? data.avatarId : "hero",
+                score: Number(data.score || 0),
+                isMe: !!user && snapshot.id === user.uid,
+            };
+        });
+
+        let me = null;
+        if (user) {
+            const mySnapshot = await usersRef.doc(user.uid).get();
+            if (mySnapshot.exists) {
+                const myData = mySnapshot.data();
+                const myScore = Number(myData.score || 0);
+                const above = await usersRef.where("score", ">", myScore).count().get();
+                me = {
+                    rank: Number(above.data().count || 0) + 1,
+                    name: myData.name || "学習者",
+                    avatarId: REVIEW_AVATAR_IDS.has(myData.avatarId) ? myData.avatarId : "hero",
+                    score: myScore,
+                    isMe: true,
+                };
+            }
+        }
+
+        res.json({ weekKey, results, me });
+    } catch (error) {
+        const status = String(error.code || "").startsWith("auth/") ? 401 : 500;
+        logger.error("Review leaderboard fetch failed.", { error: error.message, status });
+        res.status(status).json({ error: status === 500 ? "ランキングの取得に失敗しました。" : "ログイン情報を確認できませんでした。" });
     }
 });
 

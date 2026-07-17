@@ -23,6 +23,15 @@ var gameState = window.gameState || {
     wordsLearned: 0,
     dailyStats: { date: null }, // Only date tracking needed for Daily Reset logic
     dailyHistory: [], // New: Track past daily stats for averages
+    reviewScore: {
+        total: 0,
+        date: null,
+        todayPoints: 0,
+        todayReviewed: 0,
+        todayCorrect: 0,
+        history: {},
+        pendingEvents: []
+    },
     firstPlayedAt: null, // New: Track start date for Real Average calc
     actionCounts: { // New: Detailed Action Tracking for Stats
         unlearned_correct: 0,
@@ -421,10 +430,79 @@ function init() {
     showNextWord();
 }
 
+function getLocalDateKey(date = new Date()) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+}
+
+function ensureReviewScoreState(today = getLocalDateKey()) {
+    if (!gameState.reviewScore || typeof gameState.reviewScore !== 'object') {
+        gameState.reviewScore = {};
+    }
+
+    const score = gameState.reviewScore;
+    score.total = Number.isFinite(score.total) ? score.total : 0;
+    score.todayPoints = Number.isFinite(score.todayPoints) ? score.todayPoints : 0;
+    score.todayReviewed = Number.isFinite(score.todayReviewed) ? score.todayReviewed : 0;
+    score.todayCorrect = Number.isFinite(score.todayCorrect) ? score.todayCorrect : 0;
+    score.history = (score.history && typeof score.history === 'object') ? score.history : {};
+    score.pendingEvents = Array.isArray(score.pendingEvents) ? score.pendingEvents : [];
+
+    if (score.date !== today) {
+        score.date = today;
+        score.todayPoints = 0;
+        score.todayReviewed = 0;
+        score.todayCorrect = 0;
+    }
+
+    return score;
+}
+
+function getWeekStartDate(date = new Date()) {
+    const result = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const mondayOffset = (result.getDay() + 6) % 7;
+    result.setDate(result.getDate() - mondayOffset);
+    return result;
+}
+
+function getReviewWeekKey(date = new Date()) {
+    return getLocalDateKey(getWeekStartDate(date));
+}
+
+function getReviewWeekPoints() {
+    const score = ensureReviewScoreState();
+    const weekStart = getReviewWeekKey();
+    return Object.entries(score.history).reduce((total, [dateKey, day]) => {
+        if (dateKey < weekStart) return total;
+        return total + (Number(day && day.points) || 0);
+    }, 0);
+}
+
+function getReviewAvatarId() {
+    const allowed = new Set(['hero', 'rose', 'blue', 'green', 'violet', 'auburn']);
+    const saved = localStorage.getItem('vocabGame_reviewAvatarId') || 'hero';
+    return allowed.has(saved) ? saved : 'hero';
+}
+
+function getReviewAvatarPath(avatarId = getReviewAvatarId()) {
+    const safeId = ['hero', 'rose', 'blue', 'green', 'violet', 'auburn'].includes(avatarId) ? avatarId : 'hero';
+    return `assets/avatars/avatar-${safeId}.png`;
+}
+
+function updateReviewScoreSummary() {
+    const score = ensureReviewScoreState();
+    const today = document.getElementById('reviewScoreHeaderToday');
+    const week = document.getElementById('reviewScoreHeaderWeek');
+    const rank = document.getElementById('reviewRankHeader');
+    const rankValue = Number(window.latestReviewRank || localStorage.getItem(`vocabGame_reviewRank_${getReviewWeekKey()}`));
+
+    if (today) today.textContent = `${score.todayPoints}pt`;
+    if (week) week.textContent = `${getReviewWeekPoints()}pt`;
+    if (rank) rank.textContent = rankValue > 0 ? `${rankValue}位` : '--位';
+}
+
 function checkDailyReset() {
-    // Robust YYYY-MM-DD format (Local Time)
-    const d = new Date();
-    const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const today = getLocalDateKey();
+    ensureReviewScoreState(today);
 
     // Ensure dailyStats object exists
     if (!gameState.dailyStats) {
@@ -722,6 +800,8 @@ function ensureSrsEntry(key) {
             streak: 0,
             lastReviewedAt: 0,
             reviewStep: 0,
+            scheduledIntervalDays: 1,
+            isRelearning: false,
             everWrong: false,
             firstTryPerfect: false
         };
@@ -735,13 +815,113 @@ function applyDueJitter(minutes) {
     return Math.max(5, Math.round(minutes * ratio));
 }
 
+const REVIEW_INTERVAL_DAYS = [1, 3, 7, 14, 30, 60];
+
+function normalizeReviewIntervalDays(value) {
+    const intervalDays = Math.max(1, Math.round(Number(value) || 1));
+    return REVIEW_INTERVAL_DAYS.reduce((nearest, candidate) => (
+        Math.abs(candidate - intervalDays) < Math.abs(nearest - intervalDays) ? candidate : nearest
+    ), REVIEW_INTERVAL_DAYS[0]);
+}
+
+function getPreviousReviewIntervalDays(srsEntry) {
+    if (!srsEntry || typeof srsEntry !== 'object') return 1;
+    if (Number.isFinite(srsEntry.scheduledIntervalDays) && srsEntry.scheduledIntervalDays > 0) {
+        return normalizeReviewIntervalDays(srsEntry.scheduledIntervalDays);
+    }
+
+    if (Number.isFinite(srsEntry.dueAt) && Number.isFinite(srsEntry.lastReviewedAt) && srsEntry.lastReviewedAt > 0) {
+        const elapsedDays = (srsEntry.dueAt - srsEntry.lastReviewedAt) / (24 * 60 * 60 * 1000);
+        if (elapsedDays > 0.5) {
+            return REVIEW_INTERVAL_DAYS.reduce((nearest, candidate) => (
+                Math.abs(candidate - elapsedDays) < Math.abs(nearest - elapsedDays) ? candidate : nearest
+            ), REVIEW_INTERVAL_DAYS[0]);
+        }
+    }
+
+    const step = Math.max(0, Math.min(REVIEW_INTERVAL_DAYS.length - 1, Number(srsEntry.reviewStep) || 0));
+    return step > 0 ? REVIEW_INTERVAL_DAYS[step - 1] : 1;
+}
+
+function calculateReviewEventPoints(outcome, previousIntervalDays) {
+    if (outcome === 'incorrect') return 1;
+    if (outcome === 'relearning-correct') return 2;
+    if (outcome !== 'scheduled-correct') return 0;
+
+    const intervalDays = normalizeReviewIntervalDays(previousIntervalDays);
+    if (intervalDays >= 60) return 7;
+    if (intervalDays >= 30) return 6;
+    if (intervalDays >= 14) return 5;
+    if (intervalDays >= 7) return 4;
+    return 3;
+}
+
+function createReviewScoreEventId() {
+    const randomPart = Math.random().toString(36).slice(2, 10);
+    return `${getLocalDateKey()}-${Date.now().toString(36)}-${randomPart}`;
+}
+
+function isScheduledReviewQuestion() {
+    return gameState.currentQuestionReason === 'due-weak'
+        || gameState.currentQuestionReason === 'due-learned';
+}
+
+function pruneReviewScoreHistory(history, keepDays = 90) {
+    const keys = Object.keys(history).sort();
+    keys.slice(0, Math.max(0, keys.length - keepDays)).forEach(key => delete history[key]);
+}
+
+function awardReviewScore(key, isCorrect, previousIntervalDays) {
+    if (!isScheduledReviewQuestion()) return 0;
+
+    const today = getLocalDateKey();
+    const s = ensureSrsEntry(key);
+    const normalizedIntervalDays = normalizeReviewIntervalDays(previousIntervalDays);
+    const outcome = !isCorrect
+        ? 'incorrect'
+        : (s.isRelearning === true ? 'relearning-correct' : 'scheduled-correct');
+    const points = calculateReviewEventPoints(outcome, normalizedIntervalDays);
+    if (points === 0) return 0;
+
+    const score = ensureReviewScoreState(today);
+    score.total += points;
+    score.todayPoints += points;
+    score.todayReviewed += 1;
+    if (isCorrect) score.todayCorrect += 1;
+
+    const day = score.history[today] || { points: 0, reviewed: 0, correct: 0 };
+    day.points += points;
+    day.reviewed += 1;
+    if (isCorrect) day.correct += 1;
+    score.history[today] = day;
+    pruneReviewScoreHistory(score.history);
+
+    score.pendingEvents.push({
+        wordKey: key,
+        eventId: createReviewScoreEventId(),
+        outcome,
+        isCorrect: !!isCorrect,
+        previousIntervalDays: normalizedIntervalDays,
+        earnedDate: today
+    });
+    if (score.pendingEvents.length > 200) {
+        score.pendingEvents = score.pendingEvents.slice(-200);
+    }
+
+    s.lastReviewScoreDate = today;
+    if (typeof window.syncPendingReviewScores === 'function') {
+        window.syncPendingReviewScores();
+    }
+    return points;
+}
+
 function updateSrsForWord(key, isCorrect, currentState = null) {
     const s = ensureSrsEntry(key);
     const now = Date.now();
 
     // Table-based intervals (Anki-like cadence)
     // 1d -> 3d -> 7d -> 14d -> 30d -> 60d
-    const STEP_MINUTES = [1440, 4320, 10080, 20160, 43200, 86400];
+    const STEP_MINUTES = REVIEW_INTERVAL_DAYS.map(days => days * 1440);
 
     if (isCorrect) {
         const prevTotal = (s.successCount || 0) + (s.failCount || 0);
@@ -761,6 +941,8 @@ function updateSrsForWord(key, isCorrect, currentState = null) {
         s.stability = Math.min(120, Math.max(1, (s.stability || 1) * 1.35));
         const jittered = applyDueJitter(intervalMin);
         s.dueAt = now + jittered * 60 * 1000;
+        s.scheduledIntervalDays = Math.round(intervalMin / 1440);
+        s.isRelearning = false;
     } else {
         s.failCount = (s.failCount || 0) + 1;
         s.streak = 0;
@@ -771,6 +953,8 @@ function updateSrsForWord(key, isCorrect, currentState = null) {
         s.reviewStep = Math.max(0, (s.reviewStep || 0) - 1);
         s.stability = Math.max(0.4, (s.stability || 1) * 0.6);
         s.dueAt = now + 5 * 60 * 1000;
+        s.scheduledIntervalDays = 1;
+        s.isRelearning = true;
     }
 
     s.lastReviewedAt = now;
@@ -1325,19 +1509,28 @@ function getCurrentReviewStats() {
     const endOfDay = new Date();
     endOfDay.setHours(23, 59, 59, 999);
     const endMs = endOfDay.getTime();
+    const startOfTomorrow = endMs + 1;
+    const endOfTomorrow = new Date(endOfDay);
+    endOfTomorrow.setDate(endOfTomorrow.getDate() + 1);
+    const endTomorrowMs = endOfTomorrow.getTime();
 
     let dueNow = 0;
     let dueToday = 0;
+    let dueTomorrow = 0;
 
     const pool = [...getReviewWordsByModeAcrossLevels('weak'), ...getReviewWordsByModeAcrossLevels('learned')];
+    const seenKeys = new Set();
     pool.forEach(v => {
         const key = getWordKeySafe(v, v.__sourceLevel);
+        if (seenKeys.has(key)) return;
+        seenKeys.add(key);
         const s = ensureSrsEntry(key);
         if (s.dueAt <= now) dueNow++;
         if (s.dueAt <= endMs) dueToday++;
+        if (s.dueAt >= startOfTomorrow && s.dueAt <= endTomorrowMs) dueTomorrow++;
     });
 
-    return { dueNow, dueToday };
+    return { dueNow, dueToday, dueTomorrow };
 }
 
 function updateReviewQueueBadge() {
@@ -1434,9 +1627,11 @@ function updateReviewProgressUI() {
     const mode = document.getElementById('reviewModeInlineLabel');
     const modeModal = document.getElementById('dueOnlyModeLabelModal');
     const modeDescription = document.getElementById('reviewModeDescription');
+    const tomorrowForecast = document.getElementById('reviewTomorrowForecast');
     if (!wrap || !list || !label) return;
 
     const dueWords = getDueReviewWordsPool();
+    const stats = getCurrentReviewStats();
     const total = dueWords.length;
     const prevCount = (typeof gameState.lastReviewQueueCount === 'number') ? gameState.lastReviewQueueCount : total;
 
@@ -1469,6 +1664,8 @@ function updateReviewProgressUI() {
     });
 
     label.textContent = `復習キュー ${total}件`;
+    if (tomorrowForecast) tomorrowForecast.textContent = `（明日${stats.dueTomorrow}件）`;
+    updateReviewScoreSummary();
 
     const preview = dueWords.slice(0, 10);
     list.innerHTML = '';
@@ -1489,7 +1686,7 @@ function updateReviewProgressUI() {
     }
 
     const isOn = gameState.reviewMode === 'on';
-    wrap.style.display = total > 0 ? 'block' : (isOn ? 'block' : 'none');
+    wrap.style.display = total > 0 || isOn || stats.dueTomorrow > 0 ? 'block' : 'none';
     if (total === 0 && isOn) {
         list.innerHTML = '<span class="review-queue-empty">今、復習する単語はありません</span>';
     }
@@ -1511,10 +1708,16 @@ function updateReviewProgressUI() {
 }
 
 function getBootstrapParamsByState(state) {
-    if (state === 'perfect') return { dueDelta: 30 * 24 * 60 * 60 * 1000, stability: 12 };
-    if (state === 'learned') return { dueDelta: 3 * 24 * 60 * 60 * 1000, stability: 4 };
-    if (state === 'weak') return { dueDelta: 0, stability: 1 };
-    return { dueDelta: 0, stability: 1 };
+    if (state === 'perfect') {
+        return { dueDelta: 30 * 24 * 60 * 60 * 1000, stability: 12, reviewStep: 5, scheduledIntervalDays: 30 };
+    }
+    if (state === 'learned') {
+        return { dueDelta: 3 * 24 * 60 * 60 * 1000, stability: 4, reviewStep: 2, scheduledIntervalDays: 3 };
+    }
+    if (state === 'weak') {
+        return { dueDelta: 0, stability: 1, reviewStep: 0, scheduledIntervalDays: 1 };
+    }
+    return { dueDelta: 0, stability: 1, reviewStep: 0, scheduledIntervalDays: 1 };
 }
 
 function bootstrapSrsFromWordStates() {
@@ -1530,7 +1733,9 @@ function bootstrapSrsFromWordStates() {
             successCount: 0,
             failCount: 0,
             streak: 0,
-            lastReviewedAt: 0
+            lastReviewedAt: 0,
+            reviewStep: p.reviewStep,
+            scheduledIntervalDays: p.scheduledIntervalDays
         };
     }
 
@@ -1581,7 +1786,7 @@ function migrateWordKeySchemaIfNeeded() {
 }
 
 function migrateSrsSchemaIfNeeded() {
-    const target = 3;
+    const target = 5;
     if (!gameState.srsData) gameState.srsData = {};
     if ((gameState.srsSchemaVersion || 0) >= target) return;
 
@@ -1589,6 +1794,16 @@ function migrateSrsSchemaIfNeeded() {
     for (const [key, state] of Object.entries(gameState.wordStates || {})) {
         const p = getBootstrapParamsByState(state);
         const existing = gameState.srsData[key] || {};
+        const hasScheduledInterval = Number.isFinite(existing.scheduledIntervalDays)
+            && existing.scheduledIntervalDays > 0;
+        const legacyRelearning = typeof existing.reviewScoreCycleId === 'string'
+            && existing.reviewScoreCycleId.length > 0
+            && existing.reviewScoreCycleResolved !== true;
+        const shortRetry = Number.isFinite(existing.dueAt)
+            && Number.isFinite(existing.lastReviewedAt)
+            && existing.lastReviewedAt > 0
+            && existing.dueAt - existing.lastReviewedAt <= 10 * 60 * 1000
+            && existing.failCount > 0;
 
         let success = existing.successCount || 0;
         let fail = existing.failCount || 0;
@@ -1614,7 +1829,14 @@ function migrateSrsSchemaIfNeeded() {
             failCount: fail,
             streak: existing.streak || 0,
             lastReviewedAt: existing.lastReviewedAt || 0,
-            reviewStep: existing.reviewStep || 0,
+            reviewStep: hasScheduledInterval && Number.isFinite(existing.reviewStep)
+                ? existing.reviewStep
+                : p.reviewStep,
+            scheduledIntervalDays: hasScheduledInterval
+                ? existing.scheduledIntervalDays
+                : p.scheduledIntervalDays,
+            lastReviewScoreDate: existing.lastReviewScoreDate,
+            isRelearning: existing.isRelearning === true || legacyRelearning || shortRetry,
             everWrong: !!existing.everWrong,
             firstTryPerfect: !!existing.firstTryPerfect
         };
@@ -1658,6 +1880,7 @@ function saveGame() {
         wordsLearned: gameState.wordsLearned, // Ensure wordsLearned is saved
         dailyStats: gameState.dailyStats, // Fix: Persist Daily Stats
         dailyHistory: gameState.dailyHistory, // Persist History
+        reviewScore: gameState.reviewScore,
         lastSaveTime: Date.now(), // Track local save time for Sync Logic
         firstPlayedAt: gameState.firstPlayedAt, // Persist Start Date
         actionCounts: gameState.actionCounts, // Persist Detailed Action Counts
@@ -1674,9 +1897,8 @@ function saveGame() {
     // Mark as Dirty for Cloud Sync
     window.isDirty = true;
 
-    // Leaderboard Sync (Reference defined at bottom)
-    if (typeof attemptScoreSync === 'function') {
-        attemptScoreSync();
+    if (typeof window.syncPendingReviewScores === 'function' && gameState.reviewScore?.pendingEvents?.length) {
+        window.syncPendingReviewScores();
     }
 }
 
@@ -1705,6 +1927,7 @@ function loadGame() {
         if (!gameState.srsData) {
             gameState.srsData = {};
         }
+        ensureReviewScoreState();
         if (typeof gameState.srsBootstrapped !== 'boolean') {
             gameState.srsBootstrapped = false;
         }
@@ -2350,11 +2573,6 @@ function autoOpenMeaningCard() {
 
     updateSrsForWord(key, true, gameState.wordStates[key]);
 
-    const basePoints = 2;
-    const finalPoints = basePoints * gameState.vocabLevel;
-    gameState.points += finalPoints;
-
-    showCoinPopup(finalPoints);
     updateDisplay();
     animateCharacter();
     saveGame();
@@ -2432,17 +2650,16 @@ function handleVocabCardClick() {
     // incrementDailyStats(); // Moved below to exclude "Unlearned -> Perfect" cases
 
     const key = getWordKeySafe(currentWord, currentWord.__sourceLevel || gameState.currentLevel);
-    let basePoints = 1;
     let msg = "";
 
     const currentState = gameState.wordStates[key];
+    const previousIntervalDays = getPreviousReviewIntervalDays(ensureSrsEntry(key));
 
     if (currentState === 'unlearned') {
         gameState.actionCounts.unlearned_correct++;
         checkLevelUp();
     } else if (currentState === 'weak') {
         gameState.actionCounts.weak_correct++;
-        basePoints = 2;
         msg = "克服！";
         gameState.learnedWordIntervals[key] = 0;
         gameState.learnedWordIntervals[`${key}_last`] = gameState.globalQuestionCount;
@@ -2455,12 +2672,10 @@ function handleVocabCardClick() {
     }
 
     checkDailyReset();
+    awardReviewScore(key, true, previousIntervalDays);
     updateSrsForWord(key, true, currentState);
     gameState.wordStates[key] = deriveStateFromAccuracy(key);
     recordLearningLogPerfectizedStrict(currentState, gameState.wordStates[key]);
-
-    const finalPoints = basePoints * gameState.vocabLevel;
-    gameState.points += finalPoints;
 
     // RPG Animation Trigger
     // RPG Animation Trigger
@@ -2472,8 +2687,6 @@ function handleVocabCardClick() {
     } else {
         playAnimation('idle'); // Standard
     }
-
-    showCoinPopup(finalPoints); // Optionally show text? Currently logic only shows number.
 
     updateDisplay();
     showNextWord();
@@ -2504,7 +2717,9 @@ function handleMeaningCardClick(e) {
 
         const key = getWordKeySafe(currentWord, currentWord.__sourceLevel || gameState.currentLevel);
         const currentState = gameState.wordStates[key];
+        const previousIntervalDays = getPreviousReviewIntervalDays(ensureSrsEntry(key));
 
+        awardReviewScore(key, false, previousIntervalDays);
         updateSrsForWord(key, false, currentState);
 
         if (currentState === 'perfect') {
@@ -2521,21 +2736,6 @@ function handleMeaningCardClick(e) {
         }
 
         gameState.wordStates[key] = deriveStateFromAccuracy(key);
-
-        // Points Logic: Unlearned=1, Weak=2, Others=1
-        let basePoints = 1;
-        if (currentState === 'weak') {
-            basePoints = 2;
-        } else if (currentState === 'unlearned') {
-            basePoints = 1;
-        } else {
-            basePoints = 1;
-        }
-        const finalPoints = basePoints * gameState.vocabLevel;
-        gameState.points += finalPoints;
-
-        // showCoinPopup(finalPoints); // Maybe don't show popup for "Incorrect"? 
-        // Let's keep it positive. Learning is earning.
 
         updateDisplay();
         animateCharacter();
@@ -2592,13 +2792,6 @@ function animateCharacter() {
 }
 
 function updateDisplay() {
-    const rawPoints = Math.floor(gameState.points);
-    let displayPoints = rawPoints;
-    if (rawPoints >= 100000) {
-        // 100k notation
-        displayPoints = Math.floor(rawPoints / 1000) + 'k';
-    }
-    document.getElementById('points').textContent = displayPoints;
     updateWordStats();
     updateModeButtons();
     updateProgress();
@@ -2810,18 +3003,23 @@ window.closePurchaseModal = function () {
 // --- Leaderboard & Cloud Modal UI Logic (Moved from Module) ---
 async function openLeaderboard() {
     document.getElementById('leaderboardModal').style.display = 'flex';
+    updateReviewRankingSummary();
+    const weekLabel = document.getElementById('leaderboardWeekLabel');
+    if (weekLabel) {
+        const start = getWeekStartDate();
+        weekLabel.textContent = `${start.getMonth() + 1}月${start.getDate()}日から今日まで`;
+    }
 
-    // Check Auth State (Global auth object exposed in window.firebaseAuth)
     const currentUser = window.firebaseAuth ? window.firebaseAuth.currentUser : null;
 
+    if (showReviewRankingPreview()) return;
+
     if (!currentUser) {
-        // Not Logged In
         document.getElementById('loginRequiredMessage').style.display = 'block';
         document.getElementById('nameInputParams').style.display = 'none';
         document.getElementById('leaderboardContent').style.display = 'none';
         document.getElementById('renameBtn').style.display = 'none';
     } else {
-        // Logged In
         document.getElementById('loginRequiredMessage').style.display = 'none';
         checkNameRegistration();
     }
@@ -2836,9 +3034,40 @@ function openCloudModal() {
 }
 
 let playerName = localStorage.getItem('vocabGame_playerName');
-let lastSyncTime = 0;
+let selectedReviewAvatarId = getReviewAvatarId();
+
+function updateReviewAvatarPicker() {
+    document.querySelectorAll('.review-avatar-option').forEach(button => {
+        const selected = button.dataset.avatarId === selectedReviewAvatarId;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+    });
+}
+
+function selectReviewAvatar(avatarId) {
+    selectedReviewAvatarId = ['hero', 'rose', 'blue', 'green', 'violet', 'auburn'].includes(avatarId) ? avatarId : 'hero';
+    updateReviewAvatarPicker();
+}
+
+function updateReviewRankingSummary(serverData = null) {
+    const score = ensureReviewScoreState();
+    const avatar = document.getElementById('reviewRankingMyAvatar');
+    const name = document.getElementById('reviewRankingMyName');
+    const weekPoints = document.getElementById('reviewRankingWeekPoints');
+    const todayPoints = document.getElementById('reviewRankingTodayPoints');
+    const rank = document.getElementById('reviewRankingMyRank');
+    const myEntry = serverData && serverData.me ? serverData.me : null;
+
+    if (avatar) avatar.src = getReviewAvatarPath(myEntry?.avatarId || getReviewAvatarId());
+    if (name) name.textContent = myEntry?.name || playerName || 'あなた';
+    if (weekPoints) weekPoints.textContent = `${myEntry?.score ?? getReviewWeekPoints()}pt`;
+    if (todayPoints) todayPoints.textContent = `今日 ${score.todayPoints}pt`;
+    if (rank) rank.textContent = myEntry?.rank ? `${myEntry.rank}位` : '--位';
+}
 
 function checkNameRegistration() {
+    selectedReviewAvatarId = getReviewAvatarId();
+    updateReviewAvatarPicker();
     if (!playerName) {
         document.getElementById('nameInputParams').style.display = 'block';
         document.getElementById('leaderboardContent').style.display = 'none';
@@ -2847,16 +3076,14 @@ function checkNameRegistration() {
         document.getElementById('nameInputParams').style.display = 'none';
         document.getElementById('leaderboardContent').style.display = 'block';
         document.getElementById('renameBtn').style.display = 'block';
-
-        // Sync Score (attempt)
-        if (typeof attemptScoreSync === 'function') attemptScoreSync(true);
-        loadRankingData('top');
+        loadRankingData('top', true);
     }
 }
 
 function renamePlayer() {
-    // Store current name temporarily in case of cancel
     document.getElementById('playerNameInput').value = playerName;
+    selectedReviewAvatarId = getReviewAvatarId();
+    updateReviewAvatarPicker();
 
     // Show input, hide content
     document.getElementById('nameInputParams').style.display = 'block';
@@ -2868,35 +3095,24 @@ function renamePlayer() {
 }
 
 function cancelRename() {
-    checkNameRegistration(); // Restore view
+    checkNameRegistration();
 }
 
-function registerName() {
+async function registerName() {
     const input = document.getElementById('playerNameInput');
     const val = input.value.trim();
     if (val.length > 0 && val.length <= 8) {
         playerName = val;
         localStorage.setItem('vocabGame_playerName', playerName);
-
-        // Sync Score (attempt)
-        if (typeof attemptScoreSync === 'function') attemptScoreSync(true);
+        localStorage.setItem('vocabGame_reviewAvatarId', selectedReviewAvatarId);
+        if (typeof window.updateReviewRankingProfile === 'function') {
+            await window.updateReviewRankingProfile(playerName, selectedReviewAvatarId);
+        }
         checkNameRegistration();
     } else {
         alert("名前は1〜8文字で入力してください");
     }
 }
-
-// Global function for saveGame hook
-window.attemptScoreSync = function (force = false) {
-    if (!playerName) return;
-    const now = Date.now();
-    if (force || (now - lastSyncTime > 60000)) {
-        if (window.uploadScore) {
-            window.uploadScore(playerName, gameState.points);
-            lastSyncTime = now;
-        }
-    }
-};
 
 // Fallback Stubs for Cloud Functions (in case module fails to load)
 if (!window.uploadSaveData) {
@@ -2909,76 +3125,102 @@ if (!window.restoreSaveData) {
 let currentLeaderboardTab = 'top';
 
 function switchTab(tab) {
-    console.log("[Debug] Switching to tab:", tab); // DEBUG
     currentLeaderboardTab = tab;
-    document.querySelectorAll('.lb-tab').forEach(b => b.classList.remove('active'));
-    const buttons = document.querySelectorAll('.lb-tab');
-    if (buttons.length > 0) {
-        if (tab === 'top') buttons[0].classList.add('active');
-        else if (buttons[1] && tab === 'around') buttons[1].classList.add('active');
-    }
-
-    const topList = document.getElementById('lb-list-top');
-    const aroundList = document.getElementById('lb-list-around');
-
-    // Standard display toggle (CSS classes handle visibility, but explicit inline style ensures logic works)
-    if (topList) topList.style.display = (tab === 'top') ? 'block' : 'none';
-    if (aroundList) aroundList.style.display = (tab === 'around') ? 'block' : 'none';
-
-    loadRankingData(tab);
+    loadRankingData('top', true);
 }
 
 async function loadRankingData(type, force = false) {
-    console.log("[Debug] loadRankingData called for:", type); // DEBUG
-    let container;
-    if (type === 'top') container = document.getElementById('lb-list-top');
-    else if (type === 'around') container = document.getElementById('lb-list-around');
+    const container = document.getElementById('lb-list-top');
+    const loading = document.getElementById('lb-loading');
+    const pinned = document.getElementById('reviewRankingPinned');
+    const pinnedRow = document.getElementById('reviewRankingPinnedRow');
+    if (!container) return;
 
-    if (!container) {
-        console.error("[Debug] Container not found for:", type);
+    if (loading) loading.style.display = 'block';
+    if (pinned) pinned.style.display = 'none';
+    container.innerHTML = '<div class="leaderboard-empty">ランキングを読み込んでいます</div>';
+
+    if (!window.fetchReviewLeaderboard) {
+        container.innerHTML = '<div class="leaderboard-empty">現在はランキングに接続できません</div>';
+        if (loading) loading.style.display = 'none';
         return;
     }
 
-    // Reset content but keep display style valid
-    container.innerHTML = '<div style="padding:10px; color:#999;">データ取得中...</div>';
+    const data = await window.fetchReviewLeaderboard(force);
+    if (loading) loading.style.display = 'none';
 
-    if (window.fetchLeaderboard) {
-        const data = await window.fetchLeaderboard(type, force);
-        console.log("[Debug] Data fetched for", type, ":", data); // DEBUG
-
-        if (data.error) {
-            container.innerHTML = `<div style="color:red; padding:10px;">エラー: ${data.error}</div>`;
-            return;
-        }
-
-        if (!data.results || data.results.length === 0) {
-            container.innerHTML = `<div style="padding:20px; color:#555; text-align:center;">
-                <div style="font-size:40px; margin-bottom:10px;">📉</div>
-                <div style="font-weight:bold; margin-bottom:5px;">まだランキングデータがありません</div>
-                <div style="font-size:12px; color:#888;">学習を進めるとランキングに反映されます</div>
-            </div>`;
-            return;
-        }
-
-        let html = '';
-        data.results.forEach(item => {
-            const rankDisplay = (typeof item.rank === 'number') ? item.rank : item.rank;
-            const isTop3 = (typeof item.rank === 'number' && item.rank <= 3);
-
-            html += `
-                    <div class="ranking-item ${item.isMe ? 'is-me' : ''}">
-                        <span class="rank-num ${isTop3 ? 'top3' : ''}">${rankDisplay}</span>
-                        <span class="rank-name">${window.GameUtils.escapeHtml(item.name)}</span>
-                        <span class="rank-score">${item.score.toLocaleString()}${typeof item.score === 'number' ? ' G' : ''}</span>
-                    </div>`;
-        });
-        container.innerHTML = html;
-        console.log("[Debug] HTML updated for", type); // DEBUG
-    } else {
-        container.innerHTML = `<div style="padding:10px;">接続できません (オフライン)</div>`;
+    if (data.error) {
+        container.innerHTML = `<div class="leaderboard-empty">${window.GameUtils.escapeHtml(data.error)}</div>`;
+        return;
     }
-    document.getElementById('lb-loading').style.display = 'none';
+
+    const results = Array.isArray(data.results) ? data.results : [];
+    if (results.length === 0) {
+        container.innerHTML = '<div class="leaderboard-empty"><strong>まだ参加者がいません</strong><span>今日の復習からランキングが始まります</span></div>';
+    } else {
+        container.innerHTML = results.map(renderReviewRankingItem).join('');
+    }
+
+    if (data.me && data.me.rank) {
+        window.latestReviewRank = data.me.rank;
+        localStorage.setItem(`vocabGame_reviewRank_${getReviewWeekKey()}`, String(data.me.rank));
+        updateReviewScoreSummary();
+        updateReviewRankingSummary(data);
+
+        const includedInTop = results.some(item => item.isMe);
+        if (!includedInTop && pinned && pinnedRow) {
+            pinnedRow.innerHTML = renderReviewRankingItem({ ...data.me, isMe: true });
+            pinned.style.display = 'block';
+        }
+    } else {
+        updateReviewRankingSummary(data);
+    }
 }
+
+function renderReviewRankingItem(item) {
+    const rank = Number(item.rank) || '--';
+    const isTop3 = Number(item.rank) > 0 && Number(item.rank) <= 3;
+    const name = window.GameUtils.escapeHtml(item.name || '参加者');
+    const avatarPath = getReviewAvatarPath(item.avatarId);
+    const score = Number(item.score) || 0;
+    return `
+        <div class="ranking-item ${item.isMe ? 'is-me' : ''}">
+            <span class="rank-num ${isTop3 ? 'top3' : ''}">${rank}</span>
+            <img class="rank-avatar" src="${avatarPath}" alt="">
+            <span class="rank-name">${name}</span>
+            <span class="rank-score">${score.toLocaleString()}pt</span>
+        </div>`;
+}
+
+function showReviewRankingPreview() {
+    const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    if (!isLocal || new URLSearchParams(window.location.search).get('reviewRankingPreview') !== '1') return false;
+
+    const previewData = {
+        results: [
+            { rank: 1, name: 'Haru', avatarId: 'rose', score: 184 },
+            { rank: 2, name: 'Sora', avatarId: 'blue', score: 163 },
+            { rank: 3, name: 'Mika', avatarId: 'hero', score: 142, isMe: true },
+            { rank: 4, name: 'Ren', avatarId: 'green', score: 127 },
+            { rank: 5, name: 'Aoi', avatarId: 'violet', score: 116 },
+            { rank: 6, name: 'Yuki', avatarId: 'auburn', score: 98 }
+        ],
+        me: { rank: 3, name: 'Mika', avatarId: 'hero', score: 142, isMe: true }
+    };
+    document.getElementById('loginRequiredMessage').style.display = 'none';
+    document.getElementById('nameInputParams').style.display = 'none';
+    document.getElementById('leaderboardContent').style.display = 'block';
+    document.getElementById('renameBtn').style.display = 'block';
+    document.getElementById('lb-loading').style.display = 'none';
+    document.getElementById('lb-list-top').innerHTML = previewData.results.map(renderReviewRankingItem).join('');
+    updateReviewRankingSummary(previewData);
+    return true;
+}
+
+window.selectReviewAvatar = selectReviewAvatar;
+window.updateReviewScoreSummary = updateReviewScoreSummary;
+window.renderReviewRankingItem = renderReviewRankingItem;
+window.showReviewRankingPreview = showReviewRankingPreview;
 
 // escapeHtml removed: Use window.GameUtils.escapeHtml
 

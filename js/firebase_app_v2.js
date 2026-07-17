@@ -64,133 +64,92 @@ try {
 
 // --- EXPORTED FUNCTIONS ---
 
-// 1. Upload/Sync Score
-window.uploadScore = async function (name, score) {
-    if (!db) return;
-    // Prevent Ghost Records: Block unauthenticated uploads
-    if (!auth || !auth.currentUser) {
-        console.log("Skipping score upload: User not logged in.");
-        return;
+const REVIEW_FUNCTION_BASE = 'https://us-central1-tenioha-game.cloudfunctions.net';
+const REVIEW_LEADERBOARD_CACHE_MS = 2 * 60 * 1000;
+let reviewLeaderboardCache = { data: null, timestamp: 0 };
+let reviewScoreSyncPromise = null;
+
+async function postReviewFunction(functionName, payload, requireAuth = true) {
+    const currentUser = auth && auth.currentUser;
+    if (requireAuth && !currentUser) throw new Error('ログインが必要です。');
+    const headers = { 'Content-Type': 'application/json' };
+    if (currentUser) headers.Authorization = `Bearer ${await currentUser.getIdToken()}`;
+
+    const response = await fetch(`${REVIEW_FUNCTION_BASE}/${functionName}`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(payload || {})
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+        const error = new Error(data.error || `通信に失敗しました (${response.status})`);
+        error.status = response.status;
+        throw error;
     }
+    return data;
+}
 
-    try {
-        await setDoc(doc(db, "leaderboard", userId), {
-            name: name,
-            score: Math.floor(score),
-            updatedAt: serverTimestamp()
-        }, { merge: true });
-        console.log("Score uploaded:", score);
-    } catch (e) {
-        console.error("Error uploading score:", e);
-    }
-};
+window.syncPendingReviewScores = function () {
+    if (reviewScoreSyncPromise) return reviewScoreSyncPromise;
+    if (!auth?.currentUser || typeof gameState === 'undefined') return Promise.resolve();
+    const pending = gameState.reviewScore?.pendingEvents;
+    if (!Array.isArray(pending) || pending.length === 0) return Promise.resolve();
 
-// 2. Fetch Leaderboard (Cached)
-// Cache Store
-const leaderboardCache = {
-    top: { data: null, timestamp: 0 },
-    around: { data: null, timestamp: 0 }
-};
-const CACHE_DURATION = 5 * 60 * 1000; // 5 Minutes
-
-let currentLeaderboardTab = 'top';
-
-window.switchTab = function (tab) {
-    currentLeaderboardTab = tab;
-    // Update tab active state (Use correct class .lb-tab)
-    document.querySelectorAll('.lb-tab').forEach(btn => {
-        // Simple check: text content or onclick attribute? 
-        // Best to rely on onclick or order.
-        // But index.html controls onclick.
-        // Let's just toggle 'active' based on clicked. 
-        // Actually, the button calling this IS the one to activate.
-        // But we need to toggle others off.
-        if (btn.getAttribute('onclick').includes(`'${tab}'`)) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
+    reviewScoreSyncPromise = (async () => {
+        let changed = false;
+        while (gameState.reviewScore.pendingEvents.length > 0) {
+            const event = gameState.reviewScore.pendingEvents[0];
+            try {
+                await postReviewFunction('submitReviewScore', {
+                    ...event,
+                    name: localStorage.getItem('vocabGame_playerName') || auth.currentUser.displayName || '学習者',
+                    avatarId: localStorage.getItem('vocabGame_reviewAvatarId') || 'hero'
+                });
+                gameState.reviewScore.pendingEvents.shift();
+                changed = true;
+                reviewLeaderboardCache = { data: null, timestamp: 0 };
+            } catch (error) {
+                if (error.status >= 400 && error.status < 500 && error.status !== 401) {
+                    console.warn('Discarding invalid review score event:', error.message);
+                    gameState.reviewScore.pendingEvents.shift();
+                    changed = true;
+                    continue;
+                }
+                console.warn('Review score sync deferred:', error.message);
+                break;
+            }
         }
+        if (changed && typeof saveGame === 'function') saveGame();
+    })().finally(() => {
+        reviewScoreSyncPromise = null;
     });
 
-    // Show/Hide Containers
-    const topList = document.getElementById('lb-list-top');
-    const aroundList = document.getElementById('lb-list-around');
-
-    if (topList) topList.style.display = (tab === 'top') ? 'block' : 'none';
-    if (aroundList) aroundList.style.display = (tab === 'around') ? 'block' : 'none';
-
-    // Load Data
-    if (typeof loadRankingData === 'function') {
-        loadRankingData(tab);
-    } else {
-        // Fallback if loadRankingData is missing (define it or fetch manual)
-        window.fetchLeaderboard(tab, true).then(data => {
-            if (typeof window.renderLeaderboard === 'function') {
-                window.renderLeaderboard(data.results, tab);
-            }
-        });
-    }
+    return reviewScoreSyncPromise;
 };
 
-window.fetchLeaderboard = async function (type, force = false) {
-    if (!db) return { error: "Firebase not connected" };
-
-    // Cache Check
+window.fetchReviewLeaderboard = async function (force = false) {
     const now = Date.now();
-    if (!force && leaderboardCache[type] && leaderboardCache[type].data) {
-        const elapsed = now - leaderboardCache[type].timestamp;
-        if (elapsed < CACHE_DURATION) {
-            console.log(`Leaderboard (${type}): Using Cache (${Math.floor((CACHE_DURATION - elapsed) / 1000)}s left)`);
-            return { results: leaderboardCache[type].data };
-        }
+    if (!force && reviewLeaderboardCache.data && now - reviewLeaderboardCache.timestamp < REVIEW_LEADERBOARD_CACHE_MS) {
+        return reviewLeaderboardCache.data;
     }
 
     try {
-        const leaderboardRef = collection(db, "leaderboard");
-        let results = [];
+        const data = await postReviewFunction('getReviewLeaderboard', {}, false);
+        reviewLeaderboardCache = { data, timestamp: now };
+        return data;
+    } catch (error) {
+        return { error: error.message, results: [] };
+    }
+};
 
-        if (type === 'top') {
-            const q = query(leaderboardRef, orderBy("score", "desc"), limit(20));
-            const snapshot = await getDocs(q);
-            let rank = 1;
-            snapshot.forEach(doc => {
-                results.push({
-                    rank: rank++,
-                    name: doc.data().name || "Unknown",
-                    score: doc.data().score,
-                    isMe: (doc.id === userId)
-                });
-            });
-        } else if (type === 'around') {
-            const targetId = (auth && auth.currentUser) ? auth.currentUser.uid : userId;
-            const myDoc = await getDoc(doc(db, "leaderboard", targetId));
-            if (!myDoc.exists()) return { results: [] };
-            const myScore = myDoc.data().score;
-            const qAbove = query(leaderboardRef, where("score", ">", myScore), orderBy("score", "asc"), limit(4));
-            const sAbove = await getDocs(qAbove);
-            const qBelow = query(leaderboardRef, where("score", "<", myScore), orderBy("score", "desc"), limit(4));
-            const sBelow = await getDocs(qBelow);
-
-            let above = []; sAbove.forEach(d => above.push({ name: d.data().name, score: d.data().score }));
-            let below = []; sBelow.forEach(d => below.push({ name: d.data().name, score: d.data().score }));
-
-            results = [
-                ...above.reverse().map(u => ({ ...u, rank: '▲' })),
-                { name: myDoc.data().name, score: myScore, rank: 'You', isMe: true },
-                ...below.map(u => ({ ...u, rank: '▼' }))
-            ];
-        }
-
-        // Update Cache
-        leaderboardCache[type] = {
-            data: results,
-            timestamp: now
-        };
-        console.log(`Leaderboard (${type}): Fetched & Cached`);
-
-        return { results: results };
-    } catch (e) {
-        return { error: e.message };
+window.updateReviewRankingProfile = async function (name, avatarId) {
+    try {
+        const result = await postReviewFunction('updateReviewProfile', { name, avatarId });
+        reviewLeaderboardCache = { data: null, timestamp: 0 };
+        return result;
+    } catch (error) {
+        console.warn('Review ranking profile sync failed:', error.message);
+        return { error: error.message };
     }
 };
 
@@ -422,21 +381,6 @@ if (auth) {
             if (headerInitials) headerInitials.style.display = 'none';
             if (headerIcon) headerIcon.style.border = "2px solid #2ecc71"; // Green border
 
-            // --- LEADERBOARD SYNC ---
-            // Improved: Only set Google Name if NO name is registered
-            if (typeof window.uploadScore === 'function') {
-                const currentPoints = (typeof gameState !== 'undefined') ? gameState.points : 0;
-
-                // Check if name is already set locally or wait for cloud sync?
-                // Better to rely on Cloud Sync logic below to fetch name.
-                // Only set default if we are sure?
-                // Actually, let's defer this. The logic below (Step 3) fetches the name.
-                // If that returns empty, THEN we can default to Google Name.
-
-                // Temporary placeholder - we will handle name syncing in the async block below
-                // to avoid overwriting custom names.
-            }
-
             // Update Modal
             if (modalImage) { modalImage.src = user.photoURL; modalImage.style.display = 'block'; }
             if (modalInitials) modalInitials.style.display = 'none';
@@ -467,6 +411,18 @@ if (auth) {
                 if (userDoc.exists()) {
                     const data = userDoc.data();
                     let cloudExpiresAt = 0;
+
+                    if (data.reviewRankingName) {
+                        localStorage.setItem('vocabGame_playerName', data.reviewRankingName);
+                        playerName = data.reviewRankingName;
+                    } else if (!localStorage.getItem('vocabGame_playerName') && user.displayName) {
+                        const defaultName = user.displayName.slice(0, 8);
+                        localStorage.setItem('vocabGame_playerName', defaultName);
+                        playerName = defaultName;
+                    }
+                    if (data.reviewAvatarId) {
+                        localStorage.setItem('vocabGame_reviewAvatarId', data.reviewAvatarId);
+                    }
 
                     // Check Expiration
                     if (data.premiumExpiresAt) {
@@ -517,39 +473,19 @@ if (auth) {
                     const localData = localStr ? JSON.parse(localStr) : null;
                     const localTime = localData ? (localData.lastSaveTime || 0) : 0;
 
-                    console.log(`Sync Check: Cloud(Pts:${cloudData.points}, Time:${new Date(cloudTime).toLocaleTimeString()}) vs Local(Pts:${localData ? localData.points : 0}, Time:${new Date(localTime).toLocaleTimeString()})`);
+                    console.log(`Sync Check: Cloud(${new Date(cloudTime).toLocaleString()}) vs Local(${new Date(localTime).toLocaleString()})`);
 
-                    const localPoints = localData ? localData.points : 0;
-                    const cloudPoints = cloudData.points || 0;
-
-                    console.log(`DEBUG SYNC: Cloud=${cloudPoints}, Local=${localPoints}`); // DEBUG
-                    console.log(`DEBUG SYNC: Cloud > Local? ${cloudPoints > localPoints}`); // DEBUG
-
-                    // 1. Cloud has better progress (Score based)
-                    if (cloudPoints > localPoints) {
-                        console.log("Cloud has better score. Prompting restore...");
-                        const msg = `クラウドに現在より進んだデータがあります。\n(Cloud: ${cloudPoints} pts vs Local: ${localPoints} pts)\n\n復元しますか？`;
+                    if (cloudTime > localTime) {
+                        const msg = `クラウドにこの端末より新しい学習データがあります。\n(クラウド: ${new Date(cloudTime).toLocaleString()})\n(この端末: ${localTime ? new Date(localTime).toLocaleString() : '保存なし'})\n\n復元しますか？`;
                         if (confirm(msg)) {
                             localStorage.setItem('vocabClickerSave', cloudRaw);
                             alert("復元しました。リロードします。");
                             location.reload();
                         } else {
-                            // User chose to keep local (lower score). 
-                            // Likely they want to reset or start over? Or they made a mistake.
-                            // We honor their choice. We do NOT auto-upload immediately to avoid overwriting cloud record yet, 
-                            // unless they play and trigger isDirty.
-                            console.log("User rejected Cloud restore. Keeping Local.");
-                            window.isDirty = true; // Mark local as dirty so it eventually syncs up
+                            window.isDirty = true;
                         }
-                    }
-                    // 2. Local has better or equal progress
-                    else {
-                        console.log("Local has better or equal score. Keeping Logic.");
-                        // If Local is significantly ahead or just ahead, we prefer Local.
-                        // We rely on Auto-Save or Manual Save to eventually push this to Cloud.
-                        if (localPoints > cloudPoints) {
-                            window.isDirty = true; // Ensure this gets pushed
-                        }
+                    } else if (localTime > cloudTime) {
+                        window.isDirty = true;
                     }
                 } else {
                     console.log("No cloud data. Uploading local data...");
@@ -557,35 +493,15 @@ if (auth) {
                 }
             } catch (e) { console.error("Sync Check Failed:", e); }
 
-            // 3. Sync Leaderboard Name (Robust)
-            try {
-                const lbDoc = await getDoc(doc(db, "leaderboard", userId));
-                let finalName = localStorage.getItem('vocabGame_playerName'); // Start with local
-
-                if (lbDoc.exists() && lbDoc.data().name) {
-                    // Case A: Cloud has a name. It is the master authority.
-                    const cloudName = lbDoc.data().name;
-                    if (cloudName !== finalName) {
-                        console.log(`Name Sync: Cloud '${cloudName}' overrides local '${finalName}'`);
-                        finalName = cloudName;
-                        localStorage.setItem('vocabGame_playerName', finalName);
-                        playerName = finalName;
+            if (window.syncPendingReviewScores) window.syncPendingReviewScores();
+            if (window.fetchReviewLeaderboard) {
+                window.fetchReviewLeaderboard(true).then(data => {
+                    if (data?.me?.rank) {
+                        window.latestReviewRank = data.me.rank;
+                        if (window.updateReviewScoreSummary) window.updateReviewScoreSummary();
                     }
-                } else {
-                    // Case B: Cloud has NO name (New User for Leaderboard).
-                    // If local is also empty, use Google Display Name.
-                    if (!finalName && user.displayName) {
-                        console.log(`Name Sync: New user, defaulting to Google Name '${user.displayName}'`);
-                        finalName = user.displayName;
-                        localStorage.setItem('vocabGame_playerName', finalName);
-                        playerName = finalName;
-                    }
-                    // Now upload this initial name to Cloud
-                    if (finalName && window.uploadScore) {
-                        window.uploadScore(finalName, (typeof gameState !== 'undefined') ? gameState.points : 0);
-                    }
-                }
-            } catch (e) { console.error("Name Sync Failed:", e); }
+                });
+            }
 
             // Start Auto-Save Loop
             // (Force Sync: 2026/01/13)
@@ -740,16 +656,17 @@ window.forceRestore = async function () {
         const cloudRaw = await fetchCloudSaveData(userDocRef, userDoc.data());
         if (!cloudRaw) { alert("クラウドデータの読み込みに失敗しました"); return; }
         const cloudData = JSON.parse(cloudRaw);
-        const localPoints = (typeof gameState !== 'undefined') ? gameState.points : -1;
-        const cloudPoints = cloudData.points || 0;
+        const localRaw = localStorage.getItem('vocabClickerSave');
+        const localData = localRaw ? JSON.parse(localRaw) : null;
+        const localTime = localData?.lastSaveTime || 0;
+        const cloudTime = cloudData.lastSaveTime || 0;
 
         let msg = "クラウド上のデータで上書きしますか？\n今の端末の未保存データは消えます。";
 
-        // Smart Warning
-        if (localPoints > cloudPoints) {
-            msg = `⚠️ 警告: 現在の端末の方がスコアが高いです！\n(Local: ${localPoints} vs Cloud: ${cloudPoints})\n\n本当にクラウドの古いデータで上書きしますか？`;
-        } else if (cloudPoints > localPoints) {
-            msg = `クラウドに新しいデータがあります！\n(Local: ${localPoints} vs Cloud: ${cloudPoints})\n\n復元しますか？`;
+        if (localTime > cloudTime) {
+            msg = `⚠️ この端末の学習データの方が新しいです。\n(この端末: ${new Date(localTime).toLocaleString()})\n(クラウド: ${cloudTime ? new Date(cloudTime).toLocaleString() : '保存なし'})\n\n古いクラウドデータで上書きしますか？`;
+        } else if (cloudTime > localTime) {
+            msg = `クラウドに新しい学習データがあります。\n(クラウド: ${new Date(cloudTime).toLocaleString()})\n(この端末: ${localTime ? new Date(localTime).toLocaleString() : '保存なし'})\n\n復元しますか？`;
         }
 
         if (!confirm(msg)) return;
@@ -859,14 +776,17 @@ function buildCloudSaveData(rawSaveData) {
             const compactSrs = {};
             for (const [key, s] of Object.entries(data.srsData)) {
                 if (!s || typeof s !== 'object') continue;
-                const hasReviewHistory = (s.successCount || 0) > 0 || (s.failCount || 0) > 0 || s.everWrong === true || s.firstTryPerfect === true;
+                const hasReviewHistory = (s.successCount || 0) > 0 || (s.failCount || 0) > 0 || s.everWrong === true || s.firstTryPerfect === true || !!s.lastReviewScoreDate;
                 if (!hasReviewHistory) continue;
                 const c = {};
                 if (typeof s.dueAt === 'number') c.dueAt = s.dueAt;
                 if (typeof s.successCount === 'number') c.successCount = s.successCount;
                 if (typeof s.failCount === 'number') c.failCount = s.failCount;
                 if (typeof s.reviewStep === 'number' && s.reviewStep !== 0) c.reviewStep = s.reviewStep;
+                if (typeof s.scheduledIntervalDays === 'number' && s.scheduledIntervalDays > 0) c.scheduledIntervalDays = s.scheduledIntervalDays;
                 if (typeof s.lastReviewedAt === 'number' && s.lastReviewedAt !== 0) c.lastReviewedAt = s.lastReviewedAt;
+                if (typeof s.lastReviewScoreDate === 'string' && s.lastReviewScoreDate) c.lastReviewScoreDate = s.lastReviewScoreDate;
+                if (s.isRelearning === true) c.isRelearning = true;
                 if (typeof s.stability === 'number' && s.stability !== 1) c.stability = s.stability;
                 if (typeof s.streak === 'number' && s.streak !== 0) c.streak = s.streak;
                 if (s.everWrong === true) c.everWrong = true;
@@ -1073,8 +993,10 @@ async function performCloudSave(silent = false, force = false) {
                     const cloudExisting = JSON.parse(cloudRaw);
                     const localDataObj = JSON.parse(saveData);
 
-                    if (cloudExisting.points > localDataObj.points) {
-                        warnings.push(`クラウドの方がスコアが高いです。\n(Cloud: ${cloudExisting.points} vs Local: ${localDataObj.points})`);
+                    const cloudTime = cloudExisting.lastSaveTime || 0;
+                    const localTime = localDataObj.lastSaveTime || 0;
+                    if (cloudTime > localTime) {
+                        warnings.push(`クラウドの学習データの方が新しいです。\n(クラウド: ${new Date(cloudTime).toLocaleString()})\n(この端末: ${localTime ? new Date(localTime).toLocaleString() : '保存なし'})`);
                     }
                 }
             }

@@ -70,11 +70,23 @@ service cloud.firestore {
       }
     }
 
-    // 2. Leaderboard Collection
-    // Public read, Owner write
+    // 2. Legacy gold leaderboard: retained for reference, no longer writable.
     match /leaderboard/{userId} {
       allow read: if true;
-      allow write: if isOwner(userId) && !isBanned();
+      allow write: if false;
+    }
+
+    // Review score data is server-authoritative. Clients use Cloud Functions only.
+    match /review_score_events/{document=**} {
+      allow read, write: if false;
+    }
+
+    match /review_score_daily/{document=**} {
+      allow read, write: if false;
+    }
+
+    match /review_score_weekly/{document=**} {
+      allow read, write: if false;
     }
 
     // 3. Promo Codes Collection

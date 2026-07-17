@@ -27,10 +27,14 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
             return 'application/javascript'
         return super().guess_type(path)
 
+class LocalThreadingServer(socketserver.ThreadingTCPServer):
+    allow_reuse_address = True
+    daemon_threads = True
+
 print(f"Starting server at http://localhost:{PORT}")
 print("Serving .js files as application/javascript")
 
-with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
+with LocalThreadingServer(("", PORT), MyHandler) as httpd:
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
