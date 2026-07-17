@@ -15,7 +15,6 @@ var gameState = window.gameState || {
     meaningCardFlipped: false,
     isReviewWord: false,
     currentQuestionReason: null,
-    autoMode: false,
     randomMode: false,
     posFilters: ['名', '動', '形', '副', '助', '前', '接', '代', 'other'], // Active POS filters
     vocabLevel: 1,
@@ -95,6 +94,22 @@ applyIpaOverrides(vocabularyDatabase, window.IPA_OVERRIDES);
 
 
 var vocabulary = [];
+const LAST_LEVEL_STORAGE_KEY = 'vocabGame_lastLevel';
+
+function persistLastLevel(level) {
+    if (level && vocabularyDatabase[level]) {
+        localStorage.setItem(LAST_LEVEL_STORAGE_KEY, level);
+    }
+}
+
+function restoreLastLevelPreference() {
+    const storedLevel = localStorage.getItem(LAST_LEVEL_STORAGE_KEY);
+    if (storedLevel && vocabularyDatabase[storedLevel]) {
+        gameState.currentLevel = storedLevel;
+    } else {
+        persistLastLevel(gameState.currentLevel);
+    }
+}
 
 function escapeHtml(value) {
     return String(value ?? "")
@@ -165,16 +180,71 @@ function renderMeaningMarkup(word) {
                 </div>
             `;
 }
-var autoTimer = null;
 var gameAudioContext = null; // Renamed to avoid collisions
+var wordSpeechTimer = null;
 var gameStateHistory = []; // Stack to store previous states
+
+function cloneUndoValue(value) {
+    if (value == null) return value;
+    return typeof structuredClone === 'function'
+        ? structuredClone(value)
+        : JSON.parse(JSON.stringify(value));
+}
+
+function cloneDecksForUndo(decks) {
+    if (!decks || typeof decks !== 'object') return decks;
+    return Object.fromEntries(Object.entries(decks).map(([name, deck]) => [
+        name,
+        Array.isArray(deck) ? [...deck] : deck
+    ]));
+}
 
 // Save current state to history (Max 1 step for now)
 function saveState() {
-    // Deep copy gameState
-    const stateSnapshot = typeof structuredClone === 'function'
-        ? structuredClone(gameState)
-        : JSON.parse(JSON.stringify(gameState));
+    const currentWord = gameState.currentWord;
+    const key = currentWord
+        ? getWordKeySafe(currentWord, currentWord.__sourceLevel || gameState.currentLevel)
+        : null;
+    const lastKey = key ? `${key}_last` : null;
+    const hasOwn = (obj, property) => !!obj && Object.prototype.hasOwnProperty.call(obj, property);
+    const stateSnapshot = {
+        key,
+        scalars: {
+            currentMode: gameState.currentMode,
+            currentLevel: gameState.currentLevel,
+            currentWordIndex: gameState.currentWordIndex,
+            currentWord: gameState.currentWord,
+            globalQuestionCount: gameState.globalQuestionCount,
+            meaningCardFlipped: gameState.meaningCardFlipped,
+            isReviewWord: gameState.isReviewWord,
+            currentQuestionReason: gameState.currentQuestionReason,
+            lastShownWordKey: gameState.lastShownWordKey,
+            mixCycleCounter: gameState.mixCycleCounter,
+            vocabLevel: gameState.vocabLevel,
+            wordsLearned: gameState.wordsLearned,
+            lastReviewQueueHeadKey: gameState.lastReviewQueueHeadKey,
+            lastReviewQueueCount: gameState.lastReviewQueueCount,
+            pendingQueuePop: cloneUndoValue(gameState.pendingQueuePop)
+        },
+        wordState: key ? {
+            exists: hasOwn(gameState.wordStates, key),
+            value: gameState.wordStates[key]
+        } : null,
+        srsEntry: key ? {
+            exists: hasOwn(gameState.srsData, key),
+            value: cloneUndoValue(gameState.srsData?.[key])
+        } : null,
+        learnedInterval: key ? {
+            exists: hasOwn(gameState.learnedWordIntervals, key),
+            value: gameState.learnedWordIntervals?.[key],
+            lastExists: hasOwn(gameState.learnedWordIntervals, lastKey),
+            lastValue: gameState.learnedWordIntervals?.[lastKey]
+        } : null,
+        actionCounts: { ...gameState.actionCounts },
+        reviewScore: cloneUndoValue(gameState.reviewScore),
+        dailyStats: cloneUndoValue(gameState.dailyStats),
+        decks: cloneDecksForUndo(gameState.decks)
+    };
     gameStateHistory.push(stateSnapshot);
     // Undo is intentionally one step; retaining older full snapshots only adds memory pressure.
     if (gameStateHistory.length > 1) {
@@ -187,8 +257,33 @@ function saveState() {
 function undoLastAction() {
     if (gameStateHistory.length === 0) return;
 
-    const previousState = gameStateHistory.pop();
-    gameState = previousState;
+    const snapshot = gameStateHistory.pop();
+    Object.assign(gameState, snapshot.scalars);
+    gameState.actionCounts = snapshot.actionCounts;
+    gameState.reviewScore = snapshot.reviewScore;
+    gameState.dailyStats = snapshot.dailyStats;
+    gameState.decks = cloneDecksForUndo(snapshot.decks);
+
+    if (snapshot.key) {
+        if (snapshot.wordState.exists) gameState.wordStates[snapshot.key] = snapshot.wordState.value;
+        else delete gameState.wordStates[snapshot.key];
+
+        if (snapshot.srsEntry.exists) gameState.srsData[snapshot.key] = cloneUndoValue(snapshot.srsEntry.value);
+        else delete gameState.srsData[snapshot.key];
+
+        const lastKey = `${snapshot.key}_last`;
+        if (snapshot.learnedInterval.exists) {
+            gameState.learnedWordIntervals[snapshot.key] = snapshot.learnedInterval.value;
+        } else {
+            delete gameState.learnedWordIntervals[snapshot.key];
+        }
+        if (snapshot.learnedInterval.lastExists) {
+            gameState.learnedWordIntervals[lastKey] = snapshot.learnedInterval.lastValue;
+        } else {
+            delete gameState.learnedWordIntervals[lastKey];
+        }
+    }
+    window.gameState = gameState;
 
     // Restore UI
     showWord(gameState.currentWord);
@@ -197,6 +292,7 @@ function undoLastAction() {
 
     // Re-apply current mode button styles if needed
     updateModeButtons();
+    saveGame();
 }
 
 function updateUndoButton() {
@@ -366,8 +462,6 @@ function showLockScreen() {
     const overlay = document.getElementById('trialOverlay');
     if (overlay.style.display !== 'flex') {
         overlay.style.display = 'flex';
-        // Stop any game audio or timers here if needed
-        clearAutoTimer();
     }
 }
 
@@ -375,10 +469,12 @@ function showLockScreen() {
 
 function init() {
     loadGame();
+    restoreLastLevelPreference();
 
     // Ensure compatibility with old saves if level names changed
     if (!vocabularyDatabase[gameState.currentLevel]) {
         gameState.currentLevel = 'basic';
+        persistLastLevel(gameState.currentLevel);
     }
 
     document.addEventListener('click', () => {
@@ -570,19 +666,6 @@ function setupEventListeners() {
         });
     });
 
-    document.getElementById('autoModeToggle').addEventListener('click', () => {
-        gameState.autoMode = !gameState.autoMode;
-        const checkbox = document.getElementById('autoCheckbox');
-        if (gameState.autoMode) {
-            checkbox.classList.add('checked');
-            startAutoTimer();
-        } else {
-            checkbox.classList.remove('checked');
-            clearAutoTimer();
-        }
-    });
-
-
     // POS Filter checkboxes
     setupPOSFilters();
     document.getElementById('speakerBtn').addEventListener('click', (e) => {
@@ -639,6 +722,7 @@ function parseCSV(text) {
         }
     }
 
+    invalidateReviewWordIndex();
     loadVocabularyForLevel();
     initializeWordStates();
     document.getElementById('fileInfo').textContent = `${vocabularyDatabase[level].length}語を読み込みました`;
@@ -648,6 +732,8 @@ function parseCSV(text) {
 
 function switchLevel(level) {
     gameState.currentLevel = level;
+    // Keep the last-opened learning zone independent from cloud save timing.
+    persistLastLevel(level);
     // v2.80: Reset Decks on Level Switch to prevent category mixing
     gameState.decks = null;
 
@@ -1468,7 +1554,6 @@ window.openWordFromList = function (level, key) {
         initializeWordStates();
     }
 
-    clearAutoTimer();
     hideNoWordsMessage();
     gameState.isReviewWord = false;
     gameState.currentQuestionReason = null;
@@ -1486,30 +1571,75 @@ function isRetiredWordByKey(key) {
     return !!(s.firstTryPerfect && !s.everWrong);
 }
 
+var reviewWordIndexByKey = null;
+const renderedReviewSnapshots = new WeakSet();
+const KNOWN_POS_VALUES = new Set(['名', '動', '形', '副', '助', '前', '接', '代']);
+
+function invalidateReviewWordIndex() {
+    reviewWordIndexByKey = null;
+}
+
+function ensureReviewWordIndex() {
+    if (reviewWordIndexByKey) return reviewWordIndexByKey;
+
+    const byKey = new Map();
+    Object.entries(vocabularyDatabase || {}).forEach(([level, words]) => {
+        if (!Array.isArray(words)) return;
+        words.forEach((rawWord, wordOrder) => {
+            if (!rawWord || !rawWord.word) return;
+            const resolved = isWordbookLevel(level)
+                ? resolveReferencedVocabularyWord(rawWord, level)
+                : rawWord;
+            const word = { ...resolved, __sourceLevel: level };
+            const key = getWordKeySafe(word, level);
+            const entries = byKey.get(key) || [];
+            entries.push({ level, word, wordOrder });
+            byKey.set(key, entries);
+        });
+    });
+    reviewWordIndexByKey = byKey;
+    return reviewWordIndexByKey;
+}
+
+function isWordAllowedByPOS(word, activeFilters = null) {
+    const filters = activeFilters || new Set(gameState.posFilters || []);
+    if (filters.size === 0) return false;
+    const pos = word.pos || 'other';
+    return filters.has(pos) || (!KNOWN_POS_VALUES.has(pos) && filters.has('other'));
+}
+
 function getReviewQueueCandidatesAcrossLevels() {
     const levels = gameState.activeReviewLevels || [];
-    let out = [];
-    const seenKeys = new Set();
-    levels.forEach(level => {
-        const words = vocabularyDatabase[level] || [];
-        words.forEach(w => {
-            const resolved = (level.startsWith('selection') || level === 'sys_2000')
-                ? resolveReferencedVocabularyWord(w, level)
-                : w;
-            const wrapped = { ...resolved, __sourceLevel: level };
-            const key = getWordKeySafe(wrapped, level);
-            if (seenKeys.has(key)) return;
-            if (isRetiredWordByKey(key)) return; // first-try perfect words are permanently excluded
-            const state = gameState.wordStates[key];
-            if (state === 'weak' || state === 'learned') {
-                seenKeys.add(key);
-                out.push({ word: wrapped, key, state });
-            }
+    const activeRank = new Map(levels.map((level, index) => [level, index]));
+    const activeFilters = new Set(gameState.posFilters || []);
+    const wordIndex = ensureReviewWordIndex();
+    const out = [];
+
+    Object.entries(gameState.wordStates || {}).forEach(([key, state]) => {
+        if (state !== 'weak' && state !== 'learned') return;
+        if (isRetiredWordByKey(key)) return;
+
+        const entries = wordIndex.get(key);
+        if (!entries) return;
+        let selected = null;
+        let selectedRank = Number.POSITIVE_INFINITY;
+        entries.forEach(entry => {
+            const rank = activeRank.get(entry.level);
+            if (rank === undefined || rank >= selectedRank) return;
+            selected = entry;
+            selectedRank = rank;
+        });
+        if (!selected || !isWordAllowedByPOS(selected.word, activeFilters)) return;
+        out.push({
+            word: selected.word,
+            key,
+            state,
+            queueOrder: selectedRank,
+            wordOrder: selected.wordOrder
         });
     });
 
-    const allowedWords = new Set(filterWordsByPOS(out.map(item => item.word)));
-    return out.filter(item => allowedWords.has(item.word));
+    return out;
 }
 
 function buildReviewQueueSnapshot() {
@@ -1534,13 +1664,22 @@ function buildReviewQueueSnapshot() {
         if (s.dueAt <= endMs) dueToday++;
         if (s.dueAt >= startOfTomorrow && s.dueAt <= endTomorrowMs) dueTomorrow++;
         if (s.dueAt <= now) {
-            const dueItem = { word: item.word, dueAt: s.dueAt || 0 };
+            const dueItem = {
+                word: item.word,
+                dueAt: s.dueAt || 0,
+                queueOrder: item.queueOrder,
+                wordOrder: item.wordOrder
+            };
             if (item.state === 'weak') weakDue.push(dueItem);
             else learnedDue.push(dueItem);
         }
     });
 
-    const byDue = (a, b) => a.dueAt - b.dueAt;
+    const byDue = (a, b) => (
+        (a.dueAt - b.dueAt)
+        || (a.queueOrder - b.queueOrder)
+        || (a.wordOrder - b.wordOrder)
+    );
     weakDue.sort(byDue);
     learnedDue.sort(byDue);
 
@@ -1638,6 +1777,7 @@ function updateReviewProgressUI(snapshot = null) {
     if (!wrap || !list || !label) return;
 
     const reviewSnapshot = snapshot || buildReviewQueueSnapshot();
+    renderedReviewSnapshots.add(reviewSnapshot);
     const dueWords = reviewSnapshot.dueWords;
     const stats = reviewSnapshot.stats;
     const total = dueWords.length;
@@ -1877,8 +2017,14 @@ function getDueFilteredPool(mode, pool) {
 
 // --- CLOUD SYNC HELPERS (v2.15) ---
 window.isDirty = false; // Tracks if local changes need saving
+var scheduledGameSaveTimer = null;
 
 function saveGame() {
+    if (scheduledGameSaveTimer) {
+        clearTimeout(scheduledGameSaveTimer);
+        scheduledGameSaveTimer = null;
+    }
+    persistLastLevel(gameState.currentLevel);
     const data = {
         points: gameState.points,
         wordStates: gameState.wordStates,
@@ -1911,6 +2057,27 @@ function saveGame() {
         window.syncPendingReviewScores();
     }
 }
+
+function scheduleGameSave(delay = 120) {
+    window.isDirty = true;
+    if (scheduledGameSaveTimer) clearTimeout(scheduledGameSaveTimer);
+    scheduledGameSaveTimer = setTimeout(() => {
+        scheduledGameSaveTimer = null;
+        saveGame();
+    }, delay);
+}
+
+function flushScheduledGameSave() {
+    if (!scheduledGameSaveTimer) return;
+    clearTimeout(scheduledGameSaveTimer);
+    scheduledGameSaveTimer = null;
+    saveGame();
+}
+
+window.addEventListener('pagehide', flushScheduledGameSave);
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') flushScheduledGameSave();
+});
 
 function loadGame() {
     const saved = localStorage.getItem('vocabClickerSave');
@@ -1985,6 +2152,7 @@ function loadGame() {
 window.resetGameData = function () {
     console.log("Hard Resetting Game Data...");
     localStorage.removeItem('vocabClickerSave');
+    localStorage.removeItem(LAST_LEVEL_STORAGE_KEY);
     localStorage.removeItem('vocabGame_userId');
     localStorage.removeItem('vocabGame_playerName');
     localStorage.removeItem('vocabGame_isUnlocked');
@@ -2031,13 +2199,8 @@ function updatePOSFilters() {
 }
 
 function filterWordsByPOS(words) {
-    if (gameState.posFilters.length === 0) return [];
-    return words.filter(word => {
-        const pos = word.pos || 'other';
-        return gameState.posFilters.includes(pos) ||
-            (pos !== '名' && pos !== '動' && pos !== '形' && pos !== '副' &&
-                pos !== '助' && pos !== '前' && pos !== '接' && pos !== '代' && gameState.posFilters.includes('other'));
-    });
+    const activeFilters = new Set(gameState.posFilters || []);
+    return words.filter(word => isWordAllowedByPOS(word, activeFilters));
 }
 
 function checkVocabLevelUp() {
@@ -2233,6 +2396,10 @@ function speakText(text) {
 
 function speakCurrentExample() {
     if (!gameState.currentWord) return;
+    if (wordSpeechTimer) {
+        clearTimeout(wordSpeechTimer);
+        wordSpeechTimer = null;
+    }
     speakText(gameState.currentWord.example || gameState.currentWord.word);
 }
 
@@ -2282,7 +2449,10 @@ function getWordFromDeck(category, sourceWords) {
 
 function showNextWord(reviewSnapshot = null) {
     gameState.meaningCardFlipped = false;
-    clearAutoTimer();
+    if (wordSpeechTimer) {
+        clearTimeout(wordSpeechTimer);
+        wordSpeechTimer = null;
+    }
 
     // In review ON mode, force unified mixed lane for intuition
     if (gameState.reviewMode === 'on' && gameState.currentMode !== 'unlearned') {
@@ -2433,7 +2603,9 @@ function showNextWord(reviewSnapshot = null) {
 
     if (words.length === 0) {
         showNoWordsMessage();
-        updateReviewProgressUI(reviewSnapshot || buildReviewQueueSnapshot());
+        if (!reviewSnapshot || !renderedReviewSnapshots.has(reviewSnapshot)) {
+            updateReviewProgressUI(reviewSnapshot || buildReviewQueueSnapshot());
+        }
         return;
     }
 
@@ -2471,17 +2643,16 @@ function showNextWord(reviewSnapshot = null) {
     updateQuestionReasonUI();
 
     // DOM更新後、少し待ってから音声再生
-    setTimeout(() => {
+    wordSpeechTimer = setTimeout(() => {
+        wordSpeechTimer = null;
         speakWord(word.word);
     }, 200);
 
-    if (gameState.autoMode) {
-        startAutoTimer();
-    }
-
     checkLevelUp();
     // Keep preview aligned with the next actual pick
-    updateReviewProgressUI(reviewSnapshot || buildReviewQueueSnapshot());
+    if (!reviewSnapshot || !renderedReviewSnapshots.has(reviewSnapshot)) {
+        updateReviewProgressUI(reviewSnapshot || buildReviewQueueSnapshot());
+    }
 }
 
 // NEW: Function to show a SPECIFIC word (for Undo/Restore)
@@ -2508,8 +2679,6 @@ function showWord(word) {
         e.stopPropagation();
         speakText(word.example);
     });
-
-    updateProgress();
 }
 
 function showNoWordsMessage() {
@@ -2552,47 +2721,6 @@ function hideNoWordsMessage() {
         setupCardListeners();
     }
     document.getElementById('exampleArea').style.display = 'flex';
-}
-
-function clearAutoTimer() {
-    if (autoTimer) {
-        clearTimeout(autoTimer);
-        autoTimer = null;
-    }
-}
-
-function startAutoTimer() {
-    clearAutoTimer();
-    autoTimer = setTimeout(() => {
-        if (!gameState.meaningCardFlipped && gameState.autoMode) {
-            autoOpenMeaningCard();
-        }
-    }, 3000);
-}
-
-function autoOpenMeaningCard() {
-    const meaningCard = document.getElementById('meaningCard');
-    if (!meaningCard || gameState.meaningCardFlipped) return;
-
-    meaningCard.classList.add('flipped');
-    gameState.meaningCardFlipped = true;
-
-    const currentWord = gameState.currentWord;
-    if (!currentWord) return;
-
-    const key = getWordKeySafe(currentWord, currentWord.__sourceLevel || gameState.currentLevel);
-
-    updateSrsForWord(key, true, gameState.wordStates[key]);
-
-    updateDisplay();
-    animateCharacter();
-    saveGame();
-
-    autoTimer = setTimeout(() => {
-        if (gameState.autoMode) {
-            showNextWord();
-        }
-    }, 2000);
 }
 
 function setupCardListeners() {
@@ -2638,8 +2766,6 @@ function handleVocabCardClick() {
         triggerReviewChipPop(currentWord.word, false);
     }
 
-    clearAutoTimer();
-
     // Ignore click if card is already flipped (user should click Next or Meaning card)
     // Actually, if flipped, clicking vocab card usually means "Next" in this design?
     // User said: "Click vocab card = Correct".
@@ -2668,7 +2794,6 @@ function handleVocabCardClick() {
 
     if (currentState === 'unlearned') {
         gameState.actionCounts.unlearned_correct++;
-        checkLevelUp();
     } else if (currentState === 'weak') {
         gameState.actionCounts.weak_correct++;
         msg = "克服！";
@@ -2702,12 +2827,11 @@ function handleVocabCardClick() {
     const reviewSnapshot = updateDisplay();
     showNextWord(reviewSnapshot);
     animateCharacter();
-    saveGame();
+    scheduleGameSave();
 }
 
 function handleMeaningCardClick(e) {
     const card = e.currentTarget;
-    clearAutoTimer();
 
     if (!gameState.meaningCardFlipped) {
         // Save state for Undo
@@ -2750,7 +2874,7 @@ function handleMeaningCardClick(e) {
 
         updateDisplay();
         animateCharacter();
-        saveGame();
+        scheduleGameSave();
     } else {
         // If already flipped, clicking it again = Next Word
         showNextWord();
@@ -2804,9 +2928,10 @@ function animateCharacter() {
 
 function updateDisplay(reviewSnapshot = null) {
     const snapshot = reviewSnapshot || buildReviewQueueSnapshot();
-    updateWordStats();
+    const progressSnapshot = buildLearningProgressSnapshot();
+    updateWordStats(progressSnapshot);
     updateModeButtons();
-    updateProgress();
+    updateProgress(progressSnapshot);
     updateReviewQueueBadge(snapshot);
     updateReviewProgressUI(snapshot);
     renderWordList();
@@ -2882,14 +3007,54 @@ function getCategoryLevel(category) {
     return Math.floor(count / 20) + 1;
 }
 
-function updateProgress() {
-    // --- World Level Calculation ---
-    // Sum of levels from Junior, Basic, Daily, Exam1
+function buildLearningProgressSnapshot() {
     const categories = (window.GameConfig && window.GameConfig.CATEGORIES) ? window.GameConfig.CATEGORIES : ['junior', 'basic', 'daily', 'exam1'];
-    let worldLevel = 0;
-    categories.forEach(cat => {
-        worldLevel += getCategoryLevel(cat);
+    const currentLevel = gameState.currentLevel;
+    const activeFilters = new Set(gameState.posFilters || []);
+    const stateCounts = { unlearned: 0, weak: 0, learned: 0, perfect: 0 };
+    const learnedCounts = {};
+
+    categories.forEach(category => {
+        let learnedCount = 0;
+        const isCurrentLevel = category === currentLevel;
+        (vocabularyDatabase[category] || []).forEach(word => {
+            const key = getWordKey(word, category);
+            const state = gameState.wordStates[key] || 'unlearned';
+            if (state !== 'unlearned') learnedCount++;
+            if (isCurrentLevel && isWordAllowedByPOS(word, activeFilters)) {
+                stateCounts[state] = (stateCounts[state] || 0) + 1;
+            }
+        });
+        learnedCounts[category] = learnedCount;
     });
+
+    if (!categories.includes(currentLevel)) {
+        let currentLearnedCount = 0;
+        (vocabularyDatabase[currentLevel] || []).forEach(word => {
+            const key = getWordKey(word, currentLevel);
+            if ((gameState.wordStates[key] || 'unlearned') !== 'unlearned') currentLearnedCount++;
+        });
+        learnedCounts[currentLevel] = currentLearnedCount;
+
+        vocabulary.forEach(word => {
+            if (!isWordAllowedByPOS(word, activeFilters)) return;
+            const key = getWordKey(word, currentLevel);
+            const state = gameState.wordStates[key] || 'unlearned';
+            stateCounts[state] = (stateCounts[state] || 0) + 1;
+        });
+    }
+
+    let worldLevel = 0;
+    categories.forEach(category => {
+        worldLevel += Math.floor((learnedCounts[category] || 0) / 20) + 1;
+    });
+    const localLevel = Math.floor((learnedCounts[currentLevel] || 0) / 20) + 1;
+    return { worldLevel, localLevel, stateCounts };
+}
+
+function updateProgress(progressSnapshot = null) {
+    const progress = progressSnapshot || buildLearningProgressSnapshot();
+    const worldLevel = progress.worldLevel;
 
     // Update Game State
     gameState.vocabLevel = worldLevel;
@@ -2900,7 +3065,7 @@ function updateProgress() {
     });
 
     // --- Local Level Calculation (for current category) ---
-    const localLevel = getCategoryLevel(gameState.currentLevel);
+    const localLevel = progress.localLevel;
     document.querySelectorAll('.js-local-level-value').forEach(el => {
         el.textContent = localLevel;
     });
@@ -2916,10 +3081,6 @@ function updateProgress() {
         labelContainer.childNodes[0].textContent = "ワールドレベル: ";
     }
 
-    // --- Local Level Calculation ---
-    // Level for the current category
-    const currentLocalLevel = getCategoryLevel(gameState.currentLevel);
-
     const titleDisplay = document.querySelector('.title-display');
     if (titleDisplay) {
         // Removed Lv display appending as per user request
@@ -2932,15 +3093,12 @@ function updateProgress() {
 
 
 
-function updateWordStats() {
-    // Unlearned
-    document.getElementById('unlearnedCount').textContent = getWordsByMode('unlearned').length;
-    // Learned
-    document.getElementById('learnedCount').textContent = getWordsByMode('learned').length;
-    // Perfect (New)
-    document.getElementById('perfectCount').textContent = getWordsByMode('perfect').length;
-    // Weak
-    document.getElementById('weakCount').textContent = getWordsByMode('weak').length;
+function updateWordStats(progressSnapshot = null) {
+    const counts = (progressSnapshot || buildLearningProgressSnapshot()).stateCounts;
+    document.getElementById('unlearnedCount').textContent = counts.unlearned || 0;
+    document.getElementById('learnedCount').textContent = counts.learned || 0;
+    document.getElementById('perfectCount').textContent = counts.perfect || 0;
+    document.getElementById('weakCount').textContent = counts.weak || 0;
 }
 
 function updateModeButtons() {
@@ -2970,11 +3128,6 @@ function updateModeButtons() {
         }
     });
 
-    if (gameState.autoMode) {
-        document.getElementById('autoCheckbox').classList.add('checked');
-    } else {
-        document.getElementById('autoCheckbox').classList.remove('checked');
-    }
 }
 
 function showCoinPopup(amount, isLevelUp = false) {
@@ -3238,25 +3391,6 @@ window.showReviewRankingPreview = showReviewRankingPreview;
 // escapeHtml removed: Use window.GameUtils.escapeHtml
 
 init();
-
-window.openProfileModal = function () {
-    const modal = document.getElementById('profileModal');
-    if (!modal) return;
-    modal.style.display = 'flex';
-    document.body.classList.add('profile-modal-open');
-
-    // Attempt to update premium status display if function exists
-    if (window.updatePremiumStatusDisplay) {
-        try { window.updatePremiumStatusDisplay(); } catch (e) { }
-    }
-
-};
-
-window.closeProfileModal = function () {
-    const modal = document.getElementById('profileModal');
-    if (modal) modal.style.display = 'none';
-    document.body.classList.remove('profile-modal-open');
-};
 
 // Help Modal Fix
 const helpBtnGlobal = document.getElementById('helpBtn');

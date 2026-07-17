@@ -13,8 +13,6 @@ This is a static web app with Firebase-backed features.
   - `js/config.js`
   - `js/utils.js`
   - `js/stats_engine.js`
-  - `js/chart_data_adapter.js`
-  - `js/chart_fallback.js`
   - `js/game_logic.js`
   - `js/ui_manager.js`
   - `js/firebase_app_v2.js`

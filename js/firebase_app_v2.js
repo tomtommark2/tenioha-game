@@ -394,12 +394,8 @@ if (auth) {
                 if (syncSection) syncSection.style.display = 'block';
             }
 
-            // GRAPH SCALES CONFIG
-            // GRAPH SCALES CONFIG
-            // --- GRAPH DATA LOGIC (Unified History) ---
             try {
                 if (!window.GameConfig) console.error("CRITICAL: GameConfig missing!");
-                const GRAPH_SCALES = window.GameConfig ? window.GameConfig.GRAPH_SCALES : {};
 
                 const authSyncUserId = user.uid;
                 const userDoc = await getDoc(doc(db, "users", authSyncUserId));
@@ -1063,10 +1059,9 @@ async function performCloudSave(silent = false, force = false) {
         }
         console.log("Upload success (Silent:" + silent + ")");
 
-        // TRIGGER DAILY LOG SAVE (New v2.37)
-        // We do this after successful main save to ensure stats are fresh
+        // Keep the daily aggregate in sync after the authoritative save succeeds.
         if (isSameAuthenticatedUser && window.saveDailyProgress) {
-            window.saveDailyProgress();
+            void window.saveDailyProgress(!silent);
         }
 
     } catch (e) {
@@ -1101,19 +1096,17 @@ window.uploadSaveData = async function (silent = false, force = false) {
     }
 };
 
-// --- LEARNING LOG & GRAPH SYSTEM (v2.37) ---
+// --- LEARNING LOG ---
 
-// Map Internal Levels to CEFR
-// Map Internal Levels to CEFR
-const CEFR_MAP = window.GameConfig.CEFR_MAP;
+function getDailyProgressSyncKey(uid) {
+    return `vocabGame_dailyProgressSync_${uid}`;
+}
 
-// Max counts per CEFR level (Approximate for capping)
-const CEFR_MAX = window.GameConfig.CEFR_MAX;
-
-window.saveDailyProgress = async function () {
+window.saveDailyProgress = async function (force = false) {
     if (!db || !auth.currentUser || typeof gameState === 'undefined') return;
 
     try {
+        const uid = auth.currentUser.uid;
         const today = new Date();
         const yyyy = today.getFullYear();
         const mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -1125,11 +1118,18 @@ window.saveDailyProgress = async function () {
             ? window.StatsEngine.getPerfectCountsByCEFR(gameState, (typeof vocabularyDatabase !== 'undefined' ? vocabularyDatabase : window.vocabularyDatabase))
             : { A1: 0, A2: 0, B1: 0, B2: 0, total: 0 };
 
-        let stats = { A1: counts.A1, A2: counts.A2, B1: counts.B1, B2: counts.B2 };
-        let totalLearned = counts.total;
+        const stats = { A1: counts.A1, A2: counts.A2, B1: counts.B1, B2: counts.B2 };
+        const totalLearned = counts.total;
+        const signature = `${stats.A1}:${stats.A2}:${stats.B1}:${stats.B2}`;
+        const syncKey = getDailyProgressSyncKey(uid);
+        const previousSync = localStorage.getItem(syncKey);
+
+        if (!force && previousSync === `${docId}:${signature}`) {
+            return;
+        }
 
         // 2. Save to Firestore Daily Log
-        const logRef = doc(db, "users", auth.currentUser.uid, "daily_logs", docId);
+        const logRef = doc(db, "users", uid, "daily_logs", docId);
 
         await setDoc(logRef, {
             date: serverTimestamp(), // Use server time for sorting
@@ -1142,7 +1142,7 @@ window.saveDailyProgress = async function () {
         console.log(`Daily Log Saved [${docId}]: Total ${totalLearned}`, stats);
 
         // 3. Update Parent Doc for fast access
-        const userRef = doc(db, "users", auth.currentUser.uid);
+        const userRef = doc(db, "users", uid);
         await setDoc(userRef, {
             lastLogDate: docId,
             currentStats: {
@@ -1151,224 +1151,12 @@ window.saveDailyProgress = async function () {
             },
             updatedAt: serverTimestamp()
         }, { merge: true });
+        localStorage.setItem(syncKey, `${docId}:${signature}`);
 
     } catch (e) {
         console.error("Daily Log Save Failed:", e);
     }
 };
-
-let myPageChart = null;
-
-// Graph Data & Prediction Logic
-// Graph Data Logic - Simple Monthly Stats
-// Graph Configuration (Scales)
-// Graph Configuration (Scales)
-const GRAPH_SCALES = window.GameConfig.GRAPH_SCALES;
-
-// Graph Data Logic - Simple Monthly Stats
-window.getMonthlyStats = async function () {
-    let logMap = new Map();
-    let hasRealData = false;
-
-    if (db && auth.currentUser) {
-        const logsRef = collection(db, "users", auth.currentUser.uid, "daily_logs");
-        const q = query(logsRef, orderBy("dateString", "desc"), limit(45));
-
-        try {
-            const snapshot = await getDocs(q);
-            snapshot.forEach(doc => {
-                logMap.set(doc.data().dateString, doc.data());
-            });
-            if (!snapshot.empty) hasRealData = true;
-        } catch (e) {
-            console.log("Firestore Read Failed (Offline?):", e);
-        }
-    }
-
-    // 1. FORCE SYNC TODAY'S DATA
-    if (typeof window.updateDailyHistory === 'function') {
-        window.updateDailyHistory();
-    }
-
-    const gs = typeof gameState !== 'undefined' ? gameState : (window.gameState || null);
-    const vDB = window.vocabularyDatabase || (typeof vocabularyDatabase !== 'undefined' ? vocabularyDatabase : null);
-
-    if (window.ChartDataAdapter) {
-        window.ChartDataAdapter.mergeLocalHistory(logMap, gs);
-        return window.ChartDataAdapter.buildMonthlyStats(logMap, gs, vDB);
-    }
-
-    return { labels: [], datasets: { total: [], A1: [], A2: [], B1: [], B2: [] }, isRealData: [], isDemo: false };
-};
-
-// UI: Render Chart
-// UI: Render Chart
-window.updateChart = async function (type = 'total') {
-    const ctx = document.getElementById('learningChart');
-    if (!ctx) return;
-
-    // Loading State / Clear
-    const ctx2d = ctx.getContext('2d');
-    // ctx2d.clearRect(0, 0, ctx.width || 300, ctx.height || 200);
-
-    // Update Tabs
-    document.querySelectorAll('.chart-tab').forEach(b => {
-        b.classList.remove('active');
-        b.style.background = '#f1f2f6';
-        b.style.color = '#555';
-        if (b.dataset.tab === type) {
-            b.classList.add('active');
-            b.style.background = '#6c5ce7';
-            b.style.color = 'white';
-        }
-    });
-
-    const dataObj = await window.getMonthlyStats();
-    if (!dataObj) return;
-
-    // Colors
-    const colors = {
-        total: '#6c5ce7',
-        A1: '#00b894',
-        A2: '#0984e3',
-        B1: '#fdcb6e',
-        B2: '#e17055'
-    };
-
-    // Prepare Gradient
-    const gradient = ctx2d.createLinearGradient(0, 0, 0, 200);
-    gradient.addColorStop(0, colors[type]);
-    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-    // Stats Text update
-    const currentVal = dataObj.datasets[type][dataObj.datasets[type].length - 1];
-    const demoBadge = dataObj.isDemo ? '<span style="color:#e67e22; margin-left:5px;">(Demo Data)</span>' : '';
-
-    // Get Scale Info
-    const scaleConfig = GRAPH_SCALES[type] || GRAPH_SCALES.total;
-
-    const statsEl = document.getElementById('chartStats');
-    if (statsEl) {
-        statsEl.innerHTML = `
-            <div style="text-align: right; font-size: 10px; color: #999; margin-bottom: -5px;">過去30日間の推移${demoBadge}</div>
-            <div style="text-align: right;">
-                現在: <strong style="font-size: 16px; color: ${colors[type]}">${currentVal}語</strong> 
-                <span style="font-size:10px; color:#ccc;"> / ${scaleConfig.max}</span>
-            </div>
-        `;
-    }
-
-    if (window.myPageChart) window.myPageChart.destroy();
-
-    window.myPageChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: dataObj.labels,
-            datasets: [
-                {
-                    label: scaleConfig.label,
-                    data: dataObj.datasets[type],
-                    borderColor: colors[type],
-                    backgroundColor: gradient,
-                    fill: 'start',
-                    tension: 0,
-                    pointRadius: 4, // Always show points
-                    pointBackgroundColor: colors[type],
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
-                    pointHoverRadius: 6
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: { mode: 'index', intersect: false },
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    enabled: true,
-                    callbacks: {
-                        label: function (context) {
-                            return context.parsed.y + ' / ' + scaleConfig.max;
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    grid: { display: false },
-                    ticks: {
-                        maxTicksLimit: 6,
-                        maxRotation: 0,
-                        font: { size: 10 }
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    min: 0,
-                    max: scaleConfig.max, // ENFORCE MAX
-                    ticks: {
-                        stepSize: scaleConfig.stepSize || undefined,
-                        maxTicksLimit: 12,
-                        autoSkip: false,
-                        callback: function (value) { if (value % 1 === 0) { return value; } }
-                    },
-                    afterBuildTicks: function (axis) {
-                        if (scaleConfig.max === 2869) { // B2 Specific
-                            axis.ticks = [0, 500, 1000, 1500, 2000, 2500, 2869].map(v => ({ value: v }));
-                        }
-                    }
-                }
-            }
-        }
-    });
-};
-
-
-// Override Profile Modal Open to load Chart
-const originalOpenProfile = window.openProfileModal;
-const originalCloseProfile = window.closeProfileModal;
-window.openProfileModal = function () {
-    if (typeof originalOpenProfile === 'function') {
-        originalOpenProfile();
-    } else {
-        document.getElementById('profileModal').style.display = 'flex';
-        document.body.classList.add('profile-modal-open');
-    }
-    if (window.hideProfileLoginNotice) window.hideProfileLoginNotice();
-    if (window.updatePremiumStatusDisplay) window.updatePremiumStatusDisplay();
-
-    // New: Init Chart
-    // Defer slightly to ensure modal is rendered
-    setTimeout(() => {
-        updateChart('total');
-    }, 100);
-};
-
-// FIX: Expose toggleProfileModal for HTML onclick
-window.toggleProfileModal = function () {
-    const modal = document.getElementById('profileModal');
-    if (modal.style.display === 'flex') {
-        window.closeProfileModal();
-    } else {
-        window.openProfileModal();
-    }
-};
-
-window.closeProfileModal = function () {
-    if (typeof originalCloseProfile === 'function') {
-        originalCloseProfile();
-    } else {
-        document.getElementById('profileModal').style.display = 'none';
-        document.body.classList.remove('profile-modal-open');
-    }
-    if (window.hideProfileLoginNotice) window.hideProfileLoginNotice();
-};
-
-// Expose openProfileModal (already defined but let's be explicit)
-// window.openProfileModal is defined above at line 1139
-
 
 // --- SAFE UI INIT (v2.37) ---
 function initUI() {
@@ -1445,87 +1233,11 @@ if ('serviceWorker' in navigator) {
     });
 
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service_worker.js', { updateViaCache: 'none' }).then(reg => {
-            console.log('Service Worker Registered!', reg);
-
-            // 1.5 Force check for updates immediately on load
-            reg.update().catch(e => console.log('SW initial update check failed', e));
-
-            // 2. Check for updates when app comes to foreground
-            document.addEventListener('visibilitychange', () => {
-                if (document.visibilityState === 'visible') {
-                    reg.update().catch(e => console.log('SW update check failed', e));
-                }
-            });
-        }).catch(err => console.log('Service Worker registration failed: ', err));
+        navigator.serviceWorker.register('./service_worker.js', { updateViaCache: 'none' })
+            .then(reg => console.log('Service Worker Registered!', reg))
+            .catch(err => console.log('Service Worker registration failed: ', err));
     });
 }
-
-// --- PWA INSTALL LOGIC ---
-let deferredPrompt;
-const installContainer = document.getElementById('installAppContainer');
-const installBtnHelper = document.getElementById('pwaInstallBtn'); // Help Modal
-const installBtnProfile = document.getElementById('profileInstallBtn'); // Profile Modal
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e;
-
-    console.log("PWA Install Prompt ready");
-
-    // Enable Helper Button
-    if (installBtnHelper) {
-        installBtnHelper.style.background = "#e17055"; // Orange
-        installBtnHelper.style.cursor = "pointer";
-        installBtnHelper.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
-    }
-    const desc = document.getElementById('pwaInstallDesc');
-
-
-    // Enable Profile Button
-    if (installBtnProfile) {
-        installBtnProfile.style.display = 'block';
-        installBtnProfile.style.background = "#e17055";
-        installBtnProfile.style.color = "white";
-        installBtnProfile.style.border = "none";
-    }
-});
-
-window.installApp = () => {
-    // If not ready, show alert or do nothing
-    if (!deferredPrompt) {
-        alert("このブラウザでは自動インストールが利用できません。\nブラウザのメニュー「ホーム画面に追加」などからインストールしてください。");
-        return;
-    }
-
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt');
-        } else {
-            console.log('User dismissed the A2HS prompt');
-        }
-        deferredPrompt = null;
-    });
-};
-
-if (installBtnHelper) installBtnHelper.addEventListener('click', installApp);
-if (installBtnProfile) installBtnProfile.addEventListener('click', installApp);
-
-window.addEventListener('appinstalled', () => {
-    console.log('PWA was installed');
-    if (installContainer) installContainer.style.display = 'none';
-    if (installBtnProfile) installBtnProfile.style.display = 'none';
-});
-// --- WELCOME & PWA ENHANCEMENTS ---
-// Removed duplicate 'welcomeDeferredPrompt' and listener.
-// We will misuse the existing 'deferredPrompt' from line 4588.
-
-// initWelcomeSequence logic moved to ui_manager.js
 
 // --- SHARE & QR LOGIC ---
 // openShareModal and shareApp moved to ui_manager.js

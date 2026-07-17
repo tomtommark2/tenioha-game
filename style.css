@@ -741,29 +741,6 @@ body.level-selector-open .level-selector {
     transform: translateY(-2px);
 }
 
-.auto-mode-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    /* Reduced gap */
-    padding: 5px 8px;
-    /* Compact padding */
-    background: transparent;
-    /* Transparent as requested */
-    border: none;
-    /* Border removed */
-    border-radius: 10px;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.3s;
-    /* Ensure alignment in flex/grid */
-    justify-content: center;
-}
-
-.auto-mode-container:hover {
-    background: #e9ecef;
-}
-
 /* PC/Global Toggle Layout */
 .toggle-container {
     display: flex;
@@ -778,50 +755,12 @@ body.level-selector-open .level-selector {
     /* Right align on PC */
 }
 
-.auto-checkbox {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #9c27b0;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
-}
-
-.auto-checkbox.checked {
-    background: #9c27b0;
-}
-
-.auto-checkbox.checked::after {
-    content: '✓';
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.auto-label {
-    font-size: 11px;
-    /* Compact font */
-    font-weight: bold;
-    color: #333;
-    white-space: nowrap;
-    /* Prevent text wrapping */
-}
-
 .study-mode-card {
     background: #fff;
     border: 1px solid #eceff7;
     border-radius: 12px;
     padding: 10px;
     margin-bottom: 10px;
-}
-
-.study-auto-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
 }
 
 .study-mode-card-title {
@@ -835,13 +774,6 @@ body.level-selector-open .level-selector {
     font-size: 11px;
     color: #8a92a6;
     line-height: 1.4;
-}
-
-.study-auto-toggle {
-    flex-shrink: 0;
-    background: #f8faff;
-    border: 1px solid #e2e7fb;
-    padding: 6px 10px;
 }
 
 .study-mode-modal {
@@ -948,13 +880,6 @@ body.level-selector-open .level-selector {
     margin-bottom: 12px;
     background: #fff;
     box-shadow: 0 12px 26px rgba(30, 42, 68, 0.07);
-}
-
-.study-auto-card {
-    border-color: #d9e8ff;
-    background:
-        radial-gradient(circle at top right, rgba(85, 103, 216, 0.08), transparent 36%),
-        #fff;
 }
 
 .study-mode-card-title {
@@ -4865,25 +4790,6 @@ body.profile-modal-open {
         flex-direction: column;
         align-items: flex-start !important;
         position: relative;
-    }
-
-    .auto-mode-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        border: none;
-        border-radius: 8px;
-        padding: 5px;
-        gap: 5px;
-        cursor: pointer;
-        box-sizing: border-box;
-        min-height: 40px;
-    }
-
-    #autoModeToggle {
-        position: relative;
-        left: 0;
     }
 
     .mode-buttons {

@@ -15,6 +15,37 @@ test('トップ画面が表示される', async ({ page }) => {
   await expect(page.locator('#meaningCard')).toBeVisible();
 });
 
+test('再起動時は端末で最後に選んだ学習レベルを優先する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    if (!sessionStorage.getItem('lastLevelResumeTestSeeded')) {
+      localStorage.setItem('vocabClickerSave', JSON.stringify({
+        currentLevel: 'junior',
+        currentMode: 'unlearned',
+        reviewMode: 'off',
+        wordStates: {},
+        srsData: {},
+        lastSaveTime: Date.now()
+      }));
+      sessionStorage.setItem('lastLevelResumeTestSeeded', 'true');
+    }
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  await expect(page.locator('#levelCurrentLabel')).toHaveText('中学');
+  await page.locator('#levelCurrentBtn').click();
+  await page.locator('.level-btn[data-level="basic"]').click();
+  await expect.poll(async () => page.evaluate(() => localStorage.getItem('vocabGame_lastLevel'))).toBe('basic');
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+  await expect.poll(async () => page.evaluate(() => window.gameState.currentLevel)).toBe('basic');
+  await expect(page.locator('#levelCurrentLabel')).toHaveText('基礎');
+  await expect(page.locator('.level-btn[data-level="basic"]')).toHaveClass(/active/);
+});
+
 test('ローカル開発ではAnalyticsを停止する', async ({ page }) => {
   await page.goto('/index.html', { waitUntil: 'load' });
 
@@ -200,6 +231,162 @@ test('モード切替ボタンが動作する', async ({ page }) => {
     await btn.click({ force: true });
     await expect(btn).toHaveClass(/active/);
   }
+});
+
+test('オート出題のUIと自動回答処理を公開しない', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+
+  await expect(page.locator('#autoModeToggle')).toHaveCount(0);
+  await expect(page.getByText('オート出題', { exact: true })).toHaveCount(0);
+  expect(await page.evaluate(() => typeof window.autoOpenMeaningCard)).toBe('undefined');
+});
+
+test('戻る操作は回答前の単語状態と出題位置をローカル保存まで復元する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  const before = await page.evaluate(() => {
+    const gs = window.gameState;
+    const word = gs.currentWord;
+    const key = window.getWordKeySafe(word, word.__sourceLevel || gs.currentLevel);
+    gs.wordStates[key] = 'weak';
+    gs.srsData[key] = {
+      ...(gs.srsData[key] || {}),
+      dueAt: Date.now() - 1000,
+      successCount: 1,
+      failCount: 2,
+      streak: 0,
+      reviewStep: 1,
+      scheduledIntervalDays: 1,
+      everWrong: true,
+      firstTryPerfect: false
+    };
+    gs.currentQuestionReason = 'manual-weak';
+    gs.isReviewWord = true;
+    window.updateDisplay();
+    window.saveGame();
+    return {
+      key,
+      word: word.word,
+      wordState: gs.wordStates[key],
+      srs: JSON.stringify(gs.srsData[key]),
+      actionCounts: JSON.stringify(gs.actionCounts),
+      interval: gs.learnedWordIntervals[key],
+      intervalLast: gs.learnedWordIntervals[`${key}_last`],
+      globalQuestionCount: gs.globalQuestionCount,
+      currentMode: gs.currentMode
+    };
+  });
+
+  await page.locator('#vocabCard').click();
+  await expect(page.locator('#undoBtn')).toBeEnabled();
+  await expect.poll(async () => page.evaluate((key) => {
+    const saved = JSON.parse(localStorage.getItem('vocabClickerSave'));
+    return saved.srsData[key].lastReviewedAt === window.gameState.srsData[key].lastReviewedAt;
+  }, before.key)).toBe(true);
+  await page.locator('#undoBtn').click();
+
+  const after = await page.evaluate((key) => {
+    const gs = window.gameState;
+    const saved = JSON.parse(localStorage.getItem('vocabClickerSave'));
+    return {
+      key,
+      word: gs.currentWord.word,
+      wordState: gs.wordStates[key],
+      srs: JSON.stringify(gs.srsData[key]),
+      actionCounts: JSON.stringify(gs.actionCounts),
+      interval: gs.learnedWordIntervals[key],
+      intervalLast: gs.learnedWordIntervals[`${key}_last`],
+      globalQuestionCount: gs.globalQuestionCount,
+      currentMode: gs.currentMode,
+      savedWordState: saved.wordStates[key],
+      savedGlobalQuestionCount: saved.globalQuestionCount
+    };
+  }, before.key);
+
+  expect(after).toMatchObject({
+    key: before.key,
+    word: before.word,
+    wordState: before.wordState,
+    srs: before.srs,
+    actionCounts: before.actionCounts,
+    interval: before.interval,
+    intervalLast: before.intervalLast,
+    globalQuestionCount: before.globalQuestionCount,
+    currentMode: before.currentMode,
+    savedWordState: before.wordState,
+    savedGlobalQuestionCount: before.globalQuestionCount
+  });
+});
+
+test('大規模学習データでも回答ホットパスを全状態コピーより軽く保つ', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  const metrics = await page.evaluate(() => {
+    const gs = window.gameState;
+    const seen = new Set();
+    let index = 0;
+    Object.entries(window.vocabularyDatabase).forEach(([level, words]) => {
+      (words || []).forEach(word => {
+        const key = window.getWordKeySafe(word, level);
+        if (seen.has(key)) return;
+        seen.add(key);
+        gs.wordStates[key] = index % 2 === 0 ? 'weak' : 'learned';
+        gs.srsData[key] = {
+          dueAt: Date.now() - (index % 1000),
+          stability: 2,
+          successCount: 2,
+          failCount: 1,
+          streak: 1,
+          lastReviewedAt: Date.now() - 86400000,
+          reviewStep: 2,
+          scheduledIntervalDays: 3,
+          isRelearning: false,
+          everWrong: true,
+          firstTryPerfect: false
+        };
+        index++;
+      });
+    });
+    gs.activeReviewLevels = Object.keys(window.vocabularyDatabase);
+    gs.posFilters = ['名', '動', '形', '副', '助', '前', '接', '代', 'other'];
+    window.invalidateReviewWordIndex();
+
+    const median = (values) => [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)];
+    const measure = (fn, count = 7) => {
+      const values = [];
+      for (let i = 0; i < count; i++) {
+        const start = performance.now();
+        fn();
+        values.push(performance.now() - start);
+      }
+      return median(values);
+    };
+
+    window.buildReviewQueueSnapshot();
+    const queueMs = measure(() => window.buildReviewQueueSnapshot());
+    const progressMs = measure(() => window.buildLearningProgressSnapshot());
+    const displayMs = measure(() => window.updateDisplay(), 5);
+    const fullCloneMs = measure(() => structuredClone(gs), 5);
+    const undoSnapshotMs = measure(() => window.saveState(), 5);
+    return { queueMs, progressMs, displayMs, fullCloneMs, undoSnapshotMs, wordCount: seen.size };
+  });
+
+  console.log('[hot-path]', metrics);
+  expect(metrics.wordCount).toBeGreaterThan(8000);
+  expect(metrics.queueMs).toBeLessThan(50);
+  expect(metrics.progressMs).toBeLessThan(30);
+  expect(metrics.displayMs).toBeLessThan(80);
+  expect(metrics.undoSnapshotMs).toBeLessThan(metrics.fullCloneMs * 0.6);
 });
 
 test('プロフィールモーダルを開閉できる', async ({ page }) => {
@@ -716,31 +903,6 @@ test('クールタイム中の苦手語を単語一覧から開いても復習�
     correct: { points: 0, pending: 0 },
     incorrect: { points: 0, pending: 0 },
   });
-});
-
-test('自動再生による正解では復習スコアを加点しない', async ({ page }) => {
-  await page.addInitScript(() => {
-    localStorage.setItem('vocabGame_skipWelcome', 'true');
-    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
-  });
-
-  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
-
-  const todayPoints = await page.evaluate(() => {
-    const gs = window.gameState;
-    const word = gs.currentWord;
-    const key = window.getWordKeySafe(word, word.__sourceLevel || gs.currentLevel);
-    gs.reviewScore = { total: 0, date: null, todayPoints: 0, todayReviewed: 0, todayCorrect: 0, history: {} };
-    gs.srsData[key] = { ...(gs.srsData[key] || {}), scheduledIntervalDays: 30 };
-    gs.currentQuestionReason = 'due-weak';
-    gs.meaningCardFlipped = false;
-    gs.autoMode = false;
-
-    window.autoOpenMeaningCard();
-    return gs.reviewScore.todayPoints;
-  });
-
-  expect(todayPoints).toBe(0);
 });
 
 test('ホームに今日と週の復習スコア、キューに明日の予定件数を表示する', async ({ page }) => {

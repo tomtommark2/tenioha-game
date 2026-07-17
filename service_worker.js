@@ -15,7 +15,6 @@ const ASSETS = [
     './js/utils.js',
     './js/update_manager.js',
     './js/ui_manager.js',
-    './js/chart_fallback.js',
     './js/firebase_app_v2.js',
     './data/vocabulary.js',
     './data/ipa_overrides.js'

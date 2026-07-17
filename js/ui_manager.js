@@ -322,6 +322,7 @@ window.selectWordbook = function (level) {
     } else {
         // Fallback to reload if game_logic not fully ready
         gameState.currentLevel = level;
+        localStorage.setItem('vocabGame_lastLevel', level);
 
         if (typeof saveGame === 'function') {
             saveGame();
@@ -653,92 +654,6 @@ window.openLearningLogModal = function () {
 };
 
 
-
-function renderRealChart(canvas) {
-    if (typeof Chart === 'undefined') return;
-    const ctx = canvas.getContext('2d');
-
-    const getCurrentPerfectTotal = () => {
-        const gs = window.gameState || (typeof gameState !== 'undefined' ? gameState : null);
-        const vDB = (typeof vocabularyDatabase !== 'undefined') ? vocabularyDatabase : (window.vocabularyDatabase || null);
-        if (!gs || !gs.wordStates || !vDB) return 0;
-
-        let total = 0;
-        ['junior', 'basic', 'daily', 'exam1'].forEach(cat => {
-            (vDB[cat] || []).forEach(w => {
-                const k = window.GameUtils.getWordKey(w, cat, vDB);
-                if (gs.wordStates[k] === 'perfect') total++;
-            });
-        });
-        return total;
-    };
-
-    // Destroy previous
-    if (window.myChartInstance) window.myChartInstance.destroy();
-
-    // Used for current day plot
-    const today = new Date();
-
-    const simpleLabels = [];
-    const simpleData = [];
-
-    if (gameState.dailyHistory) {
-        gameState.dailyHistory.slice(-30).forEach(h => {
-            simpleLabels.push(h.date ? h.date.slice(5) : '');
-            simpleData.push(h.total_learned ?? h.wordsLearned ?? 0);
-        });
-    }
-    simpleLabels.push((today.getMonth() + 1) + '/' + today.getDate());
-    simpleData.push(getCurrentPerfectTotal());
-
-    // Gradient
-    let grad = ctx.createLinearGradient(0, 0, 0, 200);
-    grad.addColorStop(0, "#6c5ce7");
-    grad.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-    window.myChartInstance = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: simpleLabels,
-            datasets: [
-                {
-                    label: '習得単語数',
-                    data: simpleData,
-                    borderColor: '#6c5ce7',
-                    backgroundColor: grad,
-                    fill: 'start',
-                    tension: 0, // Straight
-                    pointRadius: 5,
-                    pointBackgroundColor: '#6c5ce7',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    enabled: true,
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                    titleColor: '#333',
-                    bodyColor: '#6c5ce7',
-                    bodyFont: { weight: 'bold' }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: { maxTicksLimit: 10 }
-                },
-                y: { beginAtZero: true }
-            }
-        }
-    });
-}
-
-// Basic Chart Logic removed (renderMockChart)
 
 // --- OTHER MENU (New Toggle) ---
 window.toggleOtherMenu = function () {
