@@ -181,6 +181,12 @@ function renderMeaningMarkup(word) {
                 </div>
             `;
 }
+
+function markLearningContentReady() {
+    document.getElementById('vocabWord')?.removeAttribute('aria-busy');
+    document.getElementById('exampleSentence')?.removeAttribute('aria-busy');
+}
+
 var gameAudioContext = null; // Renamed to avoid collisions
 var wordSpeechTimer = null;
 var gameStateHistory = []; // Stack to store previous states
@@ -2627,6 +2633,7 @@ function showNextWord(reviewSnapshot = null) {
     document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
     document.getElementById('exampleSentence').textContent = word.example;
+    markLearningContentReady();
     document.getElementById('meaningCard').classList.remove('flipped');
 
     const vocabCard = document.getElementById('vocabCard');
@@ -2669,6 +2676,7 @@ function showWord(word) {
     document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
     document.getElementById('exampleSentence').textContent = word.example;
+    markLearningContentReady();
     updateQuestionReasonUI();
 
     // Re-bind speaker button for this word
@@ -2706,7 +2714,7 @@ function hideNoWordsMessage() {
         cardsArea.innerHTML = `
                     <div class="card vocab-card" id="vocabCard">
                         <div class="card-label">英単語カード</div>
-                        <div class="card-content" id="vocabWord">Loading...</div>
+                        <div class="card-content" id="vocabWord" aria-busy="true">単語を準備中…</div>
                         <div class="question-reason-label" id="questionReasonLabel" style="display:none;"></div>
                     </div>
                     <div class="card meaning-card" id="meaningCard">

@@ -10,9 +10,17 @@ function isIgnorableConsoleError(text) {
 }
 
 test('トップ画面が表示される', async ({ page }) => {
+  const htmlResponse = await page.request.get('/index.html');
+  const html = await htmlResponse.text();
+  expect(html).not.toContain('ファイルを読み込んでください');
+  expect(html).toContain('単語を準備中…');
+
   await page.goto('/index.html');
   await expect(page.locator('#vocabCard')).toBeVisible();
   await expect(page.locator('#meaningCard')).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.gameState?.currentWord?.word || null)).not.toBeNull();
+  await expect(page.locator('#vocabWord')).not.toHaveAttribute('aria-busy');
+  await expect(page.locator('#exampleSentence')).not.toHaveAttribute('aria-busy');
 });
 
 test('再起動時は端末で最後に選んだ学習レベルを優先する', async ({ context, page }) => {

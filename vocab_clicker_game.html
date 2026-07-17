@@ -14,7 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0718.0245">
+    <link rel="stylesheet" href="style.css?v=2026.0718.0255">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0718.0255" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0718.0255" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0718.0255" as="script">
 </head>
 
 <body>
@@ -397,7 +400,7 @@
                 <div class="cards-area" id="cardsArea">
                     <div class="card vocab-card" id="vocabCard">
                         <div class="card-label">英単語カード</div>
-                        <div class="card-content" id="vocabWord">ファイルを読み込んでください</div>
+                        <div class="card-content" id="vocabWord" aria-busy="true">単語を準備中…</div>
                         <div class="question-reason-label" id="questionReasonLabel" style="display:none;"></div>
                     </div>
 
@@ -416,7 +419,7 @@
                     <button class="speaker-btn" id="speakerBtn" aria-label="例文を再生"><span class="speaker-icon" aria-hidden="true"></span></button>
                     <div class="example-text">
                         <div class="example-label">例文</div>
-                        <div class="example-sentence" id="exampleSentence">ファイルを読み込んでください</div>
+                        <div class="example-sentence" id="exampleSentence" aria-busy="true">例文を準備中…</div>
                     </div>
                     <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled><span class="undo-icon" aria-hidden="true"></span>戻る</button>
                 </div>
@@ -425,8 +428,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0718.0245"></script>
-<script src="data/ipa_overrides.js?v=2026.0718.0245"></script>
+    <script src="data/vocabulary.js?v=2026.0718.0255"></script>
+<script src="data/ipa_overrides.js?v=2026.0718.0255"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -888,16 +891,16 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2026.0718.0245"></script>
-    <script src="js/update_manager.js?v=2026.0718.0245"></script>
-    <script src="js/config.js?v=2026.0718.0245"></script>
-    <script src="data/announcements.js?v=2026.0718.0245"></script>
-    <script src="js/utils.js?v=2026.0718.0245"></script>
-    <script src="js/stats_engine.js?v=2026.0718.0245"></script>
+    <script src="js/version.js?v=2026.0718.0255"></script>
+    <script src="js/update_manager.js?v=2026.0718.0255"></script>
+    <script src="js/config.js?v=2026.0718.0255"></script>
+    <script src="data/announcements.js?v=2026.0718.0255"></script>
+    <script src="js/utils.js?v=2026.0718.0255"></script>
+    <script src="js/stats_engine.js?v=2026.0718.0255"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/game_logic.js?v=2026.0718.0245"></script>
-    <script src="js/ui_manager.js?v=2026.0718.0245"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.0245"></script>
+    <script src="js/game_logic.js?v=2026.0718.0255"></script>
+    <script src="js/ui_manager.js?v=2026.0718.0255"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.0255"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
