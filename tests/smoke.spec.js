@@ -15,10 +15,10 @@ test('トップ画面が表示される', async ({ page }) => {
   await expect(page.locator('#meaningCard')).toBeVisible();
 });
 
-test('再起動時は端末で最後に選んだ学習レベルを優先する', async ({ page }) => {
-  await page.addInitScript(() => {
+test('再起動時は端末で最後に選んだ学習レベルを優先する', async ({ context, page }) => {
+  await context.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
-    if (!sessionStorage.getItem('lastLevelResumeTestSeeded')) {
+    if (!localStorage.getItem('vocabClickerSave')) {
       localStorage.setItem('vocabClickerSave', JSON.stringify({
         currentLevel: 'junior',
         currentMode: 'unlearned',
@@ -27,7 +27,6 @@ test('再起動時は端末で最後に選んだ学習レベルを優先する',
         srsData: {},
         lastSaveTime: Date.now()
       }));
-      sessionStorage.setItem('lastLevelResumeTestSeeded', 'true');
     }
   });
 
@@ -36,14 +35,34 @@ test('再起動時は端末で最後に選んだ学習レベルを優先する',
 
   await expect(page.locator('#levelCurrentLabel')).toHaveText('中学');
   await page.locator('#levelCurrentBtn').click();
-  await page.locator('.level-btn[data-level="basic"]').click();
-  await expect.poll(async () => page.evaluate(() => localStorage.getItem('vocabGame_lastLevel'))).toBe('basic');
+  await page.locator('.level-btn[data-level="daily"]').click();
+  await expect.poll(async () => page.evaluate(() => localStorage.getItem('vocabGame_lastLevel'))).toBe('daily');
 
-  await page.reload({ waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
-  await expect.poll(async () => page.evaluate(() => window.gameState.currentLevel)).toBe('basic');
-  await expect(page.locator('#levelCurrentLabel')).toHaveText('基礎');
-  await expect(page.locator('.level-btn[data-level="basic"]')).toHaveClass(/active/);
+  await page.close();
+  const reopenedPage = await context.newPage();
+  await reopenedPage.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(reopenedPage.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+  await expect.poll(async () => reopenedPage.evaluate(() => window.gameState.currentLevel)).toBe('daily');
+  await expect(reopenedPage.locator('#levelCurrentLabel')).toHaveText('標準');
+  await expect(reopenedPage.locator('.level-btn[data-level="daily"]')).toHaveClass(/active/);
+});
+
+test('通常保存は明示的に選んだ最終レベルを上書きしない', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+
+  await page.locator('#levelCurrentBtn').click();
+  await page.locator('.level-btn[data-level="exam1"]').click();
+  await expect.poll(async () => page.evaluate(() => localStorage.getItem('vocabGame_lastLevel'))).toBe('exam1');
+
+  await page.evaluate(() => {
+    window.gameState.currentLevel = 'basic';
+    window.saveGame();
+  });
+
+  await expect.poll(async () => page.evaluate(() => localStorage.getItem('vocabGame_lastLevel'))).toBe('exam1');
 });
 
 test('ローカル開発ではAnalyticsを停止する', async ({ page }) => {

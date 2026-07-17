@@ -98,6 +98,7 @@ const LAST_LEVEL_STORAGE_KEY = 'vocabGame_lastLevel';
 
 function persistLastLevel(level) {
     if (level && vocabularyDatabase[level]) {
+        // This preference records explicit navigation, not transient save state.
         localStorage.setItem(LAST_LEVEL_STORAGE_KEY, level);
     }
 }
@@ -1542,6 +1543,7 @@ window.openWordFromList = function (level, key) {
 
     if (gameState.currentLevel !== safeLevel) {
         gameState.currentLevel = safeLevel;
+        persistLastLevel(safeLevel);
         gameState.decks = null;
         document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
         const activeBtn = document.querySelector(`.level-btn[data-level="${safeLevel}"]`);
@@ -2024,7 +2026,6 @@ function saveGame() {
         clearTimeout(scheduledGameSaveTimer);
         scheduledGameSaveTimer = null;
     }
-    persistLastLevel(gameState.currentLevel);
     const data = {
         points: gameState.points,
         wordStates: gameState.wordStates,
