@@ -172,10 +172,12 @@ var gameStateHistory = []; // Stack to store previous states
 // Save current state to history (Max 1 step for now)
 function saveState() {
     // Deep copy gameState
-    const stateSnapshot = JSON.parse(JSON.stringify(gameState));
+    const stateSnapshot = typeof structuredClone === 'function'
+        ? structuredClone(gameState)
+        : JSON.parse(JSON.stringify(gameState));
     gameStateHistory.push(stateSnapshot);
-    // Limit history to 1 step as per requirement (can be increased)
-    if (gameStateHistory.length > 5) {
+    // Undo is intentionally one step; retaining older full snapshots only adds memory pressure.
+    if (gameStateHistory.length > 1) {
         gameStateHistory.shift();
     }
     updateUndoButton();
@@ -417,8 +419,7 @@ function init() {
     migrateSrsSchemaIfNeeded();
     bootstrapSrsFromWordStates();
 
-    updateDisplay();
-    updateDisplay();
+    const initialReviewSnapshot = updateDisplay();
     // Initialize Daily Stats date if missing
     checkDailyReset();
 
@@ -427,7 +428,7 @@ function init() {
         initTrialSystem();
     }
 
-    showNextWord();
+    showNextWord(initialReviewSnapshot);
 }
 
 function getLocalDateKey(date = new Date()) {
@@ -667,8 +668,8 @@ function switchLevel(level) {
 
     loadVocabularyForLevel();
     initializeWordStates();
-    updateDisplay();
-    showNextWord();
+    const reviewSnapshot = updateDisplay();
+    showNextWord(reviewSnapshot);
     saveGame();
 }
 
@@ -993,8 +994,9 @@ function renderReviewLevelCheckboxes() {
             const selected = Array.from(host.querySelectorAll('input[data-review-level]:checked')).map(i => i.dataset.reviewLevel);
             gameState.activeReviewLevels = selected.length ? selected : ['daily', 'exam1'];
             saveGame();
-            updateReviewQueueBadge();
-            updateReviewProgressUI();
+            const reviewSnapshot = buildReviewQueueSnapshot();
+            updateReviewQueueBadge(reviewSnapshot);
+            updateReviewProgressUI(reviewSnapshot);
         });
     });
 }
@@ -1024,9 +1026,9 @@ window.setReviewMode = function (mode) {
     gameState.reviewMode = mode;
     saveGame();
     updateModeButtons();
-    updateReviewQueueBadge();
-    updateReviewProgressUI();
-    showNextWord();
+    const reviewSnapshot = buildReviewQueueSnapshot();
+    updateReviewQueueBadge(reviewSnapshot);
+    showNextWord(reviewSnapshot);
 };
 
 window.openReviewLevelSettings = function () {
@@ -1481,7 +1483,7 @@ function isRetiredWordByKey(key) {
     return !!(s.firstTryPerfect && !s.everWrong);
 }
 
-function getReviewWordsByModeAcrossLevels(mode) {
+function getReviewQueueCandidatesAcrossLevels() {
     const levels = gameState.activeReviewLevels || [];
     let out = [];
     const seenKeys = new Set();
@@ -1495,16 +1497,19 @@ function getReviewWordsByModeAcrossLevels(mode) {
             const key = getWordKeySafe(wrapped, level);
             if (seenKeys.has(key)) return;
             if (isRetiredWordByKey(key)) return; // first-try perfect words are permanently excluded
-            if (gameState.wordStates[key] === mode) {
+            const state = gameState.wordStates[key];
+            if (state === 'weak' || state === 'learned') {
                 seenKeys.add(key);
-                out.push(wrapped);
+                out.push({ word: wrapped, key, state });
             }
         });
     });
-    return filterWordsByPOS(out);
+
+    const allowedWords = new Set(filterWordsByPOS(out.map(item => item.word)));
+    return out.filter(item => allowedWords.has(item.word));
 }
 
-function getCurrentReviewStats() {
+function buildReviewQueueSnapshot() {
     const now = Date.now();
     const endOfDay = new Date();
     endOfDay.setHours(23, 59, 59, 999);
@@ -1517,26 +1522,39 @@ function getCurrentReviewStats() {
     let dueNow = 0;
     let dueToday = 0;
     let dueTomorrow = 0;
+    const weakDue = [];
+    const learnedDue = [];
 
-    const pool = [...getReviewWordsByModeAcrossLevels('weak'), ...getReviewWordsByModeAcrossLevels('learned')];
-    const seenKeys = new Set();
-    pool.forEach(v => {
-        const key = getWordKeySafe(v, v.__sourceLevel);
-        if (seenKeys.has(key)) return;
-        seenKeys.add(key);
-        const s = ensureSrsEntry(key);
+    getReviewQueueCandidatesAcrossLevels().forEach(item => {
+        const s = ensureSrsEntry(item.key);
         if (s.dueAt <= now) dueNow++;
         if (s.dueAt <= endMs) dueToday++;
         if (s.dueAt >= startOfTomorrow && s.dueAt <= endTomorrowMs) dueTomorrow++;
+        if (s.dueAt <= now) {
+            const dueItem = { word: item.word, dueAt: s.dueAt || 0 };
+            if (item.state === 'weak') weakDue.push(dueItem);
+            else learnedDue.push(dueItem);
+        }
     });
 
-    return { dueNow, dueToday, dueTomorrow };
+    const byDue = (a, b) => a.dueAt - b.dueAt;
+    weakDue.sort(byDue);
+    learnedDue.sort(byDue);
+
+    return {
+        dueWords: [...weakDue, ...learnedDue].map(item => item.word),
+        stats: { dueNow, dueToday, dueTomorrow }
+    };
 }
 
-function updateReviewQueueBadge() {
+function getCurrentReviewStats(snapshot = null) {
+    return (snapshot || buildReviewQueueSnapshot()).stats;
+}
+
+function updateReviewQueueBadge(snapshot = null) {
     const el = document.getElementById('dueCountBadge');
     if (!el) return;
-    const s = getCurrentReviewStats();
+    const s = getCurrentReviewStats(snapshot);
     const display = s.dueNow > 999 ? '999+' : s.dueNow;
     el.textContent = `復習 ${display}`;
     el.style.background = s.dueNow > 0 ? '#e74c3c' : '#95a5a6';
@@ -1545,22 +1563,8 @@ function updateReviewQueueBadge() {
     el.title = `要復習: ${s.dueNow} / 今日予定: ${s.dueToday}`;
 }
 
-function getDueReviewWordsPool() {
-    const weakDue = getDueOnlyPool('weak', getReviewWordsByModeAcrossLevels('weak'));
-    const learnedDue = getDueOnlyPool('learned', getReviewWordsByModeAcrossLevels('learned'));
-
-    // Deterministic order: weak first, then learned; each by dueAt asc
-    const byDue = (a, b) => {
-        const ak = getWordKeySafe(a, a.__sourceLevel || gameState.currentLevel);
-        const bk = getWordKeySafe(b, b.__sourceLevel || gameState.currentLevel);
-        const ad = (ensureSrsEntry(ak).dueAt || 0);
-        const bd = (ensureSrsEntry(bk).dueAt || 0);
-        return ad - bd;
-    };
-
-    weakDue.sort(byDue);
-    learnedDue.sort(byDue);
-    return [...weakDue, ...learnedDue];
+function getDueReviewWordsPool(snapshot = null) {
+    return (snapshot || buildReviewQueueSnapshot()).dueWords;
 }
 
 function playQueuePopAnimation(container, text, kind = 'success') {
@@ -1620,7 +1624,7 @@ function flashReviewQueueDecrease(total) {
     }
 }
 
-function updateReviewProgressUI() {
+function updateReviewProgressUI(snapshot = null) {
     const wrap = document.getElementById('reviewProgressWrap');
     const list = document.getElementById('reviewQueuePreview');
     const label = document.getElementById('reviewProgressLabel');
@@ -1630,12 +1634,15 @@ function updateReviewProgressUI() {
     const tomorrowForecast = document.getElementById('reviewTomorrowForecast');
     if (!wrap || !list || !label) return;
 
-    const dueWords = getDueReviewWordsPool();
-    const stats = getCurrentReviewStats();
+    const reviewSnapshot = snapshot || buildReviewQueueSnapshot();
+    const dueWords = reviewSnapshot.dueWords;
+    const stats = reviewSnapshot.stats;
     const total = dueWords.length;
     const prevCount = (typeof gameState.lastReviewQueueCount === 'number') ? gameState.lastReviewQueueCount : total;
 
-    const newHeadKey = total > 0 ? getWordKey(dueWords[0], gameState.currentLevel) : null;
+    const newHeadKey = total > 0
+        ? getWordKeySafe(dueWords[0], dueWords[0].__sourceLevel || gameState.currentLevel)
+        : null;
     const oldHeadKey = gameState.lastReviewQueueHeadKey;
 
     const modeMap = {
@@ -2270,7 +2277,7 @@ function getWordFromDeck(category, sourceWords) {
     return gameState.decks[category].pop();
 }
 
-function showNextWord() {
+function showNextWord(reviewSnapshot = null) {
     gameState.meaningCardFlipped = false;
     clearAutoTimer();
 
@@ -2320,7 +2327,8 @@ function showNextWord() {
             // - reviewMode=on: review 100%
             // - reviewMode=random: review:new = 7:3 cycle
             // - reviewMode=off: new 100%
-            const dueQueue = getDueReviewWordsPool();
+            reviewSnapshot = reviewSnapshot || buildReviewQueueSnapshot();
+            const dueQueue = getDueReviewWordsPool(reviewSnapshot);
             const newPool = getWordsByMode(mode);
 
             let pickReview = false;
@@ -2422,7 +2430,7 @@ function showNextWord() {
 
     if (words.length === 0) {
         showNoWordsMessage();
-        updateReviewProgressUI();
+        updateReviewProgressUI(reviewSnapshot || buildReviewQueueSnapshot());
         return;
     }
 
@@ -2470,7 +2478,7 @@ function showNextWord() {
 
     checkLevelUp();
     // Keep preview aligned with the next actual pick
-    updateReviewProgressUI();
+    updateReviewProgressUI(reviewSnapshot || buildReviewQueueSnapshot());
 }
 
 // NEW: Function to show a SPECIFIC word (for Undo/Restore)
@@ -2688,8 +2696,8 @@ function handleVocabCardClick() {
         playAnimation('idle'); // Standard
     }
 
-    updateDisplay();
-    showNextWord();
+    const reviewSnapshot = updateDisplay();
+    showNextWord(reviewSnapshot);
     animateCharacter();
     saveGame();
 }
@@ -2782,22 +2790,24 @@ function addNextWordSet() {
     loadVocabularyForLevel();
     initializeWordStates();
     showCoinPopup(`🎉 レベルアップ！語彙レベル ${gameState.vocabLevel}`, true);
-    updateDisplay();
+    const reviewSnapshot = updateDisplay();
     saveGame();
-    showNextWord();
+    showNextWord(reviewSnapshot);
 }
 
 function animateCharacter() {
     // Character UI removed. No-op.
 }
 
-function updateDisplay() {
+function updateDisplay(reviewSnapshot = null) {
+    const snapshot = reviewSnapshot || buildReviewQueueSnapshot();
     updateWordStats();
     updateModeButtons();
     updateProgress();
-    updateReviewQueueBadge();
-    updateReviewProgressUI();
+    updateReviewQueueBadge(snapshot);
+    updateReviewProgressUI(snapshot);
     renderWordList();
+    return snapshot;
 }
 
 // --- RPG Animation Logic ---
