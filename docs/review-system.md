@@ -13,7 +13,7 @@ Scheduled review intervals are:
 
 ## Review Score
 
-The score rewards facing scheduled weaknesses. New words, manual category study, words opened from the word list, and automatic playback do not score.
+The score rewards facing scheduled weaknesses. A word scores whenever it was already due when shown, whether it came from the review queue, a manual `weak`/`learned` category, or the word list. New words, cooldown words studied early, `perfect` category study, and automatic playback do not score.
 
 Every answer to a scheduled review earns points:
 
@@ -33,7 +33,8 @@ Repeated incorrect answers continue to earn 1 point because each due review atte
 - Client and Cloud Functions use the same fixed point table.
 - Cloud Functions use the current JST date instead of trusting a client-provided date.
 - Only word keys generated from the current vocabulary database can score.
-- Manual study, word-list study, and automatic playback never score.
+- Entry path does not affect scoring; the word must be due when the question is shown.
+- New words, cooldown words studied early, `perfect` category study, and automatic playback never score.
 - There is no server-side elapsed-time, daily, or weekly score cap.
 
 ## Storage

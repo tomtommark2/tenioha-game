@@ -960,6 +960,16 @@ function isScheduledReviewQuestion() {
         || gameState.currentQuestionReason === 'due-learned';
 }
 
+function getReviewQuestionReasonForWord(key, state, manualReason = null) {
+    if (state !== 'weak' && state !== 'learned') return manualReason;
+
+    const dueAt = Number(ensureSrsEntry(key).dueAt);
+    if (Number.isFinite(dueAt) && dueAt <= Date.now()) {
+        return state === 'weak' ? 'due-weak' : 'due-learned';
+    }
+    return manualReason;
+}
+
 function pruneReviewScoreHistory(history, keepDays = 90) {
     const keys = Object.keys(history).sort();
     keys.slice(0, Math.max(0, keys.length - keepDays)).forEach(key => delete history[key]);
@@ -1562,9 +1572,11 @@ window.openWordFromList = function (level, key) {
         initializeWordStates();
     }
 
+    const state = gameState.wordStates[decodedKey];
+    const questionReason = getReviewQuestionReasonForWord(decodedKey, state);
     hideNoWordsMessage();
-    gameState.isReviewWord = false;
-    gameState.currentQuestionReason = null;
+    gameState.isReviewWord = questionReason === 'due-weak' || questionReason === 'due-learned';
+    gameState.currentQuestionReason = questionReason;
     gameState.currentWordIndex = 0;
     gameState.currentWord = word;
     gameState.lastShownWordKey = getWordKey(word, safeLevel);
@@ -2489,7 +2501,9 @@ function showNextWord(reviewSnapshot = null) {
                     shouldShowReview = true;
                     reviewType = 'weak';
                 }
-                gameState.currentQuestionReason = mode === 'weak' ? 'manual-weak' : 'manual-learned';
+                const key = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
+                const manualReason = mode === 'weak' ? 'manual-weak' : 'manual-learned';
+                gameState.currentQuestionReason = getReviewQuestionReasonForWord(key, mode, manualReason);
             } else {
                 words = [];
             }

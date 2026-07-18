@@ -861,7 +861,7 @@ test('大型アップデート画像はiPhone SE幅でも操作可能な範囲�
   expect(bounds.y + bounds.height).toBeLessThanOrEqual(667);
 });
 
-test('手動学習は復習スコアに加点せず不正解の予定復習は1点', async ({ page }) => {
+test('期限前の手動学習は復習スコアに加点せず不正解の予定復習は1点', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -885,6 +885,49 @@ test('手動学習は復習スコアに加点せず不正解の予定復習は1�
   });
 
   expect(result).toEqual({ manual: 0, incorrect: 1, todayPoints: 1 });
+});
+
+test('期限到来済みの苦手語は苦手ゾーンから出題しても復習扱いになる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+
+  const result = await page.evaluate(() => {
+    const gs = window.gameState;
+    const target = window.vocabulary[0];
+    const level = target.__sourceLevel || gs.currentLevel;
+    const targetKey = window.getWordKeySafe(target, level);
+
+    window.vocabulary.forEach((word) => {
+      const wordLevel = word.__sourceLevel || gs.currentLevel;
+      gs.wordStates[window.getWordKeySafe(word, wordLevel)] = 'unlearned';
+    });
+    gs.wordStates[targetKey] = 'weak';
+    gs.srsData[targetKey] = {
+      ...(gs.srsData[targetKey] || {}),
+      dueAt: Date.now() - 1000,
+      scheduledIntervalDays: 3,
+      isRelearning: false,
+    };
+    gs.currentMode = 'weak';
+    gs.decks = null;
+
+    window.showNextWord();
+
+    return {
+      targetKey,
+      wordKey: window.getWordKeySafe(gs.currentWord, gs.currentWord.__sourceLevel || gs.currentLevel),
+      reason: gs.currentQuestionReason,
+      isReviewWord: gs.isReviewWord,
+    };
+  });
+
+  expect(result.wordKey).toBe(result.targetKey);
+  expect(result.reason).toBe('due-weak');
+  expect(result.isReviewWord).toBe(true);
 });
 
 test('クールタイム中の苦手語を単語一覧から開いても復習スコアに加点しない', async ({ page }) => {
@@ -943,6 +986,57 @@ test('クールタイム中の苦手語を単語一覧から開いても復習�
     incorrectReason: null,
     correct: { points: 0, pending: 0 },
     incorrect: { points: 0, pending: 0 },
+  });
+});
+
+test('期限到来済みの苦手語は単語一覧から開いても復習スコアに加点する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+
+  const result = await page.evaluate(() => {
+    const gs = window.gameState;
+    const word = gs.currentWord;
+    const level = word.__sourceLevel || gs.currentLevel;
+    const key = window.getWordKeySafe(word, level);
+    gs.wordStates[key] = 'weak';
+    gs.srsData[key] = {
+      ...(gs.srsData[key] || {}),
+      dueAt: Date.now() - 1000,
+      scheduledIntervalDays: 3,
+      isRelearning: false,
+    };
+    gs.reviewScore = {
+      total: 0,
+      date: window.getLocalDateKey(),
+      todayPoints: 0,
+      todayReviewed: 0,
+      todayCorrect: 0,
+      history: {},
+      pendingEvents: [],
+    };
+
+    window.openWordFromList(encodeURIComponent(level), encodeURIComponent(key));
+    const reason = gs.currentQuestionReason;
+    const isReviewWord = gs.isReviewWord;
+    window.handleVocabCardClick();
+
+    return {
+      reason,
+      isReviewWord,
+      points: gs.reviewScore.todayPoints,
+      pending: gs.reviewScore.pendingEvents.length,
+    };
+  });
+
+  expect(result).toEqual({
+    reason: 'due-weak',
+    isReviewWord: true,
+    points: 3,
+    pending: 1,
   });
 });
 
