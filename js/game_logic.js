@@ -667,8 +667,7 @@ function setupEventListeners() {
 
             const mode = btn.dataset.mode;
             gameState.currentMode = mode;
-            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            updateModeButtons();
             showNextWord();
             saveGame();
         });
@@ -3117,10 +3116,9 @@ function updateModeButtons() {
     }
 
     document.querySelectorAll('.mode-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.mode === gameState.currentMode) {
-            btn.classList.add('active');
-        }
+        const selected = btn.dataset.mode === gameState.currentMode;
+        btn.classList.toggle('active', selected);
+        btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
     });
 
     // Random mode retired
@@ -3128,13 +3126,24 @@ function updateModeButtons() {
     const randomNotice = document.getElementById('randomNotice');
     if (randomNotice) randomNotice.style.display = 'none';
     const lockModeSelect = gameState.reviewMode === 'on';
+    const modeButtonsShell = document.getElementById('modeButtonsShell');
+    const modeSelectionLock = document.getElementById('modeSelectionLock');
+    if (modeButtonsShell) {
+        modeButtonsShell.classList.toggle('is-locked', lockModeSelect);
+        modeButtonsShell.setAttribute('aria-disabled', lockModeSelect ? 'true' : 'false');
+    }
+    if (modeSelectionLock) {
+        modeSelectionLock.setAttribute('aria-hidden', lockModeSelect ? 'false' : 'true');
+    }
     document.querySelectorAll('.mode-btn').forEach(btn => {
         if (lockModeSelect) {
             btn.classList.add('disabled');
             btn.disabled = true;
+            btn.title = '復習だけモード中は分類を選べません';
         } else {
             btn.classList.remove('disabled');
             btn.disabled = false;
+            btn.removeAttribute('title');
         }
     });
 

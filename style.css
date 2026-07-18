@@ -6097,6 +6097,14 @@ body.profile-modal-open {
     --picto-url: url("assets/icons/share-2.svg");
 }
 
+.icon-lock {
+    --picto-url: url("assets/icons/lock.svg");
+}
+
+.icon-circle-check {
+    --picto-url: url("assets/icons/circle-check-big.svg");
+}
+
 .app-picto.icon-book::before,
 .app-picto.icon-check::before,
 .app-picto.icon-star::before,
@@ -6105,7 +6113,9 @@ body.profile-modal-open {
 .app-picto.icon-phone::before,
 .app-picto.icon-diamond::before,
 .app-picto.icon-mail::before,
-.app-picto.icon-share::before {
+.app-picto.icon-share::before,
+.app-picto.icon-lock::before,
+.app-picto.icon-circle-check::before {
     width: 100% !important;
     height: 100% !important;
     border: 0 !important;
@@ -6126,7 +6136,9 @@ body.profile-modal-open {
 .app-picto.icon-phone::after,
 .app-picto.icon-diamond::after,
 .app-picto.icon-mail::after,
-.app-picto.icon-share::after {
+.app-picto.icon-share::after,
+.app-picto.icon-lock::after,
+.app-picto.icon-circle-check::after {
     display: none !important;
 }
 
@@ -6514,5 +6526,161 @@ body.profile-modal-open {
     .rpg-inline .review-score-summary {
         left: 72px;
         width: 50px;
+    }
+}
+
+/* Classification controls: explicit selected and review-locked states. */
+.mode-buttons-shell {
+    position: relative;
+    width: max-content;
+    max-width: 100%;
+}
+
+.mode-buttons-shell .mode-buttons {
+    transform: none !important;
+}
+
+.mode-btn {
+    overflow: visible;
+}
+
+.mode-active-label {
+    position: absolute !important;
+    top: -21px;
+    right: -2px;
+    left: -2px;
+    z-index: 3 !important;
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    height: 23px;
+    border-radius: 10px 10px 3px 3px;
+    background: #654be3;
+    color: #fff;
+    font-family: 'Noto Sans JP', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 -2px 8px rgba(55, 36, 145, 0.22);
+}
+
+.mode-selected-check {
+    position: absolute !important;
+    right: -6px;
+    bottom: -8px;
+    z-index: 4 !important;
+    display: none !important;
+    width: 23px !important;
+    height: 23px !important;
+    padding: 4px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #654be3;
+    color: #fff;
+    box-shadow: 0 5px 11px rgba(55, 36, 145, 0.28);
+}
+
+.mode-selected-check::before {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+.mode-btn.active {
+    z-index: 2;
+    border-color: #654be3 !important;
+    background: #f3f0ff !important;
+    box-shadow:
+        0 0 0 3px rgba(124, 92, 255, 0.24),
+        0 12px 24px rgba(45, 27, 129, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.98) !important;
+}
+
+.mode-btn.active .mode-active-label,
+.mode-btn.active .mode-selected-check {
+    display: flex !important;
+}
+
+.mode-selection-lock {
+    position: absolute;
+    inset: -7px -6px -8px;
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 8px;
+    border: 1.5px dashed rgba(101, 75, 227, 0.72);
+    border-radius: 16px;
+    background: rgba(248, 246, 255, 0.88);
+    color: #47359d;
+    text-align: center;
+    box-shadow: 0 10px 24px rgba(38, 24, 106, 0.13);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.mode-lock-picto {
+    width: 29px;
+    height: 29px;
+    color: #654be3;
+}
+
+.mode-lock-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.25;
+}
+
+.mode-lock-copy strong {
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.mode-lock-copy > span {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.mode-buttons-shell.is-locked {
+    cursor: not-allowed;
+}
+
+.mode-buttons-shell.is-locked .mode-buttons {
+    pointer-events: none;
+}
+
+.mode-buttons-shell.is-locked .mode-btn {
+    opacity: 0.42;
+    filter: saturate(0.46);
+    box-shadow: none !important;
+}
+
+.mode-buttons-shell.is-locked .mode-active-label,
+.mode-buttons-shell.is-locked .mode-selected-check {
+    display: none !important;
+}
+
+.mode-buttons-shell.is-locked .mode-selection-lock {
+    display: flex;
+}
+
+@media (min-width: 769px) {
+    .mode-buttons-shell {
+        transform: translateY(20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .mode-buttons-shell {
+        width: 100%;
+        transform: translateY(-8px);
+    }
+
+    .mode-selection-lock {
+        inset: -7px -4px -8px;
     }
 }

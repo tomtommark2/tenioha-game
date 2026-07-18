@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0718.0315">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0718.0315" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0718.0315" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0718.0315" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0718.1138">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0718.1138" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0718.1138" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0718.1138" as="script">
 </head>
 
 <body>
@@ -234,27 +234,44 @@
                     <!-- Toggles Moved to Header -->
 
                     <!-- Mode Buttons -->
-                    <div class="mode-buttons">
-                        <button class="mode-btn unlearned active" data-mode="unlearned" id="unlearnedBtn">
-                            <span class="mode-picto app-picto icon-book" aria-hidden="true"></span>
-                            <span>未学習</span>
-                            <span class="mode-count" id="unlearnedCount">0</span>
-                        </button>
-                        <button class="mode-btn weak" data-mode="weak" id="weakBtn">
-                            <span class="mode-picto app-picto icon-target" aria-hidden="true"></span>
-                            <span>苦手</span>
-                            <span class="mode-count" id="weakCount">0</span>
-                        </button>
-                        <button class="mode-btn learned" data-mode="learned" id="learnedBtn">
-                            <span class="mode-picto app-picto icon-check" aria-hidden="true"></span>
-                            <span>得意</span>
-                            <span class="mode-count" id="learnedCount">0</span>
-                        </button>
-                        <button class="mode-btn perfect" data-mode="perfect" id="perfectBtn">
-                            <span class="mode-picto app-picto icon-star" aria-hidden="true"></span>
-                            <span>完璧</span>
-                            <span class="mode-count" id="perfectCount">0</span>
-                        </button>
+                    <div class="mode-buttons-shell" id="modeButtonsShell">
+                        <div class="mode-buttons" role="group" aria-label="学習する分類">
+                            <button class="mode-btn unlearned active" data-mode="unlearned" id="unlearnedBtn" aria-pressed="true">
+                                <span class="mode-active-label">出題中</span>
+                                <span class="mode-picto app-picto icon-book" aria-hidden="true"></span>
+                                <span>未学習</span>
+                                <span class="mode-count" id="unlearnedCount">0</span>
+                                <span class="mode-selected-check app-picto icon-circle-check" aria-hidden="true"></span>
+                            </button>
+                            <button class="mode-btn weak" data-mode="weak" id="weakBtn" aria-pressed="false">
+                                <span class="mode-active-label">出題中</span>
+                                <span class="mode-picto app-picto icon-target" aria-hidden="true"></span>
+                                <span>苦手</span>
+                                <span class="mode-count" id="weakCount">0</span>
+                                <span class="mode-selected-check app-picto icon-circle-check" aria-hidden="true"></span>
+                            </button>
+                            <button class="mode-btn learned" data-mode="learned" id="learnedBtn" aria-pressed="false">
+                                <span class="mode-active-label">出題中</span>
+                                <span class="mode-picto app-picto icon-check" aria-hidden="true"></span>
+                                <span>得意</span>
+                                <span class="mode-count" id="learnedCount">0</span>
+                                <span class="mode-selected-check app-picto icon-circle-check" aria-hidden="true"></span>
+                            </button>
+                            <button class="mode-btn perfect" data-mode="perfect" id="perfectBtn" aria-pressed="false">
+                                <span class="mode-active-label">出題中</span>
+                                <span class="mode-picto app-picto icon-star" aria-hidden="true"></span>
+                                <span>完璧</span>
+                                <span class="mode-count" id="perfectCount">0</span>
+                                <span class="mode-selected-check app-picto icon-circle-check" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="mode-selection-lock" id="modeSelectionLock" role="status" aria-live="polite" aria-hidden="true">
+                            <span class="mode-lock-picto app-picto icon-lock" aria-hidden="true"></span>
+                            <span class="mode-lock-copy">
+                                <strong>復習キューを出題中</strong>
+                                <span>分類は変更できません</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -428,8 +445,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0718.0315"></script>
-<script src="data/ipa_overrides.js?v=2026.0718.0315"></script>
+    <script src="data/vocabulary.js?v=2026.0718.1138"></script>
+<script src="data/ipa_overrides.js?v=2026.0718.1138"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -893,16 +910,16 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2026.0718.0315"></script>
-    <script src="js/update_manager.js?v=2026.0718.0315"></script>
-    <script src="js/config.js?v=2026.0718.0315"></script>
-    <script src="data/announcements.js?v=2026.0718.0315"></script>
-    <script src="js/utils.js?v=2026.0718.0315"></script>
-    <script src="js/stats_engine.js?v=2026.0718.0315"></script>
+    <script src="js/version.js?v=2026.0718.1138"></script>
+    <script src="js/update_manager.js?v=2026.0718.1138"></script>
+    <script src="js/config.js?v=2026.0718.1138"></script>
+    <script src="data/announcements.js?v=2026.0718.1138"></script>
+    <script src="js/utils.js?v=2026.0718.1138"></script>
+    <script src="js/stats_engine.js?v=2026.0718.1138"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/game_logic.js?v=2026.0718.0315"></script>
-    <script src="js/ui_manager.js?v=2026.0718.0315"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.0315"></script>
+    <script src="js/game_logic.js?v=2026.0718.1138"></script>
+    <script src="js/ui_manager.js?v=2026.0718.1138"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.1138"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

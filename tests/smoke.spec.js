@@ -257,6 +257,9 @@ test('モード切替ボタンが動作する', async ({ page }) => {
     await expect(btn).toBeVisible();
     await btn.click({ force: true });
     await expect(btn).toHaveClass(/active/);
+    await expect(btn).toHaveAttribute('aria-pressed', 'true');
+    await expect(btn.locator('.mode-active-label')).toBeVisible();
+    await expect(btn.locator('.mode-selected-check')).toBeVisible();
   }
 });
 
@@ -526,19 +529,33 @@ test('復習モードON/OFF切替に分類ボタンの無効状態が即時同�
     if (typeof window.updateModeButtons === 'function') window.updateModeButtons();
   });
 
-  const modeButtons = page.locator('.mode-btn');
-  await expect(modeButtons.first()).not.toBeDisabled();
-  await expect(modeButtons.first()).not.toHaveClass(/disabled/);
+  const unlearnedButton = page.locator('.mode-btn[data-mode="unlearned"]');
+  const lockNotice = page.locator('#modeSelectionLock');
+  const modeShell = page.locator('#modeButtonsShell');
+  await expect(unlearnedButton).not.toBeDisabled();
+  await expect(unlearnedButton).not.toHaveClass(/disabled/);
+  await expect(lockNotice).toBeHidden();
+  await expect(modeShell).toHaveAttribute('aria-disabled', 'false');
 
   await page.evaluate(() => window.toggleDueOnlyMode());
   await expect.poll(async () => page.evaluate(() => window.gameState.reviewMode)).toBe('on');
-  await expect(modeButtons.first()).toBeDisabled();
-  await expect(modeButtons.first()).toHaveClass(/disabled/);
+  await expect(unlearnedButton).toBeDisabled();
+  await expect(unlearnedButton).toHaveClass(/disabled/);
+  await expect(unlearnedButton).toHaveAttribute('title', '復習だけモード中は分類を選べません');
+  await expect(modeShell).toHaveClass(/is-locked/);
+  await expect(modeShell).toHaveAttribute('aria-disabled', 'true');
+  await expect(lockNotice).toBeVisible();
+  await expect(lockNotice).toContainText('復習キューを出題中');
+  await expect(lockNotice).toContainText('分類は変更できません');
+  await expect(lockNotice).toHaveAttribute('aria-hidden', 'false');
 
   await page.evaluate(() => window.toggleDueOnlyMode());
   await expect.poll(async () => page.evaluate(() => window.gameState.reviewMode)).toBe('off');
-  await expect(modeButtons.first()).not.toBeDisabled();
-  await expect(modeButtons.first()).not.toHaveClass(/disabled/);
+  await expect(unlearnedButton).not.toBeDisabled();
+  await expect(unlearnedButton).not.toHaveClass(/disabled/);
+  await expect(modeShell).not.toHaveClass(/is-locked/);
+  await expect(modeShell).toHaveAttribute('aria-disabled', 'false');
+  await expect(lockNotice).toBeHidden();
 });
 
 test('復習キュー右上ラベルのタップで復習モードを切り替えられる', async ({ page }) => {
