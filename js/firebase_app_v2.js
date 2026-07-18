@@ -100,12 +100,21 @@ window.syncPendingReviewScores = function () {
         while (gameState.reviewScore.pendingEvents.length > 0) {
             const event = gameState.reviewScore.pendingEvents[0];
             try {
-                await postReviewFunction('submitReviewScore', {
+                const result = await postReviewFunction('submitReviewScore', {
                     ...event,
                     name: localStorage.getItem('vocabGame_playerName') || auth.currentUser.displayName || '学習者',
                     avatarId: localStorage.getItem('vocabGame_reviewAvatarId') || 'hero'
                 });
                 gameState.reviewScore.pendingEvents.shift();
+                if (window.applyServerReviewScore) {
+                    window.applyServerReviewScore({
+                        todayKey: result.todayKey,
+                        todayPoints: result.todayPoints,
+                        weekKey: result.weekKey,
+                        weekPoints: result.weekPoints,
+                        userId: auth.currentUser.uid
+                    });
+                }
                 changed = true;
                 reviewLeaderboardCache = { data: null, timestamp: 0 };
             } catch (error) {
@@ -128,6 +137,9 @@ window.syncPendingReviewScores = function () {
 };
 
 window.fetchReviewLeaderboard = async function (force = false) {
+    if (auth?.currentUser && gameState.reviewScore?.pendingEvents?.length) {
+        await window.syncPendingReviewScores();
+    }
     const now = Date.now();
     if (!force && reviewLeaderboardCache.data && now - reviewLeaderboardCache.timestamp < REVIEW_LEADERBOARD_CACHE_MS) {
         return reviewLeaderboardCache.data;
@@ -135,6 +147,15 @@ window.fetchReviewLeaderboard = async function (force = false) {
 
     try {
         const data = await postReviewFunction('getReviewLeaderboard', {}, false);
+        if (auth?.currentUser && !data.error && window.applyServerReviewScore) {
+            window.applyServerReviewScore({
+                todayKey: data.todayKey,
+                todayPoints: data.todayPoints,
+                weekKey: data.weekKey,
+                weekPoints: data.me?.score ?? 0,
+                userId: auth.currentUser.uid
+            });
+        }
         reviewLeaderboardCache = { data, timestamp: now };
         return data;
     } catch (error) {
@@ -489,14 +510,13 @@ if (auth) {
                 }
             } catch (e) { console.error("Sync Check Failed:", e); }
 
-            if (window.syncPendingReviewScores) window.syncPendingReviewScores();
+            if (window.syncPendingReviewScores) await window.syncPendingReviewScores();
             if (window.fetchReviewLeaderboard) {
-                window.fetchReviewLeaderboard(true).then(data => {
-                    if (data?.me?.rank) {
-                        window.latestReviewRank = data.me.rank;
-                        if (window.updateReviewScoreSummary) window.updateReviewScoreSummary();
-                    }
-                });
+                const data = await window.fetchReviewLeaderboard(true);
+                if (data?.me?.rank) {
+                    window.latestReviewRank = data.me.rank;
+                    if (window.updateReviewScoreSummary) window.updateReviewScoreSummary();
+                }
             }
 
             // Start Auto-Save Loop
@@ -601,6 +621,9 @@ function startAutoSaveLoop() {
     // 1. Periodic Check (every 60s)
     window.autoSaveInterval = setInterval(() => {
         if (auth && auth.currentUser) {
+            if (gameState.reviewScore?.pendingEvents?.length) {
+                window.syncPendingReviewScores();
+            }
             if (window.isDirty) {
                 console.log("AutoManager: Dirty flag true. Sending background save...");
                 uploadSaveData(true); // Silent
@@ -614,6 +637,9 @@ function startAutoSaveLoop() {
     // 2. Save on Exit / Background (visibilitychange)
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'hidden') {
+            if (auth && auth.currentUser && gameState.reviewScore?.pendingEvents?.length) {
+                window.syncPendingReviewScores();
+            }
             if (auth && auth.currentUser && window.isDirty) {
                 console.log("AutoManager: App hidden. Saving immediately...");
                 // Use beacon-like behavior if possible, but fetch usually works in visibilitychange
@@ -624,11 +650,20 @@ function startAutoSaveLoop() {
 
     // 3. Fallback for Tab Close (pagehide)
     window.addEventListener('pagehide', () => {
+        if (auth && auth.currentUser && gameState.reviewScore?.pendingEvents?.length) {
+            window.syncPendingReviewScores();
+        }
         if (auth && auth.currentUser && window.isDirty) {
             // Try to push. Note: Async requests might be killed.
             // Ideally we use navigator.sendBeacon but Firestore SDK handles logic.
             // We just call it and hope for best effort.
             uploadSaveData(true);
+        }
+    });
+
+    window.addEventListener('online', () => {
+        if (auth && auth.currentUser && gameState.reviewScore?.pendingEvents?.length) {
+            window.syncPendingReviewScores();
         }
     });
 }

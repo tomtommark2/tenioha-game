@@ -594,7 +594,7 @@ exports.submitReviewScore = onRequest({ region: CHECKOUT_FUNCTION_REGION }, asyn
             };
         });
 
-        res.json({ ...result, weekKey });
+        res.json({ ...result, todayKey: earnedDate, weekKey });
     } catch (error) {
         const status = error.status || (String(error.code || "").startsWith("auth/") ? 401 : 500);
         logger.error("Review score submission failed.", { error: error.message, status });
@@ -651,7 +651,8 @@ exports.getReviewLeaderboard = onRequest({ region: CHECKOUT_FUNCTION_REGION }, a
             user = await admin.auth().verifyIdToken(authHeader.slice("Bearer ".length));
         }
 
-        const weekKey = reviewWeekKey(jstDateKey());
+        const todayKey = jstDateKey();
+        const weekKey = reviewWeekKey(todayKey);
         const usersRef = db.collection("review_score_weekly").doc(weekKey).collection("users");
         const topSnapshot = await usersRef.orderBy("score", "desc").limit(20).get();
         const results = topSnapshot.docs.map((snapshot, index) => {
@@ -666,8 +667,14 @@ exports.getReviewLeaderboard = onRequest({ region: CHECKOUT_FUNCTION_REGION }, a
         });
 
         let me = null;
+        let todayPoints = 0;
         if (user) {
-            const mySnapshot = await usersRef.doc(user.uid).get();
+            const dailyRef = db.collection("review_score_daily").doc(todayKey).collection("users").doc(user.uid);
+            const [mySnapshot, dailySnapshot] = await Promise.all([
+                usersRef.doc(user.uid).get(),
+                dailyRef.get(),
+            ]);
+            todayPoints = Number(dailySnapshot.data()?.score || 0);
             if (mySnapshot.exists) {
                 const myData = mySnapshot.data();
                 const myScore = Number(myData.score || 0);
@@ -682,7 +689,7 @@ exports.getReviewLeaderboard = onRequest({ region: CHECKOUT_FUNCTION_REGION }, a
             }
         }
 
-        res.json({ weekKey, results, me });
+        res.json({ todayKey, todayPoints, weekKey, results, me });
     } catch (error) {
         const status = String(error.code || "").startsWith("auth/") ? 401 : 500;
         logger.error("Review leaderboard fetch failed.", { error: error.message, status });

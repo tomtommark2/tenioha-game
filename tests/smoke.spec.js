@@ -1377,6 +1377,74 @@ test('ホームに今日と週の復習スコア、キューに明日の予定�
   expect(queueToCardsGap).toBeGreaterThanOrEqual(8);
 });
 
+test('ログイン中の今日・週ポイントはサーバー確定値と未送信分を合算する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  const result = await page.evaluate(() => {
+    Object.defineProperty(window, 'firebaseAuth', {
+      configurable: true,
+      value: { currentUser: { uid: 'score-sync-user' } },
+    });
+    const today = window.getLocalDateKey();
+    window.gameState.reviewScore = {
+      total: 999,
+      date: today,
+      todayPoints: 999,
+      todayReviewed: 1,
+      todayCorrect: 1,
+      history: {
+        [today]: { points: 999, reviewed: 1, correct: 1 },
+      },
+      pendingEvents: [
+        {
+          outcome: 'scheduled-correct',
+          previousIntervalDays: 7,
+          points: 4,
+        },
+        {
+          outcome: 'incorrect',
+          previousIntervalDays: 1,
+          points: 1,
+        },
+      ],
+    };
+
+    const applied = window.applyServerReviewScore({
+      todayKey: today,
+      todayPoints: 8,
+      weekKey: window.getReviewWeekKey(),
+      weekPoints: 20,
+      userId: 'score-sync-user',
+    });
+    const optimisticTodayText = document.getElementById('reviewScoreHeaderToday').textContent;
+    const optimisticText = document.getElementById('reviewScoreHeaderWeek').textContent;
+
+    window.gameState.reviewScore.pendingEvents = [];
+    window.updateReviewScoreSummary();
+    const settledTodayText = document.getElementById('reviewScoreHeaderToday').textContent;
+    const settledText = document.getElementById('reviewScoreHeaderWeek').textContent;
+    return {
+      applied,
+      optimisticTodayText,
+      optimisticText,
+      settledTodayText,
+      settledText,
+    };
+  });
+
+  expect(result).toEqual({
+    applied: true,
+    optimisticTodayText: '13pt',
+    optimisticText: '25pt',
+    settledTodayText: '8pt',
+    settledText: '20pt',
+  });
+});
+
 test('旧ゴールド表示を廃止し学習後も互換値を増やさない', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');

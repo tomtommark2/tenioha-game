@@ -649,9 +649,76 @@ function getReviewWeekKey(date = new Date()) {
     return getLocalDateKey(getWeekStartDate(date));
 }
 
+var reviewServerScoreState = null;
+
+function getPendingReviewPoints() {
+    const score = ensureReviewScoreState();
+    return score.pendingEvents.reduce((total, event) => {
+        const storedPoints = Number(event && event.points);
+        if (Number.isFinite(storedPoints) && storedPoints > 0) return total + storedPoints;
+        return total + calculateReviewEventPoints(
+            event && event.outcome,
+            event && event.previousIntervalDays
+        );
+    }, 0);
+}
+
+function applyServerReviewScore({
+    todayKey,
+    todayPoints,
+    weekKey,
+    weekPoints,
+    userId = null
+} = {}) {
+    const normalizedTodayPoints = Number(todayPoints);
+    const normalizedWeekPoints = Number(weekPoints);
+    const hasTodayScore = todayKey === getLocalDateKey()
+        && Number.isFinite(normalizedTodayPoints)
+        && normalizedTodayPoints >= 0;
+    const hasWeekScore = weekKey === getReviewWeekKey()
+        && Number.isFinite(normalizedWeekPoints)
+        && normalizedWeekPoints >= 0;
+    if (!hasTodayScore && !hasWeekScore) {
+        return false;
+    }
+
+    const previous = reviewServerScoreState
+        && (!userId || !reviewServerScoreState.userId || reviewServerScoreState.userId === userId)
+        ? reviewServerScoreState
+        : {};
+    reviewServerScoreState = {
+        todayKey: hasTodayScore ? todayKey : previous.todayKey,
+        todayPoints: hasTodayScore ? normalizedTodayPoints : previous.todayPoints,
+        weekKey: hasWeekScore ? weekKey : previous.weekKey,
+        weekPoints: hasWeekScore ? normalizedWeekPoints : previous.weekPoints,
+        userId: userId || null
+    };
+    updateReviewScoreSummary();
+    return true;
+}
+
+function hasCurrentServerReviewScore(periodKey, currentKey) {
+    const currentUserId = window.firebaseAuth?.currentUser?.uid || null;
+    return !!currentUserId
+        && !!reviewServerScoreState
+        && reviewServerScoreState[periodKey] === currentKey
+        && (!reviewServerScoreState.userId || reviewServerScoreState.userId === currentUserId);
+}
+
+function getReviewTodayPoints() {
+    const score = ensureReviewScoreState();
+    if (hasCurrentServerReviewScore('todayKey', getLocalDateKey())) {
+        return reviewServerScoreState.todayPoints + getPendingReviewPoints();
+    }
+    return score.todayPoints;
+}
+
 function getReviewWeekPoints() {
     const score = ensureReviewScoreState();
     const weekStart = getReviewWeekKey();
+    if (hasCurrentServerReviewScore('weekKey', weekStart)) {
+        return reviewServerScoreState.weekPoints + getPendingReviewPoints();
+    }
     return Object.entries(score.history).reduce((total, [dateKey, day]) => {
         if (dateKey < weekStart) return total;
         return total + (Number(day && day.points) || 0);
@@ -671,13 +738,13 @@ function getReviewAvatarPath(avatarId = getReviewAvatarId()) {
 }
 
 function updateReviewScoreSummary() {
-    const score = ensureReviewScoreState();
+    ensureReviewScoreState();
     const today = document.getElementById('reviewScoreHeaderToday');
     const week = document.getElementById('reviewScoreHeaderWeek');
     const rank = document.getElementById('reviewRankHeader');
     const rankValue = Number(window.latestReviewRank || localStorage.getItem(`vocabGame_reviewRank_${getReviewWeekKey()}`));
 
-    if (today) today.textContent = `${score.todayPoints}pt`;
+    if (today) today.textContent = `${getReviewTodayPoints()}pt`;
     if (week) week.textContent = `${getReviewWeekPoints()}pt`;
     if (rank) rank.textContent = rankValue > 0 ? `${rankValue}位` : '--位';
 }
@@ -1083,16 +1150,14 @@ function awardReviewScore(key, isCorrect, previousIntervalDays) {
         outcome,
         isCorrect: !!isCorrect,
         previousIntervalDays: normalizedIntervalDays,
-        earnedDate: today
+        earnedDate: today,
+        points
     });
     if (score.pendingEvents.length > 200) {
         score.pendingEvents = score.pendingEvents.slice(-200);
     }
 
     s.lastReviewScoreDate = today;
-    if (typeof window.syncPendingReviewScores === 'function') {
-        window.syncPendingReviewScores();
-    }
     return points;
 }
 
@@ -2191,9 +2256,6 @@ function saveGame() {
     // Mark as Dirty for Cloud Sync
     window.isDirty = true;
 
-    if (typeof window.syncPendingReviewScores === 'function' && gameState.reviewScore?.pendingEvents?.length) {
-        window.syncPendingReviewScores();
-    }
     return true;
 }
 
@@ -3369,7 +3431,6 @@ function selectReviewAvatar(avatarId) {
 }
 
 function updateReviewRankingSummary(serverData = null) {
-    const score = ensureReviewScoreState();
     const avatar = document.getElementById('reviewRankingMyAvatar');
     const name = document.getElementById('reviewRankingMyName');
     const weekPoints = document.getElementById('reviewRankingWeekPoints');
@@ -3380,7 +3441,7 @@ function updateReviewRankingSummary(serverData = null) {
     if (avatar) avatar.src = getReviewAvatarPath(myEntry?.avatarId || getReviewAvatarId());
     if (name) name.textContent = myEntry?.name || playerName || 'あなた';
     if (weekPoints) weekPoints.textContent = `${myEntry?.score ?? getReviewWeekPoints()}pt`;
-    if (todayPoints) todayPoints.textContent = `今日 ${score.todayPoints}pt`;
+    if (todayPoints) todayPoints.textContent = `今日 ${getReviewTodayPoints()}pt`;
     if (rank) rank.textContent = myEntry?.rank ? `${myEntry.rank}位` : '--位';
 }
 
@@ -3538,6 +3599,7 @@ function showReviewRankingPreview() {
 
 window.selectReviewAvatar = selectReviewAvatar;
 window.updateReviewScoreSummary = updateReviewScoreSummary;
+window.applyServerReviewScore = applyServerReviewScore;
 window.renderReviewRankingItem = renderReviewRankingItem;
 window.showReviewRankingPreview = showReviewRankingPreview;
 

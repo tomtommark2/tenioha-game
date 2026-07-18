@@ -43,6 +43,8 @@ Each SRS entry may contain `isRelearning` to distinguish the five-minute relearn
 
 Each scored answer has an `eventId` used only to make network retries idempotent. Cloud ranking state remains keyed by authenticated user and normalized word hash. The fixed word record keeps only the 10 most recent hashed event IDs, so duplicate protection does not create an unbounded event collection. Daily and weekly collections contain aggregate scores only.
 
+For authenticated users, the displayed daily and weekly scores use the server-confirmed total plus locally pending score events. Local history remains the immediate fallback before authentication or while the leaderboard service is unavailable. Only pending events are submitted; the client never overwrites the server with an absolute score. Answers are saved locally without starting score communication. Pending events are synchronized at startup, leaderboard display, backgrounding, the 60-second save check, and network recovery. This avoids polling and per-answer network work without adding complex conflict resolution.
+
 `functions/review_word_hashes.json` is generated from `data/vocabulary.js`. After vocabulary identity changes, run:
 
 ```powershell
