@@ -382,6 +382,61 @@ test('例文スピーカーボタンは現在の例文を読み上げる', async
   await expect.poll(async () => page.evaluate(() => window.__spokenTexts.at(-1))).toBe(example);
 });
 
+test('戻る操作後に次の単語へ進んでも表示中の例文を読み上げる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    window.__spokenTexts = [];
+
+    class FakeSpeechSynthesisUtterance {
+      constructor(text) {
+        this.text = text;
+        this.lang = '';
+        this.rate = 1;
+        this.pitch = 1;
+        this.volume = 1;
+        this.voice = null;
+      }
+    }
+
+    Object.defineProperty(window, 'SpeechSynthesisUtterance', {
+      configurable: true,
+      value: FakeSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, 'speechSynthesis', {
+      configurable: true,
+      value: {
+        speaking: false,
+        pending: false,
+        cancel() {},
+        getVoices() {
+          return [{ name: 'Test English', lang: 'en-US' }];
+        },
+        speak(utterance) {
+          window.__spokenTexts.push(utterance.text);
+        },
+      },
+    });
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const firstExample = (await page.locator('#exampleSentence').innerText()).trim();
+  await page.locator('#vocabCard').click();
+  await page.locator('#undoBtn').click();
+  await expect(page.locator('#exampleSentence')).toHaveText(firstExample);
+
+  await page.locator('#vocabCard').click();
+  await expect.poll(async () => (await page.locator('#exampleSentence').innerText()).trim())
+    .not.toBe(firstExample);
+  await page.waitForTimeout(250);
+
+  const currentExample = (await page.locator('#exampleSentence').innerText()).trim();
+  await page.locator('#speakerBtn').click();
+  await expect.poll(async () => page.evaluate(() => window.__spokenTexts.at(-1))).toBe(currentExample);
+});
+
 test('モード切替ボタンが動作する', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');

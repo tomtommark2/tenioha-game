@@ -2859,16 +2859,6 @@ function showWord(word) {
     document.getElementById('exampleSentence').textContent = word.example;
     markLearningContentReady();
     updateQuestionReasonUI();
-
-    // Re-bind speaker button for this word
-    const speakerBtn = document.getElementById('speakerBtn');
-    const newBtn = speakerBtn.cloneNode(true);
-    speakerBtn.parentNode.replaceChild(newBtn, speakerBtn);
-
-    newBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        speakText(word.example);
-    });
 }
 
 function showNoWordsMessage() {
