@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0718.2254">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0718.2254" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0718.2254" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0718.2254" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0718.2352">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0718.2352" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0718.2352" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0718.2352" as="script">
 </head>
 
 <body>
@@ -68,6 +68,52 @@
         </div>
     </div>
     <!-- LIVE TUTORIAL END -->
+
+    <!-- PWA INSTALL GUIDE START -->
+    <aside id="installGuideNotice" class="install-guide-notice" role="status" aria-live="polite" hidden>
+        <img class="install-guide-notice-icon" src="icon-192.png" alt="" aria-hidden="true">
+        <div class="install-guide-notice-copy">
+            <strong id="installGuideNoticeTitle">アプリとして使えます</strong>
+            <span id="installGuideNoticeText">ホーム画面からすぐ学習を始められます。</span>
+        </div>
+        <button id="installGuideNoticeAction" class="install-guide-notice-action" type="button">追加する</button>
+        <button id="installGuideNoticeDismiss" class="install-guide-notice-dismiss" type="button"
+            aria-label="アプリ化の案内を閉じる">&times;</button>
+    </aside>
+
+    <div id="installGuideModal" class="install-guide-modal" role="presentation" aria-hidden="true">
+        <section class="install-guide-card" role="dialog" aria-modal="true"
+            aria-labelledby="installGuideModalTitle">
+            <button id="installGuideModalClose" class="install-guide-modal-close" type="button"
+                aria-label="アプリ化の手順を閉じる">&times;</button>
+            <header class="install-guide-header">
+                <img src="icon-192.png" alt="" aria-hidden="true">
+                <div>
+                    <span class="install-guide-eyebrow">APP MODE</span>
+                    <h2 id="installGuideModalTitle">アプリとして使う</h2>
+                </div>
+            </header>
+            <p id="installGuideModalCopy" class="install-guide-modal-copy">
+                端末に合った追加方法を案内します。
+            </p>
+            <ol id="installGuideSteps" class="install-guide-steps"></ol>
+            <footer class="install-guide-footer">
+                <label class="install-guide-never">
+                    <input id="installGuideNeverShow" type="checkbox">
+                    <span>今後この案内を表示しない</span>
+                </label>
+                <div class="install-guide-footer-actions">
+                    <button id="installGuideModalAction" class="install-guide-primary" type="button">
+                        アプリ化する
+                    </button>
+                    <button id="installGuideModalCancel" class="install-guide-secondary" type="button">
+                        閉じる
+                    </button>
+                </div>
+            </footer>
+        </section>
+    </div>
+    <!-- PWA INSTALL GUIDE END -->
 
     <!-- SHARE_MODAL_START -->
     <div id="shareModal" class="trial-overlay">
@@ -444,8 +490,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0718.2254"></script>
-<script src="data/ipa_overrides.js?v=2026.0718.2254"></script>
+    <script src="data/vocabulary.js?v=2026.0718.2352"></script>
+<script src="data/ipa_overrides.js?v=2026.0718.2352"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -521,11 +567,12 @@
                     </span>
                 </button>
 
-                <button type="button" class="help-list-item" onclick="window.installApp()">
+                <button type="button" class="help-list-item"
+                    onclick="document.getElementById('helpModal').style.display='none'; window.openInstallGuide();">
                     <span class="help-list-icon app-picto icon-phone" aria-hidden="true"></span>
                     <span class="help-list-copy">
-                        <span class="help-list-title">アプリインストール</span>
-                        <span class="help-list-desc">タップしてインストール (プレミア権限付与)</span>
+                        <span class="help-list-title">アプリとして使う</span>
+                        <span class="help-list-desc">この端末に合った追加方法を確認</span>
                     </span>
                 </button>
 
@@ -909,16 +956,16 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2026.0718.2254"></script>
-    <script src="js/update_manager.js?v=2026.0718.2254"></script>
-    <script src="js/config.js?v=2026.0718.2254"></script>
-    <script src="data/announcements.js?v=2026.0718.2254"></script>
-    <script src="js/utils.js?v=2026.0718.2254"></script>
-    <script src="js/stats_engine.js?v=2026.0718.2254"></script>
+    <script src="js/version.js?v=2026.0718.2352"></script>
+    <script src="js/update_manager.js?v=2026.0718.2352"></script>
+    <script src="js/config.js?v=2026.0718.2352"></script>
+    <script src="data/announcements.js?v=2026.0718.2352"></script>
+    <script src="js/utils.js?v=2026.0718.2352"></script>
+    <script src="js/stats_engine.js?v=2026.0718.2352"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/game_logic.js?v=2026.0718.2254"></script>
-    <script src="js/ui_manager.js?v=2026.0718.2254"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.2254"></script>
+    <script src="js/game_logic.js?v=2026.0718.2352"></script>
+    <script src="js/ui_manager.js?v=2026.0718.2352"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.2352"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

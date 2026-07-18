@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
 
     initGlobalUIListeners();
     initAnnouncements();
+    initInstallGuide();
 });
 
 function initGlobalUIListeners() {
@@ -873,36 +874,374 @@ window.switchTab = function (tab) {
 };
 
 // --- PWA / WELCOME ---
-let deferredPrompt;
+let deferredPrompt = null;
+let installGuideNoticeDismissed = false;
+let installGuideNoticeTimer = null;
+const INSTALL_GUIDE_DISMISSED_KEY = 'vocabGame_installGuideDismissed';
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    console.log("PWA Install Prompt ready (UI Manager)");
+function isInstallGuideStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+}
 
-    const btnHelper = document.getElementById('pwaInstallBtn');
-    const btnProfile = document.getElementById('profileInstallBtn');
+function isIosInstallDevice() {
+    const userAgent = navigator.userAgent || '';
+    return /iphone|ipad|ipod/i.test(userAgent)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
 
-    if (btnHelper) {
-        btnHelper.style.background = "#e17055";
-        btnHelper.style.cursor = "pointer";
+function isIosSafariBrowser() {
+    const userAgent = navigator.userAgent || '';
+    if (!isIosInstallDevice()) return false;
+    const isOtherBrowser = /CriOS|FxiOS|EdgiOS|OPiOS|DuckDuckGo|Brave|GSA/i.test(userAgent);
+    return /Safari/i.test(userAgent) && !isOtherBrowser;
+}
+
+function isAndroidInstallDevice() {
+    return /android/i.test(navigator.userAgent || '');
+}
+
+function getInstallGuidePreviewMode() {
+    if (!['localhost', '127.0.0.1'].includes(window.location.hostname)) return '';
+    const mode = new URLSearchParams(window.location.search).get('installGuide');
+    return ['prompt', 'ios-safari', 'ios-other', 'android', 'manual'].includes(mode) ? mode : '';
+}
+
+function isInstallGuidePermanentlyDismissed() {
+    try {
+        return localStorage.getItem(INSTALL_GUIDE_DISMISSED_KEY) === 'true';
+    } catch (_) {
+        return false;
     }
-    if (btnProfile) {
-        btnProfile.style.display = 'block';
-        btnProfile.style.background = "#e17055";
-    }
-});
+}
 
-window.installApp = () => {
-    if (!deferredPrompt) {
-        alert("このブラウザでは自動インストールが利用できません。\nブラウザのメニューからインストールしてください。");
+function setInstallGuidePermanentlyDismissed(value) {
+    try {
+        localStorage.setItem(INSTALL_GUIDE_DISMISSED_KEY, value ? 'true' : 'false');
+    } catch (_) { }
+}
+
+function createPromptInstallGuide() {
+    return {
+        mode: 'prompt',
+        noticeTitle: 'アプリとして使えます',
+        noticeText: 'この端末ではワンタップで追加できます。',
+        noticeAction: '追加する',
+        modalTitle: 'アプリとして使う',
+        modalCopy: 'ホーム画面やデスクトップから、ブラウザを開かずすぐ学習できます。',
+        modalAction: 'アプリ化する',
+        action: 'install',
+        steps: [
+            { icon: 'icon-phone', title: '「アプリ化する」を押す', text: 'ブラウザ標準のインストール確認が開きます。' },
+            { icon: 'icon-check', title: '追加を許可する', text: 'ホーム画面やデスクトップに「てにをは英単語」が追加されます。' }
+        ]
+    };
+}
+
+function createIosSafariInstallGuide() {
+    return {
+        mode: 'ios-safari',
+        noticeTitle: 'iPhoneでもアプリにできます',
+        noticeText: 'Safariの共有ボタンからホーム画面に追加できます。',
+        noticeAction: '手順を見る',
+        modalTitle: 'iPhoneのホーム画面に追加',
+        modalCopy: 'Safariでは、共有メニューから3ステップで追加できます。',
+        modalAction: '確認しました',
+        action: 'guide',
+        steps: [
+            { icon: 'icon-share', title: '1. 共有ボタンを押す', text: 'Safari下部にある共有ボタンを押します。', visual: 'ios-share' },
+            { icon: 'icon-plus', title: '2. 「ホーム画面に追加」を選ぶ', text: '共有メニューを下へスクロールして選択します。', visual: 'ios-home' },
+            { icon: 'icon-check', title: '3. 右上の「追加」を押す', text: 'ホーム画面にアプリアイコンが追加されます。', visual: 'ios-confirm' }
+        ]
+    };
+}
+
+function createIosOtherInstallGuide() {
+    return {
+        mode: 'ios-other',
+        noticeTitle: 'Safariから追加できます',
+        noticeText: 'iPhoneでは、このページをSafariで開いてください。',
+        noticeAction: '手順を見る',
+        modalTitle: 'Safariで開いてアプリ化',
+        modalCopy: 'iPhoneのChromeやBraveからは直接追加できない場合があります。',
+        modalAction: '確認しました',
+        action: 'guide',
+        steps: [
+            { icon: 'icon-compass', title: '1. Safariで同じページを開く', text: '現在のURLをコピーし、Safariへ貼り付けて開きます。' },
+            { icon: 'icon-share', title: '2. Safariの共有ボタンを押す', text: '共有メニューから「ホーム画面に追加」を選びます。' },
+            { icon: 'icon-check', title: '3. 右上の「追加」を押す', text: 'ホーム画面から直接起動できるようになります。' }
+        ]
+    };
+}
+
+function createAndroidInstallGuide() {
+    return {
+        mode: 'android',
+        noticeTitle: 'AndroidではChromeがおすすめ',
+        noticeText: 'Chromeからホーム画面へ追加できます。',
+        noticeAction: '手順を見る',
+        modalTitle: 'Androidでアプリとして使う',
+        modalCopy: 'Chromeでこのページを開き、ブラウザメニューから追加します。',
+        modalAction: '確認しました',
+        action: 'guide',
+        steps: [
+            { icon: 'icon-compass', title: '1. Chromeでこのページを開く', text: '別ブラウザを使用中なら、同じURLをChromeで開きます。' },
+            { icon: 'icon-list', title: '2. 右上のメニューを開く', text: '「アプリをインストール」または「ホーム画面に追加」を選びます。' },
+            { icon: 'icon-check', title: '3. 追加を確認する', text: 'ホーム画面のアイコンから直接起動できます。' }
+        ]
+    };
+}
+
+function createManualInstallGuide() {
+    return {
+        mode: 'manual',
+        noticeTitle: 'アプリとしてすぐ開けます',
+        noticeText: '対応ブラウザのメニューから追加できます。',
+        noticeAction: '方法を見る',
+        modalTitle: 'この端末でアプリとして使う',
+        modalCopy: '環境を自動判定できないため、ブラウザの追加メニューを確認してください。',
+        modalAction: '確認しました',
+        action: 'guide',
+        steps: [
+            { icon: 'icon-list', title: 'ブラウザメニューを確認', text: '「アプリをインストール」「ホーム画面に追加」を探します。' },
+            { icon: 'icon-phone', title: '対応ブラウザで開く', text: 'PC・AndroidはChromeまたはEdge、iPhoneはSafariがおすすめです。' }
+        ]
+    };
+}
+
+function getInstallGuide() {
+    const previewMode = getInstallGuidePreviewMode();
+    if (previewMode === 'prompt') return { ...createPromptInstallGuide(), action: 'guide' };
+    if (previewMode === 'ios-safari') return createIosSafariInstallGuide();
+    if (previewMode === 'ios-other') return createIosOtherInstallGuide();
+    if (previewMode === 'android') return createAndroidInstallGuide();
+    if (previewMode === 'manual') return createManualInstallGuide();
+    if (isInstallGuideStandalone()) {
+        return {
+            mode: 'standalone',
+            modalTitle: 'アプリとして起動中',
+            modalCopy: 'この端末ではすでにアプリ版として利用できます。',
+            modalAction: '設定済み',
+            action: 'none',
+            steps: [
+                { icon: 'icon-check', title: '追加済みです', text: 'この端末では追加作業は必要ありません。' }
+            ]
+        };
+    }
+    if (deferredPrompt) return createPromptInstallGuide();
+    if (isIosSafariBrowser()) return createIosSafariInstallGuide();
+    if (isIosInstallDevice()) return createIosOtherInstallGuide();
+    if (isAndroidInstallDevice()) return createAndroidInstallGuide();
+    return createManualInstallGuide();
+}
+
+function installGuideVisualMarkup(type) {
+    if (type === 'ios-share') {
+        return `
+            <span class="install-guide-phone-visual" aria-hidden="true">
+                <span class="install-guide-phone-page"></span>
+                <span class="install-guide-phone-toolbar">
+                    <i></i><i></i><b class="app-picto icon-share"></b><i></i><i></i>
+                </span>
+                <em>ここを押す</em>
+            </span>`;
+    }
+    if (type === 'ios-home') {
+        return `
+            <span class="install-guide-sheet-visual" aria-hidden="true">
+                <i></i>
+                <span>コピー</span>
+                <strong><b class="app-picto icon-plus"></b>ホーム画面に追加</strong>
+                <span>ブックマークを追加</span>
+            </span>`;
+    }
+    if (type === 'ios-confirm') {
+        return `
+            <span class="install-guide-confirm-visual" aria-hidden="true">
+                <span><i>キャンセル</i><strong>ホーム画面に追加</strong><b>追加</b></span>
+                <span class="install-guide-confirm-app">
+                    <img src="icon-192.png" alt="">
+                    <em><strong>てにをは英単語</strong><small>tomtommark2.github.io</small></em>
+                </span>
+            </span>`;
+    }
+    return '';
+}
+
+function renderInstallGuideModal() {
+    const guide = getInstallGuide();
+    const title = document.getElementById('installGuideModalTitle');
+    const copy = document.getElementById('installGuideModalCopy');
+    const steps = document.getElementById('installGuideSteps');
+    const action = document.getElementById('installGuideModalAction');
+    const neverShow = document.getElementById('installGuideNeverShow');
+    if (!title || !copy || !steps || !action || !neverShow) return;
+
+    title.textContent = guide.modalTitle;
+    copy.textContent = guide.modalCopy;
+    steps.innerHTML = guide.steps.map(step => `
+        <li>
+            <span class="install-guide-step-icon app-picto ${step.icon}" aria-hidden="true"></span>
+            <span class="install-guide-step-copy">
+                <strong>${step.title}</strong>
+                <small>${step.text}</small>
+            </span>
+            ${step.visual ? `<span class="install-guide-step-visual">${installGuideVisualMarkup(step.visual)}</span>` : ''}
+        </li>
+    `).join('');
+    action.textContent = guide.modalAction;
+    action.disabled = guide.action === 'none';
+    neverShow.checked = isInstallGuidePermanentlyDismissed();
+}
+
+function isInstallGuideBlockedByImportantUi() {
+    const selectors = [
+        '#liveTutorialHint',
+        '#trialOverlay',
+        '#forceUpdateModal',
+        '#updatePromptModal',
+        '#announcementModal',
+        '#purchaseModal',
+        '#profileModal',
+        '#helpModal'
+    ];
+    return selectors.some(selector => {
+        const element = document.querySelector(selector);
+        return element && !element.hidden && window.getComputedStyle(element).display !== 'none';
+    });
+}
+
+function scheduleInstallGuideNotice(delay = 0) {
+    if (installGuideNoticeTimer) clearTimeout(installGuideNoticeTimer);
+    installGuideNoticeTimer = setTimeout(() => {
+        installGuideNoticeTimer = null;
+        updateInstallGuideNotice();
+    }, delay);
+}
+
+function updateInstallGuideNotice() {
+    const notice = document.getElementById('installGuideNotice');
+    const title = document.getElementById('installGuideNoticeTitle');
+    const text = document.getElementById('installGuideNoticeText');
+    const action = document.getElementById('installGuideNoticeAction');
+    if (!notice || !title || !text || !action) return;
+
+    const guide = getInstallGuide();
+    const shouldShow = guide.mode !== 'standalone'
+        && !installGuideNoticeDismissed
+        && !isInstallGuidePermanentlyDismissed();
+    if (!shouldShow) {
+        notice.hidden = true;
         return;
     }
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choice) => {
-        deferredPrompt = null;
-    });
+    if (isInstallGuideBlockedByImportantUi()) {
+        notice.hidden = true;
+        scheduleInstallGuideNotice(4000);
+        return;
+    }
+
+    title.textContent = guide.noticeTitle;
+    text.textContent = guide.noticeText;
+    action.textContent = guide.noticeAction;
+    notice.hidden = false;
+}
+
+function closeInstallGuideModal() {
+    const modal = document.getElementById('installGuideModal');
+    if (!modal) return;
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+window.openInstallGuide = function () {
+    const modal = document.getElementById('installGuideModal');
+    if (!modal) return;
+    renderInstallGuideModal();
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    document.getElementById('installGuideModalClose')?.focus();
 };
+
+async function runInstallGuideAction() {
+    const guide = getInstallGuide();
+    if (guide.action !== 'install' || !deferredPrompt) {
+        window.openInstallGuide();
+        return { status: guide.action };
+    }
+
+    deferredPrompt.prompt();
+    const choice = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    installGuideNoticeDismissed = true;
+    closeInstallGuideModal();
+    renderInstallGuideModal();
+    updateInstallGuideNotice();
+    return { status: choice?.outcome || 'dismissed' };
+}
+
+window.installApp = runInstallGuideAction;
+
+function initInstallGuide() {
+    const noticeAction = document.getElementById('installGuideNoticeAction');
+    const noticeDismiss = document.getElementById('installGuideNoticeDismiss');
+    const modal = document.getElementById('installGuideModal');
+    const modalClose = document.getElementById('installGuideModalClose');
+    const modalCancel = document.getElementById('installGuideModalCancel');
+    const modalAction = document.getElementById('installGuideModalAction');
+    const neverShow = document.getElementById('installGuideNeverShow');
+    if (!noticeAction || !noticeDismiss || !modal) return;
+
+    noticeAction.addEventListener('click', runInstallGuideAction);
+    noticeDismiss.addEventListener('click', () => {
+        installGuideNoticeDismissed = true;
+        updateInstallGuideNotice();
+    });
+    modalClose?.addEventListener('click', closeInstallGuideModal);
+    modalCancel?.addEventListener('click', closeInstallGuideModal);
+    modalAction?.addEventListener('click', async () => {
+        const guide = getInstallGuide();
+        if (guide.action === 'install') {
+            await runInstallGuideAction();
+            return;
+        }
+        closeInstallGuideModal();
+    });
+    neverShow?.addEventListener('change', () => {
+        setInstallGuidePermanentlyDismissed(neverShow.checked);
+        if (neverShow.checked) {
+            installGuideNoticeDismissed = true;
+            updateInstallGuideNotice();
+        } else {
+            installGuideNoticeDismissed = false;
+        }
+    });
+    modal.addEventListener('click', event => {
+        if (event.target === modal) closeInstallGuideModal();
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+            closeInstallGuideModal();
+        }
+    });
+
+    const previewMode = getInstallGuidePreviewMode();
+    scheduleInstallGuideNotice(previewMode ? 50 : 7000);
+}
+
+window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    deferredPrompt = event;
+    console.log('PWA Install Prompt ready (UI Manager)');
+    scheduleInstallGuideNotice(0);
+});
+
+window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    installGuideNoticeDismissed = true;
+    const notice = document.getElementById('installGuideNotice');
+    if (notice) notice.hidden = true;
+    closeInstallGuideModal();
+});
 
 const LIVE_TUTORIAL_KEY = 'vocabGame_skipLiveTutorial';
 const ONBOARDING_VERSION_KEY = 'vocabGame_onboardingVersion';

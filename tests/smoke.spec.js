@@ -269,6 +269,86 @@ test('チュートリアルを閉じると完了状態を保存する', async ({
   await expect.poll(() => page.evaluate(() => localStorage.getItem('vocabGame_skipLiveTutorial'))).toBe('true');
 });
 
+test('iPhone Safari向けアプリ化案内を図解し永続非表示後も手動で再確認できる', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html?installGuide=ios-safari', { waitUntil: 'domcontentloaded' });
+  const notice = page.locator('#installGuideNotice');
+  await expect(notice).toBeVisible();
+  await expect(notice).toContainText('iPhoneでもアプリにできます');
+
+  await page.locator('#installGuideNoticeAction').click();
+  const modal = page.locator('#installGuideModal');
+  await expect(modal).toBeVisible();
+  await expect(page.locator('#installGuideModalTitle')).toHaveText('iPhoneのホーム画面に追加');
+  await expect(page.locator('#installGuideSteps')).toContainText('共有ボタンを押す');
+  await expect(page.locator('#installGuideSteps')).toContainText('ホーム画面に追加');
+  await expect(page.locator('.install-guide-step-visual')).toHaveCount(3);
+
+  const cardBox = await page.locator('.install-guide-card').boundingBox();
+  expect(cardBox).not.toBeNull();
+  expect(cardBox.x).toBeGreaterThanOrEqual(0);
+  expect(cardBox.y).toBeGreaterThanOrEqual(0);
+  expect(cardBox.x + cardBox.width).toBeLessThanOrEqual(375);
+  expect(cardBox.y + cardBox.height).toBeLessThanOrEqual(667);
+
+  await page.locator('#installGuideNeverShow').check();
+  await page.locator('#installGuideModalClose').click();
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await expect(notice).toBeHidden();
+
+  await page.evaluate(() => window.openInstallGuide());
+  await expect(modal).toBeVisible();
+});
+
+test('標準インストール対応時は右下ボタンからブラウザのpromptを呼ぶ', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    window.__installPromptCalls = 0;
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => {
+    const event = new Event('beforeinstallprompt');
+    event.prompt = () => {
+      window.__installPromptCalls += 1;
+    };
+    event.userChoice = Promise.resolve({ outcome: 'dismissed' });
+    window.dispatchEvent(event);
+  });
+
+  await expect(page.locator('#installGuideNotice')).toBeVisible();
+  await expect(page.locator('#installGuideNoticeAction')).toHaveText('追加する');
+  await page.locator('#installGuideNoticeAction').click();
+  await expect.poll(async () => page.evaluate(() => window.__installPromptCalls)).toBe(1);
+  await expect(page.locator('#installGuideNotice')).toBeHidden();
+});
+
+test('アプリ化案内はiPhone別ブラウザ・Android・汎用環境で内容を切り替える', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  const cases = [
+    { mode: 'ios-other', notice: 'Safariから追加できます', modal: 'Safariで開いてアプリ化' },
+    { mode: 'android', notice: 'AndroidではChromeがおすすめ', modal: 'Androidでアプリとして使う' },
+    { mode: 'manual', notice: 'アプリとしてすぐ開けます', modal: 'この端末でアプリとして使う' },
+  ];
+
+  for (const item of cases) {
+    await page.goto(`/vocab_clicker_game.html?installGuide=${item.mode}`, { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#installGuideNotice')).toContainText(item.notice);
+    await page.locator('#installGuideNoticeAction').click();
+    await expect(page.locator('#installGuideModalTitle')).toHaveText(item.modal);
+  }
+});
+
 test('その他メニューは読み上げ名とキーボード操作に対応する', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
