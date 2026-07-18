@@ -1,5 +1,18 @@
 const { test, expect } = require('@playwright/test');
 
+const START_INTERACTION_TEST = 'クリックしてスタートで最初の単語を表示する';
+
+test.beforeEach(async ({ page }, testInfo) => {
+  if (testInfo.title === START_INTERACTION_TEST) return;
+
+  await page.addInitScript(() => {
+    window.addEventListener('DOMContentLoaded', () => {
+      const prompt = document.querySelector('#vocabWord[data-learning-start="true"]');
+      if (prompt) document.getElementById('vocabCard')?.click();
+    }, { once: true });
+  });
+});
+
 function isIgnorableConsoleError(text) {
   // 必要最小限の除外（環境依存ノイズのみ）
   const ignorePatterns = [
@@ -9,18 +22,145 @@ function isIgnorableConsoleError(text) {
   return ignorePatterns.some((re) => re.test(text));
 }
 
-test('トップ画面が表示される', async ({ page }) => {
+test(START_INTERACTION_TEST, async ({ page }) => {
   const htmlResponse = await page.request.get('/index.html');
   const html = await htmlResponse.text();
   expect(html).not.toContain('ファイルを読み込んでください');
-  expect(html).toContain('単語を準備中…');
+  expect(html).toContain('クリックしてスタート');
 
   await page.goto('/index.html');
   await expect(page.locator('#vocabCard')).toBeVisible();
   await expect(page.locator('#meaningCard')).toBeVisible();
+  await expect(page.locator('#vocabWord')).toHaveText('クリックしてスタート');
+  await expect(page.locator('#meaningCard')).toHaveAttribute('aria-disabled', 'true');
+  await expect.poll(() => page.evaluate(() => window.gameState?.currentWord || null)).toBeNull();
+  const waitingTrialSeconds = await page.evaluate(() => {
+    window.trialState.playTimeSeconds = 0;
+    window.lastTickTime = Date.now() - 5000;
+    window.updateTrialTimer();
+    return window.trialState.playTimeSeconds;
+  });
+  expect(waitingTrialSeconds).toBe(0);
+
+  await page.locator('#vocabCard').click();
   await expect.poll(() => page.evaluate(() => window.gameState?.currentWord?.word || null)).not.toBeNull();
+  await expect(page.locator('#vocabWord')).not.toHaveText('クリックしてスタート');
+  await expect(page.locator('#meaningCard')).not.toHaveAttribute('aria-disabled');
   await expect(page.locator('#vocabWord')).not.toHaveAttribute('aria-busy');
   await expect(page.locator('#exampleSentence')).not.toHaveAttribute('aria-busy');
+  const activeTrialSeconds = await page.evaluate(() => {
+    window.lastTickTime = Date.now() - 5000;
+    window.updateTrialTimer();
+    return window.trialState.playTimeSeconds;
+  });
+  expect(activeTrialSeconds).toBeGreaterThanOrEqual(4.5);
+});
+
+test('無料版は10分到達後に回答できず再読み込み後もロックされる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    localStorage.setItem('vocabGame_isUnlocked', 'false');
+    localStorage.setItem('vocabGame_expiry', '0');
+    if (!localStorage.getItem('vocabGame_trialState_v2')) {
+      const today = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Tokyo',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).format(new Date());
+      localStorage.setItem('vocabGame_trialState_v2', JSON.stringify({
+        unlocked: false,
+        lastPlayDate: today,
+        playTimeSeconds: 599,
+      }));
+    }
+  });
+
+  await page.goto('http://localhost.:8000/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect.poll(() => page.evaluate(() => window.gameState?.currentWord?.word || null)).not.toBeNull();
+
+  const before = await page.evaluate(() => ({
+    word: window.gameState.currentWord.word,
+    actions: { ...window.gameState.actionCounts },
+  }));
+  await page.evaluate(() => {
+    window.trialState.playTimeSeconds = 600;
+    window.checkTrialLimit();
+  });
+
+  await expect(page.locator('#trialOverlay')).toBeVisible();
+  await expect(page.locator('#trialOverlay')).not.toContainText('閉じる');
+
+  await page.locator('#trialOverlay').evaluate((overlay) => {
+    overlay.style.display = 'none';
+  });
+  await page.locator('#vocabCard').click({ force: true });
+  await expect(page.locator('#trialOverlay')).toBeVisible();
+
+  const after = await page.evaluate(() => ({
+    word: window.gameState.currentWord.word,
+    actions: { ...window.gameState.actionCounts },
+    savedTrial: JSON.parse(localStorage.getItem('vocabGame_trialState_v2') || '{}'),
+  }));
+  expect(after.word).toBe(before.word);
+  expect(after.actions).toEqual(before.actions);
+  expect(after.savedTrial.playTimeSeconds).toBeGreaterThanOrEqual(600);
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#trialOverlay')).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.gameState?.currentWord || null)).toBeNull();
+});
+
+test('期限切れのローカル解放状態では10分制限を解除しない', async ({ page }) => {
+  await page.addInitScript(() => {
+    const today = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Tokyo',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date());
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    localStorage.setItem('vocabGame_isUnlocked', 'true');
+    localStorage.setItem('vocabGame_expiry', String(Date.now() - 1000));
+    localStorage.setItem('vocabGame_trialState_v2', JSON.stringify({
+      unlocked: true,
+      lastPlayDate: today,
+      playTimeSeconds: 600,
+    }));
+  });
+
+  await page.goto('http://localhost.:8000/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#trialOverlay')).toBeVisible();
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('vocabGame_isUnlocked'))).toBe('false');
+  await expect.poll(() => page.evaluate(() => window.trialState.unlocked)).toBe(false);
+});
+
+test('有効期限内のプレミアム利用者は10分を超えてもロックしない', async ({ page }) => {
+  await page.addInitScript(() => {
+    const today = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Tokyo',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date());
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    localStorage.setItem('vocabGame_isUnlocked', 'true');
+    localStorage.setItem('vocabGame_expiry', String(Date.now() + 86400000));
+    localStorage.setItem('vocabGame_trialState_v2', JSON.stringify({
+      unlocked: false,
+      lastPlayDate: today,
+      playTimeSeconds: 600,
+    }));
+  });
+
+  await page.goto('http://localhost.:8000/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect.poll(() => page.evaluate(() => window.gameState?.currentWord?.word || null)).not.toBeNull();
+  await expect(page.locator('#trialOverlay')).toBeHidden();
+  await expect(page.locator('#trialTimerDisplay')).toBeHidden();
+  await expect.poll(() => page.evaluate(() => window.trialState.unlocked)).toBe(true);
 });
 
 test('再起動時は端末で最後に選んだ学習レベルを優先する', async ({ context, page }) => {

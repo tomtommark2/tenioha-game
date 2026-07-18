@@ -14,38 +14,47 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0718.1636">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0718.1636" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0718.1636" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0718.1636" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0718.1824">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0718.1824" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0718.1824" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0718.1824" as="script">
 </head>
 
 <body>
     <!-- Trial Lock Screen -->
     <!-- TRIAL_START -->
-    <div id="trialOverlay" class="trial-overlay">
-        <div class="trial-content">
-            <div class="trial-title">⏳ 本日のプレイ時間は終了しました</div>
-            <div class="trial-message">
-                無料版は1日10分までプレイ可能です。<br>
-                制限を解除して、無制限に楽しみましょう！
+    <div id="trialOverlay" class="trial-overlay trial-limit-overlay" role="dialog" aria-modal="true"
+        aria-labelledby="trialLimitTitle">
+        <div class="trial-limit-card">
+            <div class="trial-limit-status">
+                <span class="trial-limit-plan">無料プラン</span>
+                <span class="trial-limit-time">本日 <strong>10:00</strong> / 10:00</span>
             </div>
 
-            <button onclick="openPurchaseModal();"
-                style="margin-bottom: 20px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; padding: 15px 30px; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; width: 100%; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); display: flex; flex-direction: column; align-items: center; gap: 5px;">
-                <span><span class="inline-picto app-picto icon-diamond" aria-hidden="true"></span>制限を解除</span>
-                <span style="font-size: 12px; opacity: 0.9;">(買い切り¥1,800)</span>
+            <div class="trial-limit-icon" aria-hidden="true">
+                <span class="app-picto icon-lock"></span>
+            </div>
+
+            <h2 class="trial-limit-title" id="trialLimitTitle">今日の学習、おつかれさまでした</h2>
+            <p class="trial-limit-message">
+                無料版の学習時間は1日10分です。<br>
+                プレミアムなら、このまま続けられます。
+            </p>
+
+            <button type="button" class="trial-limit-primary" onclick="openPurchaseModal();">
+                <span class="trial-limit-primary-label">
+                    <span class="app-picto icon-diamond" aria-hidden="true"></span>
+                    無制限で学習する
+                </span>
+                <span class="trial-limit-price">買い切り ¥1,800</span>
             </button>
 
-            <!-- Login Button for Lock Screen -->
-            <button onclick="openProfileModal();"
-                style="margin-bottom: 10px; background: white; border: 1px solid #6c5ce7; color: #6c5ce7; padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                <span>👤 Googleアカウントでログイン</span>
+            <button type="button" class="trial-limit-secondary" onclick="openProfileModal();">
+                <span class="trial-account-icon" aria-hidden="true"></span>
+                購入済みの方はログイン
             </button>
 
-            <!-- Only Close Btn -->
-            <button onclick="document.getElementById('trialOverlay').style.display = 'none';"
-                style="margin-top: 10px; background: transparent; border: none; color: #999; text-decoration: underline; cursor: pointer;">閉じる</button>
+            <p class="trial-limit-note">無料版は翌日に10分へリセットされます</p>
         </div>
     </div>
     <!-- TRIAL_END -->
@@ -404,13 +413,14 @@
         <div class="main-content">
             <div class="cards-section">
                 <div class="cards-area" id="cardsArea">
-                    <div class="card vocab-card" id="vocabCard">
+                    <div class="card vocab-card learning-start-ready" id="vocabCard" role="button" tabindex="0"
+                        aria-label="クリックして学習を開始">
                         <div class="card-label">英単語カード</div>
-                        <div class="card-content" id="vocabWord" aria-busy="true">単語を準備中…</div>
+                        <div class="card-content learning-start-prompt" id="vocabWord" data-learning-start="true">クリックしてスタート</div>
                         <div class="question-reason-label" id="questionReasonLabel" style="display:none;"></div>
                     </div>
 
-                    <div class="card meaning-card" id="meaningCard">
+                    <div class="card meaning-card" id="meaningCard" aria-disabled="true">
                         <div class="card-label">意味カード</div>
                         <div class="card-front">
                             <div class="card-content">?</div>
@@ -425,7 +435,7 @@
                     <button class="speaker-btn" id="speakerBtn" aria-label="例文を再生"><span class="speaker-icon" aria-hidden="true"></span></button>
                     <div class="example-text">
                         <div class="example-label">例文</div>
-                        <div class="example-sentence" id="exampleSentence" aria-busy="true">例文を準備中…</div>
+                        <div class="example-sentence" id="exampleSentence">開始すると例文が表示されます</div>
                     </div>
                     <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled><span class="undo-icon" aria-hidden="true"></span>戻る</button>
                 </div>
@@ -434,8 +444,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0718.1636"></script>
-<script src="data/ipa_overrides.js?v=2026.0718.1636"></script>
+    <script src="data/vocabulary.js?v=2026.0718.1824"></script>
+<script src="data/ipa_overrides.js?v=2026.0718.1824"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -899,16 +909,16 @@
         </div>
     </div>
 
-    <script src="js/version.js?v=2026.0718.1636"></script>
-    <script src="js/update_manager.js?v=2026.0718.1636"></script>
-    <script src="js/config.js?v=2026.0718.1636"></script>
-    <script src="data/announcements.js?v=2026.0718.1636"></script>
-    <script src="js/utils.js?v=2026.0718.1636"></script>
-    <script src="js/stats_engine.js?v=2026.0718.1636"></script>
+    <script src="js/version.js?v=2026.0718.1824"></script>
+    <script src="js/update_manager.js?v=2026.0718.1824"></script>
+    <script src="js/config.js?v=2026.0718.1824"></script>
+    <script src="data/announcements.js?v=2026.0718.1824"></script>
+    <script src="js/utils.js?v=2026.0718.1824"></script>
+    <script src="js/stats_engine.js?v=2026.0718.1824"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/game_logic.js?v=2026.0718.1636"></script>
-    <script src="js/ui_manager.js?v=2026.0718.1636"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.1636"></script>
+    <script src="js/game_logic.js?v=2026.0718.1824"></script>
+    <script src="js/ui_manager.js?v=2026.0718.1824"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0718.1824"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

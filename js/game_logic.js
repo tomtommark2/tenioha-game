@@ -190,6 +190,55 @@ function markLearningContentReady() {
 var gameAudioContext = null; // Renamed to avoid collisions
 var wordSpeechTimer = null;
 var gameStateHistory = []; // Stack to store previous states
+var learningSessionStarted = false;
+
+function activateLearningSessionUI() {
+    learningSessionStarted = true;
+    lastTickTime = Date.now();
+    const vocabCard = document.getElementById('vocabCard');
+    const vocabWord = document.getElementById('vocabWord');
+    const meaningCard = document.getElementById('meaningCard');
+    vocabCard?.classList.remove('learning-start-ready');
+    vocabCard?.setAttribute('aria-label', '英単語を正解として回答');
+    vocabWord?.classList.remove('learning-start-prompt');
+    vocabWord?.removeAttribute('data-learning-start');
+    meaningCard?.removeAttribute('aria-disabled');
+}
+
+function showLearningStartPrompt() {
+    learningSessionStarted = false;
+    gameState.currentWord = null;
+    gameState.currentQuestionReason = null;
+    gameState.isReviewWord = false;
+
+    const vocabCard = document.getElementById('vocabCard');
+    const vocabWord = document.getElementById('vocabWord');
+    const meaningCard = document.getElementById('meaningCard');
+    const meaningText = document.getElementById('meaningText');
+    const exampleSentence = document.getElementById('exampleSentence');
+
+    vocabCard?.classList.add('learning-start-ready');
+    vocabCard?.setAttribute('aria-label', 'クリックして学習を開始');
+    vocabWord?.classList.add('learning-start-prompt');
+    vocabWord?.setAttribute('data-learning-start', 'true');
+    if (vocabWord) vocabWord.textContent = 'クリックしてスタート';
+    meaningCard?.classList.remove('flipped');
+    meaningCard?.setAttribute('aria-disabled', 'true');
+    if (meaningText) meaningText.textContent = '意味';
+    if (exampleSentence) exampleSentence.textContent = '開始すると例文が表示されます';
+    markLearningContentReady();
+    updateQuestionReasonUI();
+}
+
+function startLearningSession() {
+    if (learningSessionStarted) return false;
+    if (!ensureTrialAccess()) return false;
+    activateLearningSessionUI();
+    showNextWord();
+    return true;
+}
+
+window.startLearningSession = startLearningSession;
 
 function cloneUndoValue(value) {
     if (value == null) return value;
@@ -324,19 +373,50 @@ var trialState = (typeof trialState !== 'undefined') ? trialState : {
 
 var lastTickTime = (typeof lastTickTime !== 'undefined') ? lastTickTime : Date.now();
 
+function isTrialLimitDisabledForLocalDevelopment() {
+    return ['localhost', '127.0.0.1'].includes(window.location.hostname);
+}
+
+function hasValidPremiumAccess() {
+    return !!(window.GameUtils && window.GameUtils.checkPremiumStatus());
+}
+
+function getTrialDateKey() {
+    if (window.GameUtils && window.GameUtils.getJSTDateString) {
+        return window.GameUtils.getJSTDateString();
+    }
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function syncTrialUnlockState() {
+    const unlocked = hasValidPremiumAccess();
+    if (trialState.unlocked !== unlocked) {
+        trialState.unlocked = unlocked;
+        saveTrialState();
+    }
+    if (!unlocked && localStorage.getItem('vocabGame_isUnlocked') === 'true') {
+        localStorage.setItem('vocabGame_isUnlocked', 'false');
+    }
+    return unlocked;
+}
+
+function resetTrialDayIfNeeded() {
+    const today = getTrialDateKey();
+    if (trialState.lastPlayDate === today) return false;
+
+    trialState.lastPlayDate = today;
+    if (!trialState.unlocked) trialState.playTimeSeconds = 0;
+    saveTrialState();
+    const overlay = document.getElementById('trialOverlay');
+    if (overlay) overlay.style.display = 'none';
+    return true;
+}
+
 // Initialize Trial
 function initTrialSystem() {
     try {
         const savedTrial = localStorage.getItem(TRIAL_CONFIG.STORAGE_KEY);
-
-        // Get Current Date in JST (Robust)
-        let today;
-        if (window.GameUtils && window.GameUtils.getJSTDateString) {
-            today = window.GameUtils.getJSTDateString();
-        } else {
-            const d = new Date();
-            today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-        }
 
         if (savedTrial) {
             try {
@@ -350,16 +430,8 @@ function initTrialSystem() {
         // Expose for debugging
         window.trialState = trialState;
 
-        // Daily Reset (JST Midnight)
-        if (trialState.lastPlayDate !== today) {
-            console.log("New Day detected for Trial:", today);
-            trialState.lastPlayDate = today;
-            // Only reset time if we confirm it's a new day and not a glitch
-            if (!trialState.unlocked) {
-                trialState.playTimeSeconds = 0;
-            }
-            saveTrialState();
-        }
+        syncTrialUnlockState();
+        resetTrialDayIfNeeded();
 
         // Initialize Tick Time
         lastTickTime = Date.now();
@@ -391,20 +463,17 @@ function saveTrialState() {
 }
 
 function updateTrialTimer() {
-    // 1. Sync with global unlock status (Authority from Cloud/Login)
-    const globalUnlock = localStorage.getItem('vocabGame_isUnlocked') === 'true';
-
-    // Force sync if mismatch (Fixes "Timer Unlocked but Stats Locked" bug)
-    if (trialState.unlocked !== globalUnlock) {
-        // Only allow auto-lock/unlock if it's a clear mismatch with authority
-        console.log(`Syncing Trial State: ${trialState.unlocked} -> ${globalUnlock}`);
-        trialState.unlocked = globalUnlock;
-        saveTrialState();
-        updateTrialUI();
-    }
+    syncTrialUnlockState();
+    resetTrialDayIfNeeded();
 
     if (trialState.unlocked) {
         updateTrialUI(); // Ensure UI is hidden
+        return;
+    }
+
+    if (!learningSessionStarted) {
+        lastTickTime = Date.now();
+        updateTrialUI();
         return;
     }
 
@@ -456,20 +525,28 @@ function updateTrialUI() {
 }
 
 function checkTrialLimit() {
-    if (['localhost', '127.0.0.1'].includes(window.location.hostname)) return;
-    if (trialState.unlocked) return;
+    if (isTrialLimitDisabledForLocalDevelopment()) return false;
+    if (syncTrialUnlockState()) return false;
 
     if (trialState.playTimeSeconds >= TRIAL_CONFIG.LIMIT_SECONDS) {
+        trialState.playTimeSeconds = Math.max(trialState.playTimeSeconds, TRIAL_CONFIG.LIMIT_SECONDS);
+        saveTrialState();
         showLockScreen();
+        return true;
     }
+    return false;
 }
 
 function showLockScreen() {
-    if (['localhost', '127.0.0.1'].includes(window.location.hostname)) return;
+    if (isTrialLimitDisabledForLocalDevelopment()) return;
     const overlay = document.getElementById('trialOverlay');
     if (overlay.style.display !== 'flex') {
         overlay.style.display = 'flex';
     }
+}
+
+function ensureTrialAccess() {
+    return !checkTrialLimit();
 }
 
 // Old unlockGame removed. Now using bridge function at bottom.
@@ -531,7 +608,7 @@ function init() {
         initTrialSystem();
     }
 
-    showNextWord(initialReviewSnapshot);
+    showLearningStartPrompt(initialReviewSnapshot);
 }
 
 function getLocalDateKey(date = new Date()) {
@@ -1556,6 +1633,8 @@ window.openWordFromList = function (level, key) {
     const decodedKey = decodeURIComponent(key || '');
     const word = findWordListItemByKey(safeLevel, decodedKey);
     if (!word) return;
+    if (!ensureTrialAccess()) return;
+    activateLearningSessionUI();
 
     if (gameState.currentLevel !== safeLevel) {
         gameState.currentLevel = safeLevel;
@@ -2467,6 +2546,12 @@ function getWordFromDeck(category, sourceWords) {
 }
 
 function showNextWord(reviewSnapshot = null) {
+    if (!learningSessionStarted) {
+        showLearningStartPrompt();
+        return;
+    }
+    if (!ensureTrialAccess()) return;
+
     gameState.meaningCardFlipped = false;
     if (wordSpeechTimer) {
         clearTimeout(wordSpeechTimer);
@@ -2726,9 +2811,10 @@ function hideNoWordsMessage() {
     const cardsArea = document.getElementById('cardsArea');
     if (cardsArea.querySelector('.no-words')) {
         cardsArea.innerHTML = `
-                    <div class="card vocab-card" id="vocabCard">
+                    <div class="card vocab-card" id="vocabCard" role="button" tabindex="0"
+                        aria-label="英単語を正解として回答">
                         <div class="card-label">英単語カード</div>
-                        <div class="card-content" id="vocabWord" aria-busy="true">単語を準備中…</div>
+                        <div class="card-content" id="vocabWord" aria-busy="true"></div>
                         <div class="question-reason-label" id="questionReasonLabel" style="display:none;"></div>
                     </div>
                     <div class="card meaning-card" id="meaningCard">
@@ -2754,6 +2840,11 @@ function setupCardListeners() {
         const newVocab = vocabCard.cloneNode(true);
         vocabCard.parentNode.replaceChild(newVocab, vocabCard);
         newVocab.addEventListener('click', handleVocabCardClick);
+        newVocab.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            handleVocabCardClick();
+        });
     }
 
     if (meaningCard) {
@@ -2780,6 +2871,12 @@ function recordLearningLogPerfectizedStrict(prevState, nextState) {
 }
 
 function handleVocabCardClick() {
+    if (!ensureTrialAccess()) return;
+    if (!learningSessionStarted || !gameState.currentWord) {
+        startLearningSession();
+        return;
+    }
+
     if (typeof window.liveTutorialEvent === 'function') window.liveTutorialEvent('vocab_correct');
 
     const currentWord = gameState.currentWord;
@@ -2854,6 +2951,9 @@ function handleVocabCardClick() {
 }
 
 function handleMeaningCardClick(e) {
+    if (!ensureTrialAccess()) return;
+    if (!learningSessionStarted || !gameState.currentWord) return;
+
     const card = e.currentTarget;
 
     if (!gameState.meaningCardFlipped) {
