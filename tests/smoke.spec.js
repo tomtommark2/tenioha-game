@@ -1129,6 +1129,158 @@ test('クールタイム中の苦手語を単語一覧から開いても復習�
   });
 });
 
+test('復習回答は即時保存され再起動後にキューへ復活しない', async ({ page }) => {
+  await page.goto('/index.html');
+  const seeded = await page.evaluate(() => {
+    window.gameState.currentLevel = 'junior';
+    window.gameState.currentMode = 'unlearned';
+    window.gameState.reviewMode = 'on';
+    window.gameState.activeReviewLevels = ['junior'];
+
+    const words = window.vocabularyDatabase.junior.slice(0, 3);
+    const keys = words.map((word, index) => {
+      const key = window.GameUtils.getWordKey(word, 'junior', window.vocabularyDatabase);
+      window.gameState.wordStates[key] = 'weak';
+      window.gameState.srsData[key] = {
+        dueAt: Date.now() - 3000 + index,
+        stability: 1,
+        successCount: 0,
+        failCount: 1,
+        streak: 0,
+        lastReviewedAt: Date.now() - 86400000,
+        reviewStep: 0,
+        scheduledIntervalDays: 1,
+        isRelearning: false,
+        everWrong: true,
+        firstTryPerfect: false,
+      };
+      return key;
+    });
+    window.saveGame();
+    return { keys, firstWord: words[0].word };
+  });
+
+  await page.reload();
+  await expect.poll(() => page.evaluate(() => window.gameState?.currentWord?.word || null)).toBe(seeded.firstWord);
+
+  const afterAnswers = await page.evaluate((expectedKeys) => {
+    return expectedKeys.map(() => {
+      const currentWord = window.gameState.currentWord;
+      const key = window.GameUtils.getWordKey(
+        currentWord,
+        currentWord.__sourceLevel || window.gameState.currentLevel,
+        window.vocabularyDatabase
+      );
+      window.handleVocabCardClick();
+      const saved = JSON.parse(localStorage.getItem('vocabClickerSave'));
+      return {
+        key,
+        memoryState: window.gameState.wordStates[key],
+        savedState: saved.wordStates[key],
+        memoryDueAt: window.gameState.srsData[key].dueAt,
+        savedDueAt: saved.srsData[key].dueAt,
+      };
+    });
+  }, seeded.keys);
+
+  expect(afterAnswers.map(answer => answer.key).sort()).toEqual([...seeded.keys].sort());
+  afterAnswers.forEach(answer => {
+    expect(answer.savedState).toBe(answer.memoryState);
+    expect(answer.savedDueAt).toBe(answer.memoryDueAt);
+    expect(answer.savedDueAt).toBeGreaterThan(Date.now());
+  });
+
+  await page.reload();
+  const afterReload = await page.evaluate((keys) => {
+    const queueKeys = window.buildReviewQueueSnapshot().dueWords.map(word => (
+      window.GameUtils.getWordKey(
+        word,
+        word.__sourceLevel || window.gameState.currentLevel,
+        window.vocabularyDatabase
+      )
+    ));
+    return {
+      states: keys.map(key => window.gameState.wordStates[key]),
+      dueAtValues: keys.map(key => window.gameState.srsData[key].dueAt),
+      queueKeys,
+    };
+  }, seeded.keys);
+
+  expect(afterReload.states).toEqual(afterAnswers.map(answer => answer.memoryState));
+  expect(afterReload.dueAtValues).toEqual(afterAnswers.map(answer => answer.memoryDueAt));
+  seeded.keys.forEach(key => expect(afterReload.queueKeys).not.toContain(key));
+});
+
+test('端末保存は未学習の初期値を省略し復習履歴を保持する', async ({ page }) => {
+  await page.goto('/index.html');
+  const result = await page.evaluate(() => {
+    const untouchedWord = window.vocabularyDatabase.junior[0];
+    const reviewedWord = window.vocabularyDatabase.junior[1];
+    const untouchedKey = window.GameUtils.getWordKey(
+      untouchedWord,
+      'junior',
+      window.vocabularyDatabase
+    );
+    const reviewedKey = window.GameUtils.getWordKey(
+      reviewedWord,
+      'junior',
+      window.vocabularyDatabase
+    );
+
+    window.gameState.wordStates[untouchedKey] = 'unlearned';
+    window.gameState.srsData[untouchedKey] = {
+      dueAt: Date.now(),
+      stability: 1,
+      successCount: 0,
+      failCount: 0,
+      streak: 0,
+      lastReviewedAt: 0,
+      reviewStep: 0,
+      scheduledIntervalDays: 1,
+      isRelearning: false,
+      everWrong: false,
+      firstTryPerfect: false,
+    };
+    window.gameState.wordStates[reviewedKey] = 'weak';
+    window.gameState.srsData[reviewedKey] = {
+      dueAt: Date.now() + 300000,
+      stability: 0.6,
+      successCount: 0,
+      failCount: 1,
+      streak: 0,
+      lastReviewedAt: Date.now(),
+      reviewStep: 0,
+      scheduledIntervalDays: 1,
+      isRelearning: true,
+      everWrong: true,
+      firstTryPerfect: false,
+    };
+
+    const saveSucceeded = window.saveGame();
+    const saved = JSON.parse(localStorage.getItem('vocabClickerSave'));
+    return {
+      saveSucceeded,
+      untouchedKey,
+      reviewedKey,
+      memoryHasUntouched: Object.hasOwn(window.gameState.srsData, untouchedKey),
+      savedUntouchedState: saved.wordStates[untouchedKey],
+      savedUntouchedSrs: saved.srsData[untouchedKey],
+      savedReviewedState: saved.wordStates[reviewedKey],
+      savedReviewedSrs: saved.srsData[reviewedKey],
+      localCompactVersion: saved.localCompactVersion,
+    };
+  });
+
+  expect(result.saveSucceeded).toBe(true);
+  expect(result.localCompactVersion).toBe(1);
+  expect(result.memoryHasUntouched).toBe(true);
+  expect(result.savedUntouchedState).toBeUndefined();
+  expect(result.savedUntouchedSrs).toBeUndefined();
+  expect(result.savedReviewedState).toBe('weak');
+  expect(result.savedReviewedSrs.failCount).toBe(1);
+  expect(result.savedReviewedSrs.isRelearning).toBe(true);
+});
+
 test('期限到来済みの苦手語は単語一覧から開いても復習スコアに加点する', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');

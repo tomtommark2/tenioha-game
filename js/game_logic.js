@@ -2116,16 +2116,34 @@ function getDueFilteredPool(mode, pool) {
 
 // --- CLOUD SYNC HELPERS (v2.15) ---
 window.isDirty = false; // Tracks if local changes need saving
-var scheduledGameSaveTimer = null;
+var localSaveFailureNotified = false;
 
-function saveGame() {
-    if (scheduledGameSaveTimer) {
-        clearTimeout(scheduledGameSaveTimer);
-        scheduledGameSaveTimer = null;
-    }
-    const data = {
+function hasPersistableSrsHistory(key, entry) {
+    if (!entry || typeof entry !== 'object') return false;
+    const state = gameState.wordStates?.[key];
+    return (state && state !== 'unlearned')
+        || (entry.successCount || 0) > 0
+        || (entry.failCount || 0) > 0
+        || entry.everWrong === true
+        || entry.firstTryPerfect === true
+        || entry.isRelearning === true
+        || !!entry.lastReviewScoreDate;
+}
+
+function buildLocalSaveData() {
+    const persistedWordStates = {};
+    Object.entries(gameState.wordStates || {}).forEach(([key, state]) => {
+        if (state && state !== 'unlearned') persistedWordStates[key] = state;
+    });
+
+    const persistedSrsData = {};
+    Object.entries(gameState.srsData || {}).forEach(([key, entry]) => {
+        if (hasPersistableSrsHistory(key, entry)) persistedSrsData[key] = entry;
+    });
+
+    return {
         points: gameState.points,
-        wordStates: gameState.wordStates,
+        wordStates: persistedWordStates,
         learnedWordIntervals: gameState.learnedWordIntervals,
         globalQuestionCount: gameState.globalQuestionCount,
         currentLevel: gameState.currentLevel,
@@ -2138,15 +2156,37 @@ function saveGame() {
         lastSaveTime: Date.now(), // Track local save time for Sync Logic
         firstPlayedAt: gameState.firstPlayedAt, // Persist Start Date
         actionCounts: gameState.actionCounts, // Persist Detailed Action Counts
-        srsData: gameState.srsData, // Phase A: SRS foundation
+        srsData: persistedSrsData,
         srsBootstrapped: gameState.srsBootstrapped,
         srsSchemaVersion: gameState.srsSchemaVersion,
         activeReviewLevels: gameState.activeReviewLevels,
         reviewMode: gameState.reviewMode,
         mixCycleCounter: gameState.mixCycleCounter,
-        wordKeySchemaVersion: gameState.wordKeySchemaVersion
+        wordKeySchemaVersion: gameState.wordKeySchemaVersion,
+        localCompactVersion: 1
     };
-    localStorage.setItem('vocabClickerSave', JSON.stringify(data));
+}
+
+function saveGame() {
+    const data = buildLocalSaveData();
+    try {
+        localStorage.setItem('vocabClickerSave', JSON.stringify(data));
+        window.lastGameSaveError = null;
+    } catch (error) {
+        window.lastGameSaveError = {
+            name: error?.name || 'Error',
+            message: error?.message || String(error),
+            at: Date.now()
+        };
+        console.error('Local game save failed:', error);
+        if (!localSaveFailureNotified) {
+            localSaveFailureNotified = true;
+            window.setTimeout(() => {
+                alert('学習データを端末に保存できませんでした。アプリを終了せず、お問い合わせください。');
+            }, 0);
+        }
+        return false;
+    }
 
     // Mark as Dirty for Cloud Sync
     window.isDirty = true;
@@ -2154,28 +2194,8 @@ function saveGame() {
     if (typeof window.syncPendingReviewScores === 'function' && gameState.reviewScore?.pendingEvents?.length) {
         window.syncPendingReviewScores();
     }
+    return true;
 }
-
-function scheduleGameSave(delay = 120) {
-    window.isDirty = true;
-    if (scheduledGameSaveTimer) clearTimeout(scheduledGameSaveTimer);
-    scheduledGameSaveTimer = setTimeout(() => {
-        scheduledGameSaveTimer = null;
-        saveGame();
-    }, delay);
-}
-
-function flushScheduledGameSave() {
-    if (!scheduledGameSaveTimer) return;
-    clearTimeout(scheduledGameSaveTimer);
-    scheduledGameSaveTimer = null;
-    saveGame();
-}
-
-window.addEventListener('pagehide', flushScheduledGameSave);
-document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') flushScheduledGameSave();
-});
 
 function loadGame() {
     const saved = localStorage.getItem('vocabClickerSave');
@@ -2947,7 +2967,7 @@ function handleVocabCardClick() {
     const reviewSnapshot = updateDisplay();
     showNextWord(reviewSnapshot);
     animateCharacter();
-    scheduleGameSave();
+    saveGame();
 }
 
 function handleMeaningCardClick(e) {
@@ -2997,7 +3017,7 @@ function handleMeaningCardClick(e) {
 
         updateDisplay();
         animateCharacter();
-        scheduleGameSave();
+        saveGame();
     } else {
         // If already flipped, clicking it again = Next Word
         showNextWord();
