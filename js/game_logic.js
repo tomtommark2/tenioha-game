@@ -21,7 +21,6 @@ var gameState = window.gameState || {
     // Deprecated: keep for backward compatibility in old saves/UI, but do not treat as source of truth.
     wordsLearned: 0,
     dailyStats: { date: null }, // Only date tracking needed for Daily Reset logic
-    dailyHistory: [], // New: Track past daily stats for averages
     reviewScore: {
         total: 0,
         date: null,
@@ -760,9 +759,6 @@ function checkDailyReset() {
 
     if (gameState.dailyStats.date !== today) {
         console.log("Resetting Daily Stats for new day:", today);
-
-        // Push yesterday's stats to history if valid (using wordsLearned diff if needed, but for now just date)
-        // Actually, updateDailyHistory() handles history sync. This just resets the temp tracker.
 
         gameState.dailyStats = {
             date: today
@@ -2216,7 +2212,6 @@ function buildLocalSaveData() {
         vocabLevel: gameState.vocabLevel,
         wordsLearned: gameState.wordsLearned, // Ensure wordsLearned is saved
         dailyStats: gameState.dailyStats, // Fix: Persist Daily Stats
-        dailyHistory: gameState.dailyHistory, // Persist History
         reviewScore: gameState.reviewScore,
         lastSaveTime: Date.now(), // Track local save time for Sync Logic
         firstPlayedAt: gameState.firstPlayedAt, // Persist Start Date
@@ -2411,51 +2406,6 @@ function getWordsByMode(mode) {
     });
     return filterWordsByPOS(modeWords);
 }
-
-function getPerfectCountsByCEFR() {
-    if (window.StatsEngine && typeof window.StatsEngine.getPerfectCountsByCEFR === 'function') {
-        return window.StatsEngine.getPerfectCountsByCEFR(gameState, vocabularyDatabase);
-    }
-    return { A1: 0, A2: 0, B1: 0, B2: 0, total: 0 };
-}
-
-// --- HISTORY SYNC (v2.46.33) ---
-window.updateDailyHistory = function () {
-    const d = new Date();
-    const todayStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-
-    // Single source of truth: perfect-only snapshot counts
-    const counts = getPerfectCountsByCEFR();
-
-    // Back-compat mirror only (source of truth is computed counts)
-    gameState.wordsLearned = counts.total;
-
-    // Find Today's Entry
-    if (!gameState.dailyHistory) gameState.dailyHistory = [];
-
-    const existingIndex = gameState.dailyHistory.findIndex(h => h.date === todayStr);
-
-    const entryData = (window.StatsEngine && typeof window.StatsEngine.buildDailySnapshot === 'function')
-        ? window.StatsEngine.buildDailySnapshot(gameState, vocabularyDatabase, todayStr)
-        : {
-            date: todayStr,
-            total_learned: counts.total,
-            wordsLearned: counts.total,
-            cefr_breakdown: { A1: counts.A1, A2: counts.A2, B1: counts.B1, B2: counts.B2 }
-        };
-
-    if (existingIndex !== -1) {
-        // Update
-        gameState.dailyHistory[existingIndex] = { ...gameState.dailyHistory[existingIndex], ...entryData };
-    } else {
-        // Create
-        gameState.dailyHistory.push(entryData);
-    }
-
-    // Persist immediately
-    saveGame();
-    console.log("History Synced:", entryData);
-};
 
 function getEligibleLearnedWords() {
     const learnedWords = getWordsByMode('learned');
@@ -2926,22 +2876,6 @@ function setupCardListeners() {
     }
 }
 
-function recordLearningLogPerfectizedStrict(prevState, nextState) {
-    if (!((prevState === 'weak' || prevState === 'learned') && nextState === 'perfect')) return;
-    try {
-        const d = new Date();
-        const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-        const key = 'learningLog_daily_metrics_v1';
-        const raw = localStorage.getItem(key) || '{}';
-        const metrics = JSON.parse(raw);
-        if (!metrics[today]) metrics[today] = { answers: 0, review: 0, perfectized: 0, perfectizedStrict: 0 };
-        metrics[today].perfectizedStrict = Number(metrics[today].perfectizedStrict || 0) + 1;
-        localStorage.setItem(key, JSON.stringify(metrics));
-    } catch (e) {
-        console.warn('recordLearningLogPerfectizedStrict failed', e);
-    }
-}
-
 function handleVocabCardClick() {
     if (!ensureTrialAccess()) return;
     if (!learningSessionStarted || !gameState.currentWord) {
@@ -3003,7 +2937,6 @@ function handleVocabCardClick() {
     awardReviewScore(key, true, previousIntervalDays);
     updateSrsForWord(key, true, currentState);
     gameState.wordStates[key] = deriveStateFromAccuracy(key);
-    recordLearningLogPerfectizedStrict(currentState, gameState.wordStates[key]);
 
     // RPG Animation Trigger
     // RPG Animation Trigger

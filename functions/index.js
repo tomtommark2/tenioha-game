@@ -357,6 +357,7 @@ exports.createStripeCheckoutSession = onRequest({ region: CHECKOUT_FUNCTION_REGI
             customer: customerId,
             client_reference_id: userRecord.uid,
             line_items: checkoutLineItems(),
+            allow_promotion_codes: true,
             payment_method_types: ["card", "customer_balance"],
             payment_method_options: {
                 customer_balance: {

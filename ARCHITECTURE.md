@@ -12,7 +12,6 @@ This is a static web app with Firebase-backed features.
   - `js/version.js`
   - `js/config.js`
   - `js/utils.js`
-  - `js/stats_engine.js`
   - `js/game_logic.js`
   - `js/ui_manager.js`
   - `js/firebase_app_v2.js`
@@ -21,7 +20,6 @@ This is a static web app with Firebase-backed features.
 
 - `index.html` is the editable source.
 - `vocab_clicker_game.html` is a synchronized copy used by the manifest, service worker, tests, and some links.
-- `learning_log_preview.html` is embedded by `index.html` and `vocab_clicker_game.html`.
 - `service_worker.js` caches both HTML entry points and core assets.
 - `docs/review-system.md` defines the SRS cadence and review-score invariants.
 

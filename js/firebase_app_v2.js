@@ -790,7 +790,7 @@ function buildCloudSaveData(rawSaveData) {
     try {
         const data = JSON.parse(rawSaveData);
 
-        // dailyHistoryは日次ログ(daily_logs)が正本のためクラウドsaveDataから除外
+        // Remove the retired learning-log history from legacy local saves.
         delete data.dailyHistory;
 
         // 未学習は初期値として復元時に補完できるため、クラウド保存から除外
@@ -1094,11 +1094,6 @@ async function performCloudSave(silent = false, force = false) {
         }
         console.log("Upload success (Silent:" + silent + ")");
 
-        // Keep the daily aggregate in sync after the authoritative save succeeds.
-        if (isSameAuthenticatedUser && window.saveDailyProgress) {
-            void window.saveDailyProgress(!silent);
-        }
-
     } catch (e) {
         const isSameAuthenticatedUser = saveUserId && auth.currentUser && auth.currentUser.uid === saveUserId;
         if (e && e.code === 'cloud-save-conflict') {
@@ -1128,68 +1123,6 @@ window.uploadSaveData = async function (silent = false, force = false) {
         if (cloudSaveUploadPromise === uploadPromise) {
             cloudSaveUploadPromise = null;
         }
-    }
-};
-
-// --- LEARNING LOG ---
-
-function getDailyProgressSyncKey(uid) {
-    return `vocabGame_dailyProgressSync_${uid}`;
-}
-
-window.saveDailyProgress = async function (force = false) {
-    if (!db || !auth.currentUser || typeof gameState === 'undefined') return;
-
-    try {
-        const uid = auth.currentUser.uid;
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const dd = String(today.getDate()).padStart(2, '0');
-        const docId = `${yyyy}-${mm}-${dd}`;
-
-        // 1. Calculate Stats (single source)
-        const counts = (window.StatsEngine && typeof window.StatsEngine.getPerfectCountsByCEFR === 'function')
-            ? window.StatsEngine.getPerfectCountsByCEFR(gameState, (typeof vocabularyDatabase !== 'undefined' ? vocabularyDatabase : window.vocabularyDatabase))
-            : { A1: 0, A2: 0, B1: 0, B2: 0, total: 0 };
-
-        const stats = { A1: counts.A1, A2: counts.A2, B1: counts.B1, B2: counts.B2 };
-        const totalLearned = counts.total;
-        const signature = `${stats.A1}:${stats.A2}:${stats.B1}:${stats.B2}`;
-        const syncKey = getDailyProgressSyncKey(uid);
-        const previousSync = localStorage.getItem(syncKey);
-
-        if (!force && previousSync === `${docId}:${signature}`) {
-            return;
-        }
-
-        // 2. Save to Firestore Daily Log
-        const logRef = doc(db, "users", uid, "daily_logs", docId);
-
-        await setDoc(logRef, {
-            date: serverTimestamp(), // Use server time for sorting
-            dateString: docId,
-            total_learned: totalLearned,
-            cefr_breakdown: stats,
-            updatedAt: serverTimestamp()
-        }, { merge: true });
-
-        console.log(`Daily Log Saved [${docId}]: Total ${totalLearned}`, stats);
-
-        // 3. Update Parent Doc for fast access
-        const userRef = doc(db, "users", uid);
-        await setDoc(userRef, {
-            lastLogDate: docId,
-            currentStats: {
-                total: totalLearned,
-                cefr: stats
-            },
-            updatedAt: serverTimestamp()
-        }, { merge: true });
-        localStorage.setItem(syncKey, `${docId}:${signature}`);
-
-    } catch (e) {
-        console.error("Daily Log Save Failed:", e);
     }
 };
 

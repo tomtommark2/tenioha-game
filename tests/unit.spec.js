@@ -8,33 +8,6 @@ function loadScriptIntoContext(filePath, context) {
   vm.runInContext(code, context, { filename: filePath });
 }
 
-test('StatsEngine.getPerfectCountsByCEFR: perfect-onlyで集計される', async () => {
-  const ctx = vm.createContext({ console, self: {}, localStorage: { getItem: () => null } });
-  ctx.window = ctx.self;
-  loadScriptIntoContext(path.resolve(__dirname, '../js/utils.js'), ctx);
-  const file = path.resolve(__dirname, '../js/stats_engine.js');
-  loadScriptIntoContext(file, ctx);
-
-  const vocabularyDatabase = {
-    junior: [{ word: 'a', pos: '名' }, { word: 'b', pos: '動' }],
-    basic: [{ word: 'c', pos: '名' }],
-    daily: [{ word: 'd', pos: '形' }],
-    exam1: [{ word: 'e', pos: '副' }],
-  };
-
-  const gameState = {
-    wordStates: {}
-  };
-  gameState.wordStates[ctx.self.GameUtils.getWordKey(vocabularyDatabase.junior[0], 'junior', vocabularyDatabase)] = 'perfect';
-  gameState.wordStates[ctx.self.GameUtils.getWordKey(vocabularyDatabase.junior[1], 'junior', vocabularyDatabase)] = 'learned';
-  gameState.wordStates[ctx.self.GameUtils.getWordKey(vocabularyDatabase.basic[0], 'basic', vocabularyDatabase)] = 'perfect';
-  gameState.wordStates[ctx.self.GameUtils.getWordKey(vocabularyDatabase.daily[0], 'daily', vocabularyDatabase)] = 'weak';
-  gameState.wordStates[ctx.self.GameUtils.getWordKey(vocabularyDatabase.exam1[0], 'exam1', vocabularyDatabase)] = 'perfect';
-
-  const result = ctx.self.StatsEngine.getPerfectCountsByCEFR(gameState, vocabularyDatabase);
-  expect(result).toEqual({ A1: 1, A2: 1, B1: 0, B2: 1, total: 3 });
-});
-
 test('GameUtils.getWordKey: 同じ綴りでも品詞を区別し、参照語は基底語と共有する', async () => {
   const ctx = vm.createContext({ console, self: {}, localStorage: { getItem: () => null } });
   ctx.window = ctx.self;

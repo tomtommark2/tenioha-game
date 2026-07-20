@@ -551,20 +551,6 @@ body.level-selector-open .level-selector {
         linear-gradient(to top, currentColor 100%, transparent 100%) 100% 100% / 25% 100% no-repeat;
 }
 
-.icon-log::before {
-    width: 62%;
-    height: 74%;
-    border: 2px solid currentColor;
-    border-radius: 3px;
-}
-
-.icon-log::after {
-    width: 40%;
-    height: 2px;
-    background: currentColor;
-    box-shadow: 0 5px 0 currentColor, 0 10px 0 currentColor;
-}
-
 .icon-crown::before {
     width: 74%;
     height: 52%;

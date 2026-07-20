@@ -59,10 +59,6 @@ service cloud.firestore {
                     && !request.resource.data.diff(resource.data).affectedKeys().hasAny(protectedUserFields());
       allow delete: if false;
       
-      match /daily_logs/{logId} {
-        allow read, write: if isOwner(userId) && !isBanned();
-      }
-      
       // Require at least one subcollection segment so this cannot also match
       // the parent /users/{userId} document under rules_version = '2'.
       match /{collectionId}/{document=**} {

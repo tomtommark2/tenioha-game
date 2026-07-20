@@ -56,6 +56,26 @@ test(START_INTERACTION_TEST, async ({ page }) => {
   expect(activeTrialSeconds).toBeGreaterThanOrEqual(4.5);
 });
 
+test('学習ログを廃止し、語彙力推定と復習ランキングを残す', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+
+  const menuLabels = await page.locator('#otherMenuDropdown .other-menu-label').allTextContents();
+  expect(menuLabels).not.toContain('学習ログ');
+  expect(menuLabels).toContain('語彙力推定');
+  expect(menuLabels).toContain('ランキング');
+  await expect(page.locator('#learningLogPreviewModal')).toHaveCount(0);
+  expect(await page.evaluate(() => typeof window.openLearningLogPreviewModal)).toBe('undefined');
+  expect(await page.evaluate(() => typeof window.openLearningLogModal)).toBe('function');
+  expect(await page.evaluate(() => typeof window.openLeaderboard)).toBe('function');
+  await page.evaluate(() => window.openLearningLogModal());
+  await expect(page.locator('#learningLogModal')).toBeVisible();
+  await expect(page.locator('#vocabDiagnosisContainer .vocab-diagnosis-card')).toBeVisible();
+});
+
 test('無料版は10分到達後に回答できず再読み込み後もロックされる', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
@@ -363,7 +383,7 @@ test('その他メニューは読み上げ名とキーボード操作に対応�
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
   await trigger.press('Enter');
   await expect(trigger).toHaveAttribute('aria-expanded', 'true');
-  await expect(items).toHaveCount(5);
+  await expect(items).toHaveCount(4);
   await expect(items.first()).toBeVisible();
   await expect.poll(() => items.evaluateAll((elements) => elements.every((element) => element.tagName === 'BUTTON'))).toBe(true);
 

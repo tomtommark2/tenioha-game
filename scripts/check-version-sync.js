@@ -26,7 +26,6 @@ const targets = [
   'js/update_manager.js',
   'js/config.js',
   'js/utils.js',
-  'js/stats_engine.js',
   'js/game_logic.js',
   'js/ui_manager.js',
   'js/firebase_app_v2.js'

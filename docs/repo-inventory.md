@@ -6,7 +6,6 @@
 - Deployment files: `firebase.json`, `firestore.rules`, `manifest.json`, `service_worker.js`, `functions/`
 - Tests: `tests/`, Playwright configs
 - Assets actually used by the app and hosted pages
-- `learning_log_preview.html`
 - `thankyou_x9z2q5.html`
 
 ## Integrate Into Docs
@@ -40,5 +39,4 @@ Current known preview candidates:
 
 ## Notes
 
-- `learning_log_preview.html` is not a delete candidate because it is embedded by the main HTML.
 - `vocab_clicker_game.html` is not legacy; it is still used by the manifest, service worker, tests, and links.
