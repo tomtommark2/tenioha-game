@@ -3339,6 +3339,61 @@ body.level-selector-open .level-selector {
     font-weight: 950;
 }
 
+.guest-ranking-notice {
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: -3px 0 12px;
+    padding: 9px 11px;
+    border: 1px solid #e2d8c7;
+    border-radius: 10px;
+    background: #fffaf0;
+    text-align: left;
+}
+
+.guest-ranking-notice-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.guest-ranking-notice-copy strong {
+    color: #4b4135;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.guest-ranking-notice-copy span {
+    color: #817565;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.guest-ranking-notice button {
+    flex: 0 0 auto;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: #4f3aa7;
+    color: #fff;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+@media (max-width: 390px) {
+    .guest-ranking-notice {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .guest-ranking-notice button {
+        width: 100%;
+    }
+}
+
 .ranking-list {
     max-height: 430px;
     padding-right: 2px;

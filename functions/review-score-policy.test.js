@@ -2,6 +2,8 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const {
     calculateReviewEventPoints,
+    guestRankingName,
+    isAnonymousFirebaseUser,
     nextRecentReviewEventIds,
     reviewEventIdHash,
     reviewWordKeyHash,
@@ -45,4 +47,16 @@ test("単語キーのハッシュは登録語だけを許可できる", () => {
     assert.notEqual(reviewWordKeyHash(wordKey), reviewWordKeyHash(`${wordKey}-other`));
     assert.equal(reviewWordHashes.has(reviewWordKeyHash(wordKey)), true);
     assert.equal(reviewWordHashes.has(reviewWordKeyHash("word-v2:fake:fake:other")), false);
+});
+
+test("匿名認証だけをゲストとして判定する", () => {
+    assert.equal(isAnonymousFirebaseUser({firebase: {sign_in_provider: "anonymous"}}), true);
+    assert.equal(isAnonymousFirebaseUser({firebase: {sign_in_provider: "google.com"}}), false);
+    assert.equal(isAnonymousFirebaseUser({}), false);
+});
+
+test("ゲスト表示名はUIDから8文字以内で安定して生成する", () => {
+    assert.equal(guestRankingName("abcdef1234"), "ゲスト1234");
+    assert.equal(guestRankingName("abcdef1234"), guestRankingName("abcdef1234"));
+    assert.ok(guestRankingName("x").length <= 8);
 });

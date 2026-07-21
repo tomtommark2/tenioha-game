@@ -6,6 +6,8 @@ const {
     REVIEW_SCORE_INTERVALS,
     REVIEW_SCORE_OUTCOMES,
     calculateReviewEventPoints,
+    guestRankingName,
+    isAnonymousFirebaseUser,
     nextRecentReviewEventIds,
     reviewEventIdHash,
     reviewWordKeyHash,
@@ -98,7 +100,9 @@ function reviewWeekKey(dateKey) {
 function normalizeReviewProfile(body, userRecord) {
     const rawName = typeof body.name === "string" ? body.name.trim() : "";
     const fallbackName = (userRecord.name || "学習者").trim().slice(0, 8);
-    const name = (rawName || fallbackName).slice(0, 8);
+    const name = isAnonymousFirebaseUser(userRecord)
+        ? guestRankingName(userRecord.uid)
+        : (rawName || fallbackName).slice(0, 8);
     const avatarId = REVIEW_AVATAR_IDS.has(body.avatarId) ? body.avatarId : "hero";
     return { name, avatarId };
 }
@@ -332,6 +336,10 @@ exports.createStripeCheckoutSession = onRequest({ region: CHECKOUT_FUNCTION_REGI
         }
 
         const decodedToken = await admin.auth().verifyIdToken(idToken);
+        if (isAnonymousFirebaseUser(decodedToken)) {
+            res.status(403).json({ error: "購入にはGoogleログインが必要です。" });
+            return;
+        }
         const userRecord = await admin.auth().getUser(decodedToken.uid);
         const customerId = await stripeCustomerForUser(stripe, userRecord);
         const returnUrl = normalizedCheckoutReturnUrl(body.returnUrl);
@@ -407,6 +415,9 @@ exports.redeemTeniohaPromoCode = onRequest({ region: CHECKOUT_FUNCTION_REGION },
         }
 
         const decodedToken = await admin.auth().verifyIdToken(idToken);
+        if (isAnonymousFirebaseUser(decodedToken)) {
+            throw new PromoCodeError("コードの適用にはGoogleログインが必要です。", 403);
+        }
         const userRef = db.collection("users").doc(decodedToken.uid);
         const codeRef = db.collection("promocodes").doc(code);
 
@@ -627,6 +638,116 @@ exports.updateReviewProfile = onRequest({ region: CHECKOUT_FUNCTION_REGION }, as
         const status = error.status || (String(error.code || "").startsWith("auth/") ? 401 : 500);
         logger.error("Review profile update failed.", { error: error.message, status });
         res.status(status).json({ error: status === 500 ? "プロフィールの更新に失敗しました。" : error.message });
+    }
+});
+
+exports.mergeGuestReviewScore = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
+    if (rejectNonPost(req, res)) return;
+
+    try {
+        const registeredUser = await verifyRequestUser(req);
+        if (isAnonymousFirebaseUser(registeredUser)) {
+            res.status(403).json({ error: "Googleログインが必要です。" });
+            return;
+        }
+
+        const body = requestBody(req);
+        const guestIdToken = typeof body.guestIdToken === "string" ? body.guestIdToken.trim() : "";
+        if (!guestIdToken || guestIdToken.length > 5000) {
+            res.status(400).json({ error: "ゲスト情報が不足しています。" });
+            return;
+        }
+
+        const guestUser = await admin.auth().verifyIdToken(guestIdToken);
+        if (!isAnonymousFirebaseUser(guestUser) || guestUser.uid === registeredUser.uid) {
+            res.status(400).json({ error: "ゲスト情報が不正です。" });
+            return;
+        }
+
+        const todayKey = jstDateKey();
+        const weekKey = reviewWeekKey(todayKey);
+        const weeklyUsersRef = db.collection("review_score_weekly").doc(weekKey).collection("users");
+        const dailyUsersRef = db.collection("review_score_daily").doc(todayKey).collection("users");
+        const guestWeeklyRef = weeklyUsersRef.doc(guestUser.uid);
+        const registeredWeeklyRef = weeklyUsersRef.doc(registeredUser.uid);
+        const guestDailyRef = dailyUsersRef.doc(guestUser.uid);
+        const registeredDailyRef = dailyUsersRef.doc(registeredUser.uid);
+        const guestProfileRef = db.collection("users").doc(guestUser.uid);
+        const registeredProfileRef = db.collection("users").doc(registeredUser.uid);
+        const profile = normalizeReviewProfile(body, registeredUser);
+
+        const result = await db.runTransaction(async (transaction) => {
+            const [guestWeekly, registeredWeekly, guestDaily, registeredDaily, registeredProfile] = await Promise.all([
+                transaction.get(guestWeeklyRef),
+                transaction.get(registeredWeeklyRef),
+                transaction.get(guestDailyRef),
+                transaction.get(registeredDailyRef),
+                transaction.get(registeredProfileRef),
+            ]);
+            const guestWeekPoints = Number(guestWeekly.data()?.score || 0);
+            const registeredWeekPoints = Number(registeredWeekly.data()?.score || 0);
+            const guestTodayPoints = Number(guestDaily.data()?.score || 0);
+            const registeredTodayPoints = Number(registeredDaily.data()?.score || 0);
+            const now = admin.firestore.FieldValue.serverTimestamp();
+            const weekPoints = registeredWeekPoints + guestWeekPoints;
+            const todayPoints = registeredTodayPoints + guestTodayPoints;
+            const registeredWeeklyData = registeredWeekly.data() || {};
+            const registeredProfileData = registeredProfile.data() || {};
+            const mergedName = registeredWeeklyData.name
+                || registeredProfileData.reviewRankingName
+                || profile.name;
+            const mergedAvatarId = REVIEW_AVATAR_IDS.has(registeredWeeklyData.avatarId)
+                ? registeredWeeklyData.avatarId
+                : REVIEW_AVATAR_IDS.has(registeredProfileData.reviewAvatarId)
+                    ? registeredProfileData.reviewAvatarId
+                    : profile.avatarId;
+
+            if (guestWeekPoints > 0 || registeredWeekly.exists) {
+                transaction.set(registeredWeeklyRef, {
+                    name: mergedName,
+                    avatarId: mergedAvatarId,
+                    score: weekPoints,
+                    updatedAt: now,
+                }, { merge: true });
+            }
+            if (guestTodayPoints > 0 || registeredDaily.exists) {
+                transaction.set(registeredDailyRef, {
+                    score: todayPoints,
+                    updatedAt: now,
+                }, { merge: true });
+            }
+            transaction.set(registeredProfileRef, {
+                reviewRankingName: mergedName,
+                reviewAvatarId: mergedAvatarId,
+                reviewRankingUpdatedAt: now,
+            }, { merge: true });
+            transaction.delete(guestWeeklyRef);
+            transaction.delete(guestDailyRef);
+            transaction.delete(guestProfileRef);
+
+            return { guestWeekPoints, guestTodayPoints, weekPoints, todayPoints };
+        });
+
+        try {
+            await admin.auth().deleteUser(guestUser.uid);
+        } catch (error) {
+            logger.warn("Merged guest score but could not delete anonymous Auth user.", {
+                guestUid: guestUser.uid,
+                error: error.message,
+            });
+        }
+
+        logger.info("Merged anonymous review score into registered account.", {
+            guestUid: guestUser.uid,
+            registeredUid: registeredUser.uid,
+            guestWeekPoints: result.guestWeekPoints,
+            guestTodayPoints: result.guestTodayPoints,
+        });
+        res.json({ success: true, todayKey, weekKey, ...result });
+    } catch (error) {
+        const status = error.status || (String(error.code || "").startsWith("auth/") ? 401 : 500);
+        logger.error("Guest review score merge failed.", { error: error.message, status });
+        res.status(status).json({ error: status === 500 ? "ゲスト順位の引き継ぎに失敗しました。" : error.message });
     }
 });
 

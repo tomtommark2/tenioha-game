@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0721.0015">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0721.0015" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0721.0015" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0721.0015" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0721.1451">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0721.1451" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0721.1451" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0721.1451" as="script">
 </head>
 
 <body>
@@ -485,8 +485,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0721.0015"></script>
-<script src="data/ipa_overrides.js?v=2026.0721.0015"></script>
+    <script src="data/vocabulary.js?v=2026.0721.1451"></script>
+<script src="data/ipa_overrides.js?v=2026.0721.1451"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -725,19 +725,19 @@
             </div>
 
             <div id="loginRequiredMessage" class="leaderboard-state-card" style="display: none;">
-                <div class="leaderboard-state-title">ログインが必要です</div>
+                <div class="leaderboard-state-title">ランキングは閲覧できます</div>
                 <p id="leaderboardVersionDisplay" class="leaderboard-version">現在のバージョン: -</p>
                 <p class="leaderboard-state-copy">
-                    復習ランキングへの参加にはGoogleアカウントでのログインが必要です。
+                    ゲスト参加を準備できませんでした。Google連携すると順位を保存して参加できます。
                 </p>
-                <button class="primary-action-btn leaderboard-login-btn" onclick="closeLeaderboard(); openProfileModal();">
-                    ログイン画面へ
+                <button class="primary-action-btn leaderboard-login-btn" onclick="loginWithGoogle()">
+                    Googleで順位を保存
                 </button>
             </div>
 
             <div id="nameInputParams" class="leaderboard-name-card" style="display: none;">
                 <div class="leaderboard-state-title">ランキングプロフィール</div>
-                <p class="leaderboard-state-copy">表示するアバターと8文字以内の名前を選んでください。</p>
+                <p id="leaderboardProfileCopy" class="leaderboard-state-copy">表示するアバターと8文字以内の名前を選んでください。</p>
                 <div id="reviewAvatarPicker" class="review-avatar-picker" aria-label="アバターを選択">
                     <button class="review-avatar-option active" type="button" data-avatar-id="hero" onclick="selectReviewAvatar('hero')" aria-pressed="true"><img src="assets/avatars/avatar-hero.png" alt="てにをはキャラクター"></button>
                     <button class="review-avatar-option" type="button" data-avatar-id="rose" onclick="selectReviewAvatar('rose')" aria-pressed="false"><img src="assets/avatars/avatar-rose.png" alt="ローズの冒険者"></button>
@@ -751,7 +751,7 @@
                 <input class="soft-input leaderboard-name-input" type="text" id="playerNameInput"
                     placeholder="ニックネーム" maxlength="8">
                 <div class="leaderboard-name-actions">
-                    <button class="primary-action-btn" onclick="registerName()">登録して参加</button>
+                    <button id="registerNameBtn" class="primary-action-btn" onclick="registerName()">登録して参加</button>
                     <button id="cancelRenameBtn" class="secondary-action-btn" onclick="cancelRename()"
                         style="display: none;">キャンセル</button>
                 </div>
@@ -769,6 +769,14 @@
                         <span id="reviewRankingTodayPoints">今日 0pt</span>
                     </div>
                     <div id="reviewRankingMyRank" class="review-ranking-summary-rank">--位</div>
+                </div>
+
+                <div id="guestRankingNotice" class="guest-ranking-notice" style="display:none;">
+                    <div class="guest-ranking-notice-copy">
+                        <strong>ゲスト参加中</strong>
+                        <span>Google連携で、この順位を保存できます。</span>
+                    </div>
+                    <button type="button" onclick="loginWithGoogle()">順位を保存</button>
                 </div>
 
                 <div id="lb-loading" class="leaderboard-loading">読み込み中...</div>
@@ -942,15 +950,15 @@
     </div>
     </div>
 
-    <script src="js/version.js?v=2026.0721.0015"></script>
-    <script src="js/update_manager.js?v=2026.0721.0015"></script>
-    <script src="js/config.js?v=2026.0721.0015"></script>
-    <script src="data/announcements.js?v=2026.0721.0015"></script>
-    <script src="js/utils.js?v=2026.0721.0015"></script>
+    <script src="js/version.js?v=2026.0721.1451"></script>
+    <script src="js/update_manager.js?v=2026.0721.1451"></script>
+    <script src="js/config.js?v=2026.0721.1451"></script>
+    <script src="data/announcements.js?v=2026.0721.1451"></script>
+    <script src="js/utils.js?v=2026.0721.1451"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/game_logic.js?v=2026.0721.0015"></script>
-    <script src="js/ui_manager.js?v=2026.0721.0015"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0721.0015"></script>
+    <script src="js/game_logic.js?v=2026.0721.1451"></script>
+    <script src="js/ui_manager.js?v=2026.0721.1451"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0721.1451"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

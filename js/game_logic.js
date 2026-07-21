@@ -736,6 +736,15 @@ function getReviewAvatarPath(avatarId = getReviewAvatarId()) {
     return `assets/avatars/avatar-${safeId}.png`;
 }
 
+function ensureGuestPlayerName(uid = window.firebaseAuth?.currentUser?.uid || '') {
+    const generated = window.getGuestRankingName
+        ? window.getGuestRankingName(uid)
+        : `ゲスト${String(uid || 'guest').slice(-4).padStart(4, '0')}`;
+    playerName = generated;
+    localStorage.setItem('vocabGame_playerName', generated);
+    return generated;
+}
+
 function updateReviewScoreSummary() {
     ensureReviewScoreState();
     const today = document.getElementById('reviewScoreHeaderToday');
@@ -3359,18 +3368,33 @@ function updateReviewRankingSummary(serverData = null) {
     const weekPoints = document.getElementById('reviewRankingWeekPoints');
     const todayPoints = document.getElementById('reviewRankingTodayPoints');
     const rank = document.getElementById('reviewRankingMyRank');
+    const guestNotice = document.getElementById('guestRankingNotice');
     const myEntry = serverData && serverData.me ? serverData.me : null;
+    const rankingUser = window.firebaseAuth?.currentUser || null;
+    const isGuest = Boolean(rankingUser?.isAnonymous);
 
     if (avatar) avatar.src = getReviewAvatarPath(myEntry?.avatarId || getReviewAvatarId());
-    if (name) name.textContent = myEntry?.name || playerName || 'あなた';
+    if (name) name.textContent = myEntry?.name || (isGuest ? ensureGuestPlayerName(rankingUser.uid) : playerName) || 'あなた';
     if (weekPoints) weekPoints.textContent = `${myEntry?.score ?? getReviewWeekPoints()}pt`;
     if (todayPoints) todayPoints.textContent = `今日 ${getReviewTodayPoints()}pt`;
     if (rank) rank.textContent = myEntry?.rank ? `${myEntry.rank}位` : '--位';
+    if (guestNotice) guestNotice.style.display = isGuest ? 'flex' : 'none';
 }
 
 function checkNameRegistration() {
     selectedReviewAvatarId = getReviewAvatarId();
     updateReviewAvatarPicker();
+    const currentUser = window.firebaseAuth?.currentUser || null;
+    if (currentUser?.isAnonymous) {
+        ensureGuestPlayerName(currentUser.uid);
+        document.getElementById('nameInputParams').style.display = 'none';
+        document.getElementById('leaderboardContent').style.display = 'block';
+        const renameButton = document.getElementById('renameBtn');
+        renameButton.style.display = 'block';
+        renameButton.textContent = 'アバター変更';
+        loadRankingData('top', true);
+        return;
+    }
     if (!playerName) {
         document.getElementById('nameInputParams').style.display = 'block';
         document.getElementById('leaderboardContent').style.display = 'none';
@@ -3378,13 +3402,27 @@ function checkNameRegistration() {
     } else {
         document.getElementById('nameInputParams').style.display = 'none';
         document.getElementById('leaderboardContent').style.display = 'block';
-        document.getElementById('renameBtn').style.display = 'block';
+        const renameButton = document.getElementById('renameBtn');
+        renameButton.style.display = 'block';
+        renameButton.textContent = 'プロフィール編集';
         loadRankingData('top', true);
     }
 }
 
-function renamePlayer() {
-    document.getElementById('playerNameInput').value = playerName;
+function prepareReviewProfileEditor() {
+    const currentUser = window.firebaseAuth?.currentUser || null;
+    const isGuest = Boolean(currentUser?.isAnonymous);
+    const nameInput = document.getElementById('playerNameInput');
+    const profileCopy = document.getElementById('leaderboardProfileCopy');
+    const registerButton = document.getElementById('registerNameBtn');
+    nameInput.value = isGuest ? '' : playerName;
+    nameInput.style.display = isGuest ? 'none' : '';
+    if (profileCopy) {
+        profileCopy.textContent = isGuest
+            ? 'ゲストはアバターを選べます。名前の変更はGoogle連携後に利用できます。'
+            : '表示するアバターと8文字以内の名前を選んでください。';
+    }
+    if (registerButton) registerButton.textContent = isGuest ? 'アバターを保存' : '登録して参加';
     selectedReviewAvatarId = getReviewAvatarId();
     updateReviewAvatarPicker();
 
@@ -3403,7 +3441,9 @@ function cancelRename() {
 
 async function registerName() {
     const input = document.getElementById('playerNameInput');
-    const val = input.value.trim();
+    const currentUser = window.firebaseAuth?.currentUser || null;
+    const isGuest = Boolean(currentUser?.isAnonymous);
+    const val = isGuest ? ensureGuestPlayerName(currentUser.uid) : input.value.trim();
     if (val.length > 0 && val.length <= 8) {
         playerName = val;
         localStorage.setItem('vocabGame_playerName', playerName);
@@ -3521,6 +3561,8 @@ function showReviewRankingPreview() {
 }
 
 window.selectReviewAvatar = selectReviewAvatar;
+window.ensureGuestPlayerName = ensureGuestPlayerName;
+window.prepareReviewProfileEditor = prepareReviewProfileEditor;
 window.updateReviewScoreSummary = updateReviewScoreSummary;
 window.applyServerReviewScore = applyServerReviewScore;
 window.renderReviewRankingItem = renderReviewRankingItem;

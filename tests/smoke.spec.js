@@ -1663,6 +1663,75 @@ test('ランキングプロフィールで犬と猫を含む8種類の実画像�
   await expect(page.locator('.review-avatar-option[data-avatar-id="dog"]')).toHaveClass(/active/);
 });
 
+test('未登録ユーザーは固定ゲスト名でランキングに参加しGoogle連携を案内する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  const result = await page.evaluate(async () => {
+    window.firebaseAuth = {
+      currentUser: { uid: 'anonymous-user-1234', isAnonymous: true },
+    };
+    window.fetchReviewLeaderboard = async () => ({ results: [], me: null });
+    let savedProfile = null;
+    window.updateReviewRankingProfile = async (name, avatarId) => {
+      savedProfile = { name, avatarId };
+      return { success: true };
+    };
+
+    window.updateReviewRankingSummary();
+    window.checkNameRegistration();
+    const initial = {
+      name: document.getElementById('reviewRankingMyName').textContent,
+      noticeDisplay: document.getElementById('guestRankingNotice').style.display,
+      editLabel: document.getElementById('renameBtn').textContent,
+    };
+
+    window.prepareReviewProfileEditor();
+    const editor = {
+      inputDisplay: document.getElementById('playerNameInput').style.display,
+      copy: document.getElementById('leaderboardProfileCopy').textContent,
+      saveLabel: document.getElementById('registerNameBtn').textContent,
+    };
+    window.selectReviewAvatar('cat');
+    await window.registerName();
+
+    return { initial, editor, savedProfile };
+  });
+
+  expect(result.initial).toEqual({
+    name: 'ゲスト1234',
+    noticeDisplay: 'flex',
+    editLabel: 'アバター変更',
+  });
+  expect(result.editor).toEqual({
+    inputDisplay: 'none',
+    copy: 'ゲストはアバターを選べます。名前の変更はGoogle連携後に利用できます。',
+    saveLabel: 'アバターを保存',
+  });
+  expect(result.savedProfile).toEqual({ name: 'ゲスト1234', avatarId: 'cat' });
+});
+
+test('匿名ランキング参加中でも購入にはGoogle連携を要求する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => {
+    window.isRegisteredFirebaseUser = () => false;
+    document.getElementById('purchaseModal').style.display = 'none';
+    window.openPurchaseModal();
+  });
+
+  await expect(page.locator('#purchaseModal')).toBeHidden();
+  await expect(page.locator('#profileModal')).toBeVisible();
+  await expect(page.locator('#profileLoginNotice')).toBeVisible();
+});
+
 test('正答率閾値(80/50)で状態分類される', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');

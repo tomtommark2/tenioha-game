@@ -19,7 +19,7 @@ if (isLocalDevelopment) {
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, doc, setDoc, getDoc, getDocs, deleteDoc, deleteField, query, orderBy, limit, where, serverTimestamp, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, signInAnonymously, signInWithPopup, signInWithCredential, linkWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
@@ -68,6 +68,38 @@ const REVIEW_FUNCTION_BASE = 'https://us-central1-tenioha-game.cloudfunctions.ne
 const REVIEW_LEADERBOARD_CACHE_MS = 2 * 60 * 1000;
 let reviewLeaderboardCache = { data: null, timestamp: 0 };
 let reviewScoreSyncPromise = null;
+let anonymousSignInPromise = null;
+
+function isRegisteredFirebaseUser(user = auth?.currentUser) {
+    return Boolean(user && !user.isAnonymous);
+}
+
+function guestRankingName(uid) {
+    const suffix = String(uid || 'guest').slice(-4).padStart(4, '0');
+    return `ゲスト${suffix}`;
+}
+
+window.isRegisteredFirebaseUser = isRegisteredFirebaseUser;
+window.isAnonymousRankingUser = (user = auth?.currentUser) => Boolean(user?.isAnonymous);
+window.getGuestRankingName = guestRankingName;
+
+window.ensureRankingIdentity = async function () {
+    if (!auth || auth.currentUser) return auth?.currentUser || null;
+    if (isLocalDevelopment && new URLSearchParams(window.location.search).get('enableGuestAuth') !== '1') {
+        return null;
+    }
+    if (anonymousSignInPromise) return anonymousSignInPromise;
+    anonymousSignInPromise = signInAnonymously(auth)
+        .then((credential) => credential.user)
+        .catch((error) => {
+            console.warn('Anonymous ranking sign-in failed:', error.message);
+            return null;
+        })
+        .finally(() => {
+            anonymousSignInPromise = null;
+        });
+    return anonymousSignInPromise;
+};
 
 async function postReviewFunction(functionName, payload, requireAuth = true) {
     const currentUser = auth && auth.currentUser;
@@ -102,7 +134,9 @@ window.syncPendingReviewScores = function () {
             try {
                 const result = await postReviewFunction('submitReviewScore', {
                     ...event,
-                    name: localStorage.getItem('vocabGame_playerName') || auth.currentUser.displayName || '学習者',
+                    name: auth.currentUser.isAnonymous
+                        ? guestRankingName(auth.currentUser.uid)
+                        : localStorage.getItem('vocabGame_playerName') || auth.currentUser.displayName || '学習者',
                     avatarId: localStorage.getItem('vocabGame_reviewAvatarId') || 'hero'
                 });
                 gameState.reviewScore.pendingEvents.shift();
@@ -237,7 +271,7 @@ window.updatePremiumStatusDisplay = function () {
 }
 
 window.handleProfileAuth = function () {
-    if (auth.currentUser) {
+    if (isRegisteredFirebaseUser()) {
         if (confirm("ログアウトしますか？")) { logoutGoogle(); }
     } else {
         loginWithGoogle();
@@ -253,7 +287,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
     const code = input.value.trim();
 
     if (!code) { alert("コードを入力してください"); return; }
-    if (!auth || !auth.currentUser) { alert("コードを適用するにはログインが必要です"); return; }
+    if (!isRegisteredFirebaseUser()) { alert("コードを適用するにはGoogleログインが必要です"); return; }
 
     try {
         const idToken = await auth.currentUser.getIdToken();
@@ -298,6 +332,26 @@ window.unlockGame = function () {
     redeemPromoCode('unlockPassword');
 };
 
+async function mergeGuestRankingIntoCurrentUser(guestIdToken) {
+    if (!guestIdToken || !isRegisteredFirebaseUser()) return null;
+    const result = await postReviewFunction('mergeGuestReviewScore', {
+        guestIdToken,
+        name: auth.currentUser.displayName || '学習者',
+        avatarId: localStorage.getItem('vocabGame_reviewAvatarId') || 'hero'
+    });
+    reviewLeaderboardCache = { data: null, timestamp: 0 };
+    if (window.applyServerReviewScore) {
+        window.applyServerReviewScore({
+            todayKey: result.todayKey,
+            todayPoints: result.todayPoints,
+            weekKey: result.weekKey,
+            weekPoints: result.weekPoints,
+            userId: auth.currentUser.uid
+        });
+    }
+    return result;
+}
+
 window.loginWithGoogle = async function () {
     if (!auth) {
         alert("Firebase Authが初期化されていません。\nページをリロードしてみてください。");
@@ -305,7 +359,39 @@ window.loginWithGoogle = async function () {
     }
     const provider = new GoogleAuthProvider();
     try {
-        await signInWithPopup(auth, provider);
+        const guestUser = auth.currentUser?.isAnonymous ? auth.currentUser : null;
+        if (!guestUser) {
+            await signInWithPopup(auth, provider);
+            return;
+        }
+
+        if (window.syncPendingReviewScores) await window.syncPendingReviewScores();
+        if (gameState.reviewScore?.pendingEvents?.length) {
+            alert("未送信の復習ポイントがあります。\n通信状態を確認してから、もう一度Google連携をお試しください。");
+            return;
+        }
+        const guestIdToken = await guestUser.getIdToken();
+        try {
+            await linkWithPopup(guestUser, provider);
+            alert("Googleアカウントと連携しました。\n順位とポイントはそのまま引き継がれます。");
+            location.reload();
+            return;
+        } catch (linkError) {
+            const credential = GoogleAuthProvider.credentialFromError(linkError);
+            if (!['auth/credential-already-in-use', 'auth/email-already-in-use'].includes(linkError.code) || !credential) {
+                throw linkError;
+            }
+            await signInWithCredential(auth, credential);
+            try {
+                await mergeGuestRankingIntoCurrentUser(guestIdToken);
+                alert("Googleアカウントへログインし、ゲスト順位を引き継ぎました。");
+            } catch (mergeError) {
+                console.error('Guest ranking merge failed after Google sign-in:', mergeError);
+                alert("Googleログインは完了しましたが、ゲスト順位の引き継ぎに失敗しました。\n時間をおいて再度お試しください。");
+            }
+            location.reload();
+            return;
+        }
     } catch (error) {
         console.error("Login Failed:", error);
 
@@ -321,7 +407,7 @@ window.loginWithGoogle = async function () {
 };
 
 window.logoutGoogle = async function () {
-    if (!auth) return;
+    if (!auth || !isRegisteredFirebaseUser()) return;
     try {
         await signOut(auth);
         alert("ログアウトしました");
@@ -350,7 +436,7 @@ async function checkAutoRedeem(user) {
             if (input) {
                 input.value = code;
 
-                if (user) {
+                if (isRegisteredFirebaseUser(user)) {
                     // Logged in: Auto execute
                     if (window.redeemPromoCode) {
                         await window.redeemPromoCode('profilePromoCodeInput');
@@ -386,36 +472,55 @@ if (auth) {
         const lastSync = document.getElementById('profileLastSync');
 
         if (user) {
-            // --- LOGGED IN ---
-            console.log("Auth: Logged in as", user.uid);
+            const registeredUser = isRegisteredFirebaseUser(user);
+            console.log(registeredUser ? "Auth: Google user" : "Auth: Anonymous ranking user", user.uid);
 
             // GA4: Set User ID for cross-device tracking
             if (analytics) {
-                setUserId(analytics, user.uid);
+                setUserId(analytics, registeredUser ? user.uid : null);
             }
 
             userId = user.uid; // Switch to Auth ID
             localStorage.setItem('vocabGame_userId', userId);
 
-            // Update Header
-            if (headerImage) { headerImage.src = user.photoURL; headerImage.style.display = 'block'; }
-            if (headerInitials) headerInitials.style.display = 'none';
-            if (headerIcon) headerIcon.style.border = "2px solid #2ecc71"; // Green border
-
-            // Update Modal
-            if (modalImage) { modalImage.src = user.photoURL; modalImage.style.display = 'block'; }
-            if (modalInitials) modalInitials.style.display = 'none';
-            if (modalName) modalName.textContent = user.displayName;
-            if (modalEmail) modalEmail.textContent = user.email;
-
-            if (authBtn) {
-                authBtn.innerHTML = `<span>ログアウト</span>`;
-                authBtn.classList.add('profile-auth-logout');
-                authBtn.style.background = "";
+            if (registeredUser) {
+                if (headerImage && user.photoURL) { headerImage.src = user.photoURL; headerImage.style.display = 'block'; }
+                if (headerInitials) headerInitials.style.display = user.photoURL ? 'none' : 'block';
+                if (headerIcon) headerIcon.style.border = "2px solid #2ecc71";
+                if (modalImage && user.photoURL) { modalImage.src = user.photoURL; modalImage.style.display = 'block'; }
+                if (modalInitials) modalInitials.style.display = user.photoURL ? 'none' : 'block';
+                if (modalName) modalName.textContent = user.displayName || "Googleユーザー";
+                if (modalEmail) modalEmail.textContent = user.email || "Google連携済み";
+                if (authBtn) {
+                    authBtn.innerHTML = `<span>ログアウト</span>`;
+                    authBtn.classList.add('profile-auth-logout');
+                    authBtn.style.background = "";
+                }
                 if (syncSection) syncSection.style.display = 'block';
+            } else {
+                const guestName = window.ensureGuestPlayerName
+                    ? window.ensureGuestPlayerName(user.uid)
+                    : guestRankingName(user.uid);
+                knownCloudSaveRevision = null;
+                knownCloudSaveUserId = null;
+                window.cloudSaveConflict = false;
+                if (headerImage) headerImage.style.display = 'none';
+                if (headerInitials) { headerInitials.textContent = 'G'; headerInitials.style.display = 'block'; }
+                if (headerIcon) headerIcon.style.border = "2px solid white";
+                if (modalImage) modalImage.style.display = 'none';
+                if (modalInitials) { modalInitials.textContent = 'G'; modalInitials.style.display = 'block'; }
+                if (modalName) modalName.textContent = guestName;
+                if (modalEmail) modalEmail.textContent = "ランキング参加中・未登録";
+                if (authBtn) {
+                    authBtn.innerHTML = `<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" height="18"> <span>Googleで順位を保存</span>`;
+                    authBtn.classList.remove('profile-auth-logout');
+                    authBtn.style.background = "";
+                }
+                if (syncSection) syncSection.style.display = 'none';
             }
 
-            try {
+            if (registeredUser) {
+                try {
                 if (!window.GameConfig) console.error("CRITICAL: GameConfig missing!");
 
                 const authSyncUserId = user.uid;
@@ -508,7 +613,8 @@ if (auth) {
                     console.log("No cloud data. Uploading local data...");
                     uploadSaveData(true);
                 }
-            } catch (e) { console.error("Sync Check Failed:", e); }
+                } catch (e) { console.error("Sync Check Failed:", e); }
+            }
 
             if (window.syncPendingReviewScores) await window.syncPendingReviewScores();
             if (window.fetchReviewLeaderboard) {
@@ -519,8 +625,7 @@ if (auth) {
                 }
             }
 
-            // Start Auto-Save Loop
-            // (Force Sync: 2026/01/13)
+            // Start the periodic ranking sync and registered-user cloud-save loop.
             startAutoSaveLoop();
 
         } else {
@@ -556,6 +661,7 @@ if (auth) {
 
             // Stop Auto-Save
             if (window.autoSaveInterval) clearInterval(window.autoSaveInterval);
+            await window.ensureRankingIdentity();
         }
     });
 }
@@ -620,14 +726,12 @@ function startAutoSaveLoop() {
 
     // 1. Periodic Check (every 60s)
     window.autoSaveInterval = setInterval(() => {
-        if (auth && auth.currentUser) {
-            if (gameState.reviewScore?.pendingEvents?.length) {
-                window.syncPendingReviewScores();
-            }
-            if (window.isDirty) {
-                console.log("AutoManager: Dirty flag true. Sending background save...");
-                uploadSaveData(true); // Silent
-            }
+        if (auth?.currentUser && gameState.reviewScore?.pendingEvents?.length) {
+            window.syncPendingReviewScores();
+        }
+        if (isRegisteredFirebaseUser() && window.isDirty) {
+            console.log("AutoManager: Dirty flag true. Sending background save...");
+            uploadSaveData(true); // Silent
         }
     }, 60000);
 
@@ -637,10 +741,10 @@ function startAutoSaveLoop() {
     // 2. Save on Exit / Background (visibilitychange)
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'hidden') {
-            if (auth && auth.currentUser && gameState.reviewScore?.pendingEvents?.length) {
+            if (auth?.currentUser && gameState.reviewScore?.pendingEvents?.length) {
                 window.syncPendingReviewScores();
             }
-            if (auth && auth.currentUser && window.isDirty) {
+            if (isRegisteredFirebaseUser() && window.isDirty) {
                 console.log("AutoManager: App hidden. Saving immediately...");
                 // Use beacon-like behavior if possible, but fetch usually works in visibilitychange
                 uploadSaveData(true);
@@ -650,10 +754,10 @@ function startAutoSaveLoop() {
 
     // 3. Fallback for Tab Close (pagehide)
     window.addEventListener('pagehide', () => {
-        if (auth && auth.currentUser && gameState.reviewScore?.pendingEvents?.length) {
+        if (auth?.currentUser && gameState.reviewScore?.pendingEvents?.length) {
             window.syncPendingReviewScores();
         }
-        if (auth && auth.currentUser && window.isDirty) {
+        if (isRegisteredFirebaseUser() && window.isDirty) {
             // Try to push. Note: Async requests might be killed.
             // Ideally we use navigator.sendBeacon but Firestore SDK handles logic.
             // We just call it and hope for best effort.
@@ -662,7 +766,7 @@ function startAutoSaveLoop() {
     });
 
     window.addEventListener('online', () => {
-        if (auth && auth.currentUser && gameState.reviewScore?.pendingEvents?.length) {
+        if (auth?.currentUser && gameState.reviewScore?.pendingEvents?.length) {
             window.syncPendingReviewScores();
         }
     });
@@ -675,7 +779,10 @@ window.forceBackup = async function () {
 };
 
 window.forceRestore = async function () {
-    if (!db || !auth.currentUser) return;
+    if (!db || !isRegisteredFirebaseUser()) {
+        alert("クラウド復元にはGoogleログインが必要です。");
+        return;
+    }
     // First check if local is un-synced
     // But restore implies "I want Cloud Data".
 
@@ -978,8 +1085,8 @@ async function writeChunkedSaveData(userDocRef, rawSaveData, pwaVer, expectedRev
 
 async function performCloudSave(silent = false, force = false) {
     if (!db) return;
-    if (!auth || !auth.currentUser) {
-        if (!silent) alert("ログインが必要です。");
+    if (!isRegisteredFirebaseUser()) {
+        if (!silent) alert("クラウド保存にはGoogleログインが必要です。");
         return;
     }
 
@@ -1078,7 +1185,8 @@ async function performCloudSave(silent = false, force = false) {
             console.log(`Upload success (inline): ${saveBytes} bytes`);
         }
 
-        const isSameAuthenticatedUser = auth.currentUser && auth.currentUser.uid === uid;
+        const isSameAuthenticatedUser = isRegisteredFirebaseUser()
+            && auth.currentUser.uid === uid;
         if (isSameAuthenticatedUser) {
             setKnownCloudSaveRevision(uid, commitResult.revision);
             window.cloudSaveConflict = false;
@@ -1095,7 +1203,9 @@ async function performCloudSave(silent = false, force = false) {
         console.log("Upload success (Silent:" + silent + ")");
 
     } catch (e) {
-        const isSameAuthenticatedUser = saveUserId && auth.currentUser && auth.currentUser.uid === saveUserId;
+        const isSameAuthenticatedUser = saveUserId
+            && isRegisteredFirebaseUser()
+            && auth.currentUser.uid === saveUserId;
         if (e && e.code === 'cloud-save-conflict') {
             if (isSameAuthenticatedUser) markCloudSaveConflict();
             if (!silent && isSameAuthenticatedUser) {

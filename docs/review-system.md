@@ -41,7 +41,7 @@ Repeated incorrect answers continue to earn 1 point because each due review atte
 
 Each SRS entry may contain `isRelearning` to distinguish the five-minute relearning loop from a scheduled 1-day review.
 
-Each scored answer has an `eventId` used only to make network retries idempotent. Cloud ranking state remains keyed by authenticated user and normalized word hash. The fixed word record keeps only the 10 most recent hashed event IDs, so duplicate protection does not create an unbounded event collection. Daily and weekly collections contain aggregate scores only.
+Each scored answer has an `eventId` used only to make network retries idempotent. Cloud ranking state remains keyed by Firebase user and normalized word hash. The fixed word record keeps only the 10 most recent hashed event IDs, so duplicate protection does not create an unbounded event collection. Daily and weekly collections contain aggregate scores only.
 
 For authenticated users, the displayed daily and weekly scores use the server-confirmed total plus locally pending score events. Local history remains the immediate fallback before authentication or while the leaderboard service is unavailable. Only pending events are submitted; the client never overwrites the server with an absolute score. Answers are saved locally without starting score communication. Pending events are synchronized at startup, leaderboard display, backgrounding, the 60-second save check, and network recovery. This avoids polling and per-answer network work without adding complex conflict resolution.
 
@@ -52,3 +52,13 @@ npm run generate:review-word-hashes
 ```
 
 The standard `npm run test:e2e:safe` preflight fails when the generated allowlist is stale.
+
+## Guest Participation
+
+- Production creates a Firebase Anonymous Auth identity automatically, so an unregistered player can submit review scores and appear in the ranking.
+- Firebase Authentication automatically deletes anonymous accounts that remain unlinked for more than 30 days.
+- Guest names are deterministic `ゲストXXXX` labels. Guests may select an avatar but cannot choose a custom name.
+- Linking a new Google account keeps the same Firebase UID. Signing in to an existing Google account merges the current JST day and week totals, then removes the guest aggregate.
+- Google linking is stopped while local score events remain unsent, preventing the same pending event from being credited under both identities.
+- Purchase, promo-code redemption, cloud save, and direct client access to `users/{uid}` remain available only to non-anonymous accounts.
+- Ranking points and scoring rules are identical for guests, free registered users, and premium users.

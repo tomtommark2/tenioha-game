@@ -19,6 +19,11 @@ service cloud.firestore {
     function isSignedIn() {
       return request.auth != null;
     }
+
+    function isRegistered() {
+      return isSignedIn()
+             && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
     
     function isOwner(userId) {
       return isSignedIn() && request.auth.uid == userId;
@@ -50,11 +55,13 @@ service cloud.firestore {
     // 1. Users Collection
     // Clients can manage learning data, but only Admin SDK code may change billing state.
     match /users/{userId} {
-      allow read: if isOwner(userId) && !isBanned();
-      allow create: if isOwner(userId)
+      allow read: if isRegistered() && isOwner(userId) && !isBanned();
+      allow create: if isRegistered()
+                    && isOwner(userId)
                     && !isBanned()
                     && !request.resource.data.keys().hasAny(protectedUserFields());
-      allow update: if isOwner(userId)
+      allow update: if isRegistered()
+                    && isOwner(userId)
                     && !isBanned()
                     && !request.resource.data.diff(resource.data).affectedKeys().hasAny(protectedUserFields());
       allow delete: if false;
@@ -62,7 +69,7 @@ service cloud.firestore {
       // Require at least one subcollection segment so this cannot also match
       // the parent /users/{userId} document under rules_version = '2'.
       match /{collectionId}/{document=**} {
-        allow read, write: if isOwner(userId) && !isBanned();
+        allow read, write: if isRegistered() && isOwner(userId) && !isBanned();
       }
     }
 

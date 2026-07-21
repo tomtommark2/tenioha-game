@@ -743,10 +743,8 @@ window.openPurchaseModal = function () {
     const modal = document.getElementById('purchaseModal');
     if (modal) {
         modal.style.display = 'flex';
-        // Check for userId for Stripe link (userId is in localStorage usually)
-        const userId = (window.firebaseAuth && window.firebaseAuth.currentUser)
-            ? window.firebaseAuth.currentUser.uid
-            : localStorage.getItem('vocabGame_userId');
+        const currentUser = window.firebaseAuth?.currentUser || null;
+        const userId = window.isRegisteredFirebaseUser?.(currentUser) ? currentUser.uid : null;
         const link = document.getElementById('stripePurchaseLink');
         if (link && userId) {
             link.href = stripeFallbackPurchaseUrl(userId);
@@ -755,7 +753,7 @@ window.openPurchaseModal = function () {
 };
 
 function requireLoginForPurchase() {
-    if (window.firebaseAuth && window.firebaseAuth.currentUser) {
+    if (window.isRegisteredFirebaseUser?.()) {
         return true;
     }
     if (typeof window.openProfileModal === 'function') {
@@ -793,8 +791,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const user = window.firebaseAuth && window.firebaseAuth.currentUser;
-        if (!user) {
+        const user = window.firebaseAuth?.currentUser || null;
+        if (!window.isRegisteredFirebaseUser?.(user)) {
             event.preventDefault();
             return;
         }
@@ -836,21 +834,20 @@ window.openLeaderboard = async function () {
     }
     if (window.showReviewRankingPreview && window.showReviewRankingPreview()) return;
 
-    // UI State based on Auth
-    // We check window.firebaseAuth or localStorage?
-    // Let's rely on the DOM state set by firebase_app.js or default to Guest
-    const isAuth = (window.firebaseAuth && window.firebaseAuth.currentUser);
+    let rankingUser = window.firebaseAuth?.currentUser || null;
+    if (!rankingUser && window.ensureRankingIdentity) {
+        rankingUser = await window.ensureRankingIdentity();
+    }
 
-    if (!isAuth) {
-        // Show "Login Required" but maybe allow viewing top? 
-        // User logic says: "Login Required"
+    if (!rankingUser) {
         const msg = document.getElementById('loginRequiredMessage');
         const content = document.getElementById('leaderboardContent');
         const nameInput = document.getElementById('nameInputParams');
 
         if (msg) msg.style.display = 'block';
-        if (content) content.style.display = 'none';
+        if (content) content.style.display = 'block';
         if (nameInput) nameInput.style.display = 'none';
+        if (typeof loadRankingData === 'function') loadRankingData('top', true);
     } else {
         const msg = document.getElementById('loginRequiredMessage');
         if (msg) msg.style.display = 'none';
@@ -1499,6 +1496,10 @@ window.forceUpdateApp = async () => {
 
 // --- NAME REGISTRATION (Simple UI part) ---
 window.renamePlayer = function () {
+    if (typeof window.prepareReviewProfileEditor === 'function') {
+        window.prepareReviewProfileEditor();
+        return;
+    }
     document.getElementById('playerNameInput').value = localStorage.getItem('vocabGame_playerName') || "";
     if (window.selectReviewAvatar) {
         window.selectReviewAvatar(localStorage.getItem('vocabGame_reviewAvatarId') || 'hero');

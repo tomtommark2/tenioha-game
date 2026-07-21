@@ -3,6 +3,19 @@ const crypto = require("crypto");
 const REVIEW_SCORE_INTERVALS = new Set([1, 3, 7, 14, 30, 60]);
 const REVIEW_SCORE_OUTCOMES = new Set(["incorrect", "relearning-correct", "scheduled-correct"]);
 
+function firebaseSignInProvider(userRecord = {}) {
+    return userRecord.firebase?.sign_in_provider || "";
+}
+
+function isAnonymousFirebaseUser(userRecord = {}) {
+    return firebaseSignInProvider(userRecord) === "anonymous";
+}
+
+function guestRankingName(uid) {
+    const suffix = String(uid || "guest").slice(-4).padStart(4, "0");
+    return `ゲスト${suffix}`;
+}
+
 function calculateReviewEventPoints(outcome, intervalDays) {
     if (outcome === "incorrect") return 1;
     if (outcome === "relearning-correct") return 2;
@@ -39,6 +52,9 @@ module.exports = {
     REVIEW_SCORE_INTERVALS,
     REVIEW_SCORE_OUTCOMES,
     calculateReviewEventPoints,
+    firebaseSignInProvider,
+    guestRankingName,
+    isAnonymousFirebaseUser,
     nextRecentReviewEventIds,
     reviewEventIdHash,
     reviewWordKeyHash,
