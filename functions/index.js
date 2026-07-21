@@ -20,11 +20,10 @@ const db = admin.firestore();
 setGlobalOptions({ maxInstances: 10 });
 
 const TENIOHA_STRIPE_PAYMENT_LINK_ID = (process.env.TENIOHA_STRIPE_PAYMENT_LINK_ID || "").trim();
+const TENIOHA_STRIPE_PRICE_ID = (process.env.TENIOHA_STRIPE_PRICE_ID || "").trim();
 const TENIOHA_STRIPE_METADATA_APP = (process.env.TENIOHA_STRIPE_METADATA_APP || "tenioha-game").trim();
 const TENIOHA_STRIPE_METADATA_KEY = (process.env.TENIOHA_STRIPE_METADATA_KEY || "app").trim();
 const TENIOHA_STRIPE_PURCHASE_TYPE = (process.env.TENIOHA_STRIPE_PURCHASE_TYPE || "tenioha_premium").trim();
-const TENIOHA_CHECKOUT_PRODUCT_NAME = process.env.TENIOHA_CHECKOUT_PRODUCT_NAME || "てにをは英単語 プレミアム";
-const TENIOHA_CHECKOUT_UNIT_AMOUNT = Number(process.env.TENIOHA_CHECKOUT_UNIT_AMOUNT || 1800);
 const DEFAULT_CHECKOUT_RETURN_URL = "https://tomtommark2.github.io/tenioha-game/";
 const CHECKOUT_FUNCTION_REGION = "us-central1";
 const PROMO_CODE_MAX_LENGTH = 128;
@@ -156,20 +155,10 @@ function checkoutResultUrl(returnUrl, status) {
 }
 
 function checkoutLineItems() {
-    const configuredPriceId = process.env.TENIOHA_STRIPE_PRICE_ID;
-    if (configuredPriceId) {
-        return [{ price: configuredPriceId, quantity: 1 }];
+    if (!TENIOHA_STRIPE_PRICE_ID.startsWith("price_")) {
+        throw new Error("TENIOHA_STRIPE_PRICE_ID is not configured.");
     }
-    return [{
-        quantity: 1,
-        price_data: {
-            currency: "jpy",
-            unit_amount: TENIOHA_CHECKOUT_UNIT_AMOUNT,
-            product_data: {
-                name: TENIOHA_CHECKOUT_PRODUCT_NAME,
-            },
-        },
-    }];
+    return [{ price: TENIOHA_STRIPE_PRICE_ID, quantity: 1 }];
 }
 
 async function stripeCustomerForUser(stripe, userRecord) {
@@ -379,8 +368,7 @@ exports.createStripeCheckoutSession = onRequest({ region: CHECKOUT_FUNCTION_REGI
             sessionId: session.id,
             uid: userRecord.uid,
             customerId,
-            amount: TENIOHA_CHECKOUT_UNIT_AMOUNT,
-            hasConfiguredPrice: Boolean(process.env.TENIOHA_STRIPE_PRICE_ID),
+            priceId: TENIOHA_STRIPE_PRICE_ID,
             environment: stripeEnvironment()
         });
 

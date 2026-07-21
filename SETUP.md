@@ -64,6 +64,8 @@ npm run test:e2e:safe
 - Stripe webhook endpoint: `https://us-central1-tenioha-game.cloudfunctions.net/stripeWebhook`
 - Required Stripe webhook events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`
 - Required Stripe metadata for new Checkout Sessions: `app=tenioha-game`, `purchaseType=tenioha_premium`
+- Required fixed Stripe Price: `TENIOHA_STRIPE_PRICE_ID=price_1SoogKIKqYRlz0sfFGkXp3ut`
+- Keep Checkout on this fixed Price so product-scoped Stripe promotion codes apply correctly. Do not fall back to dynamic `price_data.product_data`.
 - Customer IDs are stored separately as `stripeCustomerIdTest` or `stripeCustomerIdLive` based on the Stripe secret key mode.
 - Premium, Stripe, and promo redemption fields are server-managed; clients may not write them directly.
 
