@@ -339,6 +339,7 @@ function undoLastAction() {
         }
     }
     window.gameState = gameState;
+    invalidateLearningProgressSnapshot();
 
     // Restore UI
     showWord(gameState.currentWord);
@@ -879,6 +880,7 @@ function parseCSV(text) {
     }
 
     invalidateReviewWordIndex();
+    invalidateLearningProgressSnapshot();
     loadVocabularyForLevel();
     initializeWordStates();
     document.getElementById('fileInfo').textContent = `${vocabularyDatabase[level].length}語を読み込みました`;
@@ -888,6 +890,7 @@ function parseCSV(text) {
 
 function switchLevel(level) {
     gameState.currentLevel = level;
+    invalidateLearningProgressSnapshot();
     // Keep the last-opened learning zone independent from cloud save timing.
     persistLastLevel(level);
     // v2.80: Reset Decks on Level Switch to prevent category mixing
@@ -1008,6 +1011,7 @@ function loadVocabularyForLevel() {
     }
     // Expose Total for UI Prediction
     gameState.currentLevelTotal = vocabulary.length;
+    invalidateLearningProgressSnapshot();
 }
 
 function getWordSourceLevel(word, level) {
@@ -1708,6 +1712,7 @@ window.openWordFromList = function (level, key) {
 
     if (gameState.currentLevel !== safeLevel) {
         gameState.currentLevel = safeLevel;
+        invalidateLearningProgressSnapshot();
         persistLastLevel(safeLevel);
         gameState.decks = null;
         document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
@@ -2380,6 +2385,7 @@ function updatePOSFilters() {
     });
     // v2.80: Reset Decks on Filter Change to prevent filtered words from lingering
     gameState.decks = null;
+    invalidateLearningProgressSnapshot();
 }
 
 function filterWordsByPOS(words) {
@@ -2945,7 +2951,9 @@ function handleVocabCardClick() {
     checkDailyReset();
     awardReviewScore(key, true, previousIntervalDays);
     updateSrsForWord(key, true, currentState);
-    gameState.wordStates[key] = deriveStateFromAccuracy(key);
+    const nextState = deriveStateFromAccuracy(key);
+    gameState.wordStates[key] = nextState;
+    applyLearningProgressStateChange(key, currentState, nextState);
 
     // RPG Animation Trigger
     // RPG Animation Trigger
@@ -3007,7 +3015,9 @@ function handleMeaningCardClick(e) {
             gameState.actionCounts.weak_incorrect++;
         }
 
-        gameState.wordStates[key] = deriveStateFromAccuracy(key);
+        const nextState = deriveStateFromAccuracy(key);
+        gameState.wordStates[key] = nextState;
+        applyLearningProgressStateChange(key, currentState, nextState);
 
         updateDisplay();
         animateCharacter();
@@ -3051,6 +3061,7 @@ function addNextWordSet() {
     }
 
     gameState.vocabLevel++;
+    invalidateLearningProgressSnapshot();
     loadVocabularyForLevel();
     initializeWordStates();
     showCoinPopup(`🎉 レベルアップ！語彙レベル ${gameState.vocabLevel}`, true);
@@ -3097,6 +3108,7 @@ function playAnimation(type) {
 
     if (type === 'idle') {
         hero.classList.add('anim-idle');
+        slime.className = '';
         slime.style.opacity = '0';
         return;
     }
@@ -3111,12 +3123,14 @@ function playAnimation(type) {
             // Revert to Idle
             hero.className = 'pixel-art anim-idle';
             // Hide Slime
+            slime.className = '';
             slime.style.opacity = '0';
         }, 1600);
 
     } else if (type === 'victory') {
         hero.className = 'pixel-art anim-cheer';
         // Slime should be hidden
+        slime.className = '';
         slime.style.opacity = '0';
 
         // Duration: 0.8s * 2 loops = 1600ms
@@ -3144,12 +3158,83 @@ function getCategoryLevel(category) {
     return Math.floor(count / 20) + 1;
 }
 
+var learningProgressCache = null;
+
+function getLearningProgressCacheKey() {
+    const filters = [...new Set(gameState.posFilters || [])].sort().join(',');
+    return `${gameState.currentLevel}|${filters}`;
+}
+
+function invalidateLearningProgressSnapshot() {
+    learningProgressCache = null;
+}
+
+function refreshLearningProgressSnapshot(cache) {
+    const categories = cache.categories;
+    let worldLevel = 0;
+    categories.forEach(category => {
+        worldLevel += Math.floor((cache.learnedCounts[category] || 0) / 20) + 1;
+    });
+    const localLevel = Math.floor((cache.learnedCounts[cache.currentLevel] || 0) / 20) + 1;
+    cache.snapshot = {
+        worldLevel,
+        localLevel,
+        stateCounts: { ...cache.stateCounts }
+    };
+    return cache.snapshot;
+}
+
+function addLearningProgressOccurrence(map, key, category) {
+    let categories = map.get(key);
+    if (!categories) {
+        categories = {};
+        map.set(key, categories);
+    }
+    categories[category] = (categories[category] || 0) + 1;
+}
+
+function applyLearningProgressStateChange(key, previousState, nextState) {
+    const cache = learningProgressCache;
+    if (!cache || cache.cacheKey !== getLearningProgressCacheKey()) return;
+
+    const before = previousState || 'unlearned';
+    const after = nextState || 'unlearned';
+    if (before === after) return;
+
+    const currentOccurrences = cache.currentStateOccurrences.get(key) || 0;
+    if (currentOccurrences > 0) {
+        cache.stateCounts[before] = Math.max(0, (cache.stateCounts[before] || 0) - currentOccurrences);
+        cache.stateCounts[after] = (cache.stateCounts[after] || 0) + currentOccurrences;
+    }
+
+    const learnedBoundaryChanged = (before === 'unlearned') !== (after === 'unlearned');
+    if (learnedBoundaryChanged) {
+        const direction = after === 'unlearned' ? -1 : 1;
+        const memberships = cache.learnedOccurrences.get(key) || {};
+        Object.entries(memberships).forEach(([category, count]) => {
+            cache.learnedCounts[category] = Math.max(
+                0,
+                (cache.learnedCounts[category] || 0) + (direction * count)
+            );
+        });
+    }
+
+    refreshLearningProgressSnapshot(cache);
+}
+
 function buildLearningProgressSnapshot() {
     const categories = (window.GameConfig && window.GameConfig.CATEGORIES) ? window.GameConfig.CATEGORIES : ['junior', 'basic', 'daily', 'exam1'];
     const currentLevel = gameState.currentLevel;
     const activeFilters = new Set(gameState.posFilters || []);
+    const cacheKey = getLearningProgressCacheKey();
+    if (learningProgressCache && learningProgressCache.cacheKey === cacheKey) {
+        return learningProgressCache.snapshot;
+    }
+
     const stateCounts = { unlearned: 0, weak: 0, learned: 0, perfect: 0 };
     const learnedCounts = {};
+    const learnedOccurrences = new Map();
+    const currentStateOccurrences = new Map();
 
     categories.forEach(category => {
         let learnedCount = 0;
@@ -3157,9 +3242,11 @@ function buildLearningProgressSnapshot() {
         (vocabularyDatabase[category] || []).forEach(word => {
             const key = getWordKey(word, category);
             const state = gameState.wordStates[key] || 'unlearned';
+            addLearningProgressOccurrence(learnedOccurrences, key, category);
             if (state !== 'unlearned') learnedCount++;
             if (isCurrentLevel && isWordAllowedByPOS(word, activeFilters)) {
                 stateCounts[state] = (stateCounts[state] || 0) + 1;
+                currentStateOccurrences.set(key, (currentStateOccurrences.get(key) || 0) + 1);
             }
         });
         learnedCounts[category] = learnedCount;
@@ -3169,6 +3256,7 @@ function buildLearningProgressSnapshot() {
         let currentLearnedCount = 0;
         (vocabularyDatabase[currentLevel] || []).forEach(word => {
             const key = getWordKey(word, currentLevel);
+            addLearningProgressOccurrence(learnedOccurrences, key, currentLevel);
             if ((gameState.wordStates[key] || 'unlearned') !== 'unlearned') currentLearnedCount++;
         });
         learnedCounts[currentLevel] = currentLearnedCount;
@@ -3178,15 +3266,21 @@ function buildLearningProgressSnapshot() {
             const key = getWordKey(word, currentLevel);
             const state = gameState.wordStates[key] || 'unlearned';
             stateCounts[state] = (stateCounts[state] || 0) + 1;
+            currentStateOccurrences.set(key, (currentStateOccurrences.get(key) || 0) + 1);
         });
     }
 
-    let worldLevel = 0;
-    categories.forEach(category => {
-        worldLevel += Math.floor((learnedCounts[category] || 0) / 20) + 1;
-    });
-    const localLevel = Math.floor((learnedCounts[currentLevel] || 0) / 20) + 1;
-    return { worldLevel, localLevel, stateCounts };
+    learningProgressCache = {
+        cacheKey,
+        categories,
+        currentLevel,
+        stateCounts,
+        learnedCounts,
+        learnedOccurrences,
+        currentStateOccurrences,
+        snapshot: null
+    };
+    return refreshLearningProgressSnapshot(learningProgressCache);
 }
 
 function updateProgress(progressSnapshot = null) {

@@ -4726,7 +4726,7 @@ body.profile-modal-open {
     width: 50px;
     /* Reduced further to 50px to prevent clipping */
     height: 64px;
-    background-image: url('assets/char_sprite.png?v=17');
+    background-image: url('assets/char_sprite.png?v=18');
     background-size: 300px 256px;
     /* Explicit size: 6 cols * 50px, 4 rows * 64px */
     image-rendering: pixelated;

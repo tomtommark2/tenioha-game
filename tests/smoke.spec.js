@@ -719,6 +719,7 @@ test('大規模学習データでも回答ホットパスを全状態コピー�
     gs.activeReviewLevels = Object.keys(window.vocabularyDatabase);
     gs.posFilters = ['名', '動', '形', '副', '助', '前', '接', '代', 'other'];
     window.invalidateReviewWordIndex();
+    window.invalidateLearningProgressSnapshot();
 
     const median = (values) => [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)];
     const measure = (fn, count = 7) => {
@@ -732,6 +733,7 @@ test('大規模学習データでも回答ホットパスを全状態コピー�
     };
 
     window.buildReviewQueueSnapshot();
+    window.buildLearningProgressSnapshot();
     const queueMs = measure(() => window.buildReviewQueueSnapshot());
     const progressMs = measure(() => window.buildLearningProgressSnapshot());
     const displayMs = measure(() => window.updateDisplay(), 5);
@@ -743,9 +745,56 @@ test('大規模学習データでも回答ホットパスを全状態コピー�
   console.log('[hot-path]', metrics);
   expect(metrics.wordCount).toBeGreaterThan(8000);
   expect(metrics.queueMs).toBeLessThan(50);
-  expect(metrics.progressMs).toBeLessThan(30);
+  expect(metrics.progressMs).toBeLessThan(5);
   expect(metrics.displayMs).toBeLessThan(80);
   expect(metrics.undoSnapshotMs).toBeLessThan(metrics.fullCloneMs * 0.6);
+});
+
+test('進捗キャッシュは回答した1語の状態差分を正確に反映する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  const result = await page.evaluate(() => {
+    const gs = window.gameState;
+    const level = gs.currentLevel;
+    const word = window.vocabularyDatabase[level][0];
+    const key = window.getWordKeySafe(word, level);
+
+    gs.wordStates[key] = 'unlearned';
+    window.invalidateLearningProgressSnapshot();
+    const before = window.buildLearningProgressSnapshot();
+
+    gs.wordStates[key] = 'weak';
+    window.applyLearningProgressStateChange(key, 'unlearned', 'weak');
+    const incremental = window.buildLearningProgressSnapshot();
+
+    window.invalidateLearningProgressSnapshot();
+    const rebuilt = window.buildLearningProgressSnapshot();
+    return { before, incremental, rebuilt };
+  });
+
+  expect(result.incremental).toEqual(result.rebuilt);
+  const changedOccurrences = result.before.stateCounts.unlearned - result.incremental.stateCounts.unlearned;
+  expect(changedOccurrences).toBeGreaterThan(0);
+  expect(result.incremental.stateCounts.weak).toBe(result.before.stateCounts.weak + changedOccurrences);
+});
+
+test('非表示の敵キャラクターはアニメーションしない', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  const runningTargets = await page.evaluate(() => (
+    document.getAnimations()
+      .filter(animation => animation.playState === 'running')
+      .map(animation => animation.effect?.target?.id || '')
+  ));
+
+  expect(runningTargets).not.toContain('enemySlime');
+  expect(runningTargets).toContain('heroCharacter');
 });
 
 test('プロフィールモーダルを開閉できる', async ({ page }) => {
