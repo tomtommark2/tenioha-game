@@ -1094,7 +1094,7 @@ body.level-selector-open .level-selector {
     border-radius: 20px;
     padding: 40px 20px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: border-color 0.16s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1106,15 +1106,14 @@ body.level-selector-open .level-selector {
         inset 0 1px 0 rgba(255, 255, 255, 0.96);
 }
 
-.card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.25);
-    /* Border highlight on hover */
-    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.25), inset 0 0 0 2px #667eea;
+@media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        border-color: rgba(102, 126, 234, 0.72);
+    }
 }
 
 .card:active {
-    transform: translateY(-2px);
+    border-color: #667eea;
 }
 
 .card-label {
@@ -4726,7 +4725,7 @@ body.profile-modal-open {
     width: 50px;
     /* Reduced further to 50px to prevent clipping */
     height: 64px;
-    background-image: url('assets/char_sprite.png?v=18');
+    background-image: url('assets/char_sprite.png?v=19');
     background-size: 300px 256px;
     /* Explicit size: 6 cols * 50px, 4 rows * 64px */
     image-rendering: pixelated;
