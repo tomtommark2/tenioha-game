@@ -215,6 +215,34 @@ test('再起動時は端末で最後に選んだ学習レベルを優先する',
   await expect(reopenedPage.locator('.level-btn[data-level="daily"]')).toHaveClass(/active/);
 });
 
+test('レベル選択は4段階を横一列に表示し単語帳へ遷移できる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.locator('#levelCurrentBtn').click();
+
+  await expect(page.locator('#levelContainer .level-btn')).toHaveCount(4);
+  await expect(page.locator('#levelContainer .level-option-code')).toHaveText(['A1', 'A2', 'B1', 'B2']);
+
+  const layout = await page.locator('#levelContainer').evaluate((panel) => {
+    const levels = [...panel.querySelectorAll('.level-btn')].map((button) => button.getBoundingClientRect());
+    const wordbook = panel.querySelector('#wordbookBtn').getBoundingClientRect();
+    return {
+      oneRow: levels.every((rect) => Math.abs(rect.top - levels[0].top) < 1),
+      wordbookSpansRail: Math.abs(wordbook.left - levels[0].left) < 1
+        && Math.abs(wordbook.right - levels[levels.length - 1].right) < 1,
+    };
+  });
+  expect(layout).toEqual({ oneRow: true, wordbookSpansRail: true });
+
+  await page.getByRole('button', { name: '単語帳から選ぶ' }).click();
+  await expect(page.locator('body')).not.toHaveClass(/level-selector-open/);
+  await expect(page.locator('#wordbookModal')).toBeVisible();
+});
+
 test('通常保存は明示的に選んだ最終レベルを上書きしない', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
@@ -386,6 +414,11 @@ test('その他メニューは読み上げ名とキーボード操作に対応�
   await expect(items).toHaveCount(4);
   await expect(items.first()).toBeVisible();
   await expect.poll(() => items.evaluateAll((elements) => elements.every((element) => element.tagName === 'BUTTON'))).toBe(true);
+  await expect(page.locator('#otherMenuDropdown .other-menu-icon')).toHaveCount(4);
+  await expect(page.locator('#otherMenuDropdown .icon-menu-tune')).toBeVisible();
+  await expect(page.locator('#otherMenuDropdown .icon-menu-library')).toBeVisible();
+  await expect(page.locator('#otherMenuDropdown .icon-menu-bars')).toBeVisible();
+  await expect(page.locator('#otherMenuDropdown .icon-menu-leaderboard')).toBeVisible();
 
   await trigger.press('Enter');
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
@@ -408,8 +441,11 @@ test('管理メニューはダイアログとしてキーボード操作でき�
   await expect(dialog).toBeVisible();
 
   const items = dialog.locator('.help-list-item');
-  await expect(items).toHaveCount(5);
-  await expect.poll(() => items.evaluateAll((elements) => elements.every((element) => element.tagName === 'BUTTON'))).toBe(true);
+  await expect(items).toHaveCount(6);
+  await expect(dialog.locator('.help-command-item')).toHaveCount(4);
+  await expect(dialog.locator('.help-footer')).toHaveCount(0);
+  await expect(dialog.getByRole('link', { name: /使い方を確認/ })).toHaveAttribute('href', /note\.com/);
+  await expect.poll(() => items.evaluateAll((elements) => elements.every((element) => ['BUTTON', 'A'].includes(element.tagName)))).toBe(true);
 
   await dialog.getByRole('button', { name: '管理メニューを閉じる' }).click();
   await expect(dialog).toBeHidden();
@@ -1123,10 +1159,13 @@ test('大型アップデートは初回だけ自動表示し、あとで閉じ�
   await expect(page.locator('.announcement-feature-visual')).toHaveAttribute('src', 'assets/review-ranking-update.png');
   await expect(page.locator('#announcementList')).toContainText('ランキングを競おう');
   await expect(page.locator('#announcementPrimaryAction')).toHaveText('ランキングを見る');
+  expect(await page.evaluate(() => localStorage.getItem('vocabGame_lastAutoShownAnnouncementId'))).toBeNull();
 
   await page.locator('.announcement-secondary-action').click();
   await expect(page.locator('#announcementModal')).toBeHidden();
   await expect(page.locator('#announcementUnreadDot')).toBeVisible();
+  expect(await page.evaluate(() => localStorage.getItem('vocabGame_lastAutoShownAnnouncementId')))
+    .toBe('2026-07-17-review-ranking');
 
   await page.locator('#announcementBtn').click();
   await expect(page.locator('#announcementHeading')).toHaveText('お知らせ');

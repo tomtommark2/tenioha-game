@@ -227,8 +227,14 @@ function openFeaturedAnnouncement(featured) {
 
     renderAnnouncements({ featuredOnly: true });
     setAnnouncementModalMode(true);
-    localStorage.setItem(ANNOUNCEMENT_AUTO_SHOWN_KEY, featured.id);
     modal.style.display = 'flex';
+}
+
+function acknowledgeFeaturedAnnouncement() {
+    const modal = document.getElementById('announcementModal');
+    if (!modal?.classList.contains('is-featured-mode')) return;
+    const featured = getFeaturedAnnouncement();
+    if (featured?.id) localStorage.setItem(ANNOUNCEMENT_AUTO_SHOWN_KEY, featured.id);
 }
 
 function initAnnouncements() {
@@ -265,6 +271,7 @@ window.openAnnouncementModal = function () {
 
 window.closeAnnouncementModal = function () {
     const modal = document.getElementById('announcementModal');
+    acknowledgeFeaturedAnnouncement();
     if (modal) modal.style.display = 'none';
 };
 
