@@ -3486,7 +3486,7 @@ function checkNameRegistration() {
         const renameButton = document.getElementById('renameBtn');
         renameButton.style.display = 'block';
         renameButton.textContent = 'アバター変更';
-        loadRankingData('top', true);
+        loadRankingData('top');
         return;
     }
     if (!playerName) {
@@ -3499,7 +3499,7 @@ function checkNameRegistration() {
         const renameButton = document.getElementById('renameBtn');
         renameButton.style.display = 'block';
         renameButton.textContent = 'プロフィール編集';
-        loadRankingData('top', true);
+        loadRankingData('top');
     }
 }
 

@@ -825,14 +825,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- LEADERBOARD MODAL ---
 window.openLeaderboard = async function () {
-    // Check for updates first
-    if (window.checkForceUpdate) {
-        const canProceed = await window.checkForceUpdate();
-        if (!canProceed) return;
-    }
-
     const modal = document.getElementById('leaderboardModal');
     if (modal) modal.style.display = 'flex';
+    const content = document.getElementById('leaderboardContent');
+    const loading = document.getElementById('lb-loading');
+    const list = document.getElementById('lb-list-top');
+    const nameInput = document.getElementById('nameInputParams');
+    const loginMessage = document.getElementById('loginRequiredMessage');
+    if (content) content.style.display = 'block';
+    if (loading) loading.style.display = 'block';
+    if (list) list.innerHTML = '<div class="leaderboard-empty">ランキングを読み込んでいます</div>';
+    if (nameInput) nameInput.style.display = 'none';
+    if (loginMessage) loginMessage.style.display = 'none';
+
     if (typeof updateReviewRankingSummary === 'function') updateReviewRankingSummary();
     const weekLabel = document.getElementById('leaderboardWeekLabel');
     if (weekLabel && typeof getWeekStartDate === 'function') {
@@ -841,20 +846,23 @@ window.openLeaderboard = async function () {
     }
     if (window.showReviewRankingPreview && window.showReviewRankingPreview()) return;
 
-    let rankingUser = window.firebaseAuth?.currentUser || null;
-    if (!rankingUser && window.ensureRankingIdentity) {
-        rankingUser = await window.ensureRankingIdentity();
-    }
+    const updateCheckPromise = window.checkForceUpdate
+        ? Promise.resolve(window.checkForceUpdate()).catch(() => true)
+        : Promise.resolve(true);
+    const currentUser = window.firebaseAuth?.currentUser || null;
+    const identityPromise = !currentUser && window.ensureRankingIdentity
+        ? window.ensureRankingIdentity()
+        : Promise.resolve(currentUser);
+    const [canProceed, rankingUser] = await Promise.all([updateCheckPromise, identityPromise]);
+    if (!canProceed) return;
 
     if (!rankingUser) {
         const msg = document.getElementById('loginRequiredMessage');
-        const content = document.getElementById('leaderboardContent');
-        const nameInput = document.getElementById('nameInputParams');
 
         if (msg) msg.style.display = 'block';
         if (content) content.style.display = 'block';
         if (nameInput) nameInput.style.display = 'none';
-        if (typeof loadRankingData === 'function') loadRankingData('top', true);
+        if (typeof loadRankingData === 'function') loadRankingData('top');
     } else {
         const msg = document.getElementById('loginRequiredMessage');
         if (msg) msg.style.display = 'none';
