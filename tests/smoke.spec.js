@@ -287,6 +287,39 @@ test('新規ユーザーにはインストール画面を挟まず短いチュ�
   expect(manifest.short_name).toBe('てにをは英単語');
 });
 
+test('保存がないPCのログイン判定は初期化された空データよりクラウドを優先する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  const result = await page.evaluate(() => {
+    const localData = JSON.parse(localStorage.getItem('vocabClickerSave'));
+    const cloudData = {
+      ...localData,
+      lastSaveTime: localData.lastSaveTime - 60_000,
+      globalQuestionCount: 25,
+      wordStates: { 'word-v2:basic:sample:%E5%90%8D': 'learned' },
+    };
+    return {
+      hadExistingSaveAtBoot: window.__hadExistingVocabSaveAtBoot,
+      localStateCount: Object.keys(localData.wordStates || {}).length,
+      decision: window.GameUtils.getLoginCloudSyncDecision({
+        hadExistingSaveAtBoot: window.__hadExistingVocabSaveAtBoot,
+        localData,
+        cloudData,
+      }),
+    };
+  });
+
+  expect(result).toEqual({
+    hadExistingSaveAtBoot: false,
+    localStateCount: 0,
+    decision: 'restore-clean-device',
+  });
+});
+
 test('旧導線を通過済みのユーザーにはチュートリアルを再表示しない', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.clear();

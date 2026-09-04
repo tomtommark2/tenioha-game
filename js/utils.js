@@ -73,11 +73,72 @@ function getLegacyWordKeys(word, level, vocabularyDatabase) {
     return [...new Set(keys)];
 }
 
+function hasMeaningfulLocalLearningData(saveData) {
+    if (!saveData || typeof saveData !== 'object') return false;
+
+    const hasPositiveNumber = value => Number.isFinite(Number(value)) && Number(value) > 0;
+    if ([
+        saveData.points,
+        saveData.globalQuestionCount,
+        saveData.wordsLearned
+    ].some(hasPositiveNumber)) return true;
+
+    if (Object.values(saveData.wordStates || {}).some(state => state && state !== 'unlearned')) {
+        return true;
+    }
+    if (Object.values(saveData.actionCounts || {}).some(hasPositiveNumber)) return true;
+
+    const hasSrsHistory = Object.values(saveData.srsData || {}).some(entry => {
+        if (!entry || typeof entry !== 'object') return false;
+        return hasPositiveNumber(entry.successCount)
+            || hasPositiveNumber(entry.failCount)
+            || hasPositiveNumber(entry.lastReviewedAt)
+            || entry.everWrong === true
+            || entry.firstTryPerfect === true
+            || entry.isRelearning === true
+            || Boolean(entry.lastReviewScoreDate);
+    });
+    if (hasSrsHistory) return true;
+
+    const reviewScore = saveData.reviewScore;
+    if (!reviewScore || typeof reviewScore !== 'object') return false;
+    return [
+        reviewScore.total,
+        reviewScore.todayPoints,
+        reviewScore.todayReviewed,
+        reviewScore.todayCorrect
+    ].some(hasPositiveNumber)
+        || (Array.isArray(reviewScore.pendingEvents) && reviewScore.pendingEvents.length > 0)
+        || Object.values(reviewScore.history || {}).some(day => (
+            day && typeof day === 'object' && [day.points, day.reviewed, day.correct].some(hasPositiveNumber)
+        ));
+}
+
+function getLoginCloudSyncDecision({
+    hadExistingSaveAtBoot = false,
+    localData = null,
+    cloudData = null
+} = {}) {
+    const localTime = Number(localData && localData.lastSaveTime) || 0;
+    const cloudTime = Number(cloudData && cloudData.lastSaveTime) || 0;
+
+    // Initialization creates a timestamped empty save before Firebase auth resolves.
+    // On a truly clean device, that timestamp must never outrank an existing cloud save.
+    if (cloudData && hadExistingSaveAtBoot !== true && !hasMeaningfulLocalLearningData(localData)) {
+        return 'restore-clean-device';
+    }
+    if (cloudTime > localTime) return 'prompt-restore-cloud';
+    if (localTime > cloudTime) return 'keep-local';
+    return 'same';
+}
+
 window.GameUtils = {
     WORD_KEY_PREFIX,
     resolveWordIdentity,
     getWordKey,
     getLegacyWordKeys,
+    hasMeaningfulLocalLearningData,
+    getLoginCloudSyncDecision,
 
     // --- SECURITY / FORMATTING ---
     escapeHtml: function (str) {

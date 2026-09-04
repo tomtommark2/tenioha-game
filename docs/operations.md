@@ -74,3 +74,5 @@ Change these carefully because they affect installability, caching, backend serv
 - A manual save shows an overwrite confirmation when the revision changed or the cloud score is higher.
 - Chunked saves write a new immutable generation first, then atomically switch the parent manifest. A generation that loses the revision race is deleted, and successful saves delete only the previous manifest's generation.
 - Orphan chunks older than 24 hours are cleaned at most once per user per day, with a bounded five-page loop; the active generation is always excluded.
+- 保存データのない端末でGoogleログインした場合は、初期化時に作られた空のローカル保存の時刻を無視し、既存のクラウド保存を自動復元する。ログイン前に実際の学習履歴が作られた場合は自動上書きしない。
+- 初回のクラウド読取に失敗した場合は自動保存を開始せず、空または古いローカルデータによるクラウド上書きを防ぐ。

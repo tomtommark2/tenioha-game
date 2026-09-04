@@ -473,6 +473,7 @@ if (auth) {
 
         if (user) {
             const registeredUser = isRegisteredFirebaseUser(user);
+            let cloudSyncReadyForAutoSave = !registeredUser;
             console.log(registeredUser ? "Auth: Google user" : "Auth: Anonymous ranking user", user.uid);
 
             // GA4: Set User ID for cross-device tracking
@@ -594,26 +595,44 @@ if (auth) {
                     const localStr = localStorage.getItem('vocabClickerSave');
                     const localData = localStr ? JSON.parse(localStr) : null;
                     const localTime = localData ? (localData.lastSaveTime || 0) : 0;
+                    const syncDecision = window.GameUtils.getLoginCloudSyncDecision({
+                        hadExistingSaveAtBoot: window.__hadExistingVocabSaveAtBoot === true,
+                        localData,
+                        cloudData
+                    });
 
-                    console.log(`Sync Check: Cloud(${new Date(cloudTime).toLocaleString()}) vs Local(${new Date(localTime).toLocaleString()})`);
+                    console.log(`Sync Check: ${syncDecision} Cloud(${new Date(cloudTime).toLocaleString()}) vs Local(${new Date(localTime).toLocaleString()})`);
 
-                    if (cloudTime > localTime) {
+                    if (syncDecision === 'restore-clean-device') {
+                        localStorage.setItem('vocabClickerSave', cloudRaw);
+                        window.isDirty = false;
+                        console.log('Cloud data restored automatically on a clean device.');
+                        alert("Googleアカウントの学習データを復元しました。\nリロードします。");
+                        location.reload();
+                        return;
+                    } else if (syncDecision === 'prompt-restore-cloud') {
                         const msg = `クラウドにこの端末より新しい学習データがあります。\n(クラウド: ${new Date(cloudTime).toLocaleString()})\n(この端末: ${localTime ? new Date(localTime).toLocaleString() : '保存なし'})\n\n復元しますか？`;
                         if (confirm(msg)) {
                             localStorage.setItem('vocabClickerSave', cloudRaw);
+                            window.isDirty = false;
                             alert("復元しました。リロードします。");
                             location.reload();
+                            return;
                         } else {
                             window.isDirty = true;
                         }
-                    } else if (localTime > cloudTime) {
+                    } else if (syncDecision === 'keep-local') {
                         window.isDirty = true;
                     }
                 } else {
                     console.log("No cloud data. Uploading local data...");
                     uploadSaveData(true);
                 }
-                } catch (e) { console.error("Sync Check Failed:", e); }
+                cloudSyncReadyForAutoSave = true;
+                } catch (e) {
+                    markCloudSaveConflict();
+                    console.error("Sync Check Failed; automatic cloud save is paused:", e);
+                }
             }
 
             if (window.syncPendingReviewScores) await window.syncPendingReviewScores();
@@ -625,8 +644,10 @@ if (auth) {
                 }
             }
 
-            // Start the periodic ranking sync and registered-user cloud-save loop.
-            startAutoSaveLoop();
+            // Never upload local data after a failed initial cloud read.
+            if (cloudSyncReadyForAutoSave) {
+                startAutoSaveLoop();
+            }
 
         } else {
             // --- LOGGED OUT ---
