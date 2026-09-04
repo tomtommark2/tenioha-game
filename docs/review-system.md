@@ -11,6 +11,12 @@ Scheduled review intervals are:
 - Existing `learned` words migrate as 3-day reviews.
 - Existing `perfect` words migrate as 30-day reviews, with the next correct answer advancing to 60 days.
 
+## Queue Ordering
+
+- 復習キューは通常、苦手語を先にし、その中では期限が古い順に並ぶ。
+- 「ランダム」は、現在表示中の復習問題を固定したまま、残りのキューだけをランダムに並べ替える。
+- 並べ替えは現在の起動中だけ有効で、SRS の期限、学習状態、復習スコア、新規＋復習の 7:3 比率には影響しない。
+
 ## Review Score
 
 The score rewards facing scheduled weaknesses. A word scores whenever it was already due when shown, whether it came from the review queue, a manual `weak`/`learned` category, or the word list. New words, cooldown words studied early, `perfect` category study, and automatic playback do not score.

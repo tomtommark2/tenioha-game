@@ -768,57 +768,56 @@ body.level-selector-open .level-selector {
     z-index: 3000;
     align-items: center;
     justify-content: center;
-    padding: 16px;
-    background:
-        radial-gradient(circle at 12% 12%, rgba(255, 197, 84, 0.18), transparent 28%),
-        linear-gradient(135deg, rgba(18, 29, 52, 0.76), rgba(34, 45, 78, 0.68));
-    backdrop-filter: blur(5px);
+    padding: 18px;
+    background: rgba(20, 26, 46, 0.72);
+    backdrop-filter: blur(8px);
 }
 
 .study-mode-modal-content {
     position: relative;
-    width: min(590px, 96vw);
+    width: min(680px, 96vw);
     max-height: 92vh;
     overflow: auto;
-    padding: 0 18px 18px !important;
-    border: 1px solid rgba(255, 255, 255, 0.72) !important;
-    border-radius: 28px !important;
-    background: #f8fbff !important;
-    box-shadow: 0 30px 86px rgba(16, 25, 45, 0.34) !important;
+    padding: 0 20px 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.84) !important;
+    border-radius: 24px !important;
+    background: #f5f7fb !important;
+    box-shadow: 0 28px 70px rgba(13, 20, 39, 0.34) !important;
 }
 
 .study-mode-hero {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 18px;
-    margin: 0 -18px 16px;
-    padding: 28px 52px 22px 26px;
-    border-radius: 28px 28px 0 0;
+    margin: 0 -20px 14px;
+    padding: 22px 56px 20px 24px;
+    border-bottom: 1px solid #dfe4f2;
+    border-radius: 24px 24px 0 0;
     background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.18), transparent 36%),
-        linear-gradient(135deg, #202945, #5868ca);
-    color: #fff;
+        radial-gradient(circle at top right, rgba(115, 99, 216, 0.12), transparent 42%),
+        linear-gradient(135deg, #ffffff, #eef1ff);
+    color: #202842;
     text-align: left;
 }
 
 .study-mode-kicker {
     display: inline-flex;
     align-items: center;
-    height: 24px;
-    padding: 0 10px;
+    min-height: 23px;
+    padding: 3px 9px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.84);
-    font-size: 11px;
+    background: #e8e6ff;
+    color: #5143ad;
+    font-size: 10px;
     font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .study-mode-title {
-    margin: 13px 0 5px;
-    color: #fff;
-    font-size: 25px;
+    margin: 9px 0 4px;
+    color: #202842;
+    font-size: 24px;
     font-weight: 900;
     line-height: 1.25;
     display: flex;
@@ -827,7 +826,7 @@ body.level-selector-open .level-selector {
 
 .study-mode-subtitle {
     margin: 0;
-    color: rgba(255, 255, 255, 0.78);
+    color: #687187;
     font-size: 12px;
     font-weight: 700;
     line-height: 1.6;
@@ -836,46 +835,44 @@ body.level-selector-open .level-selector {
 .study-mode-close-btn {
     top: 14px;
     right: 14px;
-    background: rgba(255, 255, 255, 0.17);
-    color: #fff;
-}
-
-.study-mode-guide {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 14px;
-}
-
-.study-mode-guide span {
-    min-height: 40px;
-    padding: 10px 11px;
-    border: 1px solid #e4eaf5;
-    border-radius: 15px;
+    border: 1px solid #d9deec;
     background: #fff;
-    color: #667086;
-    font-size: 11px;
-    font-weight: 750;
-    line-height: 1.5;
+    color: #566076;
+    box-shadow: 0 5px 14px rgba(38, 47, 76, 0.08);
 }
 
 .study-mode-card {
-    border: 1px solid #dfe6f2;
-    border-radius: 20px;
-    padding: 16px;
-    margin-bottom: 12px;
+    border: 1px solid #dde3ef;
+    border-radius: 17px;
+    padding: 15px;
+    margin-bottom: 10px;
     background: #fff;
-    box-shadow: 0 12px 26px rgba(30, 42, 68, 0.07);
+    box-shadow: 0 7px 18px rgba(30, 42, 68, 0.055);
+}
+
+.study-mode-card-eyebrow {
+    float: left;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    border-radius: 7px;
+    background: #edeaff;
+    color: #5b49c3;
+    font-size: 10px;
+    font-weight: 900;
 }
 
 .study-mode-card-title {
     color: #26324a;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 900;
 }
 
 .study-mode-card-desc {
-    margin-top: 4px;
+    margin-top: 3px;
     color: #7d879a;
     font-size: 11px;
     font-weight: 700;
@@ -887,13 +884,13 @@ body.level-selector-open .level-selector {
     justify-content: space-between;
     align-items: flex-start;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .study-mode-status-pill {
     display: inline-flex;
     align-items: center;
-    min-height: 28px;
+    min-height: 27px;
     padding: 4px 10px;
     border: 1px solid #e2e7fb;
     border-radius: 999px;
@@ -907,15 +904,15 @@ body.level-selector-open .level-selector {
 .study-review-mode-options {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
+    gap: 8px;
 }
 
 .study-review-mode-options button {
     min-width: 0;
-    min-height: 58px;
-    padding: 8px 5px;
-    border: 1px solid #d9dfed;
-    border-radius: 12px;
+    min-height: 66px;
+    padding: 10px 7px;
+    border: 1px solid #d8deea;
+    border-radius: 13px;
     background: #fff;
     color: #59657a;
     cursor: pointer;
@@ -927,22 +924,22 @@ body.level-selector-open .level-selector {
 }
 
 .study-review-mode-options button strong {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 900;
 }
 
 .study-review-mode-options button small {
-    margin-top: 3px;
+    margin-top: 4px;
     color: #8a93a5;
     font-size: 9px;
     font-weight: 700;
 }
 
 .study-review-mode-options button.active {
-    border-color: #7662e8;
-    background: #f0edff;
-    color: #4f3aa7;
-    box-shadow: inset 0 0 0 1px rgba(118, 98, 232, 0.16);
+    border-color: #6958d6;
+    background: linear-gradient(180deg, #f3f1ff, #faf9ff);
+    color: #4c3ba5;
+    box-shadow: inset 0 0 0 1px rgba(105, 88, 214, 0.16), 0 6px 14px rgba(93, 75, 191, 0.10);
 }
 
 .study-review-mode-options button:focus-visible {
@@ -952,7 +949,7 @@ body.level-selector-open .level-selector {
 
 .study-review-mode-description {
     min-height: 18px;
-    margin: 7px 2px 11px;
+    margin: 8px 2px 0;
     color: #6f7a8f;
     font-size: 10px;
     font-weight: 700;
@@ -960,9 +957,105 @@ body.level-selector-open .level-selector {
     text-align: center;
 }
 
+.study-review-shuffle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #e8eaf1;
+}
+
+.study-review-shuffle-copy {
+    min-width: 0;
+}
+
+.study-review-shuffle-copy strong,
+.study-review-shuffle-copy span {
+    display: block;
+}
+
+.study-review-shuffle-copy strong {
+    color: #37425a;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.study-review-shuffle-copy span {
+    margin-top: 2px;
+    color: #7a8498;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.study-review-shuffle-btn {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 7px 11px;
+    border: 1px solid #b8b1e8;
+    border-radius: 10px;
+    background: #f4f2ff;
+    color: #5545b2;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.study-review-shuffle-btn .app-picto {
+    width: 14px;
+    height: 14px;
+}
+
+.study-review-shuffle-btn:hover:not(:disabled) {
+    border-color: #7466cf;
+    background: #ebe8ff;
+}
+
+.study-review-shuffle-btn.is-active {
+    border-color: #6958d6;
+    background: #e9e5ff;
+}
+
+.study-review-shuffle-btn:disabled {
+    border-color: #dde1e9;
+    background: #f5f6f8;
+    color: #a1a8b5;
+    cursor: not-allowed;
+}
+
+.study-review-shuffle-btn:focus-visible {
+    outline: 3px solid rgba(105, 88, 214, 0.23);
+    outline-offset: 2px;
+}
+
+.study-review-shuffle-status {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    color: #5a4db0;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.3;
+    opacity: 0;
+    transition: max-height 0.18s ease, opacity 0.18s ease, margin 0.18s ease;
+}
+
+.study-review-shuffle-status.is-visible {
+    max-height: 18px;
+    margin: 5px 2px 0;
+    opacity: 1;
+}
+
 .study-review-level-block {
-    padding-top: 11px;
-    border-top: 1px dashed #e2e8f2;
+    min-width: 0;
+    padding: 0 12px 0 0;
+    border-right: 1px solid #e7eaf1;
 }
 
 .study-mode-mini-title {
@@ -972,6 +1065,16 @@ body.level-selector-open .level-selector {
     font-weight: 900;
     display: flex;
     align-items: center;
+}
+
+.study-scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 13px;
+}
+
+.study-pos-block {
+    min-width: 0;
 }
 
 .study-review-level-grid {
@@ -984,8 +1087,8 @@ body.level-selector-open .level-selector {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    min-height: 32px;
-    padding: 6px 10px;
+    min-height: 30px;
+    padding: 5px 9px;
     border: 1px solid #dbe2f4;
     border-radius: 999px;
     background: #fff;
@@ -1004,16 +1107,16 @@ body.level-selector-open .level-selector {
 }
 
 .pos-filter-container.study-pos-filter-container {
-    gap: 8px;
-    margin: 12px 0 0;
+    gap: 6px;
+    margin: 0;
     padding: 0;
     border: none;
     background: transparent;
 }
 
 .study-pos-filter-container .pos-checkbox-item {
-    min-height: 34px;
-    padding: 7px 11px;
+    min-height: 30px;
+    padding: 5px 9px;
     border: 1px solid #dfe6f2;
     border-radius: 999px;
     background: #f9fbff;
@@ -1028,6 +1131,26 @@ body.level-selector-open .level-selector {
 
 .study-pos-filter-container .pos-checkbox-item input {
     accent-color: #5567d8;
+}
+
+.study-mode-details {
+    margin: 2px 2px 0;
+    color: #697389;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.study-mode-details summary {
+    width: fit-content;
+    color: #59657c;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.study-mode-details p {
+    margin: 7px 0 0;
 }
 
 .pos-filter-container {
@@ -1218,6 +1341,72 @@ body.level-selector-open .level-selector {
     white-space: nowrap;
 }
 
+.review-queue-shuffle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 27px;
+    padding: 4px 9px;
+    border: 1px solid #d9def0;
+    border-radius: 9px;
+    background: #fff;
+    color: #536079;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 850;
+    white-space: nowrap;
+    transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+
+.review-queue-shuffle-btn .app-picto {
+    width: 14px;
+    height: 14px;
+}
+
+.review-queue-shuffle-btn:hover:not(:disabled) {
+    border-color: #8e83dd;
+    background: #f5f3ff;
+    color: #5748b4;
+    transform: translateY(-1px);
+}
+
+.review-queue-shuffle-btn.is-active {
+    border-color: #afa7e8;
+    background: #f1efff;
+    color: #5545b2;
+}
+
+.review-queue-shuffle-btn:disabled {
+    background: #f5f6f8;
+    color: #a1a8b5;
+    cursor: not-allowed;
+    opacity: 0.72;
+}
+
+.review-queue-shuffle-btn:focus-visible {
+    outline: 3px solid rgba(105, 88, 214, 0.23);
+    outline-offset: 2px;
+}
+
+.review-shuffle-status {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    color: #5a4db0;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.3;
+    opacity: 0;
+    transition: max-height 0.18s ease, opacity 0.18s ease, margin 0.18s ease;
+}
+
+.review-shuffle-status.is-visible {
+    max-height: 18px;
+    margin: 2px 2px 3px;
+    opacity: 1;
+}
+
 .review-tomorrow-forecast {
     margin-bottom: 5px;
     color: #7a8497;
@@ -1238,6 +1427,14 @@ body.level-selector-open .level-selector {
 
     #reviewModeInlineLabel {
         padding-inline: 6px;
+    }
+
+    .review-queue-shuffle-btn {
+        padding-inline: 7px;
+    }
+
+    .review-queue-shuffle-btn > span:last-child {
+        display: none;
     }
 }
 
@@ -3242,9 +3439,12 @@ body.level-selector-open .level-selector {
     line-height: 1;
 }
 
-.review-progress-actions,
 .review-score-today {
     display: none;
+}
+
+.review-progress-actions {
+    display: flex;
 }
 
 #leaderboardModal.leaderboard-modal {
@@ -4592,7 +4792,7 @@ body.profile-modal-open {
 
     .study-mode-hero {
         margin: 0 -13px 12px;
-        padding: 22px 46px 17px 20px;
+        padding: 17px 46px 15px 17px;
         border-radius: 22px 22px 0 0;
     }
 
@@ -4605,15 +4805,15 @@ body.profile-modal-open {
         font-size: 11px;
     }
 
-    .study-mode-guide {
-        gap: 6px;
-        margin-bottom: 10px;
+    .study-scope-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 
-    .study-mode-guide span {
-        min-height: 34px;
-        padding: 8px 9px;
-        font-size: 10px;
+    .study-review-level-block {
+        padding: 0 0 12px;
+        border-right: none;
+        border-bottom: 1px solid #e7eaf1;
     }
 
     .study-mode-card {
@@ -4625,6 +4825,35 @@ body.profile-modal-open {
     .study-mode-card-header {
         gap: 8px;
         margin-bottom: 10px;
+    }
+
+    .study-review-mode-options {
+        gap: 5px;
+    }
+
+    .study-review-mode-options button {
+        min-height: 62px;
+        padding: 8px 4px;
+    }
+
+    .study-review-mode-options button strong {
+        font-size: 11px;
+    }
+
+    .study-review-mode-options button small {
+        font-size: 8px;
+    }
+
+    .study-review-shuffle-row {
+        gap: 8px;
+    }
+
+    .study-review-shuffle-copy span {
+        max-width: 180px;
+    }
+
+    .study-review-shuffle-btn {
+        padding-inline: 9px;
     }
 
     .study-mode-status-pill {

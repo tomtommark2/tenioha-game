@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0828.0138">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0828.0138" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0828.0138" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0828.0138" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0904.2203">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0904.2203" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0904.2203" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0904.2203" as="script">
 </head>
 
 <body>
@@ -381,8 +381,17 @@
                     <span id="reviewProgressLabel">復習キュー 0件</span>
                     <span id="reviewTomorrowForecast" class="review-tomorrow-forecast">（明日0件）</span>
                 </div>
-                <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(event)" title="出題モードを切り替え">新規＋復習</button>
+                <div class="review-progress-actions">
+                    <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(event)" title="出題モードを切り替え">新規＋復習</button>
+                    <button id="reviewQueueShuffleButton" class="review-queue-shuffle-btn" type="button"
+                        onclick="shuffleReviewQueue(event)" aria-label="復習キューの残り順をランダムに並べ替える"
+                        title="復習キューの残り順をランダムに並べ替える">
+                        <span class="app-picto icon-refresh" aria-hidden="true"></span>
+                        <span>ランダム</span>
+                    </button>
+                </div>
             </div>
+            <span id="reviewShuffleStatus" class="review-shuffle-status" role="status" aria-live="polite"></span>
             <div id="reviewQueuePreview" style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; position:relative; min-height:28px;"></div>
         </div>
 
@@ -392,25 +401,19 @@
             style="display:none;">
             <div class="modal-content study-mode-modal-content" onclick="event.stopPropagation()">
                 <div class="study-mode-hero">
-                    <div>
-                        <div class="study-mode-kicker">Study Mode</div>
+                    <div class="study-mode-heading">
+                        <div class="study-mode-kicker">学習設定</div>
                         <h2 class="study-mode-title"><span class="title-picto app-picto icon-compass" aria-hidden="true"></span>出題モード</h2>
-                        <p class="study-mode-subtitle">復習と新規の出題ルールをここでまとめて管理します。</p>
+                        <p class="study-mode-subtitle">新しい単語と復習のバランス、出題範囲を選びます。</p>
                     </div>
-                    <button class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()">×</button>
+                    <button class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()" aria-label="出題モードを閉じる">×</button>
                 </div>
-                <div class="study-mode-guide">
-                    <span>初回一発正解の単語は復習キューに出ません。</span>
-                    <span>より苦手な単語が自動で復習キューに登場します。</span>
-                    <span>正答を重ねると、その単語は復習キューに登場しなくなります。</span>
-                    <span>分類基準：完璧 80%以上 / 得意 50〜79% / 苦手 0〜49%</span>
-                </div>
-
                 <div class="study-mode-card study-review-card">
                     <div class="study-mode-card-header">
                         <div>
-                            <div class="study-mode-card-title">復習設定</div>
-                            <div class="study-mode-card-desc">復習キューの出し方と対象レベルを調整します。</div>
+                            <div class="study-mode-card-eyebrow">1</div>
+                            <div class="study-mode-card-title">出題バランス</div>
+                            <div class="study-mode-card-desc">今日の問題に復習をどう組み合わせるか選びます。</div>
                         </div>
                         <span id="dueOnlyModeLabelModal" class="study-mode-status-pill">新規＋復習</span>
                     </div>
@@ -418,40 +421,67 @@
                     <div class="study-review-mode-options" role="group" aria-label="復習の出し方">
                         <button type="button" data-review-mode-option="off" onclick="setReviewMode('off')">
                             <strong>新規だけ</strong>
-                            <small>自動復習なし</small>
+                            <small>新しい単語に集中</small>
                         </button>
                         <button type="button" data-review-mode-option="random" onclick="setReviewMode('random')">
                             <strong>新規＋復習</strong>
-                            <small>復習をまぜる</small>
+                            <small>おすすめ</small>
                         </button>
                         <button type="button" data-review-mode-option="on" onclick="setReviewMode('on')">
                             <strong>復習だけ</strong>
-                            <small>キューを集中</small>
+                            <small>苦手を集中して解く</small>
                         </button>
                     </div>
                     <p id="reviewModeDescription" class="study-review-mode-description">復習を優先し、新しい単語もまぜて出題します。</p>
+                    <div class="study-review-shuffle-row">
+                        <div class="study-review-shuffle-copy">
+                            <strong>復習の順番</strong>
+                            <span>現在の問題はそのまま、残りのキューをランダムにします。</span>
+                        </div>
+                        <button id="studyModeShuffleButton" class="study-review-shuffle-btn" type="button"
+                            onclick="shuffleReviewQueue(event)" aria-label="復習キューの残り順をランダムに並べ替える">
+                            <span class="app-picto icon-refresh" aria-hidden="true"></span>
+                            <span>ランダム</span>
+                        </button>
+                    </div>
+                    <span id="studyModeShuffleStatus" class="study-review-shuffle-status" role="status" aria-live="polite"></span>
+                </div>
 
-                    <div class="study-review-level-block">
-                        <div class="study-mode-mini-title"><span class="inline-picto app-picto icon-target" aria-hidden="true"></span>復習レベル設定</div>
-                        <div id="reviewLevelCheckboxes" class="study-review-level-grid"></div>
+                <div class="study-mode-card study-scope-card">
+                    <div class="study-mode-card-header">
+                        <div>
+                            <div class="study-mode-card-eyebrow">2</div>
+                            <div class="study-mode-card-title">出題範囲</div>
+                            <div class="study-mode-card-desc">復習するレベルと、出題に含める品詞を選びます。</div>
+                        </div>
+                    </div>
+                    <div class="study-scope-grid">
+                        <section class="study-review-level-block" aria-labelledby="reviewLevelHeading">
+                            <div id="reviewLevelHeading" class="study-mode-mini-title"><span class="inline-picto app-picto icon-target" aria-hidden="true"></span>復習レベル</div>
+                            <div id="reviewLevelCheckboxes" class="study-review-level-grid"></div>
+                        </section>
+                        <section class="study-pos-block" aria-labelledby="posFilterHeading">
+                            <div id="posFilterHeading" class="study-mode-mini-title">品詞</div>
+                            <div class="pos-filter-container study-pos-filter-container">
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="名" checked> 名詞</label>
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="動" checked> 動詞</label>
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詞</label>
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="副" checked> 副詞</label>
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="助" checked> 助動詞</label>
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="前" checked> 前置詞</label>
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="接" checked> 接続詞</label>
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="代" checked> 代名詞</label>
+                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="other" checked> その他</label>
+                            </div>
+                        </section>
                     </div>
                 </div>
 
-                <div class="study-mode-card study-pos-card">
-                    <div class="study-mode-card-title">品詞フィルター</div>
-                    <div class="study-mode-card-desc">出題に含める品詞を選びます。</div>
-                    <div class="pos-filter-container study-pos-filter-container">
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="名" checked> 名詞</label>
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="動" checked> 動詞</label>
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詞</label>
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="副" checked> 副詞</label>
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="助" checked> 助動詞</label>
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="前" checked> 前置詞</label>
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="接" checked> 接続詞</label>
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="代" checked> 代名詞</label>
-                        <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="other" checked> その他</label>
-                    </div>
-                </div>
+                <details class="study-mode-details">
+                    <summary>復習キューの仕組み</summary>
+                    <p>初回で正解した単語は復習キューに入りません。苦手な単語は自動で戻り、正答を重ねると復習間隔が長くなります。</p>
+                    <p>分類の目安：完璧 80%以上 / 得意 50〜79% / 苦手 0〜49%</p>
+                </details>
             </div>
         </div>
 
@@ -493,8 +523,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0828.0138"></script>
-<script src="data/ipa_overrides.js?v=2026.0828.0138"></script>
+    <script src="data/vocabulary.js?v=2026.0904.2203"></script>
+<script src="data/ipa_overrides.js?v=2026.0904.2203"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -965,15 +995,15 @@
     </div>
     </div>
 
-    <script src="js/version.js?v=2026.0828.0138"></script>
-    <script src="js/update_manager.js?v=2026.0828.0138"></script>
-    <script src="js/config.js?v=2026.0828.0138"></script>
-    <script src="data/announcements.js?v=2026.0828.0138"></script>
-    <script src="js/utils.js?v=2026.0828.0138"></script>
+    <script src="js/version.js?v=2026.0904.2203"></script>
+    <script src="js/update_manager.js?v=2026.0904.2203"></script>
+    <script src="js/config.js?v=2026.0904.2203"></script>
+    <script src="data/announcements.js?v=2026.0904.2203"></script>
+    <script src="js/utils.js?v=2026.0904.2203"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/game_logic.js?v=2026.0828.0138"></script>
-    <script src="js/ui_manager.js?v=2026.0828.0138"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0828.0138"></script>
+    <script src="js/game_logic.js?v=2026.0904.2203"></script>
+    <script src="js/ui_manager.js?v=2026.0904.2203"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0904.2203"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

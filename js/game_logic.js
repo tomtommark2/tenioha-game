@@ -49,6 +49,8 @@ var gameState = window.gameState || {
     reviewMode: 'random', // off | random | on
     lastReviewQueueHeadKey: null,
     pendingQueuePop: null,
+    reviewQueueShuffleOrder: [],
+    reviewQueueWasShuffled: false,
     mixCycleCounter: 0,
     wordKeySchemaVersion: 0
 };
@@ -188,6 +190,9 @@ function markLearningContentReady() {
 
 var gameAudioContext = null; // Renamed to avoid collisions
 var wordSpeechTimer = null;
+var speechRequestToken = 0;
+var preferredEnglishVoiceId = null;
+var reviewShuffleStatusTimer = null;
 var gameStateHistory = []; // Stack to store previous states
 var learningSessionStarted = false;
 
@@ -1247,6 +1252,7 @@ function renderReviewLevelCheckboxes() {
         el.addEventListener('change', () => {
             const selected = Array.from(host.querySelectorAll('input[data-review-level]:checked')).map(i => i.dataset.reviewLevel);
             gameState.activeReviewLevels = selected.length ? selected : ['daily', 'exam1'];
+            resetReviewQueueShuffleOrder();
             saveGame();
             const reviewSnapshot = buildReviewQueueSnapshot();
             updateReviewQueueBadge(reviewSnapshot);
@@ -1840,6 +1846,7 @@ function buildReviewQueueSnapshot() {
         if (s.dueAt <= now) {
             const dueItem = {
                 word: item.word,
+                key: item.key,
                 dueAt: s.dueAt || 0,
                 queueOrder: item.queueOrder,
                 wordOrder: item.wordOrder
@@ -1857,11 +1864,95 @@ function buildReviewQueueSnapshot() {
     weakDue.sort(byDue);
     learnedDue.sort(byDue);
 
+    const dueItems = applyReviewQueueShuffleOrder([...weakDue, ...learnedDue]);
+
     return {
-        dueWords: [...weakDue, ...learnedDue].map(item => item.word),
+        dueWords: dueItems.map(item => item.word),
         stats: { dueNow, dueToday, dueTomorrow }
     };
 }
+
+function resetReviewQueueShuffleOrder() {
+    gameState.reviewQueueShuffleOrder = [];
+    gameState.reviewQueueWasShuffled = false;
+}
+
+function applyReviewQueueShuffleOrder(items) {
+    const savedOrder = Array.isArray(gameState.reviewQueueShuffleOrder)
+        ? gameState.reviewQueueShuffleOrder
+        : [];
+    if (savedOrder.length === 0) return items;
+    if (items.length === 0) {
+        resetReviewQueueShuffleOrder();
+        return items;
+    }
+
+    const itemByKey = new Map(items.map(item => [item.key, item]));
+    const usedKeys = new Set();
+    const ordered = [];
+
+    savedOrder.forEach(key => {
+        const item = itemByKey.get(key);
+        if (!item || usedKeys.has(key)) return;
+        ordered.push(item);
+        usedKeys.add(key);
+    });
+    items.forEach(item => {
+        if (usedKeys.has(item.key)) return;
+        ordered.push(item);
+        usedKeys.add(item.key);
+    });
+
+    gameState.reviewQueueShuffleOrder = ordered.map(item => item.key);
+    return ordered;
+}
+
+function showReviewShuffleStatus(message) {
+    const statuses = document.querySelectorAll('#reviewShuffleStatus, #studyModeShuffleStatus');
+    if (statuses.length === 0) return;
+    statuses.forEach(status => {
+        status.textContent = message;
+        status.classList.add('is-visible');
+    });
+    if (reviewShuffleStatusTimer) clearTimeout(reviewShuffleStatusTimer);
+    reviewShuffleStatusTimer = setTimeout(() => {
+        statuses.forEach(status => status.classList.remove('is-visible'));
+    }, 1800);
+}
+
+window.shuffleReviewQueue = function (event) {
+    if (event) event.stopPropagation();
+    const snapshot = buildReviewQueueSnapshot();
+    const dueWords = snapshot.dueWords;
+    const currentKey = gameState.isReviewWord && gameState.currentWord
+        ? getWordKeySafe(gameState.currentWord, gameState.currentWord.__sourceLevel || gameState.currentLevel)
+        : null;
+    const pinnedWord = currentKey
+        ? dueWords.find(word => getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel) === currentKey)
+        : null;
+    const movableWords = pinnedWord
+        ? dueWords.filter(word => getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel) !== currentKey)
+        : [...dueWords];
+
+    if (movableWords.length < 2) {
+        showReviewShuffleStatus('ランダムにできる復習がまだありません');
+        return;
+    }
+
+    const beforeKeys = movableWords.map(word => getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel));
+    const shuffledWords = createShuffledDeck(movableWords);
+    const shuffledKeys = shuffledWords.map(word => getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel));
+    if (shuffledKeys.every((key, index) => key === beforeKeys[index])) {
+        [shuffledKeys[0], shuffledKeys[1]] = [shuffledKeys[1], shuffledKeys[0]];
+    }
+
+    gameState.reviewQueueShuffleOrder = pinnedWord ? [currentKey, ...shuffledKeys] : shuffledKeys;
+    gameState.reviewQueueWasShuffled = true;
+    const shuffledSnapshot = buildReviewQueueSnapshot();
+    updateReviewQueueBadge(shuffledSnapshot);
+    updateReviewProgressUI(shuffledSnapshot);
+    showReviewShuffleStatus(pinnedWord ? '次の復習以降をランダムにしました' : '復習の順番をランダムにしました');
+};
 
 function getCurrentReviewStats(snapshot = null) {
     return (snapshot || buildReviewQueueSnapshot()).stats;
@@ -1948,6 +2039,7 @@ function updateReviewProgressUI(snapshot = null) {
     const modeModal = document.getElementById('dueOnlyModeLabelModal');
     const modeDescription = document.getElementById('reviewModeDescription');
     const tomorrowForecast = document.getElementById('reviewTomorrowForecast');
+    const shuffleButtons = document.querySelectorAll('#reviewQueueShuffleButton, #studyModeShuffleButton');
     if (!wrap || !list || !label) return;
 
     const reviewSnapshot = snapshot || buildReviewQueueSnapshot();
@@ -1989,6 +2081,22 @@ function updateReviewProgressUI(snapshot = null) {
 
     label.textContent = `復習キュー ${total}件`;
     if (tomorrowForecast) tomorrowForecast.textContent = `（明日${stats.dueTomorrow}件）`;
+    if (shuffleButtons.length > 0) {
+        const currentKey = gameState.isReviewWord && gameState.currentWord
+            ? getWordKeySafe(gameState.currentWord, gameState.currentWord.__sourceLevel || gameState.currentLevel)
+            : null;
+        const currentIsInQueue = currentKey && dueWords.some(word => (
+            getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel) === currentKey
+        ));
+        const movableCount = total - (currentIsInQueue ? 1 : 0);
+        shuffleButtons.forEach(shuffleButton => {
+            shuffleButton.disabled = movableCount < 2;
+            shuffleButton.classList.toggle('is-active', gameState.reviewQueueWasShuffled && total > 0);
+            shuffleButton.title = shuffleButton.disabled
+                ? 'ランダムにするには、残りの復習が2件以上必要です'
+                : '復習キューの残り順をランダムに並べ替える';
+        });
+    }
     updateReviewScoreSummary();
 
     const preview = dueWords.slice(0, 10);
@@ -2310,6 +2418,8 @@ function loadGame() {
         if (!['off','random','on'].includes(gameState.reviewMode)) gameState.reviewMode = 'random';
         if (typeof gameState.lastReviewQueueHeadKey !== 'string') gameState.lastReviewQueueHeadKey = null;
         if (typeof gameState.mixCycleCounter !== 'number') gameState.mixCycleCounter = 0;
+        gameState.reviewQueueShuffleOrder = [];
+        gameState.reviewQueueWasShuffled = false;
         gameState.randomMode = false; // random mode retired
 
         migrateWordKeySchemaIfNeeded();
@@ -2385,6 +2495,7 @@ function updatePOSFilters() {
     });
     // v2.80: Reset Decks on Filter Change to prevent filtered words from lingering
     gameState.decks = null;
+    resetReviewQueueShuffleOrder();
     invalidateLearningProgressSnapshot();
 }
 
@@ -2481,12 +2592,65 @@ function enableAudioStayAwake() {
 }
 
 function getPreferredEnglishVoice() {
-    const voices = speechSynthesis.getVoices();
-    return voices.find(v => v.name === 'Google US English') ||
-        voices.find(v => v.name === 'Samantha') ||
-        voices.find(v => v.name.includes('Google') && v.lang.startsWith('en')) ||
-        voices.find(v => v.lang === 'en-US') ||
-        voices.find(v => v.lang && v.lang.startsWith('en'));
+    if (!window.speechSynthesis || typeof window.speechSynthesis.getVoices !== 'function') return null;
+
+    const blockedName = /japanese|japan|kyoko|otoya|haruka|ayumi|nanami/i;
+    const voices = window.speechSynthesis.getVoices().filter(voice => {
+        const lang = String(voice.lang || '').replace('_', '-').toLowerCase();
+        return /^en(?:-|$)/.test(lang) && !blockedName.test(String(voice.name || ''));
+    });
+    if (voices.length === 0) return null;
+
+    if (preferredEnglishVoiceId) {
+        const stableVoice = voices.find(voice => (
+            `${voice.voiceURI || voice.name}|${voice.lang}` === preferredEnglishVoiceId
+        ));
+        if (stableVoice) return stableVoice;
+    }
+
+    const scoreVoice = (voice, index) => {
+        const name = String(voice.name || '');
+        const lowerName = name.toLowerCase();
+        const lang = String(voice.lang || '').replace('_', '-').toLowerCase();
+        let score = 0;
+
+        // Preserve the voices used before this selector became asynchronous.
+        if (name === 'Google US English') score += 10000;
+        if (name === 'Samantha') score += 9500;
+
+        if (lang === 'en-us') score += 1000;
+        else if (lang === 'en-gb') score += 800;
+        else if (lang.startsWith('en-')) score += 600;
+
+        if (/natural|neural|premium|enhanced/.test(lowerName)) score += 700;
+        if (lowerName.includes('google')) score += 400;
+        if (lowerName.includes('microsoft')) score += 350;
+        if (/samantha|ava|serena|daniel|alex/.test(lowerName)) score += 300;
+        if (voice.default) score += 20;
+
+        return { voice, score, index };
+    };
+
+    const selectedVoice = voices
+        .map(scoreVoice)
+        .sort((a, b) => (b.score - a.score) || (a.index - b.index))[0].voice;
+    preferredEnglishVoiceId = `${selectedVoice.voiceURI || selectedVoice.name}|${selectedVoice.lang}`;
+    return selectedVoice;
+}
+
+function waitForPreferredEnglishVoice(timeoutMs = 1000) {
+    const startedAt = Date.now();
+    return new Promise(resolve => {
+        const check = () => {
+            const voice = getPreferredEnglishVoice();
+            if (voice || Date.now() - startedAt >= timeoutMs) {
+                resolve(voice);
+                return;
+            }
+            setTimeout(check, 50);
+        };
+        check();
+    });
 }
 
 function speakEnglishText(text, options = {}) {
@@ -2506,14 +2670,18 @@ function speakEnglishText(text, options = {}) {
         gameAudioContext.resume();
     }
 
-    const speak = () => {
+    const requestToken = ++speechRequestToken;
+    const speak = async () => {
+        const preferredVoice = await waitForPreferredEnglishVoice();
+        if (requestToken !== speechRequestToken) return;
+        if (!preferredVoice) {
+            console.warn('No English speech synthesis voice is available.');
+            return;
+        }
+
         const utterance = new SpeechSynthesisUtterance(value);
         utterance.lang = 'en-US';
-
-        const preferredVoice = getPreferredEnglishVoice();
-        if (preferredVoice) {
-            utterance.voice = preferredVoice;
-        }
+        utterance.voice = preferredVoice;
 
         utterance.rate = options.rate || 0.9;
         utterance.pitch = options.pitch || 1.0;
@@ -2522,13 +2690,8 @@ function speakEnglishText(text, options = {}) {
         speechSynthesis.speak(utterance);
     };
 
-    if (speechSynthesis.speaking || speechSynthesis.pending) {
-        speechSynthesis.cancel();
-        setTimeout(speak, 25);
-    } else {
-        speechSynthesis.cancel();
-        speak();
-    }
+    speechSynthesis.cancel();
+    speak();
 }
 
 function speakWord(word) {

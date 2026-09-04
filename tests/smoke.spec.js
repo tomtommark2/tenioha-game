@@ -518,6 +518,104 @@ test('例文スピーカーボタンは現在の例文を読み上げる', async
   await expect.poll(async () => page.evaluate(() => window.__spokenTexts.at(-1))).toBe(example);
 });
 
+test('TTSは従来の英語音声を優先し日本語音声を候補にしない', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    Object.defineProperty(window, 'speechSynthesis', {
+      configurable: true,
+      value: {
+        getVoices() {
+          return [
+            { name: 'Microsoft Nanami Online (Natural) - Japanese (Japan)', lang: 'ja-JP', default: true },
+            { name: 'Microsoft Aria Online (Natural) - English (United States)', lang: 'en-US' },
+            { name: 'Google US English', lang: 'en-US' },
+          ];
+        },
+      },
+    });
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  const selected = await page.evaluate(() => {
+    const voice = window.getPreferredEnglishVoice();
+    return voice ? { name: voice.name, lang: voice.lang } : null;
+  });
+  expect(selected).toEqual({ name: 'Google US English', lang: 'en-US' });
+});
+
+test('TTSは英語音声の読み込みを待ってから明示的に選択する', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    window.__voiceList = [
+      { name: 'Microsoft Nanami Online (Natural) - Japanese (Japan)', lang: 'ja-JP', default: true },
+    ];
+    window.__spokenUtterances = [];
+
+    class FakeSpeechSynthesisUtterance {
+      constructor(text) {
+        this.text = text;
+        this.lang = '';
+        this.rate = 1;
+        this.pitch = 1;
+        this.volume = 1;
+        this.voice = null;
+      }
+    }
+
+    Object.defineProperty(window, 'SpeechSynthesisUtterance', {
+      configurable: true,
+      value: FakeSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, 'speechSynthesis', {
+      configurable: true,
+      value: {
+        speaking: false,
+        pending: false,
+        cancel() {},
+        getVoices() {
+          return window.__voiceList;
+        },
+        speak(utterance) {
+          window.__spokenUtterances.push({
+            text: utterance.text,
+            lang: utterance.lang,
+            voiceName: utterance.voice?.name || null,
+          });
+        },
+      },
+    });
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.locator('#speakerBtn').click();
+  await page.waitForTimeout(120);
+  expect(await page.evaluate(() => window.__spokenUtterances.length)).toBe(0);
+
+  await page.evaluate(() => {
+    window.__voiceList.push({
+      name: 'Microsoft Aria Online (Natural) - English (United States)',
+      lang: 'en-US',
+    });
+  });
+
+  await expect.poll(() => page.evaluate(() => window.__spokenUtterances.at(-1))).toMatchObject({
+    lang: 'en-US',
+    voiceName: 'Microsoft Aria Online (Natural) - English (United States)',
+  });
+
+  const utteranceCount = await page.evaluate(() => window.__spokenUtterances.length);
+  await page.evaluate(() => {
+    window.__voiceList.push({ name: 'Google US English', lang: 'en-US' });
+  });
+  await page.locator('#speakerBtn').click();
+  await expect.poll(() => page.evaluate(() => window.__spokenUtterances.length)).toBe(utteranceCount + 1);
+  await expect.poll(() => page.evaluate(() => window.__spokenUtterances.at(-1))).toMatchObject({
+    voiceName: 'Microsoft Aria Online (Natural) - English (United States)',
+  });
+});
+
 test('戻る操作後に次の単語へ進んでも表示中の例文を読み上げる', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
@@ -963,6 +1061,93 @@ test('復習キュー右上ラベルのタップで復習モードを切り替�
   await expect(inlineLabel).toContainText('新規だけ');
   await inlineLabel.click();
   await expect(inlineLabel).toContainText('新規＋復習');
+});
+
+test('復習キューのランダムボタンは現在の問題を保って残り順を混ぜる', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const initialOrder = await page.evaluate(() => {
+    const gs = window.gameState;
+    const words = window.vocabularyDatabase.basic.slice(0, 4);
+    gs.wordStates = {};
+    gs.srsData = {};
+    gs.activeReviewLevels = ['basic'];
+    gs.reviewMode = 'on';
+    gs.currentWord = null;
+    gs.isReviewWord = false;
+    gs.reviewQueueShuffleOrder = [];
+    gs.reviewQueueWasShuffled = false;
+    words.forEach((word, index) => {
+      const key = window.getWordKeySafe(word, word.__sourceLevel || 'basic');
+      gs.wordStates[key] = 'weak';
+      gs.srsData[key] = { dueAt: Date.now() - 10000 + index };
+    });
+    const snapshot = window.buildReviewQueueSnapshot();
+    window.updateReviewProgressUI(snapshot);
+    return snapshot.dueWords.map(word => word.word);
+  });
+
+  const shuffleButton = page.locator('#reviewQueueShuffleButton');
+  await page.evaluate(() => window.openStudyModeModal());
+  const modalShuffleButton = page.locator('#studyModeShuffleButton');
+  await expect(shuffleButton).toBeEnabled();
+  await expect(modalShuffleButton).toBeEnabled();
+  await modalShuffleButton.click();
+  await expect(page.locator('#studyModeShuffleStatus')).toContainText('復習の順番をランダムにしました');
+  await page.evaluate(() => window.closeStudyModeModal());
+
+  const shuffledOrder = await page.locator('#reviewQueuePreview .review-queue-chip').allTextContents();
+  expect(shuffledOrder).not.toEqual(initialOrder);
+  expect([...shuffledOrder].sort()).toEqual([...initialOrder].sort());
+
+  const currentWord = await page.evaluate(() => {
+    const snapshot = window.buildReviewQueueSnapshot();
+    window.gameState.currentWord = snapshot.dueWords[0];
+    window.gameState.isReviewWord = true;
+    window.updateReviewProgressUI(snapshot);
+    return window.gameState.currentWord.word;
+  });
+
+  await shuffleButton.click();
+  await expect(page.locator('#reviewShuffleStatus')).toContainText('次の復習以降をランダムにしました');
+  await expect.poll(() => page.evaluate(() => window.gameState.currentWord.word)).toBe(currentWord);
+  const reshuffledOrder = await page.locator('#reviewQueuePreview .review-queue-chip').allTextContents();
+  expect(reshuffledOrder[0]).toBe(currentWord);
+  expect(reshuffledOrder.slice(1)).not.toEqual(shuffledOrder.slice(1));
+});
+
+test('出題モードは小さい画面でも主要設定を読みやすく表示する', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => window.openStudyModeModal());
+
+  const modal = page.locator('#studyModeModal .study-mode-modal-content');
+  await expect(modal).toBeVisible();
+  await expect(modal.locator('.study-mode-flow')).toHaveCount(0);
+  await expect(modal.getByText('出題バランス', { exact: true })).toBeVisible();
+  await expect(modal.getByText('出題範囲', { exact: true })).toBeVisible();
+  await expect(modal.getByRole('button', { name: '復習キューの残り順をランダムに並べ替える' })).toBeVisible();
+  await expect(modal.getByText('復習キューの仕組み', { exact: true })).toBeVisible();
+
+  const bounds = await modal.evaluate(el => {
+    const rect = el.getBoundingClientRect();
+    return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom };
+  });
+  expect(bounds.left).toBeGreaterThanOrEqual(0);
+  expect(bounds.right).toBeLessThanOrEqual(375);
+  expect(bounds.top).toBeGreaterThanOrEqual(0);
+  expect(bounds.bottom).toBeLessThanOrEqual(667);
 });
 
 test('復習モードONでは新規のみの遷移にならない（復習優先）', async ({ page }) => {
