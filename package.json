@@ -12,6 +12,7 @@
     "test:e2e": "node node_modules/playwright/cli.js test",
     "test:e2e:ui": "node node_modules/playwright/cli.js test --ui",
     "test:e2e:headed": "node node_modules/playwright/cli.js test --headed",
+    "test:mobile-modals": "node node_modules/playwright/cli.js test --config playwright.mobile.config.js",
     "test:e2e:safe": "npm run sync:html && npm run check:html-sync && npm run check:version-sync && npm run check:review-word-hashes && npm run test:unit && npm run test:functions && node node_modules/playwright/cli.js test"
   },
   "dependencies": {

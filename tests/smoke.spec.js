@@ -943,17 +943,32 @@ test('プロフィールモーダルを開閉できる', async ({ page }) => {
   const closeButton = page.getByRole('button', { name: 'アカウントを閉じる' });
   await expect(modal).toBeHidden();
 
+  const openProfile = async () => {
+    await page.evaluate(() => {
+      if (typeof window.openProfileModal === 'function') window.openProfileModal();
+    });
+    await expect(modal).toBeVisible();
+    await expect.poll(() => page.evaluate(() => window.history.state?.__teniohaModalLayer === true)).toBe(true);
+  };
+
+  const expectProfileClosed = async () => {
+    await expect(modal).toBeHidden();
+    await expect(page.locator('body')).not.toHaveClass(/profile-modal-open/);
+    await expect(page.locator('body')).not.toHaveClass(/dismissible-modal-open/);
+  };
+
   // 開く
-  await page.evaluate(() => {
-    if (typeof window.openProfileModal === 'function') window.openProfileModal();
-  });
-  await expect(modal).toBeVisible();
+  const opener = page.locator('#topActionMenuBtn');
+  await opener.focus();
+  await openProfile();
   await expect(dialog).toHaveAttribute('role', 'dialog');
   await expect(dialog).toHaveAttribute('aria-modal', 'true');
   await expect(page.locator('body')).toHaveClass(/profile-modal-open/);
+  await expect(page.locator('body')).toHaveClass(/dismissible-modal-open/);
   await expect.poll(() => page.locator('body').evaluate((el) => getComputedStyle(el).overflowY)).toBe('hidden');
   await expect.poll(() => modal.evaluate((el) => getComputedStyle(el).overflowY)).toBe('hidden');
   await expect.poll(() => scroller.evaluate((el) => getComputedStyle(el).overflowY)).toBe('auto');
+  await expect(closeButton).toBeFocused();
 
   // ログイン後に同期欄が増えても、閉じるボタンはスクロール領域の外に残る。
   await page.evaluate(() => {
@@ -963,19 +978,83 @@ test('プロフィールモーダルを開閉できる', async ({ page }) => {
     if (scrollArea) scrollArea.scrollTop = scrollArea.scrollHeight;
   });
   await expect(closeButton).toBeVisible();
+  const closeBox = await closeButton.boundingBox();
+  expect(closeBox.width).toBeGreaterThanOrEqual(44);
+  expect(closeBox.height).toBeGreaterThanOrEqual(44);
 
-  // 閉じる（リロードなどで実行コンテキストが切れてもリトライ）
-  await expect.poll(async () => {
-    try {
-      await page.evaluate(() => {
-        if (typeof window.closeProfileModal === 'function') window.closeProfileModal();
-      });
-    } catch (_) {
-      // context destroyed はリトライで吸収
-    }
-    return await modal.evaluate((el) => getComputedStyle(el).display === 'none');
-  }, { timeout: 5000 }).toBe(true);
-  await expect(page.locator('body')).not.toHaveClass(/profile-modal-open/);
+  // 実際のタップで閉じる。
+  await closeButton.click();
+  await expectProfileClosed();
+  await expect(opener).toBeFocused();
+
+  // 背景タップでも閉じる。
+  await openProfile();
+  await modal.click({ position: { x: 2, y: 300 } });
+  await expectProfileClosed();
+
+  // キーボード操作でも閉じる。
+  await openProfile();
+  await page.keyboard.press('Escape');
+  await expectProfileClosed();
+
+  // スマホの戻る操作ではページ遷移せず、モーダルだけを閉じる。
+  await openProfile();
+  const urlBeforeBack = page.url();
+  await page.goBack();
+  await expectProfileClosed();
+  expect(page.url()).toBe(urlBeforeBack);
+});
+
+test('非ブロック画面は共通操作で閉じ、制限画面は閉じない', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
+
+  const dismissibleModalIds = [
+    'installGuideModal',
+    'shareModal',
+    'wordListModal',
+    'studyModeModal',
+    'helpModal',
+    'updatePromptModal',
+    'offlineAlertModal',
+    'announcementModal',
+    'wordbookModal',
+    'leaderboardModal',
+    'learningLogModal',
+    'purchaseModal',
+  ];
+
+  for (const modalId of dismissibleModalIds) {
+    const modal = page.locator(`#${modalId}`);
+    await page.evaluate((id) => {
+      document.getElementById(id).style.display = 'flex';
+    }, modalId);
+    await expect(modal).toBeVisible();
+    await expect.poll(() => page.evaluate(() => window.history.state?.__teniohaModalLayer === true)).toBe(true);
+    await page.keyboard.press('Escape');
+    await expect(modal).toBeHidden();
+    await expect.poll(() => page.evaluate(() => window.history.state?.__teniohaModalLayer !== true)).toBe(true);
+  }
+
+  for (const modalId of ['trialOverlay', 'forceUpdateModal']) {
+    const modal = page.locator(`#${modalId}`);
+    await page.evaluate((id) => {
+      document.getElementById(id).style.display = 'flex';
+    }, modalId);
+    await expect(modal).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(modal).toBeVisible();
+    await modal.click({ position: { x: 2, y: 2 } });
+    await expect(modal).toBeVisible();
+    await page.evaluate((id) => {
+      document.getElementById(id).style.display = 'none';
+    }, modalId);
+  }
 });
 
 test('未読お知らせはベルに通知マークを出し、開くと既読になる', async ({ page }) => {

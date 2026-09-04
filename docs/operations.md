@@ -51,6 +51,12 @@
 - `vocab_clicker_game.html` must remain byte-identical after sync.
 - Current automation lives in `scripts/sync-html.js`; `.agent/workflows/sync_files.md` is legacy guidance only.
 
+## Modal Dismissal
+
+- Non-blocking modal screens must close from their close control, backdrop tap, Escape, and browser/device Back without leaving the app page.
+- Close controls keep at least a 44 x 44 CSS-pixel touch target, move focus into the modal on open, and restore focus on close.
+- `trialOverlay` and `forceUpdateModal` are intentionally blocking. Run `npm run test:mobile-modals` for the focused Chromium and WebKit checks.
+
 ## Deployment-Sensitive Files
 
 - `manifest.json`

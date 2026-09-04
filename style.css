@@ -4422,6 +4422,11 @@ body.profile-modal-open {
     overscroll-behavior: none;
 }
 
+body.dismissible-modal-open {
+    overflow: hidden !important;
+    overscroll-behavior: none;
+}
+
 .profile-close-btn {
     top: 14px;
     right: 14px;
@@ -5754,6 +5759,22 @@ body.profile-modal-open {
     font-size: 22px;
     line-height: 1;
     cursor: pointer;
+}
+
+.modal-close-btn,
+.announcement-close-btn,
+.install-guide-modal-close,
+.word-list-close-btn {
+    min-width: 44px;
+    min-height: 44px;
+    z-index: 5;
+    touch-action: manipulation;
+}
+
+.announcement-close-btn {
+    display: grid;
+    place-items: center;
+    padding: 0;
 }
 
 .modal-close-btn:hover {

@@ -5,9 +5,253 @@
 
 console.log("UI Manager Loaded");
 
+const DISMISSIBLE_MODAL_IDS = Object.freeze([
+    'installGuideModal',
+    'shareModal',
+    'wordListModal',
+    'studyModeModal',
+    'helpModal',
+    'updatePromptModal',
+    'offlineAlertModal',
+    'announcementModal',
+    'wordbookModal',
+    'leaderboardModal',
+    'learningLogModal',
+    'purchaseModal',
+    'profileModal'
+]);
+const MODAL_HISTORY_STATE_KEY = '__teniohaModalLayer';
+const dismissibleModalState = {
+    activeModalId: null,
+    visibleModalIds: [],
+    opener: null,
+    closingFromHistory: false,
+    cleaningHistory: false,
+    reconcileQueued: false
+};
+
+function isDismissibleModalVisible(modal) {
+    return Boolean(modal)
+        && !modal.hidden
+        && window.getComputedStyle(modal).display !== 'none';
+}
+
+function getVisibleDismissibleModals() {
+    return DISMISSIBLE_MODAL_IDS
+        .map(id => document.getElementById(id))
+        .filter(isDismissibleModalVisible);
+}
+
+function getTopDismissibleModal(modals = getVisibleDismissibleModals()) {
+    return modals.reduce((top, modal) => {
+        if (!top) return modal;
+        const topZ = Number.parseInt(window.getComputedStyle(top).zIndex, 10) || 0;
+        const modalZ = Number.parseInt(window.getComputedStyle(modal).zIndex, 10) || 0;
+        if (modalZ !== topZ) return modalZ > topZ ? modal : top;
+        return top.compareDocumentPosition(modal) & Node.DOCUMENT_POSITION_FOLLOWING ? modal : top;
+    }, null);
+}
+
+function getModalFocusableElements(modal) {
+    if (!modal) return [];
+    return Array.from(modal.querySelectorAll([
+        'button:not([disabled])',
+        'a[href]',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])'
+    ].join(','))).filter(element => element.getClientRects().length > 0);
+}
+
+function focusWithoutScrolling(element) {
+    if (!(element instanceof HTMLElement)) return;
+    try {
+        element.focus({ preventScroll: true });
+    } catch {
+        element.focus();
+    }
+}
+
+function focusDismissibleModal(modal) {
+    if (!modal) return;
+    const preferred = modal.querySelector([
+        '[data-modal-initial-focus]',
+        'button[aria-label*="閉じる"]',
+        '.modal-close-btn',
+        '.announcement-close-btn',
+        '.word-list-close-btn',
+        '.install-guide-modal-close'
+    ].join(','));
+    const target = preferred || getModalFocusableElements(modal)[0];
+    window.requestAnimationFrame(() => {
+        if (isDismissibleModalVisible(modal) && target instanceof HTMLElement) {
+            focusWithoutScrolling(target);
+        }
+    });
+}
+
+function resetShareModal() {
+    const qrSection = document.getElementById('qrSection');
+    const mainContent = document.getElementById('shareMainContent');
+    if (qrSection) qrSection.style.display = 'none';
+    if (mainContent) mainContent.style.display = 'block';
+}
+
+window.closeShareModal = function () {
+    const modal = document.getElementById('shareModal');
+    if (modal) modal.style.display = 'none';
+    resetShareModal();
+};
+
+window.closeLearningLogModal = function () {
+    const modal = document.getElementById('learningLogModal');
+    if (modal) modal.style.display = 'none';
+};
+
+window.closeWordbookModal = function () {
+    const modal = document.getElementById('wordbookModal');
+    if (modal) modal.style.display = 'none';
+};
+
+function requestDismissibleModalClose(modal) {
+    if (!modal) return;
+    const handlerNames = {
+        shareModal: 'closeShareModal',
+        wordListModal: 'closeWordListModal',
+        studyModeModal: 'closeStudyModeModal',
+        announcementModal: 'closeAnnouncementModal',
+        wordbookModal: 'closeWordbookModal',
+        leaderboardModal: 'closeLeaderboard',
+        learningLogModal: 'closeLearningLogModal',
+        purchaseModal: 'closePurchaseModal',
+        profileModal: 'closeProfileModal'
+    };
+    const handler = window[handlerNames[modal.id]];
+    if (typeof handler === 'function') {
+        handler();
+        return;
+    }
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+function scheduleDismissibleModalReconcile() {
+    if (dismissibleModalState.reconcileQueued) return;
+    dismissibleModalState.reconcileQueued = true;
+    queueMicrotask(() => {
+        dismissibleModalState.reconcileQueued = false;
+        reconcileDismissibleModals();
+    });
+}
+
+function reconcileDismissibleModals() {
+    const visibleModals = getVisibleDismissibleModals();
+    const visibleIds = visibleModals.map(modal => modal.id);
+    const topModal = getTopDismissibleModal(visibleModals);
+    const previousHadModal = dismissibleModalState.visibleModalIds.length > 0;
+    const hasModal = visibleIds.length > 0;
+    const activeChanged = dismissibleModalState.activeModalId !== (topModal?.id || null);
+
+    DISMISSIBLE_MODAL_IDS.forEach(id => {
+        const modal = document.getElementById(id);
+        if (modal) modal.setAttribute('aria-hidden', visibleIds.includes(id) ? 'false' : 'true');
+    });
+
+    if (!previousHadModal && hasModal) {
+        const activeElement = document.activeElement;
+        dismissibleModalState.opener = activeElement instanceof HTMLElement ? activeElement : null;
+        document.body.classList.add('dismissible-modal-open');
+        if (!window.history.state?.[MODAL_HISTORY_STATE_KEY]) {
+            const currentState = window.history.state && typeof window.history.state === 'object'
+                ? window.history.state
+                : {};
+            window.history.pushState({ ...currentState, [MODAL_HISTORY_STATE_KEY]: true }, '', window.location.href);
+        }
+    } else if (previousHadModal && !hasModal) {
+        document.body.classList.remove('dismissible-modal-open');
+        const opener = dismissibleModalState.opener;
+        dismissibleModalState.opener = null;
+        if (dismissibleModalState.closingFromHistory) {
+            dismissibleModalState.closingFromHistory = false;
+        } else if (window.history.state?.[MODAL_HISTORY_STATE_KEY]) {
+            dismissibleModalState.cleaningHistory = true;
+            window.history.back();
+        }
+        window.requestAnimationFrame(() => {
+            if (opener?.isConnected) focusWithoutScrolling(opener);
+        });
+    } else if (hasModal) {
+        document.body.classList.add('dismissible-modal-open');
+    }
+
+    dismissibleModalState.visibleModalIds = visibleIds;
+    dismissibleModalState.activeModalId = topModal?.id || null;
+    if (hasModal && activeChanged) focusDismissibleModal(topModal);
+}
+
+function initDismissibleModalBehavior() {
+    const modalElements = DISMISSIBLE_MODAL_IDS
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+    if (!modalElements.length) return;
+
+    const observer = new MutationObserver(scheduleDismissibleModalReconcile);
+    modalElements.forEach(modal => {
+        observer.observe(modal, {
+            attributes: true,
+            attributeFilter: ['class', 'hidden', 'style']
+        });
+    });
+
+    document.addEventListener('click', event => {
+        const modal = event.target instanceof HTMLElement ? event.target : null;
+        if (!modal || !DISMISSIBLE_MODAL_IDS.includes(modal.id)) return;
+        if (isDismissibleModalVisible(modal)) requestDismissibleModalClose(modal);
+    });
+
+    document.addEventListener('keydown', event => {
+        const topModal = getTopDismissibleModal();
+        if (!topModal) return;
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            requestDismissibleModalClose(topModal);
+            return;
+        }
+        if (event.key !== 'Tab') return;
+        const focusable = getModalFocusableElements(topModal);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        }
+    });
+
+    window.addEventListener('popstate', () => {
+        if (dismissibleModalState.cleaningHistory) {
+            dismissibleModalState.cleaningHistory = false;
+            return;
+        }
+        const visibleModals = getVisibleDismissibleModals();
+        if (!visibleModals.length) return;
+        dismissibleModalState.closingFromHistory = true;
+        visibleModals.forEach(requestDismissibleModalClose);
+        scheduleDismissibleModalReconcile();
+    });
+
+    reconcileDismissibleModals();
+}
+
 // --- VERSION & PWA INIT ---
 // const APP_VERSION_UI = 'v2.51'; // NOW USING GLOBAL GAME_VERSION
 window.addEventListener('load', () => {
+    initDismissibleModalBehavior();
+
     // Version Display
     const v1 = document.getElementById('helpVersionDisplay');
     const v2 = document.getElementById('leaderboardVersionDisplay');

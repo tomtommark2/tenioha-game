@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0904.2243">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0904.2243" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0904.2243" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0904.2243" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0904.2322">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0904.2322" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0904.2322" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0904.2322" as="script">
 </head>
 
 <body>
@@ -159,8 +159,7 @@
                 </button>
             </div>
 
-            <button
-                onclick="document.getElementById('shareModal').style.display = 'none'; document.getElementById('qrSection').style.display='none'; document.getElementById('shareMainContent').style.display='block';"
+            <button type="button" onclick="closeShareModal()"
                 style="margin-top: 10px; background: transparent; border: none; color: #999; text-decoration: underline; cursor: pointer;">閉じる</button>
         </div>
     </div>
@@ -406,7 +405,7 @@
                         <h2 class="study-mode-title"><span class="title-picto app-picto icon-compass" aria-hidden="true"></span>出題モード</h2>
                         <p class="study-mode-subtitle">新しい単語と復習のバランス、出題範囲を選びます。</p>
                     </div>
-                    <button class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()" aria-label="出題モードを閉じる">×</button>
+                    <button type="button" class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()" aria-label="出題モードを閉じる">×</button>
                 </div>
                 <div class="study-mode-card study-review-card">
                     <div class="study-mode-card-header">
@@ -523,8 +522,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0904.2243"></script>
-<script src="data/ipa_overrides.js?v=2026.0904.2243"></script>
+    <script src="data/vocabulary.js?v=2026.0904.2322"></script>
+<script src="data/ipa_overrides.js?v=2026.0904.2322"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -695,7 +694,7 @@
     <div id="announcementModal" class="modal-overlay announcement-modal" role="dialog" aria-modal="true"
         aria-labelledby="announcementHeading">
         <div class="modal-content announcement-modal-content">
-            <button class="announcement-close-btn" onclick="closeAnnouncementModal()" aria-label="閉じる">&times;</button>
+            <button type="button" class="announcement-close-btn" onclick="closeAnnouncementModal()" aria-label="お知らせを閉じる">&times;</button>
             <h2 id="announcementHeading" class="announcement-heading">お知らせ</h2>
             <div id="announcementList" class="announcement-list"></div>
             <div id="announcementFeaturedActions" class="announcement-featured-actions" style="display: none;">
@@ -708,8 +707,8 @@
 
     <div id="wordbookModal" class="modal-overlay wordbook-modal" style="display: none;">
         <div class="modal-content wordbook-modal-content">
-            <button id="closeWordbookModal" class="modal-close-btn wordbook-close-btn"
-                onclick="document.getElementById('wordbookModal').style.display='none'">×</button>
+            <button id="closeWordbookModal" type="button" class="modal-close-btn wordbook-close-btn"
+                onclick="closeWordbookModal()" aria-label="単語帳を閉じる">×</button>
 
             <div class="wordbook-hero">
                 <div class="wordbook-kicker">Wordbooks</div>
@@ -756,7 +755,8 @@
     <!-- Leaderboard Modal -->
     <div id="leaderboardModal" class="modal-overlay leaderboard-modal" style="display: none;">
         <div class="modal-content leaderboard-modal-content">
-            <button class="modal-close-btn leaderboard-close-btn" onclick="closeLeaderboard()">&times;</button>
+            <button type="button" class="modal-close-btn leaderboard-close-btn" onclick="closeLeaderboard()"
+                aria-label="ランキングを閉じる">&times;</button>
 
             <button id="renameBtn" class="subtle-action-btn leaderboard-rename-btn" onclick="renamePlayer()"
                 style="display: none;">
@@ -842,8 +842,8 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: flex-start; padding-top: 50px; overflow-y: auto;">
         <div class="modal-content learning-log-modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; margin-bottom: 50px;">
-            <button class="modal-close-btn learning-log-close-btn"
-                onclick="document.getElementById('learningLogModal').style.display='none'">&times;</button>
+            <button type="button" class="modal-close-btn learning-log-close-btn"
+                onclick="closeLearningLogModal()" aria-label="語彙力推定を閉じる">&times;</button>
 
             <div class="learning-log-hero">
                 <div class="learning-log-kicker">Progress</div>
@@ -862,7 +862,8 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10003; justify-content: center; align-items: center; padding: 20px;">
         <div class="modal-content purchase-modal-content"
             style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-            <button class="modal-close-btn purchase-close-btn" onclick="closePurchaseModal()">&times;</button>
+            <button type="button" class="modal-close-btn purchase-close-btn" onclick="closePurchaseModal()"
+                aria-label="プレミアム画面を閉じる">&times;</button>
 
             <div class="purchase-hero">
                 <div class="purchase-kicker">Premium</div>
@@ -995,15 +996,15 @@
     </div>
     </div>
 
-    <script src="js/version.js?v=2026.0904.2243"></script>
-    <script src="js/update_manager.js?v=2026.0904.2243"></script>
-    <script src="js/config.js?v=2026.0904.2243"></script>
-    <script src="data/announcements.js?v=2026.0904.2243"></script>
-    <script src="js/utils.js?v=2026.0904.2243"></script>
+    <script src="js/version.js?v=2026.0904.2322"></script>
+    <script src="js/update_manager.js?v=2026.0904.2322"></script>
+    <script src="js/config.js?v=2026.0904.2322"></script>
+    <script src="data/announcements.js?v=2026.0904.2322"></script>
+    <script src="js/utils.js?v=2026.0904.2322"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/game_logic.js?v=2026.0904.2243"></script>
-    <script src="js/ui_manager.js?v=2026.0904.2243"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0904.2243"></script>
+    <script src="js/game_logic.js?v=2026.0904.2322"></script>
+    <script src="js/ui_manager.js?v=2026.0904.2322"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0904.2322"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
