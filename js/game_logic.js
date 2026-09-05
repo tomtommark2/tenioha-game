@@ -43,6 +43,9 @@ var gameState = window.gameState || {
     },
     // Phase A (SRS foundation)
     srsData: {},
+    masteryThreshold: 80,
+    reviewWindowSize: 10,
+    reviewTiming: 'standard',
     srsBootstrapped: false,
     srsSchemaVersion: 0,
     activeReviewLevels: ['junior', 'basic', 'daily', 'exam1', 'selection1400', 'selection1900', 'sys_2000'],
@@ -1069,6 +1072,50 @@ function applyDueJitter(minutes) {
 
 const REVIEW_INTERVAL_DAYS = [1, 3, 7, 14, 30, 60];
 
+function getReviewTiming(value = gameState.reviewTiming) {
+    return ['short', 'standard', 'long'].includes(value) ? value : 'standard';
+}
+
+function getReviewTimingMultiplier() {
+    return { short: 0.5, standard: 1, long: 2 }[getReviewTiming()];
+}
+
+function renderReviewTiming(message = '') {
+    const host = document.getElementById('reviewTimingSettings');
+    if (!host) return;
+    const timing = getReviewTiming();
+    const label = { short: '短め', standard: '標準', long: '長め' }[timing];
+    document.getElementById('reviewTimingLabel').textContent = label;
+    host.querySelectorAll('[data-review-timing]').forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.reviewTiming === timing));
+    });
+    const format = days => days < 1 ? `${days * 24}時間` : `${days}日`;
+    const intervals = REVIEW_INTERVAL_DAYS.map(days => format(days * getReviewTimingMultiplier()));
+    document.getElementById('reviewTimingExample').textContent = `最初の段階の例：苦手な単語に正解 → 約${intervals[0]}後`;
+    document.getElementById('reviewTimingIntervals').textContent = intervals.join(' → ');
+    document.getElementById('reviewTimingStatus').textContent = message || '選ぶと自動保存。次の回答から適用します。';
+}
+
+window.selectReviewTiming = function (value) {
+    const previous = getReviewTiming();
+    const next = getReviewTiming(value);
+    if (next === previous) return;
+    gameState.reviewTiming = next;
+    if (!saveGame()) {
+        gameState.reviewTiming = previous;
+        renderReviewTiming('保存できなかったため、変更前の設定に戻しました。');
+        return;
+    }
+    renderReviewTiming('保存しました。予定済みの復習日時は変わりません。');
+};
+
+window.openReviewTimingSettings = function () {
+    const panel = document.getElementById('reviewTimingSettings');
+    panel.open = true;
+    panel.querySelector('summary').focus();
+    panel.scrollIntoView({ block: 'nearest' });
+};
+
 function normalizeReviewIntervalDays(value) {
     const intervalDays = Math.max(1, Math.round(Number(value) || 1));
     return REVIEW_INTERVAL_DAYS.reduce((nearest, candidate) => (
@@ -1178,6 +1225,9 @@ function awardReviewScore(key, isCorrect, previousIntervalDays) {
 function updateSrsForWord(key, isCorrect, currentState = null) {
     const s = ensureSrsEntry(key);
     const now = Date.now();
+    s.recentAnswers = [...getRecentAnswers(s), !!isCorrect].slice(-10);
+    if (!isCorrect) delete s.legacyReviewState;
+    if (s.recentAnswers.length >= getReviewWindowSize()) delete s.legacyReviewState;
 
     // Table-based intervals (Anki-like cadence)
     // 1d -> 3d -> 7d -> 14d -> 30d -> 60d
@@ -1199,8 +1249,9 @@ function updateSrsForWord(key, isCorrect, currentState = null) {
 
         // Keep stability for compatibility with existing UI/logic
         s.stability = Math.min(120, Math.max(1, (s.stability || 1) * 1.35));
-        const jittered = applyDueJitter(intervalMin);
+        const jittered = applyDueJitter(intervalMin * getReviewTimingMultiplier());
         s.dueAt = now + jittered * 60 * 1000;
+        // Keep the nominal SRS stage for the shared client/server score table.
         s.scheduledIntervalDays = Math.round(intervalMin / 1440);
         s.isRelearning = false;
     } else {
@@ -1257,6 +1308,7 @@ function renderReviewLevelCheckboxes() {
             const reviewSnapshot = buildReviewQueueSnapshot();
             updateReviewQueueBadge(reviewSnapshot);
             updateReviewProgressUI(reviewSnapshot);
+            renderMasterySettings();
         });
     });
 }
@@ -1264,6 +1316,8 @@ function renderReviewLevelCheckboxes() {
 window.openStudyModeModal = function () {
     const m = document.getElementById('studyModeModal');
     if (m) {
+        renderMasterySettings();
+        renderReviewTiming();
         renderReviewLevelCheckboxes();
         updateReviewProgressUI();
         m.style.display = 'flex';
@@ -1330,28 +1384,155 @@ function getAccuracyStatsByKey(key) {
 }
 
 function deriveStateFromAccuracy(key) {
-    const prev = gameState.wordStates[key] || 'unlearned';
-    const a = getAccuracyStatsByKey(key);
-    if (a.total === 0) return prev === 'unlearned' ? 'unlearned' : prev;
-
-    if (a.rate >= 80) return 'perfect';
-    if (a.rate >= 50) return 'learned';
-    return 'weak';
+    return getRecentReviewState(key, getMasteryThreshold());
 }
 
 function getAccuracyTagInfoByKey(key) {
-    const a = getAccuracyStatsByKey(key);
-    if (a.total === 0 || a.rate == null) {
-        return { text: '正答率 --', color: '#95a5a6' };
-    }
+    const s = ensureSrsEntry(key);
+    const size = getReviewWindowSize();
+    const answers = getRecentAnswers(s).slice(-size);
+    const count = answers.filter(Boolean).length;
+    const state = getRecentReviewState(key, getMasteryThreshold());
+    const text = answers.length < size
+        ? `${s.legacyReviewState ? '旧分類を引継ぎ' : '判定準備中'}・記録 ${answers.length}/${size}回`
+        : `直近${size}回：${count}回正解（${count * 100 / size}%）`;
+    return { text, color: state === 'perfect' ? '#b8860b' : state === 'learned' ? '#25865d' : '#b94a48' };
+}
 
-    if (a.rate >= 80) {
-        return { text: `正答率 ${a.rate}%`, color: '#f1c40f' };
+function getRecentAnswers(entry) {
+    return Array.isArray(entry?.recentAnswers)
+        ? entry.recentAnswers.filter(value => typeof value === 'boolean').slice(-10) : [];
+}
+
+function getReviewWindowSize(value = gameState.reviewWindowSize) {
+    return value === 5 ? 5 : 10;
+}
+
+function getMasteryThreshold(value = gameState.masteryThreshold, size = getReviewWindowSize()) {
+    const valid = [80, 90, 100].includes(value) ? value : 80;
+    return size === 5 && valid === 90 ? 100 : valid;
+}
+
+function getRecentReviewState(key, threshold) {
+    const entry = gameState.srsData?.[key] || {};
+    const size = getReviewWindowSize();
+    const answers = getRecentAnswers(entry).slice(-size);
+    if (answers.length === 0) return gameState.wordStates[key] || 'unlearned';
+    // A mistake always starts the existing five-minute relearning loop.
+    if (entry.isRelearning) return 'weak';
+    if (answers.length < size && ['weak', 'learned', 'perfect'].includes(entry.legacyReviewState)) {
+        return entry.legacyReviewState;
     }
-    if (a.rate >= 50) {
-        return { text: `正答率 ${a.rate}%`, color: '#2ecc71' };
+    const correct = answers.filter(Boolean).length;
+    if (answers.length === size && correct * 100 >= getMasteryThreshold(threshold) * size) return 'perfect';
+    return correct * 2 >= answers.length ? 'learned' : 'weak';
+}
+
+function migrateRecentReviewHistory() {
+    gameState.reviewWindowSize = getReviewWindowSize();
+    gameState.masteryThreshold = getMasteryThreshold();
+    Object.entries(gameState.wordStates || {}).forEach(([key, state]) => {
+        if (state === 'unlearned') return;
+        const entry = ensureSrsEntry(key);
+        if (!Array.isArray(entry.recentAnswers)) entry.legacyReviewState = state;
+        entry.recentAnswers = getRecentAnswers(entry);
+        if (entry.recentAnswers.length >= getReviewWindowSize()) delete entry.legacyReviewState;
+        gameState.wordStates[key] = getRecentReviewState(key, gameState.masteryThreshold);
+    });
+    invalidateLearningProgressSnapshot();
+}
+
+function renderMasterySettings(message = '') {
+    const size = getReviewWindowSize();
+    const value = getMasteryThreshold();
+    const number = document.getElementById('masteryThresholdValue');
+    if (!number) return;
+    number.textContent = `${size * value / 100} / ${size}回`;
+    document.getElementById('masteryThresholdExplanation').textContent = `直近${size}回で${size * value / 100}回以上正解（${value}%）`;
+    document.querySelectorAll('[data-review-window]').forEach(button => {
+        button.setAttribute('aria-pressed', String(Number(button.dataset.reviewWindow) === size));
+    });
+    document.querySelectorAll('[data-mastery-threshold]').forEach(button => {
+        const threshold = Number(button.dataset.masteryThreshold);
+        button.hidden = size === 5 && threshold === 90;
+        button.setAttribute('aria-pressed', String(threshold === value));
+        button.querySelector('strong').textContent = `${Math.ceil(size * threshold / 100)}回`;
+        button.querySelector('small').textContent = `${threshold}%`;
+    });
+    document.querySelector('.mastery-options').style.gridTemplateColumns = `repeat(${size === 5 ? 2 : 3}, 1fr)`;
+    let pending = 0, total = 0, due = 0;
+    const candidates = ensureReviewWordIndex();
+    const now = Date.now();
+    Object.entries(gameState.wordStates || {}).forEach(([key, state]) => {
+        if (state === 'unlearned' || isRetiredWordByKey(key)) return;
+        if (getRecentAnswers(gameState.srsData[key]).length < size) pending++;
+        if (!(candidates.get(key) || []).some(item => (gameState.activeReviewLevels || []).includes(item.level)
+            && isWordAllowedByPOS(item.word))) return;
+        if (!['weak', 'learned'].includes(state)) return;
+        total++;
+        if (gameState.srsData[key]?.dueAt <= now) due++;
+    });
+    document.getElementById('masteryChangePreview').textContent = message || '変更すると自動で反映・保存されます';
+    document.getElementById('masteryPendingNotice').textContent = `判定準備中 ${pending}語。選択した${size}回分が集まると判定します（旧データは分類を引継ぎ）。`;
+    document.getElementById('masteryPendingNotice').hidden = pending === 0;
+    document.getElementById('masteryTargetPreview').textContent = `${total}語`;
+    document.getElementById('masteryDuePreview').textContent = `${due}語`;
+}
+
+window.selectMasteryThreshold = function (value) {
+    commitMasterySettings(getReviewWindowSize(), value);
+};
+
+window.selectReviewWindow = function (size) {
+    commitMasterySettings(getReviewWindowSize(size), getMasteryThreshold());
+};
+
+function commitMasterySettings(size, value) {
+    const threshold = getMasteryThreshold(value, size);
+    if (size === getReviewWindowSize() && threshold === getMasteryThreshold()) return;
+    const previous = {
+        size: getReviewWindowSize(), threshold: getMasteryThreshold(),
+        states: { ...gameState.wordStates }
+    };
+    gameState.reviewWindowSize = size;
+    gameState.masteryThreshold = threshold;
+    const migrated = [];
+    let returned = 0, graduated = 0;
+    Object.keys(gameState.wordStates).forEach(key => {
+        const next = deriveStateFromAccuracy(key);
+        if (gameState.wordStates[key] === 'perfect' && next !== 'perfect') returned++;
+        if (gameState.wordStates[key] !== 'perfect' && next === 'perfect') graduated++;
+        gameState.wordStates[key] = next;
+        const entry = gameState.srsData[key];
+        if (entry?.legacyReviewState && getRecentAnswers(entry).length >= size) {
+            migrated.push([key, entry.legacyReviewState]);
+            delete entry.legacyReviewState;
+        }
+    });
+    if (!saveGame()) {
+        gameState.reviewWindowSize = previous.size;
+        gameState.masteryThreshold = previous.threshold;
+        gameState.wordStates = previous.states;
+        migrated.forEach(([key, state]) => { gameState.srsData[key].legacyReviewState = state; });
+        renderMasterySettings('保存できなかったため、設定を元に戻しました。');
+        return;
     }
-    return { text: `正答率 ${a.rate}%`, color: '#e74c3c' };
+    gameState.decks = { weak: [], learned: [], perfect: [], unlearned: [] };
+    gameStateHistory.length = 0;
+    invalidateLearningProgressSnapshot();
+    resetReviewQueueShuffleOrder();
+    updateDisplay();
+    updateModeButtons();
+    updateUndoButton();
+    const badge = document.querySelector('#vocabCard .review-badge');
+    if (badge && gameState.lastShownWordKey) {
+        const info = getAccuracyTagInfoByKey(gameState.lastShownWordKey);
+        badge.textContent = info.text;
+        badge.style.backgroundColor = info.color;
+    }
+    const adjusted = size === 5 && previous.threshold === 90
+        ? '5回では90%を選べないため、5回すべて正解に設定しました。' : '';
+    renderMasterySettings(`保存しました。復習対象へ ${returned}語 ／ 完璧へ ${graduated}語。${adjusted}`);
 }
 
 const QUESTION_REASON_INFO = {
@@ -2270,7 +2451,9 @@ function migrateSrsSchemaIfNeeded() {
             lastReviewScoreDate: existing.lastReviewScoreDate,
             isRelearning: existing.isRelearning === true || legacyRelearning || shortRetry,
             everWrong: !!existing.everWrong,
-            firstTryPerfect: !!existing.firstTryPerfect
+            firstTryPerfect: !!existing.firstTryPerfect,
+            ...(Array.isArray(existing.recentAnswers) ? { recentAnswers: getRecentAnswers(existing) } : {}),
+            ...(existing.legacyReviewState ? { legacyReviewState: existing.legacyReviewState } : {})
         };
     }
 
@@ -2339,6 +2522,9 @@ function buildLocalSaveData() {
         firstPlayedAt: gameState.firstPlayedAt, // Persist Start Date
         actionCounts: gameState.actionCounts, // Persist Detailed Action Counts
         srsData: persistedSrsData,
+        masteryThreshold: getMasteryThreshold(),
+        reviewWindowSize: getReviewWindowSize(),
+        reviewTiming: getReviewTiming(),
         srsBootstrapped: gameState.srsBootstrapped,
         srsSchemaVersion: gameState.srsSchemaVersion,
         activeReviewLevels: gameState.activeReviewLevels,
@@ -2381,6 +2567,9 @@ function loadGame() {
     if (saved) {
         const data = JSON.parse(saved);
         gameState = { ...gameState, ...data };
+        gameState.reviewWindowSize = getReviewWindowSize(data.reviewWindowSize ?? 10);
+        gameState.reviewTiming = getReviewTiming(data.reviewTiming ?? 'standard');
+        gameState.masteryThreshold = getMasteryThreshold(data.masteryThreshold ?? 80);
 
         // Backfill firstPlayedAt if missing
         if (!gameState.firstPlayedAt) {
@@ -2425,6 +2614,7 @@ function loadGame() {
         migrateWordKeySchemaIfNeeded();
         migrateSrsSchemaIfNeeded();
         bootstrapSrsFromWordStates();
+        migrateRecentReviewHistory();
 
         // Fix: Update global reference for fallback scripts
         window.gameState = gameState;
@@ -2480,6 +2670,7 @@ function setupPOSFilters() {
         checkbox.addEventListener('change', () => {
             updatePOSFilters();
             showNextWord();
+            renderMasterySettings();
             saveGame();
         });
     });

@@ -1248,9 +1248,10 @@ test('出題モードは小さい画面でも主要設定を読みやすく表�
   await expect(modal).toBeVisible();
   await expect(modal.locator('.study-mode-flow')).toHaveCount(0);
   await expect(modal.getByText('出題バランス', { exact: true })).toBeVisible();
-  await expect(modal.getByText('出題範囲', { exact: true })).toBeVisible();
+  await expect(modal.locator('.study-scope-card > summary').filter({ hasText: '出題範囲' })).toBeVisible();
+  await expect(modal.locator('#reviewTimingSettings > summary')).toBeVisible();
   await expect(modal.getByRole('button', { name: '復習キューの残り順をランダムに並べ替える' })).toBeVisible();
-  await expect(modal.getByText('復習キューの仕組み', { exact: true })).toBeVisible();
+  await expect(modal.getByText('判定のしくみ', { exact: true })).toBeVisible();
 
   const bounds = await modal.evaluate(el => {
     const rect = el.getBoundingClientRect();
@@ -2137,7 +2138,7 @@ test('匿名ランキング参加中でも購入にはGoogle連携を要求す�
   await expect(page.locator('#profileLoginNotice')).toBeVisible();
 });
 
-test('正答率閾値(80/50)で状態分類される', async ({ page }) => {
+test('直近10回の正答率閾値(80/50)で状態分類される', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
   });
@@ -2150,9 +2151,9 @@ test('正答率閾値(80/50)で状態分類される', async ({ page }) => {
     window.gameState.srsData = window.gameState.srsData || {};
     window.gameState.wordStates = window.gameState.wordStates || {};
 
-    window.gameState.srsData.k1 = { successCount: 8, failCount: 2 };
-    window.gameState.srsData.k2 = { successCount: 5, failCount: 5 };
-    window.gameState.srsData.k3 = { successCount: 4, failCount: 6 };
+    window.gameState.srsData.k1 = { successCount: 8, failCount: 200, recentAnswers: [...Array(2).fill(false), ...Array(8).fill(true)] };
+    window.gameState.srsData.k2 = { successCount: 500, failCount: 5, recentAnswers: [...Array(5).fill(false), ...Array(5).fill(true)] };
+    window.gameState.srsData.k3 = { successCount: 400, failCount: 6, recentAnswers: [...Array(6).fill(false), ...Array(4).fill(true)] };
     window.gameState.wordStates.k1 = 'weak';
     window.gameState.wordStates.k2 = 'weak';
     window.gameState.wordStates.k3 = 'learned';

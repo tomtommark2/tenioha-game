@@ -935,9 +935,12 @@ function buildCloudSaveData(rawSaveData) {
             const compactSrs = {};
             for (const [key, s] of Object.entries(data.srsData)) {
                 if (!s || typeof s !== 'object') continue;
-                const hasReviewHistory = (s.successCount || 0) > 0 || (s.failCount || 0) > 0 || s.everWrong === true || s.firstTryPerfect === true || !!s.lastReviewScoreDate;
+                const hasReviewHistory = (s.successCount || 0) > 0 || (s.failCount || 0) > 0 || s.everWrong === true || s.firstTryPerfect === true || !!s.lastReviewScoreDate
+                    || (data.wordStates?.[key] && data.wordStates[key] !== 'unlearned') || (Array.isArray(s.recentAnswers) && s.recentAnswers.length > 0);
                 if (!hasReviewHistory) continue;
                 const c = {};
+                if (Array.isArray(s.recentAnswers)) c.recentAnswers = s.recentAnswers.filter(value => typeof value === 'boolean').slice(-10);
+                if (['weak', 'learned', 'perfect'].includes(s.legacyReviewState)) c.legacyReviewState = s.legacyReviewState;
                 if (typeof s.dueAt === 'number') c.dueAt = s.dueAt;
                 if (typeof s.successCount === 'number') c.successCount = s.successCount;
                 if (typeof s.failCount === 'number') c.failCount = s.failCount;

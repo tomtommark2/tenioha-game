@@ -785,6 +785,77 @@ body.level-selector-open .level-selector {
     box-shadow: 0 28px 70px rgba(13, 20, 39, 0.34) !important;
 }
 
+/* Recent-accuracy settings: shared mobile/desktop content, fixed exits. */
+.study-mode-modal .mastery-settings {
+    width: min(560px, 96vw);
+    background: #fcfbff !important;
+    color: #222940;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.mastery-settings .study-mode-hero {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    background: #fcfbff;
+    border-bottom: 0;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+}
+.mastery-settings .study-mode-title { margin: 0; }
+.mastery-settings .study-mode-subtitle { font-size: 14px; }
+.mastery-hero { text-align: center; padding: 0 0 12px; }
+.mastery-hero h3 { font-size: 20px; margin: 0; }
+.mastery-value { font-size: 52px; line-height: 1.2; font-weight: 800; color: #6046ce; }
+.mastery-control-label { margin: 16px 0 6px !important; font-size: 14px; font-weight: 600; }
+.mastery-window-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mastery-window-options button { min-height: 64px; padding: 8px; border: 1px solid #d9d7e8; border-radius: 12px; background: white; color: #50596e; font: inherit; cursor: pointer; }
+.mastery-window-options button small { display: block; font-size: 11px; }
+.mastery-window-options [aria-pressed="true"] { border-color: #6046ce; background: #f2effb; color: #6046ce; }
+.mastery-options button[hidden] { display: none; }
+.review-timing-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.review-timing-options button, .review-timing-link { padding: 10px 6px; border: 1px solid #d9d7e8; border-radius: 12px; background: white; color: #50596e; font: inherit; cursor: pointer; min-height: 44px; }
+.review-timing-options small { display: block; font-size: 11px; }
+.review-timing-options [aria-pressed="true"] { border-color: #6046ce; background: #f2effb; color: #6046ce; }
+.review-timing-settings p { font-size: 13px; line-height: 1.7; margin: 12px 0; }
+.review-timing-settings .review-timing-intervals, #reviewTimingExample { font-weight: 600; color: #6046ce; }
+#reviewTimingStatus { color: #50596e; }
+.mastery-hero .mastery-explanation { color: #6046ce; font-size: 18px; font-weight: 700; margin: 8px 0 12px; }
+.mastery-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+.mastery-options button { min-height: 76px; padding: 2px; border: 0; border-bottom: 3px solid #d9d7e8; border-radius: 0; background: transparent; color: #50596e; cursor: pointer; font: inherit; line-height: 1.3; }
+.mastery-options button > * { display: block; }
+.mastery-options strong { font-size: 25px; }
+.mastery-options small { font-size: 13px; }
+.mastery-options [aria-pressed="true"] { background: #f2effb; border-bottom-color: #6046ce; color: #6046ce; }
+.mastery-settings button:focus-visible, .mastery-settings summary:focus-visible { outline: 3px solid #8775e6; outline-offset: 3px; }
+.mastery-preview { background: #f2effb; border: 1px solid #e4def8; border-radius: 16px; padding: 12px; }
+.mastery-preview h3 { font-size: 14px; font-weight: 500; margin: 0; }
+#masteryChangePreview { font-weight: 700; text-align: center; margin: 8px 0; font-size: 14px; }
+.mastery-preview-counts { display: grid; grid-template-columns: 1fr 1fr; text-align: center; gap: 8px; border-top: 1px solid #ddd7ef; padding: 12px 0; }
+.mastery-preview-counts strong { display: block; font-size: 23px; color: #6046ce; }
+.mastery-preview small, .mastery-pending { font-size: 12px; color: #596177; }
+.mastery-pending { margin: 12px 0 20px; }
+.mastery-settings .study-mode-card { border: 0; border-top: 1px solid #deddea; border-radius: 0; background: transparent; box-shadow: none; padding: 16px 0; margin: 0; }
+.mastery-settings .study-mode-card-eyebrow, .mastery-settings .study-mode-status-pill { display: none; }
+.mastery-settings .study-mode-card-desc, .mastery-settings .study-review-mode-description, .mastery-settings .study-review-shuffle-copy span { display: none; }
+.mastery-settings .study-mode-card-header { margin-bottom: 8px; }
+.mastery-settings .study-review-shuffle-row { margin-top: 12px; padding-top: 12px; }
+.mastery-settings .study-review-mode-options button { min-height: 60px; }
+.mastery-settings .study-scope-card > summary { cursor: pointer; font-size: 16px; font-weight: 700; min-height: 44px; }
+.mastery-settings .study-scope-card > summary span { display: block; font-size: 13px; font-weight: 400; color: #596177; }
+.mastery-settings .study-scope-card .study-mode-card-header { display: none; }
+.mastery-settings .study-mode-details { padding: 12px 0; }
+.mastery-settings .study-mode-details summary { min-height: 44px; font-size: 16px; }
+.mastery-settings .study-mode-details p { font-size: 14px; }
+body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
+@media (max-width: 600px) {
+    .study-mode-modal:has(.mastery-settings) { padding: 0; }
+    .study-mode-modal .mastery-settings { width: 100%; max-height: 100vh; max-height: 100dvh; border-radius: 0 !important; border: 0 !important; }
+    .mastery-settings .study-mode-hero { border-radius: 0; }
+}
+
 .study-mode-hero {
     display: flex;
     align-items: center;
@@ -3002,8 +3073,8 @@ body.level-selector-open .level-selector {
 }
 
 .word-list-card-meaning {
-    color: #777d89;
-    font-size: 10px;
+    color: #50596e;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1.2;
     display: -webkit-box;
@@ -3294,7 +3365,7 @@ body.level-selector-open .level-selector {
 
     .word-list-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 3px;
+        gap: 6px;
         padding: 0 0 72px;
     }
 
@@ -3304,7 +3375,7 @@ body.level-selector-open .level-selector {
     }
 
     .word-list-card.hide-meaning {
-        min-height: 40px;
+        min-height: 48px;
         padding-top: 4px;
         padding-bottom: 4px;
     }
@@ -3315,15 +3386,19 @@ body.level-selector-open .level-selector {
     }
 
     .word-list-card-word.word-list-word-long {
-        font-size: 11.5px;
+        font-size: 13px;
+        white-space: normal;
+        overflow-wrap: anywhere;
     }
 
     .word-list-card-word.word-list-word-xl {
-        font-size: 10px;
+        font-size: 13px;
+        white-space: normal;
+        overflow-wrap: anywhere;
     }
 
     .word-list-card-meaning {
-        font-size: 9px;
+        font-size: 12px;
     }
 
     .word-list-pos-badge {
@@ -4568,7 +4643,17 @@ body.dismissible-modal-open {
 }
 
 .profile-promo-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     margin-bottom: 12px;
+}
+
+.profile-promo-label {
+    grid-column: 1 / -1;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #50596e;
 }
 
 .profile-promo-input {
@@ -4579,7 +4664,7 @@ body.dismissible-modal-open {
     border-radius: 12px;
     background: #fff;
     color: #26324a;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .profile-promo-input:focus {
@@ -7836,6 +7921,15 @@ body.dismissible-modal-open {
         left: 72px;
         width: 50px;
     }
+}
+
+/* Keep desktop score text readable; mobile retains its dedicated compact layout. */
+@media (min-width: 769px) {
+    .review-score-summary { width: 112px; top: -32px; gap: 4px; color: #403768; text-shadow: none; }
+    .review-score-summary-row { grid-template-columns: 32px minmax(0, 1fr); min-height: 26px; padding: 4px 8px; font-size: 12px; background: #f7f5ff; border-color: #d9d3ec; }
+    .review-score-summary-row strong { font-size: 14px; }
+    .review-rank-button { min-height: 32px; background: #eee9ff; }
+    .review-rank-button:focus-visible { outline: 3px solid #6046ce; outline-offset: 2px; }
 }
 
 /* Classification controls: restrained selected and review-locked states. */

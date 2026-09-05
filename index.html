@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0904.2322">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0904.2322" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0904.2322" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0904.2322" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0905.0948">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0905.0948" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0905.0948" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0905.0948" as="script">
 </head>
 
 <body>
@@ -355,8 +355,8 @@
 
                 <div class="word-list-search-row" id="wordListSearchRow" style="display: none;">
                     <input id="wordListSearchInput" class="word-list-search-input" type="search" placeholder="単語・意味を検索"
-                        oninput="setWordListSearch(this.value)" autocomplete="off">
-                    <button type="button" class="word-list-search-clear" onclick="clearWordListSearch()">×</button>
+                        aria-label="単語・意味を検索" oninput="setWordListSearch(this.value)" autocomplete="off">
+                    <button type="button" class="word-list-search-clear" aria-label="検索をクリア" onclick="clearWordListSearch()">×</button>
                 </div>
 
                 <div class="word-list-filter-row" id="wordListFilterRow" aria-label="学習状態フィルター"></div>
@@ -398,15 +398,41 @@
         <!-- Study Mode Modal -->
         <div id="studyModeModal" class="modal study-mode-modal" onclick="closeStudyModeModal()"
             style="display:none;">
-            <div class="modal-content study-mode-modal-content" onclick="event.stopPropagation()">
+            <div class="modal-content study-mode-modal-content mastery-settings" role="dialog" aria-modal="true" aria-labelledby="studyModeTitle" onclick="event.stopPropagation()">
                 <div class="study-mode-hero">
                     <div class="study-mode-heading">
-                        <div class="study-mode-kicker">学習設定</div>
-                        <h2 class="study-mode-title"><span class="title-picto app-picto icon-compass" aria-hidden="true"></span>出題モード</h2>
-                        <p class="study-mode-subtitle">新しい単語と復習のバランス、出題範囲を選びます。</p>
+                        <h2 id="studyModeTitle" class="study-mode-title">出題モード</h2>
+                        <p class="study-mode-subtitle">学び方と復習の基準を設定</p>
                     </div>
                     <button type="button" class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()" aria-label="出題モードを閉じる">×</button>
                 </div>
+                <section class="mastery-hero" aria-labelledby="masteryHeading">
+                    <h3 id="masteryHeading">完璧の判定基準</h3>
+                    <div id="masteryThresholdValue" class="mastery-value">8 / 10回</div>
+                    <p id="masteryThresholdExplanation" class="mastery-explanation">直近10回で8回以上正解</p>
+                    <p>基準を満たすと「完璧」になり、<br>通常の復習対象から外れます。<br><small>不正解の直後は、再学習を優先します。</small></p>
+                    <p class="mastery-control-label">判定に使う回答</p>
+                    <div class="mastery-window-options" role="group" aria-label="判定に使う回答">
+                        <button type="button" data-review-window="5" aria-pressed="false" onclick="selectReviewWindow(5)">直近5回<small>最近の変化を早く反映</small></button>
+                        <button type="button" data-review-window="10" aria-pressed="true" onclick="selectReviewWindow(10)">直近10回<small>一度の正誤に左右されにくい</small></button>
+                    </div>
+                    <p class="mastery-control-label">そのうち何回以上正解で完璧にするか</p>
+                    <div class="mastery-options" role="group" aria-label="必要な正解数">
+                        <button type="button" data-mastery-threshold="80" aria-pressed="true" onclick="selectMasteryThreshold(80)"><span>以上正解</span><strong>8回</strong><small>80%</small></button>
+                        <button type="button" data-mastery-threshold="90" aria-pressed="false" onclick="selectMasteryThreshold(90)"><span>以上正解</span><strong>9回</strong><small>90%</small></button>
+                        <button type="button" data-mastery-threshold="100" aria-pressed="false" onclick="selectMasteryThreshold(100)"><span>すべて正解</span><strong>10回</strong><small>100%</small></button>
+                    </div>
+                </section>
+                <section class="mastery-preview" aria-label="現在の復習対象" aria-live="polite">
+                    <h3>現在の復習対象</h3>
+                    <p id="masteryChangePreview"></p>
+                    <div class="mastery-preview-counts">
+                        <div>復習対象<strong id="masteryTargetPreview"></strong></div>
+                        <div>今すぐ復習<strong id="masteryDuePreview"></strong></div>
+                    </div>
+                    <small>復習件数は選択中の範囲。期限前の語は復習日に出題されます。</small>
+                </section>
+                <p id="masteryPendingNotice" class="mastery-pending"></p>
                 <div class="study-mode-card study-review-card">
                     <div class="study-mode-card-header">
                         <div>
@@ -446,7 +472,24 @@
                     <span id="studyModeShuffleStatus" class="study-review-shuffle-status" role="status" aria-live="polite"></span>
                 </div>
 
-                <div class="study-mode-card study-scope-card">
+                <details id="reviewTimingSettings" class="study-mode-card study-scope-card review-timing-settings">
+                    <summary>復習タイミング <span id="reviewTimingLabel">標準</span></summary>
+                    <div class="review-timing-options" role="group" aria-label="復習間隔">
+                        <button type="button" data-review-timing="short" aria-pressed="false" onclick="selectReviewTiming('short')">短め<small>こまめに復習</small></button>
+                        <button type="button" data-review-timing="standard" aria-pressed="true" onclick="selectReviewTiming('standard')">標準<small>今までどおり</small></button>
+                        <button type="button" data-review-timing="long" aria-pressed="false" onclick="selectReviewTiming('long')">長め<small>間隔を空ける</small></button>
+                    </div>
+                    <p id="reviewTimingExample"></p>
+                    <p>正解が続いたときの間隔の目安</p>
+                    <p id="reviewTimingIntervals" class="review-timing-intervals"></p>
+                    <p>苦手な単語でも、次の間隔は過去の進み具合で変わります。不正解では段階を1つ戻し、どの設定でも5分後に再学習します。</p>
+                    <p>復習の集中を避けるため、正解後の日時は目安から±20%ずれます。「完璧」になった語は通常の復習対象から外れます。</p>
+                    <p>予定済みの日時や、完璧の判定基準は変わりません。標準を選ぶと元の間隔に戻せます。復習スコアは間隔の長短によらず、学習の段階に応じた同じ配点です。</p>
+                    <p id="reviewTimingStatus" role="status" aria-live="polite"></p>
+                </details>
+
+                <details class="study-mode-card study-scope-card">
+                    <summary>出題範囲 <span>復習レベル・品詞を選ぶ</span></summary>
                     <div class="study-mode-card-header">
                         <div>
                             <div class="study-mode-card-eyebrow">2</div>
@@ -474,12 +517,17 @@
                             </div>
                         </section>
                     </div>
-                </div>
+                </details>
 
                 <details class="study-mode-details">
-                    <summary>復習キューの仕組み</summary>
-                    <p>初回で正解した単語は復習キューに入りません。苦手な単語は自動で戻り、正答を重ねると復習間隔が長くなります。</p>
-                    <p>分類の目安：完璧 80%以上 / 得意 50〜79% / 苦手 0〜49%</p>
+                    <summary>判定のしくみ</summary>
+                    <p>「完璧の判定基準」は復習を卒業する条件、「復習タイミング」は次に出題する間隔です。</p>
+                    <button type="button" class="review-timing-link" onclick="openReviewTimingSettings()">復習タイミングを確認・変更</button>
+                    <p>直近5回または10回で判定します。履歴は常に最新10回分を保持するので、切り替えても消えません。累積の正解・不正解数も保持します。</p>
+                    <p>選択した回数分が集まるまでは判定準備中です。旧データの分類は履歴が集まるまで引き継ぎます。一度新しい判定へ移行した語は、5回から10回へ増やして履歴が不足すると準備中に戻ります。</p>
+                    <p>不正解の場合は「苦手」に戻り、5分後に再学習します。再学習に正解すると再判定します。履歴不足では完璧にせず、直近の正解が半分以上なら得意、それ未満なら苦手です（旧分類の引継ぎ中を除く）。</p>
+                    <p>設定は選ぶとすぐ反映・保存されます。5回では正答率が20%刻みになるため、90%から切り替えると「5回すべて正解」に設定します。</p>
+                    <p>完璧になった語も「完璧」一覧から解き直せます。基準を変更すると、直前の回答を戻す操作をリセットします。</p>
                 </details>
             </div>
         </div>
@@ -522,8 +570,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0904.2322"></script>
-<script src="data/ipa_overrides.js?v=2026.0904.2322"></script>
+    <script src="data/vocabulary.js?v=2026.0905.0948"></script>
+<script src="data/ipa_overrides.js?v=2026.0905.0948"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -949,7 +997,8 @@
 
                 <!-- Promo Code (Profile) -->
                 <div class="profile-promo-form">
-                    <input type="text" id="profilePromoCodeInput" placeholder="解除コードをお持ちの方"
+                    <label for="profilePromoCodeInput" class="profile-promo-label">解除コードをお持ちの方</label>
+                    <input type="text" id="profilePromoCodeInput" placeholder="コードを入力"
                         class="profile-promo-input">
                     <button onclick="redeemPromoCode('profilePromoCodeInput')" class="profile-promo-btn">
                         有効化
@@ -996,15 +1045,15 @@
     </div>
     </div>
 
-    <script src="js/version.js?v=2026.0904.2322"></script>
-    <script src="js/update_manager.js?v=2026.0904.2322"></script>
-    <script src="js/config.js?v=2026.0904.2322"></script>
-    <script src="data/announcements.js?v=2026.0904.2322"></script>
-    <script src="js/utils.js?v=2026.0904.2322"></script>
+    <script src="js/version.js?v=2026.0905.0948"></script>
+    <script src="js/update_manager.js?v=2026.0905.0948"></script>
+    <script src="js/config.js?v=2026.0905.0948"></script>
+    <script src="data/announcements.js?v=2026.0905.0948"></script>
+    <script src="js/utils.js?v=2026.0905.0948"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/game_logic.js?v=2026.0904.2322"></script>
-    <script src="js/ui_manager.js?v=2026.0904.2322"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0904.2322"></script>
+    <script src="js/game_logic.js?v=2026.0905.0948"></script>
+    <script src="js/ui_manager.js?v=2026.0905.0948"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0905.0948"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

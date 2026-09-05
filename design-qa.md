@@ -1,52 +1,40 @@
-# Design QA
+# 出題モード・直近正答率 UI 検証（2026-09-05）
 
-## Scope
+## 現行仕様
 
-- Flow: learning-level selector opened from the top-level button
-- Source visual truth: `C:/Users/warut/.codex/generated_images/019cccb0-06f8-7f71-b588-65277c6395b2/exec-a232f011-76d5-4e2c-8308-f82c6b085d0f.png`
-- Mobile implementation: `C:/Users/warut/codex_project/python_chatgpt/screenshots/level-selector-compact-mobile.png`
-- iPhone SE implementation: `C:/Users/warut/codex_project/python_chatgpt/screenshots/level-selector-compact-iphone-se.png`
-- Desktop implementation: `C:/Users/warut/codex_project/python_chatgpt/screenshots/level-selector-compact-desktop.png`
-- Full comparison: `C:/Users/warut/codex_project/python_chatgpt/screenshots/level-selector-design-comparison.png`
-- Focused comparison: `C:/Users/warut/codex_project/python_chatgpt/screenshots/level-selector-focused-comparison.png`
-- State: selector open with Basic/A2 selected
+- 判定回数は直近5回／10回から選択。5回では80%・100%、10回では80%・90%・100%。
+- 選択時に分類と復習対象を反映し保存する。適用ボタンと未適用プレビューは廃止。
+- 復習タイミングは短め／標準／長めの3択。判定のしくみからも開け、最初の段階の例・全段階の目安・保存結果を表示する。
+- 10回・90%から5回へ変更すると100%へ切り替え、その理由を表示する。
+- 選択済みモックの紫・紺・白と判定数値中心の構成を継承。最新のユーザー指定を優先し、回数選択を追加、固定フッターを削除。
 
-## Normalization
+## 表示確認
 
-- Source pixels: 853 x 1844.
-- Primary implementation pixels: 390 x 844.
-- Primary CSS viewport: 390 x 844 at device scale factor 1.
-- The source was downsampled to 390 x 844 before comparison.
-- The focused comparison uses the same 390 x 230 top-region crop from both frames.
+- 対象: `http://localhost:8000/index.html` の出題モード。
+- 画像: `screenshots/recent-review-mobile-chromium.png` と `screenshots/recent-review-mobile-chromium-lower.png`。
+- WebKit: `screenshots/recent-review-mobile-webkit.png` と `screenshots/recent-review-mobile-webkit-lower.png`。
+- 5回・80%保存後の表示を確認。数値・選択状態・保存結果が判別でき、出題バランス以下へスクロールできる。
+- スマホは画面幅を使い、上部の閉じる操作を固定。アプリ追加案内はモーダル中に隠す。
+- タイミング設定の開いた状態は `screenshots/review-timing-mobile-chromium.png` と `screenshots/review-timing-mobile-webkit.png` で確認。3択・間隔説明に横はみ出しはなく、閉じる操作を維持。
 
-## Fidelity Review
+## 検証範囲
 
-- Fonts and typography: Japanese level names and CEFR codes use the existing app fonts and preserve the selected hierarchy and optical weight.
-- Spacing and layout rhythm: four levels occupy one equal-width segmented rail. The wordbook action spans the full rail below it, removing the legacy empty cell. The mobile panel is 112px high, intentionally denser than the generated mock to preserve more of the learning screen.
-- Colors and visual tokens: the selected segment uses deep purple `#4f3aa7`; inactive segments use a cool-white surface and restrained gray-lavender dividers.
-- Image and asset quality: the wordbook action uses the official Material Symbols library icon and the existing Lucide chevron asset. No emoji, text glyph, CSS-drawn icon, or raster placeholder is used.
-- Copy and content: level names, A1/A2/B1/B2 mapping, and the wordbook destination are explicit. No learning option was added or removed.
-- Focused evidence was required because the selector details are too small to assess from the full frame alone.
+- 今回の変更: 直近判定・復習タイミング関連9件、モバイルChromium/WebKit10件が通過（重複を含む）。
+- 即時保存・再読込・回数切替・履歴保持・保存失敗のロールバック・Undo・クラウド圧縮のフィールド保持を自動検証。
+- 最終の `test:e2e:safe` は単体2件・Functions8件・E2E82件が通過。HTML同期・バージョン同期・復習語キーの検証も通過。
+- 実機Safariと実Googleアカウントでの2端末同期は未実施。
+- 公開候補: `2026.0905.0948`（今回の表示改善まで含む）。
 
-## Responsive Evidence
+## 主要画面の可読性監査・修正（2026-09-05）
 
-- 390 x 844: 370px panel width, 112px panel height, no clipping.
-- 375 x 667: 340px panel width, no horizontal overflow.
-- 1280 x 800: 420px anchored panel, no viewport overflow.
+今回の対象はホーム、単語一覧、未ログインのアカウント。アプリ内ブラウザの実画面を撮影後、既存構成を保った小規模修正を実施。学習・同期・購入ロジックは変更していない。
 
-## Comparison History
+1. ホーム（PC）: 単語カードと分類操作は明確。一方、復習スコアが9～10pxと小さかった。ラベル12px・数値14pxにし、カードと重ならない位置へ調整。
+2. 単語一覧（PC／390px）: レベル・状態・和訳の操作は整理されている。スマホの40px行と小さい長単語・和訳を改善し、行48px・間隔6px、長単語13pxで折り返し、和訳12pxにした。表示語数と可読性のトレードオフを許容。検索欄とクリアに読み上げ名を追加。検索・クリアを実操作で確認。
+3. アカウント（PC／375×667）: 見出しと閉じる操作は明確。解除コード欄に常設ラベルを追加し、入力文字16pxへ変更。小さい画面でも閉じるボタンとログイン操作が収まることを確認。認証・購入・コードの送信はしていない。
 
-- First comparison: no actionable P0, P1, or P2 mismatch was found.
-- The smaller implementation height is intentional and supports the selected compact direction without changing information hierarchy.
+証拠画像は `screenshots/ui-audit-2026-09-05/`。`01-home-before/after.png`、`02-word-list-before.png`、`03-account-before/after.png`、`04-word-list-mobile-before/after.png`、`05-search-after.png`、`06-account-mobile-after.png`。同じ幅の変更前後を比較し、読み込み途中の画像は再撮影した。
 
-## Verification
+検証範囲: 今回はアプリ内ブラウザでの表示・操作とHTML／バージョン同期、差分検査。上記82件のE2E結果は今回のCSS・ラベル修正より前であり、今回の再実行結果ではない。実機Safari、ログイン済み同期画面、スクリーンリーダーによる全体検証は未実施。全画面・全状態やWCAG適合を保証する監査ではない。
 
-- Level switching still persists and restores the selected level.
-- The four CEFR levels render on one row.
-- The wordbook row spans the full rail, closes the selector, and opens the existing wordbook modal.
-- Browser console errors: none.
-- Targeted Playwright result: 3 passed.
-- `npm run check:html-sync`: passed.
-- `git diff --check`: passed.
-
-final result: passed
+公開前再検証（2026.0905.0948）: 表示改善を含む状態で `test:e2e:safe`（単体2件・Functions8件・E2E82件）およびモバイルChromium/WebKit10件が通過。HTML同期・バージョン同期・復習語キー検証も通過。上記の監査時点のテスト未実行という留保は、この再検証により解消。
