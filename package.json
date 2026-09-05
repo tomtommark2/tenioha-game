@@ -8,7 +8,7 @@
     "release:version": "node scripts/bump-version.js && npm run sync:html && npm run check:html-sync && npm run check:version-sync",
     "release:patch": "npm run release:version",
     "test:unit": "node node_modules/playwright/cli.js test --config playwright.unit.config.js",
-    "test:functions": "node --test functions/review-score-policy.test.js",
+    "test:functions": "node --test functions/review-score-policy.test.js functions/feedback.test.js",
     "test:e2e": "node node_modules/playwright/cli.js test",
     "test:e2e:ui": "node node_modules/playwright/cli.js test --ui",
     "test:e2e:headed": "node node_modules/playwright/cli.js test --headed",

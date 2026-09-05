@@ -93,6 +93,11 @@ service cloud.firestore {
     }
 
     // 3. Promo Codes Collection
+    // Feedback is accessed through the API; author IDs and reports are private.
+    match /feedback_posts/{document=**} { allow read, write: if false; }
+    match /feedback_limits/{document=**} { allow read, write: if false; }
+    match /feedback_reports/{document=**} { allow read, write: if false; }
+
     // Promo codes are validated and redeemed only by redeemTeniohaPromoCode.
     match /promocodes/{code} {
       allow read, write: if false;

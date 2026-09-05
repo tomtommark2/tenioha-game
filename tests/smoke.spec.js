@@ -474,8 +474,9 @@ test('管理メニューはダイアログとしてキーボード操作でき�
   await expect(dialog).toBeVisible();
 
   const items = dialog.locator('.help-list-item');
-  await expect(items).toHaveCount(6);
-  await expect(dialog.locator('.help-command-item')).toHaveCount(4);
+  await expect(items).toHaveCount(7);
+  await expect(dialog.locator('.help-command-item')).toHaveCount(5);
+  await expect(dialog.getByRole('button', { name: /ひとこと送る/ })).toBeVisible();
   await expect(dialog.locator('.help-footer')).toHaveCount(0);
   await expect(dialog.getByRole('link', { name: /使い方を確認/ })).toHaveAttribute('href', /note\.com/);
   await expect.poll(() => items.evaluateAll((elements) => elements.every((element) => ['BUTTON', 'A'].includes(element.tagName)))).toBe(true);
@@ -1285,7 +1286,10 @@ test('復習モードONでは新規のみの遷移にならない（復習優先
   });
 
   await page.evaluate(() => window.setReviewMode('on'));
-  await expect(page.locator('#vocabCard .review-badge')).toBeVisible();
+  await expect(page.locator('#vocabCard .review-badge')).toHaveCount(0);
+  expect(await page.evaluate(() => gameState.isReviewWord)).toBe(true);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.locator('#vocabCard').screenshot({ path: 'screenshots/review-card-no-tag.png' });
   await expect(page.locator('#questionReasonLabel')).toHaveText('苦手の復習');
   await expect(page.locator('#questionReasonLabel')).toBeVisible();
 });
@@ -2148,6 +2152,7 @@ test('直近10回の正答率閾値(80/50)で状態分類される', async ({ pa
 
   const result = await page.evaluate(() => {
     if (!window.gameState || typeof window.deriveStateFromAccuracy !== 'function') return null;
+    window.gameState.reviewWindowSize = 10;
     window.gameState.srsData = window.gameState.srsData || {};
     window.gameState.wordStates = window.gameState.wordStates || {};
 

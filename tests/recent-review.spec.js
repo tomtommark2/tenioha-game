@@ -11,8 +11,9 @@ test.beforeEach(async ({ page }) => {
   await expect(page.locator('#vocabWord')).not.toContainText('ファイルを読み込んでください');
 });
 
-test('旧分類を引き継ぎ、過去の失敗数に依存せず10回で再判定する', async ({ page }) => {
+test('記録のない旧分類だけ引き継ぎ、回答後は実際の履歴で再判定する', async ({ page }) => {
   const result = await page.evaluate(() => {
+    gameState.reviewWindowSize = 10;
     gameState.masteryThreshold = 90;
     gameState.wordStates.old = 'weak';
     gameState.srsData.old = { successCount: 0, failCount: 100, dueAt: 123, reviewStep: 0 };
@@ -33,11 +34,12 @@ test('旧分類を引き継ぎ、過去の失敗数に依存せず10回で再判
       oldPerfectFailed: deriveStateFromAccuracy('perfectOld'),
       length: gameState.srsData.old.recentAnswers.length, fails: gameState.srsData.old.failCount };
   });
-  expect(result).toEqual({ unchanged: ['weak', 'perfect', 123, 0], ninth: 'weak', tenth: 'perfect', failed: 'weak', recovered: 'perfect', oldPerfectFailed: 'weak', length: 10, fails: 101 });
+  expect(result).toEqual({ unchanged: ['weak', 'perfect', 123, 0], ninth: 'perfect', tenth: 'perfect', failed: 'weak', recovered: 'perfect', oldPerfectFailed: 'weak', length: 10, fails: 101 });
 });
 
-test('新規語の早すぎる完璧判定を防ぎ、100%は直近全問正解で到達する', async ({ page }) => {
+test('1回中1回も完璧になり、上限を超えると古い失敗が判定から外れる', async ({ page }) => {
   const result = await page.evaluate(() => {
+    gameState.reviewWindowSize = 10;
     gameState.masteryThreshold = 100;
     gameState.wordStates.fresh = 'unlearned';
     updateSrsForWord('fresh', true, 'unlearned');
@@ -48,12 +50,13 @@ test('新規語の早すぎる完璧判定を防ぎ、100%は直近全問正解�
     updateSrsForWord('fresh', true, 'learned');
     return { first, nine, ten: deriveStateFromAccuracy('fresh'), totalFails: gameState.srsData.fresh.failCount };
   });
-  expect(result).toEqual({ first: 'learned', nine: 'learned', ten: 'perfect', totalFails: 1 });
+  expect(result).toEqual({ first: 'perfect', nine: 'learned', ten: 'perfect', totalFails: 1 });
 });
 
 test('判定回数と正解数を即時保存し、履歴と現在の問題を保持する', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.evaluate(() => {
+    gameState.reviewWindowSize = 10;
     startLearningSession();
     const word = gameState.currentWord;
     const key = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
@@ -93,9 +96,10 @@ test('判定回数と正解数を即時保存し、履歴と現在の問題を�
   await expect(page.locator('#masteryThresholdExplanation')).toHaveText('直近10回で8回以上正解（80%）');
 });
 
-test('5回の判定・10回へ戻した履歴不足・保存失敗を扱う', async ({ page }) => {
+test('5回から10回に変えても実回答で判定し、保存失敗は戻す', async ({ page }) => {
   const dialogPromise = page.waitForEvent('dialog');
   const result = await page.evaluate(() => {
+    gameState.reviewWindowSize = 10;
     gameState.wordStates.k = 'weak';
     gameState.srsData.k = { recentAnswers: [true, true, true, true, true], legacyReviewState: 'weak', dueAt: 123, successCount: 5 };
     selectReviewWindow(5);
@@ -109,10 +113,59 @@ test('5回の判定・10回へ戻した履歴不足・保存失敗を扱う', as
     Storage.prototype.setItem = original;
     return { five, ten, length, sizeAfterFailure: gameState.reviewWindowSize, stateAfterFailure: gameState.wordStates.k };
   });
-  expect(result).toEqual({ five: 'perfect', ten: 'learned', length: 5, sizeAfterFailure: 10, stateAfterFailure: 'learned' });
+  expect(result).toEqual({ five: 'perfect', ten: 'perfect', length: 5, sizeAfterFailure: 10, stateAfterFailure: 'perfect' });
   const dialog = await dialogPromise;
   expect(dialog.message()).toContain('学習データを端末に保存できませんでした');
   await dialog.dismiss();
+});
+
+test('初期値は5回80%、分母は実回答数で、カードに横長タグを出さない', async ({ page }) => {
+  const result = await page.evaluate(() => {
+    const defaults = [getReviewWindowSize(), getMasteryThreshold()];
+    gameState.reviewWindowSize = 10;
+    const states = [];
+    for (const answers of [[], [true], [true, false, true], [false, true, true, true, true], Array(11).fill(true)]) {
+      gameState.wordStates.sample = 'unlearned';
+      gameState.srsData.sample = { recentAnswers: answers };
+      states.push([deriveStateFromAccuracy('sample'), getAccuracyTagInfoByKey('sample').text]);
+    }
+    startLearningSession();
+    gameState.isReviewWord = true;
+    return { defaults, states };
+  });
+  expect(result.defaults).toEqual([5, 80]);
+  expect(result.states).toEqual([
+    ['unlearned', '回答記録なし'], ['perfect', '直近1回：1/1正解（100%）'],
+    ['learned', '直近3回：2/3正解（67%）'], ['perfect', '直近5回：4/5正解（80%）'],
+    ['perfect', '直近10回：10/10正解（100%）']
+  ]);
+  await expect(page.locator('#vocabCard .review-badge')).toHaveCount(0);
+});
+
+test('カードは色付き正答率だけ表示し、履歴なしでは非表示', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.evaluate(() => startLearningSession());
+  for (const [answers, text, tone] of [
+    [[false, true, true, true, true], '80%', 'perfect'],
+    [[true, false, true], '67%', 'learned'],
+    [[false], '0%', 'weak'], [[true], '100%', 'perfect']
+  ]) {
+    await page.evaluate(answers => {
+      const w = gameState.currentWord;
+      const k = getWordKeySafe(w, w.__sourceLevel || gameState.currentLevel);
+      gameState.srsData[k] = { recentAnswers: answers };
+      updateCardAccuracyUI();
+    }, answers);
+    await expect(page.locator('.card-accuracy')).toHaveText(text);
+    await expect(page.locator('.card-accuracy')).toHaveAttribute('data-tone', tone);
+  }
+  await page.locator('#vocabCard').screenshot({ path: `screenshots/card-accuracy-${testInfo.project.name}.png` });
+  await page.evaluate(() => {
+    const w = gameState.currentWord;
+    gameState.srsData[getWordKeySafe(w, w.__sourceLevel || gameState.currentLevel)] = {};
+    updateCardAccuracyUI();
+  });
+  await expect(page.locator('.card-accuracy')).toHaveCount(0);
 });
 
 test('クラウド圧縮は直近履歴・移行状態・基準を欠落させない', async () => {

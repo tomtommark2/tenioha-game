@@ -56,6 +56,7 @@
 - Non-blocking modal screens must close from their close control, backdrop tap, Escape, and browser/device Back without leaving the app page.
 - Close controls keep at least a 44 x 44 CSS-pixel touch target, move focus into the modal on open, and restore focus on close.
 - `trialOverlay` and `forceUpdateModal` are intentionally blocking. Run `npm run test:mobile-modals` for the focused Chromium and WebKit checks.
+- 閉じた直後に別のモーダルを開く場合も、非同期の履歴後退が終わった時点で表示中モーダルの履歴層を復元する。WebKitで次の「戻る」がアプリ外へ遷移しないことを確認する。全体E2Eとモバイルテストは、共有ローカルサーバーの終了が干渉するため別々に実行する。
 
 ## Deployment-Sensitive Files
 

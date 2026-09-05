@@ -17,8 +17,10 @@
     "firebase-functions": "^7.2.5",
     "stripe": "^20.1.2"
   },
-  "devDependencies": {
-    "firebase-functions-test": "^3.4.1"
+  "overrides": {
+    "gaxios@6": { "uuid": "11.1.1" },
+    "google-gax@4": { "uuid": "11.1.1" },
+    "teeny-request@9": { "uuid": "11.1.1" }
   },
   "private": true
 }

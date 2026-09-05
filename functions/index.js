@@ -18,6 +18,8 @@ const REVIEW_WORD_KEY_HASHES = new Set(require("./review_word_hashes.json"));
 admin.initializeApp();
 const db = admin.firestore();
 
+exports.feedback = require('./feedback').buildFeedbackFunction({ db, verifyUser: verifyRequestUser, rejectNonPost });
+
 // Cost Control: Limit instances to prevent billing spikes
 setGlobalOptions({ maxInstances: 10 });
 
@@ -283,7 +285,7 @@ async function activatePremiumFromCheckoutSession(session, eventType) {
     }
 
     const email = session.customer_details ? session.customer_details.email : null;
-    await db.collection('users').doc(userId).set({
+    const premiumUpdate = {
         email: email || null,
         isPremium: true,
         premiumSource: 'stripe',
@@ -295,7 +297,8 @@ async function activatePremiumFromCheckoutSession(session, eventType) {
         stripePaymentLinkId: match.paymentLinkId || null,
         stripePaymentStatus: session.payment_status || null,
         lastActivatedAt: admin.firestore.FieldValue.serverTimestamp()
-    }, { merge: true });
+    };
+    await db.collection('users').doc(userId).set(premiumUpdate, { merge: true });
 
     logger.info(`Successfully upgraded user ${userId}`, {
         sessionId: session.id,

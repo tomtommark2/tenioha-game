@@ -11,6 +11,7 @@ const DISMISSIBLE_MODAL_IDS = Object.freeze([
     'wordListModal',
     'studyModeModal',
     'helpModal',
+    'feedbackModal',
     'updatePromptModal',
     'offlineAlertModal',
     'announcementModal',
@@ -235,6 +236,13 @@ function initDismissibleModalBehavior() {
     window.addEventListener('popstate', () => {
         if (dismissibleModalState.cleaningHistory) {
             dismissibleModalState.cleaningHistory = false;
+            // A modal can reopen before the previous close finishes history.back().
+            // Restore its layer so the next Back closes it instead of leaving the app.
+            if (getVisibleDismissibleModals().length && !window.history.state?.[MODAL_HISTORY_STATE_KEY]) {
+                const state = window.history.state && typeof window.history.state === 'object'
+                    ? window.history.state : {};
+                window.history.pushState({ ...state, [MODAL_HISTORY_STATE_KEY]: true }, '', window.location.href);
+            }
             return;
         }
         const visibleModals = getVisibleDismissibleModals();

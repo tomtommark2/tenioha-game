@@ -456,6 +456,7 @@ async function checkAutoRedeem(user) {
 // Auth State Listener
 if (auth) {
     onAuthStateChanged(auth, async (user) => {
+        window.dispatchEvent(new Event('feedback-auth-changed'));
         // Call Auto Redeem logic (Always check, even if guest)
         checkAutoRedeem(user);
         // setupUIElements(); // Handled by init() in game_logic.js

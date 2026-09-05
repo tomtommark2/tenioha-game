@@ -1737,18 +1737,19 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     }
 }
 
-.review-badge {
+.card-accuracy {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #4caf50;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: bold;
-    z-index: 5;
+    top: 14px;
+    right: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
 }
+
+.card-accuracy[data-tone="perfect"] { color: #916b00; }
+.card-accuracy[data-tone="learned"] { color: #25865d; }
+.card-accuracy[data-tone="weak"] { color: #b94a48; }
 
 .question-reason-label {
     position: absolute;

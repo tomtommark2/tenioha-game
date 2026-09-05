@@ -44,7 +44,7 @@ var gameState = window.gameState || {
     // Phase A (SRS foundation)
     srsData: {},
     masteryThreshold: 80,
-    reviewWindowSize: 10,
+    reviewWindowSize: 5,
     reviewTiming: 'standard',
     srsBootstrapped: false,
     srsSchemaVersion: 0,
@@ -1227,7 +1227,7 @@ function updateSrsForWord(key, isCorrect, currentState = null) {
     const now = Date.now();
     s.recentAnswers = [...getRecentAnswers(s), !!isCorrect].slice(-10);
     if (!isCorrect) delete s.legacyReviewState;
-    if (s.recentAnswers.length >= getReviewWindowSize()) delete s.legacyReviewState;
+    if (s.recentAnswers.length > 0) delete s.legacyReviewState;
 
     // Table-based intervals (Anki-like cadence)
     // 1d -> 3d -> 7d -> 14d -> 30d -> 60d
@@ -1393,9 +1393,9 @@ function getAccuracyTagInfoByKey(key) {
     const answers = getRecentAnswers(s).slice(-size);
     const count = answers.filter(Boolean).length;
     const state = getRecentReviewState(key, getMasteryThreshold());
-    const text = answers.length < size
-        ? `${s.legacyReviewState ? '旧分類を引継ぎ' : '判定準備中'}・記録 ${answers.length}/${size}回`
-        : `直近${size}回：${count}回正解（${count * 100 / size}%）`;
+    const text = answers.length === 0
+        ? '回答記録なし'
+        : `直近${answers.length}回：${count}/${answers.length}正解（${Math.round(count * 100 / answers.length)}%）`;
     return { text, color: state === 'perfect' ? '#b8860b' : state === 'learned' ? '#25865d' : '#b94a48' };
 }
 
@@ -1405,7 +1405,7 @@ function getRecentAnswers(entry) {
 }
 
 function getReviewWindowSize(value = gameState.reviewWindowSize) {
-    return value === 5 ? 5 : 10;
+    return value === 10 ? 10 : 5;
 }
 
 function getMasteryThreshold(value = gameState.masteryThreshold, size = getReviewWindowSize()) {
@@ -1420,11 +1420,8 @@ function getRecentReviewState(key, threshold) {
     if (answers.length === 0) return gameState.wordStates[key] || 'unlearned';
     // A mistake always starts the existing five-minute relearning loop.
     if (entry.isRelearning) return 'weak';
-    if (answers.length < size && ['weak', 'learned', 'perfect'].includes(entry.legacyReviewState)) {
-        return entry.legacyReviewState;
-    }
     const correct = answers.filter(Boolean).length;
-    if (answers.length === size && correct * 100 >= getMasteryThreshold(threshold) * size) return 'perfect';
+    if (correct * 100 >= getMasteryThreshold(threshold) * answers.length) return 'perfect';
     return correct * 2 >= answers.length ? 'learned' : 'weak';
 }
 
@@ -1436,7 +1433,7 @@ function migrateRecentReviewHistory() {
         const entry = ensureSrsEntry(key);
         if (!Array.isArray(entry.recentAnswers)) entry.legacyReviewState = state;
         entry.recentAnswers = getRecentAnswers(entry);
-        if (entry.recentAnswers.length >= getReviewWindowSize()) delete entry.legacyReviewState;
+        if (entry.recentAnswers.length > 0) delete entry.legacyReviewState;
         gameState.wordStates[key] = getRecentReviewState(key, gameState.masteryThreshold);
     });
     invalidateLearningProgressSnapshot();
@@ -1460,12 +1457,11 @@ function renderMasterySettings(message = '') {
         button.querySelector('small').textContent = `${threshold}%`;
     });
     document.querySelector('.mastery-options').style.gridTemplateColumns = `repeat(${size === 5 ? 2 : 3}, 1fr)`;
-    let pending = 0, total = 0, due = 0;
+    let total = 0, due = 0;
     const candidates = ensureReviewWordIndex();
     const now = Date.now();
     Object.entries(gameState.wordStates || {}).forEach(([key, state]) => {
         if (state === 'unlearned' || isRetiredWordByKey(key)) return;
-        if (getRecentAnswers(gameState.srsData[key]).length < size) pending++;
         if (!(candidates.get(key) || []).some(item => (gameState.activeReviewLevels || []).includes(item.level)
             && isWordAllowedByPOS(item.word))) return;
         if (!['weak', 'learned'].includes(state)) return;
@@ -1473,8 +1469,8 @@ function renderMasterySettings(message = '') {
         if (gameState.srsData[key]?.dueAt <= now) due++;
     });
     document.getElementById('masteryChangePreview').textContent = message || '変更すると自動で反映・保存されます';
-    document.getElementById('masteryPendingNotice').textContent = `判定準備中 ${pending}語。選択した${size}回分が集まると判定します（旧データは分類を引継ぎ）。`;
-    document.getElementById('masteryPendingNotice').hidden = pending === 0;
+    document.getElementById('masteryPendingNotice').textContent = `${size}回未満なら、回答済みの回数で判定します。例：1/1は100%、4/5は80%。回答記録のない旧データは分類を維持します。`;
+    document.getElementById('masteryPendingNotice').hidden = false;
     document.getElementById('masteryTargetPreview').textContent = `${total}語`;
     document.getElementById('masteryDuePreview').textContent = `${due}語`;
 }
@@ -1504,7 +1500,7 @@ function commitMasterySettings(size, value) {
         if (gameState.wordStates[key] !== 'perfect' && next === 'perfect') graduated++;
         gameState.wordStates[key] = next;
         const entry = gameState.srsData[key];
-        if (entry?.legacyReviewState && getRecentAnswers(entry).length >= size) {
+        if (entry?.legacyReviewState && getRecentAnswers(entry).length > 0) {
             migrated.push([key, entry.legacyReviewState]);
             delete entry.legacyReviewState;
         }
@@ -1524,12 +1520,7 @@ function commitMasterySettings(size, value) {
     updateDisplay();
     updateModeButtons();
     updateUndoButton();
-    const badge = document.querySelector('#vocabCard .review-badge');
-    if (badge && gameState.lastShownWordKey) {
-        const info = getAccuracyTagInfoByKey(gameState.lastShownWordKey);
-        badge.textContent = info.text;
-        badge.style.backgroundColor = info.color;
-    }
+    updateCardAccuracyUI();
     const adjusted = size === 5 && previous.threshold === 90
         ? '5回では90%を選べないため、5回すべて正解に設定しました。' : '';
     renderMasterySettings(`保存しました。復習対象へ ${returned}語 ／ 完璧へ ${graduated}語。${adjusted}`);
@@ -1543,7 +1534,28 @@ const QUESTION_REASON_INFO = {
     'manual-perfect': { text: '完璧から出題', tone: 'perfect' }
 };
 
+function updateCardAccuracyUI() {
+    const card = document.getElementById('vocabCard');
+    if (!card) return;
+    card.querySelector('.card-accuracy')?.remove();
+    const word = gameState.currentWord;
+    if (!word) return;
+    const key = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
+    const answers = getRecentAnswers(gameState.srsData?.[key]).slice(-getReviewWindowSize());
+    if (!answers.length) return;
+    const correct = answers.filter(Boolean).length;
+    const rate = correct * 100 / answers.length;
+    const label = document.createElement('span');
+    label.className = 'card-accuracy';
+    label.textContent = `${Math.round(rate)}%`;
+    label.dataset.tone = rate >= getMasteryThreshold() ? 'perfect' : rate >= 50 ? 'learned' : 'weak';
+    label.title = `直近${answers.length}回の正答率：${correct}/${answers.length}正解`;
+    label.setAttribute('aria-label', label.title);
+    card.appendChild(label);
+}
+
 function updateQuestionReasonUI() {
+    updateCardAccuracyUI();
     const label = document.getElementById('questionReasonLabel');
     if (!label) return;
 
@@ -2567,7 +2579,7 @@ function loadGame() {
     if (saved) {
         const data = JSON.parse(saved);
         gameState = { ...gameState, ...data };
-        gameState.reviewWindowSize = getReviewWindowSize(data.reviewWindowSize ?? 10);
+        gameState.reviewWindowSize = getReviewWindowSize(data.reviewWindowSize ?? 5);
         gameState.reviewTiming = getReviewTiming(data.reviewTiming ?? 'standard');
         gameState.masteryThreshold = getMasteryThreshold(data.masteryThreshold ?? 80);
 
@@ -3140,14 +3152,6 @@ function showNextWord(reviewSnapshot = null) {
     const existingBadge = vocabCard.querySelector('.review-badge');
     if (existingBadge) existingBadge.remove();
 
-    if (gameState.isReviewWord) {
-        const badge = document.createElement('div');
-        badge.className = 'review-badge';
-        const info = getAccuracyTagInfoByKey(gameState.lastShownWordKey || getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel));
-        badge.textContent = info.text;
-        badge.style.backgroundColor = info.color;
-        vocabCard.appendChild(badge);
-    }
     updateQuestionReasonUI();
 
     // DOM更新後、少し待ってから音声再生

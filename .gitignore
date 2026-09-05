@@ -1,5 +1,7 @@
 node_modules
 .firebase/
+firebase-debug.log
+firebase-debug.*.log
 
 # Local/secret files
 functions/.env
