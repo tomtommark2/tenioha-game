@@ -18,13 +18,16 @@
             if (entries.length < 2) return;
             const first = entries[0];
             const key = utils.getWordKey(first.word, first.level, database);
+            // Placement and presentation may change; the original learning key must not.
+            const level = LEVELS.includes(first.word.studyLevel) ? first.word.studyLevel : first.level;
+            const ordered = [...entries].sort((a, b) => Number(!!b.word.primarySense) - Number(!!a.word.primarySense));
             const card = {
-                ...first.word,
+                ...ordered[0].word,
                 __groupKey: key,
-                __sourceLevel: first.level,
-                senses: entries.map(entry => ({ ...entry.word, __sourceLevel: entry.level })),
+                __sourceLevel: level,
+                senses: ordered.map(entry => ({ ...entry.word, __sourceLevel: entry.level })),
             };
-            const group = { key, level: first.level, index: first.index, card };
+            const group = { key, level, sourceLevel: first.level, index: first.index, card };
             groups.push(group);
             entries.forEach(entry => byIdentity.set(`${entry.level}\u0000${entry.word.word}`, group));
         });
@@ -46,7 +49,7 @@
                     oldKeys.add(utils.getWordKey({ ...word, pos: referenced.pos }, level, database));
                 }
                 if (LEVELS.includes(level)) {
-                    if (group.level === level && group.index === index) output[level].push(group.card);
+                    if (group.level === level && group.sourceLevel === level && group.index === index) output[level].push(group.card);
                 } else if (!seen.has(group.key)) {
                     output[level].push({ ...word, __groupKey: group.key, senses: group.card.senses,
                         meaning: group.card.meaning, phrase: group.card.phrase, example: group.card.example,
@@ -54,6 +57,9 @@
                     seen.add(group.key);
                 }
             });
+        });
+        groups.forEach(group => {
+            if (group.level !== group.sourceLevel) output[group.level].push(group.card);
         });
         return { database: output, groups, oldKeys, version: VERSION };
     }

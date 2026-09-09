@@ -1,0 +1,8851 @@
+{
+  "date": "2026-09-09",
+  "scope": "A1と上位層の同綴り統合297語。レベル修正確定ではなく一次点検。原データ・実装は未変更。",
+  "counts": {
+    "a1SourceRows": 1225,
+    "a1Cards": 1114,
+    "a1MergedCards": 374,
+    "crossLevelA1Cards": 297,
+    "upperRows": 350,
+    "a1CsvPresent": 233,
+    "a1CsvAbsent": 64
+  },
+  "candidates": [
+    {
+      "word": "above",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "上に",
+          "phrase": "see above"
+        },
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～の上に",
+          "phrase": "above the clouds"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】上述の",
+          "phrase": "the above"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "address",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "住所",
+          "phrase": "email address"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】話しかける、演説する",
+          "phrase": "address a problem"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "after",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～の後に",
+          "phrase": "after school"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "後で、その後に",
+          "phrase": "soon after"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】～した後に",
+          "phrase": "after you arrive"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        }
+      ]
+    },
+    {
+      "word": "all",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "すべての",
+          "phrase": "all day"
+        },
+        {
+          "level": "junior",
+          "pos": "代",
+          "meaning": "すべての人・もの",
+          "phrase": "all of us"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "全く、すっかり",
+          "phrase": "all alone"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A1",
+          "pos": "pronoun"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "alone",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "一人で",
+          "phrase": "walk alone"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "ただ一人で、～だけで",
+          "phrase": "home alone"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "along",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "前へ、先へ",
+          "phrase": "move along"
+        },
+        {
+          "level": "basic",
+          "pos": "前",
+          "meaning": "沿って",
+          "phrase": "along the river"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "preposition"
+        }
+      ]
+    },
+    {
+      "word": "another",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "もう一つの",
+          "phrase": "another cup"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "もう一つ、別のもの（人）",
+          "phrase": "choose another"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        }
+      ]
+    },
+    {
+      "word": "arm",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "腕",
+          "phrase": "break one's arm"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】武装させる",
+          "phrase": "armed with"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "around",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～の周りに",
+          "phrase": "around the world"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "周りに",
+          "phrase": "look around"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "as",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～として",
+          "phrase": "work as a doctor"
+        },
+        {
+          "level": "basic",
+          "pos": "接",
+          "meaning": "～なので、～であるから",
+          "phrase": "as it's raining"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "conjunction"
+        }
+      ]
+    },
+    {
+      "word": "back",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "後ろへ、戻って",
+          "phrase": "come back"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "背中、後ろ",
+          "phrase": "back of the room"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "後ろの、裏の",
+          "phrase": "back door"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】後援する、後退する",
+          "phrase": "back up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "bank",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "銀行",
+          "phrase": "go to the bank"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "提携する、預ける",
+          "phrase": "bank on something"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "bar",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "棒、酒場",
+          "phrase": "candy bar"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】塞ぐ、禁じる",
+          "phrase": "bar someone from"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "bat",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "バット、コウモリ",
+          "phrase": "baseball bat"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】バットで打つ",
+          "phrase": "bat first"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "bear",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "熊",
+          "phrase": "teddy bear"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "耐える、支える、（実を）結ぶ",
+          "phrase": "can't bear the noise"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "before",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "以前に",
+          "phrase": "seen before"
+        },
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～の前に",
+          "phrase": "before dinner"
+        },
+        {
+          "level": "basic",
+          "pos": "接",
+          "meaning": "～する前に",
+          "phrase": "before you go"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "conjunction"
+        }
+      ]
+    },
+    {
+      "word": "being",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "～である（beの-ing形）",
+          "phrase": "is being careful"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "存在、生き物",
+          "phrase": "human being"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "be-verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "better",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "より良い",
+          "phrase": "feel better"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "より良く",
+          "phrase": "know better"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "block",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ブロック、区画",
+          "phrase": "city block"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】塞ぐ、妨害する",
+          "phrase": "block the view"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "blow",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "吹く",
+          "phrase": "blow the whistle"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "強打、打撃",
+          "phrase": "heavy blow"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "board",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "板、黒板、委員会",
+          "phrase": "write on the board"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】板を張る、乗り込む",
+          "phrase": "board the plane"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "book",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "本",
+          "phrase": "read a book"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】予約する",
+          "phrase": "book a flight"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "bottle",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "瓶、ボトル",
+          "phrase": "water bottle"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】瓶詰めにする",
+          "phrase": "bottled water"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "bowl",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ボウル、お椀",
+          "phrase": "soup bowl"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】ボウリングをする",
+          "phrase": "bowl a strike"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "break",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "壊す、割る",
+          "phrase": "break a window"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "休憩、中断",
+          "phrase": "take a break"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "brown",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "茶色の",
+          "phrase": "brown eyes"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "茶色",
+          "phrase": "light brown"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "but",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "接",
+          "meaning": "しかし",
+          "phrase": "but I'm tired"
+        },
+        {
+          "level": "daily",
+          "pos": "前",
+          "meaning": "【前】～を除いて",
+          "phrase": "nothing but"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "conjunction"
+        },
+        {
+          "level": "B1",
+          "pos": "preposition"
+        }
+      ]
+    },
+    {
+      "word": "call",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "電話、呼び出し",
+          "phrase": "give a call"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "電話する、呼ぶ",
+          "phrase": "call a taxi"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "camp",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "キャンプ",
+          "phrase": "summer camp"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "キャンプする、設営する",
+          "phrase": "camp in the woods"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "can",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "助",
+          "meaning": "～できる",
+          "phrase": "can swim"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "缶、缶詰",
+          "phrase": "can of soda"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "modal auxiliary"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "care",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "世話、注意",
+          "phrase": "take care of"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】気にかける",
+          "phrase": "care for"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "check",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "確認、小切手",
+          "phrase": "check please"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "点検する、確認する、照合する",
+          "phrase": "check the list"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "circle",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "円",
+          "phrase": "draw a circle"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】旋回する、囲む",
+          "phrase": "circle the answer"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "climb",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "登ること",
+          "phrase": "mountain climb"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "登る",
+          "phrase": "climb a mountain"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "coach",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "コーチ、長距離バス",
+          "phrase": "football coach"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】指導する",
+          "phrase": "coach sports"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "cool",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "涼しい、かっこいい",
+          "phrase": "cool breeze"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】冷やす",
+          "phrase": "cool down"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "copy",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "コピー、写し",
+          "phrase": "make a copy"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "複写する",
+          "phrase": "copy documentation"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "correct",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "正しい",
+          "phrase": "correct answer"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】訂正する",
+          "phrase": "correct me if I'm wrong"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "cover",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "カバー、表紙",
+          "phrase": "book cover"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "覆う",
+          "phrase": "cover a table"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "cream",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "クリーム",
+          "phrase": "ice cream"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "クリーム色の",
+          "phrase": "cream dress"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "cry",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "泣くこと、叫び声",
+          "phrase": "have a good cry"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "泣く",
+          "phrase": "cry for help"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "cut",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "切る",
+          "phrase": "cut paper"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】切り傷、カット",
+          "phrase": "tax cut"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "date",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "日付、デート",
+          "phrase": "what is the date"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】日付を入れる、デートする",
+          "phrase": "date someone"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "dear",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "親愛なる",
+          "phrase": "Dear John"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】あなた（呼びかけ）",
+          "phrase": "my dear"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "design",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "デザイン",
+          "phrase": "fashion design"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】設計する",
+          "phrase": "by design"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "dig",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "掘る",
+          "phrase": "dig a hole"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】掘る",
+          "phrase": "dig up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "down",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "下へ",
+          "phrase": "sit down"
+        },
+        {
+          "level": "basic",
+          "pos": "前",
+          "meaning": "～の下へ",
+          "phrase": "down the stairs"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】元気がない",
+          "phrase": "feel down"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "preposition"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "draw",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "描く（線で）",
+          "phrase": "draw a picture"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "試合、引き分け",
+          "phrase": "end in a draw"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "dream",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "夢",
+          "phrase": "have a dream"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "夢を見る、夢に思い描く",
+          "phrase": "dream about flying"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "dress",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ドレス、ワンピース",
+          "phrase": "wear a dress"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "服を着る、服を着せる",
+          "phrase": "dress warmly"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "drive",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ドライブ",
+          "phrase": "go for a drive"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "運転する",
+          "phrase": "drive a car"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "drop",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "落とす",
+          "phrase": "drop a pen"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "一滴、しずく、下落",
+          "phrase": "drop of water"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "dry",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "乾いた",
+          "phrase": "dry towel"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "乾かす、拭く",
+          "phrase": "dry the dishes"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "early",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "早く",
+          "phrase": "get up early"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "早い",
+          "phrase": "early morning"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "either",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "（否定文で）～もまた",
+          "phrase": "not hungry either"
+        },
+        {
+          "level": "basic",
+          "pos": "接",
+          "meaning": "～かまたは～か",
+          "phrase": "either A or B"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】どちらかの",
+          "phrase": "in either case"
+        },
+        {
+          "level": "daily",
+          "pos": "代",
+          "meaning": "【代】どちらか",
+          "phrase": "either of them"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "conjunction"
+        },
+        {
+          "level": "B1",
+          "pos": "determiner"
+        },
+        {
+          "level": "B1",
+          "pos": "pronoun"
+        }
+      ]
+    },
+    {
+      "word": "email",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "Eメール",
+          "phrase": "send an email"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "メールを送る",
+          "phrase": "email a photo"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "end",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "終わり、端",
+          "phrase": "end of the story"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "終わり",
+          "phrase": "the end"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "excuse",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "言い訳、弁解",
+          "phrase": "a poor excuse"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】許す、言い訳する",
+          "phrase": "excuse me"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "exercise",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "運動する",
+          "phrase": "exercise every day"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "運動",
+          "phrase": "physical exercise"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "fat",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "太った",
+          "phrase": "get fat"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】脂肪",
+          "phrase": "body fat"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "feed",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "飼料、餌",
+          "phrase": "animal feed"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】エサをやる、養う",
+          "phrase": "feed the family"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "feel",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "感じる",
+          "phrase": "feel happy"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "感じ、手触り",
+          "phrase": "feel of the fabric"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "fight",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "戦い、喧嘩",
+          "phrase": "have a fight"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】戦う",
+          "phrase": "fight with"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "file",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ファイル",
+          "phrase": "save the file"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】提出する、ファイルする",
+          "phrase": "file a lawsuit"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "fine",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "元気な、晴れた",
+          "phrase": "I'm fine"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】罰金",
+          "phrase": "heavy fine"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】立派に、細かく",
+          "phrase": "chop fine"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】罰金を科す",
+          "phrase": "he was fined"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "fire",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "火、火事",
+          "phrase": "on fire"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】解雇する、発砲する",
+          "phrase": "fire a gun"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "fish",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "魚",
+          "phrase": "fresh fish"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】釣りをする",
+          "phrase": "fish for"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "flat",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "アパート（英）",
+          "phrase": "live in a flat"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】平らな",
+          "phrase": "flat tire"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】平らに、きっぱりと",
+          "phrase": "flat broke"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "focus",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "集中する",
+          "phrase": "focus on"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】焦点",
+          "phrase": "main focus"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "following",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "次の",
+          "phrase": "following day"
+        },
+        {
+          "level": "exam1",
+          "pos": "前",
+          "meaning": "【前】～の後に",
+          "phrase": "following the rules"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "preposition"
+        }
+      ]
+    },
+    {
+      "word": "for",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～のために",
+          "phrase": "for you"
+        },
+        {
+          "level": "basic",
+          "pos": "接",
+          "meaning": "～のために、～として",
+          "phrase": "be good for"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "conjunction"
+        }
+      ]
+    },
+    {
+      "word": "form",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "形、用紙",
+          "phrase": "fill out a form"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】形作る",
+          "phrase": "form an opinion"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "free",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "自由な、無料の",
+          "phrase": "free time"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "自由に、無料で",
+          "phrase": "feel free to"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】解放する",
+          "phrase": "set free"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "front",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "前、正面",
+          "phrase": "in front of"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "正面、前部、前面",
+          "phrase": "in front of"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "future",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "未来",
+          "phrase": "in the future"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】未来の",
+          "phrase": "in the detailed future"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "go",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "行く",
+          "phrase": "go to school"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】試み、番",
+          "phrase": "on the go"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "gold",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "金色の",
+          "phrase": "gold medal"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "金、黄金",
+          "phrase": "solid gold"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "good",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "良い",
+          "phrase": "good idea"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】善、利益",
+          "phrase": "do good"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "grade",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "学年、成績",
+          "phrase": "first grade"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】採点する、等級分けする",
+          "phrase": "grade A"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "green",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "緑色の",
+          "phrase": "green pepper"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "緑、青空、芝生",
+          "phrase": "evergreen"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "group",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "グループ",
+          "phrase": "group of people"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】分類する",
+          "phrase": "group together"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "guess",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "推測する",
+          "phrase": "guess what"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】推測",
+          "phrase": "wild guess"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "half",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "半分",
+          "phrase": "half an hour"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "半分（代名詞的）",
+          "phrase": "half of"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "半分、半分だけ",
+          "phrase": "half of the year"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】半分だけ",
+          "phrase": "half empty"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "determiner"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "hand",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "手",
+          "phrase": "right hand"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "手渡す",
+          "phrase": "hand in the report"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "head",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "頭",
+          "phrase": "shake one's head"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "向かう、率いる",
+          "phrase": "head for"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "help",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "助ける",
+          "phrase": "help me"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "助け、援助",
+          "phrase": "need help"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "high",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "高い",
+          "phrase": "high mountain"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "高く、高い所に",
+          "phrase": "aim high"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "hold",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "持つ、開催する",
+          "phrase": "hold a party"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "持つ、開催する、保つ",
+          "phrase": "hold hands"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "home",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "家、家庭",
+          "phrase": "a new home"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "家に、故郷へ",
+          "phrase": "go home"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "hope",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "希望、望む",
+          "phrase": "I hope so"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】望む",
+          "phrase": "hope for the best"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "hurry",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "急ぐこと",
+          "phrase": "in a hurry"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "急ぐ、急がせる",
+          "phrase": "hurry up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "hurt",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "傷つける、痛む",
+          "phrase": "it hurts"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】怪我をして、傷ついて",
+          "phrase": "feel hurt"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "in",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～の中に",
+          "phrase": "in the box"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "在宅して、流行して",
+          "phrase": "is he in?"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "inside",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "内側に",
+          "phrase": "inside the house"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "内側に",
+          "phrase": "go inside"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】内部の",
+          "phrase": "inside information"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】内側",
+          "phrase": "on the inside"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "interview",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "面接、インタビュー",
+          "phrase": "job interview"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】面接する",
+          "phrase": "be interviewed"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "judge",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "判断する、裁判官",
+          "phrase": "judge people"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】裁判官、審査員",
+          "phrase": "judge of character"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "jump",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "ジャンプする",
+          "phrase": "jump high"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】ジャンプ",
+          "phrase": "jump for joy"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "kid",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "子供",
+          "phrase": "just a kid"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】からかう",
+          "phrase": "no kidding"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "kind",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "種類",
+          "phrase": "a kind of fruit"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "親切な",
+          "phrase": "kind person"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "kiss",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "キス",
+          "phrase": "give a kiss"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】キスする",
+          "phrase": "kiss and tell"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "later",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "後で",
+          "phrase": "see you later"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】後の",
+          "phrase": "a later date"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "laugh",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "笑う",
+          "phrase": "laugh at"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】笑い",
+          "phrase": "loud laugh"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "leave",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "去る、出発する",
+          "phrase": "leave home"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】休暇",
+          "phrase": "on leave"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "left",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "左の",
+          "phrase": "the left hand"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "左へ、左に",
+          "phrase": "turn left"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "左",
+          "phrase": "on the left"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "light",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "軽い、明るい",
+          "phrase": "light bag"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "光、明かり",
+          "phrase": "turn on the light"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】火をつける、照らす",
+          "phrase": "light up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "like",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～のような",
+          "phrase": "look like"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "好きだ",
+          "phrase": "I like"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】～のように",
+          "phrase": "looks like"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        }
+      ]
+    },
+    {
+      "word": "line",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "線、列",
+          "phrase": "straight line"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】並ぶ、裏地をつける",
+          "phrase": "lined with trees"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "list",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "リスト、一覧表",
+          "phrase": "make a list"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】リストに載せる",
+          "phrase": "listed building"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "little",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "小さい",
+          "phrase": "little boy"
+        },
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "少し",
+          "phrase": "a little"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "少しの（a little）、ほとんどない（little）",
+          "phrase": "a little water"
+        },
+        {
+          "level": "daily",
+          "pos": "代",
+          "meaning": "【代】少し",
+          "phrase": "little by little"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "determiner"
+        },
+        {
+          "level": "B1",
+          "pos": "pronoun"
+        }
+      ]
+    },
+    {
+      "word": "live",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "住む、生きる",
+          "phrase": "live in Japan"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】生きている、生の",
+          "phrase": "live music"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "living",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "生きている",
+          "phrase": "living thing"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】生計、生活",
+          "phrase": "standard of living"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "long",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "長い",
+          "phrase": "long time"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "長く、ずっと",
+          "phrase": "long ago"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "lot",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "大量、多数",
+          "phrase": "a lot of time"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "大量、多数",
+          "phrase": "a lot of people"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "たくさん、分け前",
+          "phrase": "a lot of work"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A1",
+          "pos": "pronoun"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "mail",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "郵便",
+          "phrase": "send by mail"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】郵送する",
+          "phrase": "mail it to me"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "make",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "作る",
+          "phrase": "make a cake"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】型、銘柄",
+          "phrase": "what make is it"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "match",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "試合",
+          "phrase": "soccer match"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】調和する、匹敵する",
+          "phrase": "match with"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "matter",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "問題、事柄",
+          "phrase": "what's the matter"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "重要である、問題",
+          "phrase": "doesn't matter"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "mean",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "意味する",
+          "phrase": "what do you mean"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "意地悪な、けちな",
+          "phrase": "mean person"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】平均",
+          "phrase": "above the mean"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "middle",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "真ん中の",
+          "phrase": "middle school"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "真ん中、中央",
+          "phrase": "in the middle of"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "mind",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "心、精神",
+          "phrase": "change my mind"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "気にする、嫌がる",
+          "phrase": "don't mind"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "mine",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "代",
+          "meaning": "私のもの",
+          "phrase": "it is mine"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】鉱山、地雷",
+          "phrase": "land mine"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "mobile",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "携帯電話",
+          "phrase": "use your mobile"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "動きやすい、携帯電話の",
+          "phrase": "mobile phone"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "more",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "もっと多くの",
+          "phrase": "more time"
+        },
+        {
+          "level": "junior",
+          "pos": "代",
+          "meaning": "もっと多くのもの",
+          "phrase": "one more"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】もっと",
+          "phrase": "more and more"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A1",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "most",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "大部分の",
+          "phrase": "most people"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "最も",
+          "phrase": "like it most"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "大部分、多くの人（もの）",
+          "phrase": "most of the students"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "大部分の、最も多くの",
+          "phrase": "most students"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        }
+      ]
+    },
+    {
+      "word": "move",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "動く、引っ越す",
+          "phrase": "move to Tokyo"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "動く、引っ越す",
+          "phrase": "move house"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "name",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "名前",
+          "phrase": "my name is"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】名付ける",
+          "phrase": "name after"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "near",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "近くに",
+          "phrase": "near the station"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】近い",
+          "phrase": "near miss"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】近くに",
+          "phrase": "near and far"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "need",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "助",
+          "meaning": "必要とする",
+          "phrase": "need to go"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "必要とする",
+          "phrase": "need to know"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】必要",
+          "phrase": "basic needs"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "modal auxiliary"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "now",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "今",
+          "phrase": "do it now"
+        },
+        {
+          "level": "exam1",
+          "pos": "接",
+          "meaning": "【接】今や～なので",
+          "phrase": "now that"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "conjunction"
+        }
+      ]
+    },
+    {
+      "word": "nurse",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "看護師",
+          "phrase": "school nurse"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】看病する",
+          "phrase": "nurse back to health"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "off",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "離れて、切れて",
+          "phrase": "lights off"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "離れて、休みで",
+          "phrase": "take off"
+        },
+        {
+          "level": "daily",
+          "pos": "前",
+          "meaning": "【前】～から外れて",
+          "phrase": "off duty"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "preposition"
+        }
+      ]
+    },
+    {
+      "word": "on",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～の上に",
+          "phrase": "on the table"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "（状態が）続いて、身につけて",
+          "phrase": "keep on"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "once",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "一度",
+          "phrase": "once a week"
+        },
+        {
+          "level": "exam1",
+          "pos": "接",
+          "meaning": "【接】いったん～すると",
+          "phrase": "once in a while"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "conjunction"
+        }
+      ]
+    },
+    {
+      "word": "one",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "1つの",
+          "phrase": "one day"
+        },
+        {
+          "level": "junior",
+          "pos": "数",
+          "meaning": "1",
+          "phrase": "one of them"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "人、物（不特定の単数代名詞）",
+          "phrase": "the small one"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A1",
+          "pos": "number"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        }
+      ]
+    },
+    {
+      "word": "order",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "注文",
+          "phrase": "make an order"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "注文する、命じる",
+          "phrase": "order food"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "other",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "他の",
+          "phrase": "other people"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "他の人（物）",
+          "phrase": "each other"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        }
+      ]
+    },
+    {
+      "word": "outside",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "外で",
+          "phrase": "play outside"
+        },
+        {
+          "level": "basic",
+          "pos": "前",
+          "meaning": "～の外に",
+          "phrase": "outside the building"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】外部の",
+          "phrase": "outside chance"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】外側",
+          "phrase": "look from outside"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "preposition"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "over",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～を越えて、～の上に",
+          "phrase": "over the rainbow"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "～を超えて、終わって、あちこちに",
+          "phrase": "game over"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "own",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "自身の",
+          "phrase": "my own room"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "自分自身のもの",
+          "phrase": "on my own"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】所有する",
+          "phrase": "own up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "pardon",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "許すこと、何とおっしゃいましたか",
+          "phrase": "Pardon me?"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】許す",
+          "phrase": "beg your pardon"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "park",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "公園",
+          "phrase": "in the park"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "駐車する",
+          "phrase": "park a car"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "past",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "過去",
+          "phrase": "in the past"
+        },
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～を過ぎて",
+          "phrase": "past ten"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】過去の",
+          "phrase": "past tense"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "pick",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "選ぶ、摘む",
+          "phrase": "pick up"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】選択、ピック",
+          "phrase": "pick of the bunch"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "picture",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "絵、写真",
+          "phrase": "take a picture"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】想像する",
+          "phrase": "picture this"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "pink",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "ピンク色の",
+          "phrase": "pink dress"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "ピンク色",
+          "phrase": "bright pink"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "place",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "場所",
+          "phrase": "nice place"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】置く",
+          "phrase": "place an order"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "plan",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "計画",
+          "phrase": "make a plan"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】計画する",
+          "phrase": "plan ahead"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "please",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "どうぞ、お願いします",
+          "phrase": "Yes, please"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】喜ばせる",
+          "phrase": "please yourself"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "point",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "点、要点",
+          "phrase": "good point"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "指さす、向ける",
+          "phrase": "point to"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "pop",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ポップ音楽",
+          "phrase": "pop music"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】ポンと鳴る、急に現れる",
+          "phrase": "pop up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "post",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "郵便、ポスト",
+          "phrase": "post office"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "郵便、ポスト、掲示する、投函する",
+          "phrase": "post a letter"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "present",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "プレゼント",
+          "phrase": "birthday present"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】現在の、出席して",
+          "phrase": "the present situation"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】提示する",
+          "phrase": "present an award"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "pretty",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "かわいい",
+          "phrase": "pretty girl"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "かなり、相当に",
+          "phrase": "pretty good"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "price",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "価格",
+          "phrase": "high price"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】値段をつける",
+          "phrase": "reasonably priced"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "program",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "番組、プログラム",
+          "phrase": "TV program"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】プログラムする（米）",
+          "phrase": "program to"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "programme",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "番組（英）",
+          "phrase": "news programme"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】プログラムする",
+          "phrase": "programme the machine"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "purple",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "紫色",
+          "phrase": "a shade of purple"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "紫（色）の",
+          "phrase": "purple flower"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "push",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "押す",
+          "phrase": "push the button"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】一押し",
+          "phrase": "at a push"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "question",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "質問",
+          "phrase": "ask a question"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】尋ねる、疑う",
+          "phrase": "question authority"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "quiet",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "静かな",
+          "phrase": "be quiet"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】静寂",
+          "phrase": "keep quiet"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "red",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "赤色の",
+          "phrase": "red apple"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "赤、赤色",
+          "phrase": "bright red"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "result",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "結果",
+          "phrase": "good result"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】結果として生じる",
+          "phrase": "result from"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "review",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "復習、批評",
+          "phrase": "write a review"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】再検討する、批評する",
+          "phrase": "review a book"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "right",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "正しい、右の",
+          "phrase": "that's right"
+        },
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "正しく、右へ",
+          "phrase": "turn right"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "権利、右、正しいこと",
+          "phrase": "human rights"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "ring",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "鳴る",
+          "phrase": "bell rings"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "指輪、輪",
+          "phrase": "wedding ring"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "room",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "部屋",
+          "phrase": "my room"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】下宿する",
+          "phrase": "room together"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "row",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "列",
+          "phrase": "front row"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】漕ぐ",
+          "phrase": "row hard"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "rule",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ルール、規則",
+          "phrase": "school rules"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】支配する",
+          "phrase": "rule out"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "saw",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "のこぎり",
+          "phrase": "sharp saw"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】のこぎりで切る",
+          "phrase": "saw off"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "say",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "言う",
+          "phrase": "say hello"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】言い分",
+          "phrase": "final say"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "second",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "2番目の",
+          "phrase": "second floor"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "秒、二番目",
+          "phrase": "sixty seconds"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "二番目の人（もの）",
+          "phrase": "the second one"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】第二に",
+          "phrase": "second to none"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "sentence",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "文",
+          "phrase": "short sentence"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】刑を宣告する",
+          "phrase": "life sentence"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "set",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "置く、設定する",
+          "phrase": "set the table"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "セット、一揃い",
+          "phrase": "set of keys"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "shake",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "振ること",
+          "phrase": "give a shake"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】振る",
+          "phrase": "shake head"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "share",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "共有する",
+          "phrase": "share the room"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "分け前、株、共有",
+          "phrase": "share a room"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "sheet",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "シーツ、紙の1枚",
+          "phrase": "clean sheet"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】シーツ、１枚",
+          "phrase": "sheet of paper"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "ship",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "船",
+          "phrase": "big ship"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】送る",
+          "phrase": "free shipping"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "shop",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "店",
+          "phrase": "book shop"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "買い物をする",
+          "phrase": "shop for clothes"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】買い物をする",
+          "phrase": "shop around"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "short",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "短い、背が低い",
+          "phrase": "short hair"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "短編映画、（shortsで）ショートパンツ",
+          "phrase": "an animated short"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "shout",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "叫ぶ",
+          "phrase": "shout at"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "叫び、叫び声",
+          "phrase": "give a shout"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】叫ぶ",
+          "phrase": "shout out"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "show",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "見せる",
+          "phrase": "show me"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ショー、番組",
+          "phrase": "TV show"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "ショー、番組、見せ物",
+          "phrase": "TV show"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "shower",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "シャワー",
+          "phrase": "take a shower"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】シャワーを浴びる、降り注ぐ",
+          "phrase": "shower before bed"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "shut",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "閉める、閉まる",
+          "phrase": "shut the door"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "閉める、閉まる",
+          "phrase": "shut the window"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】閉まった",
+          "phrase": "shut down"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "sightseeing",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "観光",
+          "phrase": "go sightseeing"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "観光",
+          "phrase": "go sightseeing"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "sign",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "看板、標識",
+          "phrase": "stop sign"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "署名する",
+          "phrase": "sign here"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】署名する",
+          "phrase": "sign here"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "silver",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "銀色の",
+          "phrase": "silver spoon"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "銀",
+          "phrase": "silver ring"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "銀色の",
+          "phrase": "silver coin"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "銀、銀製品",
+          "phrase": "pure silver"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "simple",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "簡単な",
+          "phrase": "simple question"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "単純な、簡単な",
+          "phrase": "simple question"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "since",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～以来",
+          "phrase": "since yesterday"
+        },
+        {
+          "level": "basic",
+          "pos": "前",
+          "meaning": "～以来",
+          "phrase": "since yesterday"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】～なので、～以来",
+          "phrase": "since we moved here"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】その後ずっと",
+          "phrase": "ever since"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "skate",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "スケート靴",
+          "phrase": "ice skates"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "スケートをする",
+          "phrase": "go skating"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "スケート（靴）",
+          "phrase": "ice skate"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】スケートをする",
+          "phrase": "skate on thin ice"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "ski",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "スキー板",
+          "phrase": "pair of skis"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "スキーをする",
+          "phrase": "go skiing"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "スキー（板）",
+          "phrase": "pair of skis"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】スキーをする",
+          "phrase": "ski slope"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "sleep",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "眠る",
+          "phrase": "sleep well"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】睡眠",
+          "phrase": "go to sleep"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "slow",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "遅い",
+          "phrase": "slow train"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】遅く",
+          "phrase": "drive slow"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】遅くする",
+          "phrase": "slow traffic"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "slowly",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "ゆっくり",
+          "phrase": "walk slowly"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "ゆっくりと",
+          "phrase": "walk slowly"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "smell",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "においがする",
+          "phrase": "smell good"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】においがする",
+          "phrase": "smell a rat"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "smile",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "微笑む",
+          "phrase": "smile at"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "微笑み",
+          "phrase": "big smile"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】微笑む",
+          "phrase": "smile back"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "smoke",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "煙",
+          "phrase": "cigarette smoke"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "吸う（タバコ）",
+          "phrase": "no smoking"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "（タバコを）吸う、煙を出す",
+          "phrase": "smoke a cigarette"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "snack",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "軽食、おやつ",
+          "phrase": "eat a snack"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "軽食、おやつ",
+          "phrase": "have a snack"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "snow",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "雪",
+          "phrase": "heavy snow"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "雪が降る",
+          "phrase": "it snows"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "雪が降る",
+          "phrase": "snow hard"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "so",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "とても",
+          "phrase": "so happy"
+        },
+        {
+          "level": "junior",
+          "pos": "接",
+          "meaning": "だから",
+          "phrase": "so I went"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "とても、そのように、それで",
+          "phrase": "think so"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "conjunction"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "soap",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "石鹸",
+          "phrase": "wash with soap"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "石鹸（せっけん）",
+          "phrase": "bar of soap"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "sock",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "靴下",
+          "phrase": "white socks"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "靴下",
+          "phrase": "pair of socks"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "soft",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "柔らかい",
+          "phrase": "soft bed"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "柔らかい、穏やかな",
+          "phrase": "soft drink"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "sometimes",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "時々",
+          "phrase": "sometimes go"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】時々",
+          "phrase": "sometimes ... sometimes"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "sound",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "音",
+          "phrase": "loud sound"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "～に聞こえる",
+          "phrase": "sound good"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "音、響き",
+          "phrase": "strange sound"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "～のように聞こえる、（音を）出す",
+          "phrase": "sound interesting"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】健全な",
+          "phrase": "safe and sound"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "south",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "南",
+          "phrase": "to the south"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "南の、南にある",
+          "phrase": "south coast"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "南へ、南に",
+          "phrase": "go south"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "南",
+          "phrase": "in the south"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "space",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "宇宙、空間",
+          "phrase": "outer space"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "空間、場所、宇宙",
+          "phrase": "outer space"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "spaghetti",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "スパゲッティ",
+          "phrase": "eat spaghetti"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "スパゲッティ",
+          "phrase": "eat spaghetti"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "speaker",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "話し手、スピーカー",
+          "phrase": "guest speaker"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "話し手、演説者、スピーカー",
+          "phrase": "native speaker"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "speed",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "速度",
+          "phrase": "high speed"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "速度、速さ",
+          "phrase": "high speed"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】急ぐ、スピードを出す",
+          "phrase": "speed limit"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "spell",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "つづる",
+          "phrase": "spell your name"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "（語を）つづる",
+          "phrase": "spell correctly"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "spoon",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "スプーン",
+          "phrase": "use a spoon"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "スプーン",
+          "phrase": "teaspoon"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "sports",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "スポーツ",
+          "phrase": "play sports"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】スポーツの",
+          "phrase": "sports center"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "stadium",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "競技場",
+          "phrase": "baseball stadium"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "スタジアム、競技場",
+          "phrase": "football stadium"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "stamp",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "切手",
+          "phrase": "collect stamps"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "切手、スタンプ",
+          "phrase": "postage stamp"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】踏み鳴らす、切手を貼る",
+          "phrase": "stamp out"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "stand",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "立つ",
+          "phrase": "stand up"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "立つ、こらえる、の位置にある",
+          "phrase": "stand up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "star",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "星",
+          "phrase": "shooting star"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】主演させる",
+          "phrase": "starring role"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "stay",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "滞在する",
+          "phrase": "stay home"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】滞在",
+          "phrase": "enjoy your stay"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "steal",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "盗む",
+          "phrase": "steal money"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "盗む",
+          "phrase": "steal money"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "step",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "歩み、段階",
+          "phrase": "step by step"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "一歩、歩み、階段",
+          "phrase": "take a step"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "still",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "まだ",
+          "phrase": "still waiting"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "まだ、今でも、それにもかかわらず",
+          "phrase": "still waiting"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "store",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "店",
+          "phrase": "department store"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】保管する",
+          "phrase": "store away"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "straight",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "真っ直ぐな",
+          "phrase": "straight line"
+        },
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "真っ直ぐに",
+          "phrase": "go straight"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "真っ直ぐな、正直な、連続した",
+          "phrase": "a straight road"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "strawberry",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "イチゴ",
+          "phrase": "sweet strawberry"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】イチゴ",
+          "phrase": "wild strawberry"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "study",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "勉強する",
+          "phrase": "study English"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "勉強、研究、書斎",
+          "phrase": "field of study"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "supper",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "夕食",
+          "phrase": "eat supper"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "夕食、夜食",
+          "phrase": "eat supper"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "support",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "支える、応援する",
+          "phrase": "support the team"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "支え、支持、扶養",
+          "phrase": "financial support"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】支持する",
+          "phrase": "support a team"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "sure",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "確信している",
+          "phrase": "I am sure"
+        },
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "もちろん",
+          "phrase": "Sure, go ahead"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "確かに、もちろん",
+          "phrase": "for sure"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "surprise",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "驚かす",
+          "phrase": "surprise party"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】驚かせる",
+          "phrase": "be surprised at"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "surprised",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "驚いた",
+          "phrase": "be surprised at"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "驚いた",
+          "phrase": "be surprised at"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "sweater",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "セーター",
+          "phrase": "warm sweater"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "セーター",
+          "phrase": "wool sweater"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "sweet",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "甘い",
+          "phrase": "sweet cake"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "甘いもの、お菓子",
+          "phrase": "have a sweet"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "table tennis",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "卓球",
+          "phrase": "play table tennis"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "卓球",
+          "phrase": "play table tennis"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "take",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "取る、連れて行く",
+          "phrase": "take a picture"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】テイク、売上",
+          "phrase": "what is your take"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "talk",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "話す",
+          "phrase": "talk about"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】会話、講演",
+          "phrase": "small talk"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "tape",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "テープ",
+          "phrase": " Scotch tape"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "テープ、録音テープ",
+          "phrase": "adhesive tape"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】テープで貼る、録音する",
+          "phrase": "tape record"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "taste",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "味がする",
+          "phrase": "taste good"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】味、好み",
+          "phrase": "taste in music"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】味がする",
+          "phrase": "taste like"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "tax",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "税金",
+          "phrase": "sales tax"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】税金",
+          "phrase": "tax return"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "tear",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "涙",
+          "phrase": "tear drop"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "涙、裂け目",
+          "phrase": "shed tears"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】引き裂く",
+          "phrase": "tear apart"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "telephone",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "電話",
+          "phrase": "use the telephone"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "電話をかける",
+          "phrase": "telephone me"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "電話をかける",
+          "phrase": "telephone for help"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "tent",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "テント",
+          "phrase": "put up a tent"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】テント",
+          "phrase": "camping tent"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "test",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "テスト",
+          "phrase": "English test"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】試験する",
+          "phrase": "test drive"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "textbook",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "教科書",
+          "phrase": "open your textbook"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "教科書",
+          "phrase": "history textbook"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "that",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "あの、その",
+          "phrase": "that day"
+        },
+        {
+          "level": "junior",
+          "pos": "代",
+          "meaning": "あれ、それ",
+          "phrase": "what is that"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】それほど",
+          "phrase": "is it that hard"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "conjunction"
+        },
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A1",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "theirs",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "代",
+          "meaning": "彼らのもの",
+          "phrase": "it is theirs"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "彼ら（彼女ら、それら）のもの",
+          "phrase": "friend of theirs"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        }
+      ]
+    },
+    {
+      "word": "third",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "3番目の",
+          "phrase": "third floor"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "3番目の",
+          "phrase": "third floor"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "thirsty",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "喉が渇いた",
+          "phrase": "I am thirsty"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "喉の渇いた",
+          "phrase": "feel thirsty"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "though",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "接",
+          "meaning": "～だけれども",
+          "phrase": "even though"
+        },
+        {
+          "level": "basic",
+          "pos": "接",
+          "meaning": "～だけれども",
+          "phrase": "even though"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】でも（文末で）",
+          "phrase": "looks nice though"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "conjunction"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "thousand",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "数",
+          "meaning": "1000",
+          "phrase": "one thousand"
+        },
+        {
+          "level": "basic",
+          "pos": "数",
+          "meaning": "千、多数の",
+          "phrase": "one thousand"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "number"
+        }
+      ]
+    },
+    {
+      "word": "through",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～を通して",
+          "phrase": "go through"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】通り抜けて",
+          "phrase": "see through"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "throw",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "投げる",
+          "phrase": "throw a ball"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "投げる",
+          "phrase": "throw a ball"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "tie",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ネクタイ",
+          "phrase": "wear a tie"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "ネクタイ、結び目、ネクタイを締める",
+          "phrase": "wear a tie"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】結ぶ",
+          "phrase": "tie shoelaces"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "time",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "時間、回",
+          "phrase": "what time"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】時間を計る",
+          "phrase": "time is up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "toe",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "足の指",
+          "phrase": "touch your toes"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "足の指",
+          "phrase": "big toe"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "tonight",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "今夜",
+          "phrase": "party tonight"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "今夜（名詞）",
+          "phrase": "tonight's dinner"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "今夜、今夜は",
+          "phrase": "for tonight"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "top",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "頂上、一番上",
+          "phrase": "top of the mountain"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】一番上の",
+          "phrase": "top floor"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "touch",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "触る",
+          "phrase": "don't touch"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】触れる、感動させる",
+          "phrase": "keep in touch"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "tour",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "旅行、ツアー",
+          "phrase": "bus tour"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "旅行、巡回、見学",
+          "phrase": "guided tour"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】周遊する",
+          "phrase": "tour around"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "traffic",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "交通",
+          "phrase": "heavy traffic"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "交通、往来",
+          "phrase": "traffic jam"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "train",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "電車",
+          "phrase": "by train"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "訓練する",
+          "phrase": "train hard"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "訓練する、（植物を）仕立てる",
+          "phrase": "train hard"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "travel",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "旅行する",
+          "phrase": "travel abroad"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "旅、旅行記",
+          "phrase": "travel agency"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "trip",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "旅行",
+          "phrase": "school trip"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】つまずく",
+          "phrase": "trip up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "trouble",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "トラブル、困難",
+          "phrase": "in trouble"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "心配、困難、迷惑",
+          "phrase": "get into trouble"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】悩ませる",
+          "phrase": "trouble oneself"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "try",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "試す、努力する",
+          "phrase": "try hard"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "試みる、やってみる",
+          "phrase": "try hard"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "tunnel",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "トンネル",
+          "phrase": "long tunnel"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】トンネル",
+          "phrase": "tunnel vision"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "twice",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "2回",
+          "phrase": "twice a week"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "2度、2倍",
+          "phrase": "twice a week"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "type",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "タイプ、型",
+          "phrase": "blood type"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】タイプする",
+          "phrase": "type fast"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "understand",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "理解する",
+          "phrase": "I understand"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "理解する、わかる",
+          "phrase": "easy to understand"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "uniform",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "制服、ユニフォーム",
+          "phrase": "school uniform"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "一定の、均一の",
+          "phrase": "uniform speed"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "制服",
+          "phrase": "school uniform"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "university",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "大学",
+          "phrase": "go to university"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "大学",
+          "phrase": "graduate from university"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "until",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "接",
+          "meaning": "～まで",
+          "phrase": "until tomorrow"
+        },
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～まで（前置詞）",
+          "phrase": "until noon"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】～まで",
+          "phrase": "until now"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        }
+      ]
+    },
+    {
+      "word": "up",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "上へ",
+          "phrase": "stand up"
+        },
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "上に（前置詞）",
+          "phrase": "up the hill"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "上へ、～を（のぼって）",
+          "phrase": "go up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "use",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "使う",
+          "phrase": "use a computer"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "使用、利用、用途",
+          "phrase": "make use of"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "useful",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "役に立つ",
+          "phrase": "useful information"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "便利な、役立つ",
+          "phrase": "useful information"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "very",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "とても",
+          "phrase": "very good"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】まさにその",
+          "phrase": "at the very moment"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "video game",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "テレビゲーム",
+          "phrase": "play video games"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "テレビゲーム、ビデオゲーム",
+          "phrase": "play video games"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "village",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "村",
+          "phrase": "small village"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "村、村落",
+          "phrase": "small village"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "violin",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "バイオリン",
+          "phrase": "play the violin"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "バイオリン",
+          "phrase": "play the violin"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "voice",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "声",
+          "phrase": "loud voice"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "声、意見",
+          "phrase": "low voice"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "wait",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "待つ",
+          "phrase": "wait for me"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】待つこと",
+          "phrase": "wait and see"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "wake",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "起きる、起こす",
+          "phrase": "wake up"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】起きる、起こす",
+          "phrase": "wake up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "want",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "欲しい、～したい",
+          "phrase": "I want to"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】不足、必要",
+          "phrase": "freedom from want"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "warm",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "暖かい",
+          "phrase": "warm water"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】温める",
+          "phrase": "warm up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "water",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "水",
+          "phrase": "drink water"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】水をやる",
+          "phrase": "mouth water"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "weak",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "弱い",
+          "phrase": "weak body"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "弱い、かすかな、不得意な",
+          "phrase": "weak point"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "website",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ウェブサイト",
+          "phrase": "visit a website"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "ウェブサイト",
+          "phrase": "visit a website"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "welcome",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "歓迎する",
+          "phrase": "welcome our guests"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】歓迎される",
+          "phrase": "welcome guest"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】歓迎",
+          "phrase": "a warm welcome"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "interjection"
+        },
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "west",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "西",
+          "phrase": "to the west"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "西の、西にある",
+          "phrase": "west coast"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "西へ、西に",
+          "phrase": "go west"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "西",
+          "phrase": "in the west"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "will",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "助",
+          "meaning": "～でしょう、～するつもりだ",
+          "phrase": "I will"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】意志、遺言",
+          "phrase": "at will"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "modal auxiliary"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "win",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "勝つ",
+          "phrase": "win the game"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】勝利",
+          "phrase": "win win situation"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "wind",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "風",
+          "phrase": "strong wind"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】巻く、曲がりくねる",
+          "phrase": "wind up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "windy",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "風の強い",
+          "phrase": "windy day"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "風の強い",
+          "phrase": "windy day"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adjective"
+        }
+      ]
+    },
+    {
+      "word": "wish",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "願う",
+          "phrase": "make a wish"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "願う、～したいと思う",
+          "phrase": "wish for"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "wood",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "木材",
+          "phrase": "made of wood"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "木、材木、森",
+          "phrase": "made of wood"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        }
+      ]
+    },
+    {
+      "word": "worry",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "心配する",
+          "phrase": "don't worry"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "心配する、悩ませる",
+          "phrase": "don't worry"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        }
+      ]
+    },
+    {
+      "word": "wrong",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "間違った",
+          "phrase": "wrong answer"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "悪く、誤って、不適切に",
+          "phrase": "go wrong"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "yeah",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "うん、そうだね",
+          "phrase": "yeah, sure"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "うん、そう、イエス",
+          "phrase": "oh yeah"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "adverb"
+        }
+      ]
+    },
+    {
+      "word": "yet",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "まだ（否定文で）、もう（疑問文で）",
+          "phrase": "not yet"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】けれども",
+          "phrase": "and yet"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        }
+      ]
+    }
+  ]
+}

@@ -38,7 +38,9 @@ test('全体点検の7行修復と7語追加だけを適用し、既存キー・
     expect([...newKeys].filter(key => !oldKeys.has(key)).sort()).toEqual(addedKeys.slice().sort());
     for (const [level, rows] of Object.entries(oldDB)) {
       expect(newDB[level].length).toBe(rows.length + batch.additions.filter(a => a.level === level).length);
-      rows.forEach((r, index) => expect(utils.getWordKey(newDB[level][index], level, newDB)).toBe(utils.getWordKey(r, level, oldDB)));
+      // Explicitly relocated cards are appended after the level's original rows.
+      const retainedKeys = newDB[level].map(r => utils.getWordKey(r, level, newDB)).filter(key => !addedKeys.includes(key));
+      expect(retainedKeys).toEqual(rows.map(r => utils.getWordKey(r, level, oldDB)));
     }
   }
   const allowed = new Set(require('../functions/review_word_hashes.json'));

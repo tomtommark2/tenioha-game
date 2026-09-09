@@ -1,0 +1,5824 @@
+{
+  "date": "2026-09-09",
+  "status": "first-pass-review-ready-not-applied",
+  "scope": "B1/B2由来行を含むA1統合カード160語。所属・原データ・UI・履歴は未変更。",
+  "policy": {
+    "unlearnedIncrease": "問題にしない",
+    "preserveBasicA1": true,
+    "separateAdvancedSenses": true,
+    "history": "維持を優先。難しい場合は修正対象語に限定したリセットも許容。未学習を推測で学習済みにしない。",
+    "publishing": "未承認・未実施"
+  },
+  "counts": {
+    "total": 160,
+    "retainProvisional": 133,
+    "retainChangeEntry": 1,
+    "moveCandidates": 26,
+    "sourceCsvAbsentInScope": 23,
+    "sourceCsvAbsentOutsideScope": 41
+  },
+  "limits": [
+    "全160語の意味・品詞・フレーズの一次判断であり、全例文の校閲完了ではない。",
+    "A1維持133語はCEFRの普遍的認定ではない。元CSVの初級範囲を継続し、今回の移動候補から外す判断。",
+    "Oxfordの全該当行を文字照合し、特に判断に使ったPDF4・6・9・10ページを画像確認。各上位用法のCEFRを全件再認定していない。",
+    "資料の差から移動先を幅で示す候補を残す。範囲の下端を自動採用しない。",
+    "元A1 CSV差分64語のうち本対象と重なる23語を確認。残り41語は今回の160語点検の対象外。"
+  ],
+  "sources": {
+    "local": "data/vocabulary.js、CEFR-J Wordlist Ver1.6 - A1/A2/B1/B2_sep.csv（ローカル資料。公式配布版との同一性は未検証）",
+    "oxford": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000.pdf",
+    "book": "田中茂範『英語イメージ大図鑑』PDF p.181。mineの語義確認のみ。CEFR判定には不使用。"
+  },
+  "entries": [
+    {
+      "word": "above",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "上に",
+          "phrase": "see above"
+        },
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～の上に",
+          "phrase": "above the clouds"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】上述の",
+          "phrase": "the above"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "address",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "住所",
+          "phrase": "email address"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】話しかける、演説する",
+          "phrase": "address a problem"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "住所をA1の入口にする。上位行の意味とaddress a problemの対応は修復が必要。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "after",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～の後に",
+          "phrase": "after school"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "後で、その後に",
+          "phrase": "soon after"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】～した後に",
+          "phrase": "after you arrive"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "arm",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "腕",
+          "phrase": "break one's arm"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】武装させる",
+          "phrase": "armed with"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "腕を入口にし、武装させるを発展用法として区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "back",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "後ろへ、戻って",
+          "phrase": "come back"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "背中、後ろ",
+          "phrase": "back of the room"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "後ろの、裏の",
+          "phrase": "back door"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】後援する、後退する",
+          "phrase": "back up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "bar",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "棒、酒場",
+          "phrase": "candy bar"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】塞ぐ、禁じる",
+          "phrase": "bar someone from"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "bat",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "バット、コウモリ",
+          "phrase": "baseball bat"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】バットで打つ",
+          "phrase": "bat first"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "block",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ブロック、区画",
+          "phrase": "city block"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】塞ぐ、妨害する",
+          "phrase": "block the view"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "board",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "板、黒板、委員会",
+          "phrase": "write on the board"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】板を張る、乗り込む",
+          "phrase": "board the plane"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "book",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "本",
+          "phrase": "read a book"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】予約する",
+          "phrase": "book a flight"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "本を入口にし、予約するを追加用法として区別する。元B1という表示だけで難度を固定しない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "bottle",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "瓶、ボトル",
+          "phrase": "water bottle"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】瓶詰めにする",
+          "phrase": "bottled water"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "bowl",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ボウル、お椀",
+          "phrase": "soup bowl"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】ボウリングをする",
+          "phrase": "bowl a strike"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "but",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "接",
+          "meaning": "しかし",
+          "phrase": "but I'm tired"
+        },
+        {
+          "level": "daily",
+          "pos": "前",
+          "meaning": "【前】～を除いて",
+          "phrase": "nothing but"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "conjunction"
+        },
+        {
+          "level": "B1",
+          "pos": "preposition"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "care",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "世話、注意",
+          "phrase": "take care of"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】気にかける",
+          "phrase": "care for"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "circle",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "円",
+          "phrase": "draw a circle"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】旋回する、囲む",
+          "phrase": "circle the answer"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "coach",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "コーチ、長距離バス",
+          "phrase": "football coach"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】指導する",
+          "phrase": "coach sports"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "cool",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "涼しい、かっこいい",
+          "phrase": "cool breeze"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】冷やす",
+          "phrase": "cool down"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "correct",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "正しい",
+          "phrase": "correct answer"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】訂正する",
+          "phrase": "correct me if I'm wrong"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元B2の動詞を自動的に発展扱いにしない。Oxfordは形容詞・動詞A1。対象語義で判断する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "cut",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "切る",
+          "phrase": "cut paper"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】切り傷、カット",
+          "phrase": "tax cut"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "date",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "日付、デート",
+          "phrase": "what is the date"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】日付を入れる、デートする",
+          "phrase": "date someone"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "dear",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "親愛なる",
+          "phrase": "Dear John"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】あなた（呼びかけ）",
+          "phrase": "my dear"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "design",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "デザイン",
+          "phrase": "fashion design"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】設計する",
+          "phrase": "by design"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元B1の動詞を自動的に発展扱いにしない。Oxfordは名詞・動詞A1。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "dig",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "掘る",
+          "phrase": "dig a hole"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】掘る",
+          "phrase": "dig up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1の掘るを維持する一次判断。dig upを単なる重複とするか句動詞の別義とするか例文で判断。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "down",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "下へ",
+          "phrase": "sit down"
+        },
+        {
+          "level": "basic",
+          "pos": "前",
+          "meaning": "～の下へ",
+          "phrase": "down the stairs"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】元気がない",
+          "phrase": "feel down"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "preposition"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "either",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "（否定文で）～もまた",
+          "phrase": "not hungry either"
+        },
+        {
+          "level": "basic",
+          "pos": "接",
+          "meaning": "～かまたは～か",
+          "phrase": "either A or B"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】どちらかの",
+          "phrase": "in either case"
+        },
+        {
+          "level": "daily",
+          "pos": "代",
+          "meaning": "【代】どちらか",
+          "phrase": "either of them"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "conjunction"
+        },
+        {
+          "level": "B1",
+          "pos": "determiner"
+        },
+        {
+          "level": "B1",
+          "pos": "pronoun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "excuse",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "言い訳、弁解",
+          "phrase": "a poor excuse"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】許す、言い訳する",
+          "phrase": "excuse me"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-change-entry",
+      "proposedLevel": "A1",
+      "rationale": "呼びかけのExcuse meをA1の入口へ。名詞「言い訳」・許す動詞を失わず、別用法として保持。",
+      "evidence": [
+        "https://dictionary.cambridge.org/us/dictionary/essential-british-english/excuse"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "fat",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "太った",
+          "phrase": "get fat"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】脂肪",
+          "phrase": "body fat"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "feed",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "飼料、餌",
+          "phrase": "animal feed"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】エサをやる、養う",
+          "phrase": "feed the family"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2–B1",
+      "rationale": "名詞「飼料」をA1の入口にしない。動詞「食べ物を与える」を導入用法へ。Oxfordは動詞A2・名詞B2、Cambridgeは給餌の動詞B1。",
+      "evidence": [
+        "https://dictionary.cambridge.org/us/dictionary/english/feed"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "fight",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "戦い、喧嘩",
+          "phrase": "have a fight"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】戦う",
+          "phrase": "fight with"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "file",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ファイル",
+          "phrase": "save the file"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】提出する、ファイルする",
+          "phrase": "file a lawsuit"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "fine",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "元気な、晴れた",
+          "phrase": "I'm fine"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】罰金",
+          "phrase": "heavy fine"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】立派に、細かく",
+          "phrase": "chop fine"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】罰金を科す",
+          "phrase": "he was fined"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元気・状態の良さを入口にし、罰金・罰金を科すを発展用法として区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "fire",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "火、火事",
+          "phrase": "on fire"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】解雇する、発砲する",
+          "phrase": "fire a gun"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "fish",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "魚",
+          "phrase": "fresh fish"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】釣りをする",
+          "phrase": "fish for"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "flat",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "アパート（英）",
+          "phrase": "live in a flat"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】平らな",
+          "phrase": "flat tire"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】平らに、きっぱりと",
+          "phrase": "flat broke"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "focus",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "集中する",
+          "phrase": "focus on"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】焦点",
+          "phrase": "main focus"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2–B2",
+      "rationale": "A1の入口としては再配置候補。ただしOxfordは名詞・動詞A2、Cambridgeのfocus onはB2で、前回のB2案を確定しない。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/english/focus-on"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "following",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "次の",
+          "phrase": "following day"
+        },
+        {
+          "level": "exam1",
+          "pos": "前",
+          "meaning": "【前】～の後に",
+          "phrase": "following the rules"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "preposition"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2–B1",
+      "rationale": "次の日という形容詞用法。OxfordはA2、CambridgeはB1。following the rulesは前置詞用法の例として扱わない。",
+      "evidence": [
+        "https://dictionary.cambridge.org/us/dictionary/learner-english/following"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "form",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "形、用紙",
+          "phrase": "fill out a form"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】形作る",
+          "phrase": "form an opinion"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "Oxfordは名詞・動詞A1。ただしform an opinionの抽象的用法は入口の用法と区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "free",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "自由な、無料の",
+          "phrase": "free time"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "自由に、無料で",
+          "phrase": "feel free to"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】解放する",
+          "phrase": "set free"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "future",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "未来",
+          "phrase": "in the future"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】未来の",
+          "phrase": "in the detailed future"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "go",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "行く",
+          "phrase": "go to school"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】試み、番",
+          "phrase": "on the go"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "good",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "良い",
+          "phrase": "good idea"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】善、利益",
+          "phrase": "do good"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "grade",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "学年、成績",
+          "phrase": "first grade"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】採点する、等級分けする",
+          "phrase": "grade A"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "group",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "グループ",
+          "phrase": "group of people"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】分類する",
+          "phrase": "group together"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "guess",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "推測する",
+          "phrase": "guess what"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】推測",
+          "phrase": "wild guess"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元B1の名詞を自動的に発展扱いにしない。Oxfordは名詞・動詞A1。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "half",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "半分",
+          "phrase": "half an hour"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "半分（代名詞的）",
+          "phrase": "half of"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "半分、半分だけ",
+          "phrase": "half of the year"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】半分だけ",
+          "phrase": "half empty"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "determiner"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "hope",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "希望、望む",
+          "phrase": "I hope so"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】望む",
+          "phrase": "hope for the best"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "A1に残すが、現行A1行は名詞表示とI hope soが不一致。代表用法の品詞整備が別途必要。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "hurt",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "傷つける、痛む",
+          "phrase": "it hurts"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】怪我をして、傷ついて",
+          "phrase": "feel hurt"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "inside",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "内側に",
+          "phrase": "inside the house"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "内側に",
+          "phrase": "go inside"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】内部の",
+          "phrase": "inside information"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】内側",
+          "phrase": "on the inside"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "interview",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "面接、インタビュー",
+          "phrase": "job interview"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】面接する",
+          "phrase": "be interviewed"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元B1の動詞を自動的に発展扱いにしない。Oxfordは名詞・動詞A1。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "judge",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "判断する、裁判官",
+          "phrase": "judge people"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】裁判官、審査員",
+          "phrase": "judge of character"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "B1",
+      "rationale": "判断する動詞はOxford・CambridgeともB1。名詞訳の混入と用例を整える。",
+      "evidence": [
+        "https://dictionary.cambridge.org/us/dictionary/english/judge"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "jump",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "ジャンプする",
+          "phrase": "jump high"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】ジャンプ",
+          "phrase": "jump for joy"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "kid",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "子供",
+          "phrase": "just a kid"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】からかう",
+          "phrase": "no kidding"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "kiss",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "キス",
+          "phrase": "give a kiss"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】キスする",
+          "phrase": "kiss and tell"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "later",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "後で",
+          "phrase": "see you later"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】後の",
+          "phrase": "a later date"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "laugh",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "笑う",
+          "phrase": "laugh at"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】笑い",
+          "phrase": "loud laugh"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元B1の名詞を自動的に発展扱いにしない。Oxfordは名詞・動詞A1。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "leave",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "去る、出発する",
+          "phrase": "leave home"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】休暇",
+          "phrase": "on leave"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "light",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "軽い、明るい",
+          "phrase": "light bag"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "光、明かり",
+          "phrase": "turn on the light"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】火をつける、照らす",
+          "phrase": "light up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "like",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～のような",
+          "phrase": "look like"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "好きだ",
+          "phrase": "I like"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】～のように",
+          "phrase": "looks like"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "line",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "線、列",
+          "phrase": "straight line"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】並ぶ、裏地をつける",
+          "phrase": "lined with trees"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "list",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "リスト、一覧表",
+          "phrase": "make a list"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】リストに載せる",
+          "phrase": "listed building"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "Oxfordは名詞・動詞A1。ただしlisted buildingは特殊な用法で、汎用的なリスト掲載とは区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "little",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "小さい",
+          "phrase": "little boy"
+        },
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "少し",
+          "phrase": "a little"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "少しの（a little）、ほとんどない（little）",
+          "phrase": "a little water"
+        },
+        {
+          "level": "daily",
+          "pos": "代",
+          "meaning": "【代】少し",
+          "phrase": "little by little"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "determiner"
+        },
+        {
+          "level": "B1",
+          "pos": "pronoun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "live",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "住む、生きる",
+          "phrase": "live in Japan"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】生きている、生の",
+          "phrase": "live music"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "living",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "生きている",
+          "phrase": "living thing"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】生計、生活",
+          "phrase": "standard of living"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "B1–B2",
+      "rationale": "living thingの形容詞はOxford B1／Cambridge B2。liveの基本動詞と同じ段階にはしない。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/learner-english/living"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "mail",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "郵便",
+          "phrase": "send by mail"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】郵送する",
+          "phrase": "mail it to me"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "make",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "作る",
+          "phrase": "make a cake"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】型、銘柄",
+          "phrase": "what make is it"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "match",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "試合",
+          "phrase": "soccer match"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】調和する、匹敵する",
+          "phrase": "match with"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "mean",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "意味する",
+          "phrase": "what do you mean"
+        },
+        {
+          "level": "basic",
+          "pos": "形",
+          "meaning": "意地悪な、けちな",
+          "phrase": "mean person"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】平均",
+          "phrase": "above the mean"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "A2",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "意味するを入口にし、意地悪な・平均を別用法として区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "mine",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "代",
+          "meaning": "私のもの",
+          "phrase": "it is mine"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】鉱山、地雷",
+          "phrase": "land mine"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "私のものを入口にし、鉱山・地雷を発展用法として区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "more",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "もっと多くの",
+          "phrase": "more time"
+        },
+        {
+          "level": "junior",
+          "pos": "代",
+          "meaning": "もっと多くのもの",
+          "phrase": "one more"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】もっと",
+          "phrase": "more and more"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A1",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "name",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "名前",
+          "phrase": "my name is"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】名付ける",
+          "phrase": "name after"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元B1の動詞を自動的に発展扱いにしない。Oxfordは名詞・動詞A1。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "near",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "近くに",
+          "phrase": "near the station"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】近い",
+          "phrase": "near miss"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】近くに",
+          "phrase": "near and far"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "Oxfordは前置詞・形容詞・副詞A1。ただしnear missは単純な距離の近さと区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "need",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "助",
+          "meaning": "必要とする",
+          "phrase": "need to go"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "必要とする",
+          "phrase": "need to know"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】必要",
+          "phrase": "basic needs"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "modal auxiliary"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "A1の必要とする用法を残す。助動詞表示とneed toの品詞整合は別途修復。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "now",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "今",
+          "phrase": "do it now"
+        },
+        {
+          "level": "exam1",
+          "pos": "接",
+          "meaning": "【接】今や～なので",
+          "phrase": "now that"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "conjunction"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "nurse",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "看護師",
+          "phrase": "school nurse"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】看病する",
+          "phrase": "nurse back to health"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "off",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "離れて、切れて",
+          "phrase": "lights off"
+        },
+        {
+          "level": "basic",
+          "pos": "副",
+          "meaning": "離れて、休みで",
+          "phrase": "take off"
+        },
+        {
+          "level": "daily",
+          "pos": "前",
+          "meaning": "【前】～から外れて",
+          "phrase": "off duty"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "preposition"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "A1の基本用法を残す。現行の品詞・フレーズ対応を別途点検する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "once",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "一度",
+          "phrase": "once a week"
+        },
+        {
+          "level": "exam1",
+          "pos": "接",
+          "meaning": "【接】いったん～すると",
+          "phrase": "once in a while"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "conjunction"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "outside",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "外で",
+          "phrase": "play outside"
+        },
+        {
+          "level": "basic",
+          "pos": "前",
+          "meaning": "～の外に",
+          "phrase": "outside the building"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】外部の",
+          "phrase": "outside chance"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】外側",
+          "phrase": "look from outside"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A2",
+          "pos": "preposition"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "own",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "自身の",
+          "phrase": "my own room"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "自分自身のもの",
+          "phrase": "on my own"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】所有する",
+          "phrase": "own up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "pardon",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "許すこと、何とおっしゃいましたか",
+          "phrase": "Pardon me?"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】許す",
+          "phrase": "beg your pardon"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "past",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "過去",
+          "phrase": "in the past"
+        },
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～を過ぎて",
+          "phrase": "past ten"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】過去の",
+          "phrase": "past tense"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "A1の時間・過去の基本用法を残す。in the pastと副詞表示の対応は別途修復。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "pick",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "選ぶ、摘む",
+          "phrase": "pick up"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】選択、ピック",
+          "phrase": "pick of the bunch"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "picture",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "絵、写真",
+          "phrase": "take a picture"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】想像する",
+          "phrase": "picture this"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "place",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "場所",
+          "phrase": "nice place"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】置く",
+          "phrase": "place an order"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "plan",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "計画",
+          "phrase": "make a plan"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】計画する",
+          "phrase": "plan ahead"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元B1の動詞を自動的に発展扱いにしない。Oxfordは名詞・動詞A1。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "please",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "どうぞ、お願いします",
+          "phrase": "Yes, please"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】喜ばせる",
+          "phrase": "please yourself"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "A1の丁寧な依頼・応答を入口にする。please yourselfの動詞用法を区別し、品詞表示を整える。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "pop",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ポップ音楽",
+          "phrase": "pop music"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】ポンと鳴る、急に現れる",
+          "phrase": "pop up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "present",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "プレゼント",
+          "phrase": "birthday present"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】現在の、出席して",
+          "phrase": "the present situation"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】提示する",
+          "phrase": "present an award"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "プレゼントを入口にする。現在のという形容詞もOxford A1であり、元レベルだけで発展扱いにしない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "price",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "価格",
+          "phrase": "high price"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】値段をつける",
+          "phrase": "reasonably priced"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "program",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "番組、プログラム",
+          "phrase": "TV program"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】プログラムする（米）",
+          "phrase": "program to"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "programme",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "番組（英）",
+          "phrase": "news programme"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】プログラムする",
+          "phrase": "programme the machine"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "push",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "押す",
+          "phrase": "push the button"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】一押し",
+          "phrase": "at a push"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "question",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "質問",
+          "phrase": "ask a question"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】尋ねる、疑う",
+          "phrase": "question authority"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "quiet",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "静かな",
+          "phrase": "be quiet"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】静寂",
+          "phrase": "keep quiet"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "result",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "結果",
+          "phrase": "good result"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】結果として生じる",
+          "phrase": "result from"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "review",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "復習、批評",
+          "phrase": "write a review"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】再検討する、批評する",
+          "phrase": "review a book"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2–B1",
+      "rationale": "現行のwrite a reviewは批評の用法。Oxfordは名詞・動詞A2、Cambridgeの批評名詞はB1。復習という訳だけでA1維持としない。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/english/review"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "room",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "部屋",
+          "phrase": "my room"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】下宿する",
+          "phrase": "room together"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "row",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "列",
+          "phrase": "front row"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】漕ぐ",
+          "phrase": "row hard"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "rule",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ルール、規則",
+          "phrase": "school rules"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】支配する",
+          "phrase": "rule out"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "saw",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "のこぎり",
+          "phrase": "sharp saw"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】のこぎりで切る",
+          "phrase": "saw off"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元CSVの工具名詞A1を維持する一次判断。Cambridgeは工具義にCEFR表示なし。seeの過去形だからA1、という根拠にはしない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "say",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "言う",
+          "phrase": "say hello"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】言い分",
+          "phrase": "final say"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "second",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "2番目の",
+          "phrase": "second floor"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "秒、二番目",
+          "phrase": "sixty seconds"
+        },
+        {
+          "level": "basic",
+          "pos": "代",
+          "meaning": "二番目の人（もの）",
+          "phrase": "the second one"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】第二に",
+          "phrase": "second to none"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "sentence",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "文",
+          "phrase": "short sentence"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】刑を宣告する",
+          "phrase": "life sentence"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "文を入口にし、刑を宣告するを発展用法として区別する。上位行のlife sentenceは動詞用例として不一致。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "shake",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "振ること",
+          "phrase": "give a shake"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】振る",
+          "phrase": "shake head"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "sheet",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "シーツ、紙の1枚",
+          "phrase": "clean sheet"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】シーツ、１枚",
+          "phrase": "sheet of paper"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "紙1枚を入口にすればCambridge・Oxford A2。ベッドのシーツはCambridge B1。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/learner-english/sheet"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "ship",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "船",
+          "phrase": "big ship"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】送る",
+          "phrase": "free shipping"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "shop",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "店",
+          "phrase": "book shop"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "買い物をする",
+          "phrase": "shop for clothes"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】買い物をする",
+          "phrase": "shop around"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "買い物をするを入口にし、shop aroundは表現の違いとして確認する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "shout",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "叫ぶ",
+          "phrase": "shout at"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "叫び、叫び声",
+          "phrase": "give a shout"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】叫ぶ",
+          "phrase": "shout out"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "元CSVの最初の収録は名詞A2、Oxfordは動詞・名詞A2。A1の根拠が乏しいためA2候補。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "shower",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "シャワー",
+          "phrase": "take a shower"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】シャワーを浴びる、降り注ぐ",
+          "phrase": "shower before bed"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "shut",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "閉める、閉まる",
+          "phrase": "shut the door"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "閉める、閉まる",
+          "phrase": "shut the window"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】閉まった",
+          "phrase": "shut down"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "閉める動詞は元CSV・Cambridge・OxfordともA2。形容詞の用例を動詞句shut downと混同しない。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/english/shut"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "sign",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "看板、標識",
+          "phrase": "stop sign"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "署名する",
+          "phrase": "sign here"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】署名する",
+          "phrase": "sign here"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "署名するの同用法が上位にもある。重複するsign hereを発展として二重に要求しない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "since",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～以来",
+          "phrase": "since yesterday"
+        },
+        {
+          "level": "basic",
+          "pos": "前",
+          "meaning": "～以来",
+          "phrase": "since yesterday"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】～なので、～以来",
+          "phrase": "since we moved here"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】その後ずっと",
+          "phrase": "ever since"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "以来という前置詞は元CSV・Cambridge・OxfordでA2を確認。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/essential-british-english/since"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "skate",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "スケート靴",
+          "phrase": "ice skates"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "スケートをする",
+          "phrase": "go skating"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "スケート（靴）",
+          "phrase": "ice skate"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】スケートをする",
+          "phrase": "skate on thin ice"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "スケート靴の名詞は元CSV・Cambridge A2。動詞・慣用句は別に導入。",
+      "evidence": [
+        "https://dictionary.cambridge.org/us/dictionary/english/skate"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "ski",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "スキー板",
+          "phrase": "pair of skis"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "スキーをする",
+          "phrase": "go skiing"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "スキー（板）",
+          "phrase": "pair of skis"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】スキーをする",
+          "phrase": "ski slope"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "元CSVは名詞A2、Oxfordは名詞・動詞A2。ski slopeの中のskiを動詞例としない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "sleep",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "眠る",
+          "phrase": "sleep well"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】睡眠",
+          "phrase": "go to sleep"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "slow",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "遅い",
+          "phrase": "slow train"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】遅く",
+          "phrase": "drive slow"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】遅くする",
+          "phrase": "slow traffic"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "smell",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "においがする",
+          "phrase": "smell good"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】においがする",
+          "phrase": "smell a rat"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "においを感じる基本用法は残し、smell a ratは別の慣用表現として意味を整える。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "smile",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "微笑む",
+          "phrase": "smile at"
+        },
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "微笑み",
+          "phrase": "big smile"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】微笑む",
+          "phrase": "smile back"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "微笑むの基本用法が上位にもある。smile backを別の難しい意味と自動判断しない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "sometimes",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "時々",
+          "phrase": "sometimes go"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】時々",
+          "phrase": "sometimes ... sometimes"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "Oxford A1を確認。元CSV B1の行を理由に、基本的な頻度副詞を移動しない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "sound",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "音",
+          "phrase": "loud sound"
+        },
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "～に聞こえる",
+          "phrase": "sound good"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "音、響き",
+          "phrase": "strange sound"
+        },
+        {
+          "level": "basic",
+          "pos": "動",
+          "meaning": "～のように聞こえる、（音を）出す",
+          "phrase": "sound interesting"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】健全な",
+          "phrase": "safe and sound"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "A2",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "Oxfordの名詞・動詞A1を確認。健全なという形容詞は基本の音・聞こえると区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "speed",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "速度",
+          "phrase": "high speed"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "速度、速さ",
+          "phrase": "high speed"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】急ぐ、スピードを出す",
+          "phrase": "speed limit"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "速度の名詞は元CSV・Oxford A2。上位行のspeed limitは動詞用例と合っていない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "sports",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "スポーツ",
+          "phrase": "play sports"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】スポーツの",
+          "phrase": "sports center"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "Oxfordのsport名詞A1と照合。sportsは名詞の複数形。元CSVのsports形容詞B1とは別に扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "stamp",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "切手",
+          "phrase": "collect stamps"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "切手、スタンプ",
+          "phrase": "postage stamp"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】踏み鳴らす、切手を貼る",
+          "phrase": "stamp out"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "切手の名詞は元CSV・Oxford A2。stamp outの熟語は基本名詞から分ける。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "star",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "星",
+          "phrase": "shooting star"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】主演させる",
+          "phrase": "starring role"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "stay",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "滞在する",
+          "phrase": "stay home"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】滞在",
+          "phrase": "enjoy your stay"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "store",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "店",
+          "phrase": "department store"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】保管する",
+          "phrase": "store away"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "strawberry",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "イチゴ",
+          "phrase": "sweet strawberry"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】イチゴ",
+          "phrase": "wild strawberry"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "B1（初級補完の例外候補）",
+      "rationale": "元CSV・CambridgeともB1。ただし身近な果物としてA1に補完する教育上の理由はありうる。機械移動せず例外として残すか確認する。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/english/strawberry"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "support",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "支える、応援する",
+          "phrase": "support the team"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "支え、支持、扶養",
+          "phrase": "financial support"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】支持する",
+          "phrase": "support a team"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2–B1",
+      "rationale": "名詞の導入は元CSV・Oxford A2、Cambridgeの援助・応援はB1。前回のB1案を確定せず代表用法と一緒に判断する。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/english/support"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "surprise",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "驚かす",
+          "phrase": "surprise party"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】驚かせる",
+          "phrase": "be surprised at"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "take",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "取る、連れて行く",
+          "phrase": "take a picture"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】テイク、売上",
+          "phrase": "what is your take"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "talk",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "話す",
+          "phrase": "talk about"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】会話、講演",
+          "phrase": "small talk"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "tape",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "テープ",
+          "phrase": " Scotch tape"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "テープ、録音テープ",
+          "phrase": "adhesive tape"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】テープで貼る、録音する",
+          "phrase": "tape record"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2–B1",
+      "rationale": "元CSV名詞A2、Oxford名詞B1。貼るテープ・録音媒体・動詞を区別して配置する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "taste",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "味がする",
+          "phrase": "taste good"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】味、好み",
+          "phrase": "taste in music"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】味がする",
+          "phrase": "taste like"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "Oxfordは名詞・動詞A2。味がするという基本用法から導入し、taste in musicは別扱い。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "tax",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "税金",
+          "phrase": "sales tax"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】税金",
+          "phrase": "tax return"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "B1",
+      "rationale": "税金の名詞は元CSV・Cambridge・Oxford B1。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/english/tax"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "tear",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "涙",
+          "phrase": "tear drop"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "涙、裂け目",
+          "phrase": "shed tears"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】引き裂く",
+          "phrase": "tear apart"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2–B2",
+      "rationale": "元CSV名詞A2、Oxford名詞・動詞B2。涙と裂け目／引き裂くの意味・発音を区別して配置する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "tent",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "テント",
+          "phrase": "put up a tent"
+        },
+        {
+          "level": "daily",
+          "pos": "名",
+          "meaning": "【名】テント",
+          "phrase": "camping tent"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B1",
+          "pos": "noun"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "B1",
+      "rationale": "元CSV・Oxfordで名詞B1。上位行も同じテントであり、別の高度語義が追加されたわけではない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "test",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "テスト",
+          "phrase": "English test"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】試験する",
+          "phrase": "test drive"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元B2の動詞を自動的に発展扱いにしない。Oxfordは名詞・動詞A1。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "that",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "あの、その",
+          "phrase": "that day"
+        },
+        {
+          "level": "junior",
+          "pos": "代",
+          "meaning": "あれ、それ",
+          "phrase": "what is that"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】それほど",
+          "phrase": "is it that hard"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "conjunction"
+        },
+        {
+          "level": "A1",
+          "pos": "determiner"
+        },
+        {
+          "level": "A1",
+          "pos": "pronoun"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "though",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "接",
+          "meaning": "～だけれども",
+          "phrase": "even though"
+        },
+        {
+          "level": "basic",
+          "pos": "接",
+          "meaning": "～だけれども",
+          "phrase": "even though"
+        },
+        {
+          "level": "exam1",
+          "pos": "副",
+          "meaning": "【副】でも（文末で）",
+          "phrase": "looks nice though"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "conjunction"
+        },
+        {
+          "level": "B2",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "B1",
+      "rationale": "元CSVは接続詞A2だが、Oxford・Cambridgeは現行の譲歩用法B1。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/learner-english/though?q=though_1"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "through",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～を通して",
+          "phrase": "go through"
+        },
+        {
+          "level": "daily",
+          "pos": "副",
+          "meaning": "【副】通り抜けて",
+          "phrase": "see through"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "adverb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "Oxfordは前置詞・副詞A1。ただしsee throughなどの熟語は用法で区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "tie",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "ネクタイ",
+          "phrase": "wear a tie"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "ネクタイ、結び目、ネクタイを締める",
+          "phrase": "wear a tie"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】結ぶ",
+          "phrase": "tie shoelaces"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "ネクタイの名詞は元CSV・Oxford A2。結ぶ動詞と基本名詞を区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "time",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "時間、回",
+          "phrase": "what time"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】時間を計る",
+          "phrase": "time is up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "top",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "頂上、一番上",
+          "phrase": "top of the mountain"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】一番上の",
+          "phrase": "top floor"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "touch",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "触る",
+          "phrase": "don't touch"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】触れる、感動させる",
+          "phrase": "keep in touch"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "tour",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "旅行、ツアー",
+          "phrase": "bus tour"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "旅行、巡回、見学",
+          "phrase": "guided tour"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】周遊する",
+          "phrase": "tour around"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "旅行・ツアーの名詞は元CSV・Oxford A2。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "trip",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "旅行",
+          "phrase": "school trip"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】つまずく",
+          "phrase": "trip up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "trouble",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "トラブル、困難",
+          "phrase": "in trouble"
+        },
+        {
+          "level": "basic",
+          "pos": "名",
+          "meaning": "心配、困難、迷惑",
+          "phrase": "get into trouble"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】悩ませる",
+          "phrase": "trouble oneself"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A2",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "A2",
+      "rationale": "困難・問題の名詞は元CSV・Oxford A2。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "tunnel",
+      "inLocalA1Csv": false,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "トンネル",
+          "phrase": "long tunnel"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】トンネル",
+          "phrase": "tunnel vision"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "move-candidate",
+      "proposedLevel": "B1–B2",
+      "rationale": "Cambridgeの通常名詞はB1、元CSV・OxfordはB2。A1からの移動候補だが移動先は資料間で割れる。tunnel visionの混入も別途修復。",
+      "evidence": [
+        "https://dictionary.cambridge.org/dictionary/english/tunnel"
+      ],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "type",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "タイプ、型",
+          "phrase": "blood type"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】タイプする",
+          "phrase": "type fast"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "until",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "接",
+          "meaning": "～まで",
+          "phrase": "until tomorrow"
+        },
+        {
+          "level": "junior",
+          "pos": "前",
+          "meaning": "～まで（前置詞）",
+          "phrase": "until noon"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】～まで",
+          "phrase": "until now"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "preposition"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "very",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "とても",
+          "phrase": "very good"
+        },
+        {
+          "level": "exam1",
+          "pos": "形",
+          "meaning": "【形】まさにその",
+          "phrase": "at the very moment"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B2",
+          "pos": "adjective"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "wait",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "待つ",
+          "phrase": "wait for me"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】待つこと",
+          "phrase": "wait and see"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "wake",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "起きる、起こす",
+          "phrase": "wake up"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】起きる、起こす",
+          "phrase": "wake up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "上位もwake upで同用法。別の発展語義が追加されたとは扱わない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "want",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "欲しい、～したい",
+          "phrase": "I want to"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】不足、必要",
+          "phrase": "freedom from want"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "warm",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "形",
+          "meaning": "暖かい",
+          "phrase": "warm water"
+        },
+        {
+          "level": "daily",
+          "pos": "動",
+          "meaning": "【動】温める",
+          "phrase": "warm up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B1",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "water",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "水",
+          "phrase": "drink water"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】水をやる",
+          "phrase": "mouth water"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "welcome",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "歓迎する",
+          "phrase": "welcome our guests"
+        },
+        {
+          "level": "daily",
+          "pos": "形",
+          "meaning": "【形】歓迎される",
+          "phrase": "welcome guest"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】歓迎",
+          "phrase": "a warm welcome"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "interjection"
+        },
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B1",
+          "pos": "adjective"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "歓迎の基本用法を残す。Oxfordの動詞・形容詞A1も参照し、全派生用法を自動的に発展扱いにしない。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "will",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "助",
+          "meaning": "～でしょう、～するつもりだ",
+          "phrase": "I will"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】意志、遺言",
+          "phrase": "at will"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "modal auxiliary"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "助動詞を入口にし、意志・遺言の名詞を発展用法として区別する。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "win",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "動",
+          "meaning": "勝つ",
+          "phrase": "win the game"
+        },
+        {
+          "level": "exam1",
+          "pos": "名",
+          "meaning": "【名】勝利",
+          "phrase": "win win situation"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "verb"
+        },
+        {
+          "level": "B2",
+          "pos": "noun"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "wind",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "名",
+          "meaning": "風",
+          "phrase": "strong wind"
+        },
+        {
+          "level": "exam1",
+          "pos": "動",
+          "meaning": "【動】巻く、曲がりくねる",
+          "phrase": "wind up"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "noun"
+        },
+        {
+          "level": "B2",
+          "pos": "verb"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "風を入口にし、巻くを発展用法として区別する。発音も別。",
+      "evidence": [],
+      "externalCefrCertification": false
+    },
+    {
+      "word": "yet",
+      "inLocalA1Csv": true,
+      "rows": [
+        {
+          "level": "junior",
+          "pos": "副",
+          "meaning": "まだ（否定文で）、もう（疑問文で）",
+          "phrase": "not yet"
+        },
+        {
+          "level": "daily",
+          "pos": "接",
+          "meaning": "【接】けれども",
+          "phrase": "and yet"
+        }
+      ],
+      "localCsv": [
+        {
+          "level": "A1",
+          "pos": "adverb"
+        },
+        {
+          "level": "B1",
+          "pos": "conjunction"
+        }
+      ],
+      "decision": "retain-a1-provisional",
+      "proposedLevel": "A1",
+      "rationale": "元A1 CSVと現行の基本用法を根拠に、今回は所属を維持する一次判断。上位の語義・品詞は基本用法と区別して扱う。",
+      "evidence": [],
+      "externalCefrCertification": false
+    }
+  ]
+}

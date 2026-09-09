@@ -125,3 +125,57 @@ test('異なる発音と5用法でも意味・フレーズを欠落させない'
     if (spelling === 'record') await expect(page.locator('.word-ipa-variant')).toHaveCount(2);
   }
 });
+
+test('再配置17語の所属・履歴・単語帳・例文・Undoを保持する', async ({ page }) => {
+  test.setTimeout(60000);
+  const targets = { basic: 'sheet shout shut since skate ski speed stamp taste tie tour trouble'.split(' '), daily: 'judge tax tent though'.split(' '), junior: ['excuse'] };
+  const keys = await page.evaluate(targets => {
+    const data = buildLocalSaveData();
+    data.wordGroupingVersion = 1;
+    const keys = [];
+    for (const [level, spellings] of Object.entries(targets)) for (const spelling of spellings) {
+      const word = vocabularyDatabase[level].find(word => word.word === spelling);
+      const key = getWordKey(word, level);
+      keys.push(key);
+      data.wordStates[key] = 'weak';
+      data.srsData[key] = { recentAnswers: [false, true], successCount: 1, failCount: 1, dueAt: 123, reviewStep: 1, scheduledIntervalDays: 1, everWrong: true };
+    }
+    data.points = 1234;
+    localStorage.setItem('vocabClickerSave', JSON.stringify(data));
+    return keys;
+  }, targets);
+  await page.reload();
+  expect(await page.evaluate(keys => keys.map(key => gameState.srsData[key].recentAnswers), keys)).toEqual(keys.map(() => [false, true]));
+  for (const [level, spellings] of Object.entries(targets)) for (const spelling of spellings) {
+    const result = await page.evaluate(({ level, spelling }) => {
+      activateLearningSessionUI();
+      gameState.currentLevel = level;
+      loadVocabularyForLevel();
+      gameState.currentWord = vocabulary.find(word => word.word === spelling);
+      const word = gameState.currentWord;
+      const key = getWordKeySafe(word);
+      showWord(word);
+      gameState.activeReviewLevels = [level];
+      const enabled = isReviewLevelEnabledForWord(word, level);
+      gameState.activeReviewLevels = [level === 'junior' ? 'daily' : 'junior'];
+      const disabled = !isReviewLevelEnabledForWord(word, level);
+      const entries = ensureReviewWordIndex().get(key);
+      return { enabled, disabled, example: word.example, refs: entries.map(entry => getWordKeySafe(entry.word, entry.level)), key, hasLevel: entries.some(entry => entry.level === level), senses: word.senses };
+    }, { level, spelling });
+    expect(result.enabled && result.disabled && result.hasLevel).toBe(true);
+    expect(new Set(result.refs)).toEqual(new Set([result.key]));
+    await expect(page.locator('#exampleSentence')).toHaveText(result.example);
+    await expect(page.locator('.word-ipa')).not.toBeEmpty();
+    if (spelling === 'excuse') await expect(page.locator('.word-ipa-variant')).toHaveCount(2);
+    await page.locator('#meaningCard').click();
+    for (const sense of result.senses) await expect(page.locator('#meaningText')).toContainText(sense.meaning.replace(/^【[^】]+】/, ''));
+    await page.evaluate(() => undoLastAction());
+    expect(await page.evaluate(key => gameState.srsData[key].recentAnswers, result.key)).toEqual([false, true]);
+  }
+  expect(await page.evaluate(() => gameState.points)).toBe(1234);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.evaluate(() => document.getElementById('meaningCard').classList.add('flipped'));
+  await page.screenshot({ path: 'screenshots/a1-level-repair-excuse-mobile.png', fullPage: true });
+  await page.reload();
+  expect(await page.evaluate(keys => keys.map(key => gameState.srsData[key].recentAnswers), keys)).toEqual(keys.map(() => [false, true]));
+});

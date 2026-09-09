@@ -23,8 +23,16 @@
 - Do not deploy the app UI to Firebase Hosting. Hosting has been disabled for the `tenioha-game` Firebase project.
 - For backend changes, prefer explicit deploy targets such as `npx firebase deploy --only functions --project tenioha-game` or `npx firebase deploy --only firestore:rules --project tenioha-game`.
 
+### 2026-09-09 公開チェック（2026.0909.2152）
+
+- 対象：カード統合・例文見直しのお知らせ、ひとこと通知のお知らせ、A1の16語再配置とexcuseの入口／名詞発音の修復。新しい試作ピクトグラムは公開対象外。
+- `feedback(us-central1)`を更新済み。指定WebhookはSecret Managerへ登録し、指定チャンネルへの接続テスト1件の作成を確認。本番一覧200・未認証投稿401を確認。実利用者としての投稿試験は行わない。
+- `npm run test:e2e:safe`成功：単体24件・Functions18件・ブラウザー132件、HTML・版番号・許可キー同期。狭幅のお知らせとexcuseを目視確認。
+- アプリはGitHub Pagesのmainへ反映する。Firestoreルール・決済・復習スコアFunctions・Firebase Hostingは変更しない。
+
 ### 2026-09-09 公開チェック（2026.0909.1335）
 
+- 公開完了：`submitReviewScore(us-central1)` 更新成功後、`a4559b2` をmainへ反映。GitHub Pagesの [公開処理](https://github.com/tomtommark2/tenioha-game/actions/runs/34312158522) 成功を確認。本番13ファイルが公開コミットとバイト一致し、幅390pxの独立ブラウザーで版番号・追加7語・主CEFR7,007カード・expensiveの実表示を確認（page errorなし）。本番回答・保存・決済は実行していない。サーバーGETは仕様どおり405。
 - 対象：設定入口と復習案内、891語のカード統合、100語分の名詞イラスト（97画像）、語彙・品詞・フレーズ修復、仮例文414行の解消、基本語7語の追加。
 - 単体23件・Functions16件・ブラウザー130件・モバイル18件を確認。全体実行時の制作一覧テスト1件は旧件数4,571を期待して失敗したため、追加後の4,577へ修正して対象テストを再実行し成功。HTML・バージョン・許可キー10,726件の同期も確認。
 - 再実行はファイル名／テスト名を明示する。`test:e2e:safe -- --last-failed` は前段の単体テストが失敗一覧を上書きし、対象なしになるため使わない。

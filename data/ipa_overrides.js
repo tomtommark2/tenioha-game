@@ -342,7 +342,7 @@ const IPA_OVERRIDES = {
         { word: "excellent", pos: "形", ipa: "ˈeksələnt" },
         { word: "excited", pos: "形", ipa: "ɪkˈsaɪtɪd" },
         { word: "exciting", pos: "形", ipa: "ɪkˈsaɪtɪŋ" },
-        { word: "excuse", pos: "名", ipa: "ɪkˈskjuz" },
+        { word: "excuse", pos: "名", ipa: "ɪkˈskjus" },
         { word: "exercise", pos: "動", ipa: "ˈeksərˌsaɪz" },
         { word: "fairy", pos: "名", ipa: "ˈferi" },
         { word: "false", pos: "形", ipa: "fɔls" },

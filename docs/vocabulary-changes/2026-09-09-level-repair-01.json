@@ -1,0 +1,363 @@
+{
+  "date": "2026-09-09",
+  "scope": "16 level moves and excuse introduction; learning keys unchanged",
+  "changes": [
+    {
+      "level": "daily",
+      "index": 1728,
+      "before": {
+        "word": "excuse",
+        "meaning": "【動】許す、言い訳する",
+        "pos": "動",
+        "example": "Excuse my lateness.",
+        "phrase": "excuse me",
+        "set": 1
+      },
+      "after": {
+        "word": "excuse",
+        "meaning": "【動】すみません（Excuse meで呼びかけ）、～を許す",
+        "pos": "動",
+        "example": "Excuse me, is this your bag?",
+        "phrase": "Excuse me",
+        "set": 1,
+        "primarySense": true
+      }
+    },
+    {
+      "level": "junior",
+      "index": 546,
+      "before": {
+        "word": "judge",
+        "meaning": "判断する、裁判官",
+        "phrase": "judge people",
+        "pos": "動",
+        "example": "Check and judge clearly.",
+        "set": 1
+      },
+      "after": {
+        "word": "judge",
+        "meaning": "判断する",
+        "phrase": "judge people",
+        "pos": "動",
+        "example": "Do not judge people by their clothes.",
+        "set": 1,
+        "studyLevel": "daily"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 894,
+      "before": {
+        "word": "sheet",
+        "meaning": "シーツ、紙の1枚",
+        "phrase": "clean sheet",
+        "pos": "名",
+        "example": "Put a clean sheet on the bed.",
+        "set": 1
+      },
+      "after": {
+        "word": "sheet",
+        "meaning": "紙の1枚",
+        "phrase": "a sheet of paper",
+        "pos": "名",
+        "example": "Please give me a sheet of paper.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 905,
+      "before": {
+        "word": "shout",
+        "meaning": "叫ぶ",
+        "phrase": "shout at",
+        "pos": "動",
+        "example": "Don't shout.",
+        "set": 1
+      },
+      "after": {
+        "word": "shout",
+        "meaning": "叫ぶ",
+        "phrase": "shout at",
+        "pos": "動",
+        "example": "Don't shout.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 909,
+      "before": {
+        "word": "shut",
+        "meaning": "閉める、閉まる",
+        "phrase": "shut the door",
+        "pos": "動",
+        "example": "Shut your mouth.",
+        "set": 1
+      },
+      "after": {
+        "word": "shut",
+        "meaning": "閉める、閉まる",
+        "phrase": "shut the door",
+        "pos": "動",
+        "example": "Please shut the door.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 918,
+      "before": {
+        "word": "since",
+        "meaning": "～以来",
+        "phrase": "since yesterday",
+        "pos": "前",
+        "example": "I have been here since morning.",
+        "set": 1
+      },
+      "after": {
+        "word": "since",
+        "meaning": "～以来",
+        "phrase": "since yesterday",
+        "pos": "前",
+        "example": "I have been here since morning.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 927,
+      "before": {
+        "word": "skate",
+        "meaning": "スケート靴",
+        "phrase": "ice skates",
+        "pos": "名",
+        "example": "I bought new skates.",
+        "set": 1
+      },
+      "after": {
+        "word": "skate",
+        "meaning": "スケート靴",
+        "phrase": "ice skates",
+        "pos": "名",
+        "example": "I bought new skates.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 929,
+      "before": {
+        "word": "ski",
+        "meaning": "スキー板",
+        "phrase": "pair of skis",
+        "pos": "名",
+        "example": "I put on my skis.",
+        "set": 1
+      },
+      "after": {
+        "word": "ski",
+        "meaning": "スキー板",
+        "phrase": "pair of skis",
+        "pos": "名",
+        "example": "I put on my skis.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 976,
+      "before": {
+        "word": "speed",
+        "meaning": "速度",
+        "phrase": "high speed",
+        "pos": "名",
+        "example": "Reduce your speed.",
+        "set": 1
+      },
+      "after": {
+        "word": "speed",
+        "meaning": "速度",
+        "phrase": "high speed",
+        "pos": "名",
+        "example": "Reduce your speed.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 985,
+      "before": {
+        "word": "stamp",
+        "meaning": "切手",
+        "phrase": "collect stamps",
+        "pos": "名",
+        "example": "I need a stamp.",
+        "set": 1
+      },
+      "after": {
+        "word": "stamp",
+        "meaning": "切手",
+        "phrase": "collect stamps",
+        "pos": "名",
+        "example": "I need a stamp.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 1031,
+      "before": {
+        "word": "taste",
+        "meaning": "味がする",
+        "phrase": "taste good",
+        "pos": "動",
+        "example": "This soup tastes good.",
+        "set": 1
+      },
+      "after": {
+        "word": "taste",
+        "meaning": "味がする",
+        "phrase": "taste good",
+        "pos": "動",
+        "example": "This soup tastes good.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 1032,
+      "before": {
+        "word": "tax",
+        "meaning": "税金",
+        "phrase": "sales tax",
+        "pos": "名",
+        "example": "The price includes tax.",
+        "set": 1
+      },
+      "after": {
+        "word": "tax",
+        "meaning": "税金",
+        "phrase": "sales tax",
+        "pos": "名",
+        "example": "The price includes tax.",
+        "set": 1,
+        "studyLevel": "daily"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 1046,
+      "before": {
+        "word": "tent",
+        "meaning": "テント",
+        "phrase": "put up a tent",
+        "pos": "名",
+        "example": "We slept in a tent.",
+        "set": 1
+      },
+      "after": {
+        "word": "tent",
+        "meaning": "テント",
+        "phrase": "put up a tent",
+        "pos": "名",
+        "example": "We slept in a tent.",
+        "set": 1,
+        "studyLevel": "daily"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 1075,
+      "before": {
+        "word": "though",
+        "meaning": "～だけれども",
+        "phrase": "even though",
+        "pos": "接",
+        "example": "Though it was raining, we went out.",
+        "set": 1
+      },
+      "after": {
+        "word": "though",
+        "meaning": "～だけれども",
+        "phrase": "even though",
+        "pos": "接",
+        "example": "Though it was raining, we went out.",
+        "set": 1,
+        "studyLevel": "daily"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 1082,
+      "before": {
+        "word": "tie",
+        "meaning": "ネクタイ",
+        "phrase": "wear a tie",
+        "pos": "名",
+        "example": "He is wearing a red tie.",
+        "set": 1
+      },
+      "after": {
+        "word": "tie",
+        "meaning": "ネクタイ",
+        "phrase": "wear a tie",
+        "pos": "名",
+        "example": "He is wearing a red tie.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 1100,
+      "before": {
+        "word": "tour",
+        "meaning": "旅行、ツアー",
+        "phrase": "bus tour",
+        "pos": "名",
+        "example": "We went on a tour of the city.",
+        "set": 1
+      },
+      "after": {
+        "word": "tour",
+        "meaning": "旅行、ツアー",
+        "phrase": "bus tour",
+        "pos": "名",
+        "example": "We went on a tour of the city.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    },
+    {
+      "level": "junior",
+      "index": 1110,
+      "before": {
+        "word": "trouble",
+        "meaning": "トラブル、困難",
+        "phrase": "in trouble",
+        "pos": "名",
+        "example": "I am in trouble.",
+        "set": 1
+      },
+      "after": {
+        "word": "trouble",
+        "meaning": "トラブル、困難",
+        "phrase": "in trouble",
+        "pos": "名",
+        "example": "I am in trouble.",
+        "set": 1,
+        "studyLevel": "basic"
+      }
+    }
+  ]
+}

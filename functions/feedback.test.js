@@ -2,10 +2,10 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { createFeedbackHandler, validateText } = require('./feedback');
 
-function fixture(user = null) {
+function fixture(user = null, options = {}) {
     const data = new Map();
     let next = 0;
-    const ref = path => ({ path });
+    const ref = path => ({ path, id: path.split('/').pop() });
     const snapshot = path => ({ exists: data.has(path), data: () => data.get(path) });
     const db = {
         collection: name => ({
@@ -22,7 +22,7 @@ function fixture(user = null) {
             writes.forEach(fn => fn());
         }
     };
-    const handler = createFeedbackHandler({ db, verifyUser: async () => user, rejectNonPost: () => false });
+    const handler = createFeedbackHandler({ db, verifyUser: async () => user, rejectNonPost: () => false, ...options });
     async function call(body) {
         const response = { code: 200, set() {}, status(code) { this.code = code; return this; }, json(value) { this.body = value; } };
         await handler({ headers: user ? { authorization: 'Bearer test' } : {}, body }, response);
@@ -31,6 +31,55 @@ function fixture(user = null) {
     return { data, call, setUser: value => { user = value; } };
 }
 const member = { uid: 'member', firebase: { sign_in_provider: 'google.com' } };
+test('保存済み新規投稿・本人コメントだけ通知し、通知失敗で投稿を失敗扱いにしない', async () => {
+    const sent = [];
+    const f = fixture(member, { notify: async message => {
+        assert.ok(f.data.has(`feedback_posts/${message.postId}`));
+        sent.push(message);
+    } });
+    await f.call({ action: 'create', text: '要望', nickname: '利用者' });
+    assert.deepEqual(sent, [{ action: 'create', postId: 'p1', nickname: '利用者', text: '要望' }]);
+    assert.equal((await f.call({ action: 'create', text: '連投' })).code, 429);
+    assert.equal(sent.length, 1);
+    f.data.delete('feedback_limits/member');
+    await f.call({ action: 'comment', id: 'p1', text: '補足', nickname: '偽名' });
+    assert.deepEqual(sent[1], { action: 'comment', postId: 'p1', nickname: '利用者', text: '補足' });
+    f.setUser({ ...member, feedbackAdmin: true });
+    f.data.delete('feedback_limits/member');
+    await f.call({ action: 'reply', id: 'p1', text: '返信' });
+    await f.call({ action: 'list' });
+    assert.equal(sent.length, 2);
+    let failures = 0;
+    const broken = fixture(member, { notify: async () => { throw new Error('secret-url'); }, notificationFailed: () => failures++ });
+    const result = await broken.call({ action: 'create', text: '保存される' });
+    assert.equal(result.code, 200);
+    assert.deepEqual(result.body, { ok: true });
+    assert.equal(broken.data.get('feedback_posts/p1').text, '保存される');
+    assert.equal(failures, 1);
+});
+
+test('Discord送信はメンション禁止・公開項目のみ・タイムアウト・失敗検出', async () => {
+    const { createDiscordNotifier } = require('./feedback-notifications');
+    const webhook = 'https://discord.com/api/webhooks/123/test-token';
+    let called = 0;
+    const notify = createDiscordNotifier({ getWebhook: () => webhook, fetchImpl: async (url, options) => {
+        called++;
+        assert.equal(url.search, '?wait=true');
+        assert.equal(options.redirect, 'error');
+        assert.ok(options.signal instanceof AbortSignal);
+        const body = JSON.parse(options.body);
+        assert.deepEqual(body.allowed_mentions, { parse: [] });
+        assert.equal(body.embeds[0].description, '@everyone <@123>');
+        assert.equal(JSON.stringify(body).includes('private-uid'), false);
+        return { ok: true };
+    } });
+    await notify({ action: 'create', postId: 'p1', nickname: 'test', text: '@everyone <@123>', authorUid: 'private-uid' });
+    assert.equal(called, 1);
+    for (const fetchImpl of [async () => ({ ok: false }), async () => { throw new Error('timeout'); }]) {
+        await assert.rejects(createDiscordNotifier({ getWebhook: () => webhook, fetchImpl })({ action: 'create', postId: 'p1', text: 'test' }));
+    }
+    await assert.rejects(createDiscordNotifier({ getWebhook: () => 'https://example.com/', fetchImpl: async () => { throw new Error('must not fetch'); } })({}));
+});
 test('停止中アカウントと1日上限をサーバーで拒否', async () => {
     const f = fixture(member);
     f.data.set('feedback_limits/member', { blocked: true });

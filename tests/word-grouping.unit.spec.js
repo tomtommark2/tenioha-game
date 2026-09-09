@@ -25,7 +25,9 @@ test('全CEFRの同綴りを初級側へ集約し、全用法・参照・サー�
       seen.add(word.word);
       senses += word.senses?.length || 1;
       if (word.senses) {
-        expect(word.senses[0].__sourceLevel).toBe(level);
+        const firstLevel = api.LEVELS.find(source => raw[source].some(entry => entry.word === word.word));
+        const first = raw[firstLevel].find(entry => entry.word === word.word);
+        expect(level).toBe(first.studyLevel || firstLevel);
         for (const sense of word.senses) {
           const { __sourceLevel, ...data } = sense;
           expect(raw[__sourceLevel]).toContainEqual(data);
@@ -42,6 +44,56 @@ test('全CEFRの同綴りを初級側へ集約し、全用法・参照・サー�
   }
   expect(database.junior.find(word => word.word === 'after').senses).toHaveLength(3);
   expect(database.basic.some(word => word.word === 'after')).toBe(false);
+});
+
+test('再配置16語とexcuseの入口変更は旧統合キー・全参照・クラウド履歴を維持する', () => {
+  const { raw, utils, api } = load();
+  const grouping = api.build(raw, utils);
+  const batch = require('../docs/vocabulary-changes/2026-09-09-level-repair-01.json');
+  const before = JSON.parse(JSON.stringify(raw));
+  expect(batch.changes).toHaveLength(17);
+  for (const change of batch.changes) {
+    expect(raw[change.level][change.index]).toEqual(change.after);
+    before[change.level][change.index] = change.before;
+  }
+  const old = api.build(before, utils);
+  const allKeys = database => Object.entries(database).flatMap(([level, words]) => words.map(word => utils.getWordKey(word, level, database))).sort();
+  expect(allKeys(grouping.database)).toEqual(allKeys(old.database));
+  const changedWords = new Set(batch.changes.map(change => change.after.word));
+  for (const [level, words] of Object.entries(old.database)) {
+    expect(grouping.database[level].filter(word => !changedWords.has(word.word))).toEqual(words.filter(word => !changedWords.has(word.word)));
+  }
+  const targets = {
+    basic: 'sheet shout shut since skate ski speed stamp taste tie tour trouble'.split(' '),
+    daily: 'judge tax tent though'.split(' '),
+    junior: ['excuse'],
+  };
+  const source = fs.readFileSync('js/firebase_app_v2.js', 'utf8');
+  const context = vm.createContext({ console });
+  vm.runInContext(source.slice(source.indexOf('function buildCloudSaveData('), source.indexOf('\nfunction hasCloudSaveData(')), context);
+  for (const [level, spellings] of Object.entries(targets)) for (const spelling of spellings) {
+    const old = raw.junior.find(word => word.word === spelling);
+    const key = utils.getWordKey(old, 'junior', raw);
+    const cards = api.LEVELS.flatMap(level => grouping.database[level].filter(word => word.word === spelling));
+    expect(cards).toHaveLength(1);
+    expect(grouping.database[level]).toContain(cards[0]);
+    expect(cards[0].__sourceLevel).toBe(level);
+    expect(utils.getWordKey(cards[0], level, grouping.database)).toBe(key);
+    const refs = Object.entries(grouping.database).flatMap(([category, words]) => words.filter(word => word.word === spelling && word.senses).map(word => utils.getWordKey(word, category, grouping.database)));
+    expect(new Set(refs)).toEqual(new Set([key]));
+    const saved = { wordGroupingVersion: 1, wordStates: { [key]: 'weak' }, srsData: { [key]: { recentAnswers: [false, true], dueAt: 123, failCount: 1, successCount: 1 } }, learnedWordIntervals: { [key]: 3, [`${key}_last`]: 100 }, points: 1234 };
+    const restored = JSON.parse(context.buildCloudSaveData(JSON.stringify(saved)));
+    api.resetMergedHistory(restored, grouping, restored.wordGroupingVersion);
+    expect(restored.srsData[key]).toEqual(saved.srsData[key]);
+    expect(restored.wordStates[key]).toBe('weak');
+    expect(restored.learnedWordIntervals).toEqual(saved.learnedWordIntervals);
+    expect(restored.points).toBe(1234);
+  }
+  expect(grouping.database.junior).toHaveLength(1098);
+  const excuse = grouping.database.junior.find(word => word.word === 'excuse');
+  expect(excuse.phrase).toBe('Excuse me');
+  expect(excuse.senses[0].pos).toBe('動');
+  expect(excuse.senses.some(sense => sense.meaning.includes('言い訳'))).toBe(true);
 });
 
 test('統合対象だけ旧履歴を削除し、再読込では新履歴・ポイントを維持する', () => {

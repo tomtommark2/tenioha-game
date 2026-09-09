@@ -30,6 +30,18 @@
 
 ## 公開前
 
+### Discord通知（2026-09-09・Functions公開済み）
+
+- `functions/feedback-notifications.js`：新規投稿と投稿者の追加コメントを、保存成功後に指定Webhookへ通知する。運営返信・状態変更・通報・閲覧は通知しない。トランザクション内では送信しない。
+- 送信項目は本文・公開ニックネーム・投稿ID・アプリへのリンク。AuthのUID・メールは送信しない。`allowed_mentions: { parse: [] }`で投稿本文からのメンションを禁止する。
+- Firebase Secret Managerの`FEEDBACK_DISCORD_WEBHOOK`を`feedback`関数だけへバインドする。Webhook実値はコード・文書・ログへ記載しない。指定チャンネルとの一致・Secret登録後の値一致を確認し、`feedback(us-central1)`の更新に成功。
+- 配信は5秒上限のベストエフォート。HTTP失敗・タイムアウトでも投稿成功を返し、秘密情報や本文を含まない警告だけ記録する。自動再送・未送信キューはないため通知漏れはありうる。アプリ内一覧が正本。Discordへの配信とスマートフォンへのプッシュ通知は別で、後者はDiscord側設定に依存する。
+- 今回はSecret Manager APIで秘密値をメモリから登録し、ローカルの秘密ファイルやCLIのリクエストログを作らなかった。更新時も秘密値をログへ出さない。デプロイは明示した`functions:feedback`のみ。決済・スコア関連のFunctionsは変更しない。
+- 検証：Functions18件成功（通知対象、保存後送信、失敗時の保存保持、個人情報除外、メンション禁止、HTTP失敗・通信例外）。ユーザー承認の接続テスト1件をDiscordへ送り、メッセージ作成と送信先一致を確認。実利用者の投稿は作成せず、本番の認証済み投稿からDiscordまでの通し試験は未実施。
+- 仕様根拠：[Discord Webhook](https://docs.discord.com/developers/resources/webhook)、[Firebaseのシークレット設定](https://firebase.google.com/docs/functions/config-env)。
+
+### 通常の公開確認
+
 1. 運営にするアカウントのUIDを確認し、上記クレームを設定する。
 2. `node --test functions/feedback.test.js`、`node node_modules/playwright/cli.js test tests/feedback.spec.js`、`npm run test:mobile-modals` を実行する。
 3. デプロイを依頼された場合のみ `npx firebase deploy --only functions:feedback,firestore:rules --project tenioha-game` を実行。UIは既存のGitHub Pages公開手順に従う。

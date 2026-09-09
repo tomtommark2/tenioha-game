@@ -1,5 +1,6 @@
 const { onRequest } = require('firebase-functions/v2/https');
 const crypto = require('node:crypto');
+const { feedbackDiscordWebhook, createDiscordNotifier, logNotificationFailure } = require('./feedback-notifications');
 const FEEDBACK_STATUSES = new Set(['received', 'reviewing', 'planned', 'done']);
 const MAX_THREAD_ENTRIES = 40;
 
@@ -24,7 +25,7 @@ function validateText(value, max, fallback = '') {
     return value.trim();
 }
 
-function createFeedbackHandler({ db, verifyUser, rejectNonPost }) {
+function createFeedbackHandler({ db, verifyUser, rejectNonPost, notify = async () => {}, notificationFailed = logNotificationFailure }) {
     return async (req, res) => {
         if (rejectNonPost(req, res)) return;
         res.set('Cache-Control', 'no-store');
@@ -72,7 +73,9 @@ function createFeedbackHandler({ db, verifyUser, rejectNonPost }) {
             const now = Date.now();
             const entryId = crypto.randomUUID();
             const isUserMessage = ['create', 'comment'].includes(action);
+            let notification = null;
             await db.runTransaction(async tx => {
+                notification = null;
                 const gateSnap = await tx.get(gate);
                 const limits = gateSnap.data() || {};
                 if (limits.blocked) throw Object.assign(new Error('現在投稿できません。'), { status: 403 });
@@ -83,6 +86,7 @@ function createFeedbackHandler({ db, verifyUser, rejectNonPost }) {
                 if (isUserMessage && count >= 10) throw Object.assign(new Error('本日の投稿上限（追加コメントを含め10件）に達しました。'), { status: 429 });
                 if (action === 'create') {
                     tx.create(ref, { text, nickname, authorUid: user.uid, createdAt: now, hidden: false, reply: '', status: 'received', thread: [] });
+                    notification = { action, postId: ref.id, nickname, text };
                 } else {
                     const snap = await tx.get(ref);
                     if (!snap.exists) throw Object.assign(new Error('投稿が見つかりません。'), { status: 404 });
@@ -114,10 +118,16 @@ function createFeedbackHandler({ db, verifyUser, rejectNonPost }) {
                         if (action === 'reply') Object.assign(update, { reply: text, repliedAt: now });
                         if (action === 'status') update.status = body.status;
                         tx.update(ref, update);
+                        if (action === 'comment') notification = { action, postId: id, nickname: post.nickname || '学習者', text };
                     } else tx.update(ref, { hidden: !post.hidden });
                 }
                 tx.set(gate, { ...limits, lastAt: now, day, count: count + (isUserMessage ? 1 : 0) });
             });
+            // Send only after a committed write, never inside a retried transaction.
+            if (notification) {
+                try { await notify(notification); }
+                catch { notificationFailed(); }
+            }
             res.json({ ok: true });
         } catch (error) {
             res.status(error.status || 500).json({ error: error.status ? error.message : '現在利用できません。時間をおいてお試しください。' });
@@ -125,4 +135,7 @@ function createFeedbackHandler({ db, verifyUser, rejectNonPost }) {
     };
 }
 
-module.exports = { validateText, createFeedbackHandler, buildFeedbackFunction: deps => onRequest({ region: 'us-central1', maxInstances: 3 }, createFeedbackHandler(deps)) };
+module.exports = { validateText, createFeedbackHandler, buildFeedbackFunction: deps => onRequest(
+    { region: 'us-central1', maxInstances: 3, secrets: [feedbackDiscordWebhook] },
+    createFeedbackHandler({ ...deps, notify: createDiscordNotifier() })
+) };
