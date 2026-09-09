@@ -61,6 +61,7 @@ function getModalFocusableElements(modal) {
         'input:not([disabled])',
         'select:not([disabled])',
         'textarea:not([disabled])',
+        'summary',
         '[tabindex]:not([tabindex="-1"])'
     ].join(','))).filter(element => element.getClientRects().length > 0);
 }
@@ -378,6 +379,44 @@ function initHelpModalSwipeToClose(helpModal) {
 
 const ANNOUNCEMENT_READ_KEY = 'vocabGame_lastReadAnnouncementId';
 const ANNOUNCEMENT_AUTO_SHOWN_KEY = 'vocabGame_lastAutoShownAnnouncementId';
+const ANNOUNCEMENT_READ_IDS_KEY = 'vocabGame_readAnnouncementIds_v1';
+let announcementReadIds = null;
+
+function getReadAnnouncementIds() {
+    if (announcementReadIds) return announcementReadIds;
+    const items = getAnnouncements();
+    const knownIds = new Set(items.map(item => item.id));
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(ANNOUNCEMENT_READ_IDS_KEY)); } catch { /* Recover old-format state below. */ }
+    if (Array.isArray(saved)) {
+        announcementReadIds = new Set(saved.filter(id => knownIds.has(id)));
+    } else {
+        let legacyId = null;
+        try { legacyId = localStorage.getItem(ANNOUNCEMENT_READ_KEY); } catch { /* Storage may be unavailable. */ }
+        const index = items.findIndex(item => item.id === legacyId);
+        // The old list marked this item and all older items read when opened.
+        announcementReadIds = new Set(index < 0 ? [] : items.slice(index).map(item => item.id));
+    }
+    saveReadAnnouncementIds();
+    return announcementReadIds;
+}
+
+function saveReadAnnouncementIds() {
+    try { localStorage.setItem(ANNOUNCEMENT_READ_IDS_KEY, JSON.stringify([...announcementReadIds])); } catch { /* Keep this session usable. */ }
+}
+
+function markAnnouncementRead(id) {
+    if (!getAnnouncements().some(item => item.id === id)) return;
+    getReadAnnouncementIds().add(id);
+    saveReadAnnouncementIds();
+    updateAnnouncementBadge();
+}
+
+window.markAllAnnouncementsRead = function () {
+    announcementReadIds = new Set(getAnnouncements().map(item => item.id));
+    saveReadAnnouncementIds();
+    updateAnnouncementBadge();
+};
 
 function getAnnouncements() {
     return Array.isArray(window.APP_ANNOUNCEMENTS) ? window.APP_ANNOUNCEMENTS : [];
@@ -406,11 +445,21 @@ function updateAnnouncementBadge() {
     const btn = document.getElementById('announcementBtn');
     if (!dot || !btn) return;
 
-    const latestId = getLatestAnnouncementId();
-    const lastReadId = localStorage.getItem(ANNOUNCEMENT_READ_KEY);
-    const hasUnread = Boolean(latestId && latestId !== lastReadId);
+    const readIds = getReadAnnouncementIds();
+    const unreadCount = getAnnouncements().filter(item => !readIds.has(item.id)).length;
+    const hasUnread = unreadCount > 0;
     dot.style.display = hasUnread ? 'block' : 'none';
     btn.setAttribute('aria-label', hasUnread ? '未読のお知らせがあります' : 'お知らせ');
+    const status = document.getElementById('announcementReadStatus');
+    if (status) status.textContent = hasUnread ? `未読 ${unreadCount}件` : 'すべて既読です';
+    const markAll = document.getElementById('announcementMarkAllRead');
+    if (markAll) markAll.disabled = !hasUnread;
+    document.querySelectorAll('details[data-announcement-id]').forEach(card => {
+        const unread = !readIds.has(card.dataset.announcementId);
+        card.classList.toggle('is-unread', unread);
+        const label = card.querySelector('.announcement-read-label');
+        if (label) label.textContent = unread ? '未読' : '既読';
+    });
 }
 
 function renderAnnouncements({ featuredOnly = false } = {}) {
@@ -429,6 +478,22 @@ function renderAnnouncements({ featuredOnly = false } = {}) {
         const selectedBody = featuredOnly && item.featuredBody ? item.featuredBody : item.body;
         const body = Array.isArray(selectedBody) ? selectedBody : [selectedBody || ''];
         const bodyHtml = body.map(line => `<div>${escapeAnnouncementText(line)}</div>`).join('');
+        if (!featuredOnly) {
+            const unread = !getReadAnnouncementIds().has(item.id);
+            const section = (heading, lines) => Array.isArray(lines) && lines.length
+                ? `<section class="announcement-detail-section"><h3>${heading}</h3>${lines.map(line => `<div>${escapeAnnouncementText(line)}</div>`).join('')}</section>` : '';
+            return `<details class="announcement-card ${unread ? 'is-unread' : ''}" data-announcement-id="${escapeAnnouncementText(item.id)}">
+                <summary class="announcement-summary">
+                    <span class="announcement-meta">${escapeAnnouncementText(item.version)} / ${escapeAnnouncementText(item.date)} <span class="announcement-read-label">${unread ? '未読' : '既読'}</span></span>
+                    <span class="announcement-title">${escapeAnnouncementText(item.title || 'お知らせ')}</span>
+                    <span class="announcement-excerpt">${escapeAnnouncementText(item.summary || body[0] || '')}</span>
+                    <span class="announcement-disclosure"><span class="when-closed">詳細を見る</span><span class="when-open">詳細を閉じる</span></span>
+                </summary>
+                <div class="announcement-body announcement-detail">
+                    ${section('変更点', body)}${section('学習履歴への影響', item.impact)}${section('使い方・確認方法', item.usage)}
+                </div>
+            </details>`;
+        }
         const visualHtml = featuredOnly && item.image
             ? `<img class="announcement-feature-visual" src="${escapeAnnouncementText(item.image)}" alt="${escapeAnnouncementText(item.imageAlt || '')}">`
             : '';
@@ -448,12 +513,14 @@ function renderAnnouncements({ featuredOnly = false } = {}) {
 function setAnnouncementModalMode(featuredAutoOpen) {
     const heading = document.getElementById('announcementHeading');
     const actions = document.getElementById('announcementFeaturedActions');
+    const readTools = document.getElementById('announcementReadTools');
     const actionButton = document.getElementById('announcementPrimaryAction');
     const featured = getFeaturedAnnouncement();
 
     document.getElementById('announcementModal')?.classList.toggle('is-featured-mode', featuredAutoOpen);
     if (heading) heading.textContent = featuredAutoOpen ? '大型アップデート' : 'お知らせ';
     if (actions) actions.style.display = featuredAutoOpen ? 'flex' : 'none';
+    if (readTools) readTools.hidden = featuredAutoOpen;
     if (actionButton && featured) {
         actionButton.textContent = featured.actionLabel || '新機能を見る';
     }
@@ -492,6 +559,16 @@ function acknowledgeFeaturedAnnouncement() {
 function initAnnouncements() {
     renderAnnouncements();
     updateAnnouncementBadge();
+    document.getElementById('announcementList')?.addEventListener('toggle', event => {
+        const card = event.target;
+        if (card.matches('details[data-announcement-id]') && card.open) markAnnouncementRead(card.dataset.announcementId);
+    }, true);
+    window.addEventListener('storage', event => {
+        if (event.key === ANNOUNCEMENT_READ_IDS_KEY || event.key === null) {
+            announcementReadIds = null;
+            updateAnnouncementBadge();
+        }
+    });
 
     const modal = document.getElementById('announcementModal');
     if (modal) {
@@ -510,14 +587,14 @@ window.openAnnouncementModal = function () {
     const modal = document.getElementById('announcementModal');
     if (!modal) return;
 
+    // Safari does not focus buttons on click; keep a reliable return target.
+    if (!getVisibleDismissibleModals().length) {
+        focusWithoutScrolling(document.getElementById('announcementBtn'));
+    }
     renderAnnouncements();
     setAnnouncementModalMode(false);
     modal.style.display = 'flex';
 
-    const latestId = getLatestAnnouncementId();
-    if (latestId) {
-        localStorage.setItem(ANNOUNCEMENT_READ_KEY, latestId);
-    }
     updateAnnouncementBadge();
 };
 
@@ -528,9 +605,8 @@ window.closeAnnouncementModal = function () {
 };
 
 window.openAnnouncementFeature = function () {
-    const latestId = getLatestAnnouncementId();
-    if (latestId) localStorage.setItem(ANNOUNCEMENT_READ_KEY, latestId);
-    updateAnnouncementBadge();
+    const featured = getFeaturedAnnouncement();
+    if (featured?.id) markAnnouncementRead(featured.id);
     window.closeAnnouncementModal();
     if (typeof window.openLeaderboard === 'function') window.openLeaderboard();
 };

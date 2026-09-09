@@ -2218,6 +2218,56 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     line-height: 1.65;
 }
 
+.announcement-read-tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #475467;
+}
+
+.announcement-read-tools[hidden] { display: none; }
+
+.announcement-read-tools button {
+    min-height: 44px;
+    padding: 8px 10px;
+    background: #f6f8ff;
+    color: #4937a3;
+    border: 1px solid #dfe7ff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.announcement-read-tools button:disabled { color: #667085; cursor: default; }
+.announcement-summary { display: block; padding: 14px; cursor: pointer; list-style: none; }
+.announcement-summary::-webkit-details-marker { display: none; }
+.announcement-summary .announcement-meta,
+.announcement-summary .announcement-title { display: block; }
+.announcement-read-label { margin-left: 6px; color: #667085; white-space: nowrap; }
+.is-unread .announcement-read-label { color: #4937a3; font-weight: 700; }
+.announcement-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #475467;
+    font-size: 13px;
+    line-height: 1.65;
+}
+.announcement-disclosure { display: block; margin-top: 8px; font-size: 12px; color: #4937a3; }
+.announcement-card .when-open,
+.announcement-card[open] .when-closed { display: none; }
+.announcement-card[open] .when-open { display: inline; }
+.announcement-detail { padding: 0 14px 14px; overflow-wrap: anywhere; }
+.announcement-detail-section { border-top: 1px solid #dfe7ff; padding-top: 12px; }
+.announcement-detail-section + .announcement-detail-section { margin-top: 12px; }
+.announcement-detail-section h3 { margin: 0 0 8px; font-size: 13px; color: #344054; }
+.announcement-detail-section > div + div { margin-top: 8px; }
+.announcement-summary:focus-visible,
+.announcement-read-tools button:focus-visible { outline: 3px solid #6751cf; outline-offset: -3px; }
+
 .announcement-modal {
     display: none;
     position: fixed;

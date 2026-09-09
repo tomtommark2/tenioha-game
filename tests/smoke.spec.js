@@ -1058,7 +1058,7 @@ test('非ブロック画面は共通操作で閉じ、制限画面は閉じな�
   }
 });
 
-test('未読お知らせはベルに通知マークを出し、開くと既読になる', async ({ page }) => {
+test('未読お知らせはベルに通知マークを出し、一括操作で既読になる', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.removeItem('vocabGame_lastReadAnnouncementId');
@@ -1073,6 +1073,8 @@ test('未読お知らせはベルに通知マークを出し、開くと既読�
   await expect(page.locator('#announcementModal')).toBeVisible();
   await expect(page.locator('#announcementList')).toContainText('発音表記を追加しました');
   await expect(page.locator('#announcementList')).toContainText('Duolingo標準');
+  await expect(page.locator('#announcementUnreadDot')).toBeVisible();
+  await page.locator('#announcementMarkAllRead').click();
   await expect(page.locator('#announcementUnreadDot')).toBeHidden();
 });
 
@@ -1522,6 +1524,8 @@ test('大型アップデートは初回だけ自動表示し、あとで閉じ�
   await expect(page.locator('#announcementHeading')).toHaveText('お知らせ');
   await expect(page.locator('#announcementModal')).not.toHaveClass(/is-featured-mode/);
   await expect(page.locator('.announcement-feature-visual')).toHaveCount(0);
+  await expect(page.locator('#announcementUnreadDot')).toBeVisible();
+  await page.locator('#announcementMarkAllRead').click();
   await expect(page.locator('#announcementUnreadDot')).toBeHidden();
 });
 

@@ -23,8 +23,15 @@
 - Do not deploy the app UI to Firebase Hosting. Hosting has been disabled for the `tenioha-game` Firebase project.
 - For backend changes, prefer explicit deploy targets such as `npx firebase deploy --only functions --project tenioha-game` or `npx firebase deploy --only firestore:rules --project tenioha-game`.
 
+### 2026-09-09 公開チェック（2026.0909.2335）
+
+- 対象：お知らせを短い一覧＋展開式詳細へ変更。記事単位の既読・一括既読・旧形式移行、Safariの閉じた後のフォーカス復帰を実装。仕様は `announcements-review-2026-09-09.md`。
+- `npm run test:e2e:safe`成功：単体24件・Functions18件・ブラウザー135件、HTML・版番号・許可キー同期。モバイル関連24件も成功（版更新前の同一実装）。
+- 公開範囲はお知らせUI・データ・関連テストと版番号。試作画像・他の作業中資料は含めず、Firebaseは変更しない。
+
 ### 2026-09-09 公開チェック（2026.0909.2152）
 
+- 公開完了：`0c62ab2`をmainへ反映し、[GitHub Pages公開処理](https://github.com/tomtommark2/tenioha-game/actions/runs/34354055947)成功を確認。本番7ファイルが公開コミットとバイト一致。390px幅の独立ブラウザーで新版・お知らせ2件・A1の1,098カード・judgeのB1所属・excuseの代表フレーズを確認し、page errorは0件。実ユーザーの保存や本番回答は操作していない。
 - 対象：カード統合・例文見直しのお知らせ、ひとこと通知のお知らせ、A1の16語再配置とexcuseの入口／名詞発音の修復。新しい試作ピクトグラムは公開対象外。
 - `feedback(us-central1)`を更新済み。指定WebhookはSecret Managerへ登録し、指定チャンネルへの接続テスト1件の作成を確認。本番一覧200・未認証投稿401を確認。実利用者としての投稿試験は行わない。
 - `npm run test:e2e:safe`成功：単体24件・Functions18件・ブラウザー132件、HTML・版番号・許可キー同期。狭幅のお知らせとexcuseを目視確認。
