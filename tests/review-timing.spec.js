@@ -33,7 +33,7 @@ test('復習タイミングは即時保存し予定済みの日時を変えな�
   })).toEqual(['short', 123, 2]);
   await page.locator('#reviewTimingSettings').scrollIntoViewIfNeeded();
   await page.screenshot({ path: `screenshots/review-timing-${testInfo.project.name}.png` });
-  await expect(page.getByRole('button', { name: '出題モードを閉じる', exact: true })).toBeInViewport();
+  await expect(page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true })).toBeInViewport();
   await page.reload();
   expect(await page.evaluate(() => gameState.reviewTiming)).toBe('short');
   await page.evaluate(() => { openStudyModeModal(); openReviewTimingSettings(); });

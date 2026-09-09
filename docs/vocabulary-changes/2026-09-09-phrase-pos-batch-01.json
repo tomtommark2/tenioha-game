@@ -1,0 +1,518 @@
+{
+  "date": "2026-09-09",
+  "scope": "既知16項目と同一単語の関連用法。表示内容のみ。全件監修済みを意味しない。",
+  "sources": [
+    "https://dictionary.cambridge.org/dictionary/english/slight",
+    "https://dictionary.cambridge.org/dictionary/english/along",
+    "https://dictionary.cambridge.org/us/grammar/british-grammar/until",
+    "https://dictionary.cambridge.org/grammar/british-grammar/after",
+    "https://www.collinsdictionary.com/us/dictionary/english/adult",
+    "ローカル参照: 真・英文法大全 PDF p.113"
+  ],
+  "changes": [
+    {
+      "level": "basic",
+      "index": 24,
+      "before": {
+        "word": "adult",
+        "meaning": "大人",
+        "phrase": "adult ticket",
+        "pos": "名",
+        "example": "The ticket costs 1000 yen for an adult.",
+        "set": 1
+      },
+      "after": {
+        "word": "adult",
+        "meaning": "大人",
+        "phrase": "two adults",
+        "pos": "名",
+        "example": "The ticket costs 1000 yen for an adult.",
+        "set": 1
+      },
+      "reason": "名詞自体が複数形となる明確な例にする。"
+    },
+    {
+      "level": "junior",
+      "index": 29,
+      "before": {
+        "word": "along",
+        "meaning": "～に沿って",
+        "phrase": "along the river",
+        "pos": "副",
+        "example": "We walked along the beach.",
+        "set": 1
+      },
+      "after": {
+        "word": "along",
+        "meaning": "前へ、先へ",
+        "phrase": "move along",
+        "pos": "副",
+        "example": "The line moved along slowly.",
+        "set": 1
+      },
+      "reason": "後続の名詞を取らない移動の副詞用法に統一する。"
+    },
+    {
+      "level": "junior",
+      "index": 498,
+      "before": {
+        "word": "home",
+        "meaning": "家、家庭",
+        "phrase": "go home",
+        "pos": "名",
+        "example": "I want to go home.",
+        "set": 1
+      },
+      "after": {
+        "word": "home",
+        "meaning": "家、家庭",
+        "phrase": "a new home",
+        "pos": "名",
+        "example": "They bought a new home near the park.",
+        "set": 1
+      },
+      "reason": "名詞を冠詞と形容詞で限定する。"
+    },
+    {
+      "level": "basic",
+      "index": 396,
+      "before": {
+        "word": "dream",
+        "meaning": "夢",
+        "phrase": "have a dream",
+        "pos": "動",
+        "example": "I had a strange dream last night.",
+        "set": 1
+      },
+      "after": {
+        "word": "dream",
+        "meaning": "夢を見る、夢に思い描く",
+        "phrase": "dream about flying",
+        "pos": "動",
+        "example": "I often dream about flying.",
+        "set": 1
+      },
+      "reason": "動詞の意味・フレーズ・例文へ修復する。"
+    },
+    {
+      "level": "basic",
+      "index": 397,
+      "before": {
+        "word": "dress",
+        "meaning": "ドレス、衣服",
+        "phrase": "wear a dress",
+        "pos": "動",
+        "example": "She was wearing a beautiful black dress.",
+        "set": 1
+      },
+      "after": {
+        "word": "dress",
+        "meaning": "服を着る、服を着せる",
+        "phrase": "dress warmly",
+        "pos": "動",
+        "example": "Please dress warmly for the walk.",
+        "set": 1
+      },
+      "reason": "動詞の意味・フレーズ・例文へ修復する。"
+    },
+    {
+      "level": "daily",
+      "index": 1801,
+      "before": {
+        "word": "delay",
+        "meaning": "【動】遅らせる",
+        "pos": "動",
+        "example": "The train was delayed.",
+        "phrase": "without delay",
+        "set": 1
+      },
+      "after": {
+        "word": "delay",
+        "meaning": "【動】遅らせる",
+        "pos": "動",
+        "example": "The train was delayed.",
+        "phrase": "delay the meeting",
+        "set": 1
+      },
+      "reason": "delay が目的語を取る動詞の例にする。"
+    },
+    {
+      "level": "daily",
+      "index": 1880,
+      "before": {
+        "word": "display",
+        "meaning": "【動】展示する、表示する",
+        "pos": "動",
+        "example": "Display the results.",
+        "phrase": "on display",
+        "set": 1
+      },
+      "after": {
+        "word": "display",
+        "meaning": "【動】展示する、表示する",
+        "pos": "動",
+        "example": "Display the results.",
+        "phrase": "display the results",
+        "set": 1
+      },
+      "reason": "名詞の慣用句から目的語を取る動詞へ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 676,
+      "before": {
+        "word": "release",
+        "meaning": "【動】解放する、発表する",
+        "pos": "動",
+        "example": "Release a prisoner.",
+        "phrase": "press release",
+        "set": 1
+      },
+      "after": {
+        "word": "release",
+        "meaning": "【動】解放する、発表する",
+        "pos": "動",
+        "example": "Release a prisoner.",
+        "phrase": "release a prisoner",
+        "set": 1
+      },
+      "reason": "解放するという既存例文の語義に合わせる。"
+    },
+    {
+      "level": "exam1",
+      "index": 2093,
+      "before": {
+        "word": "research",
+        "meaning": "【動】研究する",
+        "pos": "動",
+        "example": "Research a topic.",
+        "phrase": "market research",
+        "set": 1
+      },
+      "after": {
+        "word": "research",
+        "meaning": "【動】研究する",
+        "pos": "動",
+        "example": "Research a topic.",
+        "phrase": "research a topic",
+        "set": 1
+      },
+      "reason": "研究する動詞を明示する。"
+    },
+    {
+      "level": "exam1",
+      "index": 1577,
+      "before": {
+        "word": "musical",
+        "meaning": "【名】ミュージカル",
+        "pos": "名",
+        "example": "Broadway musical.",
+        "phrase": "musical instrument",
+        "set": 1
+      },
+      "after": {
+        "word": "musical",
+        "meaning": "【名】ミュージカル",
+        "pos": "名",
+        "example": "Broadway musical.",
+        "phrase": "a Broadway musical",
+        "set": 1
+      },
+      "reason": "名詞ミュージカルを冠詞付きで示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 1345,
+      "before": {
+        "word": "joint",
+        "meaning": "【名】関節、継ぎ目",
+        "pos": "名",
+        "example": "Aching joints.",
+        "phrase": "joint venture",
+        "set": 1
+      },
+      "after": {
+        "word": "joint",
+        "meaning": "【名】関節、継ぎ目",
+        "pos": "名",
+        "example": "Aching joints.",
+        "phrase": "aching joints",
+        "set": 1
+      },
+      "reason": "関節という名詞の語義に合わせる。"
+    },
+    {
+      "level": "daily",
+      "index": 574,
+      "before": {
+        "word": "slight",
+        "meaning": "【名】軽視",
+        "pos": "名",
+        "example": "Feel a slight.",
+        "phrase": "slight difference",
+        "set": 1
+      },
+      "after": {
+        "word": "slight",
+        "meaning": "【名】侮辱、軽んじる扱い",
+        "pos": "名",
+        "example": "She took his refusal to greet her as a deliberate slight.",
+        "phrase": "a deliberate slight",
+        "set": 1
+      },
+      "reason": "名詞の可算用法と語義が分かる文脈にする。"
+    },
+    {
+      "level": "exam1",
+      "index": 2665,
+      "before": {
+        "word": "underwater",
+        "meaning": "【副】水中で",
+        "pos": "副",
+        "example": "Swim underwater.",
+        "phrase": "underwater camera",
+        "set": 1
+      },
+      "after": {
+        "word": "underwater",
+        "meaning": "【副】水中で",
+        "pos": "副",
+        "example": "Swim underwater.",
+        "phrase": "swim underwater",
+        "set": 1
+      },
+      "reason": "水中で泳ぐ副詞用法を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 196,
+      "before": {
+        "word": "till",
+        "meaning": "【接】～まで",
+        "pos": "接",
+        "example": "Wait till I come.",
+        "phrase": "till tomorrow",
+        "set": 1
+      },
+      "after": {
+        "word": "till",
+        "meaning": "【接】～まで",
+        "pos": "接",
+        "example": "Please wait here till I return.",
+        "phrase": "till I return",
+        "set": 1
+      },
+      "reason": "後ろに主語と動詞を置いて接続詞を明示する。"
+    },
+    {
+      "level": "daily",
+      "index": 2372,
+      "before": {
+        "word": "after",
+        "meaning": "【接】～した後に",
+        "pos": "接",
+        "example": "Call me after you arrive.",
+        "phrase": "after all",
+        "set": 1
+      },
+      "after": {
+        "word": "after",
+        "meaning": "【接】～した後に",
+        "pos": "接",
+        "example": "Call me after you arrive.",
+        "phrase": "after you arrive",
+        "set": 1
+      },
+      "reason": "登録語義に合う節を伴わせる。"
+    },
+    {
+      "level": "daily",
+      "index": 447,
+      "before": {
+        "word": "round",
+        "meaning": "【形】丸い",
+        "pos": "形",
+        "example": "Round table.",
+        "phrase": "all year round",
+        "set": 1
+      },
+      "after": {
+        "word": "round",
+        "meaning": "【形】丸い",
+        "pos": "形",
+        "example": "Round table.",
+        "phrase": "a round table",
+        "set": 1
+      },
+      "reason": "丸いという形容詞用法に合わせる。"
+    },
+    {
+      "level": "basic",
+      "index": 1076,
+      "before": {
+        "word": "round",
+        "meaning": "あちこち回って、丸く",
+        "phrase": "all year round",
+        "pos": "副",
+        "example": "We walked round the lake.",
+        "set": 1
+      },
+      "after": {
+        "word": "round",
+        "meaning": "ぐるりと、回って",
+        "phrase": "turn round",
+        "pos": "副",
+        "example": "She turned round when she heard her name.",
+        "set": 1
+      },
+      "reason": "前置詞用法の例文を副詞用法へ変更し、語義も揃える。"
+    },
+    {
+      "level": "basic",
+      "index": 1317,
+      "before": {
+        "word": "till",
+        "meaning": "～まで（ずっと）",
+        "phrase": "till tomorrow",
+        "pos": "前",
+        "example": "Wait till the rain stops.",
+        "set": 1
+      },
+      "after": {
+        "word": "till",
+        "meaning": "～まで（ずっと）",
+        "phrase": "till tomorrow",
+        "pos": "前",
+        "example": "The shop is open till six.",
+        "set": 1
+      },
+      "reason": "節ではなく時刻を取る前置詞の例文にする。"
+    },
+    {
+      "level": "basic",
+      "index": 1357,
+      "before": {
+        "word": "underwater",
+        "meaning": "水中の、水面下の",
+        "phrase": "underwater camera",
+        "pos": "形",
+        "example": "Fish breathe underwater.",
+        "set": 1
+      },
+      "after": {
+        "word": "underwater",
+        "meaning": "水中の、水面下の",
+        "phrase": "underwater camera",
+        "pos": "形",
+        "example": "We used an underwater camera to photograph the fish.",
+        "set": 1
+      },
+      "reason": "camera を修飾する形容詞の例文にする。"
+    },
+    {
+      "level": "basic",
+      "index": 821,
+      "before": {
+        "word": "musical",
+        "meaning": "音楽の、ミュージカル",
+        "phrase": "musical talent",
+        "pos": "形",
+        "example": "She is very musical and plays three instruments.",
+        "set": 1
+      },
+      "after": {
+        "word": "musical",
+        "meaning": "音楽の、音楽の才能がある",
+        "phrase": "musical talent",
+        "pos": "形",
+        "example": "She is very musical and plays three instruments.",
+        "set": 1
+      },
+      "reason": "名詞の訳が混在しないよう既存フレーズ・例文の形容詞語義を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 1255,
+      "before": {
+        "word": "joint",
+        "meaning": "【形】共同の",
+        "pos": "形",
+        "example": "Joint effot.",
+        "phrase": "joint account",
+        "set": 1
+      },
+      "after": {
+        "word": "joint",
+        "meaning": "【形】共同の",
+        "pos": "形",
+        "example": "They opened a joint account at the bank.",
+        "phrase": "joint account",
+        "set": 1
+      },
+      "reason": "既存の誤綴り effot を含む断片を、フレーズと一致する文へ修復する。"
+    },
+    {
+      "level": "exam1",
+      "index": 2153,
+      "before": {
+        "word": "round",
+        "meaning": "【前】～の周りに",
+        "pos": "前",
+        "example": "Round the corner.",
+        "phrase": "all round",
+        "set": 1
+      },
+      "after": {
+        "word": "round",
+        "meaning": "【前】～の周りに",
+        "pos": "前",
+        "example": "Round the corner.",
+        "phrase": "round the corner",
+        "set": 1
+      },
+      "reason": "前置詞に後続する名詞句を明示する。"
+    },
+    {
+      "level": "exam1",
+      "index": 2154,
+      "before": {
+        "word": "round",
+        "meaning": "【動】丸くする、回る",
+        "pos": "動",
+        "example": "Round the bend.",
+        "phrase": "round up",
+        "set": 1
+      },
+      "after": {
+        "word": "round",
+        "meaning": "【動】丸くする、回る",
+        "pos": "動",
+        "example": "The bus rounded the bend slowly.",
+        "phrase": "rounded the bend",
+        "set": 1
+      },
+      "reason": "round up の別語義を避け、過去形で前置詞と区別し、回るという動詞用法を明示する。"
+    },
+    {
+      "level": "exam1",
+      "index": 2296,
+      "before": {
+        "word": "slight",
+        "meaning": "【形】わずかな",
+        "pos": "形",
+        "example": "Slight change.",
+        "phrase": "not in the slightest",
+        "set": 1
+      },
+      "after": {
+        "word": "slight",
+        "meaning": "【形】わずかな",
+        "pos": "形",
+        "example": "Slight change.",
+        "phrase": "a slight change",
+        "set": 1
+      },
+      "reason": "熟語ではなく、わずかなという形容詞用法に合わせる。"
+    }
+  ]
+}

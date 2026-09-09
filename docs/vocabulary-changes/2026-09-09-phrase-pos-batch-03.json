@@ -1,0 +1,141 @@
+{
+  "date": "2026-09-09",
+  "scope": "残る3語・6行の品詞分類と内容の修復。4行にlegacyKeyPosを保持し、旧キー／統合キー／許可ハッシュを変えない。",
+  "sources": [
+    "https://dictionary.cambridge.org/dictionary/english/lot",
+    "https://dictionary.cambridge.org/dictionary/english/yeah",
+    "https://dictionary.cambridge.org/grammar/british-grammar/most-the-most-mostly"
+  ],
+  "changes": [
+    {
+      "level": "junior",
+      "index": 605,
+      "before": {
+        "word": "lot",
+        "meaning": "たくさん",
+        "phrase": "a lot",
+        "pos": "副",
+        "example": "Thanks a lot.",
+        "set": 1
+      },
+      "after": {
+        "word": "lot",
+        "meaning": "大量、多数",
+        "phrase": "a lot of time",
+        "pos": "名",
+        "example": "We have a lot of time.",
+        "set": 1,
+        "legacyKeyPos": "副"
+      },
+      "reason": "句全体の副詞用法とlot自体の名詞を分離し、名詞の数量表現で示す。"
+    },
+    {
+      "level": "junior",
+      "index": 606,
+      "before": {
+        "word": "lot",
+        "meaning": "たくさん",
+        "phrase": "a lot of",
+        "pos": "代",
+        "example": "I have a lot of books.",
+        "set": 1
+      },
+      "after": {
+        "word": "lot",
+        "meaning": "大量、多数",
+        "phrase": "a lot of people",
+        "pos": "名",
+        "example": "A lot of people came to the festival.",
+        "set": 1,
+        "legacyKeyPos": "代"
+      },
+      "reason": "単語lotは名詞として統一する。代名詞相当として扱われる句全体の分類は単語に付けない。"
+    },
+    {
+      "level": "basic",
+      "index": 749,
+      "before": {
+        "word": "lot",
+        "meaning": "たくさん、分け前",
+        "phrase": "a lot of",
+        "pos": "名",
+        "example": "There's a lot of work to do.",
+        "set": 1
+      },
+      "after": {
+        "word": "lot",
+        "meaning": "たくさん、分け前",
+        "phrase": "a lot of work",
+        "pos": "名",
+        "example": "There's a lot of work to do.",
+        "set": 1
+      },
+      "reason": "後続名詞を補い、名詞用法を完全な数量表現で示す。"
+    },
+    {
+      "level": "junior",
+      "index": 661,
+      "before": {
+        "word": "most",
+        "meaning": "最も多くの",
+        "phrase": "most people",
+        "pos": "冠",
+        "example": "Most people like music.",
+        "set": 1
+      },
+      "after": {
+        "word": "most",
+        "meaning": "大部分の",
+        "phrase": "most people",
+        "pos": "形",
+        "example": "Most people like music.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく数量限定詞。既存の伝統的な形容詞分類に揃える。"
+    },
+    {
+      "level": "basic",
+      "index": 810,
+      "before": {
+        "word": "most",
+        "meaning": "大部分の、最高の（定冠詞と共に）",
+        "phrase": "most people",
+        "pos": "形",
+        "example": "Most students passed the exam.",
+        "set": 1
+      },
+      "after": {
+        "word": "most",
+        "meaning": "大部分の、最も多くの",
+        "phrase": "most students",
+        "pos": "形",
+        "example": "Most students passed the exam.",
+        "set": 1
+      },
+      "reason": "最高のという過剰な訳を除き、数量を限定する用法に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 1207,
+      "before": {
+        "word": "yeah",
+        "meaning": "うん、イェーイ",
+        "phrase": "oh yeah",
+        "pos": "名",
+        "example": "Yeah, I think so.",
+        "set": 1
+      },
+      "after": {
+        "word": "yeah",
+        "meaning": "うん、そうだね",
+        "phrase": "yeah, sure",
+        "pos": "副",
+        "example": "\"Can you help me?\" \"Yeah, sure.\"",
+        "set": 1,
+        "legacyKeyPos": "名"
+      },
+      "reason": "Cambridgeの副詞分類を採用し、通常の応答を名詞として表示しない。"
+    }
+  ]
+}

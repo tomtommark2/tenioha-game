@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-09",
+  "scope": "exact example === word + ' example.' の検出。その他の不自然な例文・空欄は別対象。",
+  "before": {
+    "rows": 414,
+    "uniqueWords": 365,
+    "referenceRows": 0,
+    "visiblePlaceholders": 414
+  },
+  "after": {
+    "rows": 0,
+    "uniqueWords": 0,
+    "byLevel": {
+      "selection1900": 0,
+      "selection1400": 0
+    }
+  },
+  "changes": [
+    "vocabulary-changes/2026-09-09-placeholder-batch-01.json",
+    "vocabulary-changes/2026-09-09-placeholder-batch-02.json",
+    "vocabulary-changes/2026-09-09-placeholder-batch-03.json",
+    "vocabulary-changes/2026-09-09-placeholder-batch-04.json",
+    "vocabulary-changes/2026-09-09-placeholder-batch-05.json",
+    "vocabulary-changes/2026-09-09-placeholder-batch-06.json",
+    "vocabulary-changes/2026-09-09-placeholder-batch-07.json",
+    "vocabulary-changes/2026-09-09-placeholder-batch-08.json"
+  ],
+  "remaining": []
+}

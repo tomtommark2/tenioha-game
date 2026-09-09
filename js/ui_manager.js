@@ -916,6 +916,14 @@ window.openLearningLogModal = function () {
 
 
 // --- OTHER MENU (New Toggle) ---
+const SETTINGS_MENU_HINT_KEY = 'vocabGame_settingsMenuHintSeen_v1';
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        const hint = document.getElementById('settingsMenuHint');
+        if (hint) hint.hidden = localStorage.getItem(SETTINGS_MENU_HINT_KEY) === 'true';
+    } catch { /* Keep the optional hint hidden if storage is unavailable. */ }
+});
+
 window.toggleOtherMenu = function () {
     const menu = document.getElementById('otherMenuDropdown');
     const btn = document.getElementById('otherMenuBtn');
@@ -923,6 +931,11 @@ window.toggleOtherMenu = function () {
     if (menu) {
         const isHidden = getComputedStyle(menu).display === 'none';
         if (isHidden) {
+            const hint = document.getElementById('settingsMenuHint');
+            if (hint) hint.hidden = true;
+            try {
+                localStorage.setItem(SETTINGS_MENU_HINT_KEY, 'true');
+            } catch { /* Menu operation does not depend on storage. */ }
             menu.style.display = 'block';
             btn?.setAttribute('aria-expanded', 'true');
             // Add click-outside listener if needed, or simple toggle

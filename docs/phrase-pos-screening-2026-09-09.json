@@ -1,0 +1,1782 @@
+{
+  "scope": "Primary CEFR source rows; screening candidates, not confirmed error counts",
+  "sourceRows": 8018,
+  "reusedAcrossPos": [
+    {
+      "word": "along",
+      "phrase": "along the river",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 29,
+          "word": "along",
+          "meaning": "～に沿って",
+          "phrase": "along the river",
+          "pos": "副",
+          "example": "We walked along the beach.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 47,
+          "word": "along",
+          "meaning": "沿って",
+          "phrase": "along the river",
+          "pos": "前",
+          "example": "We walked along the river.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "being",
+      "phrase": "human being",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 96,
+          "word": "being",
+          "meaning": "～であること",
+          "phrase": "human being",
+          "pos": "動",
+          "example": "Thank you for being here.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 139,
+          "word": "being",
+          "meaning": "存在、生き物",
+          "phrase": "human being",
+          "pos": "名",
+          "example": "A human being needs water to survive.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "board",
+      "phrase": "on board",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 120,
+          "word": "board",
+          "meaning": "板、黒板、委員会",
+          "phrase": "on board",
+          "pos": "名",
+          "example": "He wrote on the board.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 2350,
+          "word": "board",
+          "meaning": "【動】板を張る、乗り込む",
+          "pos": "動",
+          "example": "Passengers are boarding the plane.",
+          "phrase": "on board",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "down",
+      "phrase": "sit down",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 293,
+          "word": "down",
+          "meaning": "下へ",
+          "phrase": "sit down",
+          "pos": "副",
+          "example": "Please sit down.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 389,
+          "word": "down",
+          "meaning": "～の下へ",
+          "phrase": "sit down",
+          "pos": "前",
+          "example": "The keys are down the back of the sofa.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "dream",
+      "phrase": "have a dream",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 298,
+          "word": "dream",
+          "meaning": "夢",
+          "phrase": "have a dream",
+          "pos": "名",
+          "example": "I had a strange dream last night.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 396,
+          "word": "dream",
+          "meaning": "夢",
+          "phrase": "have a dream",
+          "pos": "動",
+          "example": "I had a strange dream last night.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "dress",
+      "phrase": "wear a dress",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 299,
+          "word": "dress",
+          "meaning": "ドレス、ワンピース",
+          "phrase": "wear a dress",
+          "pos": "名",
+          "example": "She wore a white dress.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 397,
+          "word": "dress",
+          "meaning": "ドレス、衣服",
+          "phrase": "wear a dress",
+          "pos": "動",
+          "example": "She was wearing a beautiful black dress.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "early",
+      "phrase": "early morning",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 313,
+          "word": "early",
+          "meaning": "早い、早く",
+          "phrase": "early morning",
+          "pos": "副",
+          "example": "I got up early today.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 409,
+          "word": "early",
+          "meaning": "はやい",
+          "phrase": "early morning",
+          "pos": "形",
+          "example": "I got up early this morning.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "either",
+      "phrase": "either A or B",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 320,
+          "word": "either",
+          "meaning": "どちらか",
+          "phrase": "either A or B",
+          "pos": "副",
+          "example": "You can have either tea or coffee.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 423,
+          "word": "either",
+          "meaning": "～かまたは～か",
+          "phrase": "either A or B",
+          "pos": "接",
+          "example": "Either you or he must go.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "home",
+      "phrase": "go home",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 498,
+          "word": "home",
+          "meaning": "家、家庭",
+          "phrase": "go home",
+          "pos": "名",
+          "example": "I want to go home.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 627,
+          "word": "home",
+          "meaning": "家に、故郷へ",
+          "phrase": "go home",
+          "pos": "副",
+          "example": "I stayed home all day.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "later",
+      "phrase": "see you later",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 573,
+          "word": "later",
+          "meaning": "後で",
+          "phrase": "see you later",
+          "pos": "副",
+          "example": "I will call you later.",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 1379,
+          "word": "later",
+          "meaning": "【形】後の",
+          "pos": "形",
+          "example": "Later date.",
+          "phrase": "see you later",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "left",
+      "phrase": "turn left",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 580,
+          "word": "left",
+          "meaning": "左の",
+          "phrase": "turn left",
+          "pos": "形",
+          "example": "Turn left at the corner.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 720,
+          "word": "left",
+          "meaning": "左へ、左に",
+          "phrase": "turn left",
+          "pos": "副",
+          "example": "The station is on the left.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "lot",
+      "phrase": "a lot of",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 606,
+          "word": "lot",
+          "meaning": "たくさん",
+          "phrase": "a lot of",
+          "pos": "代",
+          "example": "I have a lot of books.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 749,
+          "word": "lot",
+          "meaning": "たくさん、分け前",
+          "phrase": "a lot of",
+          "pos": "名",
+          "example": "There's a lot of work to do.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "mobile",
+      "phrase": "mobile phone",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 647,
+          "word": "mobile",
+          "meaning": "携帯電話",
+          "phrase": "mobile phone",
+          "pos": "名",
+          "example": "Can I use your mobile?",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 804,
+          "word": "mobile",
+          "meaning": "動きやすい、携帯電話の",
+          "phrase": "mobile phone",
+          "pos": "形",
+          "example": "Most people have a mobile phone nowadays.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "most",
+      "phrase": "most people",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 661,
+          "word": "most",
+          "meaning": "最も多くの",
+          "phrase": "most people",
+          "pos": "冠",
+          "example": "Most people like music.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 810,
+          "word": "most",
+          "meaning": "大部分の、最高の（定冠詞と共に）",
+          "phrase": "most people",
+          "pos": "形",
+          "example": "Most students passed the exam.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "purple",
+      "phrase": "purple flower",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 814,
+          "word": "purple",
+          "meaning": "紫色",
+          "phrase": "purple flower",
+          "pos": "名",
+          "example": "I like purple.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 999,
+          "word": "purple",
+          "meaning": "紫（色）の",
+          "phrase": "purple flower",
+          "pos": "形",
+          "example": "She was wearing a purple dress.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "same",
+      "phrase": "the same",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 866,
+          "word": "same",
+          "meaning": "同じ",
+          "phrase": "the same",
+          "pos": "形",
+          "example": "We engage the same school.",
+          "set": 1
+        },
+        {
+          "level": "junior",
+          "index": 868,
+          "word": "same",
+          "meaning": "同じもの",
+          "phrase": "the same",
+          "pos": "代",
+          "example": "I'll have the same.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "shower",
+      "phrase": "take a shower",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 908,
+          "word": "shower",
+          "meaning": "シャワー",
+          "phrase": "take a shower",
+          "pos": "名",
+          "example": "I take a shower every morning.",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2261,
+          "word": "shower",
+          "meaning": "【動】シャワーを浴びる、降り注ぐ",
+          "pos": "動",
+          "example": "Shower with gifts.",
+          "phrase": "take a shower",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "since",
+      "phrase": "ever since",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 563,
+          "word": "since",
+          "meaning": "【接】～なので、～以来",
+          "pos": "接",
+          "example": "Since you are here.",
+          "phrase": "ever since",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2271,
+          "word": "since",
+          "meaning": "【副】その後ずっと",
+          "pos": "副",
+          "example": "Haven't seen him since.",
+          "phrase": "ever since",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "sleep",
+      "phrase": "go to sleep",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 934,
+          "word": "sleep",
+          "meaning": "眠る",
+          "phrase": "go to sleep",
+          "pos": "動",
+          "example": "I want to sleep.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 572,
+          "word": "sleep",
+          "meaning": "【名】睡眠",
+          "pos": "名",
+          "example": "Deep sleep.",
+          "phrase": "go to sleep",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "straight",
+      "phrase": "go straight",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 1001,
+          "word": "straight",
+          "meaning": "真っ直ぐに",
+          "phrase": "go straight",
+          "pos": "副",
+          "example": "Go straight.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 1237,
+          "word": "straight",
+          "meaning": "真っ直ぐな、正直な、連続した",
+          "phrase": "go straight",
+          "pos": "形",
+          "example": "Go straight down this road.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "yeah",
+      "phrase": "oh yeah",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 1207,
+          "word": "yeah",
+          "meaning": "うん、イェーイ",
+          "phrase": "oh yeah",
+          "pos": "名",
+          "example": "Yeah, I think so.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 1445,
+          "word": "yeah",
+          "meaning": "うん、そう、イエス",
+          "phrase": "oh yeah",
+          "pos": "副",
+          "example": "Yeah, I'll be there.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "last",
+      "phrase": "last week",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 0,
+          "word": "last",
+          "meaning": "この前の、最後の",
+          "phrase": "last week",
+          "pos": "形",
+          "example": "I saw him last night.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 708,
+          "word": "last",
+          "meaning": "この前の、最後の",
+          "phrase": "last week",
+          "pos": "代",
+          "example": "I saw him last night.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "several",
+      "phrase": "several people",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 3,
+          "word": "several",
+          "meaning": "数個の、いくつかの",
+          "phrase": "several people",
+          "pos": "形",
+          "example": "I've visited Kyoto several times.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 1128,
+          "word": "several",
+          "meaning": "数個の、いくつかの",
+          "phrase": "several people",
+          "pos": "代",
+          "example": "I've visited Kyoto several times.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "such",
+      "phrase": "such a person",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 4,
+          "word": "such",
+          "meaning": "そのような、あんなに～な",
+          "phrase": "such a person",
+          "pos": "形",
+          "example": "I've never seen such a beautiful sunset.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 1251,
+          "word": "such",
+          "meaning": "そのような、あんなに～な",
+          "phrase": "such a person",
+          "pos": "代",
+          "example": "I've never seen such a beautiful sunset.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "chemical",
+      "phrase": "chemical reaction",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 229,
+          "word": "chemical",
+          "meaning": "化学の、化学的な",
+          "phrase": "chemical reaction",
+          "pos": "形",
+          "example": "The water was high in chemical content.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 2190,
+          "word": "chemical",
+          "meaning": "【名】化学物質",
+          "pos": "名",
+          "example": "Dangerous chemicals.",
+          "phrase": "chemical reaction",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "delay",
+      "phrase": "without delay",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 350,
+          "word": "delay",
+          "meaning": "遅延、延期",
+          "phrase": "without delay",
+          "pos": "名",
+          "example": "The flight was cancelled after a long delay.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 1801,
+          "word": "delay",
+          "meaning": "【動】遅らせる",
+          "pos": "動",
+          "example": "The train was delayed.",
+          "phrase": "without delay",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "display",
+      "phrase": "on display",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 382,
+          "word": "display",
+          "meaning": "展示、陳列、表示",
+          "phrase": "on display",
+          "pos": "名",
+          "example": "The museum has a display of ancient artifacts.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 1880,
+          "word": "display",
+          "meaning": "【動】展示する、表示する",
+          "pos": "動",
+          "example": "Display the results.",
+          "phrase": "on display",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "downstairs",
+      "phrase": "go downstairs",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 391,
+          "word": "downstairs",
+          "meaning": "階下の、下の階へ",
+          "phrase": "go downstairs",
+          "pos": "副",
+          "example": "I heard a noise downstairs.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 1905,
+          "word": "downstairs",
+          "meaning": "【形】階下の",
+          "pos": "形",
+          "example": "The downstairs bathroom.",
+          "phrase": "go downstairs",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "fit",
+      "phrase": "fit perfectly",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 511,
+          "word": "fit",
+          "meaning": "合う、ふさわしい",
+          "phrase": "fit perfectly",
+          "pos": "形",
+          "example": "This key doesn't fit the lock.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 1509,
+          "word": "fit",
+          "meaning": "【動】合う",
+          "pos": "動",
+          "example": "The dress fits well.",
+          "phrase": "fit perfectly",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "human",
+      "phrase": "human rights",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 635,
+          "word": "human",
+          "meaning": "人間の、人間らしい",
+          "phrase": "human rights",
+          "pos": "形",
+          "example": "Dogs can understand human emotions.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 1433,
+          "word": "human",
+          "meaning": "【名】人間",
+          "pos": "名",
+          "example": "Human being.",
+          "phrase": "human rights",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "least",
+      "phrase": "at least",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 718,
+          "word": "least",
+          "meaning": "最小の、最も～ない",
+          "phrase": "at least",
+          "pos": "形",
+          "example": "This is the least expensive one.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 1302,
+          "word": "least",
+          "meaning": "【副】最も少なく",
+          "pos": "副",
+          "example": "Least expected.",
+          "phrase": "at least",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "less",
+      "phrase": "less than",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 727,
+          "word": "less",
+          "meaning": "より少ない",
+          "phrase": "less than",
+          "pos": "形",
+          "example": "I have less money than I thought.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 728,
+          "word": "less",
+          "meaning": "より少ない",
+          "phrase": "less than",
+          "pos": "副",
+          "example": "It's less cold today than yesterday.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "range",
+      "phrase": "wide range",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1012,
+          "word": "range",
+          "meaning": "範囲、山脈",
+          "phrase": "wide range",
+          "pos": "名",
+          "example": "The price range is from $10 to $50.",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2011,
+          "word": "range",
+          "meaning": "【動】及ぶ",
+          "pos": "動",
+          "example": "Range from A to B.",
+          "phrase": "wide range",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "release",
+      "phrase": "press release",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1038,
+          "word": "release",
+          "meaning": "放出、発売、公開",
+          "phrase": "press release",
+          "pos": "名",
+          "example": "The movie's release was delayed.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 676,
+          "word": "release",
+          "meaning": "【動】解放する、発表する",
+          "pos": "動",
+          "example": "Release a prisoner.",
+          "phrase": "press release",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "research",
+      "phrase": "market research",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1051,
+          "word": "research",
+          "meaning": "研究、調査",
+          "phrase": "market research",
+          "pos": "名",
+          "example": "He is doing research into cancer.",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2093,
+          "word": "research",
+          "meaning": "【動】研究する",
+          "pos": "動",
+          "example": "Research a topic.",
+          "phrase": "market research",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "round",
+      "phrase": "all year round",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1076,
+          "word": "round",
+          "meaning": "あちこち回って、丸く",
+          "phrase": "all year round",
+          "pos": "副",
+          "example": "We walked round the lake.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 447,
+          "word": "round",
+          "meaning": "【形】丸い",
+          "pos": "形",
+          "example": "Round table.",
+          "phrase": "all year round",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "rush",
+      "phrase": "rush hour",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1085,
+          "word": "rush",
+          "meaning": "突進、大急ぎ、ラッシュ",
+          "phrase": "rush hour",
+          "pos": "名",
+          "example": "There was a rush for the exit.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 456,
+          "word": "rush",
+          "meaning": "【動】急ぐ",
+          "pos": "動",
+          "example": "Rush home.",
+          "phrase": "rush hour",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "secret",
+      "phrase": "keep a secret",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1114,
+          "word": "secret",
+          "meaning": "秘密",
+          "phrase": "keep a secret",
+          "pos": "名",
+          "example": "Can you keep a secret?",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 498,
+          "word": "secret",
+          "meaning": "【形】秘密の",
+          "pos": "形",
+          "example": "Secret agent.",
+          "phrase": "keep a secret",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "sense",
+      "phrase": "sense of humor",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1123,
+          "word": "sense",
+          "meaning": "感覚、五感、意味",
+          "phrase": "sense of humor",
+          "pos": "名",
+          "example": "Dogs have a very good sense of smell.",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2225,
+          "word": "sense",
+          "meaning": "【動】感じる",
+          "pos": "動",
+          "example": "Sense danger.",
+          "phrase": "sense of humor",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "shock",
+      "phrase": "culture shock",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1139,
+          "word": "shock",
+          "meaning": "衝撃、ショック",
+          "phrase": "culture shock",
+          "pos": "名",
+          "example": "The news came as a great shock to me.",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2251,
+          "word": "shock",
+          "meaning": "【動】衝撃を与える",
+          "pos": "動",
+          "example": "Shock the world.",
+          "phrase": "culture shock",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "single",
+      "phrase": "single room",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1161,
+          "word": "single",
+          "meaning": "ただ一つの、独身の",
+          "phrase": "single room",
+          "pos": "形",
+          "example": "Are you married or single?",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 564,
+          "word": "single",
+          "meaning": "【名】独身者、シングル",
+          "pos": "名",
+          "example": "Single parent.",
+          "phrase": "single room",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "till",
+      "phrase": "till tomorrow",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1317,
+          "word": "till",
+          "meaning": "～まで（ずっと）",
+          "phrase": "till tomorrow",
+          "pos": "前",
+          "example": "Wait till the rain stops.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 196,
+          "word": "till",
+          "meaning": "【接】～まで",
+          "pos": "接",
+          "example": "Wait till I come.",
+          "phrase": "till tomorrow",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "underwater",
+      "phrase": "underwater camera",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1357,
+          "word": "underwater",
+          "meaning": "水中の、水面下の",
+          "phrase": "underwater camera",
+          "pos": "形",
+          "example": "Fish breathe underwater.",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2665,
+          "word": "underwater",
+          "meaning": "【副】水中で",
+          "pos": "副",
+          "example": "Swim underwater.",
+          "phrase": "underwater camera",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "upstairs",
+      "phrase": "go upstairs",
+      "rows": [
+        {
+          "level": "basic",
+          "index": 1377,
+          "word": "upstairs",
+          "meaning": "階上へ（に）、上の階へ（に）",
+          "phrase": "go upstairs",
+          "pos": "副",
+          "example": "He is sleeping upstairs.",
+          "set": 1
+        },
+        {
+          "level": "daily",
+          "index": 14,
+          "word": "upstairs",
+          "meaning": "【形】２階の",
+          "pos": "形",
+          "example": "Upstairs room.",
+          "phrase": "go upstairs",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "worst",
+      "phrase": "at worst",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 123,
+          "word": "worst",
+          "meaning": "【名】最悪の事態",
+          "pos": "名",
+          "example": "Prepare for the worst.",
+          "phrase": "at worst",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2852,
+          "word": "worst",
+          "meaning": "【副】最も悪く",
+          "pos": "副",
+          "example": "Worst case scenario.",
+          "phrase": "at worst",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "witness",
+      "phrase": "bear witness",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 115,
+          "word": "witness",
+          "meaning": "【動】目撃する",
+          "pos": "動",
+          "example": "Witness an accident.",
+          "phrase": "bear witness",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2831,
+          "word": "witness",
+          "meaning": "【名】目撃者、証人",
+          "pos": "名",
+          "example": "Eye witness.",
+          "phrase": "bear witness",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "treat",
+      "phrase": "trick or treat",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 232,
+          "word": "treat",
+          "meaning": "【名】楽しみ、おごり",
+          "pos": "名",
+          "example": "Special treat.",
+          "phrase": "trick or treat",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2599,
+          "word": "treat",
+          "meaning": "【動】扱う、治療する",
+          "pos": "動",
+          "example": "Treat with respect.",
+          "phrase": "trick or treat",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "underneath",
+      "phrase": "wear underneath",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 265,
+          "word": "underneath",
+          "meaning": "【前】～の下に",
+          "pos": "前",
+          "example": "Underneath the bed.",
+          "phrase": "wear underneath",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2659,
+          "word": "underneath",
+          "meaning": "【副】下に",
+          "pos": "副",
+          "example": "Look underneath.",
+          "phrase": "wear underneath",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "substitute",
+      "phrase": "no substitute for",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 383,
+          "word": "substitute",
+          "meaning": "【名】代用品",
+          "pos": "名",
+          "example": "Sugar substitute.",
+          "phrase": "no substitute for",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 2445,
+          "word": "substitute",
+          "meaning": "【動】代用する",
+          "pos": "動",
+          "example": "Substitute A for B.",
+          "phrase": "no substitute for",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "moral",
+      "phrase": "moral support",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 1153,
+          "word": "moral",
+          "meaning": "【名】道徳、教訓",
+          "pos": "名",
+          "example": "Moral of the story.",
+          "phrase": "moral support",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 1552,
+          "word": "moral",
+          "meaning": "【形】道徳的な",
+          "pos": "形",
+          "example": "Moral duty.",
+          "phrase": "moral support",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "leap",
+      "phrase": "leap year",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 1301,
+          "word": "leap",
+          "meaning": "【動】跳ぶ",
+          "pos": "動",
+          "example": "Leap over a fence.",
+          "phrase": "leap year",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 1391,
+          "word": "leap",
+          "meaning": "【名】跳躍",
+          "pos": "名",
+          "example": "Giant leap.",
+          "phrase": "leap year",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "individual",
+      "phrase": "individual rights",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 1479,
+          "word": "individual",
+          "meaning": "【形】個々の",
+          "pos": "形",
+          "example": "Individual attention.",
+          "phrase": "individual rights",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 1242,
+          "word": "individual",
+          "meaning": "【名】個人",
+          "pos": "名",
+          "example": "Unique individual.",
+          "phrase": "individual rights",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "commercial",
+      "phrase": "commercial break",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 1945,
+          "word": "commercial",
+          "meaning": "【形】商業の",
+          "pos": "形",
+          "example": "The film was a commercial success.",
+          "phrase": "commercial break",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 423,
+          "word": "commercial",
+          "meaning": "【名】コマーシャル",
+          "pos": "名",
+          "example": "TV commercial.",
+          "phrase": "commercial break",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "advance",
+      "phrase": "in advance",
+      "rows": [
+        {
+          "level": "daily",
+          "index": 2361,
+          "word": "advance",
+          "meaning": "【動】前進する、進歩する",
+          "pos": "動",
+          "example": "The army advanced towards the city.",
+          "phrase": "in advance",
+          "set": 1
+        },
+        {
+          "level": "exam1",
+          "index": 47,
+          "word": "advance",
+          "meaning": "【名】前進、進歩",
+          "pos": "名",
+          "example": "Technological advance.",
+          "phrase": "in advance",
+          "set": 1
+        }
+      ]
+    }
+  ],
+  "nounWithAdjectiveReadingCandidates": [
+    {
+      "level": "junior",
+      "index": 67,
+      "word": "back",
+      "meaning": "背中、後ろ",
+      "phrase": "back of the room",
+      "pos": "名",
+      "example": "He hurt his back.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 559,
+      "word": "kind",
+      "meaning": "親切な、種類",
+      "phrase": "kind of",
+      "pos": "名",
+      "example": "He is very kind.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 647,
+      "word": "mobile",
+      "meaning": "携帯電話",
+      "phrase": "mobile phone",
+      "pos": "名",
+      "example": "Can I use your mobile?",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 814,
+      "word": "purple",
+      "meaning": "紫色",
+      "phrase": "purple flower",
+      "pos": "名",
+      "example": "I like purple.",
+      "set": 1
+    },
+    {
+      "level": "basic",
+      "index": 1143,
+      "word": "short",
+      "meaning": "短編映画、ショートパンツ",
+      "phrase": "short story",
+      "pos": "名",
+      "example": "He wrote a collection of shorts.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 916,
+      "word": "silver",
+      "meaning": "銀",
+      "phrase": "silver ring",
+      "pos": "名",
+      "example": "This ring is made of silver.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 981,
+      "word": "sports",
+      "meaning": "スポーツ",
+      "phrase": "sports day",
+      "pos": "名",
+      "example": "We had a sports day.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 1098,
+      "word": "top",
+      "meaning": "頂上、一番上",
+      "phrase": "top of the mountain",
+      "pos": "名",
+      "example": "He is at the top of the class.",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 2798,
+      "word": "welcome",
+      "meaning": "【名】歓迎",
+      "pos": "名",
+      "example": "Warm welcome.",
+      "phrase": "welcome back",
+      "set": 1
+    },
+    {
+      "level": "basic",
+      "index": 24,
+      "word": "adult",
+      "meaning": "大人",
+      "phrase": "adult ticket",
+      "pos": "名",
+      "example": "The ticket costs 1000 yen for an adult.",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 2190,
+      "word": "chemical",
+      "meaning": "【名】化学物質",
+      "pos": "名",
+      "example": "Dangerous chemicals.",
+      "phrase": "chemical reaction",
+      "set": 1
+    },
+    {
+      "level": "basic",
+      "index": 417,
+      "word": "east",
+      "meaning": "東",
+      "phrase": "east coast",
+      "pos": "名",
+      "example": "The sun rises in the east.",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 932,
+      "word": "female",
+      "meaning": "【名】女性",
+      "pos": "名",
+      "example": "Adult female.",
+      "phrase": "female population",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 1433,
+      "word": "human",
+      "meaning": "【名】人間",
+      "pos": "名",
+      "example": "Human being.",
+      "phrase": "human rights",
+      "set": 1
+    },
+    {
+      "level": "basic",
+      "index": 765,
+      "word": "male",
+      "meaning": "男性、オス",
+      "phrase": "male voice",
+      "pos": "名",
+      "example": "Is the kitten male or female?",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 1577,
+      "word": "musical",
+      "meaning": "【名】ミュージカル",
+      "pos": "名",
+      "example": "Broadway musical.",
+      "phrase": "musical instrument",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 1921,
+      "word": "principal",
+      "meaning": "【名】校長、長",
+      "pos": "名",
+      "example": "School principal.",
+      "phrase": "principal investigator",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 448,
+      "word": "round",
+      "meaning": "【名】一巡、ラウンド",
+      "pos": "名",
+      "example": "Round of golf.",
+      "phrase": "round of applause",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 564,
+      "word": "single",
+      "meaning": "【名】独身者、シングル",
+      "pos": "名",
+      "example": "Single parent.",
+      "phrase": "single room",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 336,
+      "word": "standard",
+      "meaning": "【名】基準",
+      "pos": "名",
+      "example": "High standard.",
+      "phrase": "standard of living",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 574,
+      "word": "slight",
+      "meaning": "【名】軽視",
+      "pos": "名",
+      "example": "Feel a slight.",
+      "phrase": "slight difference",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 2095,
+      "word": "resident",
+      "meaning": "【名】居住者",
+      "pos": "名",
+      "example": "Local resident.",
+      "phrase": "resident alien",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 976,
+      "word": "oral",
+      "meaning": "【名】口頭試験",
+      "pos": "名",
+      "example": "Pass the oral.",
+      "phrase": "oral exam",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 1060,
+      "word": "luxury",
+      "meaning": "【名】贅沢",
+      "pos": "名",
+      "example": "Live in luxury.",
+      "phrase": "luxury car",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 1472,
+      "word": "mass",
+      "meaning": "【名】塊、大衆",
+      "pos": "名",
+      "example": "Mass of people.",
+      "phrase": "mass media",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 1153,
+      "word": "moral",
+      "meaning": "【名】道徳、教訓",
+      "pos": "名",
+      "example": "Moral of the story.",
+      "phrase": "moral support",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 1345,
+      "word": "joint",
+      "meaning": "【名】関節、継ぎ目",
+      "pos": "名",
+      "example": "Aching joints.",
+      "phrase": "joint venture",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 1242,
+      "word": "individual",
+      "meaning": "【名】個人",
+      "pos": "名",
+      "example": "Unique individual.",
+      "phrase": "individual rights",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 1781,
+      "word": "fellow",
+      "meaning": "【名】男、仲間",
+      "pos": "名",
+      "example": "He's a nice fellow.",
+      "phrase": "fellow students",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 1829,
+      "word": "designer",
+      "meaning": "【名】デザイナー",
+      "pos": "名",
+      "example": "Fashion designer.",
+      "phrase": "designer clothes",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 423,
+      "word": "commercial",
+      "meaning": "【名】コマーシャル",
+      "pos": "名",
+      "example": "TV commercial.",
+      "phrase": "commercial break",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 2028,
+      "word": "criminal",
+      "meaning": "【名】犯罪者",
+      "pos": "名",
+      "example": "He is a dangerous criminal.",
+      "phrase": "criminal record",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 248,
+      "word": "bold",
+      "meaning": "【名】太字 (usually adj, but CSV has noun/adj duplicate often)",
+      "pos": "名",
+      "example": "In bold.",
+      "phrase": "bold type",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 65,
+      "word": "alcoholic",
+      "meaning": "【名】アルコール依存症患者",
+      "pos": "名",
+      "example": "He is a recovering alcoholic.",
+      "phrase": "alcoholic beverage",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 2416,
+      "word": "antique",
+      "meaning": "【名】骨董品",
+      "pos": "名",
+      "example": "This shop sells antiques.",
+      "phrase": "antique furniture",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 458,
+      "word": "concrete",
+      "meaning": "【名】コンクリート",
+      "pos": "名",
+      "example": "Reinforced concrete.",
+      "phrase": "concrete jungle",
+      "set": 1
+    },
+    {
+      "level": "exam1",
+      "index": 2491,
+      "word": "tabloid",
+      "meaning": "【名】タブロイド紙",
+      "pos": "名",
+      "example": "Read a tabloid.",
+      "phrase": "tabloid headline",
+      "set": 1
+    }
+  ]
+}

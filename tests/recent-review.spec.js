@@ -85,9 +85,9 @@ test('判定回数と正解数を即時保存し、履歴と現在の問題を�
   });
   expect(saved).toEqual({ threshold: 80, size: 5, state: 'perfect', due: 123, recent: 10 });
   await page.locator('.mastery-settings').evaluate(el => { el.scrollTop = el.scrollHeight; });
-  await expect(page.getByRole('button', { name: '出題モードを閉じる', exact: true })).toBeInViewport();
+  await expect(page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true })).toBeInViewport();
   await page.screenshot({ path: `screenshots/recent-review-${testInfo.project.name}-lower.png` });
-  await page.getByRole('button', { name: '出題モードを閉じる', exact: true }).click();
+  await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
   expect(await page.locator('#vocabWord').textContent()).toBe(wordBefore);
   await page.reload();
   expect(await page.evaluate(() => [gameState.reviewWindowSize, gameState.masteryThreshold])).toEqual([5, 80]);

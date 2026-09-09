@@ -2173,7 +2173,7 @@ test('直近10回の正答率閾値(80/50)で状態分類される', async ({ pa
   expect(result).toEqual({ k1: 'perfect', k2: 'learned', k3: 'weak' });
 });
 
-test('旧セーブの同綴り語を品詞別キーへ安全に移行する', async ({ page }) => {
+test('旧セーブの統合対象は履歴を削除して未学習へ戻し、累積ポイントを維持する', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -2206,41 +2206,24 @@ test('旧セーブの同綴り語を品詞別キーへ安全に移行する', as
 
   const result = await page.evaluate(() => {
     const entries = window.vocabularyDatabase.exam1.filter(word => word.word === 'attribute');
-    const noun = entries.find(word => word.pos === '名');
-    const verb = entries.find(word => word.pos === '動');
-    const nounKey = window.getWordKey(noun, 'exam1');
-    const verbKey = window.getWordKey(verb, 'exam1');
-    const before = {
-      nounKey,
-      verbKey,
-      nounState: window.gameState.wordStates[nounKey],
-      verbState: window.gameState.wordStates[verbKey],
-      nounFails: window.gameState.srsData[nounKey]?.failCount,
-      verbFails: window.gameState.srsData[verbKey]?.failCount,
-      nounInterval: window.gameState.learnedWordIntervals[nounKey],
-      verbInterval: window.gameState.learnedWordIntervals[verbKey],
-    };
-    window.gameState.wordStates[nounKey] = 'perfect';
+    const key = window.getWordKey(entries[0], 'exam1');
     return {
-      before,
-      nounAfter: window.gameState.wordStates[nounKey],
-      verbAfter: window.gameState.wordStates[verbKey],
-      schemaVersion: window.gameState.wordKeySchemaVersion,
+      count: entries.length,
+      senses: entries[0].senses.map(sense => sense.pos),
+      state: window.gameState.wordStates[key],
+      fails: window.gameState.srsData[key]?.failCount || 0,
+      interval: window.gameState.learnedWordIntervals[key],
+      oldState: window.gameState.wordStates.exam1_attribute,
+      oldSrs: window.gameState.srsData.exam1_attribute,
+      oldInterval: window.gameState.learnedWordIntervals.exam1_attribute_last,
+      points: window.gameState.points,
+      groupingVersion: window.gameState.wordGroupingVersion,
     };
   });
 
-  expect(result.before.nounKey).not.toBe(result.before.verbKey);
-  expect(result.before).toMatchObject({
-    nounState: 'weak',
-    verbState: 'weak',
-    nounFails: 2,
-    verbFails: 2,
-    nounInterval: 2,
-    verbInterval: 2,
-  });
-  expect(result.nounAfter).toBe('perfect');
-  expect(result.verbAfter).toBe('weak');
-  expect(result.schemaVersion).toBe(2);
+  expect(result).toEqual({ count: 1, senses: ['名', '動'], state: 'unlearned', fails: 0,
+    interval: undefined, oldState: undefined, oldSrs: undefined, oldInterval: undefined,
+    points: 10, groupingVersion: 1 });
 });
 
 test('単語帳参照語は基底語と同じ復習項目として重複しない', async ({ page }) => {
@@ -2449,18 +2432,20 @@ test('exam1(B2) の ipa がカード下に表示される', async ({ page }) => 
 
   const ipaText = await page.evaluate(() => {
     if (!window.vocabularyDatabase || typeof window.showWord !== 'function') return null;
-    const word = (window.vocabularyDatabase.exam1 || []).find((item) => item.word === 'attribute' && item.pos === '動');
-    if (!word || !word.ipa) return null;
+    const word = (window.vocabularyDatabase.exam1 || []).find((item) => item.word === 'attribute');
+    const verb = word?.senses?.find(sense => sense.pos === '動');
+    if (!word || !verb?.ipa) return null;
     if (window.gameState) {
       window.gameState.currentLevel = 'exam1';
       window.gameState.currentWord = word;
     }
     window.showWord(word);
-    return `/${word.ipa}/`;
+    return `/${verb.ipa}/`;
   });
 
   expect(ipaText).toBe('/əˈtrɪbjut/');
-  await expect(page.locator('#vocabWord .word-ipa')).toHaveText('/əˈtrɪbjut/');
+  await expect(page.locator('#vocabWord .word-ipa')).toContainText('/əˈtrɪbjut/');
+  await expect(page.locator('#vocabWord .word-ipa-variant')).toHaveCount(2);
 });
 
 test('selection1900 の直接 ipa がカード下に表示される', async ({ page }) => {

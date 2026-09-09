@@ -1,0 +1,1278 @@
+{
+  "date": "2026-09-09",
+  "scope": "次の50語と別帳の同語、55行。フレーズ・例文のみ修復。品詞・意味・キーは維持。画面ログなし。",
+  "reference": "真・英文法大全 PDF p.413（実際の語義と目的語）；dispose of・conform・dairy・speculateは辞書で補助確認。",
+  "sources": [
+    "https://dictionary.cambridge.org/dictionary/english/dispose-of",
+    "https://dictionary.cambridge.org/dictionary/english/conform",
+    "https://www.merriam-webster.com/dictionary/dairy",
+    "https://www.collinsdictionary.com/dictionary/english/speculate"
+  ],
+  "changes": [
+    {
+      "level": "selection1900",
+      "index": 1431,
+      "before": {
+        "word": "undermine",
+        "meaning": "を徐々にむしばむ；を侵食する",
+        "phrase": "undermine",
+        "pos": "動",
+        "example": "undermine example.",
+        "set": 1,
+        "id": 1432
+      },
+      "after": {
+        "word": "undermine",
+        "meaning": "を徐々にむしばむ；を侵食する",
+        "phrase": "undermine trust",
+        "pos": "動",
+        "example": "Repeated lies can undermine trust between friends.",
+        "set": 1,
+        "id": 1432
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1434,
+      "before": {
+        "word": "dispose",
+        "meaning": "〔dispose ofで〕を処分する；を（...する）気にさせる（to do）；を配置する",
+        "phrase": "dispose",
+        "pos": "動",
+        "example": "dispose example.",
+        "set": 1,
+        "id": 1435
+      },
+      "after": {
+        "word": "dispose",
+        "meaning": "〔dispose ofで〕を処分する；を（...する）気にさせる（to do）；を配置する",
+        "phrase": "dispose of old furniture",
+        "pos": "動",
+        "example": "We hired a company to dispose of the old furniture.",
+        "set": 1,
+        "id": 1435
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1437,
+      "before": {
+        "word": "refine",
+        "meaning": "を洗練する；を精製する",
+        "phrase": "refine",
+        "pos": "動",
+        "example": "refine example.",
+        "set": 1,
+        "id": 1438
+      },
+      "after": {
+        "word": "refine",
+        "meaning": "を洗練する；を精製する",
+        "phrase": "refine a design",
+        "pos": "動",
+        "example": "We used feedback from customers to refine the design.",
+        "set": 1,
+        "id": 1438
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1439,
+      "before": {
+        "word": "coordinate",
+        "meaning": "を調整する；を組織する；（服など）をコーディネートする",
+        "phrase": "coordinate",
+        "pos": "動",
+        "example": "coordinate example.",
+        "set": 1,
+        "id": 1440
+      },
+      "after": {
+        "word": "coordinate",
+        "meaning": "を調整する；を組織する；（服など）をコーディネートする",
+        "phrase": "coordinate a project",
+        "pos": "動",
+        "example": "She will coordinate the project with the other team leaders.",
+        "set": 1,
+        "id": 1440
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1441,
+      "before": {
+        "word": "internship",
+        "meaning": "【米】 実務［医学］研修；研修期間",
+        "phrase": "internship",
+        "pos": "名",
+        "example": "internship example.",
+        "set": 1,
+        "id": 1442
+      },
+      "after": {
+        "word": "internship",
+        "meaning": "【米】 実務［医学］研修；研修期間",
+        "phrase": "a summer internship",
+        "pos": "名",
+        "example": "He completed a summer internship at a local newspaper.",
+        "set": 1,
+        "id": 1442
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1446,
+      "before": {
+        "word": "transaction",
+        "meaning": "（商）取引；（人と人との）交流",
+        "phrase": "transaction",
+        "pos": "名",
+        "example": "transaction example.",
+        "set": 1,
+        "id": 1447
+      },
+      "after": {
+        "word": "transaction",
+        "meaning": "（商）取引；（人と人との）交流",
+        "phrase": "an online transaction",
+        "pos": "名",
+        "example": "You will receive an email after each online transaction.",
+        "set": 1,
+        "id": 1447
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1447,
+      "before": {
+        "word": "mutation",
+        "meaning": "突然変異（体）；変化",
+        "phrase": "mutation",
+        "pos": "名",
+        "example": "mutation example.",
+        "set": 1,
+        "id": 1448
+      },
+      "after": {
+        "word": "mutation",
+        "meaning": "突然変異（体）；変化",
+        "phrase": "a genetic mutation",
+        "pos": "名",
+        "example": "The researchers identified a genetic mutation in the plant.",
+        "set": 1,
+        "id": 1448
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1448,
+      "before": {
+        "word": "dairy",
+        "meaning": "〔集合的に〕乳製品；乳製品加工所［販売者］",
+        "phrase": "dairy",
+        "pos": "名",
+        "example": "dairy example.",
+        "set": 1,
+        "id": 1449
+      },
+      "after": {
+        "word": "dairy",
+        "meaning": "〔集合的に〕乳製品；乳製品加工所［販売者］",
+        "phrase": "contain dairy",
+        "pos": "名",
+        "example": "This dessert contains dairy, including milk and cream.",
+        "set": 1,
+        "id": 1449
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1450,
+      "before": {
+        "word": "posture",
+        "meaning": "姿勢；心構え",
+        "phrase": "posture",
+        "pos": "名",
+        "example": "posture example.",
+        "set": 1,
+        "id": 1451
+      },
+      "after": {
+        "word": "posture",
+        "meaning": "姿勢；心構え",
+        "phrase": "good posture",
+        "pos": "名",
+        "example": "The dance teacher showed us how to maintain good posture.",
+        "set": 1,
+        "id": 1451
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1453,
+      "before": {
+        "word": "census",
+        "meaning": "国勢調査；交通調査",
+        "phrase": "census",
+        "pos": "名",
+        "example": "census example.",
+        "set": 1,
+        "id": 1454
+      },
+      "after": {
+        "word": "census",
+        "meaning": "国勢調査；交通調査",
+        "phrase": "conduct a census",
+        "pos": "名",
+        "example": "The government conducted a census to count the population.",
+        "set": 1,
+        "id": 1454
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1459,
+      "before": {
+        "word": "maze",
+        "meaning": "迷路（≒ labyrinth）；複雑に込み入ったもの",
+        "phrase": "maze",
+        "pos": "名",
+        "example": "maze example.",
+        "set": 1,
+        "id": 1460
+      },
+      "after": {
+        "word": "maze",
+        "meaning": "迷路（≒ labyrinth）；複雑に込み入ったもの",
+        "phrase": "a garden maze",
+        "pos": "名",
+        "example": "The children found their way out of the garden maze.",
+        "set": 1,
+        "id": 1460
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1469,
+      "before": {
+        "word": "circulation",
+        "meaning": "循環；流通；（新聞・雑誌の）発行部数",
+        "phrase": "circulation",
+        "pos": "名",
+        "example": "circulation example.",
+        "set": 1,
+        "id": 1470
+      },
+      "after": {
+        "word": "circulation",
+        "meaning": "循環；流通；（新聞・雑誌の）発行部数",
+        "phrase": "a newspaper's circulation",
+        "pos": "名",
+        "example": "The newspaper's circulation doubled in five years.",
+        "set": 1,
+        "id": 1470
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1472,
+      "before": {
+        "word": "vacuum",
+        "meaning": "真空；空虚",
+        "phrase": "vacuum",
+        "pos": "名",
+        "example": "vacuum example.",
+        "set": 1,
+        "id": 1473
+      },
+      "after": {
+        "word": "vacuum",
+        "meaning": "真空；空虚",
+        "phrase": "create a vacuum",
+        "pos": "名",
+        "example": "The pump removes air to create a vacuum inside the chamber.",
+        "set": 1,
+        "id": 1473
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1473,
+      "before": {
+        "word": "collision",
+        "meaning": "衝突；対立",
+        "phrase": "collision",
+        "pos": "名",
+        "example": "collision example.",
+        "set": 1,
+        "id": 1474
+      },
+      "after": {
+        "word": "collision",
+        "meaning": "衝突；対立",
+        "phrase": "a collision between two cars",
+        "pos": "名",
+        "example": "The road was closed after a collision between two cars.",
+        "set": 1,
+        "id": 1474
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1475,
+      "before": {
+        "word": "landmark",
+        "meaning": "（ある場所の）目印；画期的な出来事",
+        "phrase": "landmark",
+        "pos": "名",
+        "example": "landmark example.",
+        "set": 1,
+        "id": 1476
+      },
+      "after": {
+        "word": "landmark",
+        "meaning": "（ある場所の）目印；画期的な出来事",
+        "phrase": "a familiar landmark",
+        "pos": "名",
+        "example": "The clock tower is a familiar landmark in the town.",
+        "set": 1,
+        "id": 1476
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1478,
+      "before": {
+        "word": "supreme",
+        "meaning": "最高の",
+        "phrase": "supreme",
+        "pos": "形",
+        "example": "supreme example.",
+        "set": 1,
+        "id": 1479
+      },
+      "after": {
+        "word": "supreme",
+        "meaning": "最高の",
+        "phrase": "supreme importance",
+        "pos": "形",
+        "example": "The safety of the passengers is of supreme importance.",
+        "set": 1,
+        "id": 1479
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1487,
+      "before": {
+        "word": "metropolitan",
+        "meaning": "大都市の，首都圏の",
+        "phrase": "metropolitan",
+        "pos": "形",
+        "example": "metropolitan example.",
+        "set": 1,
+        "id": 1488
+      },
+      "after": {
+        "word": "metropolitan",
+        "meaning": "大都市の，首都圏の",
+        "phrase": "a metropolitan area",
+        "pos": "形",
+        "example": "The new railway connects towns across the metropolitan area.",
+        "set": 1,
+        "id": 1488
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1488,
+      "before": {
+        "word": "monetary",
+        "meaning": "金銭的な；金融の",
+        "phrase": "monetary",
+        "pos": "形",
+        "example": "monetary example.",
+        "set": 1,
+        "id": 1489
+      },
+      "after": {
+        "word": "monetary",
+        "meaning": "金銭的な；金融の",
+        "phrase": "a monetary reward",
+        "pos": "形",
+        "example": "The winner received a medal and a monetary reward.",
+        "set": 1,
+        "id": 1489
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1492,
+      "before": {
+        "word": "drastic",
+        "meaning": "徹底的な，抜本的な；極端な",
+        "phrase": "drastic",
+        "pos": "形",
+        "example": "drastic example.",
+        "set": 1,
+        "id": 1493
+      },
+      "after": {
+        "word": "drastic",
+        "meaning": "徹底的な，抜本的な；極端な",
+        "phrase": "drastic changes",
+        "pos": "形",
+        "example": "The company made drastic changes to its delivery system.",
+        "set": 1,
+        "id": 1493
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1494,
+      "before": {
+        "word": "sole",
+        "meaning": "唯一の；単独の；独占的な",
+        "phrase": "sole",
+        "pos": "形",
+        "example": "sole example.",
+        "set": 1,
+        "id": 1495
+      },
+      "after": {
+        "word": "sole",
+        "meaning": "唯一の；単独の；独占的な",
+        "phrase": "the sole owner",
+        "pos": "形",
+        "example": "She became the sole owner of the shop.",
+        "set": 1,
+        "id": 1495
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1495,
+      "before": {
+        "word": "spontaneous",
+        "meaning": "自然発生的な；自発的な",
+        "phrase": "spontaneous",
+        "pos": "形",
+        "example": "spontaneous example.",
+        "set": 1,
+        "id": 1496
+      },
+      "after": {
+        "word": "spontaneous",
+        "meaning": "自然発生的な；自発的な",
+        "phrase": "spontaneous applause",
+        "pos": "形",
+        "example": "The audience broke into spontaneous applause.",
+        "set": 1,
+        "id": 1496
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1496,
+      "before": {
+        "word": "spatial",
+        "meaning": "空間の",
+        "phrase": "spatial",
+        "pos": "形",
+        "example": "spatial example.",
+        "set": 1,
+        "id": 1497
+      },
+      "after": {
+        "word": "spatial",
+        "meaning": "空間の",
+        "phrase": "spatial awareness",
+        "pos": "形",
+        "example": "Building models can help children develop spatial awareness.",
+        "set": 1,
+        "id": 1497
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1502,
+      "before": {
+        "word": "conform",
+        "meaning": "順応する；一致する",
+        "phrase": "conform",
+        "pos": "動",
+        "example": "conform example.",
+        "set": 1,
+        "id": 1503
+      },
+      "after": {
+        "word": "conform",
+        "meaning": "順応する；一致する",
+        "phrase": "conform to the rules",
+        "pos": "動",
+        "example": "All participants must conform to the rules of the competition.",
+        "set": 1,
+        "id": 1503
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1505,
+      "before": {
+        "word": "halt",
+        "meaning": "を止める；止まる",
+        "phrase": "halt",
+        "pos": "動",
+        "example": "halt example.",
+        "set": 1,
+        "id": 1506
+      },
+      "after": {
+        "word": "halt",
+        "meaning": "を止める；止まる",
+        "phrase": "halt production",
+        "pos": "動",
+        "example": "A power failure forced the factory to halt production.",
+        "set": 1,
+        "id": 1506
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1506,
+      "before": {
+        "word": "provoke",
+        "meaning": "（感情・行動など）を引き起こす；を挑発する",
+        "phrase": "provoke",
+        "pos": "動",
+        "example": "provoke example.",
+        "set": 1,
+        "id": 1507
+      },
+      "after": {
+        "word": "provoke",
+        "meaning": "（感情・行動など）を引き起こす；を挑発する",
+        "phrase": "provoke a debate",
+        "pos": "動",
+        "example": "The article provoked a lively debate in our class.",
+        "set": 1,
+        "id": 1507
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1513,
+      "before": {
+        "word": "populate",
+        "meaning": "に住む，の住民である；に人を住まわせる",
+        "phrase": "populate",
+        "pos": "動",
+        "example": "populate example.",
+        "set": 1,
+        "id": 1514
+      },
+      "after": {
+        "word": "populate",
+        "meaning": "に住む，の住民である；に人を住まわせる",
+        "phrase": "populate an island",
+        "pos": "動",
+        "example": "Families from the mainland began to populate the island.",
+        "set": 1,
+        "id": 1514
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1514,
+      "before": {
+        "word": "accommodate",
+        "meaning": "を収容する；を（～に）適応させる（to）",
+        "phrase": "accommodate",
+        "pos": "動",
+        "example": "accommodate example.",
+        "set": 1,
+        "id": 1515
+      },
+      "after": {
+        "word": "accommodate",
+        "meaning": "を収容する；を（～に）適応させる（to）",
+        "phrase": "accommodate fifty people",
+        "pos": "動",
+        "example": "The hall can accommodate fifty people.",
+        "set": 1,
+        "id": 1515
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1520,
+      "before": {
+        "word": "transplant",
+        "meaning": "を移植する；を移住させる",
+        "phrase": "transplant",
+        "pos": "動",
+        "example": "transplant example.",
+        "set": 1,
+        "id": 1521
+      },
+      "after": {
+        "word": "transplant",
+        "meaning": "を移植する；を移住させる",
+        "phrase": "transplant seedlings",
+        "pos": "動",
+        "example": "We transplanted the seedlings into larger pots.",
+        "set": 1,
+        "id": 1521
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1521,
+      "before": {
+        "word": "reassure",
+        "meaning": "を安心させる",
+        "phrase": "reassure",
+        "pos": "動",
+        "example": "reassure example.",
+        "set": 1,
+        "id": 1522
+      },
+      "after": {
+        "word": "reassure",
+        "meaning": "を安心させる",
+        "phrase": "reassure a child",
+        "pos": "動",
+        "example": "The teacher reassured the child that help was on the way.",
+        "set": 1,
+        "id": 1522
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1523,
+      "before": {
+        "word": "speculate",
+        "meaning": "（と）推測する；投機する",
+        "phrase": "speculate",
+        "pos": "動",
+        "example": "speculate example.",
+        "set": 1,
+        "id": 1524
+      },
+      "after": {
+        "word": "speculate",
+        "meaning": "（と）推測する；投機する",
+        "phrase": "speculate about the cause",
+        "pos": "動",
+        "example": "The neighbors speculated about the cause of the noise.",
+        "set": 1,
+        "id": 1524
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1524,
+      "before": {
+        "word": "surpass",
+        "meaning": "を上回る",
+        "phrase": "surpass",
+        "pos": "動",
+        "example": "surpass example.",
+        "set": 1,
+        "id": 1525
+      },
+      "after": {
+        "word": "surpass",
+        "meaning": "を上回る",
+        "phrase": "surpass expectations",
+        "pos": "動",
+        "example": "Attendance at the concert surpassed our expectations.",
+        "set": 1,
+        "id": 1525
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1526,
+      "before": {
+        "word": "intrigue",
+        "meaning": "に興味を持たせる；陰謀を企てる",
+        "phrase": "intrigue",
+        "pos": "動",
+        "example": "intrigue example.",
+        "set": 1,
+        "id": 1527
+      },
+      "after": {
+        "word": "intrigue",
+        "meaning": "に興味を持たせる；陰謀を企てる",
+        "phrase": "intrigue a reader",
+        "pos": "動",
+        "example": "The mysterious letter intrigued the reader.",
+        "set": 1,
+        "id": 1527
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1538,
+      "before": {
+        "word": "awaken",
+        "meaning": "を目覚めさせる；（～から）覚める（from）",
+        "phrase": "awaken",
+        "pos": "動",
+        "example": "awaken example.",
+        "set": 1,
+        "id": 1539
+      },
+      "after": {
+        "word": "awaken",
+        "meaning": "を目覚めさせる；（～から）覚める（from）",
+        "phrase": "awaken someone from sleep",
+        "pos": "動",
+        "example": "A loud crash awakened me from sleep.",
+        "set": 1,
+        "id": 1539
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1542,
+      "before": {
+        "word": "surplus",
+        "meaning": "余剰（⇔ shortage 不足），過剰；黒字",
+        "phrase": "surplus",
+        "pos": "名",
+        "example": "surplus example.",
+        "set": 1,
+        "id": 1543
+      },
+      "after": {
+        "word": "surplus",
+        "meaning": "余剰（⇔ shortage 不足），過剰；黒字",
+        "phrase": "a surplus of tomatoes",
+        "pos": "名",
+        "example": "We gave our neighbors the surplus of tomatoes from our garden.",
+        "set": 1,
+        "id": 1543
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1544,
+      "before": {
+        "word": "sweatshop",
+        "meaning": "搾取工場",
+        "phrase": "sweatshop",
+        "pos": "名",
+        "example": "sweatshop example.",
+        "set": 1,
+        "id": 1545
+      },
+      "after": {
+        "word": "sweatshop",
+        "meaning": "搾取工場",
+        "phrase": "work in a sweatshop",
+        "pos": "名",
+        "example": "The film follows workers who face long hours and low pay in a sweatshop.",
+        "set": 1,
+        "id": 1545
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1545,
+      "before": {
+        "word": "clash",
+        "meaning": "衝突；対立；かち合うこと；ガチャンという音",
+        "phrase": "clash",
+        "pos": "名",
+        "example": "clash example.",
+        "set": 1,
+        "id": 1546
+      },
+      "after": {
+        "word": "clash",
+        "meaning": "衝突；対立；かち合うこと；ガチャンという音",
+        "phrase": "a clash of opinions",
+        "pos": "名",
+        "example": "A clash of opinions delayed the committee's decision.",
+        "set": 1,
+        "id": 1546
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1546,
+      "before": {
+        "word": "sociology",
+        "meaning": "社会学",
+        "phrase": "sociology",
+        "pos": "名",
+        "example": "sociology example.",
+        "set": 1,
+        "id": 1547
+      },
+      "after": {
+        "word": "sociology",
+        "meaning": "社会学",
+        "phrase": "study sociology",
+        "pos": "名",
+        "example": "She studies sociology to understand how communities change.",
+        "set": 1,
+        "id": 1547
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1549,
+      "before": {
+        "word": "realm",
+        "meaning": "領域；領土",
+        "phrase": "realm",
+        "pos": "名",
+        "example": "realm example.",
+        "set": 1,
+        "id": 1550
+      },
+      "after": {
+        "word": "realm",
+        "meaning": "領域；領土",
+        "phrase": "the realm of fantasy",
+        "pos": "名",
+        "example": "The story takes us into the realm of fantasy.",
+        "set": 1,
+        "id": 1550
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1550,
+      "before": {
+        "word": "domain",
+        "meaning": "分野；領域；ドメイン（＝ domain name）",
+        "phrase": "domain",
+        "pos": "名",
+        "example": "domain example.",
+        "set": 1,
+        "id": 1551
+      },
+      "after": {
+        "word": "domain",
+        "meaning": "分野；領域；ドメイン（＝ domain name）",
+        "phrase": "the domain of science",
+        "pos": "名",
+        "example": "This question falls within the domain of science.",
+        "set": 1,
+        "id": 1551
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1551,
+      "before": {
+        "word": "algorithm",
+        "meaning": "アルゴリズム；問題解決の手順",
+        "phrase": "algorithm",
+        "pos": "名",
+        "example": "algorithm example.",
+        "set": 1,
+        "id": 1552
+      },
+      "after": {
+        "word": "algorithm",
+        "meaning": "アルゴリズム；問題解決の手順",
+        "phrase": "a sorting algorithm",
+        "pos": "名",
+        "example": "The program uses a sorting algorithm to arrange the names.",
+        "set": 1,
+        "id": 1552
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1552,
+      "before": {
+        "word": "prairie",
+        "meaning": "大草原",
+        "phrase": "prairie",
+        "pos": "名",
+        "example": "prairie example.",
+        "set": 1,
+        "id": 1553
+      },
+      "after": {
+        "word": "prairie",
+        "meaning": "大草原",
+        "phrase": "across the prairie",
+        "pos": "名",
+        "example": "A herd of bison moved slowly across the prairie.",
+        "set": 1,
+        "id": 1553
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1558,
+      "before": {
+        "word": "placebo",
+        "meaning": "偽薬，プラシーボ；気休め",
+        "phrase": "placebo",
+        "pos": "名",
+        "example": "placebo example.",
+        "set": 1,
+        "id": 1559
+      },
+      "after": {
+        "word": "placebo",
+        "meaning": "偽薬，プラシーボ；気休め",
+        "phrase": "receive a placebo",
+        "pos": "名",
+        "example": "Some participants in the study received a placebo.",
+        "set": 1,
+        "id": 1559
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1560,
+      "before": {
+        "word": "spouse",
+        "meaning": "配偶者",
+        "phrase": "spouse",
+        "pos": "名",
+        "example": "spouse example.",
+        "set": 1,
+        "id": 1561
+      },
+      "after": {
+        "word": "spouse",
+        "meaning": "配偶者",
+        "phrase": "bring your spouse",
+        "pos": "名",
+        "example": "Employees may bring their spouse to the dinner.",
+        "set": 1,
+        "id": 1561
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1561,
+      "before": {
+        "word": "makeup",
+        "meaning": "化粧；化粧品；構成；性質",
+        "phrase": "makeup",
+        "pos": "名",
+        "example": "makeup example.",
+        "set": 1,
+        "id": 1562
+      },
+      "after": {
+        "word": "makeup",
+        "meaning": "化粧；化粧品；構成；性質",
+        "phrase": "remove makeup",
+        "pos": "名",
+        "example": "She removed her makeup before going to bed.",
+        "set": 1,
+        "id": 1562
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1562,
+      "before": {
+        "word": "mummy",
+        "meaning": "ミイラ；【英】ママ，お母さん（＝ 【米】mommy）",
+        "phrase": "mummy",
+        "pos": "名",
+        "example": "mummy example.",
+        "set": 1,
+        "id": 1563
+      },
+      "after": {
+        "word": "mummy",
+        "meaning": "ミイラ；【英】ママ，お母さん（＝ 【米】mommy）",
+        "phrase": "an ancient mummy",
+        "pos": "名",
+        "example": "The museum has an ancient mummy in a glass case.",
+        "set": 1,
+        "id": 1563
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1565,
+      "before": {
+        "word": "odor",
+        "meaning": "におい；気配",
+        "phrase": "odor",
+        "pos": "名",
+        "example": "odor example.",
+        "set": 1,
+        "id": 1566
+      },
+      "after": {
+        "word": "odor",
+        "meaning": "におい；気配",
+        "phrase": "a strong odor",
+        "pos": "名",
+        "example": "A strong odor came from the rubbish bin.",
+        "set": 1,
+        "id": 1566
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1571,
+      "before": {
+        "word": "intellect",
+        "meaning": "知性；〔the ～（s）〕知識人",
+        "phrase": "intellect",
+        "pos": "名",
+        "example": "intellect example.",
+        "set": 1,
+        "id": 1572
+      },
+      "after": {
+        "word": "intellect",
+        "meaning": "知性；〔the ～（s）〕知識人",
+        "phrase": "a sharp intellect",
+        "pos": "名",
+        "example": "Her questions reveal a sharp intellect.",
+        "set": 1,
+        "id": 1572
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1574,
+      "before": {
+        "word": "manuscript",
+        "meaning": "（手書きの）原稿；写本",
+        "phrase": "manuscript",
+        "pos": "名",
+        "example": "manuscript example.",
+        "set": 1,
+        "id": 1575
+      },
+      "after": {
+        "word": "manuscript",
+        "meaning": "（手書きの）原稿；写本",
+        "phrase": "a handwritten manuscript",
+        "pos": "名",
+        "example": "The library displayed a handwritten manuscript by the poet.",
+        "set": 1,
+        "id": 1575
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1577,
+      "before": {
+        "word": "paradigm",
+        "meaning": "理論的枠組み，パラダイム；模範",
+        "phrase": "paradigm",
+        "pos": "名",
+        "example": "paradigm example.",
+        "set": 1,
+        "id": 1578
+      },
+      "after": {
+        "word": "paradigm",
+        "meaning": "理論的枠組み，パラダイム；模範",
+        "phrase": "a new paradigm",
+        "pos": "名",
+        "example": "The discovery introduced a new paradigm for studying language.",
+        "set": 1,
+        "id": 1578
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1579,
+      "before": {
+        "word": "authentic",
+        "meaning": "本物の；信頼できる",
+        "phrase": "authentic",
+        "pos": "形",
+        "example": "authentic example.",
+        "set": 1,
+        "id": 1580
+      },
+      "after": {
+        "word": "authentic",
+        "meaning": "本物の；信頼できる",
+        "phrase": "an authentic painting",
+        "pos": "形",
+        "example": "The expert confirmed that it was an authentic painting by the artist.",
+        "set": 1,
+        "id": 1580
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1101,
+      "before": {
+        "word": "speculate",
+        "meaning": "思索する",
+        "phrase": "speculate",
+        "pos": "動",
+        "example": "speculate example.",
+        "set": 1,
+        "id": 1102
+      },
+      "after": {
+        "word": "speculate",
+        "meaning": "思索する",
+        "phrase": "speculate about the future",
+        "pos": "動",
+        "example": "We spent the evening speculating about the future of our town.",
+        "set": 1,
+        "id": 1102
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1129,
+      "before": {
+        "word": "dispose",
+        "meaning": "を処分する",
+        "phrase": "dispose",
+        "pos": "動",
+        "example": "dispose example.",
+        "set": 1,
+        "id": 1130
+      },
+      "after": {
+        "word": "dispose",
+        "meaning": "を処分する",
+        "phrase": "dispose of old furniture",
+        "pos": "動",
+        "example": "We hired a company to dispose of the old furniture.",
+        "set": 1,
+        "id": 1130
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1302,
+      "before": {
+        "word": "conform",
+        "meaning": "従う",
+        "phrase": "conform",
+        "pos": "動",
+        "example": "conform example.",
+        "set": 1,
+        "id": 1303
+      },
+      "after": {
+        "word": "conform",
+        "meaning": "従う",
+        "phrase": "conform to the rules",
+        "pos": "動",
+        "example": "All participants must conform to the rules of the competition.",
+        "set": 1,
+        "id": 1303
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1370,
+      "before": {
+        "word": "circulation",
+        "meaning": "血行、発行部数",
+        "phrase": "circulation",
+        "pos": "名",
+        "example": "circulation example.",
+        "set": 1,
+        "id": 1371
+      },
+      "after": {
+        "word": "circulation",
+        "meaning": "血行、発行部数",
+        "phrase": "a newspaper's circulation",
+        "pos": "名",
+        "example": "The newspaper's circulation doubled in five years.",
+        "set": 1,
+        "id": 1371
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1395,
+      "before": {
+        "word": "supreme",
+        "meaning": "最高の、最大の",
+        "phrase": "supreme",
+        "pos": "形",
+        "example": "supreme example.",
+        "set": 1,
+        "id": 1396
+      },
+      "after": {
+        "word": "supreme",
+        "meaning": "最高の、最大の",
+        "phrase": "supreme importance",
+        "pos": "形",
+        "example": "The safety of the passengers is of supreme importance.",
+        "set": 1,
+        "id": 1396
+      },
+      "reason": "仮例文を既存の品詞・語義に合う独自のフレーズと完全文へ修復。"
+    }
+  ]
+}

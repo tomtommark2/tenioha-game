@@ -23,6 +23,14 @@
 - Do not deploy the app UI to Firebase Hosting. Hosting has been disabled for the `tenioha-game` Firebase project.
 - For backend changes, prefer explicit deploy targets such as `npx firebase deploy --only functions --project tenioha-game` or `npx firebase deploy --only firestore:rules --project tenioha-game`.
 
+### 2026-09-09 公開チェック（2026.0909.1335）
+
+- 対象：設定入口と復習案内、891語のカード統合、100語分の名詞イラスト（97画像）、語彙・品詞・フレーズ修復、仮例文414行の解消、基本語7語の追加。
+- 単体23件・Functions16件・ブラウザー130件・モバイル18件を確認。全体実行時の制作一覧テスト1件は旧件数4,571を期待して失敗したため、追加後の4,577へ修正して対象テストを再実行し成功。HTML・バージョン・許可キー10,726件の同期も確認。
+- 再実行はファイル名／テスト名を明示する。`test:e2e:safe -- --last-failed` は前段の単体テストが失敗一覧を上書きし、対象なしになるため使わない。
+- 公開順序：`functions:submitReviewScore` の許可リストを先に更新し、GitHub Pagesのmainへ反映する。決済・他のFunctions・Firestoreルール・Firebase Hostingは変更しない。
+- 試作動画・スプライト・制作プレビュー・未採用画像はローカルに保持し、今回の公開対象に含めない。
+
 ## Local Development
 
 - Use `local_server.py` instead of a generic static server because it forces MIME types and disables caching.
@@ -66,6 +74,13 @@
 - `functions/index.js`
 
 Change these carefully because they affect installability, caching, backend services, and payments.
+
+## メンバーシップ用コード
+
+- アプリ内コードはFirestoreの `promocodes/{code}` で管理する。Stripeの割引コードとは別物。コードは前後の空白のみ除去され、大文字小文字を区別する。
+- 現行APIが参照する設定は `active`、`durationDays`、`maxRedemptions`、`redemptionCount`。登録は既存ドキュメントを上書きしない作成操作を使い、作成後に再読取する。配布コードそのものは公開リポジトリに記録しない。
+- 付与日数は利用時点（既存のプレミアム期限が未来ならその期限）から加算する。同じ利用者は同じコードを再利用できない。`maxRedemptions` の未設定／0は総利用回数の上限なし。
+- 現行APIには月末などの受付期限チェックがない。月名だけで自動失効するわけではないため、月次コード作成時は付与日数・総利用上限・受付終了の扱いを確認する。`expiresAt` を保存するだけでは失効しない。
 
 ## Firestore Cost Checks
 

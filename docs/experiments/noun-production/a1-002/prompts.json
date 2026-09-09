@@ -1,0 +1,638 @@
+{
+  "id": "a1-002",
+  "source": "data/vocabulary.js",
+  "policy": "Next 70 noun keys in source order to reach 100 registered words; preserve first 30. Slightly reduce realism and material detail, not the rejected extremely coarse style.",
+  "entries": [
+    {
+      "word": "autumn",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "秋",
+      "asset": "assets/word-illustrations/autumn-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A small deciduous tree with a rounded crown of orange, ochre and red leaves; three large fallen leaves at its base and one falling leaf beside the crown. Simple trunk, compact autumn vignette. No full landscape.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "baby",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "赤ちゃん",
+      "asset": "assets/word-illustrations/baby-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One cute infant sitting upright safely on a small blanket, in a simple pale-yellow onesie. Large head, tiny hands, rounded limbs, neutral cheerful expression. No toys, bottle, text or adult.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "back",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "背中、後ろ",
+      "asset": "assets/word-illustrations/back-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: Back view of one clothed person from head to hips. The back of their plain blue shirt is highlighted as a lighter blue central region; one short orange pointer ends at the middle of the back. Clearly rear view, no face, no backward motion arrow. Depict the body part back, not returning.",
+      "note": "収録語義の一例。背中を描き、戻る動作は描かない。"
+    },
+    {
+      "word": "bag",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "鞄、袋",
+      "asset": "assets/word-illustrations/bag-v2.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One upright reusable shopping tote bag with two loop handles, open at the top, simple green fabric. No contents, no logo, plain flat surface.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "ball",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ボール",
+      "asset": "assets/word-illustrations/ball-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One large round play ball made of four broad alternating red, yellow and blue panels, round stepped pixel outline. No face, no sports lettering, no scenery.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "banana",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "バナナ",
+      "asset": "assets/word-illustrations/banana-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One ripe yellow banana, gently curved, with simple brown stem and tip; intact peel, no other fruit.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "band",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "バンド、楽団",
+      "asset": "assets/word-illustrations/band-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A compact group of THREE friendly adult musicians performing as a rock band: a guitarist, a singer holding a microphone and a drummer behind a small drum set. Simplified figures, distinct instruments. No audience or stage scenery.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bank",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "銀行",
+      "asset": "assets/word-illustrations/bank-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small bank building with front entrance, two simple columns, and a short rectangular sign reading exactly BANK. Three large coin disks beside the entrance convey finance. No currency symbols, no corporate logo, no real bank.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bar",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "棒、酒場",
+      "asset": "assets/word-illustrations/bar-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One long simple rectangular metal bar shown diagonally in slight perspective, matte blue-gray, square cross-section and clearly longer than it is wide. No wood grain, weight plates or tavern. Depict a solid bar or rod.",
+      "note": "収録語義の一例。棒の意味を描く。酒場やcandy bar全体は表さない。"
+    },
+    {
+      "word": "baseball",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "野球",
+      "asset": "assets/word-illustrations/baseball-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A compact baseball scene with one friendly batter in simple uniform swinging a bat toward one small white ball with red seams, home plate underfoot. Full body visible, no opponents, logo or stadium.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "basketball",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "バスケットボール",
+      "asset": "assets/word-illustrations/basketball-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One orange basketball approaching a basketball hoop with a small white backboard and simple net. Clear black ball seams and red hoop. No players or stadium.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bat",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "バット、コウモリ",
+      "asset": "assets/word-illustrations/bat-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: ONE wooden baseball bat alone, long rounded barrel tapering to a slim handle with a small knob; slightly diagonal. Plain tan color with just one shade, no ball, no animal, no texture.",
+      "note": "収録語義の一例。バットの意味を描き、コウモリは描かない。"
+    },
+    {
+      "word": "bath",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "入浴",
+      "asset": "assets/word-illustrations/bath-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A friendly adult taking a bath in a simple bathtub filled with white bubbles. Only head, shoulders and one hand above bubbles, all intimate body parts completely covered. Side view tub and a small faucet, no room, no bathroom clutter.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bathroom",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "浴室、トイレ",
+      "asset": "assets/word-illustrations/bathroom-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A compact bathroom cutaway vignette with a toilet, small washbasin and bathtub, a tiny tiled floor patch joining them. No people. Readable three-fixture silhouettes, no elaborate interior.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "beach",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "浜辺、ビーチ",
+      "asset": "assets/word-illustrations/beach-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: Small crescent strip of sandy shore meeting blue sea, with two clean white foam bands and one small shell on sand. A self-contained compact coastal patch; no palm tree, umbrella or resort.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bean",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "豆",
+      "asset": "assets/word-illustrations/bean-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One open green bean pod with three large rounded beans inside, and two separate beans alongside. Simple botanical shape, no facial features or vines.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bear",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "熊",
+      "asset": "assets/word-illustrations/bear-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One friendly brown bear standing on four legs in three-quarter view, small rounded ears, broad snout, short tail. Simplified brown color masses, no fur strands, no teddy seams or accessories.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bed",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ベッド",
+      "asset": "assets/word-illustrations/bed-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One single bed with pillow, simple blue blanket and wooden headboard, three-quarter view, whole silhouette. No bedroom walls, lamp or sleeper.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bedroom",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "寝室",
+      "asset": "assets/word-illustrations/bedroom-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: Compact bedroom cutaway with a single bed, pillow and blue blanket, one bedside table with lamp, and one simple window behind. Minimal joined floor patch, no person or ornate furnishings.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bee",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ハチ",
+      "asset": "assets/word-illustrations/bee-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One honeybee in side-three-quarter view with golden-yellow and dark brown abdominal stripes, six short legs, two antennae and two visible pale wings. Friendly insect, not a humanoid character. No flowers or honey jar.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "beef",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "牛肉",
+      "asset": "assets/word-illustrations/beef-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A small roast beef portion on a plain white plate, two thick sliced pieces showing muted pink cooked centers and brown edges. Flat appetizing food icon, no blood, bone or glossy food photography.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bell",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ベル、鐘",
+      "asset": "assets/word-illustrations/bell-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One golden hanging bell with flared lower rim, visible clapper inside and a simple small top loop. No stand, clock tower or decorative inscription.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bicycle",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "自転車",
+      "asset": "assets/word-illustrations/bicycle-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One standard city bicycle side view, complete two wheels, frame, seat, pedals and handlebars. Teal frame, black tires. No rider, basket contents, logo or road.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bike",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "自転車（略語）",
+      "asset": "assets/word-illustrations/bicycle-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One standard city bicycle side view, complete two wheels, frame, seat, pedals and handlebars. Teal frame, black tires. No rider, basket contents, logo or road.",
+      "note": "bicycleと同じ画像を共有。"
+    },
+    {
+      "word": "bird",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "鳥",
+      "asset": "assets/word-illustrations/bird-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small blue songbird with a round body, short beak, two small feet and a folded wing, standing in profile. Simple color regions; no individual feather detail or branch scenery.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "birth",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "誕生",
+      "asset": "assets/word-illustrations/birth-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One peacefully sleeping newborn fully wrapped in a cream swaddle in a simple hospital bassinet, with a small heart symbol above the bassinet. A gentle non-graphic new-life vignette, no stork, pregnancy belly or birth procedure.",
+      "note": "収録語義の一例。誕生を新生児の場面で示す。"
+    },
+    {
+      "word": "birthday",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "誕生日",
+      "asset": "assets/word-illustrations/birthday-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small birthday cake with THREE lit candles and one wrapped gift beside it. Celebratory meaning without text, no confetti cloud or party room.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "biscuit",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ビスケット",
+      "asset": "assets/word-illustrations/biscuit-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: Two plain golden tea biscuits, one round and one slightly tilted behind, with a few clear evenly spaced baking holes and scalloped edge. No chocolate chips, sandwich filling, bread rolls or photographic crumbs.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "black",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "黒",
+      "asset": "assets/word-illustrations/black-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One open small paint pot with a broad black paint dab beside it and a brush tipped in black. The black area must be visibly near-black, not gray, while pot outline remains readable. No words.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "block",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ブロック、区画",
+      "asset": "assets/word-illustrations/block-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: Isometric city block: three simple small buildings contained within ONE square block, bounded by gray streets on all four sides. Buildings muted, block ground warm yellow to distinguish the area. No map labels, cars or huge skyline.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "blue",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "青",
+      "asset": "assets/word-illustrations/blue-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One open small paint pot with a broad vivid medium-blue paint dab beside it and a brush tipped in the same blue. Mostly flat blue areas, no words or other paint colors.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "board",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "板、黒板、委員会",
+      "asset": "assets/word-illustrations/board-v4.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small classroom blackboard on a simple wooden stand, dark green flat surface with TWO short white chalk lines and one piece of chalk on tray. No letters or numbers. Depict a writing board, not a committee.",
+      "note": "収録語義の一例。板の意味を描く。黒板案は透過の不具合で不採用。委員会・乗船の意味全体は表さない。",
+      "finalPrompt": "Use case: stylized-concept. One square retro 16-bit pixel-art STYLE sprite for the English noun BOARD, meaning a broad flat wooden board or plank. Depict ONE broad rectangular tan wooden plank lying diagonally in slight three-quarter perspective, visibly thin and flat, width about one-third its length. Entire plank visible, squared ends, no hole, no frame, no text. Warm light ochre wood with just two flat shade areas, simplified readable object, NO woodgrain or detailed texture, NO realistic lighting. Friendly crisp game illustration with stepped pixel contours, not a photo or vector icon. Large centered subject fills 85 percent of square. Genuinely transparent alpha background only around the fully opaque plank. No chalkboard, easel, tools, nails, extra objects, checkerboard, colored backdrop or watermark."
+    },
+    {
+      "word": "boat",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ボート",
+      "asset": "assets/word-illustrations/boat-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small wooden rowboat with two oars, seen from slightly above in three-quarter view. Plain tan body, tiny blue ripple under it, no person, motor or sail.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "body",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "体",
+      "asset": "assets/word-illustrations/body-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One friendly full-body human figure facing forward in a simple plain t-shirt and shorts, both arms slightly away from sides and feet apart. Head, torso, arms and legs all clear as one complete body. No anatomy diagram, muscles or labels.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bone",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "骨",
+      "asset": "assets/word-illustrations/bone-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One clean ivory long bone with rounded wider ends and a narrower shaft, diagonal. Friendly simplified anatomy icon, no blood or skeleton.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "book",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "本",
+      "asset": "assets/word-illustrations/book-v2.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One partly open blue hardcover book with visible cream page block, broad readable covers and simple spine. No letters, magic glow or additional objects.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bookstore",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "書店",
+      "asset": "assets/word-illustrations/bookstore-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small bookshop storefront with books clearly visible as colorful spines through the front window, a plain open-book pictogram above the door. No text or coffee cups, no real brand.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bottle",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "瓶、ボトル",
+      "asset": "assets/word-illustrations/bottle-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One clear light-blue glass bottle with a narrow neck, small cap and broad body, simple flat highlight region. No contents label, logo, ornate reflections or extra objects.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bottom",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "底、一番下",
+      "asset": "assets/word-illustrations/bottom-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One upright plain rectangular page with three short muted gray lines in its upper half and a broad orange band along its BOTTOM edge. A short orange pointer ends at that bottom band from the side. No text, numbers or signature; bottom region is the focus.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bowl",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ボウル、お椀",
+      "asset": "assets/word-illustrations/bowl-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One simple deep ceramic rice bowl in three-quarter view, blue exterior, cream interior with a little white rice visible. Entire rim and foot visible, no spoon or chopsticks.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "box",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "箱",
+      "asset": "assets/word-illustrations/box-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One open brown cardboard box with four top flaps, empty interior, strong simple cubic silhouette. No shipping labels, tape markings or contents.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "boy",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "男の子",
+      "asset": "assets/word-illustrations/boy-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One cheerful school-age boy standing full body, simple green t-shirt, shorts and sneakers, relaxed pose, simplified face. No props, text or detailed anatomy.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "boyfriend",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ボーイフレンド",
+      "asset": "assets/word-illustrations/boyfriend-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: Two adult partners standing close and holding hands, the man slightly foregrounded in saturated blue and his partner in muted lavender. One small heart above their joined hands. Depict a romantic partner, not a child or family diagram.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "brain",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "脳",
+      "asset": "assets/word-illustrations/brain-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One isolated friendly educational human brain icon in side-three-quarter view. Muted pink with a handful of broad curved fold lines, simplified lobes. No realistic tissue texture, blood, labels or skull.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bread",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "パン",
+      "asset": "assets/word-illustrations/bread-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small golden loaf of bread and two simple slices beside it, broad cream interior and tan crust. No crumbs or grain detail.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "breakfast",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "朝食",
+      "asset": "assets/word-illustrations/breakfast-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A compact breakfast setting: one plate with toast and a fried egg, small mug beside it, and a small sun rising over a short horizon symbol above. No words or elaborate dining table.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bridge",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "橋",
+      "asset": "assets/word-illustrations/bridge-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small arched stone bridge clearly spanning a narrow blue stream between two banks. Simple solid parapets and a visible arch opening under the deck. No mountains, waterfall, vehicles or people.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "brother",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "兄、弟",
+      "asset": "assets/word-illustrations/brother-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A compact sibling relation diagram in friendly game pixel art. Two small neutral parent portraits at top connect down to a horizontal sibling branch; below are one boy and one girl of similar child age. Highlight the boy in blue and mute other portraits. Clear shared-parent branching, no heart or romantic gesture. No labels.",
+      "note": "収録語義の一例。共通の親を持つきょうだい関係の一例。"
+    },
+    {
+      "word": "brush",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ブラシ",
+      "asset": "assets/word-illustrations/brush-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One oval hairbrush with a simple handle and clearly visible short bristles on its broad pad, diagonal view. No paintbrush, toothbrush or loose hair.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bucket",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "バケツ",
+      "asset": "assets/word-illustrations/bucket-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One blue pail with a curved metal handle and an open rim showing a little water. Simple silhouette, no broom, tap or scenery.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "building",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "建物",
+      "asset": "assets/word-illustrations/building-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One standalone four-story everyday building with a clear entrance and a few large windows, slight three-quarter view. No named shop, urban skyline or architecture texture.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "burger",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "バーガー",
+      "asset": "assets/word-illustrations/burger-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One hamburger with a tan bun, brown patty, green lettuce and one red tomato layer. Flat simple food sprite, no dripping sauce, shiny highlights or extra fries.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "bus",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "バス",
+      "asset": "assets/word-illustrations/bus-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One city bus in slight three-quarter side view, long rectangular blue body, large windows, front door and two visible wheels. No route number, logo or passengers.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "business",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "仕事、商売",
+      "asset": "assets/word-illustrations/business-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: A compact shop transaction: a friendly shopkeeper behind a tiny counter hands a boxed item to an adult customer who offers a plain coin. Clear exchange of goods for money, no currency mark, briefcase or growth chart.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "butter",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "バター",
+      "asset": "assets/word-illustrations/butter-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One rectangular pale-yellow block of butter on a small white dish with one thin slice leaning against it. No brand wrapper, knife or bread.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "butterfly",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "蝶",
+      "asset": "assets/word-illustrations/butterfly-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One butterfly with both wings spread symmetrically, orange and dark brown broad wing regions, slim body and two antennae. No intricate scales, flowers or sparkles.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "button",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ボタン",
+      "asset": "assets/word-illustrations/button-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One large red push button on a small gray square base, clearly raised above base in three-quarter view. One short fingertip approaching it from the side indicates pressing. No clothing button, words or power symbol.",
+      "note": "収録語義の一例。例文の押しボタンを描く。"
+    },
+    {
+      "word": "bye",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "さようなら",
+      "asset": "assets/word-illustrations/bye-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: Two friendly people parting: one walks away to the right but looks back while waving, the other stands and waves farewell. A small gap separates them; no greeting handshake, tears or text.",
+      "note": "収録語義の一例。現データの名詞登録に従う。品詞データの校閲は別作業。"
+    },
+    {
+      "word": "cafe",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "カフェ",
+      "asset": "assets/word-illustrations/cafe-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One compact cafe storefront with a large simple steaming cup pictogram over the door, one little outdoor table and two chairs. No text, brand or detailed building texture.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "café",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "カフェ",
+      "asset": "assets/word-illustrations/cafe-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One compact cafe storefront with a large simple steaming cup pictogram over the door, one little outdoor table and two chairs. No text, brand or detailed building texture.",
+      "note": "cafeと同じ画像を共有。"
+    },
+    {
+      "word": "cake",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ケーキ",
+      "asset": "assets/word-illustrations/cake-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One triangular slice of strawberry layer cake with two cream layers and one strawberry on top, simple white plate. No birthday candles, letters or photographic crumb texture.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "call",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "電話、呼び出し",
+      "asset": "assets/word-illustrations/call-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One adult holding a telephone handset to their ear, smiling and speaking, waist-up, with two small speech marks near their mouth. No text, phone screen or emergency symbols.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "camera",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "カメラ",
+      "asset": "assets/word-illustrations/camera-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One compact digital camera in three-quarter view, prominent circular lens, small shutter button and simple dark body. No brand, realistic reflections or photo.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "camp",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "キャンプ",
+      "asset": "assets/word-illustrations/camp-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small triangular camping tent with an open entrance and two rolled sleeping mats alongside on a tiny green ground patch. No fire, forest scenery or text.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "candy",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "キャンディ、飴",
+      "asset": "assets/word-illustrations/candy-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One colorful wrapped hard candy with twisted wrapper ends, and one small round unwrapped sweet beside it. No lettering or elaborate cellophane reflections.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "cap",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "帽子（キャップ）",
+      "asset": "assets/word-illustrations/cap-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One red baseball cap with a curved forward brim, rounded crown and top button in three-quarter view. Plain fabric, no logo or stitching texture.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "car",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "車",
+      "asset": "assets/word-illustrations/car-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small everyday blue passenger car, three-quarter side view, complete silhouette with two visible wheels and large windows. No brand, road or reflections.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "card",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "カード",
+      "asset": "assets/word-illustrations/card-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One folded greeting card standing slightly open, cream paper with a simple flower drawing on its front, a plain envelope behind it. No words, numbers, birthday candles or playing-card suits.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "care",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "世話、注意",
+      "asset": "assets/word-illustrations/care-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One friendly adult gently helps an elderly person seated in a chair by placing a light blanket over their knees. Clear supportive gesture and attentive posture. Simple compact scene, no medical apparatus or text.",
+      "note": "収録語義の一例。"
+    },
+    {
+      "word": "cartoon",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "漫画",
+      "asset": "assets/word-illustrations/cartoon-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: English noun learning-game illustration, viewed at 80px on phones and 100px on desktop. ONE square retro 16-bit pixel-art STYLE sprite illustration, real transparent alpha background. Keep readable recognizable shapes and a friendly game-like feeling. Moderately stylized proportions, clearly visible square pixel clusters and stepped outlines. Reduce realism: flat local colors, restrained 2-3 shade regions per material, simplified surfaces, no realistic anatomy detail, no fabric weave, wood grain, pores, fur strands, photoreal lighting, glossy rendering, gradients or microtexture. Not extremely coarse 8-bit; enough detail to recognize the meaning. One large centered compact subject, fills about 85 percent of the square with clear margins. Isolated cutout, NO colored background, NO checkerboard pattern, NO border, NO watermark. No text except explicitly requested below. Subject: One small television with a screen showing an ORIGINAL humorous cartoon rabbit with exaggerated round ears and a surprised expression. The rabbit is plainly a drawn character in flat colors. No known franchise, text or remote control.",
+      "note": "収録語義の一例。"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "scope": "Primary CEFR source rows; screening candidates, not confirmed error counts",
+  "sourceRows": 8025,
+  "reusedAcrossPos": [],
+  "nounWithAdjectiveReadingCandidates": [
+    {
+      "level": "junior",
+      "index": 67,
+      "word": "back",
+      "meaning": "背中、後ろ",
+      "phrase": "back of the room",
+      "pos": "名",
+      "example": "He hurt his back.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 916,
+      "word": "silver",
+      "meaning": "銀",
+      "phrase": "silver ring",
+      "pos": "名",
+      "example": "This ring is made of silver.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 1098,
+      "word": "top",
+      "meaning": "頂上、一番上",
+      "phrase": "top of the mountain",
+      "pos": "名",
+      "example": "He is at the top of the class.",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 448,
+      "word": "round",
+      "meaning": "【名】一巡、ラウンド",
+      "pos": "名",
+      "example": "Round of golf.",
+      "phrase": "round of applause",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 336,
+      "word": "standard",
+      "meaning": "【名】基準、水準",
+      "pos": "名",
+      "example": "High standard.",
+      "phrase": "standard of living",
+      "set": 1
+    }
+  ],
+  "sourceSha256": "90500fd5797fd168bc2322ae9e59087a90176c53d51ae955e801a50735d37f3f"
+}

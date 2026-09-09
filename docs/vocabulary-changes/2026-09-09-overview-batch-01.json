@@ -1,0 +1,272 @@
+{
+  "date": "2026-09-09",
+  "scope": "全体点検で確認した7行のフレーズ・例文修復と7語の収録補完。既存の意味・品詞・綴り・参照・キー・配列インデックスを維持。",
+  "reference": "英語参考書チェックスキル：真・英文法大全 PDF p.413。個別の語義は辞書で補助確認。",
+  "sources": [
+    "https://ahdictionary.com/word/search.html?q=clarify",
+    "https://dictionary.cambridge.org/dictionary/english/cheat-sheet",
+    "https://dictionary.cambridge.org/us/dictionary/english/sun",
+    "https://www.oxfordlearnersdictionaries.com/us/definition/english/money-back-guarantee",
+    "https://downloads.bbc.co.uk/learningenglish/eiam/unit-3/eiam_84_identify.pdf",
+    "https://www.collinsdictionary.com/dictionary/english/check-in-desk"
+  ],
+  "beforeLengths": {
+    "basic": 1448,
+    "daily": 2480,
+    "exam1": 2869,
+    "exam2": 10,
+    "junior": 1221,
+    "selection1900": 1950,
+    "selection1400": 1450,
+    "sys_2000": 2077
+  },
+  "changes": [
+    {
+      "level": "exam1",
+      "index": 386,
+      "before": {
+        "word": "clarify",
+        "meaning": "【動】明確にする",
+        "pos": "動",
+        "example": "Clarify the situation.",
+        "phrase": "clarify butter",
+        "set": 1
+      },
+      "after": {
+        "word": "clarify",
+        "meaning": "【動】明確にする",
+        "pos": "動",
+        "example": "Could you clarify this point for me?",
+        "phrase": "clarify a point",
+        "set": 1
+      },
+      "reason": "「明確にする」に合う目的語へ変更し、調理の別義との混在を解消。"
+    },
+    {
+      "level": "exam1",
+      "index": 365,
+      "before": {
+        "word": "cheat",
+        "meaning": "【動】不正をする、騙す",
+        "pos": "動",
+        "example": "Cheat on a test.",
+        "phrase": "cheat sheet",
+        "set": 1
+      },
+      "after": {
+        "word": "cheat",
+        "meaning": "【動】不正をする、騙す",
+        "pos": "動",
+        "example": "The student admitted that he had cheated on the test.",
+        "phrase": "cheat on a test",
+        "set": 1
+      },
+      "reason": "名詞表現cheat sheetを動詞の用法に変更。"
+    },
+    {
+      "level": "daily",
+      "index": 439,
+      "before": {
+        "word": "rise",
+        "meaning": "【動】上がる",
+        "pos": "動",
+        "example": "Sun rises.",
+        "phrase": "rise up",
+        "set": 1
+      },
+      "after": {
+        "word": "rise",
+        "meaning": "【動】上がる",
+        "pos": "動",
+        "example": "The sun rises above the hills.",
+        "phrase": "rise above the hills",
+        "set": 1
+      },
+      "reason": "通常の完全文としてtheを補い、フレーズも同じ場面に統一。"
+    },
+    {
+      "level": "daily",
+      "index": 832,
+      "before": {
+        "word": "present",
+        "meaning": "【形】現在の、出席して",
+        "pos": "形",
+        "example": "Present situation.",
+        "phrase": "present day",
+        "set": 1
+      },
+      "after": {
+        "word": "present",
+        "meaning": "【形】現在の、出席して",
+        "pos": "形",
+        "example": "We need to understand the present situation.",
+        "phrase": "the present situation",
+        "set": 1
+      },
+      "reason": "現在の、という形容詞用法を完全文で示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 2738,
+      "before": {
+        "word": "valid",
+        "meaning": "【形】有効な",
+        "pos": "形",
+        "example": "Valid passport.",
+        "phrase": "valid reason",
+        "set": 1
+      },
+      "after": {
+        "word": "valid",
+        "meaning": "【形】有効な",
+        "pos": "形",
+        "example": "The pass is valid for one month.",
+        "phrase": "valid for one month",
+        "set": 1
+      },
+      "reason": "「有効な」に合うフレーズと完全文へ変更。"
+    },
+    {
+      "level": "exam1",
+      "index": 1184,
+      "before": {
+        "word": "identify",
+        "meaning": "【動】特定する",
+        "pos": "動",
+        "example": "Identify the suspect.",
+        "phrase": "identify with",
+        "set": 1
+      },
+      "after": {
+        "word": "identify",
+        "meaning": "【動】特定する",
+        "pos": "動",
+        "example": "The guide helped us identify the bird.",
+        "phrase": "identify a bird",
+        "set": 1
+      },
+      "reason": "共感するidentify withではなく、既存の「特定する」に合わせる。"
+    },
+    {
+      "level": "exam1",
+      "index": 1086,
+      "before": {
+        "word": "guarantee",
+        "meaning": "【動】保証する",
+        "pos": "動",
+        "example": "Guarantee quality.",
+        "phrase": "money back guarantee",
+        "set": 1
+      },
+      "after": {
+        "word": "guarantee",
+        "meaning": "【動】保証する",
+        "pos": "動",
+        "example": "The shop guarantees delivery within three days.",
+        "phrase": "guarantee delivery",
+        "set": 1
+      },
+      "reason": "名詞表現money back guaranteeを動詞の用法へ変更。"
+    }
+  ],
+  "additions": [
+    {
+      "level": "junior",
+      "after": {
+        "word": "eye",
+        "meaning": "目",
+        "phrase": "blue eyes",
+        "pos": "名",
+        "example": "She has blue eyes.",
+        "set": 1
+      },
+      "source": "CEFR-J Wordlist Ver1.6 - A1_sep.csv:347",
+      "index": 1221,
+      "reason": "元CSVの収録語・品詞・レベルを確認した欠落項目。既存行の末尾へ追加し、別帳の独立履歴は変更しない。"
+    },
+    {
+      "level": "junior",
+      "after": {
+        "word": "factory",
+        "meaning": "工場",
+        "phrase": "work in a factory",
+        "pos": "名",
+        "example": "My uncle works in a factory.",
+        "set": 1
+      },
+      "source": "CEFR-J Wordlist Ver1.6 - A1_sep.csv:349",
+      "index": 1222,
+      "reason": "元CSVの収録語・品詞・レベルを確認した欠落項目。既存行の末尾へ追加し、別帳の独立履歴は変更しない。"
+    },
+    {
+      "level": "junior",
+      "after": {
+        "word": "tomato",
+        "meaning": "トマト",
+        "phrase": "a ripe tomato",
+        "pos": "名",
+        "example": "She cut a ripe tomato for the salad.",
+        "set": 1
+      },
+      "source": "CEFR-J Wordlist Ver1.6 - A1_sep.csv:1071",
+      "index": 1223,
+      "reason": "元CSVの収録語・品詞・レベルを確認した欠落項目。既存行の末尾へ追加し、別帳の独立履歴は変更しない。"
+    },
+    {
+      "level": "junior",
+      "after": {
+        "word": "expensive",
+        "meaning": "高価な",
+        "phrase": "an expensive watch",
+        "pos": "形",
+        "example": "That watch is too expensive for me.",
+        "set": 1
+      },
+      "source": "CEFR-J Wordlist Ver1.6 - A1_sep.csv:346",
+      "index": 1224,
+      "reason": "元CSVの収録語・品詞・レベルを確認した欠落項目。既存行の末尾へ追加し、別帳の独立履歴は変更しない。"
+    },
+    {
+      "level": "daily",
+      "after": {
+        "word": "check-in counter",
+        "meaning": "搭乗手続きカウンター",
+        "phrase": "at the check-in counter",
+        "pos": "名",
+        "example": "We left our bags at the check-in counter.",
+        "set": 1
+      },
+      "source": "CEFR-J Wordlist Ver1.6 - B1_sep.csv:364",
+      "index": 2480,
+      "reason": "元CSVの収録語・品詞・レベルを確認した欠落項目。既存行の末尾へ追加し、別帳の独立履歴は変更しない。"
+    },
+    {
+      "level": "daily",
+      "after": {
+        "word": "check-in desk",
+        "meaning": "搭乗手続きカウンター",
+        "phrase": "find the check-in desk",
+        "pos": "名",
+        "example": "We asked a member of staff where to find the check-in desk.",
+        "set": 1
+      },
+      "source": "CEFR-J Wordlist Ver1.6 - B1_sep.csv:365",
+      "index": 2481,
+      "reason": "元CSVの収録語・品詞・レベルを確認した欠落項目。既存行の末尾へ追加し、別帳の独立履歴は変更しない。"
+    },
+    {
+      "level": "exam1",
+      "after": {
+        "word": "fireplace",
+        "meaning": "暖炉",
+        "phrase": "sit by the fireplace",
+        "pos": "名",
+        "example": "We sat by the fireplace on a cold evening.",
+        "set": 1
+      },
+      "source": "CEFR-J Wordlist Ver1.6 - B2_sep.csv:943",
+      "index": 2869,
+      "reason": "元CSVの収録語・品詞・レベルを確認した欠落項目。既存行の末尾へ追加し、別帳の独立履歴は変更しない。"
+    }
+  ]
+}

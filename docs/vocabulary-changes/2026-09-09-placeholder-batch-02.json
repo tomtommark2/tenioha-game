@@ -1,0 +1,843 @@
+{
+  "date": "2026-09-09",
+  "scope": "仮例文の次の30語と別帳の同語、36行。galaxyの1行のみ意味も修復。品詞・キーは維持。",
+  "reference": "真・英文法大全 PDF p.410・413：実際の語義と目的語の有無を確認。個別用法は辞書で補完。",
+  "sources": [
+    "https://dictionary.cambridge.org/dictionary/english/underlie",
+    "https://dictionary.cambridge.org/dictionary/english/bob",
+    "https://dictionary.cambridge.org/dictionary/english/immune",
+    "https://dictionary.cambridge.org/us/dictionary/english/grocery",
+    "https://dictionary.cambridge.org/us/dictionary/english/galaxy",
+    "https://dictionary.cambridge.org/us/dictionary/english/counterpart"
+  ],
+  "changes": [
+    {
+      "level": "selection1900",
+      "index": 773,
+      "before": {
+        "word": "glacier",
+        "meaning": "氷河",
+        "phrase": "glacier",
+        "pos": "名",
+        "example": "glacier example.",
+        "set": 1,
+        "id": 774
+      },
+      "after": {
+        "word": "glacier",
+        "meaning": "氷河",
+        "phrase": "a mountain glacier",
+        "pos": "名",
+        "example": "We could see a mountain glacier from the trail.",
+        "set": 1,
+        "id": 774
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 774,
+      "before": {
+        "word": "primate",
+        "meaning": "霊長目の動物",
+        "phrase": "primate",
+        "pos": "名",
+        "example": "primate example.",
+        "set": 1,
+        "id": 775
+      },
+      "after": {
+        "word": "primate",
+        "meaning": "霊長目の動物",
+        "phrase": "a small primate",
+        "pos": "名",
+        "example": "The researcher watched a small primate use a stick.",
+        "set": 1,
+        "id": 775
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 777,
+      "before": {
+        "word": "correlation",
+        "meaning": "相互関係，相関（関係）",
+        "phrase": "correlation",
+        "pos": "名",
+        "example": "correlation example.",
+        "set": 1,
+        "id": 778
+      },
+      "after": {
+        "word": "correlation",
+        "meaning": "相互関係，相関（関係）",
+        "phrase": "a correlation between",
+        "pos": "名",
+        "example": "The study found a correlation between sleep and concentration.",
+        "set": 1,
+        "id": 778
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 813,
+      "before": {
+        "word": "frustrate",
+        "meaning": "をいら立たせる；（計画・希望など）を挫折させる",
+        "phrase": "frustrate",
+        "pos": "動",
+        "example": "frustrate example.",
+        "set": 1,
+        "id": 814
+      },
+      "after": {
+        "word": "frustrate",
+        "meaning": "をいら立たせる；（計画・希望など）を挫折させる",
+        "phrase": "frustrate passengers",
+        "pos": "動",
+        "example": "Repeated delays can frustrate passengers.",
+        "set": 1,
+        "id": 814
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 843,
+      "before": {
+        "word": "mode",
+        "meaning": "方式；気分；形態；流行",
+        "phrase": "mode",
+        "pos": "名",
+        "example": "mode example.",
+        "set": 1,
+        "id": 844
+      },
+      "after": {
+        "word": "mode",
+        "meaning": "方式；気分；形態；流行",
+        "phrase": "automatic mode",
+        "pos": "名",
+        "example": "Switch the camera to automatic mode.",
+        "set": 1,
+        "id": 844
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 845,
+      "before": {
+        "word": "gravity",
+        "meaning": "重力，引力；重量；重大さ",
+        "phrase": "gravity",
+        "pos": "名",
+        "example": "gravity example.",
+        "set": 1,
+        "id": 846
+      },
+      "after": {
+        "word": "gravity",
+        "meaning": "重力，引力；重量；重大さ",
+        "phrase": "the force of gravity",
+        "pos": "名",
+        "example": "The force of gravity pulls objects toward the ground.",
+        "set": 1,
+        "id": 846
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 847,
+      "before": {
+        "word": "asteroid",
+        "meaning": "小惑星（≒ minor planet）；ヒトデ（＝ starfish）",
+        "phrase": "asteroid",
+        "pos": "名",
+        "example": "asteroid example.",
+        "set": 1,
+        "id": 848
+      },
+      "after": {
+        "word": "asteroid",
+        "meaning": "小惑星（≒ minor planet）；ヒトデ（＝ starfish）",
+        "phrase": "a small asteroid",
+        "pos": "名",
+        "example": "The telescope detected a small asteroid.",
+        "set": 1,
+        "id": 848
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 853,
+      "before": {
+        "word": "grocery",
+        "meaning": "〔～ies〕食料雑貨；食料雑貨店",
+        "phrase": "grocery",
+        "pos": "名",
+        "example": "grocery example.",
+        "set": 1,
+        "id": 854
+      },
+      "after": {
+        "word": "grocery",
+        "meaning": "〔～ies〕食料雑貨；食料雑貨店",
+        "phrase": "carry the groceries",
+        "pos": "名",
+        "example": "She carried the groceries into the kitchen.",
+        "set": 1,
+        "id": 854
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 863,
+      "before": {
+        "word": "illusion",
+        "meaning": "錯覚，思い違い；幻想",
+        "phrase": "illusion",
+        "pos": "名",
+        "example": "illusion example.",
+        "set": 1,
+        "id": 864
+      },
+      "after": {
+        "word": "illusion",
+        "meaning": "錯覚，思い違い；幻想",
+        "phrase": "an illusion of space",
+        "pos": "名",
+        "example": "The mirrors created an illusion of space.",
+        "set": 1,
+        "id": 864
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 874,
+      "before": {
+        "word": "prefecture",
+        "meaning": "（日本の）県，府；（フランスなどの）県",
+        "phrase": "prefecture",
+        "pos": "名",
+        "example": "prefecture example.",
+        "set": 1,
+        "id": 875
+      },
+      "after": {
+        "word": "prefecture",
+        "meaning": "（日本の）県，府；（フランスなどの）県",
+        "phrase": "another prefecture",
+        "pos": "名",
+        "example": "She moved to another prefecture last year.",
+        "set": 1,
+        "id": 875
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 884,
+      "before": {
+        "word": "Arctic",
+        "meaning": "北極の（⇔ Antarctic 南極の）",
+        "phrase": "Arctic",
+        "pos": "形",
+        "example": "Arctic example.",
+        "set": 1,
+        "id": 885
+      },
+      "after": {
+        "word": "Arctic",
+        "meaning": "北極の（⇔ Antarctic 南極の）",
+        "phrase": "Arctic wildlife",
+        "pos": "形",
+        "example": "They studied Arctic wildlife.",
+        "set": 1,
+        "id": 885
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 892,
+      "before": {
+        "word": "immune",
+        "meaning": "（～に対して）免疫を持つ（to）；（～を）免れた（from）",
+        "phrase": "immune",
+        "pos": "形",
+        "example": "immune example.",
+        "set": 1,
+        "id": 893
+      },
+      "after": {
+        "word": "immune",
+        "meaning": "（～に対して）免疫を持つ（to）；（～を）免れた（from）",
+        "phrase": "immune to the disease",
+        "pos": "形",
+        "example": "The tests showed that he was immune to the disease.",
+        "set": 1,
+        "id": 893
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 893,
+      "before": {
+        "word": "harsh",
+        "meaning": "厳しい；（光・色・味などが）不快な",
+        "phrase": "harsh",
+        "pos": "形",
+        "example": "harsh example.",
+        "set": 1,
+        "id": 894
+      },
+      "after": {
+        "word": "harsh",
+        "meaning": "厳しい；（光・色・味などが）不快な",
+        "phrase": "a harsh winter",
+        "pos": "形",
+        "example": "The plants survived the harsh winter.",
+        "set": 1,
+        "id": 894
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 894,
+      "before": {
+        "word": "collective",
+        "meaning": "集団の，共同の",
+        "phrase": "collective",
+        "pos": "形",
+        "example": "collective example.",
+        "set": 1,
+        "id": 895
+      },
+      "after": {
+        "word": "collective",
+        "meaning": "集団の，共同の",
+        "phrase": "a collective effort",
+        "pos": "形",
+        "example": "Cleaning the beach required a collective effort.",
+        "set": 1,
+        "id": 895
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 896,
+      "before": {
+        "word": "profound",
+        "meaning": "重大な；深い；難解な",
+        "phrase": "profound",
+        "pos": "形",
+        "example": "profound example.",
+        "set": 1,
+        "id": 897
+      },
+      "after": {
+        "word": "profound",
+        "meaning": "重大な；深い；難解な",
+        "phrase": "a profound effect",
+        "pos": "形",
+        "example": "The experience had a profound effect on her.",
+        "set": 1,
+        "id": 897
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 917,
+      "before": {
+        "word": "bob",
+        "meaning": "上下に動く；急に動く；を上下に動かす",
+        "phrase": "bob",
+        "pos": "動",
+        "example": "bob example.",
+        "set": 1,
+        "id": 918
+      },
+      "after": {
+        "word": "bob",
+        "meaning": "上下に動く；急に動く；を上下に動かす",
+        "phrase": "bob on the water",
+        "pos": "動",
+        "example": "The empty bottle began to bob on the water.",
+        "set": 1,
+        "id": 918
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 921,
+      "before": {
+        "word": "underlie",
+        "meaning": "の根底にある",
+        "phrase": "underlie",
+        "pos": "動",
+        "example": "underlie example.",
+        "set": 1,
+        "id": 922
+      },
+      "after": {
+        "word": "underlie",
+        "meaning": "の根底にある",
+        "phrase": "underlie the problem",
+        "pos": "動",
+        "example": "Several factors underlie the problem.",
+        "set": 1,
+        "id": 922
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 943,
+      "before": {
+        "word": "neuron",
+        "meaning": "ニューロン，神経単位",
+        "phrase": "neuron",
+        "pos": "名",
+        "example": "neuron example.",
+        "set": 1,
+        "id": 944
+      },
+      "after": {
+        "word": "neuron",
+        "meaning": "ニューロン，神経単位",
+        "phrase": "a single neuron",
+        "pos": "名",
+        "example": "The diagram shows how a single neuron connects to other cells.",
+        "set": 1,
+        "id": 944
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 949,
+      "before": {
+        "word": "workforce",
+        "meaning": "労働人口，総労働力；全従業員（数）",
+        "phrase": "workforce",
+        "pos": "名",
+        "example": "workforce example.",
+        "set": 1,
+        "id": 950
+      },
+      "after": {
+        "word": "workforce",
+        "meaning": "労働人口，総労働力；全従業員（数）",
+        "phrase": "expand the workforce",
+        "pos": "名",
+        "example": "The company plans to expand its workforce.",
+        "set": 1,
+        "id": 950
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 955,
+      "before": {
+        "word": "scenario",
+        "meaning": "（予想される）筋書き，事態；脚本",
+        "phrase": "scenario",
+        "pos": "名",
+        "example": "scenario example.",
+        "set": 1,
+        "id": 956
+      },
+      "after": {
+        "word": "scenario",
+        "meaning": "（予想される）筋書き，事態；脚本",
+        "phrase": "a possible scenario",
+        "pos": "名",
+        "example": "We discussed several possible scenarios.",
+        "set": 1,
+        "id": 956
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 956,
+      "before": {
+        "word": "allergy",
+        "meaning": "アレルギー",
+        "phrase": "allergy",
+        "pos": "名",
+        "example": "allergy example.",
+        "set": 1,
+        "id": 957
+      },
+      "after": {
+        "word": "allergy",
+        "meaning": "アレルギー",
+        "phrase": "an allergy to peanuts",
+        "pos": "名",
+        "example": "She has an allergy to peanuts.",
+        "set": 1,
+        "id": 957
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 958,
+      "before": {
+        "word": "antibiotic",
+        "meaning": "〔通例～s〕抗生物質",
+        "phrase": "antibiotic",
+        "pos": "名",
+        "example": "antibiotic example.",
+        "set": 1,
+        "id": 959
+      },
+      "after": {
+        "word": "antibiotic",
+        "meaning": "〔通例～s〕抗生物質",
+        "phrase": "prescribe an antibiotic",
+        "pos": "名",
+        "example": "The doctor prescribed an antibiotic.",
+        "set": 1,
+        "id": 959
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 965,
+      "before": {
+        "word": "galaxy",
+        "meaning": "星雲，銀河；〔the G～〕銀河系",
+        "phrase": "galaxy",
+        "pos": "名",
+        "example": "galaxy example.",
+        "set": 1,
+        "id": 966
+      },
+      "after": {
+        "word": "galaxy",
+        "meaning": "銀河；〔the Galaxy〕銀河系",
+        "phrase": "a distant galaxy",
+        "pos": "名",
+        "example": "The telescope captured an image of a distant galaxy.",
+        "set": 1,
+        "id": 966
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。現代の一般的な天文学の語義に合わせ、星雲との混同を避ける。"
+    },
+    {
+      "level": "selection1900",
+      "index": 968,
+      "before": {
+        "word": "counterpart",
+        "meaning": "相当する物［人］",
+        "phrase": "counterpart",
+        "pos": "名",
+        "example": "counterpart example.",
+        "set": 1,
+        "id": 969
+      },
+      "after": {
+        "word": "counterpart",
+        "meaning": "相当する物［人］",
+        "phrase": "her counterpart",
+        "pos": "名",
+        "example": "Our manager met her counterpart at the partner company.",
+        "set": 1,
+        "id": 969
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 973,
+      "before": {
+        "word": "sibling",
+        "meaning": "きょうだい（の1人）",
+        "phrase": "sibling",
+        "pos": "名",
+        "example": "sibling example.",
+        "set": 1,
+        "id": 974
+      },
+      "after": {
+        "word": "sibling",
+        "meaning": "きょうだい（の1人）",
+        "phrase": "a younger sibling",
+        "pos": "名",
+        "example": "He helps his younger sibling with homework.",
+        "set": 1,
+        "id": 974
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 974,
+      "before": {
+        "word": "ratio",
+        "meaning": "比率",
+        "phrase": "ratio",
+        "pos": "名",
+        "example": "ratio example.",
+        "set": 1,
+        "id": 975
+      },
+      "after": {
+        "word": "ratio",
+        "meaning": "比率",
+        "phrase": "the ratio of teachers to students",
+        "pos": "名",
+        "example": "The ratio of teachers to students is one to twenty.",
+        "set": 1,
+        "id": 975
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 985,
+      "before": {
+        "word": "magnetic",
+        "meaning": "磁気の；磁石の；人を引きつける",
+        "phrase": "magnetic",
+        "pos": "形",
+        "example": "magnetic example.",
+        "set": 1,
+        "id": 986
+      },
+      "after": {
+        "word": "magnetic",
+        "meaning": "磁気の；磁石の；人を引きつける",
+        "phrase": "a magnetic field",
+        "pos": "形",
+        "example": "The device produces a magnetic field.",
+        "set": 1,
+        "id": 986
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 986,
+      "before": {
+        "word": "polar",
+        "meaning": "極地の；電極の",
+        "phrase": "polar",
+        "pos": "形",
+        "example": "polar example.",
+        "set": 1,
+        "id": 987
+      },
+      "after": {
+        "word": "polar",
+        "meaning": "極地の；電極の",
+        "phrase": "polar regions",
+        "pos": "形",
+        "example": "These animals live in polar regions.",
+        "set": 1,
+        "id": 987
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 994,
+      "before": {
+        "word": "vulnerable",
+        "meaning": "（攻撃などに）弱い，もろい；傷つきやすい",
+        "phrase": "vulnerable",
+        "pos": "形",
+        "example": "vulnerable example.",
+        "set": 1,
+        "id": 995
+      },
+      "after": {
+        "word": "vulnerable",
+        "meaning": "（攻撃などに）弱い，もろい；傷つきやすい",
+        "phrase": "vulnerable to strong winds",
+        "pos": "形",
+        "example": "Young trees are vulnerable to strong winds.",
+        "set": 1,
+        "id": 995
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1900",
+      "index": 1014,
+      "before": {
+        "word": "diminish",
+        "meaning": "を減らす；減少する（≒decrease）",
+        "phrase": "diminish",
+        "pos": "動",
+        "example": "diminish example.",
+        "set": 1,
+        "id": 1015
+      },
+      "after": {
+        "word": "diminish",
+        "meaning": "を減らす；減少する（≒decrease）",
+        "phrase": "begin to diminish",
+        "pos": "動",
+        "example": "The noise began to diminish as the train moved away.",
+        "set": 1,
+        "id": 1015
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 924,
+      "before": {
+        "word": "frustrate",
+        "meaning": "に不満を抱かせる",
+        "phrase": "frustrate",
+        "pos": "動",
+        "example": "frustrate example.",
+        "set": 1,
+        "id": 925
+      },
+      "after": {
+        "word": "frustrate",
+        "meaning": "に不満を抱かせる",
+        "phrase": "frustrate passengers",
+        "pos": "動",
+        "example": "Repeated delays can frustrate passengers.",
+        "set": 1,
+        "id": 925
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1061,
+      "before": {
+        "word": "glacier",
+        "meaning": "氷河",
+        "phrase": "glacier",
+        "pos": "名",
+        "example": "glacier example.",
+        "set": 1,
+        "id": 1062
+      },
+      "after": {
+        "word": "glacier",
+        "meaning": "氷河",
+        "phrase": "a mountain glacier",
+        "pos": "名",
+        "example": "We could see a mountain glacier from the trail.",
+        "set": 1,
+        "id": 1062
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1094,
+      "before": {
+        "word": "harsh",
+        "meaning": "厳しい",
+        "phrase": "harsh",
+        "pos": "形",
+        "example": "harsh example.",
+        "set": 1,
+        "id": 1095
+      },
+      "after": {
+        "word": "harsh",
+        "meaning": "厳しい",
+        "phrase": "a harsh winter",
+        "pos": "形",
+        "example": "The plants survived the harsh winter.",
+        "set": 1,
+        "id": 1095
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1099,
+      "before": {
+        "word": "Arctic",
+        "meaning": "北極の",
+        "phrase": "Arctic",
+        "pos": "形",
+        "example": "Arctic example.",
+        "set": 1,
+        "id": 1100
+      },
+      "after": {
+        "word": "Arctic",
+        "meaning": "北極の",
+        "phrase": "Arctic wildlife",
+        "pos": "形",
+        "example": "They studied Arctic wildlife.",
+        "set": 1,
+        "id": 1100
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1156,
+      "before": {
+        "word": "galaxy",
+        "meaning": "銀河",
+        "phrase": "galaxy",
+        "pos": "名",
+        "example": "galaxy example.",
+        "set": 1,
+        "id": 1157
+      },
+      "after": {
+        "word": "galaxy",
+        "meaning": "銀河",
+        "phrase": "a distant galaxy",
+        "pos": "名",
+        "example": "The telescope captured an image of a distant galaxy.",
+        "set": 1,
+        "id": 1157
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1164,
+      "before": {
+        "word": "illusion",
+        "meaning": "錯覚",
+        "phrase": "illusion",
+        "pos": "名",
+        "example": "illusion example.",
+        "set": 1,
+        "id": 1165
+      },
+      "after": {
+        "word": "illusion",
+        "meaning": "錯覚",
+        "phrase": "an illusion of space",
+        "pos": "名",
+        "example": "The mirrors created an illusion of space.",
+        "set": 1,
+        "id": 1165
+      },
+      "reason": "仮例文と見出し語だけのフレーズを、既存の品詞・語義に対応する独自の用例へ修復。"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "scope": "Primary CEFR source rows; screening candidates, not confirmed error counts",
+  "sourceRows": 8018,
+  "reusedAcrossPos": [
+    {
+      "word": "lot",
+      "phrase": "a lot of",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 606,
+          "word": "lot",
+          "meaning": "たくさん",
+          "phrase": "a lot of",
+          "pos": "代",
+          "example": "I have a lot of books.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 749,
+          "word": "lot",
+          "meaning": "たくさん、分け前",
+          "phrase": "a lot of",
+          "pos": "名",
+          "example": "There's a lot of work to do.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "most",
+      "phrase": "most people",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 661,
+          "word": "most",
+          "meaning": "最も多くの",
+          "phrase": "most people",
+          "pos": "冠",
+          "example": "Most people like music.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 810,
+          "word": "most",
+          "meaning": "大部分の、最高の（定冠詞と共に）",
+          "phrase": "most people",
+          "pos": "形",
+          "example": "Most students passed the exam.",
+          "set": 1
+        }
+      ]
+    },
+    {
+      "word": "yeah",
+      "phrase": "oh yeah",
+      "rows": [
+        {
+          "level": "junior",
+          "index": 1207,
+          "word": "yeah",
+          "meaning": "うん、イェーイ",
+          "phrase": "oh yeah",
+          "pos": "名",
+          "example": "Yeah, I think so.",
+          "set": 1
+        },
+        {
+          "level": "basic",
+          "index": 1445,
+          "word": "yeah",
+          "meaning": "うん、そう、イエス",
+          "phrase": "oh yeah",
+          "pos": "副",
+          "example": "Yeah, I'll be there.",
+          "set": 1
+        }
+      ]
+    }
+  ],
+  "nounWithAdjectiveReadingCandidates": [
+    {
+      "level": "junior",
+      "index": 67,
+      "word": "back",
+      "meaning": "背中、後ろ",
+      "phrase": "back of the room",
+      "pos": "名",
+      "example": "He hurt his back.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 916,
+      "word": "silver",
+      "meaning": "銀",
+      "phrase": "silver ring",
+      "pos": "名",
+      "example": "This ring is made of silver.",
+      "set": 1
+    },
+    {
+      "level": "junior",
+      "index": 1098,
+      "word": "top",
+      "meaning": "頂上、一番上",
+      "phrase": "top of the mountain",
+      "pos": "名",
+      "example": "He is at the top of the class.",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 448,
+      "word": "round",
+      "meaning": "【名】一巡、ラウンド",
+      "pos": "名",
+      "example": "Round of golf.",
+      "phrase": "round of applause",
+      "set": 1
+    },
+    {
+      "level": "daily",
+      "index": 336,
+      "word": "standard",
+      "meaning": "【名】基準、水準",
+      "pos": "名",
+      "example": "High standard.",
+      "phrase": "standard of living",
+      "set": 1
+    }
+  ],
+  "sourceSha256": "09af62463e2d25f113e5ed66ca5569404cbf85be7f3ac7fa7d13c0cf9688f35b"
+}

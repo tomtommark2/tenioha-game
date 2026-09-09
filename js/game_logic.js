@@ -79,7 +79,7 @@ function applyIpaOverrides(database, overrides) {
 
             const targets = database[level].filter((word) => {
                 if (!word || word.word !== override.word) return false;
-                if (override.pos && word.pos !== override.pos) return false;
+                if (override.pos && (word.legacyKeyPos || word.pos) !== override.pos) return false;
                 if (override.meaning && word.meaning !== override.meaning) return false;
                 if (override.phrase && word.phrase !== override.phrase) return false;
                 return true;
@@ -93,6 +93,9 @@ function applyIpaOverrides(database, overrides) {
 }
 
 applyIpaOverrides(vocabularyDatabase, window.IPA_OVERRIDES);
+const wordGrouping = window.WordGrouping.build(vocabularyDatabase, window.GameUtils);
+vocabularyDatabase = wordGrouping.database;
+window.vocabularyDatabase = vocabularyDatabase;
 
 // Merge Junior data if loaded via temp variable
 
@@ -156,19 +159,29 @@ function renderVocabWordMarkup(word) {
         "前": "前置詞",
         "代": "代名詞"
     };
-    const fullPos = posMap[word.pos] || word.pos;
-    const ipaDisplay = formatIpaForDisplay(word.ipa);
+    const senses = word.senses || [word];
+    const fullPos = [...new Set(senses.map(sense => posMap[sense.pos] || sense.pos))].join(' / ');
+    const pronunciations = [...new Set(senses.map(sense => formatIpaForDisplay(sense.ipa)).filter(Boolean))];
+    const ipaDisplay = pronunciations.length <= 1 ? escapeHtml(pronunciations[0] || '')
+        : pronunciations.map(ipa => `<span class="word-ipa-variant">${escapeHtml([...new Set(senses.filter(sense => formatIpaForDisplay(sense.ipa) === ipa).map(sense => sense.pos))].join('・'))} ${escapeHtml(ipa)}</span>`).join('');
 
     return `
                 <div class="vocab-word-stack" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-4%);">
                     <div class="word-pos-label" style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 9px;">${escapeHtml(fullPos)}</div>
                     <div class="word-text-main" style="font-size: 42px; font-weight: bold; line-height: 1.2; text-align: center;">${escapeHtml(word.word)}</div>
-                    ${ipaDisplay ? `<div class="word-ipa">${escapeHtml(ipaDisplay)}</div>` : ''}
+                    ${ipaDisplay ? `<div class="word-ipa">${ipaDisplay}</div>` : ''}
                 </div>
             `;
 }
 
 function renderMeaningMarkup(word) {
+    if (word?.senses?.length > 1) {
+        return `<div class="merged-meanings">${word.senses.map(sense => `
+            <section class="merged-sense">
+                <div class="merged-sense-meaning"><span class="merged-pos">${escapeHtml(sense.pos)}</span><span>${escapeHtml(cleanMeaningForDisplay(sense.meaning).replace(/^【[名動形副助接前代冠数間限定]】\s*/, ''))}</span></div>
+                ${sense.phrase ? `<div class="merged-phrase"><span>PHRASE</span>${escapeHtml(sense.phrase)}</div>` : ''}
+            </section>`).join('')}</div>`;
+    }
     const meaning = cleanMeaningForDisplay(word?.meaning);
     const phrase = String(word?.phrase ?? '').trim();
     const phraseLabel = `<span style="font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 4px;">PHRASE</span>`;
@@ -184,6 +197,43 @@ function renderMeaningMarkup(word) {
                     ` : ''}
                 </div>
             `;
+}
+
+var currentExampleIndex = 0;
+
+function renderWordExample(word) {
+    currentExampleIndex = 0;
+    document.getElementById('exampleSenseTabs')?.remove();
+    const sentence = document.getElementById('exampleSentence');
+    const senses = word?.senses || [];
+    if (senses.length > 1) {
+        const tabs = document.createElement('div');
+        tabs.id = 'exampleSenseTabs';
+        tabs.className = 'example-sense-tabs';
+        const select = document.createElement('select');
+        select.id = 'exampleSenseSelect';
+        select.setAttribute('aria-label', '例文の用法');
+        senses.forEach((sense, index) => {
+            const option = document.createElement('option');
+            option.value = String(index);
+            option.textContent = `${sense.pos} · ${sense.phrase || cleanMeaningForDisplay(sense.meaning)}`;
+            select.append(option);
+        });
+        select.addEventListener('change', () => selectWordExample(Number(select.value)));
+        tabs.append(select);
+        sentence.before(tabs);
+    }
+    sentence.textContent = (senses[0] || word)?.example || '';
+    document.getElementById('cardsArea')?.classList.toggle('has-merged-word', senses.length > 1);
+}
+
+function selectWordExample(index) {
+    const senses = gameState.currentWord?.senses;
+    if (!Number.isInteger(index) || !senses?.[index]) return;
+    currentExampleIndex = index;
+    document.getElementById('exampleSentence').textContent = senses[index].example || '';
+    const select = document.getElementById('exampleSenseSelect');
+    if (select) select.value = String(index);
 }
 
 function markLearningContentReady() {
@@ -213,6 +263,9 @@ function activateLearningSessionUI() {
 }
 
 function showLearningStartPrompt() {
+    document.getElementById('exampleSenseTabs')?.remove();
+    document.getElementById('cardsArea')?.classList.remove('has-merged-word');
+    window.WordIllustrations?.clear();
     learningSessionStarted = false;
     gameState.currentWord = null;
     gameState.currentQuestionReason = null;
@@ -968,6 +1021,7 @@ function closeLevelSelector() {
 }
 
 function resolveReferencedVocabularyWord(word, level) {
+    if (word.senses?.length > 1) return { ...word };
     let processed = { ...word };
     if (word.ref && word.ref !== level) {
         let refCategory = word.ref;
@@ -1320,6 +1374,8 @@ window.openStudyModeModal = function () {
         renderReviewTiming();
         renderReviewLevelCheckboxes();
         updateReviewProgressUI();
+        const content = m.querySelector('.study-mode-modal-content');
+        if (content) content.scrollTop = 0;
         m.style.display = 'flex';
     }
 };
@@ -1705,9 +1761,7 @@ function getSortedWordListItems() {
         if (!query) return true;
         const haystack = [
             word.word,
-            cleanMeaningForDisplay(word.meaning),
-            word.phrase,
-            word.pos
+            ...(word.senses || [word]).flatMap(sense => [cleanMeaningForDisplay(sense.meaning), sense.phrase, sense.pos])
         ].join(' ').toLowerCase();
         return haystack.includes(query);
     });
@@ -1749,8 +1803,8 @@ function renderWordList() {
         const state = getWordListStateForKey(key);
         const pos = word.pos || 'other';
         const posClass = WORD_LIST_POS_CLASS[pos] || WORD_LIST_POS_CLASS.other;
-        const posLabel = WORD_LIST_POS_LABEL[pos] || pos;
-        const meaning = cleanMeaningForDisplay(word.meaning);
+        const posLabel = word.senses ? [...new Set(word.senses.map(sense => sense.pos))].join(' / ') : WORD_LIST_POS_LABEL[pos] || pos;
+        const meaning = word.senses ? word.senses.map(sense => `${sense.pos}：${cleanMeaningForDisplay(sense.meaning).replace(/^【[名動形副助接前代冠数間限定]】\s*/, '')}`).join(' ／ ') : cleanMeaningForDisplay(word.meaning);
         const wordLength = String(word.word || '').length;
         const lengthClass = wordLength >= 13 ? 'word-list-word-xl' : wordLength >= 10 ? 'word-list-word-long' : '';
         const firstLetter = String(word.word || '').trim().charAt(0).toUpperCase();
@@ -1977,8 +2031,10 @@ function ensureReviewWordIndex() {
 function isWordAllowedByPOS(word, activeFilters = null) {
     const filters = activeFilters || new Set(gameState.posFilters || []);
     if (filters.size === 0) return false;
-    const pos = word.pos || 'other';
-    return filters.has(pos) || (!KNOWN_POS_VALUES.has(pos) && filters.has('other'));
+    return (word.senses || [word]).some(sense => {
+        const pos = sense.pos || 'other';
+        return filters.has(pos) || (!KNOWN_POS_VALUES.has(pos) && filters.has('other'));
+    });
 }
 
 function getReviewQueueCandidatesAcrossLevels() {
@@ -2543,6 +2599,7 @@ function buildLocalSaveData() {
         reviewMode: gameState.reviewMode,
         mixCycleCounter: gameState.mixCycleCounter,
         wordKeySchemaVersion: gameState.wordKeySchemaVersion,
+        wordGroupingVersion: gameState.wordGroupingVersion,
         localCompactVersion: 1
     };
 }
@@ -2624,6 +2681,14 @@ function loadGame() {
         gameState.randomMode = false; // random mode retired
 
         migrateWordKeySchemaIfNeeded();
+        if (window.WordGrouping.resetMergedHistory(gameState, wordGrouping, data.wordGroupingVersion || 0)) {
+            gameStateHistory = [];
+            gameState.decks = { weak: [], learned: [], perfect: [], unlearned: [] };
+            gameState.currentWord = null;
+            gameState.lastShownWordKey = null;
+            gameState.lastReviewQueueHeadKey = null;
+            gameState.pendingQueuePop = null;
+        }
         migrateSrsSchemaIfNeeded();
         bootstrapSrsFromWordStates();
         migrateRecentReviewHistory();
@@ -2643,6 +2708,7 @@ function loadGame() {
     } else {
         // First ever launch
         gameState.wordKeySchemaVersion = 2;
+        gameState.wordGroupingVersion = window.WordGrouping.VERSION;
         if (!gameState.firstPlayedAt) {
             gameState.firstPlayedAt = Date.now();
         }
@@ -2911,7 +2977,7 @@ function speakCurrentExample() {
         clearTimeout(wordSpeechTimer);
         wordSpeechTimer = null;
     }
-    speakText(gameState.currentWord.example || gameState.currentWord.word);
+    speakText(gameState.currentWord.senses?.[currentExampleIndex]?.example || gameState.currentWord.example || gameState.currentWord.word);
 }
 
 // --- SHUFFLE BAG HELPERS (v2.79) ---
@@ -2959,6 +3025,7 @@ function getWordFromDeck(category, sourceWords) {
 }
 
 function showNextWord(reviewSnapshot = null) {
+    window.WordIllustrations?.clear();
     if (!learningSessionStarted) {
         showLearningStartPrompt();
         return;
@@ -3144,7 +3211,7 @@ function showNextWord(reviewSnapshot = null) {
 
     document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
-    document.getElementById('exampleSentence').textContent = word.example;
+    renderWordExample(word);
     markLearningContentReady();
     document.getElementById('meaningCard').classList.remove('flipped');
 
@@ -3169,6 +3236,7 @@ function showNextWord(reviewSnapshot = null) {
 
 // NEW: Function to show a SPECIFIC word (for Undo/Restore)
 function showWord(word) {
+    window.WordIllustrations?.clear();
     if (!word) return;
 
     // Reset Card State
@@ -3179,12 +3247,13 @@ function showWord(word) {
 
     document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
-    document.getElementById('exampleSentence').textContent = word.example;
+    renderWordExample(word);
     markLearningContentReady();
     updateQuestionReasonUI();
 }
 
 function showNoWordsMessage() {
+    window.WordIllustrations?.clear();
     const cardsArea = document.getElementById('cardsArea');
     const modeNames = {
         'unlearned': '未学習',
@@ -3344,6 +3413,10 @@ function handleMeaningCardClick(e) {
         // Flip = Incorrect / Check
         card.classList.add('flipped');
         gameState.meaningCardFlipped = true;
+        window.WordIllustrations?.show(
+            resolveReferencedVocabularyWord(gameState.currentWord, getWordSourceLevel(gameState.currentWord, gameState.currentLevel)),
+            getWordSourceLevel(gameState.currentWord, gameState.currentLevel), vocabularyDatabase
+        );
         if (typeof window.liveTutorialEvent === 'function') window.liveTutorialEvent('meaning_open');
 
         const currentWord = gameState.currentWord;

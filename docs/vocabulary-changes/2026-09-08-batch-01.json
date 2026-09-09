@@ -1,0 +1,183 @@
+{
+  "date": "2026-09-08",
+  "batch": "01",
+  "scope": "表示内容のみ。綴り・品詞・参照・収録順・学習キーは維持。index は0始まり。",
+  "changes": [
+    {
+      "level": "exam1",
+      "index": 951,
+      "before": {
+        "word": "marketplace",
+        "meaning": "【名】暖炉",
+        "pos": "名",
+        "example": "Sit by the fireplace.",
+        "phrase": "lit fireplace",
+        "set": 1
+      },
+      "after": {
+        "word": "marketplace",
+        "meaning": "【名】市場、売買の場",
+        "pos": "名",
+        "example": "We bought fresh fruit at the marketplace.",
+        "phrase": "a busy marketplace",
+        "set": 1
+      },
+      "reason": "別の単語 fireplace の内容が混入していたため、marketplace の意味・用例に修復。fireplace の欠落は別途対応。",
+      "source": "https://www.collinsdictionary.com/dictionary/english/marketplace"
+    },
+    {
+      "level": "junior",
+      "index": 360,
+      "before": {
+        "word": "feed",
+        "meaning": "餌をやる",
+        "phrase": "feed the dog",
+        "pos": "名",
+        "example": "Don't forget to feed the cat.",
+        "set": 1
+      },
+      "after": {
+        "word": "feed",
+        "meaning": "飼料、餌",
+        "phrase": "animal feed",
+        "pos": "名",
+        "example": "The farmer bought feed for the chickens.",
+        "set": 1
+      },
+      "reason": "名詞の項目に動詞の意味・用例が入っていたため、動物用の餌を表す名詞へ修復。",
+      "source": "https://dictionary.cambridge.org/dictionary/english/feed"
+    },
+    {
+      "level": "junior",
+      "index": 342,
+      "before": {
+        "word": "excuse",
+        "meaning": "言い訳、許す",
+        "phrase": "excuse me",
+        "pos": "名",
+        "example": "Excuse me, where is the station?",
+        "set": 1
+      },
+      "after": {
+        "word": "excuse",
+        "meaning": "言い訳、弁解",
+        "phrase": "a poor excuse",
+        "pos": "名",
+        "example": "He gave a poor excuse for being late.",
+        "set": 1
+      },
+      "reason": "名詞の項目に動詞 excuse の用例が入っていたため、名詞「言い訳」へ統一。",
+      "source": "https://dictionary.cambridge.org/dictionary/english/excuse"
+    },
+    {
+      "level": "basic",
+      "index": 33,
+      "before": {
+        "word": "after",
+        "meaning": "後で",
+        "phrase": "after school",
+        "pos": "副",
+        "example": "Let's meet after school.",
+        "set": 1
+      },
+      "after": {
+        "word": "after",
+        "meaning": "後で、その後に",
+        "phrase": "soon after",
+        "pos": "副",
+        "example": "She left at noon, and I left soon after.",
+        "set": 1
+      },
+      "reason": "after school は前置詞用法。副詞の項目に合わせ、名詞を後ろに伴わない soon after へ修復。",
+      "source": "https://dictionary.cambridge.org/grammar/british-grammar/after"
+    },
+    {
+      "level": "basic",
+      "index": 23,
+      "before": {
+        "word": "adult",
+        "meaning": "大人の、成人した",
+        "phrase": "adult education",
+        "pos": "形",
+        "example": "He is an adult now.",
+        "set": 1
+      },
+      "after": {
+        "word": "adult",
+        "meaning": "大人の、成人した",
+        "phrase": "adult education",
+        "pos": "形",
+        "example": "The class is for adult learners.",
+        "set": 1
+      },
+      "reason": "名詞 an adult の例文を、形容詞 adult が learners を修飾する例文へ変更。",
+      "source": "https://dictionary.cambridge.org/dictionary/english/adult"
+    },
+    {
+      "level": "basic",
+      "index": 2,
+      "before": {
+        "word": "most",
+        "meaning": "最も",
+        "phrase": "most people",
+        "pos": "副",
+        "example": "Which color do you like most?",
+        "set": 1
+      },
+      "after": {
+        "word": "most",
+        "meaning": "最も",
+        "phrase": "like it most",
+        "pos": "副",
+        "example": "Which color do you like most?",
+        "set": 1
+      },
+      "reason": "most people は名詞を伴う用法。副詞「最も」に合わせフレーズのみ修復。",
+      "source": "https://dictionary.cambridge.org/grammar/british-grammar/most-the-most-mostly"
+    },
+    {
+      "level": "basic",
+      "index": 809,
+      "before": {
+        "word": "most",
+        "meaning": "最も",
+        "phrase": "most people",
+        "pos": "代",
+        "example": "Which color do you like most?",
+        "set": 1
+      },
+      "after": {
+        "word": "most",
+        "meaning": "大部分、多くの人（もの）",
+        "phrase": "most of the students",
+        "pos": "代",
+        "example": "Most of the students arrived on time.",
+        "set": 1
+      },
+      "reason": "副詞「最も」の内容が混入していたため、代名詞用法の「大部分」へ修復。",
+      "source": "https://dictionary.cambridge.org/grammar/british-grammar/most-the-most-mostly"
+    },
+    {
+      "level": "basic",
+      "index": 711,
+      "before": {
+        "word": "latter",
+        "meaning": "後の方で、近頃の",
+        "phrase": "in the latter part",
+        "pos": "代",
+        "example": "The latter part of the movie was very exciting.",
+        "set": 1
+      },
+      "after": {
+        "word": "latter",
+        "meaning": "後者（二つのうち後に挙げた方）",
+        "phrase": "choose the latter",
+        "pos": "代",
+        "example": "We can go by bus or train. I prefer the latter.",
+        "set": 1
+      },
+      "reason": "形容詞用法の例文と不適切な訳を、二つの選択肢の後者を指す the latter へ修復。",
+      "source": "https://dictionary.cambridge.org/dictionary/english/latter"
+    }
+  ]
+}

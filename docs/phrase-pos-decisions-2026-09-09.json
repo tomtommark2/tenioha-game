@@ -1,0 +1,2938 @@
+{
+  "date": "2026-09-09",
+  "scope": "修正前の54組＋37行、計91抽出項目（重複あり）の判定。全8,018行を言語監修した件数ではない。",
+  "originalReport": "phrase-pos-screening-2026-09-09.json",
+  "currentReport": "phrase-pos-screening-2026-09-09-after-batch-02.json",
+  "latestResolution": {
+    "note": "以下のsummaryとdecisionsは第2回時点の判定を保持。分類残件3語は第3回で修復済み。",
+    "report": "phrase-pos-screening-2026-09-09-after-batch-03.json",
+    "changes": "vocabulary-changes/2026-09-09-phrase-pos-batch-03.json",
+    "resolvedWords": ["lot", "most", "yeah"],
+    "remainingClassificationReviews": 0
+  },
+  "summary": {
+    "revised": 83,
+    "retain-phrase": 5,
+    "classification-review": 3
+  },
+  "decisions": [
+    {
+      "id": "reuse|along|along the river",
+      "type": "reusedAcrossPos",
+      "word": "along",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 29,
+          "word": "along",
+          "pos": "副",
+          "phrase": "along the river"
+        },
+        {
+          "level": "basic",
+          "index": 47,
+          "word": "along",
+          "pos": "前",
+          "phrase": "along the river"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 29,
+          "word": "along",
+          "pos": "副",
+          "phraseBefore": "along the river",
+          "phraseAfter": "move along",
+          "reason": "後続の名詞を取らない移動の副詞用法に統一する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|being|human being",
+      "type": "reusedAcrossPos",
+      "word": "being",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 96,
+          "word": "being",
+          "pos": "動",
+          "phrase": "human being"
+        },
+        {
+          "level": "basic",
+          "index": 139,
+          "word": "being",
+          "pos": "名",
+          "phrase": "human being"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 96,
+          "word": "being",
+          "pos": "動",
+          "phraseBefore": "human being",
+          "phraseAfter": "is being careful",
+          "reason": "名詞 human being ではなく、be の進行形を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|board|on board",
+      "type": "reusedAcrossPos",
+      "word": "board",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 120,
+          "word": "board",
+          "pos": "名",
+          "phrase": "on board"
+        },
+        {
+          "level": "daily",
+          "index": 2350,
+          "word": "board",
+          "pos": "動",
+          "phrase": "on board"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 120,
+          "word": "board",
+          "pos": "名",
+          "phraseBefore": "on board",
+          "phraseAfter": "write on the board",
+          "reason": "乗船の熟語でなく、既存訳・例文の板／黒板を示す。"
+        },
+        {
+          "level": "daily",
+          "index": 2350,
+          "word": "board",
+          "pos": "動",
+          "phraseBefore": "on board",
+          "phraseAfter": "board the plane",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|down|sit down",
+      "type": "reusedAcrossPos",
+      "word": "down",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 293,
+          "word": "down",
+          "pos": "副",
+          "phrase": "sit down"
+        },
+        {
+          "level": "basic",
+          "index": 389,
+          "word": "down",
+          "pos": "前",
+          "phrase": "sit down"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 389,
+          "word": "down",
+          "pos": "前",
+          "phraseBefore": "sit down",
+          "phraseAfter": "down the stairs",
+          "reason": "後ろに名詞句を取る前置詞用法を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|dream|have a dream",
+      "type": "reusedAcrossPos",
+      "word": "dream",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 298,
+          "word": "dream",
+          "pos": "名",
+          "phrase": "have a dream"
+        },
+        {
+          "level": "basic",
+          "index": 396,
+          "word": "dream",
+          "pos": "動",
+          "phrase": "have a dream"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 396,
+          "word": "dream",
+          "pos": "動",
+          "phraseBefore": "have a dream",
+          "phraseAfter": "dream about flying",
+          "reason": "動詞の意味・フレーズ・例文へ修復する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|dress|wear a dress",
+      "type": "reusedAcrossPos",
+      "word": "dress",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 299,
+          "word": "dress",
+          "pos": "名",
+          "phrase": "wear a dress"
+        },
+        {
+          "level": "basic",
+          "index": 397,
+          "word": "dress",
+          "pos": "動",
+          "phrase": "wear a dress"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 397,
+          "word": "dress",
+          "pos": "動",
+          "phraseBefore": "wear a dress",
+          "phraseAfter": "dress warmly",
+          "reason": "動詞の意味・フレーズ・例文へ修復する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|early|early morning",
+      "type": "reusedAcrossPos",
+      "word": "early",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 313,
+          "word": "early",
+          "pos": "副",
+          "phrase": "early morning"
+        },
+        {
+          "level": "basic",
+          "index": 409,
+          "word": "early",
+          "pos": "形",
+          "phrase": "early morning"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 313,
+          "word": "early",
+          "pos": "副",
+          "phraseBefore": "early morning",
+          "phraseAfter": "get up early",
+          "reason": "副詞が動詞・形容詞等を修飾する用法を明示する。"
+        },
+        {
+          "level": "basic",
+          "index": 409,
+          "word": "early",
+          "pos": "形",
+          "phraseBefore": "early morning",
+          "phraseAfter": "early morning",
+          "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|either|either A or B",
+      "type": "reusedAcrossPos",
+      "word": "either",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 320,
+          "word": "either",
+          "pos": "副",
+          "phrase": "either A or B"
+        },
+        {
+          "level": "basic",
+          "index": 423,
+          "word": "either",
+          "pos": "接",
+          "phrase": "either A or B"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 320,
+          "word": "either",
+          "pos": "副",
+          "phraseBefore": "either A or B",
+          "phraseAfter": "not hungry either",
+          "reason": "either ... or の接続表現ではなく、否定文に付加する副詞を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|home|go home",
+      "type": "reusedAcrossPos",
+      "word": "home",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 498,
+          "word": "home",
+          "pos": "名",
+          "phrase": "go home"
+        },
+        {
+          "level": "basic",
+          "index": 627,
+          "word": "home",
+          "pos": "副",
+          "phrase": "go home"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 498,
+          "word": "home",
+          "pos": "名",
+          "phraseBefore": "go home",
+          "phraseAfter": "a new home",
+          "reason": "名詞を冠詞と形容詞で限定する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|later|see you later",
+      "type": "reusedAcrossPos",
+      "word": "later",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 573,
+          "word": "later",
+          "pos": "副",
+          "phrase": "see you later"
+        },
+        {
+          "level": "exam1",
+          "index": 1379,
+          "word": "later",
+          "pos": "形",
+          "phrase": "see you later"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 1379,
+          "word": "later",
+          "pos": "形",
+          "phraseBefore": "see you later",
+          "phraseAfter": "a later date",
+          "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|left|turn left",
+      "type": "reusedAcrossPos",
+      "word": "left",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 580,
+          "word": "left",
+          "pos": "形",
+          "phrase": "turn left"
+        },
+        {
+          "level": "basic",
+          "index": 720,
+          "word": "left",
+          "pos": "副",
+          "phrase": "turn left"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 580,
+          "word": "left",
+          "pos": "形",
+          "phraseBefore": "turn left",
+          "phraseAfter": "the left hand",
+          "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+        },
+        {
+          "level": "basic",
+          "index": 720,
+          "word": "left",
+          "pos": "副",
+          "phraseBefore": "turn left",
+          "phraseAfter": "turn left",
+          "reason": "on the left の名詞でなく、方向を表す副詞を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|lot|a lot of",
+      "type": "reusedAcrossPos",
+      "word": "lot",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 606,
+          "word": "lot",
+          "pos": "代",
+          "phrase": "a lot of"
+        },
+        {
+          "level": "basic",
+          "index": 749,
+          "word": "lot",
+          "pos": "名",
+          "phrase": "a lot of"
+        }
+      ],
+      "status": "classification-review",
+      "reason": "a lot (of) という数量表現の分類と単語 lot の品詞が混在している。単語側を名詞に揃えるか、句を学習単位にするかを設計し、旧キー・参照を移行する必要がある。副詞／代名詞として機能する句全体と lot 自身の区別を先に決める。",
+      "source": "https://dictionary.cambridge.org/grammar/british-grammar/much-many-a-lot-of-lots-of-quantifiers"
+    },
+    {
+      "id": "reuse|mobile|mobile phone",
+      "type": "reusedAcrossPos",
+      "word": "mobile",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 647,
+          "word": "mobile",
+          "pos": "名",
+          "phrase": "mobile phone"
+        },
+        {
+          "level": "basic",
+          "index": 804,
+          "word": "mobile",
+          "pos": "形",
+          "phrase": "mobile phone"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 647,
+          "word": "mobile",
+          "pos": "名",
+          "phraseBefore": "mobile phone",
+          "phraseAfter": "use your mobile",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|most|most people",
+      "type": "reusedAcrossPos",
+      "word": "most",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 661,
+          "word": "most",
+          "pos": "冠",
+          "phrase": "most people"
+        },
+        {
+          "level": "basic",
+          "index": 810,
+          "word": "most",
+          "pos": "形",
+          "phrase": "most people"
+        }
+      ],
+      "status": "classification-review",
+      "reason": "most people は数量限定詞（伝統的には形容詞的用法）。冠というラベルを冠詞の意味で表示する現仕様と整合しない。限定詞を独立分類にするかを決め、重複・旧キーと一緒に修復する。形容詞行の最高のという訳も同時に整理する。",
+      "source": "https://dictionary.cambridge.org/grammar/british-grammar/noun-phrases-dependent-words"
+    },
+    {
+      "id": "reuse|purple|purple flower",
+      "type": "reusedAcrossPos",
+      "word": "purple",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 814,
+          "word": "purple",
+          "pos": "名",
+          "phrase": "purple flower"
+        },
+        {
+          "level": "basic",
+          "index": 999,
+          "word": "purple",
+          "pos": "形",
+          "phrase": "purple flower"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 814,
+          "word": "purple",
+          "pos": "名",
+          "phraseBefore": "purple flower",
+          "phraseAfter": "a shade of purple",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|same|the same",
+      "type": "reusedAcrossPos",
+      "word": "same",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 866,
+          "word": "same",
+          "pos": "形",
+          "phrase": "the same"
+        },
+        {
+          "level": "junior",
+          "index": 868,
+          "word": "same",
+          "pos": "代",
+          "phrase": "the same"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 866,
+          "word": "same",
+          "pos": "形",
+          "phraseBefore": "the same",
+          "phraseAfter": "the same school",
+          "reason": "形容詞が修飾する名詞を補い、誤った engage の用例を修復する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|shower|take a shower",
+      "type": "reusedAcrossPos",
+      "word": "shower",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 908,
+          "word": "shower",
+          "pos": "名",
+          "phrase": "take a shower"
+        },
+        {
+          "level": "exam1",
+          "index": 2261,
+          "word": "shower",
+          "pos": "動",
+          "phrase": "take a shower"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2261,
+          "word": "shower",
+          "pos": "動",
+          "phraseBefore": "take a shower",
+          "phraseAfter": "shower before bed",
+          "reason": "名詞 shower と、目的語の欠けた別語義の断片を、動詞の一つの語義に揃える。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|since|ever since",
+      "type": "reusedAcrossPos",
+      "word": "since",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 563,
+          "word": "since",
+          "pos": "接",
+          "phrase": "ever since"
+        },
+        {
+          "level": "exam1",
+          "index": 2271,
+          "word": "since",
+          "pos": "副",
+          "phrase": "ever since"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 563,
+          "word": "since",
+          "pos": "接",
+          "phraseBefore": "ever since",
+          "phraseAfter": "since we moved here",
+          "reason": "主語と動詞を伴う節を示す。"
+        },
+        {
+          "level": "exam1",
+          "index": 2271,
+          "word": "since",
+          "pos": "副",
+          "phraseBefore": "ever since",
+          "phraseAfter": "ever since",
+          "reason": "後続名詞を取らない副詞用法が分かる完全な文にする。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|sleep|go to sleep",
+      "type": "reusedAcrossPos",
+      "word": "sleep",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 934,
+          "word": "sleep",
+          "pos": "動",
+          "phrase": "go to sleep"
+        },
+        {
+          "level": "daily",
+          "index": 572,
+          "word": "sleep",
+          "pos": "名",
+          "phrase": "go to sleep"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 934,
+          "word": "sleep",
+          "pos": "動",
+          "phraseBefore": "go to sleep",
+          "phraseAfter": "sleep well",
+          "reason": "go to sleep の sleep は名詞なので、動詞の例に変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|straight|go straight",
+      "type": "reusedAcrossPos",
+      "word": "straight",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 1001,
+          "word": "straight",
+          "pos": "副",
+          "phrase": "go straight"
+        },
+        {
+          "level": "basic",
+          "index": 1237,
+          "word": "straight",
+          "pos": "形",
+          "phrase": "go straight"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 1237,
+          "word": "straight",
+          "pos": "形",
+          "phraseBefore": "go straight",
+          "phraseAfter": "a straight road",
+          "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|yeah|oh yeah",
+      "type": "reusedAcrossPos",
+      "word": "yeah",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 1207,
+          "word": "yeah",
+          "pos": "名",
+          "phrase": "oh yeah"
+        },
+        {
+          "level": "basic",
+          "index": 1445,
+          "word": "yeah",
+          "pos": "副",
+          "phrase": "oh yeah"
+        }
+      ],
+      "status": "classification-review",
+      "reason": "名詞行の oh yeah は通常の応答用法であり、名詞の例ではない。辞書には副詞／間投詞の分類がある。ラベルの整理と旧学習キーの互換性を一緒に扱う。",
+      "source": "https://dictionary.cambridge.org/dictionary/english/yeah"
+    },
+    {
+      "id": "reuse|last|last week",
+      "type": "reusedAcrossPos",
+      "word": "last",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 0,
+          "word": "last",
+          "pos": "形",
+          "phrase": "last week"
+        },
+        {
+          "level": "basic",
+          "index": 708,
+          "word": "last",
+          "pos": "代",
+          "phrase": "last week"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 708,
+          "word": "last",
+          "pos": "代",
+          "phraseBefore": "last week",
+          "phraseAfter": "the last of them",
+          "reason": "名詞を直接修飾する last week から、代名詞用法へ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|several|several people",
+      "type": "reusedAcrossPos",
+      "word": "several",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 3,
+          "word": "several",
+          "pos": "形",
+          "phrase": "several people"
+        },
+        {
+          "level": "basic",
+          "index": 1128,
+          "word": "several",
+          "pos": "代",
+          "phrase": "several people"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 1128,
+          "word": "several",
+          "pos": "代",
+          "phraseBefore": "several people",
+          "phraseAfter": "several of them",
+          "reason": "名詞を直接修飾する用法ではなく、代名詞用法を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|such|such a person",
+      "type": "reusedAcrossPos",
+      "word": "such",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 4,
+          "word": "such",
+          "pos": "形",
+          "phrase": "such a person"
+        },
+        {
+          "level": "basic",
+          "index": 1251,
+          "word": "such",
+          "pos": "代",
+          "phrase": "such a person"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 1251,
+          "word": "such",
+          "pos": "代",
+          "phraseBefore": "such a person",
+          "phraseAfter": "such is life",
+          "reason": "辞書が代名詞として扱う、such が主語になる用例を採用する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|chemical|chemical reaction",
+      "type": "reusedAcrossPos",
+      "word": "chemical",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 229,
+          "word": "chemical",
+          "pos": "形",
+          "phrase": "chemical reaction"
+        },
+        {
+          "level": "daily",
+          "index": 2190,
+          "word": "chemical",
+          "pos": "名",
+          "phrase": "chemical reaction"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 2190,
+          "word": "chemical",
+          "pos": "名",
+          "phraseBefore": "chemical reaction",
+          "phraseAfter": "dangerous chemicals",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|delay|without delay",
+      "type": "reusedAcrossPos",
+      "word": "delay",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 350,
+          "word": "delay",
+          "pos": "名",
+          "phrase": "without delay"
+        },
+        {
+          "level": "daily",
+          "index": 1801,
+          "word": "delay",
+          "pos": "動",
+          "phrase": "without delay"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1801,
+          "word": "delay",
+          "pos": "動",
+          "phraseBefore": "without delay",
+          "phraseAfter": "delay the meeting",
+          "reason": "delay が目的語を取る動詞の例にする。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|display|on display",
+      "type": "reusedAcrossPos",
+      "word": "display",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 382,
+          "word": "display",
+          "pos": "名",
+          "phrase": "on display"
+        },
+        {
+          "level": "daily",
+          "index": 1880,
+          "word": "display",
+          "pos": "動",
+          "phrase": "on display"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1880,
+          "word": "display",
+          "pos": "動",
+          "phraseBefore": "on display",
+          "phraseAfter": "display the results",
+          "reason": "名詞の慣用句から目的語を取る動詞へ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|downstairs|go downstairs",
+      "type": "reusedAcrossPos",
+      "word": "downstairs",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 391,
+          "word": "downstairs",
+          "pos": "副",
+          "phrase": "go downstairs"
+        },
+        {
+          "level": "daily",
+          "index": 1905,
+          "word": "downstairs",
+          "pos": "形",
+          "phrase": "go downstairs"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 391,
+          "word": "downstairs",
+          "pos": "副",
+          "phraseBefore": "go downstairs",
+          "phraseAfter": "go downstairs",
+          "reason": "形容詞の訳を混在させない。"
+        },
+        {
+          "level": "daily",
+          "index": 1905,
+          "word": "downstairs",
+          "pos": "形",
+          "phraseBefore": "go downstairs",
+          "phraseAfter": "the downstairs bathroom",
+          "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|fit|fit perfectly",
+      "type": "reusedAcrossPos",
+      "word": "fit",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 511,
+          "word": "fit",
+          "pos": "形",
+          "phrase": "fit perfectly"
+        },
+        {
+          "level": "daily",
+          "index": 1509,
+          "word": "fit",
+          "pos": "動",
+          "phrase": "fit perfectly"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 511,
+          "word": "fit",
+          "pos": "形",
+          "phraseBefore": "fit perfectly",
+          "phraseAfter": "fit for the job",
+          "reason": "動詞の例文を形容詞 fit for の用例へ修復する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|human|human rights",
+      "type": "reusedAcrossPos",
+      "word": "human",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 635,
+          "word": "human",
+          "pos": "形",
+          "phrase": "human rights"
+        },
+        {
+          "level": "daily",
+          "index": 1433,
+          "word": "human",
+          "pos": "名",
+          "phrase": "human rights"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1433,
+          "word": "human",
+          "pos": "名",
+          "phraseBefore": "human rights",
+          "phraseAfter": "humans and animals",
+          "reason": "human being の形容詞でなく、複数形 humans で名詞を明示する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|least|at least",
+      "type": "reusedAcrossPos",
+      "word": "least",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 718,
+          "word": "least",
+          "pos": "形",
+          "phrase": "at least"
+        },
+        {
+          "level": "daily",
+          "index": 1302,
+          "word": "least",
+          "pos": "副",
+          "phrase": "at least"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 718,
+          "word": "least",
+          "pos": "形",
+          "phraseBefore": "at least",
+          "phraseAfter": "the least time",
+          "reason": "least expensive の副詞ではなく、名詞 time の数量を限定する用法にする。"
+        },
+        {
+          "level": "daily",
+          "index": 1302,
+          "word": "least",
+          "pos": "副",
+          "phraseBefore": "at least",
+          "phraseAfter": "like it least",
+          "reason": "at least の慣用句でなく、動詞の程度を限定する副詞を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|less|less than",
+      "type": "reusedAcrossPos",
+      "word": "less",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 727,
+          "word": "less",
+          "pos": "形",
+          "phrase": "less than"
+        },
+        {
+          "level": "basic",
+          "index": 728,
+          "word": "less",
+          "pos": "副",
+          "phrase": "less than"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 727,
+          "word": "less",
+          "pos": "形",
+          "phraseBefore": "less than",
+          "phraseAfter": "less money",
+          "reason": "less than だけでは判定できないため名詞を補う。"
+        },
+        {
+          "level": "basic",
+          "index": 728,
+          "word": "less",
+          "pos": "副",
+          "phraseBefore": "less than",
+          "phraseAfter": "less cold",
+          "reason": "形容詞を修飾する副詞の用法を明示する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|range|wide range",
+      "type": "reusedAcrossPos",
+      "word": "range",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1012,
+          "word": "range",
+          "pos": "名",
+          "phrase": "wide range"
+        },
+        {
+          "level": "exam1",
+          "index": 2011,
+          "word": "range",
+          "pos": "動",
+          "phrase": "wide range"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2011,
+          "word": "range",
+          "pos": "動",
+          "phraseBefore": "wide range",
+          "phraseAfter": "range from five to ten",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|release|press release",
+      "type": "reusedAcrossPos",
+      "word": "release",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1038,
+          "word": "release",
+          "pos": "名",
+          "phrase": "press release"
+        },
+        {
+          "level": "daily",
+          "index": 676,
+          "word": "release",
+          "pos": "動",
+          "phrase": "press release"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 676,
+          "word": "release",
+          "pos": "動",
+          "phraseBefore": "press release",
+          "phraseAfter": "release a prisoner",
+          "reason": "解放するという既存例文の語義に合わせる。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|research|market research",
+      "type": "reusedAcrossPos",
+      "word": "research",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1051,
+          "word": "research",
+          "pos": "名",
+          "phrase": "market research"
+        },
+        {
+          "level": "exam1",
+          "index": 2093,
+          "word": "research",
+          "pos": "動",
+          "phrase": "market research"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2093,
+          "word": "research",
+          "pos": "動",
+          "phraseBefore": "market research",
+          "phraseAfter": "research a topic",
+          "reason": "研究する動詞を明示する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|round|all year round",
+      "type": "reusedAcrossPos",
+      "word": "round",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1076,
+          "word": "round",
+          "pos": "副",
+          "phrase": "all year round"
+        },
+        {
+          "level": "daily",
+          "index": 447,
+          "word": "round",
+          "pos": "形",
+          "phrase": "all year round"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 447,
+          "word": "round",
+          "pos": "形",
+          "phraseBefore": "all year round",
+          "phraseAfter": "a round table",
+          "reason": "丸いという形容詞用法に合わせる。"
+        },
+        {
+          "level": "basic",
+          "index": 1076,
+          "word": "round",
+          "pos": "副",
+          "phraseBefore": "all year round",
+          "phraseAfter": "turn round",
+          "reason": "前置詞用法の例文を副詞用法へ変更し、語義も揃える。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|rush|rush hour",
+      "type": "reusedAcrossPos",
+      "word": "rush",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1085,
+          "word": "rush",
+          "pos": "名",
+          "phrase": "rush hour"
+        },
+        {
+          "level": "daily",
+          "index": 456,
+          "word": "rush",
+          "pos": "動",
+          "phrase": "rush hour"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 456,
+          "word": "rush",
+          "pos": "動",
+          "phraseBefore": "rush hour",
+          "phraseAfter": "rush home",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|secret|keep a secret",
+      "type": "reusedAcrossPos",
+      "word": "secret",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1114,
+          "word": "secret",
+          "pos": "名",
+          "phrase": "keep a secret"
+        },
+        {
+          "level": "daily",
+          "index": 498,
+          "word": "secret",
+          "pos": "形",
+          "phrase": "keep a secret"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 498,
+          "word": "secret",
+          "pos": "形",
+          "phraseBefore": "keep a secret",
+          "phraseAfter": "a secret plan",
+          "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|sense|sense of humor",
+      "type": "reusedAcrossPos",
+      "word": "sense",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1123,
+          "word": "sense",
+          "pos": "名",
+          "phrase": "sense of humor"
+        },
+        {
+          "level": "exam1",
+          "index": 2225,
+          "word": "sense",
+          "pos": "動",
+          "phrase": "sense of humor"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2225,
+          "word": "sense",
+          "pos": "動",
+          "phraseBefore": "sense of humor",
+          "phraseAfter": "sense danger",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|shock|culture shock",
+      "type": "reusedAcrossPos",
+      "word": "shock",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1139,
+          "word": "shock",
+          "pos": "名",
+          "phrase": "culture shock"
+        },
+        {
+          "level": "exam1",
+          "index": 2251,
+          "word": "shock",
+          "pos": "動",
+          "phrase": "culture shock"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2251,
+          "word": "shock",
+          "pos": "動",
+          "phraseBefore": "culture shock",
+          "phraseAfter": "shock the audience",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|single|single room",
+      "type": "reusedAcrossPos",
+      "word": "single",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1161,
+          "word": "single",
+          "pos": "形",
+          "phrase": "single room"
+        },
+        {
+          "level": "daily",
+          "index": 564,
+          "word": "single",
+          "pos": "名",
+          "phrase": "single room"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 564,
+          "word": "single",
+          "pos": "名",
+          "phraseBefore": "single room",
+          "phraseAfter": "a new single",
+          "reason": "single parent の形容詞ではなく、曲を表す可算名詞で示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|till|till tomorrow",
+      "type": "reusedAcrossPos",
+      "word": "till",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1317,
+          "word": "till",
+          "pos": "前",
+          "phrase": "till tomorrow"
+        },
+        {
+          "level": "daily",
+          "index": 196,
+          "word": "till",
+          "pos": "接",
+          "phrase": "till tomorrow"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 196,
+          "word": "till",
+          "pos": "接",
+          "phraseBefore": "till tomorrow",
+          "phraseAfter": "till I return",
+          "reason": "後ろに主語と動詞を置いて接続詞を明示する。"
+        },
+        {
+          "level": "basic",
+          "index": 1317,
+          "word": "till",
+          "pos": "前",
+          "phraseBefore": "till tomorrow",
+          "phraseAfter": "till tomorrow",
+          "reason": "節ではなく時刻を取る前置詞の例文にする。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|underwater|underwater camera",
+      "type": "reusedAcrossPos",
+      "word": "underwater",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1357,
+          "word": "underwater",
+          "pos": "形",
+          "phrase": "underwater camera"
+        },
+        {
+          "level": "exam1",
+          "index": 2665,
+          "word": "underwater",
+          "pos": "副",
+          "phrase": "underwater camera"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2665,
+          "word": "underwater",
+          "pos": "副",
+          "phraseBefore": "underwater camera",
+          "phraseAfter": "swim underwater",
+          "reason": "水中で泳ぐ副詞用法を示す。"
+        },
+        {
+          "level": "basic",
+          "index": 1357,
+          "word": "underwater",
+          "pos": "形",
+          "phraseBefore": "underwater camera",
+          "phraseAfter": "underwater camera",
+          "reason": "camera を修飾する形容詞の例文にする。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|upstairs|go upstairs",
+      "type": "reusedAcrossPos",
+      "word": "upstairs",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1377,
+          "word": "upstairs",
+          "pos": "副",
+          "phrase": "go upstairs"
+        },
+        {
+          "level": "daily",
+          "index": 14,
+          "word": "upstairs",
+          "pos": "形",
+          "phrase": "go upstairs"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 14,
+          "word": "upstairs",
+          "pos": "形",
+          "phraseBefore": "go upstairs",
+          "phraseAfter": "an upstairs room",
+          "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|worst|at worst",
+      "type": "reusedAcrossPos",
+      "word": "worst",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 123,
+          "word": "worst",
+          "pos": "名",
+          "phrase": "at worst"
+        },
+        {
+          "level": "exam1",
+          "index": 2852,
+          "word": "worst",
+          "pos": "副",
+          "phrase": "at worst"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2852,
+          "word": "worst",
+          "pos": "副",
+          "phraseBefore": "at worst",
+          "phraseAfter": "perform worst",
+          "reason": "worst case の形容詞ではなく、動詞を修飾する最上級を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|witness|bear witness",
+      "type": "reusedAcrossPos",
+      "word": "witness",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 115,
+          "word": "witness",
+          "pos": "動",
+          "phrase": "bear witness"
+        },
+        {
+          "level": "exam1",
+          "index": 2831,
+          "word": "witness",
+          "pos": "名",
+          "phrase": "bear witness"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 115,
+          "word": "witness",
+          "pos": "動",
+          "phraseBefore": "bear witness",
+          "phraseAfter": "witness an accident",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        },
+        {
+          "level": "exam1",
+          "index": 2831,
+          "word": "witness",
+          "pos": "名",
+          "phraseBefore": "bear witness",
+          "phraseAfter": "a key witness",
+          "reason": "bear witness の証言という語義から、登録訳の目撃者・証人に合わせる。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|treat|trick or treat",
+      "type": "reusedAcrossPos",
+      "word": "treat",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 232,
+          "word": "treat",
+          "pos": "名",
+          "phrase": "trick or treat"
+        },
+        {
+          "level": "exam1",
+          "index": 2599,
+          "word": "treat",
+          "pos": "動",
+          "phrase": "trick or treat"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2599,
+          "word": "treat",
+          "pos": "動",
+          "phraseBefore": "trick or treat",
+          "phraseAfter": "treat a patient",
+          "reason": "ハロウィーンの定型句ではなく、治療する動詞の語義を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|underneath|wear underneath",
+      "type": "reusedAcrossPos",
+      "word": "underneath",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 265,
+          "word": "underneath",
+          "pos": "前",
+          "phrase": "wear underneath"
+        },
+        {
+          "level": "exam1",
+          "index": 2659,
+          "word": "underneath",
+          "pos": "副",
+          "phrase": "wear underneath"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 265,
+          "word": "underneath",
+          "pos": "前",
+          "phraseBefore": "wear underneath",
+          "phraseAfter": "underneath the bed",
+          "reason": "後続する名詞句を補って前置詞を明示する。"
+        },
+        {
+          "level": "exam1",
+          "index": 2659,
+          "word": "underneath",
+          "pos": "副",
+          "phraseBefore": "wear underneath",
+          "phraseAfter": "look underneath",
+          "reason": "目的語の欠けた wear を避け、後続名詞を取らない副詞を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|substitute|no substitute for",
+      "type": "reusedAcrossPos",
+      "word": "substitute",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 383,
+          "word": "substitute",
+          "pos": "名",
+          "phrase": "no substitute for"
+        },
+        {
+          "level": "exam1",
+          "index": 2445,
+          "word": "substitute",
+          "pos": "動",
+          "phrase": "no substitute for"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 383,
+          "word": "substitute",
+          "pos": "名",
+          "phraseBefore": "no substitute for",
+          "phraseAfter": "a substitute for sugar",
+          "reason": "不完全な no substitute for に補語を補う。"
+        },
+        {
+          "level": "exam1",
+          "index": 2445,
+          "word": "substitute",
+          "pos": "動",
+          "phraseBefore": "no substitute for",
+          "phraseAfter": "substitute oil for butter",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|moral|moral support",
+      "type": "reusedAcrossPos",
+      "word": "moral",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1153,
+          "word": "moral",
+          "pos": "名",
+          "phrase": "moral support"
+        },
+        {
+          "level": "exam1",
+          "index": 1552,
+          "word": "moral",
+          "pos": "形",
+          "phrase": "moral support"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1153,
+          "word": "moral",
+          "pos": "名",
+          "phraseBefore": "moral support",
+          "phraseAfter": "the moral of the story",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        },
+        {
+          "level": "exam1",
+          "index": 1552,
+          "word": "moral",
+          "pos": "形",
+          "phraseBefore": "moral support",
+          "phraseAfter": "a moral duty",
+          "reason": "moral support の精神的な支援ではなく、登録訳の道徳的なに合わせる。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|leap|leap year",
+      "type": "reusedAcrossPos",
+      "word": "leap",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1301,
+          "word": "leap",
+          "pos": "動",
+          "phrase": "leap year"
+        },
+        {
+          "level": "exam1",
+          "index": 1391,
+          "word": "leap",
+          "pos": "名",
+          "phrase": "leap year"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1301,
+          "word": "leap",
+          "pos": "動",
+          "phraseBefore": "leap year",
+          "phraseAfter": "leap over a fence",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        },
+        {
+          "level": "exam1",
+          "index": 1391,
+          "word": "leap",
+          "pos": "名",
+          "phraseBefore": "leap year",
+          "phraseAfter": "a giant leap",
+          "reason": "うるう年という熟語を避け、登録訳の跳躍に合わせる。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|individual|individual rights",
+      "type": "reusedAcrossPos",
+      "word": "individual",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1479,
+          "word": "individual",
+          "pos": "形",
+          "phrase": "individual rights"
+        },
+        {
+          "level": "exam1",
+          "index": 1242,
+          "word": "individual",
+          "pos": "名",
+          "phrase": "individual rights"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 1242,
+          "word": "individual",
+          "pos": "名",
+          "phraseBefore": "individual rights",
+          "phraseAfter": "a unique individual",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|commercial|commercial break",
+      "type": "reusedAcrossPos",
+      "word": "commercial",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1945,
+          "word": "commercial",
+          "pos": "形",
+          "phrase": "commercial break"
+        },
+        {
+          "level": "exam1",
+          "index": 423,
+          "word": "commercial",
+          "pos": "名",
+          "phrase": "commercial break"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 423,
+          "word": "commercial",
+          "pos": "名",
+          "phraseBefore": "commercial break",
+          "phraseAfter": "a TV commercial",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        },
+        {
+          "level": "daily",
+          "index": 1945,
+          "word": "commercial",
+          "pos": "形",
+          "phraseBefore": "commercial break",
+          "phraseAfter": "a commercial success",
+          "reason": "広告放送の文脈に限定せず、登録訳と既存例文の商業的成功を示す。"
+        }
+      ]
+    },
+    {
+      "id": "reuse|advance|in advance",
+      "type": "reusedAcrossPos",
+      "word": "advance",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 2361,
+          "word": "advance",
+          "pos": "動",
+          "phrase": "in advance"
+        },
+        {
+          "level": "exam1",
+          "index": 47,
+          "word": "advance",
+          "pos": "名",
+          "phrase": "in advance"
+        }
+      ],
+      "status": "revised",
+      "reason": "各品詞の代表例を分け、登録語義・例文を照合した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 2361,
+          "word": "advance",
+          "pos": "動",
+          "phraseBefore": "in advance",
+          "phraseAfter": "advance towards the city",
+          "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+        },
+        {
+          "level": "exam1",
+          "index": 47,
+          "word": "advance",
+          "pos": "名",
+          "phraseBefore": "in advance",
+          "phraseAfter": "a technological advance",
+          "reason": "事前にという熟語ではなく、登録訳の進歩を示す。"
+        }
+      ]
+    },
+    {
+      "id": "noun|junior|67",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "back",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 67,
+          "word": "back",
+          "pos": "名",
+          "phrase": "back of the room"
+        }
+      ],
+      "status": "retain-phrase",
+      "reason": "back が句の中心名詞で、of the room が後ろから限定する。例文の back も目的語の名詞。",
+      "changes": []
+    },
+    {
+      "id": "noun|junior|559",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "kind",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 559,
+          "word": "kind",
+          "pos": "名",
+          "phrase": "kind of"
+        }
+      ],
+      "status": "revised",
+      "reason": "形容詞の意味・例文を名詞の種類に揃え、kind of の曖昧さを除く。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 559,
+          "word": "kind",
+          "pos": "名",
+          "phraseBefore": "kind of",
+          "phraseAfter": "a kind of fruit",
+          "reason": "形容詞の意味・例文を名詞の種類に揃え、kind of の曖昧さを除く。"
+        }
+      ]
+    },
+    {
+      "id": "noun|junior|647",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "mobile",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 647,
+          "word": "mobile",
+          "pos": "名",
+          "phrase": "mobile phone"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 647,
+          "word": "mobile",
+          "pos": "名",
+          "phraseBefore": "mobile phone",
+          "phraseAfter": "use your mobile",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|junior|814",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "purple",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 814,
+          "word": "purple",
+          "pos": "名",
+          "phrase": "purple flower"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 814,
+          "word": "purple",
+          "pos": "名",
+          "phraseBefore": "purple flower",
+          "phraseAfter": "a shade of purple",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|basic|1143",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "short",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 1143,
+          "word": "short",
+          "pos": "名",
+          "phrase": "short story"
+        }
+      ],
+      "status": "revised",
+      "reason": "short story の形容詞を避け、短編映画の名詞を明示する。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 1143,
+          "word": "short",
+          "pos": "名",
+          "phraseBefore": "short story",
+          "phraseAfter": "an animated short",
+          "reason": "short story の形容詞を避け、短編映画の名詞を明示する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|junior|916",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "silver",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 916,
+          "word": "silver",
+          "pos": "名",
+          "phrase": "silver ring"
+        }
+      ],
+      "status": "retain-phrase",
+      "reason": "素材名の名詞が ring を前から修飾する用法として成立する。例文 made of silver も素材名の名詞。名詞修飾を一律に不合格にしない。",
+      "changes": []
+    },
+    {
+      "id": "noun|junior|981",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "sports",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 981,
+          "word": "sports",
+          "pos": "名",
+          "phrase": "sports day"
+        }
+      ],
+      "status": "revised",
+      "reason": "sports day の修飾用法を避け、目的語の名詞を示す。",
+      "changes": [
+        {
+          "level": "junior",
+          "index": 981,
+          "word": "sports",
+          "pos": "名",
+          "phraseBefore": "sports day",
+          "phraseAfter": "play sports",
+          "reason": "sports day の修飾用法を避け、目的語の名詞を示す。"
+        }
+      ]
+    },
+    {
+      "id": "noun|junior|1098",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "top",
+      "originalRows": [
+        {
+          "level": "junior",
+          "index": 1098,
+          "word": "top",
+          "pos": "名",
+          "phrase": "top of the mountain"
+        }
+      ],
+      "status": "retain-phrase",
+      "reason": "top が句の中心名詞で、of the mountain が後ろから限定する。",
+      "changes": []
+    },
+    {
+      "id": "noun|exam1|2798",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "welcome",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 2798,
+          "word": "welcome",
+          "pos": "名",
+          "phrase": "welcome back"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2798,
+          "word": "welcome",
+          "pos": "名",
+          "phraseBefore": "welcome back",
+          "phraseAfter": "a warm welcome",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|basic|24",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "adult",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 24,
+          "word": "adult",
+          "pos": "名",
+          "phrase": "adult ticket"
+        }
+      ],
+      "status": "revised",
+      "reason": "名詞自体が複数形となる明確な例にする。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 24,
+          "word": "adult",
+          "pos": "名",
+          "phraseBefore": "adult ticket",
+          "phraseAfter": "two adults",
+          "reason": "名詞自体が複数形となる明確な例にする。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|2190",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "chemical",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 2190,
+          "word": "chemical",
+          "pos": "名",
+          "phrase": "chemical reaction"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 2190,
+          "word": "chemical",
+          "pos": "名",
+          "phraseBefore": "chemical reaction",
+          "phraseAfter": "dangerous chemicals",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|basic|417",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "east",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 417,
+          "word": "east",
+          "pos": "名",
+          "phrase": "east coast"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 417,
+          "word": "east",
+          "pos": "名",
+          "phraseBefore": "east coast",
+          "phraseAfter": "in the east",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|932",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "female",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 932,
+          "word": "female",
+          "pos": "名",
+          "phrase": "female population"
+        }
+      ],
+      "status": "revised",
+      "reason": "名詞の語義を、調査文脈の複数形で示す。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 932,
+          "word": "female",
+          "pos": "名",
+          "phraseBefore": "female population",
+          "phraseAfter": "adult females",
+          "reason": "名詞の語義を、調査文脈の複数形で示す。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|1433",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "human",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1433,
+          "word": "human",
+          "pos": "名",
+          "phrase": "human rights"
+        }
+      ],
+      "status": "revised",
+      "reason": "human being の形容詞でなく、複数形 humans で名詞を明示する。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1433,
+          "word": "human",
+          "pos": "名",
+          "phraseBefore": "human rights",
+          "phraseAfter": "humans and animals",
+          "reason": "human being の形容詞でなく、複数形 humans で名詞を明示する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|basic|765",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "male",
+      "originalRows": [
+        {
+          "level": "basic",
+          "index": 765,
+          "word": "male",
+          "pos": "名",
+          "phrase": "male voice"
+        }
+      ],
+      "status": "revised",
+      "reason": "male or female の形容詞でなく、冠詞を伴う名詞を示す。",
+      "changes": [
+        {
+          "level": "basic",
+          "index": 765,
+          "word": "male",
+          "pos": "名",
+          "phraseBefore": "male voice",
+          "phraseAfter": "a young male",
+          "reason": "male or female の形容詞でなく、冠詞を伴う名詞を示す。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|1577",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "musical",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 1577,
+          "word": "musical",
+          "pos": "名",
+          "phrase": "musical instrument"
+        }
+      ],
+      "status": "revised",
+      "reason": "名詞ミュージカルを冠詞付きで示す。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 1577,
+          "word": "musical",
+          "pos": "名",
+          "phraseBefore": "musical instrument",
+          "phraseAfter": "a Broadway musical",
+          "reason": "名詞ミュージカルを冠詞付きで示す。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|1921",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "principal",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 1921,
+          "word": "principal",
+          "pos": "名",
+          "phrase": "principal investigator"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 1921,
+          "word": "principal",
+          "pos": "名",
+          "phraseBefore": "principal investigator",
+          "phraseAfter": "the school principal",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|448",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "round",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 448,
+          "word": "round",
+          "pos": "名",
+          "phrase": "round of applause"
+        }
+      ],
+      "status": "retain-phrase",
+      "reason": "round が一まとまりの拍手を表す可算名詞。形容詞 round の前置修飾ではない。",
+      "changes": []
+    },
+    {
+      "id": "noun|daily|564",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "single",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 564,
+          "word": "single",
+          "pos": "名",
+          "phrase": "single room"
+        }
+      ],
+      "status": "revised",
+      "reason": "single parent の形容詞ではなく、曲を表す可算名詞で示す。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 564,
+          "word": "single",
+          "pos": "名",
+          "phraseBefore": "single room",
+          "phraseAfter": "a new single",
+          "reason": "single parent の形容詞ではなく、曲を表す可算名詞で示す。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|336",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "standard",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 336,
+          "word": "standard",
+          "pos": "名",
+          "phrase": "standard of living"
+        }
+      ],
+      "status": "retain-phrase",
+      "reason": "standard が中心名詞で、of living が後ろから限定する。第2回で意味に水準を補足した。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 336,
+          "word": "standard",
+          "pos": "名",
+          "phraseBefore": "standard of living",
+          "phraseAfter": "standard of living",
+          "reason": "standard of living が例示する水準も訳に明示する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|574",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "slight",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 574,
+          "word": "slight",
+          "pos": "名",
+          "phrase": "slight difference"
+        }
+      ],
+      "status": "revised",
+      "reason": "名詞の可算用法と語義が分かる文脈にする。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 574,
+          "word": "slight",
+          "pos": "名",
+          "phraseBefore": "slight difference",
+          "phraseAfter": "a deliberate slight",
+          "reason": "名詞の可算用法と語義が分かる文脈にする。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|2095",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "resident",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 2095,
+          "word": "resident",
+          "pos": "名",
+          "phrase": "resident alien"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2095,
+          "word": "resident",
+          "pos": "名",
+          "phraseBefore": "resident alien",
+          "phraseAfter": "a local resident",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|976",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "oral",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 976,
+          "word": "oral",
+          "pos": "名",
+          "phrase": "oral exam"
+        }
+      ],
+      "status": "revised",
+      "reason": "oral exam の形容詞ではなく、試験を指す名詞を示す。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 976,
+          "word": "oral",
+          "pos": "名",
+          "phraseBefore": "oral exam",
+          "phraseAfter": "pass the oral",
+          "reason": "oral exam の形容詞ではなく、試験を指す名詞を示す。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|1060",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "luxury",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1060,
+          "word": "luxury",
+          "pos": "名",
+          "phrase": "luxury car"
+        }
+      ],
+      "status": "revised",
+      "reason": "luxury car を誤文とは扱わず、名詞自体の役割が明確な代表例にする。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1060,
+          "word": "luxury",
+          "pos": "名",
+          "phraseBefore": "luxury car",
+          "phraseAfter": "live in luxury",
+          "reason": "luxury car を誤文とは扱わず、名詞自体の役割が明確な代表例にする。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|1472",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "mass",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 1472,
+          "word": "mass",
+          "pos": "名",
+          "phrase": "mass media"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 1472,
+          "word": "mass",
+          "pos": "名",
+          "phraseBefore": "mass media",
+          "phraseAfter": "a mass of people",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|1153",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "moral",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1153,
+          "word": "moral",
+          "pos": "名",
+          "phrase": "moral support"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1153,
+          "word": "moral",
+          "pos": "名",
+          "phraseBefore": "moral support",
+          "phraseAfter": "the moral of the story",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|1345",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "joint",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 1345,
+          "word": "joint",
+          "pos": "名",
+          "phrase": "joint venture"
+        }
+      ],
+      "status": "revised",
+      "reason": "関節という名詞の語義に合わせる。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 1345,
+          "word": "joint",
+          "pos": "名",
+          "phraseBefore": "joint venture",
+          "phraseAfter": "aching joints",
+          "reason": "関節という名詞の語義に合わせる。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|1242",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "individual",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 1242,
+          "word": "individual",
+          "pos": "名",
+          "phrase": "individual rights"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 1242,
+          "word": "individual",
+          "pos": "名",
+          "phraseBefore": "individual rights",
+          "phraseAfter": "a unique individual",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|1781",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "fellow",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1781,
+          "word": "fellow",
+          "pos": "名",
+          "phrase": "fellow students"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1781,
+          "word": "fellow",
+          "pos": "名",
+          "phraseBefore": "fellow students",
+          "phraseAfter": "a nice fellow",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|1829",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "designer",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 1829,
+          "word": "designer",
+          "pos": "名",
+          "phrase": "designer clothes"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 1829,
+          "word": "designer",
+          "pos": "名",
+          "phraseBefore": "designer clothes",
+          "phraseAfter": "a fashion designer",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|423",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "commercial",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 423,
+          "word": "commercial",
+          "pos": "名",
+          "phrase": "commercial break"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 423,
+          "word": "commercial",
+          "pos": "名",
+          "phraseBefore": "commercial break",
+          "phraseAfter": "a TV commercial",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|2028",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "criminal",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 2028,
+          "word": "criminal",
+          "pos": "名",
+          "phrase": "criminal record"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 2028,
+          "word": "criminal",
+          "pos": "名",
+          "phraseBefore": "criminal record",
+          "phraseAfter": "a dangerous criminal",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|248",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "bold",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 248,
+          "word": "bold",
+          "pos": "名",
+          "phrase": "bold type"
+        }
+      ],
+      "status": "revised",
+      "reason": "辞書の名詞用法に合わせ、表示中の内部メモを除く。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 248,
+          "word": "bold",
+          "pos": "名",
+          "phraseBefore": "bold type",
+          "phraseAfter": "in bold",
+          "reason": "辞書の名詞用法に合わせ、表示中の内部メモを除く。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|65",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "alcoholic",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 65,
+          "word": "alcoholic",
+          "pos": "名",
+          "phrase": "alcoholic beverage"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 65,
+          "word": "alcoholic",
+          "pos": "名",
+          "phraseBefore": "alcoholic beverage",
+          "phraseAfter": "a recovering alcoholic",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|daily|2416",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "antique",
+      "originalRows": [
+        {
+          "level": "daily",
+          "index": 2416,
+          "word": "antique",
+          "pos": "名",
+          "phrase": "antique furniture"
+        }
+      ],
+      "status": "revised",
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。",
+      "changes": [
+        {
+          "level": "daily",
+          "index": 2416,
+          "word": "antique",
+          "pos": "名",
+          "phraseBefore": "antique furniture",
+          "phraseAfter": "sell antiques",
+          "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|458",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "concrete",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 458,
+          "word": "concrete",
+          "pos": "名",
+          "phrase": "concrete jungle"
+        }
+      ],
+      "status": "revised",
+      "reason": "concrete jungle の比喩を誤りとはせず、材料という登録語義が直接分かる例にする。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 458,
+          "word": "concrete",
+          "pos": "名",
+          "phraseBefore": "concrete jungle",
+          "phraseAfter": "reinforced concrete",
+          "reason": "concrete jungle の比喩を誤りとはせず、材料という登録語義が直接分かる例にする。"
+        }
+      ]
+    },
+    {
+      "id": "noun|exam1|2491",
+      "type": "nounWithAdjectiveReadingCandidates",
+      "word": "tabloid",
+      "originalRows": [
+        {
+          "level": "exam1",
+          "index": 2491,
+          "word": "tabloid",
+          "pos": "名",
+          "phrase": "tabloid headline"
+        }
+      ],
+      "status": "revised",
+      "reason": "名詞修飾の分析が可能でも、可算名詞として明確な代表例にする。",
+      "changes": [
+        {
+          "level": "exam1",
+          "index": 2491,
+          "word": "tabloid",
+          "pos": "名",
+          "phraseBefore": "tabloid headline",
+          "phraseAfter": "read a tabloid",
+          "reason": "名詞修飾の分析が可能でも、可算名詞として明確な代表例にする。"
+        }
+      ]
+    }
+  ]
+}

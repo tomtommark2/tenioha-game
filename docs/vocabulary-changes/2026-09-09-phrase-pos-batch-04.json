@@ -1,0 +1,581 @@
+{
+  "date": "2026-09-09",
+  "scope": "冠詞と限定詞の分類、所有格、latter・anotherの用例を修復。既存キーを保持。",
+  "referenceBook": "真・英文法大全 PDF p.306–307（p.306画像照合）",
+  "sources": [
+    "https://dictionary.cambridge.org/us/grammar/british-grammar/determiners-the-my-some-this",
+    "https://dictionary.cambridge.org/us/grammar/british-grammar/pronouns-possessive-my-mine-your-yours-etc",
+    "https://dictionary.cambridge.org/dictionary/english/latter",
+    "https://dictionary.cambridge.org/us/grammar/british-grammar/other-others-the-other-or-another"
+  ],
+  "changes": [
+    {
+      "level": "basic",
+      "index": 1,
+      "before": {
+        "word": "latter",
+        "meaning": "後の方で、近頃の",
+        "phrase": "in the latter part",
+        "pos": "副",
+        "example": "The latter part of the movie was very exciting.",
+        "set": 1
+      },
+      "after": {
+        "word": "latter",
+        "meaning": "後半の、後の方の",
+        "phrase": "in the latter part",
+        "pos": "形",
+        "example": "The latter part of the movie was very exciting.",
+        "set": 1,
+        "legacyKeyPos": "副"
+      },
+      "reason": "副詞ではなく形容詞。後半を示す語義と既存用例を対応させる。"
+    },
+    {
+      "level": "basic",
+      "index": 63,
+      "before": {
+        "word": "another",
+        "meaning": "もう一つの",
+        "phrase": "another chance",
+        "pos": "代",
+        "example": "Can I have another chance?",
+        "set": 1
+      },
+      "after": {
+        "word": "another",
+        "meaning": "もう一つ、別のもの（人）",
+        "phrase": "choose another",
+        "pos": "代",
+        "example": "This cup is broken, so please choose another.",
+        "set": 1
+      },
+      "reason": "代名詞用法に合わせ、後続名詞なしで既出の物を指す例文にする。"
+    },
+    {
+      "level": "daily",
+      "index": 1037,
+      "before": {
+        "word": "little",
+        "meaning": "【定】少しの",
+        "pos": "冠",
+        "example": "A little water.",
+        "phrase": "a little bit",
+        "set": 1
+      },
+      "after": {
+        "word": "little",
+        "meaning": "少しの（a little）、ほとんどない（little）",
+        "pos": "形",
+        "example": "There is a little water in the bottle.",
+        "phrase": "a little water",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 23,
+      "before": {
+        "word": "all",
+        "meaning": "すべての",
+        "phrase": "all day",
+        "pos": "冠",
+        "example": "I worked hard all day.",
+        "set": 1
+      },
+      "after": {
+        "word": "all",
+        "meaning": "すべての",
+        "phrase": "all day",
+        "pos": "形",
+        "example": "I worked hard all day.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 40,
+      "before": {
+        "word": "another",
+        "meaning": "もう一つの",
+        "phrase": "another cup",
+        "pos": "冠",
+        "example": "Would you like another cup of tea?",
+        "set": 1
+      },
+      "after": {
+        "word": "another",
+        "meaning": "もう一つの",
+        "phrase": "another cup",
+        "pos": "形",
+        "example": "Would you like another cup of tea?",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 43,
+      "before": {
+        "word": "any",
+        "meaning": "いくつかの（疑問文・否定文で）",
+        "phrase": "any questions",
+        "pos": "冠",
+        "example": "Do you have any questions?",
+        "set": 1
+      },
+      "after": {
+        "word": "any",
+        "meaning": "いくつかの（疑問文・否定文で）",
+        "phrase": "any questions",
+        "pos": "形",
+        "example": "Do you have any questions?",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 129,
+      "before": {
+        "word": "both",
+        "meaning": "両方の",
+        "phrase": "both hands",
+        "pos": "冠",
+        "example": "Hold it with both hands.",
+        "set": 1
+      },
+      "after": {
+        "word": "both",
+        "meaning": "両方の",
+        "phrase": "both hands",
+        "pos": "形",
+        "example": "Hold it with both hands.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 309,
+      "before": {
+        "word": "each",
+        "meaning": "それぞれの",
+        "phrase": "each student",
+        "pos": "冠",
+        "example": "Each student has a book.",
+        "set": 1
+      },
+      "after": {
+        "word": "each",
+        "meaning": "それぞれの",
+        "phrase": "each student",
+        "pos": "形",
+        "example": "Each student has a book.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 332,
+      "before": {
+        "word": "every",
+        "meaning": "すべての、毎～",
+        "phrase": "every day",
+        "pos": "冠",
+        "example": "I run every morning.",
+        "set": 1
+      },
+      "after": {
+        "word": "every",
+        "meaning": "すべての、毎～",
+        "phrase": "every day",
+        "pos": "形",
+        "example": "I run every morning.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 482,
+      "before": {
+        "word": "her",
+        "meaning": "彼女の",
+        "phrase": "her pen",
+        "pos": "冠",
+        "example": "This is her pen.",
+        "set": 1
+      },
+      "after": {
+        "word": "her",
+        "meaning": "彼女の（所有格）",
+        "phrase": "her pen",
+        "pos": "代",
+        "example": "This is her pen.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく代名詞の所有格。意味に所有格を明記する。"
+    },
+    {
+      "level": "junior",
+      "index": 491,
+      "before": {
+        "word": "his",
+        "meaning": "彼の",
+        "phrase": "his car",
+        "pos": "冠",
+        "example": "That is his car.",
+        "set": 1
+      },
+      "after": {
+        "word": "his",
+        "meaning": "彼の（所有格）",
+        "phrase": "his car",
+        "pos": "代",
+        "example": "That is his car.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく代名詞の所有格。意味に所有格を明記する。"
+    },
+    {
+      "level": "junior",
+      "index": 536,
+      "before": {
+        "word": "its",
+        "meaning": "その",
+        "phrase": "its tail",
+        "pos": "冠",
+        "example": "Look at its long tail.",
+        "set": 1
+      },
+      "after": {
+        "word": "its",
+        "meaning": "それの、その（所有格）",
+        "phrase": "its tail",
+        "pos": "代",
+        "example": "Look at its long tail.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく代名詞の所有格。意味に所有格を明記する。"
+    },
+    {
+      "level": "junior",
+      "index": 537,
+      "before": {
+        "word": "its",
+        "meaning": "それのもの",
+        "phrase": "I think its...",
+        "pos": "代",
+        "example": "The dog wagged its tail.",
+        "set": 1
+      },
+      "after": {
+        "word": "its",
+        "meaning": "それの、その（所有格）",
+        "phrase": "its name",
+        "pos": "代",
+        "example": "The company changed its name.",
+        "set": 1
+      },
+      "reason": "独立所有代名詞のような訳と未完成フレーズを修復。既存例文の所有格に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 619,
+      "before": {
+        "word": "many",
+        "meaning": "多くの",
+        "phrase": "many books",
+        "pos": "冠",
+        "example": "I have many friends.",
+        "set": 1
+      },
+      "after": {
+        "word": "many",
+        "meaning": "多くの",
+        "phrase": "many books",
+        "pos": "形",
+        "example": "I have many friends.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 658,
+      "before": {
+        "word": "more",
+        "meaning": "もっと多くの",
+        "phrase": "more time",
+        "pos": "冠",
+        "example": "I need more time.",
+        "set": 1
+      },
+      "after": {
+        "word": "more",
+        "meaning": "もっと多くの",
+        "phrase": "more time",
+        "pos": "形",
+        "example": "I need more time.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 673,
+      "before": {
+        "word": "much",
+        "meaning": "多量の",
+        "phrase": "much money",
+        "pos": "冠",
+        "example": "I don't have much money.",
+        "set": 1
+      },
+      "after": {
+        "word": "much",
+        "meaning": "多量の",
+        "phrase": "much money",
+        "pos": "形",
+        "example": "I don't have much money.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 679,
+      "before": {
+        "word": "my",
+        "meaning": "私の",
+        "phrase": "my pen",
+        "pos": "冠",
+        "example": "This is my pen.",
+        "set": 1
+      },
+      "after": {
+        "word": "my",
+        "meaning": "私の（所有格）",
+        "phrase": "my pen",
+        "pos": "代",
+        "example": "This is my pen.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく代名詞の所有格。意味に所有格を明記する。"
+    },
+    {
+      "level": "junior",
+      "index": 697,
+      "before": {
+        "word": "no",
+        "meaning": "少しの～もない",
+        "phrase": "no money",
+        "pos": "冠",
+        "example": "I have no time.",
+        "set": 1
+      },
+      "after": {
+        "word": "no",
+        "meaning": "少しの～もない",
+        "phrase": "no money",
+        "pos": "形",
+        "example": "I have no time.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 724,
+      "before": {
+        "word": "one",
+        "meaning": "1つの",
+        "phrase": "one day",
+        "pos": "冠",
+        "example": "I have one sister.",
+        "set": 1
+      },
+      "after": {
+        "word": "one",
+        "meaning": "1つの",
+        "phrase": "one day",
+        "pos": "形",
+        "example": "I have one sister.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 735,
+      "before": {
+        "word": "other",
+        "meaning": "他の",
+        "phrase": "other people",
+        "pos": "冠",
+        "example": "Do you have any other questions?",
+        "set": 1
+      },
+      "after": {
+        "word": "other",
+        "meaning": "他の",
+        "phrase": "other people",
+        "pos": "形",
+        "example": "Do you have any other questions?",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 736,
+      "before": {
+        "word": "our",
+        "meaning": "私たちの",
+        "phrase": "our school",
+        "pos": "冠",
+        "example": "This is our house.",
+        "set": 1
+      },
+      "after": {
+        "word": "our",
+        "meaning": "私たちの（所有格）",
+        "phrase": "our school",
+        "pos": "代",
+        "example": "This is our house.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく代名詞の所有格。意味に所有格を明記する。"
+    },
+    {
+      "level": "junior",
+      "index": 957,
+      "before": {
+        "word": "some",
+        "meaning": "いくつかの",
+        "phrase": "some books",
+        "pos": "冠",
+        "example": "I have some money.",
+        "set": 1
+      },
+      "after": {
+        "word": "some",
+        "meaning": "いくつかの",
+        "phrase": "some books",
+        "pos": "形",
+        "example": "I have some money.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく名詞を限定する用法。既存の学習文法上の形容詞区分に揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 1056,
+      "before": {
+        "word": "their",
+        "meaning": "彼らの",
+        "phrase": "their house",
+        "pos": "冠",
+        "example": "This is their house.",
+        "set": 1
+      },
+      "after": {
+        "word": "their",
+        "meaning": "彼らの（所有格）",
+        "phrase": "their house",
+        "pos": "代",
+        "example": "This is their house.",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく代名詞の所有格。意味に所有格を明記する。"
+    },
+    {
+      "level": "junior",
+      "index": 1216,
+      "before": {
+        "word": "your",
+        "meaning": "あなたの",
+        "phrase": "your name",
+        "pos": "冠",
+        "example": "What is your name?",
+        "set": 1
+      },
+      "after": {
+        "word": "your",
+        "meaning": "あなたの、あなたたちの（所有格）",
+        "phrase": "your name",
+        "pos": "代",
+        "example": "What is your name?",
+        "set": 1,
+        "legacyKeyPos": "冠"
+      },
+      "reason": "冠詞ではなく代名詞の所有格。意味に所有格を明記する。"
+    },
+    {
+      "level": "basic",
+      "index": 712,
+      "before": {
+        "word": "latter",
+        "meaning": "後者の",
+        "phrase": "the latter half",
+        "pos": "形",
+        "example": "The latter part of the movie was better.",
+        "set": 1
+      },
+      "after": {
+        "word": "latter",
+        "meaning": "後半の",
+        "phrase": "the latter half",
+        "pos": "形",
+        "example": "The latter half of the movie was better.",
+        "set": 1
+      },
+      "reason": "後半の意味と二つのうち後者の意味を区別し、フレーズ・例文を対応させる。"
+    },
+    {
+      "level": "exam1",
+      "index": 1380,
+      "before": {
+        "word": "latter",
+        "meaning": "【形】後者の",
+        "pos": "形",
+        "example": "The latter half.",
+        "phrase": "former and latter",
+        "set": 1
+      },
+      "after": {
+        "word": "latter",
+        "meaning": "【形】後者の",
+        "pos": "形",
+        "example": "We could walk or take a taxi. I chose the latter option.",
+        "phrase": "the latter option",
+        "set": 1
+      },
+      "reason": "後半の意味と二つのうち後者の意味を区別し、フレーズ・例文を対応させる。"
+    }
+  ]
+}

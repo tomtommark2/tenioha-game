@@ -57,8 +57,15 @@ function resolveWordIdentity(word, level, vocabularyDatabase) {
 }
 
 function getWordKey(word, level, vocabularyDatabase) {
+    if (word && word.__groupKey) return word.__groupKey;
     const identity = resolveWordIdentity(word, level, vocabularyDatabase);
-    return [WORD_KEY_PREFIX, identity.level, identity.word, identity.pos]
+    // A corrected display POS must not orphan an existing save or earned-score key.
+    let keyPos = String((word && word.legacyKeyPos) || '').trim();
+    if (!keyPos && (!word?.pos || word.pos === 'unknown')) {
+        const database = vocabularyDatabase || window.vocabularyDatabase;
+        keyPos = String(getVocabularyLookup(database)?.get(identity.level)?.get(identity.word)?.legacyKeyPos || '').trim();
+    }
+    return [WORD_KEY_PREFIX, identity.level, identity.word, keyPos || identity.pos]
         .map(value => encodeURIComponent(String(value)))
         .join(':');
 }

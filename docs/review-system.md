@@ -1,5 +1,11 @@
 # Review System
 
+## 出題・復習設定の入口
+
+- 入口は従来どおり「その他」内の「出題・復習設定」。ホーム画面の学習スペースを優先し、設定専用の常設行・大きなボタン・案内行・復習キューの歯車は追加しない。
+- 「その他」のドットだけで入口を案内し、メニューを一度開くと消える。表示済みキー `vocabGame_settingsMenuHintSeen_v1` はブラウザ単位で、学習データ／クラウド同期とは分離する。
+- 設定は出題バランス→完璧の判定基準→復習タイミング→出題範囲の順。既存の判定・保存処理は共通で使う。
+
 ## SRS Cadence
 
 Scheduled review intervals are:
@@ -13,7 +19,7 @@ Scheduled review intervals are:
 
 ### 復習タイミング設定（2026-09-05）
 
-- 出題モードの「復習タイミング」で短め／標準／長めを選ぶ。「判定のしくみ」からも開ける。
+- 出題・復習設定の「復習タイミング」で短め／標準／長めを選ぶ。「判定のしくみ」からも開ける。
 - 正解後の間隔は、短めが上記の0.5倍、標準が1倍、長めが2倍。最初の段階は12時間／1日／2日、最終段階は30日／60日／120日。既存の±20%の分散を維持する。
 - 苦手な語も過去の段階に応じて次の間隔が変わるので、UIは最初の段階の例と全段階の目安を表示する。
 - 不正解時の段階を1つ戻す処理と5分後の再学習は全設定共通。完璧の判定条件・分類・既存の期限は設定変更では動かさない。
@@ -70,6 +76,8 @@ Repeated incorrect answers continue to earn 1 point because each due review atte
 - There is no server-side elapsed-time, daily, or weekly score cap.
 
 ## Storage
+
+2026-09-09の[単語カード統合](word-grouping.md)では、主CEFR層の同綴り複数行を単語単位の1履歴にする。統合対象の旧学習履歴だけ削除して未学習へ戻す（ユーザー承認済み・バックアップなし）。累積ポイント、復習スコア、送信待ちの獲得済みスコアイベントは削除しない。`wordGroupingVersion: 1` を端末／クラウドに保持し、統合後の回答は再移行で消さない。配点式は変更しない。
 
 Each SRS entry may contain `isRelearning` to distinguish the five-minute relearning loop from a scheduled 1-day review.
 

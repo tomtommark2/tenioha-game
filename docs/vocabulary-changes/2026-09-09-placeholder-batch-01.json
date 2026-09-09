@@ -1,0 +1,1188 @@
+{
+  "date": "2026-09-09",
+  "scope": "仮例文の先頭30語と別単語帳の同語、51行。意味・品詞・キーは維持。",
+  "reference": "真・英文法大全 PDF p.113（前置詞句と文の区別）；個別用法は辞書で補完。全例文を同書が保証するという意味ではない。",
+  "sources": [
+    "https://dictionary.cambridge.org/us/dictionary/english/accord",
+    "https://dictionary.cambridge.org/us/dictionary/english/alien",
+    "https://dictionary.cambridge.org/us/dictionary/english/norm",
+    "https://dictionary.cambridge.org/dictionary/english/equivalent",
+    "https://dictionary.cambridge.org/dictionary/english/sight",
+    "https://dictionary.cambridge.org/dictionary/english/patent"
+  ],
+  "changes": [
+    {
+      "level": "selection1900",
+      "index": 41,
+      "before": {
+        "word": "accord",
+        "meaning": "一致；合意，協定",
+        "phrase": "accord",
+        "pos": "名",
+        "example": "accord example.",
+        "set": 1,
+        "id": 42
+      },
+      "after": {
+        "word": "accord",
+        "meaning": "一致；合意，協定",
+        "phrase": "a peace accord",
+        "pos": "名",
+        "example": "The two countries signed a peace accord.",
+        "set": 1,
+        "id": 42
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 76,
+      "before": {
+        "word": "technology",
+        "meaning": "科学技術；応用技術",
+        "phrase": "technology",
+        "pos": "名",
+        "example": "technology example.",
+        "set": 1,
+        "id": 77
+      },
+      "after": {
+        "word": "technology",
+        "meaning": "科学技術；応用技術",
+        "phrase": "new technology",
+        "pos": "名",
+        "example": "This new technology helps farmers save water.",
+        "set": 1,
+        "id": 77
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 172,
+      "before": {
+        "word": "site",
+        "meaning": "用地，場所；跡地；（ウェブ）サイト",
+        "phrase": "site",
+        "pos": "名",
+        "example": "site example.",
+        "set": 1,
+        "id": 173
+      },
+      "after": {
+        "word": "site",
+        "meaning": "用地，場所；跡地；（ウェブ）サイト",
+        "phrase": "a building site",
+        "pos": "名",
+        "example": "They chose a site for the new school.",
+        "set": 1,
+        "id": 173
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 206,
+      "before": {
+        "word": "survey",
+        "meaning": "を調査する；をじろじろ見る；を概観する",
+        "phrase": "survey",
+        "pos": "動",
+        "example": "survey example.",
+        "set": 1,
+        "id": 207
+      },
+      "after": {
+        "word": "survey",
+        "meaning": "を調査する；をじろじろ見る；を概観する",
+        "phrase": "survey local residents",
+        "pos": "動",
+        "example": "The researchers will survey local residents about transport.",
+        "set": 1,
+        "id": 207
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 253,
+      "before": {
+        "word": "topic",
+        "meaning": "話題，トピック；主題",
+        "phrase": "topic",
+        "pos": "名",
+        "example": "topic example.",
+        "set": 1,
+        "id": 254
+      },
+      "after": {
+        "word": "topic",
+        "meaning": "話題，トピック；主題",
+        "phrase": "a discussion topic",
+        "pos": "名",
+        "example": "We chose a topic for our next discussion.",
+        "set": 1,
+        "id": 254
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 278,
+      "before": {
+        "word": "cognitive",
+        "meaning": "認知の",
+        "phrase": "cognitive",
+        "pos": "形",
+        "example": "cognitive example.",
+        "set": 1,
+        "id": 279
+      },
+      "after": {
+        "word": "cognitive",
+        "meaning": "認知の",
+        "phrase": "cognitive skills",
+        "pos": "形",
+        "example": "The game tests cognitive skills such as memory.",
+        "set": 1,
+        "id": 279
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 291,
+      "before": {
+        "word": "FALSE",
+        "meaning": "間違った；虚偽の；偽の",
+        "phrase": "FALSE",
+        "pos": "形",
+        "example": "FALSE example.",
+        "set": 1,
+        "id": 292
+      },
+      "after": {
+        "word": "FALSE",
+        "meaning": "間違った；虚偽の；偽の",
+        "phrase": "false information",
+        "pos": "形",
+        "example": "The report contained false information.",
+        "set": 1,
+        "id": 292
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 357,
+      "before": {
+        "word": "sight",
+        "meaning": "光景；〔the ～s〕名所；見（え）ること；視野；視力",
+        "phrase": "sight",
+        "pos": "名",
+        "example": "sight example.",
+        "set": 1,
+        "id": 358
+      },
+      "after": {
+        "word": "sight",
+        "meaning": "光景；〔the ～s〕名所；見（え）ること；視野；視力",
+        "phrase": "at the sight of",
+        "pos": "名",
+        "example": "She smiled at the sight of her father.",
+        "set": 1,
+        "id": 358
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 375,
+      "before": {
+        "word": "fossil",
+        "meaning": "化石；時代遅れの人［物］",
+        "phrase": "fossil",
+        "pos": "名",
+        "example": "fossil example.",
+        "set": 1,
+        "id": 376
+      },
+      "after": {
+        "word": "fossil",
+        "meaning": "化石；時代遅れの人［物］",
+        "phrase": "a dinosaur fossil",
+        "pos": "名",
+        "example": "The museum displayed a dinosaur fossil.",
+        "set": 1,
+        "id": 376
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 455,
+      "before": {
+        "word": "diversity",
+        "meaning": "多様性；相違点",
+        "phrase": "diversity",
+        "pos": "名",
+        "example": "diversity example.",
+        "set": 1,
+        "id": 456
+      },
+      "after": {
+        "word": "diversity",
+        "meaning": "多様性；相違点",
+        "phrase": "cultural diversity",
+        "pos": "名",
+        "example": "The festival celebrates the cultural diversity of our city.",
+        "set": 1,
+        "id": 456
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 462,
+      "before": {
+        "word": "dialect",
+        "meaning": "方言",
+        "phrase": "dialect",
+        "pos": "名",
+        "example": "dialect example.",
+        "set": 1,
+        "id": 463
+      },
+      "after": {
+        "word": "dialect",
+        "meaning": "方言",
+        "phrase": "a local dialect",
+        "pos": "名",
+        "example": "My grandmother speaks a local dialect.",
+        "set": 1,
+        "id": 463
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 469,
+      "before": {
+        "word": "mammal",
+        "meaning": "哺乳動物",
+        "phrase": "mammal",
+        "pos": "名",
+        "example": "mammal example.",
+        "set": 1,
+        "id": 470
+      },
+      "after": {
+        "word": "mammal",
+        "meaning": "哺乳動物",
+        "phrase": "a marine mammal",
+        "pos": "名",
+        "example": "A dolphin is a marine mammal.",
+        "set": 1,
+        "id": 470
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 475,
+      "before": {
+        "word": "norm",
+        "meaning": "規範；標準",
+        "phrase": "norm",
+        "pos": "名",
+        "example": "norm example.",
+        "set": 1,
+        "id": 476
+      },
+      "after": {
+        "word": "norm",
+        "meaning": "規範；標準",
+        "phrase": "social norms",
+        "pos": "名",
+        "example": "Social norms can change over time.",
+        "set": 1,
+        "id": 476
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 484,
+      "before": {
+        "word": "linguistic",
+        "meaning": "言語の，言語学の",
+        "phrase": "linguistic",
+        "pos": "形",
+        "example": "linguistic example.",
+        "set": 1,
+        "id": 485
+      },
+      "after": {
+        "word": "linguistic",
+        "meaning": "言語の，言語学の",
+        "phrase": "linguistic differences",
+        "pos": "形",
+        "example": "The study explores linguistic differences between the two regions.",
+        "set": 1,
+        "id": 485
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 488,
+      "before": {
+        "word": "strict",
+        "meaning": "（規則などが）厳しい；厳格な",
+        "phrase": "strict",
+        "pos": "形",
+        "example": "strict example.",
+        "set": 1,
+        "id": 489
+      },
+      "after": {
+        "word": "strict",
+        "meaning": "（規則などが）厳しい；厳格な",
+        "phrase": "strict rules",
+        "pos": "形",
+        "example": "The school has strict rules about mobile phones.",
+        "set": 1,
+        "id": 489
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 568,
+      "before": {
+        "word": "hypothesis",
+        "meaning": "仮説；憶測",
+        "phrase": "hypothesis",
+        "pos": "名",
+        "example": "hypothesis example.",
+        "set": 1,
+        "id": 569
+      },
+      "after": {
+        "word": "hypothesis",
+        "meaning": "仮説；憶測",
+        "phrase": "test a hypothesis",
+        "pos": "名",
+        "example": "The researchers designed an experiment to test their hypothesis.",
+        "set": 1,
+        "id": 569
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 571,
+      "before": {
+        "word": "colony",
+        "meaning": "植民地；集団居住地；（動植物の）コロニー",
+        "phrase": "colony",
+        "pos": "名",
+        "example": "colony example.",
+        "set": 1,
+        "id": 572
+      },
+      "after": {
+        "word": "colony",
+        "meaning": "植民地；集団居住地；（動植物の）コロニー",
+        "phrase": "a former colony",
+        "pos": "名",
+        "example": "The island was once a colony of a European country.",
+        "set": 1,
+        "id": 572
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 581,
+      "before": {
+        "word": "distinct",
+        "meaning": "明らかに異なる；明瞭な",
+        "phrase": "distinct",
+        "pos": "形",
+        "example": "distinct example.",
+        "set": 1,
+        "id": 582
+      },
+      "after": {
+        "word": "distinct",
+        "meaning": "明らかに異なる；明瞭な",
+        "phrase": "two distinct groups",
+        "pos": "形",
+        "example": "The participants were divided into two distinct groups.",
+        "set": 1,
+        "id": 582
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 595,
+      "before": {
+        "word": "alien",
+        "meaning": "（～にとって）異質の（to）；外国の；宇宙人の",
+        "phrase": "alien",
+        "pos": "形",
+        "example": "alien example.",
+        "set": 1,
+        "id": 596
+      },
+      "after": {
+        "word": "alien",
+        "meaning": "（～にとって）異質の（to）；外国の；宇宙人の",
+        "phrase": "alien to me",
+        "pos": "形",
+        "example": "The idea of living alone was alien to me.",
+        "set": 1,
+        "id": 596
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 645,
+      "before": {
+        "word": "sum",
+        "meaning": "（金）額；合計；要点",
+        "phrase": "sum",
+        "pos": "名",
+        "example": "sum example.",
+        "set": 1,
+        "id": 646
+      },
+      "after": {
+        "word": "sum",
+        "meaning": "（金）額；合計；要点",
+        "phrase": "a large sum",
+        "pos": "名",
+        "example": "She saved a large sum of money for her trip.",
+        "set": 1,
+        "id": 646
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 662,
+      "before": {
+        "word": "boundary",
+        "meaning": "境界（線）；〔通例～ries〕限界",
+        "phrase": "boundary",
+        "pos": "名",
+        "example": "boundary example.",
+        "set": 1,
+        "id": 663
+      },
+      "after": {
+        "word": "boundary",
+        "meaning": "境界（線）；〔通例～ries〕限界",
+        "phrase": "a national boundary",
+        "pos": "名",
+        "example": "The river forms the boundary between the two countries.",
+        "set": 1,
+        "id": 663
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 667,
+      "before": {
+        "word": "predator",
+        "meaning": "捕食動物；略奪者",
+        "phrase": "predator",
+        "pos": "名",
+        "example": "predator example.",
+        "set": 1,
+        "id": 668
+      },
+      "after": {
+        "word": "predator",
+        "meaning": "捕食動物；略奪者",
+        "phrase": "a natural predator",
+        "pos": "名",
+        "example": "The owl is a natural predator of mice.",
+        "set": 1,
+        "id": 668
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 672,
+      "before": {
+        "word": "bias",
+        "meaning": "偏見；傾向",
+        "phrase": "bias",
+        "pos": "名",
+        "example": "bias example.",
+        "set": 1,
+        "id": 673
+      },
+      "after": {
+        "word": "bias",
+        "meaning": "偏見；傾向",
+        "phrase": "political bias",
+        "pos": "名",
+        "example": "The article showed a clear political bias.",
+        "set": 1,
+        "id": 673
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 674,
+      "before": {
+        "word": "patent",
+        "meaning": "特許（権）；特許品",
+        "phrase": "patent",
+        "pos": "名",
+        "example": "patent example.",
+        "set": 1,
+        "id": 675
+      },
+      "after": {
+        "word": "patent",
+        "meaning": "特許（権）；特許品",
+        "phrase": "apply for a patent",
+        "pos": "名",
+        "example": "The engineer applied for a patent for her new device.",
+        "set": 1,
+        "id": 675
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 684,
+      "before": {
+        "word": "equivalent",
+        "meaning": "等しい，相当する",
+        "phrase": "equivalent",
+        "pos": "形",
+        "example": "equivalent example.",
+        "set": 1,
+        "id": 685
+      },
+      "after": {
+        "word": "equivalent",
+        "meaning": "等しい，相当する",
+        "phrase": "equivalent to",
+        "pos": "形",
+        "example": "One hour is equivalent to sixty minutes.",
+        "set": 1,
+        "id": 685
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 694,
+      "before": {
+        "word": "random",
+        "meaning": "無作為の；手当たり次第の",
+        "phrase": "random",
+        "pos": "形",
+        "example": "random example.",
+        "set": 1,
+        "id": 695
+      },
+      "after": {
+        "word": "random",
+        "meaning": "無作為の；手当たり次第の",
+        "phrase": "a random sample",
+        "pos": "形",
+        "example": "The researchers selected a random sample of students.",
+        "set": 1,
+        "id": 695
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 711,
+      "before": {
+        "word": "isolate",
+        "meaning": "を孤立させる",
+        "phrase": "isolate",
+        "pos": "動",
+        "example": "isolate example.",
+        "set": 1,
+        "id": 712
+      },
+      "after": {
+        "word": "isolate",
+        "meaning": "を孤立させる",
+        "phrase": "isolate the village",
+        "pos": "動",
+        "example": "Heavy snow could isolate the village from nearby towns.",
+        "set": 1,
+        "id": 712
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 741,
+      "before": {
+        "word": "literacy",
+        "meaning": "読み書きの能力；（特定分野の）知識",
+        "phrase": "literacy",
+        "pos": "名",
+        "example": "literacy example.",
+        "set": 1,
+        "id": 742
+      },
+      "after": {
+        "word": "literacy",
+        "meaning": "読み書きの能力；（特定分野の）知識",
+        "phrase": "improve literacy",
+        "pos": "名",
+        "example": "The library runs a program to improve adult literacy.",
+        "set": 1,
+        "id": 742
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 748,
+      "before": {
+        "word": "protein",
+        "meaning": "たんぱく質",
+        "phrase": "protein",
+        "pos": "名",
+        "example": "protein example.",
+        "set": 1,
+        "id": 749
+      },
+      "after": {
+        "word": "protein",
+        "meaning": "たんぱく質",
+        "phrase": "a source of protein",
+        "pos": "名",
+        "example": "Beans are a useful source of protein.",
+        "set": 1,
+        "id": 749
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1900",
+      "index": 766,
+      "before": {
+        "word": "inequality",
+        "meaning": "不平等；不公平な事柄",
+        "phrase": "inequality",
+        "pos": "名",
+        "example": "inequality example.",
+        "set": 1,
+        "id": 767
+      },
+      "after": {
+        "word": "inequality",
+        "meaning": "不平等；不公平な事柄",
+        "phrase": "income inequality",
+        "pos": "名",
+        "example": "The report examines income inequality in the city.",
+        "set": 1,
+        "id": 767
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 46,
+      "before": {
+        "word": "technology",
+        "meaning": "科学技術",
+        "phrase": "technology",
+        "pos": "名",
+        "example": "technology example.",
+        "set": 1,
+        "id": 47
+      },
+      "after": {
+        "word": "technology",
+        "meaning": "科学技術",
+        "phrase": "new technology",
+        "pos": "名",
+        "example": "This new technology helps farmers save water.",
+        "set": 1,
+        "id": 47
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 149,
+      "before": {
+        "word": "topic",
+        "meaning": "論題、話題",
+        "phrase": "topic",
+        "pos": "名",
+        "example": "topic example.",
+        "set": 1,
+        "id": 150
+      },
+      "after": {
+        "word": "topic",
+        "meaning": "論題、話題",
+        "phrase": "a discussion topic",
+        "pos": "名",
+        "example": "We chose a topic for our next discussion.",
+        "set": 1,
+        "id": 150
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 349,
+      "before": {
+        "word": "site",
+        "meaning": "場所、用地",
+        "phrase": "site",
+        "pos": "名",
+        "example": "site example.",
+        "set": 1,
+        "id": 350
+      },
+      "after": {
+        "word": "site",
+        "meaning": "場所、用地",
+        "phrase": "a building site",
+        "pos": "名",
+        "example": "They chose a site for the new school.",
+        "set": 1,
+        "id": 350
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 365,
+      "before": {
+        "word": "survey",
+        "meaning": "（アンケートによる意識などの）調査",
+        "phrase": "survey",
+        "pos": "名",
+        "example": "survey example.",
+        "set": 1,
+        "id": 366
+      },
+      "after": {
+        "word": "survey",
+        "meaning": "（アンケートによる意識などの）調査",
+        "phrase": "conduct a survey",
+        "pos": "名",
+        "example": "The school conducted a survey of students' opinions.",
+        "set": 1,
+        "id": 366
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 479,
+      "before": {
+        "word": "FALSE",
+        "meaning": "誤った",
+        "phrase": "FALSE",
+        "pos": "形",
+        "example": "FALSE example.",
+        "set": 1,
+        "id": 480
+      },
+      "after": {
+        "word": "FALSE",
+        "meaning": "誤った",
+        "phrase": "false information",
+        "pos": "形",
+        "example": "The report contained false information.",
+        "set": 1,
+        "id": 480
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 575,
+      "before": {
+        "word": "sight",
+        "meaning": "見えること",
+        "phrase": "sight",
+        "pos": "名",
+        "example": "sight example.",
+        "set": 1,
+        "id": 576
+      },
+      "after": {
+        "word": "sight",
+        "meaning": "見えること",
+        "phrase": "at the sight of",
+        "pos": "名",
+        "example": "She smiled at the sight of her father.",
+        "set": 1,
+        "id": 576
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 657,
+      "before": {
+        "word": "diversity",
+        "meaning": "多様性",
+        "phrase": "diversity",
+        "pos": "名",
+        "example": "diversity example.",
+        "set": 1,
+        "id": 658
+      },
+      "after": {
+        "word": "diversity",
+        "meaning": "多様性",
+        "phrase": "cultural diversity",
+        "pos": "名",
+        "example": "The festival celebrates the cultural diversity of our city.",
+        "set": 1,
+        "id": 658
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 742,
+      "before": {
+        "word": "mammal",
+        "meaning": "哺乳類、哺乳動物",
+        "phrase": "mammal",
+        "pos": "名",
+        "example": "mammal example.",
+        "set": 1,
+        "id": 743
+      },
+      "after": {
+        "word": "mammal",
+        "meaning": "哺乳類、哺乳動物",
+        "phrase": "a marine mammal",
+        "pos": "名",
+        "example": "A dolphin is a marine mammal.",
+        "set": 1,
+        "id": 743
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 748,
+      "before": {
+        "word": "fossil",
+        "meaning": "化石",
+        "phrase": "fossil",
+        "pos": "名",
+        "example": "fossil example.",
+        "set": 1,
+        "id": 749
+      },
+      "after": {
+        "word": "fossil",
+        "meaning": "化石",
+        "phrase": "a dinosaur fossil",
+        "pos": "名",
+        "example": "The museum displayed a dinosaur fossil.",
+        "set": 1,
+        "id": 749
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 778,
+      "before": {
+        "word": "strict",
+        "meaning": "厳しい",
+        "phrase": "strict",
+        "pos": "形",
+        "example": "strict example.",
+        "set": 1,
+        "id": 779
+      },
+      "after": {
+        "word": "strict",
+        "meaning": "厳しい",
+        "phrase": "strict rules",
+        "pos": "形",
+        "example": "The school has strict rules about mobile phones.",
+        "set": 1,
+        "id": 779
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 816,
+      "before": {
+        "word": "isolate",
+        "meaning": "を切り離す",
+        "phrase": "isolate",
+        "pos": "動",
+        "example": "isolate example.",
+        "set": 1,
+        "id": 817
+      },
+      "after": {
+        "word": "isolate",
+        "meaning": "を切り離す",
+        "phrase": "isolate the village",
+        "pos": "動",
+        "example": "Heavy snow could isolate the village from nearby towns.",
+        "set": 1,
+        "id": 817
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 842,
+      "before": {
+        "word": "dialect",
+        "meaning": "方言",
+        "phrase": "dialect",
+        "pos": "名",
+        "example": "dialect example.",
+        "set": 1,
+        "id": 843
+      },
+      "after": {
+        "word": "dialect",
+        "meaning": "方言",
+        "phrase": "a local dialect",
+        "pos": "名",
+        "example": "My grandmother speaks a local dialect.",
+        "set": 1,
+        "id": 843
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 844,
+      "before": {
+        "word": "colony",
+        "meaning": "植民（地）",
+        "phrase": "colony",
+        "pos": "名",
+        "example": "colony example.",
+        "set": 1,
+        "id": 845
+      },
+      "after": {
+        "word": "colony",
+        "meaning": "植民（地）",
+        "phrase": "a former colony",
+        "pos": "名",
+        "example": "The island was once a colony of a European country.",
+        "set": 1,
+        "id": 845
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 871,
+      "before": {
+        "word": "hypothesis",
+        "meaning": "仮説",
+        "phrase": "hypothesis",
+        "pos": "名",
+        "example": "hypothesis example.",
+        "set": 1,
+        "id": 872
+      },
+      "after": {
+        "word": "hypothesis",
+        "meaning": "仮説",
+        "phrase": "test a hypothesis",
+        "pos": "名",
+        "example": "The researchers designed an experiment to test their hypothesis.",
+        "set": 1,
+        "id": 872
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 878,
+      "before": {
+        "word": "alien",
+        "meaning": "異質の",
+        "phrase": "alien",
+        "pos": "形",
+        "example": "alien example.",
+        "set": 1,
+        "id": 879
+      },
+      "after": {
+        "word": "alien",
+        "meaning": "異質の",
+        "phrase": "alien to me",
+        "pos": "形",
+        "example": "The idea of living alone was alien to me.",
+        "set": 1,
+        "id": 879
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 890,
+      "before": {
+        "word": "equivalent",
+        "meaning": "相当する",
+        "phrase": "equivalent",
+        "pos": "形",
+        "example": "equivalent example.",
+        "set": 1,
+        "id": 891
+      },
+      "after": {
+        "word": "equivalent",
+        "meaning": "相当する",
+        "phrase": "equivalent to",
+        "pos": "形",
+        "example": "One hour is equivalent to sixty minutes.",
+        "set": 1,
+        "id": 891
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 896,
+      "before": {
+        "word": "distinct",
+        "meaning": "まったく異なる",
+        "phrase": "distinct",
+        "pos": "形",
+        "example": "distinct example.",
+        "set": 1,
+        "id": 897
+      },
+      "after": {
+        "word": "distinct",
+        "meaning": "まったく異なる",
+        "phrase": "two distinct groups",
+        "pos": "形",
+        "example": "The participants were divided into two distinct groups.",
+        "set": 1,
+        "id": 897
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 945,
+      "before": {
+        "word": "sum",
+        "meaning": "金額",
+        "phrase": "sum",
+        "pos": "名",
+        "example": "sum example.",
+        "set": 1,
+        "id": 946
+      },
+      "after": {
+        "word": "sum",
+        "meaning": "金額",
+        "phrase": "a large sum",
+        "pos": "名",
+        "example": "She saved a large sum of money for her trip.",
+        "set": 1,
+        "id": 946
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 947,
+      "before": {
+        "word": "boundary",
+        "meaning": "境界（線）",
+        "phrase": "boundary",
+        "pos": "名",
+        "example": "boundary example.",
+        "set": 1,
+        "id": 948
+      },
+      "after": {
+        "word": "boundary",
+        "meaning": "境界（線）",
+        "phrase": "a national boundary",
+        "pos": "名",
+        "example": "The river forms the boundary between the two countries.",
+        "set": 1,
+        "id": 948
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1047,
+      "before": {
+        "word": "literacy",
+        "meaning": "読み書きの能力",
+        "phrase": "literacy",
+        "pos": "名",
+        "example": "literacy example.",
+        "set": 1,
+        "id": 1048
+      },
+      "after": {
+        "word": "literacy",
+        "meaning": "読み書きの能力",
+        "phrase": "improve literacy",
+        "pos": "名",
+        "example": "The library runs a program to improve adult literacy.",
+        "set": 1,
+        "id": 1048
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    },
+    {
+      "level": "selection1400",
+      "index": 1053,
+      "before": {
+        "word": "protein",
+        "meaning": "タンパク質",
+        "phrase": "protein",
+        "pos": "名",
+        "example": "protein example.",
+        "set": 1,
+        "id": 1054
+      },
+      "after": {
+        "word": "protein",
+        "meaning": "タンパク質",
+        "phrase": "a source of protein",
+        "pos": "名",
+        "example": "Beans are a useful source of protein.",
+        "set": 1,
+        "id": 1054
+      },
+      "reason": "仮例文を既存の品詞・語義に対応する独自例文へ変更し、見出し語だけのフレーズも具体化。"
+    }
+  ]
+}

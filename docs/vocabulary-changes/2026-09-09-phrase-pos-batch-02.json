@@ -1,0 +1,1890 @@
+{
+  "date": "2026-09-09",
+  "scope": "第1回の残りの抽出候補と同じ単語の関連用法。綴り・品詞・参照先は不変。候補外の全8,018行の言語監修完了を意味しない。",
+  "sourceRows": 8018,
+  "wordCount": 62,
+  "changeCount": 89,
+  "sources": [
+    "https://dictionary.cambridge.org/grammar/british-grammar/noun-phrases-dependent-words",
+    "https://dictionary.cambridge.org/grammar/british-grammar/be-expressions-with-be",
+    "https://dictionary.cambridge.org/dictionary/english/same",
+    "https://dictionary.cambridge.org/us/dictionary/english/least",
+    "https://dictionary.cambridge.org/dictionary/english/less",
+    "https://www.collinsdictionary.com/dictionary/english/such",
+    "https://api.collinsdictionary.com/dictionary/english/bold",
+    "https://dictionary.cambridge.org/dictionary/english/single",
+    "https://dictionary.cambridge.org/dictionary/english/oral",
+    "ローカル参照: 真・英文法大全 PDF p.113, p.520（名詞修飾の一般化はCambridgeで補完）"
+  ],
+  "changes": [
+    {
+      "level": "junior",
+      "index": 96,
+      "before": {
+        "word": "being",
+        "meaning": "～であること",
+        "phrase": "human being",
+        "pos": "動",
+        "example": "Thank you for being here.",
+        "set": 1
+      },
+      "after": {
+        "word": "being",
+        "meaning": "～である（beの-ing形）",
+        "phrase": "is being careful",
+        "pos": "動",
+        "example": "He is being careful with the glass.",
+        "set": 1
+      },
+      "reason": "名詞 human being ではなく、be の進行形を示す。"
+    },
+    {
+      "level": "junior",
+      "index": 120,
+      "before": {
+        "word": "board",
+        "meaning": "板、黒板、委員会",
+        "phrase": "on board",
+        "pos": "名",
+        "example": "He wrote on the board.",
+        "set": 1
+      },
+      "after": {
+        "word": "board",
+        "meaning": "板、黒板、委員会",
+        "phrase": "write on the board",
+        "pos": "名",
+        "example": "He wrote on the board.",
+        "set": 1
+      },
+      "reason": "乗船の熟語でなく、既存訳・例文の板／黒板を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 2350,
+      "before": {
+        "word": "board",
+        "meaning": "【動】板を張る、乗り込む",
+        "pos": "動",
+        "example": "Passengers are boarding the plane.",
+        "phrase": "on board",
+        "set": 1
+      },
+      "after": {
+        "word": "board",
+        "meaning": "【動】板を張る、乗り込む",
+        "pos": "動",
+        "example": "Passengers are boarding the plane.",
+        "phrase": "board the plane",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "basic",
+      "index": 389,
+      "before": {
+        "word": "down",
+        "meaning": "～の下へ",
+        "phrase": "sit down",
+        "pos": "前",
+        "example": "The keys are down the back of the sofa.",
+        "set": 1
+      },
+      "after": {
+        "word": "down",
+        "meaning": "～の下へ",
+        "phrase": "down the stairs",
+        "pos": "前",
+        "example": "She walked down the stairs.",
+        "set": 1
+      },
+      "reason": "後ろに名詞句を取る前置詞用法を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 736,
+      "before": {
+        "word": "down",
+        "meaning": "【形】元気がない",
+        "pos": "形",
+        "example": "Feeling down.",
+        "phrase": "down on one's luck",
+        "set": 1
+      },
+      "after": {
+        "word": "down",
+        "meaning": "【形】元気がない",
+        "pos": "形",
+        "example": "He felt down after losing the game.",
+        "phrase": "feel down",
+        "set": 1
+      },
+      "reason": "不運という熟語ではなく、元気がないという形容詞の語義を示す。"
+    },
+    {
+      "level": "junior",
+      "index": 313,
+      "before": {
+        "word": "early",
+        "meaning": "早い、早く",
+        "phrase": "early morning",
+        "pos": "副",
+        "example": "I got up early today.",
+        "set": 1
+      },
+      "after": {
+        "word": "early",
+        "meaning": "早く",
+        "phrase": "get up early",
+        "pos": "副",
+        "example": "I got up early today.",
+        "set": 1
+      },
+      "reason": "副詞が動詞・形容詞等を修飾する用法を明示する。"
+    },
+    {
+      "level": "basic",
+      "index": 409,
+      "before": {
+        "word": "early",
+        "meaning": "はやい",
+        "phrase": "early morning",
+        "pos": "形",
+        "example": "I got up early this morning.",
+        "set": 1
+      },
+      "after": {
+        "word": "early",
+        "meaning": "早い",
+        "phrase": "early morning",
+        "pos": "形",
+        "example": "We took an early train to the city.",
+        "set": 1
+      },
+      "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 320,
+      "before": {
+        "word": "either",
+        "meaning": "どちらか",
+        "phrase": "either A or B",
+        "pos": "副",
+        "example": "You can have either tea or coffee.",
+        "set": 1
+      },
+      "after": {
+        "word": "either",
+        "meaning": "（否定文で）～もまた",
+        "phrase": "not hungry either",
+        "pos": "副",
+        "example": "I'm not hungry either.",
+        "set": 1
+      },
+      "reason": "either ... or の接続表現ではなく、否定文に付加する副詞を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 1648,
+      "before": {
+        "word": "either",
+        "meaning": "【代】どちらか",
+        "pos": "代",
+        "example": "Either of them can go.",
+        "phrase": "either or",
+        "set": 1
+      },
+      "after": {
+        "word": "either",
+        "meaning": "【代】どちらか",
+        "pos": "代",
+        "example": "Either of them can go.",
+        "phrase": "either of them",
+        "set": 1
+      },
+      "reason": "名詞を直接修飾しない代名詞用法を明示する。"
+    },
+    {
+      "level": "exam1",
+      "index": 1379,
+      "before": {
+        "word": "later",
+        "meaning": "【形】後の",
+        "pos": "形",
+        "example": "Later date.",
+        "phrase": "see you later",
+        "set": 1
+      },
+      "after": {
+        "word": "later",
+        "meaning": "【形】後の",
+        "pos": "形",
+        "example": "Later date.",
+        "phrase": "a later date",
+        "set": 1
+      },
+      "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+    },
+    {
+      "level": "junior",
+      "index": 580,
+      "before": {
+        "word": "left",
+        "meaning": "左の",
+        "phrase": "turn left",
+        "pos": "形",
+        "example": "Turn left at the corner.",
+        "set": 1
+      },
+      "after": {
+        "word": "left",
+        "meaning": "左の",
+        "phrase": "the left hand",
+        "pos": "形",
+        "example": "She held the cup in her left hand.",
+        "set": 1
+      },
+      "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+    },
+    {
+      "level": "basic",
+      "index": 720,
+      "before": {
+        "word": "left",
+        "meaning": "左へ、左に",
+        "phrase": "turn left",
+        "pos": "副",
+        "example": "The station is on the left.",
+        "set": 1
+      },
+      "after": {
+        "word": "left",
+        "meaning": "左へ、左に",
+        "phrase": "turn left",
+        "pos": "副",
+        "example": "Turn left at the next street.",
+        "set": 1
+      },
+      "reason": "on the left の名詞でなく、方向を表す副詞を示す。"
+    },
+    {
+      "level": "junior",
+      "index": 647,
+      "before": {
+        "word": "mobile",
+        "meaning": "携帯電話",
+        "phrase": "mobile phone",
+        "pos": "名",
+        "example": "Can I use your mobile?",
+        "set": 1
+      },
+      "after": {
+        "word": "mobile",
+        "meaning": "携帯電話",
+        "phrase": "use your mobile",
+        "pos": "名",
+        "example": "Can I use your mobile?",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "junior",
+      "index": 814,
+      "before": {
+        "word": "purple",
+        "meaning": "紫色",
+        "phrase": "purple flower",
+        "pos": "名",
+        "example": "I like purple.",
+        "set": 1
+      },
+      "after": {
+        "word": "purple",
+        "meaning": "紫色",
+        "phrase": "a shade of purple",
+        "pos": "名",
+        "example": "I like purple.",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "junior",
+      "index": 866,
+      "before": {
+        "word": "same",
+        "meaning": "同じ",
+        "phrase": "the same",
+        "pos": "形",
+        "example": "We engage the same school.",
+        "set": 1
+      },
+      "after": {
+        "word": "same",
+        "meaning": "同じ",
+        "phrase": "the same school",
+        "pos": "形",
+        "example": "We go to the same school.",
+        "set": 1
+      },
+      "reason": "形容詞が修飾する名詞を補い、誤った engage の用例を修復する。"
+    },
+    {
+      "level": "junior",
+      "index": 867,
+      "before": {
+        "word": "same",
+        "meaning": "同じに",
+        "phrase": "all the same",
+        "pos": "副",
+        "example": "I love you all the same.",
+        "set": 1
+      },
+      "after": {
+        "word": "same",
+        "meaning": "同じように",
+        "phrase": "dress the same",
+        "pos": "副",
+        "example": "The twins often dress the same.",
+        "set": 1
+      },
+      "reason": "all the same の譲歩表現を避け、同じようにという副詞用法を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 2261,
+      "before": {
+        "word": "shower",
+        "meaning": "【動】シャワーを浴びる、降り注ぐ",
+        "pos": "動",
+        "example": "Shower with gifts.",
+        "phrase": "take a shower",
+        "set": 1
+      },
+      "after": {
+        "word": "shower",
+        "meaning": "【動】シャワーを浴びる、降り注ぐ",
+        "pos": "動",
+        "example": "I usually shower before bed.",
+        "phrase": "shower before bed",
+        "set": 1
+      },
+      "reason": "名詞 shower と、目的語の欠けた別語義の断片を、動詞の一つの語義に揃える。"
+    },
+    {
+      "level": "basic",
+      "index": 1159,
+      "before": {
+        "word": "since",
+        "meaning": "～以来、～なので",
+        "phrase": "since yesterday",
+        "pos": "前",
+        "example": "I haven't seen him since last week.",
+        "set": 1
+      },
+      "after": {
+        "word": "since",
+        "meaning": "～以来",
+        "phrase": "since yesterday",
+        "pos": "前",
+        "example": "I haven't seen him since last week.",
+        "set": 1
+      },
+      "reason": "理由を表す～なのでは接続詞側に分離する。"
+    },
+    {
+      "level": "daily",
+      "index": 563,
+      "before": {
+        "word": "since",
+        "meaning": "【接】～なので、～以来",
+        "pos": "接",
+        "example": "Since you are here.",
+        "phrase": "ever since",
+        "set": 1
+      },
+      "after": {
+        "word": "since",
+        "meaning": "【接】～なので、～以来",
+        "pos": "接",
+        "example": "We have made many friends since we moved here.",
+        "phrase": "since we moved here",
+        "set": 1
+      },
+      "reason": "主語と動詞を伴う節を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 2271,
+      "before": {
+        "word": "since",
+        "meaning": "【副】その後ずっと",
+        "pos": "副",
+        "example": "Haven't seen him since.",
+        "phrase": "ever since",
+        "set": 1
+      },
+      "after": {
+        "word": "since",
+        "meaning": "【副】その後ずっと",
+        "pos": "副",
+        "example": "She left in May, and I have not seen her since.",
+        "phrase": "ever since",
+        "set": 1
+      },
+      "reason": "後続名詞を取らない副詞用法が分かる完全な文にする。"
+    },
+    {
+      "level": "junior",
+      "index": 934,
+      "before": {
+        "word": "sleep",
+        "meaning": "眠る",
+        "phrase": "go to sleep",
+        "pos": "動",
+        "example": "I want to sleep.",
+        "set": 1
+      },
+      "after": {
+        "word": "sleep",
+        "meaning": "眠る",
+        "phrase": "sleep well",
+        "pos": "動",
+        "example": "I want to sleep.",
+        "set": 1
+      },
+      "reason": "go to sleep の sleep は名詞なので、動詞の例に変更する。"
+    },
+    {
+      "level": "basic",
+      "index": 1237,
+      "before": {
+        "word": "straight",
+        "meaning": "真っ直ぐな、正直な、連続した",
+        "phrase": "go straight",
+        "pos": "形",
+        "example": "Go straight down this road.",
+        "set": 1
+      },
+      "after": {
+        "word": "straight",
+        "meaning": "真っ直ぐな、正直な、連続した",
+        "phrase": "a straight road",
+        "pos": "形",
+        "example": "This is a long, straight road.",
+        "set": 1
+      },
+      "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+    },
+    {
+      "level": "basic",
+      "index": 708,
+      "before": {
+        "word": "last",
+        "meaning": "この前の、最後の",
+        "phrase": "last week",
+        "pos": "代",
+        "example": "I saw him last night.",
+        "set": 1
+      },
+      "after": {
+        "word": "last",
+        "meaning": "最後の人（もの）",
+        "phrase": "the last of them",
+        "pos": "代",
+        "example": "There were five cookies. I ate the last of them.",
+        "set": 1
+      },
+      "reason": "名詞を直接修飾する last week から、代名詞用法へ変更する。"
+    },
+    {
+      "level": "basic",
+      "index": 709,
+      "before": {
+        "word": "last",
+        "meaning": "最後の",
+        "phrase": "last night",
+        "pos": "形",
+        "example": "This is my last chance.",
+        "set": 1
+      },
+      "after": {
+        "word": "last",
+        "meaning": "最後の",
+        "phrase": "the last chance",
+        "pos": "形",
+        "example": "This is my last chance.",
+        "set": 1
+      },
+      "reason": "最後のという登録語義・例文と揃える。"
+    },
+    {
+      "level": "daily",
+      "index": 1284,
+      "before": {
+        "word": "last",
+        "meaning": "【副】最後に",
+        "pos": "副",
+        "example": "He arrived last.",
+        "phrase": "last but not least",
+        "set": 1
+      },
+      "after": {
+        "word": "last",
+        "meaning": "【副】最後に",
+        "pos": "副",
+        "example": "He arrived last.",
+        "phrase": "arrive last",
+        "set": 1
+      },
+      "reason": "副詞が動詞・形容詞等を修飾する用法を明示する。"
+    },
+    {
+      "level": "basic",
+      "index": 1128,
+      "before": {
+        "word": "several",
+        "meaning": "数個の、いくつかの",
+        "phrase": "several people",
+        "pos": "代",
+        "example": "I've visited Kyoto several times.",
+        "set": 1
+      },
+      "after": {
+        "word": "several",
+        "meaning": "数人、いくつか",
+        "phrase": "several of them",
+        "pos": "代",
+        "example": "I invited ten friends, and several of them came.",
+        "set": 1
+      },
+      "reason": "名詞を直接修飾する用法ではなく、代名詞用法を示す。"
+    },
+    {
+      "level": "basic",
+      "index": 1251,
+      "before": {
+        "word": "such",
+        "meaning": "そのような、あんなに～な",
+        "phrase": "such a person",
+        "pos": "代",
+        "example": "I've never seen such a beautiful sunset.",
+        "set": 1
+      },
+      "after": {
+        "word": "such",
+        "meaning": "そのようなもの（こと）",
+        "phrase": "such is life",
+        "pos": "代",
+        "example": "We missed the last bus. Such is life.",
+        "set": 1
+      },
+      "reason": "辞書が代名詞として扱う、such が主語になる用例を採用する。"
+    },
+    {
+      "level": "basic",
+      "index": 1252,
+      "before": {
+        "word": "such",
+        "meaning": "そのような、とても～な",
+        "phrase": "such a",
+        "pos": "形",
+        "example": "I have never seen such a beautiful flower.",
+        "set": 1
+      },
+      "after": {
+        "word": "such",
+        "meaning": "そのような、とても～な",
+        "phrase": "such a beautiful flower",
+        "pos": "形",
+        "example": "I have never seen such a beautiful flower.",
+        "set": 1
+      },
+      "reason": "不完全な such a に修飾先を補う。"
+    },
+    {
+      "level": "daily",
+      "index": 2190,
+      "before": {
+        "word": "chemical",
+        "meaning": "【名】化学物質",
+        "pos": "名",
+        "example": "Dangerous chemicals.",
+        "phrase": "chemical reaction",
+        "set": 1
+      },
+      "after": {
+        "word": "chemical",
+        "meaning": "【名】化学物質",
+        "pos": "名",
+        "example": "Dangerous chemicals.",
+        "phrase": "dangerous chemicals",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "basic",
+      "index": 391,
+      "before": {
+        "word": "downstairs",
+        "meaning": "階下の、下の階へ",
+        "phrase": "go downstairs",
+        "pos": "副",
+        "example": "I heard a noise downstairs.",
+        "set": 1
+      },
+      "after": {
+        "word": "downstairs",
+        "meaning": "下の階へ、下の階で",
+        "phrase": "go downstairs",
+        "pos": "副",
+        "example": "I heard a noise downstairs.",
+        "set": 1
+      },
+      "reason": "形容詞の訳を混在させない。"
+    },
+    {
+      "level": "daily",
+      "index": 1905,
+      "before": {
+        "word": "downstairs",
+        "meaning": "【形】階下の",
+        "pos": "形",
+        "example": "The downstairs bathroom.",
+        "phrase": "go downstairs",
+        "set": 1
+      },
+      "after": {
+        "word": "downstairs",
+        "meaning": "【形】階下の",
+        "pos": "形",
+        "example": "The downstairs bathroom.",
+        "phrase": "the downstairs bathroom",
+        "set": 1
+      },
+      "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+    },
+    {
+      "level": "basic",
+      "index": 511,
+      "before": {
+        "word": "fit",
+        "meaning": "合う、ふさわしい",
+        "phrase": "fit perfectly",
+        "pos": "形",
+        "example": "This key doesn't fit the lock.",
+        "set": 1
+      },
+      "after": {
+        "word": "fit",
+        "meaning": "適した、健康な",
+        "phrase": "fit for the job",
+        "pos": "形",
+        "example": "She is fit for the job.",
+        "set": 1
+      },
+      "reason": "動詞の例文を形容詞 fit for の用例へ修復する。"
+    },
+    {
+      "level": "daily",
+      "index": 1433,
+      "before": {
+        "word": "human",
+        "meaning": "【名】人間",
+        "pos": "名",
+        "example": "Human being.",
+        "phrase": "human rights",
+        "set": 1
+      },
+      "after": {
+        "word": "human",
+        "meaning": "【名】人間",
+        "pos": "名",
+        "example": "Humans need clean water to survive.",
+        "phrase": "humans and animals",
+        "set": 1
+      },
+      "reason": "human being の形容詞でなく、複数形 humans で名詞を明示する。"
+    },
+    {
+      "level": "basic",
+      "index": 718,
+      "before": {
+        "word": "least",
+        "meaning": "最小の、最も～ない",
+        "phrase": "at least",
+        "pos": "形",
+        "example": "This is the least expensive one.",
+        "set": 1
+      },
+      "after": {
+        "word": "least",
+        "meaning": "最も少ない",
+        "phrase": "the least time",
+        "pos": "形",
+        "example": "This route takes the least time.",
+        "set": 1
+      },
+      "reason": "least expensive の副詞ではなく、名詞 time の数量を限定する用法にする。"
+    },
+    {
+      "level": "daily",
+      "index": 1302,
+      "before": {
+        "word": "least",
+        "meaning": "【副】最も少なく",
+        "pos": "副",
+        "example": "Least expected.",
+        "phrase": "at least",
+        "set": 1
+      },
+      "after": {
+        "word": "least",
+        "meaning": "【副】最も少なく",
+        "pos": "副",
+        "example": "Of these colors, I like green least.",
+        "phrase": "like it least",
+        "set": 1
+      },
+      "reason": "at least の慣用句でなく、動詞の程度を限定する副詞を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 1395,
+      "before": {
+        "word": "least",
+        "meaning": "【代】最小",
+        "pos": "代",
+        "example": "At least.",
+        "phrase": "least of all",
+        "set": 1
+      },
+      "after": {
+        "word": "least",
+        "meaning": "【代】最も少ないもの、最小限",
+        "pos": "代",
+        "example": "Helping you carry the bags is the least I can do.",
+        "phrase": "the least I can do",
+        "set": 1
+      },
+      "reason": "名詞を修飾しない代名詞用法へ修復する。"
+    },
+    {
+      "level": "basic",
+      "index": 727,
+      "before": {
+        "word": "less",
+        "meaning": "より少ない",
+        "phrase": "less than",
+        "pos": "形",
+        "example": "I have less money than I thought.",
+        "set": 1
+      },
+      "after": {
+        "word": "less",
+        "meaning": "より少ない",
+        "phrase": "less money",
+        "pos": "形",
+        "example": "I have less money than I thought.",
+        "set": 1
+      },
+      "reason": "less than だけでは判定できないため名詞を補う。"
+    },
+    {
+      "level": "basic",
+      "index": 728,
+      "before": {
+        "word": "less",
+        "meaning": "より少ない",
+        "phrase": "less than",
+        "pos": "副",
+        "example": "It's less cold today than yesterday.",
+        "set": 1
+      },
+      "after": {
+        "word": "less",
+        "meaning": "より少なく、より～でない",
+        "phrase": "less cold",
+        "pos": "副",
+        "example": "It's less cold today than yesterday.",
+        "set": 1
+      },
+      "reason": "形容詞を修飾する副詞の用法を明示する。"
+    },
+    {
+      "level": "basic",
+      "index": 729,
+      "before": {
+        "word": "less",
+        "meaning": "より少ない量",
+        "phrase": "less sugar",
+        "pos": "代",
+        "example": "Eat less and exercise more.",
+        "set": 1
+      },
+      "after": {
+        "word": "less",
+        "meaning": "より少ない量",
+        "phrase": "less of it",
+        "pos": "代",
+        "example": "This soup is salty, so I ate less of it.",
+        "set": 1
+      },
+      "reason": "less sugar の形容詞的用法でなく、代名詞用法を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 2011,
+      "before": {
+        "word": "range",
+        "meaning": "【動】及ぶ",
+        "pos": "動",
+        "example": "Range from A to B.",
+        "phrase": "wide range",
+        "set": 1
+      },
+      "after": {
+        "word": "range",
+        "meaning": "【動】及ぶ",
+        "pos": "動",
+        "example": "The prices range from five to ten dollars.",
+        "phrase": "range from five to ten",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 456,
+      "before": {
+        "word": "rush",
+        "meaning": "【動】急ぐ",
+        "pos": "動",
+        "example": "Rush home.",
+        "phrase": "rush hour",
+        "set": 1
+      },
+      "after": {
+        "word": "rush",
+        "meaning": "【動】急ぐ",
+        "pos": "動",
+        "example": "Rush home.",
+        "phrase": "rush home",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 498,
+      "before": {
+        "word": "secret",
+        "meaning": "【形】秘密の",
+        "pos": "形",
+        "example": "Secret agent.",
+        "phrase": "keep a secret",
+        "set": 1
+      },
+      "after": {
+        "word": "secret",
+        "meaning": "【形】秘密の",
+        "pos": "形",
+        "example": "Secret agent.",
+        "phrase": "a secret plan",
+        "set": 1
+      },
+      "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+    },
+    {
+      "level": "exam1",
+      "index": 2225,
+      "before": {
+        "word": "sense",
+        "meaning": "【動】感じる",
+        "pos": "動",
+        "example": "Sense danger.",
+        "phrase": "sense of humor",
+        "set": 1
+      },
+      "after": {
+        "word": "sense",
+        "meaning": "【動】感じる",
+        "pos": "動",
+        "example": "Sense danger.",
+        "phrase": "sense danger",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 2251,
+      "before": {
+        "word": "shock",
+        "meaning": "【動】衝撃を与える",
+        "pos": "動",
+        "example": "Shock the world.",
+        "phrase": "culture shock",
+        "set": 1
+      },
+      "after": {
+        "word": "shock",
+        "meaning": "【動】衝撃を与える",
+        "pos": "動",
+        "example": "The sudden ending shocked the audience.",
+        "phrase": "shock the audience",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 564,
+      "before": {
+        "word": "single",
+        "meaning": "【名】独身者、シングル",
+        "pos": "名",
+        "example": "Single parent.",
+        "phrase": "single room",
+        "set": 1
+      },
+      "after": {
+        "word": "single",
+        "meaning": "【名】独身者、シングル曲",
+        "pos": "名",
+        "example": "The singer released a new single yesterday.",
+        "phrase": "a new single",
+        "set": 1
+      },
+      "reason": "single parent の形容詞ではなく、曲を表す可算名詞で示す。"
+    },
+    {
+      "level": "daily",
+      "index": 14,
+      "before": {
+        "word": "upstairs",
+        "meaning": "【形】２階の",
+        "pos": "形",
+        "example": "Upstairs room.",
+        "phrase": "go upstairs",
+        "set": 1
+      },
+      "after": {
+        "word": "upstairs",
+        "meaning": "【形】２階の",
+        "pos": "形",
+        "example": "Upstairs room.",
+        "phrase": "an upstairs room",
+        "set": 1
+      },
+      "reason": "名詞を修飾する形容詞用法と登録語義を揃える。"
+    },
+    {
+      "level": "daily",
+      "index": 15,
+      "before": {
+        "word": "upstairs",
+        "meaning": "【名】２階",
+        "pos": "名",
+        "example": "Cleaning the upstairs.",
+        "phrase": "live upstairs",
+        "set": 1
+      },
+      "after": {
+        "word": "upstairs",
+        "meaning": "【名】２階",
+        "pos": "名",
+        "example": "We cleaned the upstairs before the guests arrived.",
+        "phrase": "clean the upstairs",
+        "set": 1
+      },
+      "reason": "live upstairs の副詞でなく、the を伴う目的語の名詞を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 2852,
+      "before": {
+        "word": "worst",
+        "meaning": "【副】最も悪く",
+        "pos": "副",
+        "example": "Worst case scenario.",
+        "phrase": "at worst",
+        "set": 1
+      },
+      "after": {
+        "word": "worst",
+        "meaning": "【副】最も悪く",
+        "pos": "副",
+        "example": "Of the three teams, ours performed worst.",
+        "phrase": "perform worst",
+        "set": 1
+      },
+      "reason": "worst case の形容詞ではなく、動詞を修飾する最上級を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 115,
+      "before": {
+        "word": "witness",
+        "meaning": "【動】目撃する",
+        "pos": "動",
+        "example": "Witness an accident.",
+        "phrase": "bear witness",
+        "set": 1
+      },
+      "after": {
+        "word": "witness",
+        "meaning": "【動】目撃する",
+        "pos": "動",
+        "example": "Witness an accident.",
+        "phrase": "witness an accident",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 2831,
+      "before": {
+        "word": "witness",
+        "meaning": "【名】目撃者、証人",
+        "pos": "名",
+        "example": "Eye witness.",
+        "phrase": "bear witness",
+        "set": 1
+      },
+      "after": {
+        "word": "witness",
+        "meaning": "【名】目撃者、証人",
+        "pos": "名",
+        "example": "A key witness described the accident.",
+        "phrase": "a key witness",
+        "set": 1
+      },
+      "reason": "bear witness の証言という語義から、登録訳の目撃者・証人に合わせる。"
+    },
+    {
+      "level": "exam1",
+      "index": 2599,
+      "before": {
+        "word": "treat",
+        "meaning": "【動】扱う、治療する",
+        "pos": "動",
+        "example": "Treat with respect.",
+        "phrase": "trick or treat",
+        "set": 1
+      },
+      "after": {
+        "word": "treat",
+        "meaning": "【動】扱う、治療する",
+        "pos": "動",
+        "example": "The doctor treated the patient carefully.",
+        "phrase": "treat a patient",
+        "set": 1
+      },
+      "reason": "ハロウィーンの定型句ではなく、治療する動詞の語義を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 265,
+      "before": {
+        "word": "underneath",
+        "meaning": "【前】～の下に",
+        "pos": "前",
+        "example": "Underneath the bed.",
+        "phrase": "wear underneath",
+        "set": 1
+      },
+      "after": {
+        "word": "underneath",
+        "meaning": "【前】～の下に",
+        "pos": "前",
+        "example": "Underneath the bed.",
+        "phrase": "underneath the bed",
+        "set": 1
+      },
+      "reason": "後続する名詞句を補って前置詞を明示する。"
+    },
+    {
+      "level": "exam1",
+      "index": 2659,
+      "before": {
+        "word": "underneath",
+        "meaning": "【副】下に",
+        "pos": "副",
+        "example": "Look underneath.",
+        "phrase": "wear underneath",
+        "set": 1
+      },
+      "after": {
+        "word": "underneath",
+        "meaning": "【副】下に",
+        "pos": "副",
+        "example": "Lift the box and look underneath.",
+        "phrase": "look underneath",
+        "set": 1
+      },
+      "reason": "目的語の欠けた wear を避け、後続名詞を取らない副詞を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 383,
+      "before": {
+        "word": "substitute",
+        "meaning": "【名】代用品",
+        "pos": "名",
+        "example": "Sugar substitute.",
+        "phrase": "no substitute for",
+        "set": 1
+      },
+      "after": {
+        "word": "substitute",
+        "meaning": "【名】代用品",
+        "pos": "名",
+        "example": "Sugar substitute.",
+        "phrase": "a substitute for sugar",
+        "set": 1
+      },
+      "reason": "不完全な no substitute for に補語を補う。"
+    },
+    {
+      "level": "exam1",
+      "index": 2445,
+      "before": {
+        "word": "substitute",
+        "meaning": "【動】代用する",
+        "pos": "動",
+        "example": "Substitute A for B.",
+        "phrase": "no substitute for",
+        "set": 1
+      },
+      "after": {
+        "word": "substitute",
+        "meaning": "【動】代用する",
+        "pos": "動",
+        "example": "You can substitute oil for butter in this recipe.",
+        "phrase": "substitute oil for butter",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 1153,
+      "before": {
+        "word": "moral",
+        "meaning": "【名】道徳、教訓",
+        "pos": "名",
+        "example": "Moral of the story.",
+        "phrase": "moral support",
+        "set": 1
+      },
+      "after": {
+        "word": "moral",
+        "meaning": "【名】道徳、教訓",
+        "pos": "名",
+        "example": "Moral of the story.",
+        "phrase": "the moral of the story",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 1552,
+      "before": {
+        "word": "moral",
+        "meaning": "【形】道徳的な",
+        "pos": "形",
+        "example": "Moral duty.",
+        "phrase": "moral support",
+        "set": 1
+      },
+      "after": {
+        "word": "moral",
+        "meaning": "【形】道徳的な",
+        "pos": "形",
+        "example": "Moral duty.",
+        "phrase": "a moral duty",
+        "set": 1
+      },
+      "reason": "moral support の精神的な支援ではなく、登録訳の道徳的なに合わせる。"
+    },
+    {
+      "level": "daily",
+      "index": 1301,
+      "before": {
+        "word": "leap",
+        "meaning": "【動】跳ぶ",
+        "pos": "動",
+        "example": "Leap over a fence.",
+        "phrase": "leap year",
+        "set": 1
+      },
+      "after": {
+        "word": "leap",
+        "meaning": "【動】跳ぶ",
+        "pos": "動",
+        "example": "Leap over a fence.",
+        "phrase": "leap over a fence",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 1391,
+      "before": {
+        "word": "leap",
+        "meaning": "【名】跳躍",
+        "pos": "名",
+        "example": "Giant leap.",
+        "phrase": "leap year",
+        "set": 1
+      },
+      "after": {
+        "word": "leap",
+        "meaning": "【名】跳躍",
+        "pos": "名",
+        "example": "Giant leap.",
+        "phrase": "a giant leap",
+        "set": 1
+      },
+      "reason": "うるう年という熟語を避け、登録訳の跳躍に合わせる。"
+    },
+    {
+      "level": "exam1",
+      "index": 1242,
+      "before": {
+        "word": "individual",
+        "meaning": "【名】個人",
+        "pos": "名",
+        "example": "Unique individual.",
+        "phrase": "individual rights",
+        "set": 1
+      },
+      "after": {
+        "word": "individual",
+        "meaning": "【名】個人",
+        "pos": "名",
+        "example": "Unique individual.",
+        "phrase": "a unique individual",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 423,
+      "before": {
+        "word": "commercial",
+        "meaning": "【名】コマーシャル",
+        "pos": "名",
+        "example": "TV commercial.",
+        "phrase": "commercial break",
+        "set": 1
+      },
+      "after": {
+        "word": "commercial",
+        "meaning": "【名】コマーシャル",
+        "pos": "名",
+        "example": "TV commercial.",
+        "phrase": "a TV commercial",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 1945,
+      "before": {
+        "word": "commercial",
+        "meaning": "【形】商業の",
+        "pos": "形",
+        "example": "The film was a commercial success.",
+        "phrase": "commercial break",
+        "set": 1
+      },
+      "after": {
+        "word": "commercial",
+        "meaning": "【形】商業の",
+        "pos": "形",
+        "example": "The film was a commercial success.",
+        "phrase": "a commercial success",
+        "set": 1
+      },
+      "reason": "広告放送の文脈に限定せず、登録訳と既存例文の商業的成功を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 2361,
+      "before": {
+        "word": "advance",
+        "meaning": "【動】前進する、進歩する",
+        "pos": "動",
+        "example": "The army advanced towards the city.",
+        "phrase": "in advance",
+        "set": 1
+      },
+      "after": {
+        "word": "advance",
+        "meaning": "【動】前進する、進歩する",
+        "pos": "動",
+        "example": "The army advanced towards the city.",
+        "phrase": "advance towards the city",
+        "set": 1
+      },
+      "reason": "別品詞のフレーズを、登録語義の動詞用法へ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 47,
+      "before": {
+        "word": "advance",
+        "meaning": "【名】前進、進歩",
+        "pos": "名",
+        "example": "Technological advance.",
+        "phrase": "in advance",
+        "set": 1
+      },
+      "after": {
+        "word": "advance",
+        "meaning": "【名】前進、進歩",
+        "pos": "名",
+        "example": "Technological advance.",
+        "phrase": "a technological advance",
+        "set": 1
+      },
+      "reason": "事前にという熟語ではなく、登録訳の進歩を示す。"
+    },
+    {
+      "level": "junior",
+      "index": 559,
+      "before": {
+        "word": "kind",
+        "meaning": "親切な、種類",
+        "phrase": "kind of",
+        "pos": "名",
+        "example": "He is very kind.",
+        "set": 1
+      },
+      "after": {
+        "word": "kind",
+        "meaning": "種類",
+        "phrase": "a kind of fruit",
+        "pos": "名",
+        "example": "A lemon is a kind of fruit.",
+        "set": 1
+      },
+      "reason": "形容詞の意味・例文を名詞の種類に揃え、kind of の曖昧さを除く。"
+    },
+    {
+      "level": "basic",
+      "index": 1143,
+      "before": {
+        "word": "short",
+        "meaning": "短編映画、ショートパンツ",
+        "phrase": "short story",
+        "pos": "名",
+        "example": "He wrote a collection of shorts.",
+        "set": 1
+      },
+      "after": {
+        "word": "short",
+        "meaning": "短編映画、（shortsで）ショートパンツ",
+        "phrase": "an animated short",
+        "pos": "名",
+        "example": "They showed an animated short before the main film.",
+        "set": 1
+      },
+      "reason": "short story の形容詞を避け、短編映画の名詞を明示する。"
+    },
+    {
+      "level": "junior",
+      "index": 981,
+      "before": {
+        "word": "sports",
+        "meaning": "スポーツ",
+        "phrase": "sports day",
+        "pos": "名",
+        "example": "We had a sports day.",
+        "set": 1
+      },
+      "after": {
+        "word": "sports",
+        "meaning": "スポーツ",
+        "phrase": "play sports",
+        "pos": "名",
+        "example": "We play sports after school.",
+        "set": 1
+      },
+      "reason": "sports day の修飾用法を避け、目的語の名詞を示す。"
+    },
+    {
+      "level": "daily",
+      "index": 206,
+      "before": {
+        "word": "top",
+        "meaning": "【形】一番上の",
+        "pos": "形",
+        "example": "Top priority.",
+        "phrase": "top floor",
+        "set": 1
+      },
+      "after": {
+        "word": "top",
+        "meaning": "【形】一番上の",
+        "pos": "形",
+        "example": "The office is on the top floor.",
+        "phrase": "top floor",
+        "set": 1
+      },
+      "reason": "優先度の高さではなく、登録訳・フレーズの位置としての最上階を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 2798,
+      "before": {
+        "word": "welcome",
+        "meaning": "【名】歓迎",
+        "pos": "名",
+        "example": "Warm welcome.",
+        "phrase": "welcome back",
+        "set": 1
+      },
+      "after": {
+        "word": "welcome",
+        "meaning": "【名】歓迎",
+        "pos": "名",
+        "example": "Warm welcome.",
+        "phrase": "a warm welcome",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "junior",
+      "index": 1170,
+      "before": {
+        "word": "welcome",
+        "meaning": "ようこそ、歓迎する",
+        "phrase": "welcome to Japan",
+        "pos": "動",
+        "example": "Welcome to our school.",
+        "set": 1
+      },
+      "after": {
+        "word": "welcome",
+        "meaning": "歓迎する",
+        "phrase": "welcome our guests",
+        "pos": "動",
+        "example": "We welcome our guests with a smile.",
+        "set": 1
+      },
+      "reason": "挨拶の定型句ではなく、目的語を取る動詞を示す。"
+    },
+    {
+      "level": "basic",
+      "index": 417,
+      "before": {
+        "word": "east",
+        "meaning": "東",
+        "phrase": "east coast",
+        "pos": "名",
+        "example": "The sun rises in the east.",
+        "set": 1
+      },
+      "after": {
+        "word": "east",
+        "meaning": "東",
+        "phrase": "in the east",
+        "pos": "名",
+        "example": "The sun rises in the east.",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 932,
+      "before": {
+        "word": "female",
+        "meaning": "【名】女性",
+        "pos": "名",
+        "example": "Adult female.",
+        "phrase": "female population",
+        "set": 1
+      },
+      "after": {
+        "word": "female",
+        "meaning": "【名】女性",
+        "pos": "名",
+        "example": "The study included ten adult females.",
+        "phrase": "adult females",
+        "set": 1
+      },
+      "reason": "名詞の語義を、調査文脈の複数形で示す。"
+    },
+    {
+      "level": "basic",
+      "index": 765,
+      "before": {
+        "word": "male",
+        "meaning": "男性、オス",
+        "phrase": "male voice",
+        "pos": "名",
+        "example": "Is the kitten male or female?",
+        "set": 1
+      },
+      "after": {
+        "word": "male",
+        "meaning": "男性、オス",
+        "phrase": "a young male",
+        "pos": "名",
+        "example": "This kitten is a young male.",
+        "set": 1
+      },
+      "reason": "male or female の形容詞でなく、冠詞を伴う名詞を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 1921,
+      "before": {
+        "word": "principal",
+        "meaning": "【名】校長、長",
+        "pos": "名",
+        "example": "School principal.",
+        "phrase": "principal investigator",
+        "set": 1
+      },
+      "after": {
+        "word": "principal",
+        "meaning": "【名】校長、長",
+        "pos": "名",
+        "example": "School principal.",
+        "phrase": "the school principal",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 336,
+      "before": {
+        "word": "standard",
+        "meaning": "【名】基準",
+        "pos": "名",
+        "example": "High standard.",
+        "phrase": "standard of living",
+        "set": 1
+      },
+      "after": {
+        "word": "standard",
+        "meaning": "【名】基準、水準",
+        "pos": "名",
+        "example": "High standard.",
+        "phrase": "standard of living",
+        "set": 1
+      },
+      "reason": "standard of living が例示する水準も訳に明示する。"
+    },
+    {
+      "level": "exam1",
+      "index": 2095,
+      "before": {
+        "word": "resident",
+        "meaning": "【名】居住者",
+        "pos": "名",
+        "example": "Local resident.",
+        "phrase": "resident alien",
+        "set": 1
+      },
+      "after": {
+        "word": "resident",
+        "meaning": "【名】居住者",
+        "pos": "名",
+        "example": "Local resident.",
+        "phrase": "a local resident",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 976,
+      "before": {
+        "word": "oral",
+        "meaning": "【名】口頭試験",
+        "pos": "名",
+        "example": "Pass the oral.",
+        "phrase": "oral exam",
+        "set": 1
+      },
+      "after": {
+        "word": "oral",
+        "meaning": "【名】口頭試験",
+        "pos": "名",
+        "example": "Pass the oral.",
+        "phrase": "pass the oral",
+        "set": 1
+      },
+      "reason": "oral exam の形容詞ではなく、試験を指す名詞を示す。"
+    },
+    {
+      "level": "exam1",
+      "index": 1677,
+      "before": {
+        "word": "oral",
+        "meaning": "【形】口頭の",
+        "pos": "形",
+        "example": "Oral exam.",
+        "phrase": "oral hygiene",
+        "set": 1
+      },
+      "after": {
+        "word": "oral",
+        "meaning": "【形】口頭の",
+        "pos": "形",
+        "example": "Oral exam.",
+        "phrase": "an oral agreement",
+        "set": 1
+      },
+      "reason": "oral hygiene は口のという別語義なので、口頭のという登録訳に合わせる。"
+    },
+    {
+      "level": "daily",
+      "index": 1060,
+      "before": {
+        "word": "luxury",
+        "meaning": "【名】贅沢",
+        "pos": "名",
+        "example": "Live in luxury.",
+        "phrase": "luxury car",
+        "set": 1
+      },
+      "after": {
+        "word": "luxury",
+        "meaning": "【名】贅沢",
+        "pos": "名",
+        "example": "Live in luxury.",
+        "phrase": "live in luxury",
+        "set": 1
+      },
+      "reason": "luxury car を誤文とは扱わず、名詞自体の役割が明確な代表例にする。"
+    },
+    {
+      "level": "exam1",
+      "index": 1472,
+      "before": {
+        "word": "mass",
+        "meaning": "【名】塊、大衆",
+        "pos": "名",
+        "example": "Mass of people.",
+        "phrase": "mass media",
+        "set": 1
+      },
+      "after": {
+        "word": "mass",
+        "meaning": "【名】塊、大衆",
+        "pos": "名",
+        "example": "Mass of people.",
+        "phrase": "a mass of people",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 1781,
+      "before": {
+        "word": "fellow",
+        "meaning": "【名】男、仲間",
+        "pos": "名",
+        "example": "He's a nice fellow.",
+        "phrase": "fellow students",
+        "set": 1
+      },
+      "after": {
+        "word": "fellow",
+        "meaning": "【名】男、仲間",
+        "pos": "名",
+        "example": "He's a nice fellow.",
+        "phrase": "a nice fellow",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 1829,
+      "before": {
+        "word": "designer",
+        "meaning": "【名】デザイナー",
+        "pos": "名",
+        "example": "Fashion designer.",
+        "phrase": "designer clothes",
+        "set": 1
+      },
+      "after": {
+        "word": "designer",
+        "meaning": "【名】デザイナー",
+        "pos": "名",
+        "example": "Fashion designer.",
+        "phrase": "a fashion designer",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 2028,
+      "before": {
+        "word": "criminal",
+        "meaning": "【名】犯罪者",
+        "pos": "名",
+        "example": "He is a dangerous criminal.",
+        "phrase": "criminal record",
+        "set": 1
+      },
+      "after": {
+        "word": "criminal",
+        "meaning": "【名】犯罪者",
+        "pos": "名",
+        "example": "He is a dangerous criminal.",
+        "phrase": "a dangerous criminal",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 248,
+      "before": {
+        "word": "bold",
+        "meaning": "【名】太字 (usually adj, but CSV has noun/adj duplicate often)",
+        "pos": "名",
+        "example": "In bold.",
+        "phrase": "bold type",
+        "set": 1
+      },
+      "after": {
+        "word": "bold",
+        "meaning": "【名】太字",
+        "pos": "名",
+        "example": "In bold.",
+        "phrase": "in bold",
+        "set": 1
+      },
+      "reason": "辞書の名詞用法に合わせ、表示中の内部メモを除く。"
+    },
+    {
+      "level": "exam1",
+      "index": 65,
+      "before": {
+        "word": "alcoholic",
+        "meaning": "【名】アルコール依存症患者",
+        "pos": "名",
+        "example": "He is a recovering alcoholic.",
+        "phrase": "alcoholic beverage",
+        "set": 1
+      },
+      "after": {
+        "word": "alcoholic",
+        "meaning": "【名】アルコール依存症患者",
+        "pos": "名",
+        "example": "He is a recovering alcoholic.",
+        "phrase": "a recovering alcoholic",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "daily",
+      "index": 2416,
+      "before": {
+        "word": "antique",
+        "meaning": "【名】骨董品",
+        "pos": "名",
+        "example": "This shop sells antiques.",
+        "phrase": "antique furniture",
+        "set": 1
+      },
+      "after": {
+        "word": "antique",
+        "meaning": "【名】骨董品",
+        "pos": "名",
+        "example": "This shop sells antiques.",
+        "phrase": "sell antiques",
+        "set": 1
+      },
+      "reason": "見出し語自体が名詞だと分かるフレーズへ変更する。"
+    },
+    {
+      "level": "exam1",
+      "index": 107,
+      "before": {
+        "word": "antique",
+        "meaning": "【形】アンティークの",
+        "pos": "形",
+        "example": "Antique car.",
+        "phrase": "antique shop",
+        "set": 1
+      },
+      "after": {
+        "word": "antique",
+        "meaning": "【形】アンティークの",
+        "pos": "形",
+        "example": "Antique car.",
+        "phrase": "an antique vase",
+        "set": 1
+      },
+      "reason": "販売品を示す shop の修飾より、古い品物そのものを修飾する例を選ぶ。"
+    },
+    {
+      "level": "exam1",
+      "index": 458,
+      "before": {
+        "word": "concrete",
+        "meaning": "【名】コンクリート",
+        "pos": "名",
+        "example": "Reinforced concrete.",
+        "phrase": "concrete jungle",
+        "set": 1
+      },
+      "after": {
+        "word": "concrete",
+        "meaning": "【名】コンクリート",
+        "pos": "名",
+        "example": "Reinforced concrete.",
+        "phrase": "reinforced concrete",
+        "set": 1
+      },
+      "reason": "concrete jungle の比喩を誤りとはせず、材料という登録語義が直接分かる例にする。"
+    },
+    {
+      "level": "exam1",
+      "index": 2491,
+      "before": {
+        "word": "tabloid",
+        "meaning": "【名】タブロイド紙",
+        "pos": "名",
+        "example": "Read a tabloid.",
+        "phrase": "tabloid headline",
+        "set": 1
+      },
+      "after": {
+        "word": "tabloid",
+        "meaning": "【名】タブロイド紙",
+        "pos": "名",
+        "example": "Read a tabloid.",
+        "phrase": "read a tabloid",
+        "set": 1
+      },
+      "reason": "名詞修飾の分析が可能でも、可算名詞として明確な代表例にする。"
+    }
+  ]
+}

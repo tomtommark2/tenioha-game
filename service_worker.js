@@ -11,6 +11,7 @@ const ASSETS = [
     './scripts/qrcode.min.js',
     './style.css',
     './js/game_logic.js',
+    './js/word_grouping.js',
     './js/config.js',
     './js/utils.js',
     './js/update_manager.js',
