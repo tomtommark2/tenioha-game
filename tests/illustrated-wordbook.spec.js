@@ -46,11 +46,14 @@ test('前の絵は正解後に閲覧でき、採点せず、同じ未回答語�
   await expect(page.locator('#previousIllustrationBtn')).toBeVisible();
   const state = await page.evaluate(() => JSON.stringify(gameState));
   await page.locator('#previousIllustrationBtn').click();
+  await expect(page.locator('#previousIllustrationModal')).toBeHidden();
+  await expect(page.locator('#wordIllustration')).toBeVisible();
+  await page.locator('#wordIllustrationSlot').click();
   await expect(page.locator('#previousIllustrationWord')).toHaveText('apple');
   await expect(page.locator('#previousIllustrationImage img')).toBeVisible();
   expect(await page.evaluate(() => JSON.stringify(gameState))).toBe(state);
-  await page.getByRole('button', { name: '前の絵を閉じる', exact: true }).click();
-  await expect(page.locator('#previousIllustrationBtn')).toBeFocused();
+  await page.getByRole('button', { name: 'イラストを閉じる', exact: true }).click();
+  await expect(page.locator('#wordIllustrationSlot')).toBeFocused();
   await page.locator('#undoBtn').click();
   await expect(page.locator('#previousIllustrationBtn')).toBeHidden();
   await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
@@ -116,10 +119,12 @@ test('イラスト画面は小さい画面でも閉じて学習に戻れる', as
   await expect(page.locator('#previousIllustrationBtn')).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath('previous-button.png') });
   await page.locator('#previousIllustrationBtn').click();
+  await expect(page.locator('#wordIllustration')).toBeVisible();
+  await page.locator('#wordIllustrationSlot').click();
   await expect(page.locator('#previousIllustrationModal')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.locator('#previousIllustrationModal')).toBeHidden();
-  await expect(page.locator('#previousIllustrationBtn')).toBeFocused();
+  await expect(page.locator('#wordIllustrationSlot')).toBeFocused();
   await page.evaluate(() => WordIllustrations.openWordbook());
   await page.getByRole('button', { name: '学習する', exact: true }).click();
   expect(await page.evaluate(() => gameState.currentLevel)).toBe('illustrated');
@@ -139,6 +144,8 @@ test('前の絵と一覧は320pxでも収まり、最終回答後も絵を開け
   }
   await page.evaluate(() => showNoWordsMessage());
   await page.locator('#previousIllustrationBtn').click();
+  await expect(page.locator('#wordIllustration')).toBeVisible();
+  await page.locator('#wordIllustrationSlot').click();
   await expect(page.locator('#previousIllustrationWord')).toHaveText('apple');
   await page.keyboard.press('Escape');
   await page.evaluate(() => WordIllustrations.openWordbook());
@@ -149,4 +156,51 @@ test('前の絵と一覧は320pxでも収まり、最終回答後も絵を開け
   });
   expect(images).toBe(true);
   expect(await page.locator('#illustratedWordbookGallery').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);
+});
+
+test('イラスト画面は小さい画面でも回答前に表示・拡大・切替でき、自己申告の採点とUndoを維持する', async ({ page }, testInfo) => {
+  await select(page, 'apple');
+  const key = await page.evaluate(() => getWordKeySafe(gameState.currentWord));
+  const state = await page.evaluate(() => JSON.stringify(gameState));
+  await page.locator('#currentIllustrationBtn').focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#wordIllustration')).toBeVisible();
+  await expect(page.locator('#meaningCard .card-back')).toBeHidden();
+  await page.locator('#wordIllustrationSlot').click();
+  await expect(page.locator('#previousIllustrationWord')).toHaveText('apple');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#wordIllustrationSlot')).toBeFocused();
+  expect(await page.evaluate(() => JSON.stringify(gameState))).toBe(state);
+  for (const width of [320, 390, 1280]) {
+    await page.setViewportSize({ width, height: 850 });
+    const geometry = await page.locator('#currentIllustrationBtn').evaluate(button => {
+      const rect = button.getBoundingClientRect();
+      const label = button.parentElement.querySelector('.card-label').getBoundingClientRect();
+      return { width: rect.width, height: rect.height, overlap: rect.left < label.right && rect.right > label.left && rect.top < label.bottom && rect.bottom > label.top };
+    });
+    expect(geometry.width).toBeGreaterThanOrEqual(44);
+    expect(geometry.height).toBeGreaterThanOrEqual(44);
+    expect(geometry.overlap).toBe(false);
+    await page.screenshot({ path: testInfo.outputPath(`hint-${width}.png`) });
+  }
+  await page.locator('#vocabCard').click();
+  expect(await page.evaluate(key => gameState.srsData[key].recentAnswers, key)).toEqual([true]);
+  await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
+  await page.locator('#previousIllustrationBtn').click();
+  await expect(page.locator('#wordIllustration')).toHaveAttribute('src', /apple/);
+  await page.locator('#currentIllustrationBtn').click();
+  const currentSrc = await page.evaluate(() => WordIllustrations.find(gameState.currentWord, 'illustrated', vocabularyDatabase).src);
+  await expect(page.locator('#wordIllustration')).toHaveAttribute('src', currentSrc);
+  await page.locator('#undoBtn').click();
+  await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
+  await page.locator('#currentIllustrationBtn').click();
+  await page.locator('#meaningCard .card-front').click();
+  expect(await page.evaluate(key => gameState.srsData[key].recentAnswers, key)).toEqual([false]);
+  await page.evaluate(() => {
+    switchLevel('basic');
+    gameState.currentWord = vocabularyDatabase.basic.find(word => !WordIllustrations.find(word, 'basic', vocabularyDatabase));
+    showWord(gameState.currentWord);
+  });
+  await expect(page.locator('#currentIllustrationBtn')).toBeHidden();
+  await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
 });

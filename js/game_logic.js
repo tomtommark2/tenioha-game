@@ -3300,6 +3300,7 @@ function hideNoWordsMessage() {
                     </div>
                     <div class="card meaning-card" id="meaningCard">
                         <div class="card-label">意味カード</div>
+                        <button type="button" class="current-illustration-btn" id="currentIllustrationBtn" onclick="event.stopPropagation(); WordIllustrations.openCurrent()" hidden>イラスト</button>
                         <div class="card-front">
                             <div class="card-content">?</div>
                         </div>

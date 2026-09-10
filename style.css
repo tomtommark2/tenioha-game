@@ -1381,16 +1381,30 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     .merged-phrase { font-size: 13px; }
 }
 
-.card-back {
-    display: none;
+.meaning-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
 }
 
-.card.flipped .card-front {
-    display: none;
-}
-
-.card.flipped .card-back {
+.meaning-card > .card-front,
+.meaning-card > .card-back {
+    grid-area: 1 / 1;
     display: block;
+}
+
+.meaning-card > .card-front { justify-self: center; }
+.meaning-card > .card-label { left: 50%; transform: translateX(-50%); white-space: nowrap; }
+
+/* Keep the answer's space without revealing it visually or to accessibility APIs. */
+.meaning-card > .card-back,
+.meaning-card.flipped > .card-front {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.meaning-card.flipped > .card-back {
+    visibility: visible;
+    pointer-events: auto;
 }
 
 #reviewProgressWrap {
@@ -1683,13 +1697,14 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 
 .answer-tools {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 5px;
     flex-shrink: 0;
 }
 
-.answer-tools .undo-btn { justify-content: center; min-height: 44px; padding: 7px 9px; white-space: nowrap; }
-#previousIllustrationBtn[hidden] { display: none; }
+.answer-tools .undo-btn { justify-content: center; min-width: 44px; min-height: 44px; padding: 6px 7px; font-size: 11px; border-radius: 10px; white-space: nowrap; }
+.answer-tools .undo-icon { display: none; }
+#previousIllustrationBtn[hidden] { display: inline-flex; visibility: hidden; pointer-events: none; }
 .example-area.no-question > .example-text, .example-area.no-question > .speaker-btn { visibility: hidden; }
 .illustration-modal-content {
     position: relative;
@@ -5185,19 +5200,39 @@ body.dismissible-modal-open {
     top: -40px;
     width: 100px;
     height: 100px;
-    pointer-events: none;
+    pointer-events: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
 }
+
+.current-illustration-btn {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    z-index: 2;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 4px 6px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #5f4bd5;
+    font: inherit;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.current-illustration-btn:hover { background: #7c5cff12; }
+.current-illustration-btn:focus-visible,
+#wordIllustrationSlot:focus-visible { outline: 2px solid #7c5cff; outline-offset: 2px; }
 
 #wordIllustrationSlot[hidden] { display: none; }
 
 @media (max-width: 768px) {
     /* The parent scales to 0.8: a 100px slot renders at 80px on mobile. */
     #wordIllustrationSlot { left: -25px; top: -24px; }
-}
-
-@media (max-width: 380px) {
-    /* Reserve a small gap beside the wider image without moving the hero layout. */
-    .rpg-inline.has-word-illustration .review-score-summary { left: 82px; }
 }
 
 #wordIllustrationSlot img {
@@ -8078,7 +8113,7 @@ body.dismissible-modal-open {
     }
 
     .rpg-inline .review-score-summary {
-        left: 72px;
+        left: 82px;
         width: 50px;
     }
 }

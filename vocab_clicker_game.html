@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0910.1442">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0910.1442" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0910.1442" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0910.1442" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0910.1545">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0910.1545" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0910.1545" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0910.1545" as="script">
 </head>
 
 <body>
@@ -260,7 +260,7 @@
             <div class="rpg-inline">
                 <div id="enemySlime" style="opacity: 0;"></div>
                 <div id="heroCharacter" class="pixel-art anim-idle"></div>
-                <div id="wordIllustrationSlot" hidden></div>
+                <button type="button" id="wordIllustrationSlot" onclick="WordIllustrations.enlarge()" aria-label="表示中のイラストを拡大" hidden></button>
                 <div class="review-score-summary" aria-label="復習スコア">
                     <div class="review-score-summary-row">
                         <span>今日</span>
@@ -553,6 +553,7 @@
 
                     <div class="card meaning-card" id="meaningCard" aria-disabled="true">
                         <div class="card-label">意味カード</div>
+                        <button type="button" class="current-illustration-btn" id="currentIllustrationBtn" onclick="event.stopPropagation(); WordIllustrations.openCurrent()" hidden>イラスト</button>
                         <div class="card-front">
                             <div class="card-content">?</div>
                         </div>
@@ -578,8 +579,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0910.1442"></script>
-<script src="data/ipa_overrides.js?v=2026.0910.1442"></script>
+    <script src="data/vocabulary.js?v=2026.0910.1545"></script>
+<script src="data/ipa_overrides.js?v=2026.0910.1545"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -823,8 +824,8 @@
 
     <div id="previousIllustrationModal" class="modal-overlay wordbook-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="previousIllustrationTitle">
         <div class="modal-content illustration-modal-content">
-            <button type="button" class="modal-close-btn" onclick="WordIllustrations.close('previousIllustrationModal')" aria-label="前の絵を閉じる">×</button>
-            <h2 id="previousIllustrationTitle">前の絵</h2>
+            <button type="button" class="modal-close-btn" onclick="WordIllustrations.close('previousIllustrationModal')" aria-label="イラストを閉じる">×</button>
+            <h2 id="previousIllustrationTitle">イラスト</h2>
             <div id="previousIllustrationImage"></div>
             <h3 id="previousIllustrationWord"></h3>
             <p id="previousIllustrationMeaning"></p>
@@ -1087,7 +1088,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.0910.1442">
+    <link rel="stylesheet" href="feedback.css?v=2026.0910.1545">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1106,19 +1107,19 @@
             <p class="feedback-note">購入・アカウントのご相談は、従来のお問い合わせメールをご利用ください。</p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.0910.1442"></script>
-    <script src="js/update_manager.js?v=2026.0910.1442"></script>
-    <script src="js/config.js?v=2026.0910.1442"></script>
-    <script src="data/announcements.js?v=2026.0910.1442"></script>
-    <script src="js/utils.js?v=2026.0910.1442"></script>
-    <script src="data/word-illustrations.js?v=2026.0910.1442"></script>
-    <script src="js/word_illustrations.js?v=2026.0910.1442"></script>
+    <script src="js/version.js?v=2026.0910.1545"></script>
+    <script src="js/update_manager.js?v=2026.0910.1545"></script>
+    <script src="js/config.js?v=2026.0910.1545"></script>
+    <script src="data/announcements.js?v=2026.0910.1545"></script>
+    <script src="js/utils.js?v=2026.0910.1545"></script>
+    <script src="data/word-illustrations.js?v=2026.0910.1545"></script>
+    <script src="js/word_illustrations.js?v=2026.0910.1545"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.0910.1442"></script>
-    <script src="js/game_logic.js?v=2026.0910.1442"></script>
-    <script src="js/ui_manager.js?v=2026.0910.1442"></script>
-    <script src="js/feedback.js?v=2026.0910.1442"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0910.1442"></script>
+    <script src="js/word_grouping.js?v=2026.0910.1545"></script>
+    <script src="js/game_logic.js?v=2026.0910.1545"></script>
+    <script src="js/ui_manager.js?v=2026.0910.1545"></script>
+    <script src="js/feedback.js?v=2026.0910.1545"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0910.1545"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

@@ -1,0 +1,457 @@
+{
+  "status": "local-rollout",
+  "date": "2026-09-10",
+  "policy": "作成済みの新版から順次切替。元画像・学習キーは保持。配信画像は可逆WebP（寸法・可視RGBAを変更しない）。",
+  "entries": [
+    {
+      "word": "action",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/action.png",
+      "asset": "assets/word-illustrations/action-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/action-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/action-v1.webp"
+    },
+    {
+      "word": "activity",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/activity.png",
+      "asset": "assets/word-illustrations/activity-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/activity-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/activity-v1.webp"
+    },
+    {
+      "word": "actor",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/actor.png",
+      "asset": "assets/word-illustrations/actor-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/actor-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/actor-v1.webp"
+    },
+    {
+      "word": "address",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/address.png",
+      "asset": "assets/word-illustrations/address-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/address-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/address-v1.webp"
+    },
+    {
+      "word": "aeroplane",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/aeroplane.png",
+      "asset": "assets/word-illustrations/aeroplane-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/aeroplane-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/aeroplane-v1.webp"
+    },
+    {
+      "word": "afternoon",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/afternoon.png",
+      "asset": "assets/word-illustrations/afternoon-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/afternoon-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/afternoon-v1.webp"
+    },
+    {
+      "word": "age",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/age.png",
+      "asset": "assets/word-illustrations/age-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/age-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/age-v1.webp"
+    },
+    {
+      "word": "airport",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/airport.png",
+      "asset": "assets/word-illustrations/airport-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/airport-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/airport-v1.webp"
+    },
+    {
+      "word": "album",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/album.png",
+      "asset": "assets/word-illustrations/album-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/album-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/album-v1.webp"
+    },
+    {
+      "word": "animal",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-001-2026-09-09/animal.png",
+      "asset": "assets/word-illustrations/animal-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/animal-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/animal-v1.webp"
+    },
+    {
+      "word": "answer",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/answer.png",
+      "asset": "assets/word-illustrations/answer-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/answer-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/answer-v1.webp"
+    },
+    {
+      "word": "apple",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/apple.png",
+      "asset": "assets/word-illustrations/apple-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/apple-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/apple-v1.webp"
+    },
+    {
+      "word": "April",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/april.png",
+      "asset": "assets/word-illustrations/april-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/april-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/april-v1.webp"
+    },
+    {
+      "word": "apron",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/apron.png",
+      "asset": "assets/word-illustrations/apron-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/apron-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/apron-v1.webp"
+    },
+    {
+      "word": "arm",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/arm.png",
+      "asset": "assets/word-illustrations/arm-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/arm-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/arm-v1.webp"
+    },
+    {
+      "word": "art",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/art.png",
+      "asset": "assets/word-illustrations/art-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/art-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/art-v1.webp"
+    },
+    {
+      "word": "article",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/article.png",
+      "asset": "assets/word-illustrations/article-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/article-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/article-v1.webp"
+    },
+    {
+      "word": "August",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/august.png",
+      "asset": "assets/word-illustrations/august-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/august-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/august-v1.webp"
+    },
+    {
+      "word": "aunt",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/aunt.png",
+      "asset": "assets/word-illustrations/aunt-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/aunt-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/aunt-v2.webp"
+    },
+    {
+      "word": "autumn",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-002-2026-09-09/autumn.png",
+      "asset": "assets/word-illustrations/autumn-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/autumn-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/autumn-v1.webp"
+    },
+    {
+      "word": "baby",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/baby.png",
+      "asset": "assets/word-illustrations/baby-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/baby-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/baby-v1.webp"
+    },
+    {
+      "word": "back",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/back.png",
+      "asset": "assets/word-illustrations/back-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/back-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/back-v1.webp"
+    },
+    {
+      "word": "bag",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bag.png",
+      "asset": "assets/word-illustrations/bag-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bag-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bag-v2.webp"
+    },
+    {
+      "word": "ball",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/ball.png",
+      "asset": "assets/word-illustrations/ball-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/ball-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/ball-v1.webp"
+    },
+    {
+      "word": "banana",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/banana.png",
+      "asset": "assets/word-illustrations/banana-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/banana-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/banana-v1.webp"
+    },
+    {
+      "word": "band",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/band.png",
+      "asset": "assets/word-illustrations/band-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/band-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/band-v1.webp"
+    },
+    {
+      "word": "bank",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bank.png",
+      "asset": "assets/word-illustrations/bank-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bank-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bank-v1.webp"
+    },
+    {
+      "word": "bar",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bar.png",
+      "asset": "assets/word-illustrations/bar-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bar-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bar-v1.webp"
+    },
+    {
+      "word": "baseball",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/baseball.png",
+      "asset": "assets/word-illustrations/baseball-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/baseball-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/baseball-v1.webp"
+    },
+    {
+      "word": "basketball",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/basketball.png",
+      "asset": "assets/word-illustrations/basketball-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/basketball-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/basketball-v1.webp"
+    },
+    {
+      "word": "bat",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bat.png",
+      "asset": "assets/word-illustrations/bat-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bat-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bat-v1.webp"
+    },
+    {
+      "word": "bath",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bath.png",
+      "asset": "assets/word-illustrations/bath-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bath-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bath-v1.webp"
+    },
+    {
+      "word": "bathroom",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bathroom.png",
+      "asset": "assets/word-illustrations/bathroom-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bathroom-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bathroom-v1.webp"
+    },
+    {
+      "word": "beach",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/beach.png",
+      "asset": "assets/word-illustrations/beach-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/beach-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/beach-v1.webp"
+    },
+    {
+      "word": "bean",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bean.png",
+      "asset": "assets/word-illustrations/bean-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bean-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bean-v1.webp"
+    },
+    {
+      "word": "bear",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bear.png",
+      "asset": "assets/word-illustrations/bear-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bear-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bear-v1.webp"
+    },
+    {
+      "word": "bed",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bed.png",
+      "asset": "assets/word-illustrations/bed-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bed-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bed-v1.webp"
+    },
+    {
+      "word": "bedroom",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bedroom.png",
+      "asset": "assets/word-illustrations/bedroom-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bedroom-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bedroom-v1.webp"
+    },
+    {
+      "word": "bee",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bee.png",
+      "asset": "assets/word-illustrations/bee-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bee-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bee-v1.webp"
+    },
+    {
+      "word": "beef",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/beef.png",
+      "asset": "assets/word-illustrations/beef-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/beef-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/beef-v1.webp"
+    },
+    {
+      "word": "bell",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bell.png",
+      "asset": "assets/word-illustrations/bell-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bell-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bell-v1.webp"
+    },
+    {
+      "word": "bicycle",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bicycle.png",
+      "asset": "assets/word-illustrations/bicycle-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bicycle-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bicycle-v1.webp"
+    },
+    {
+      "word": "bird",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/bird.png",
+      "asset": "assets/word-illustrations/bird-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bird-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bird-v1.webp"
+    },
+    {
+      "word": "birth",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/birth.png",
+      "asset": "assets/word-illustrations/birth-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/birth-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/birth-v1.webp"
+    },
+    {
+      "word": "birthday",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/birthday.png",
+      "asset": "assets/word-illustrations/birthday-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/birthday-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/birthday-v1.webp"
+    },
+    {
+      "word": "biscuit",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/biscuit.png",
+      "asset": "assets/word-illustrations/biscuit-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/biscuit-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/biscuit-v1.webp"
+    },
+    {
+      "word": "black",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/black.png",
+      "asset": "assets/word-illustrations/black-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/black-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/black-v1.webp"
+    },
+    {
+      "word": "block",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/block.png",
+      "asset": "assets/word-illustrations/block-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/block-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/block-v1.webp"
+    },
+    {
+      "word": "blue",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/blue.png",
+      "asset": "assets/word-illustrations/blue-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/blue-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/blue-v1.webp"
+    },
+    {
+      "word": "board",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-003-2026-09-09/board.png",
+      "asset": "assets/word-illustrations/board-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/board-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/board-v4.webp"
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 (function () {
     let requestId = 0;
     let previous = null;
+    let current = null;
+    let displayed = null;
 
     function buildCollection(database) {
         const collection = new Map();
@@ -18,6 +20,9 @@
     }
 
     function refreshPrevious(word, level, database) {
+        current = find(word, level, database);
+        const currentButton = document.getElementById('currentIllustrationBtn');
+        if (currentButton) currentButton.hidden = !current;
         const button = document.getElementById('previousIllustrationBtn');
         const currentKey = word && window.GameUtils.getWordKey(word, level, database);
         if (button) button.hidden = !previous || previous.key === currentKey;
@@ -51,10 +56,19 @@
     function openPrevious() {
         const button = document.getElementById('previousIllustrationBtn');
         if (!previous || button.hidden) return;
-        button.focus({ preventScroll: true });
-        document.getElementById('previousIllustrationWord').textContent = previous.entry.word;
-        document.getElementById('previousIllustrationMeaning').textContent = previous.entry.meaning;
-        document.getElementById('previousIllustrationImage').replaceChildren(createImage(previous.entry));
+        showEntry(previous.entry);
+    }
+
+    function openCurrent() {
+        if (current) showEntry(current);
+    }
+
+    function enlarge() {
+        if (!displayed) return;
+        document.getElementById('wordIllustrationSlot').focus({ preventScroll: true });
+        document.getElementById('previousIllustrationWord').textContent = displayed.word;
+        document.getElementById('previousIllustrationMeaning').textContent = displayed.meaning;
+        document.getElementById('previousIllustrationImage').replaceChildren(createImage(displayed));
         document.getElementById('previousIllustrationModal').style.display = 'flex';
     }
 
@@ -108,6 +122,7 @@
 
     function clear() {
         requestId++;
+        displayed = null;
         const slot = document.getElementById('wordIllustrationSlot');
         if (!slot) return;
         slot.hidden = true;
@@ -116,8 +131,11 @@
     }
 
     function show(word, level, database) {
+        showEntry(find(word, level, database));
+    }
+
+    function showEntry(entry) {
         clear();
-        const entry = find(word, level, database);
         const slot = document.getElementById('wordIllustrationSlot');
         if (!entry || !slot) return;
         const activeRequest = requestId;
@@ -130,6 +148,7 @@
         image.onload = () => {
             // A slow previous image must never replace the next question's hero.
             if (activeRequest !== requestId || !image.naturalWidth) return;
+            displayed = entry;
             slot.replaceChildren(image);
             slot.hidden = false;
             slot.parentElement.classList.add('has-word-illustration');
@@ -140,5 +159,5 @@
     }
 
     window.WordIllustrations = Object.freeze({ find, show, clear, buildCollection,
-        rememberAnswer, refreshPrevious, resetPrevious, openPrevious, openWordbook, startWordbook, close });
+        rememberAnswer, refreshPrevious, resetPrevious, openPrevious, openCurrent, enlarge, openWordbook, startWordbook, close });
 })();

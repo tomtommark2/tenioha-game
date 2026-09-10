@@ -85,7 +85,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "行動、アクション",
-        "src": "assets/word-illustrations/action-v1.webp",
+        "src": "assets/word-illustrations/action-pictogram-v1.webp",
         "alt": "行動、アクションのイメージ（一例）"
     },
     {
@@ -93,7 +93,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "活動",
-        "src": "assets/word-illustrations/activity-v1.webp",
+        "src": "assets/word-illustrations/activity-pictogram-v1.webp",
         "alt": "活動のイメージ（一例）"
     },
     {
@@ -101,7 +101,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "俳優",
-        "src": "assets/word-illustrations/actor-v1.webp",
+        "src": "assets/word-illustrations/actor-pictogram-v1.webp",
         "alt": "俳優のイメージ（一例）"
     },
     {
@@ -109,7 +109,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "住所",
-        "src": "assets/word-illustrations/address-v1.webp",
+        "src": "assets/word-illustrations/address-pictogram-v1.webp",
         "alt": "住所のイメージ（一例）"
     },
     {
@@ -117,7 +117,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "飛行機（英）",
-        "src": "assets/word-illustrations/aeroplane-v1.webp",
+        "src": "assets/word-illustrations/aeroplane-pictogram-v1.webp",
         "alt": "飛行機（英）のイメージ（一例）"
     },
     {
@@ -125,7 +125,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "午後",
-        "src": "assets/word-illustrations/afternoon-v1.webp",
+        "src": "assets/word-illustrations/afternoon-pictogram-v1.webp",
         "alt": "午後のイメージ（一例）"
     },
     {
@@ -133,7 +133,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "年齢",
-        "src": "assets/word-illustrations/age-v1.webp",
+        "src": "assets/word-illustrations/age-pictogram-v1.webp",
         "alt": "年齢のイメージ（一例）"
     },
     {
@@ -141,7 +141,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "飛行機",
-        "src": "assets/word-illustrations/aeroplane-v1.webp",
+        "src": "assets/word-illustrations/aeroplane-pictogram-v1.webp",
         "alt": "飛行機のイメージ（一例）"
     },
     {
@@ -149,7 +149,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "空港",
-        "src": "assets/word-illustrations/airport-v1.webp",
+        "src": "assets/word-illustrations/airport-pictogram-v1.webp",
         "alt": "空港のイメージ（一例）"
     },
     {
@@ -157,7 +157,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "アルバム",
-        "src": "assets/word-illustrations/album-v1.webp",
+        "src": "assets/word-illustrations/album-pictogram-v1.webp",
         "alt": "アルバムのイメージ（一例）"
     },
     {
@@ -165,7 +165,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "動物",
-        "src": "assets/word-illustrations/animal-v1.webp",
+        "src": "assets/word-illustrations/animal-pictogram-v1.webp",
         "alt": "動物のイメージ（一例）"
     },
     {
@@ -173,7 +173,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "答え",
-        "src": "assets/word-illustrations/answer-v1.webp",
+        "src": "assets/word-illustrations/answer-pictogram-v1.webp",
         "alt": "答えのイメージ（一例）"
     },
     {
@@ -181,7 +181,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "リンゴ",
-        "src": "assets/word-illustrations/apple-v1.webp",
+        "src": "assets/word-illustrations/apple-pictogram-v1.webp",
         "alt": "リンゴのイメージ（一例）"
     },
     {
@@ -189,7 +189,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "4月",
-        "src": "assets/word-illustrations/april-v1.webp",
+        "src": "assets/word-illustrations/april-pictogram-v1.webp",
         "alt": "4月のイメージ（一例）"
     },
     {
@@ -197,7 +197,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "エプロン",
-        "src": "assets/word-illustrations/apron-v1.webp",
+        "src": "assets/word-illustrations/apron-pictogram-v1.webp",
         "alt": "エプロンのイメージ（一例）"
     },
     {
@@ -205,7 +205,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "腕",
-        "src": "assets/word-illustrations/arm-v1.webp",
+        "src": "assets/word-illustrations/arm-pictogram-v1.webp",
         "alt": "腕のイメージ（一例）"
     },
     {
@@ -213,7 +213,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "芸術、美術",
-        "src": "assets/word-illustrations/art-v1.webp",
+        "src": "assets/word-illustrations/art-pictogram-v1.webp",
         "alt": "芸術、美術のイメージ（一例）"
     },
     {
@@ -221,7 +221,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "記事",
-        "src": "assets/word-illustrations/article-v1.webp",
+        "src": "assets/word-illustrations/article-pictogram-v1.webp",
         "alt": "記事のイメージ（一例）"
     },
     {
@@ -229,7 +229,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "8月",
-        "src": "assets/word-illustrations/august-v1.webp",
+        "src": "assets/word-illustrations/august-pictogram-v1.webp",
         "alt": "8月のイメージ（一例）"
     },
     {
@@ -237,7 +237,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "おば",
-        "src": "assets/word-illustrations/aunt-v2.webp",
+        "src": "assets/word-illustrations/aunt-pictogram-v1.webp",
         "alt": "おばのイメージ（一例）"
     },
     {
@@ -245,7 +245,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "秋",
-        "src": "assets/word-illustrations/autumn-v1.webp",
+        "src": "assets/word-illustrations/autumn-pictogram-v1.webp",
         "alt": "秋のイメージ（一例）"
     },
     {
@@ -253,7 +253,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "赤ちゃん",
-        "src": "assets/word-illustrations/baby-v1.webp",
+        "src": "assets/word-illustrations/baby-pictogram-v1.webp",
         "alt": "赤ちゃんのイメージ（一例）"
     },
     {
@@ -261,7 +261,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "背中、後ろ",
-        "src": "assets/word-illustrations/back-v1.webp",
+        "src": "assets/word-illustrations/back-pictogram-v1.webp",
         "alt": "背中を示すイメージ"
     },
     {
@@ -269,7 +269,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "鞄、袋",
-        "src": "assets/word-illustrations/bag-v2.webp",
+        "src": "assets/word-illustrations/bag-pictogram-v1.webp",
         "alt": "鞄、袋のイメージ（一例）"
     },
     {
@@ -277,7 +277,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "ボール",
-        "src": "assets/word-illustrations/ball-v1.webp",
+        "src": "assets/word-illustrations/ball-pictogram-v1.webp",
         "alt": "ボールのイメージ（一例）"
     },
     {
@@ -285,7 +285,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "バナナ",
-        "src": "assets/word-illustrations/banana-v1.webp",
+        "src": "assets/word-illustrations/banana-pictogram-v1.webp",
         "alt": "バナナのイメージ（一例）"
     },
     {
@@ -293,7 +293,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "バンド、楽団",
-        "src": "assets/word-illustrations/band-v1.webp",
+        "src": "assets/word-illustrations/band-pictogram-v1.webp",
         "alt": "バンド、楽団のイメージ（一例）"
     },
     {
@@ -301,7 +301,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "銀行",
-        "src": "assets/word-illustrations/bank-v1.webp",
+        "src": "assets/word-illustrations/bank-pictogram-v1.webp",
         "alt": "銀行のイメージ（一例）"
     },
     {
@@ -309,7 +309,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "棒、酒場",
-        "src": "assets/word-illustrations/bar-v1.webp",
+        "src": "assets/word-illustrations/bar-pictogram-v1.webp",
         "alt": "棒のイメージ（角棒の一例）"
     },
     {
@@ -317,7 +317,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "野球",
-        "src": "assets/word-illustrations/baseball-v1.webp",
+        "src": "assets/word-illustrations/baseball-pictogram-v1.webp",
         "alt": "野球のイメージ（一例）"
     },
     {
@@ -325,7 +325,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "バスケットボール",
-        "src": "assets/word-illustrations/basketball-v1.webp",
+        "src": "assets/word-illustrations/basketball-pictogram-v1.webp",
         "alt": "バスケットボールのイメージ（一例）"
     },
     {
@@ -333,7 +333,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "バット、コウモリ",
-        "src": "assets/word-illustrations/bat-v1.webp",
+        "src": "assets/word-illustrations/bat-pictogram-v1.webp",
         "alt": "野球のバットのイメージ"
     },
     {
@@ -341,7 +341,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "入浴",
-        "src": "assets/word-illustrations/bath-v1.webp",
+        "src": "assets/word-illustrations/bath-pictogram-v1.webp",
         "alt": "入浴のイメージ（一例）"
     },
     {
@@ -349,7 +349,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "浴室、トイレ",
-        "src": "assets/word-illustrations/bathroom-v1.webp",
+        "src": "assets/word-illustrations/bathroom-pictogram-v1.webp",
         "alt": "浴室、トイレのイメージ（一例）"
     },
     {
@@ -357,7 +357,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "浜辺、ビーチ",
-        "src": "assets/word-illustrations/beach-v1.webp",
+        "src": "assets/word-illustrations/beach-pictogram-v1.webp",
         "alt": "浜辺、ビーチのイメージ（一例）"
     },
     {
@@ -365,7 +365,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "豆",
-        "src": "assets/word-illustrations/bean-v1.webp",
+        "src": "assets/word-illustrations/bean-pictogram-v1.webp",
         "alt": "豆のイメージ（一例）"
     },
     {
@@ -373,7 +373,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "熊",
-        "src": "assets/word-illustrations/bear-v1.webp",
+        "src": "assets/word-illustrations/bear-pictogram-v1.webp",
         "alt": "熊のイメージ（一例）"
     },
     {
@@ -381,7 +381,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "ベッド",
-        "src": "assets/word-illustrations/bed-v1.webp",
+        "src": "assets/word-illustrations/bed-pictogram-v1.webp",
         "alt": "ベッドのイメージ（一例）"
     },
     {
@@ -389,7 +389,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "寝室",
-        "src": "assets/word-illustrations/bedroom-v1.webp",
+        "src": "assets/word-illustrations/bedroom-pictogram-v1.webp",
         "alt": "寝室のイメージ（一例）"
     },
     {
@@ -397,7 +397,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "ハチ",
-        "src": "assets/word-illustrations/bee-v1.webp",
+        "src": "assets/word-illustrations/bee-pictogram-v1.webp",
         "alt": "ハチのイメージ（一例）"
     },
     {
@@ -405,7 +405,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "牛肉",
-        "src": "assets/word-illustrations/beef-v1.webp",
+        "src": "assets/word-illustrations/beef-pictogram-v1.webp",
         "alt": "牛肉のイメージ（一例）"
     },
     {
@@ -413,7 +413,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "ベル、鐘",
-        "src": "assets/word-illustrations/bell-v1.webp",
+        "src": "assets/word-illustrations/bell-pictogram-v1.webp",
         "alt": "ベル、鐘のイメージ（一例）"
     },
     {
@@ -421,7 +421,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "自転車",
-        "src": "assets/word-illustrations/bicycle-v1.webp",
+        "src": "assets/word-illustrations/bicycle-pictogram-v1.webp",
         "alt": "自転車のイメージ（一例）"
     },
     {
@@ -429,7 +429,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "自転車（略語）",
-        "src": "assets/word-illustrations/bicycle-v1.webp",
+        "src": "assets/word-illustrations/bicycle-pictogram-v1.webp",
         "alt": "自転車（略語）のイメージ（一例）"
     },
     {
@@ -437,7 +437,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "鳥",
-        "src": "assets/word-illustrations/bird-v1.webp",
+        "src": "assets/word-illustrations/bird-pictogram-v1.webp",
         "alt": "鳥のイメージ（一例）"
     },
     {
@@ -445,7 +445,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "誕生",
-        "src": "assets/word-illustrations/birth-v1.webp",
+        "src": "assets/word-illustrations/birth-pictogram-v1.webp",
         "alt": "誕生のイメージ（一例）"
     },
     {
@@ -453,7 +453,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "誕生日",
-        "src": "assets/word-illustrations/birthday-v1.webp",
+        "src": "assets/word-illustrations/birthday-pictogram-v1.webp",
         "alt": "誕生日のイメージ（一例）"
     },
     {
@@ -461,7 +461,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "ビスケット",
-        "src": "assets/word-illustrations/biscuit-v1.webp",
+        "src": "assets/word-illustrations/biscuit-pictogram-v1.webp",
         "alt": "ビスケットのイメージ（一例）"
     },
     {
@@ -469,7 +469,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "黒",
-        "src": "assets/word-illustrations/black-v1.webp",
+        "src": "assets/word-illustrations/black-pictogram-v1.webp",
         "alt": "黒のイメージ（一例）"
     },
     {
@@ -477,7 +477,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "ブロック、区画",
-        "src": "assets/word-illustrations/block-v1.webp",
+        "src": "assets/word-illustrations/block-pictogram-v1.webp",
         "alt": "ブロック、区画のイメージ（一例）"
     },
     {
@@ -485,7 +485,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "青",
-        "src": "assets/word-illustrations/blue-v1.webp",
+        "src": "assets/word-illustrations/blue-pictogram-v1.webp",
         "alt": "青のイメージ（一例）"
     },
     {
@@ -493,7 +493,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "板、黒板、委員会",
-        "src": "assets/word-illustrations/board-v4.webp",
+        "src": "assets/word-illustrations/board-pictogram-v1.webp",
         "alt": "木の板のイメージ"
     },
     {
