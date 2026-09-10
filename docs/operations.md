@@ -23,8 +23,16 @@
 - Do not deploy the app UI to Firebase Hosting. Hosting has been disabled for the `tenioha-game` Firebase project.
 - For backend changes, prefer explicit deploy targets such as `npx firebase deploy --only functions --project tenioha-game` or `npx firebase deploy --only firestore:rules --project tenioha-game`.
 
+### 2026-09-10 公開チェック（2026.0910.1442）
+
+- 対象：「前の絵」、収録済み100語のイラスト単語帳、ひとことの新着赤点。学習記録は元の単語と共有し、画像を見るだけでは採点しない。新着は公開一覧の投稿・返信・対応状況を検知し、閲覧後に端末内で既読保持。仕様は `data-workflow.md` と `feedback.md`。
+- `npm run test:e2e:safe`成功：単体24件・Functions18件・ブラウザー143件、HTML・版番号・許可キー同期。
+- モバイル30件成功。Chromium／WebKitで赤点の位置・投稿／返信の検知・既読保持・失敗時の保持と、イラスト画面の開閉を確認。
+- 公開先はGitHub Pagesのmain。Firebase・認証・投稿データは変更せず、試作画像・無関係な作業中資料は含めない。通知OFF設定は今回対象外。
+
 ### 2026-09-09 公開チェック（2026.0909.2335）
 
+- 公開完了：`776323b`をmainへ反映し、[GitHub Pages公開処理](https://github.com/tomtommark2/tenioha-game/actions/runs/34365120698)成功。本番6ファイルが公開コミットとバイト一致。独立ブラウザーの390px幅で短い一覧・詳細・個別既読の再読込保持・Escapeとベルへの復帰を確認し、page errorは0件。本番認証・投稿・回答・クラウド保存は操作していない。
 - 対象：お知らせを短い一覧＋展開式詳細へ変更。記事単位の既読・一括既読・旧形式移行、Safariの閉じた後のフォーカス復帰を実装。仕様は `announcements-review-2026-09-09.md`。
 - `npm run test:e2e:safe`成功：単体24件・Functions18件・ブラウザー135件、HTML・版番号・許可キー同期。モバイル関連24件も成功（版更新前の同一実装）。
 - 公開範囲はお知らせUI・データ・関連テストと版番号。試作画像・他の作業中資料は含めず、Firebaseは変更しない。

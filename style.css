@@ -1681,6 +1681,41 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     transform: none;
 }
 
+.answer-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.answer-tools .undo-btn { justify-content: center; min-height: 44px; padding: 7px 9px; white-space: nowrap; }
+#previousIllustrationBtn[hidden] { display: none; }
+.example-area.no-question > .example-text, .example-area.no-question > .speaker-btn { visibility: hidden; }
+.illustration-modal-content {
+    position: relative;
+    width: min(380px, 100%);
+    max-height: 90dvh;
+    overflow: auto;
+    padding: 24px 16px;
+    border-radius: 22px;
+    background: #f8fbff;
+    color: #28374f;
+    text-align: center;
+}
+.illustration-modal-content .modal-close-btn { min-width: 44px; min-height: 44px; top: 8px; right: 8px; }
+.illustration-modal-content h2 { margin: 8px 34px 14px; font-size: 21px; }
+.illustration-modal-content img { object-fit: contain; }
+#previousIllustrationImage img { width: 160px; height: 160px; image-rendering: pixelated; }
+.illustrated-wordbook-content { width: min(720px, 100%); }
+.illustrated-start-btn { min-height: 44px; padding: 10px 26px; background: #555cc9; color: #fff; border: 0; border-radius: 12px; font-weight: 700; cursor: pointer; }
+.illustrated-wordbook-hint { font-size: 12px; color: #56637a; }
+.illustrated-wordbook-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(122px, 1fr)); gap: 10px; }
+.illustrated-word-tile { display: flex; align-items: center; flex-direction: column; gap: 6px; padding: 12px 6px; background: #fff; color: #28374f; border: 1px solid #d8e0ef; border-radius: 14px; cursor: pointer; min-width: 0; }
+.illustrated-word-tile strong { font-size: 15px; overflow-wrap: anywhere; }
+.illustrated-word-tile span { font-size: 12px; }
+.illustrated-word-tile:hover { border-color: #555cc9; }
+.illustrated-word-tile:focus-visible, .illustrated-start-btn:focus-visible { outline: 3px solid #555cc9; outline-offset: 2px; }
+
 .undo-icon {
     width: 12px;
     height: 12px;
@@ -2831,7 +2866,7 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 .word-list-tabs {
     grid-area: tabs;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0;
     margin: 0 10px 8px 22px;
     padding: 0;

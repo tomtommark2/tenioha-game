@@ -1,6 +1,99 @@
-/* Optional noun imagery: no learning-state or persistence changes. */
+/* Optional noun imagery. Collection cards retain their canonical learning keys. */
 (function () {
     let requestId = 0;
+    let previous = null;
+
+    function buildCollection(database) {
+        const collection = new Map();
+        ['junior', 'basic', 'daily', 'exam1'].forEach(level => {
+            (database[level] || []).forEach(word => {
+                const sense = (word.senses || [word]).find(item => item.pos === '名' && find(item, level, database));
+                if (!sense) return;
+                const key = window.GameUtils.getWordKey(word, level, database);
+                const source = { ...sense, __sourceLevel: sense.__sourceLevel || level };
+                collection.set(key, { ...source, senses: [source], set: 'illustrated', __groupKey: key });
+            });
+        });
+        return [...collection.values()].sort((a, b) => a.word.localeCompare(b.word, 'en'));
+    }
+
+    function refreshPrevious(word, level, database) {
+        const button = document.getElementById('previousIllustrationBtn');
+        const currentKey = word && window.GameUtils.getWordKey(word, level, database);
+        if (button) button.hidden = !previous || previous.key === currentKey;
+    }
+
+    function rememberAnswer(word, level, database) {
+        const entry = find(word, level, database);
+        previous = entry ? { entry, key: window.GameUtils.getWordKey(word, level, database) } : null;
+        refreshPrevious(word, level, database);
+    }
+
+    function resetPrevious() {
+        previous = null;
+        refreshPrevious(null);
+        close('previousIllustrationModal');
+    }
+
+    function close(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+
+    function createImage(entry) {
+        const image = new Image(100, 100);
+        image.alt = entry.alt;
+        image.loading = 'lazy';
+        image.src = entry.src;
+        image.onerror = () => { image.alt = '画像を読み込めませんでした'; };
+        return image;
+    }
+
+    function openPrevious() {
+        const button = document.getElementById('previousIllustrationBtn');
+        if (!previous || button.hidden) return;
+        button.focus({ preventScroll: true });
+        document.getElementById('previousIllustrationWord').textContent = previous.entry.word;
+        document.getElementById('previousIllustrationMeaning').textContent = previous.entry.meaning;
+        document.getElementById('previousIllustrationImage').replaceChildren(createImage(previous.entry));
+        document.getElementById('previousIllustrationModal').style.display = 'flex';
+    }
+
+    function openWordbook() {
+        const database = window.vocabularyDatabase;
+        const words = database.illustrated || [];
+        const gallery = document.getElementById('illustratedWordbookGallery');
+        gallery.replaceChildren();
+        words.forEach(word => {
+            const entry = find(word, 'illustrated', database);
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'illustrated-word-tile';
+            button.appendChild(createImage(entry));
+            const title = document.createElement('strong');
+            title.textContent = word.word;
+            const meaning = document.createElement('span');
+            meaning.textContent = entry.meaning;
+            button.append(title, meaning);
+            button.setAttribute('aria-label', `${word.word}：${entry.meaning}を学習`);
+            button.onclick = () => {
+                if (!window.ensureTrialAccess()) return;
+                close('illustratedWordbookModal');
+                window.openWordFromList('illustrated', encodeURIComponent(word.__groupKey));
+            };
+            gallery.appendChild(button);
+        });
+        document.getElementById('illustratedWordbookCount').textContent = `${words.length}語`;
+        document.getElementById('wordbookBtn').focus({ preventScroll: true });
+        window.closeWordbookModal();
+        document.getElementById('illustratedWordbookModal').style.display = 'flex';
+    }
+
+    function startWordbook() {
+        if (!window.ensureTrialAccess()) return;
+        close('illustratedWordbookModal');
+        window.activateLearningSessionUI();
+        window.selectWordbook('illustrated');
+    }
 
     function find(word, level, database) {
         if (!word) return null;
@@ -46,5 +139,6 @@
         image.src = entry.src;
     }
 
-    window.WordIllustrations = Object.freeze({ find, show, clear });
+    window.WordIllustrations = Object.freeze({ find, show, clear, buildCollection,
+        rememberAnswer, refreshPrevious, resetPrevious, openPrevious, openWordbook, startWordbook, close });
 })();

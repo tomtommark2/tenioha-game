@@ -95,6 +95,7 @@ function applyIpaOverrides(database, overrides) {
 applyIpaOverrides(vocabularyDatabase, window.IPA_OVERRIDES);
 const wordGrouping = window.WordGrouping.build(vocabularyDatabase, window.GameUtils);
 vocabularyDatabase = wordGrouping.database;
+vocabularyDatabase.illustrated = window.WordIllustrations.buildCollection(vocabularyDatabase);
 window.vocabularyDatabase = vocabularyDatabase;
 
 // Merge Junior data if loaded via temp variable
@@ -263,6 +264,7 @@ function activateLearningSessionUI() {
 }
 
 function showLearningStartPrompt() {
+    window.WordIllustrations.resetPrevious();
     document.getElementById('exampleSenseTabs')?.remove();
     document.getElementById('cardsArea')?.classList.remove('has-merged-word');
     window.WordIllustrations?.clear();
@@ -372,6 +374,7 @@ function saveState() {
 // Restore last state
 function undoLastAction() {
     if (gameStateHistory.length === 0) return;
+    window.WordIllustrations.resetPrevious();
 
     const snapshot = gameStateHistory.pop();
     Object.assign(gameState, snapshot.scalars);
@@ -950,6 +953,7 @@ function parseCSV(text) {
 }
 
 function switchLevel(level) {
+    window.WordIllustrations.resetPrevious();
     gameState.currentLevel = level;
     invalidateLearningProgressSnapshot();
     // Keep the last-opened learning zone independent from cloud save timing.
@@ -980,7 +984,7 @@ function switchLevel(level) {
 }
 
 function isWordbookLevel(level) {
-    return level === 'selection1400' || level === 'selection1900' || level === 'sys_2000';
+    return level === 'selection1400' || level === 'selection1900' || level === 'sys_2000' || level === 'illustrated';
 }
 
 function updateWordbookSelectionUI() {
@@ -998,7 +1002,8 @@ const LEVEL_DISPLAY_LABELS = {
     exam1: '受験',
     selection1400: '単語帳',
     selection1900: '単語帳',
-    sys_2000: '単語帳'
+    sys_2000: '単語帳',
+    illustrated: 'イラスト'
 };
 
 function updateLevelCurrentButton() {
@@ -1632,7 +1637,8 @@ const WORD_LIST_LEVELS = [
     ['junior', '中学', 'A1'],
     ['basic', '基礎', 'A2'],
     ['daily', '標準', 'B1'],
-    ['exam1', '受験', 'B2']
+    ['exam1', '受験', 'B2'],
+    ['illustrated', 'イラスト', '名詞']
 ];
 
 const WORD_LIST_FILTERS = [
@@ -1961,6 +1967,7 @@ window.openWordFromList = function (level, key) {
     const word = findWordListItemByKey(safeLevel, decodedKey);
     if (!word) return;
     if (!ensureTrialAccess()) return;
+    window.WordIllustrations.resetPrevious();
     activateLearningSessionUI();
 
     if (gameState.currentLevel !== safeLevel) {
@@ -2053,6 +2060,11 @@ function getReviewQueueCandidatesAcrossLevels() {
         let selected = null;
         let selectedRank = Number.POSITIVE_INFINITY;
         entries.forEach(entry => {
+            // This curated book reviews only its own nouns, using shared history.
+            if (gameState.currentLevel === 'illustrated') {
+                if (entry.level === 'illustrated') { selected = entry; selectedRank = 0; }
+                return;
+            }
             const rank = activeRank.get(entry.level);
             if (rank === undefined || rank >= selectedRank) return;
             selected = entry;
@@ -3204,6 +3216,8 @@ function showNextWord(reviewSnapshot = null) {
     const word = words[0];
     gameState.currentWord = word;
 
+    window.WordIllustrations.refreshPrevious(word, getWordSourceLevel(word, gameState.currentLevel), vocabularyDatabase);
+
     // Track Last Shown (for next continuity check)
     gameState.lastShownWordKey = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
 
@@ -3237,6 +3251,7 @@ function showNextWord(reviewSnapshot = null) {
 // NEW: Function to show a SPECIFIC word (for Undo/Restore)
 function showWord(word) {
     window.WordIllustrations?.clear();
+    window.WordIllustrations.refreshPrevious(word, getWordSourceLevel(word, gameState.currentLevel), vocabularyDatabase);
     if (!word) return;
 
     // Reset Card State
@@ -3268,7 +3283,9 @@ function showNoWordsMessage() {
     }
 
     cardsArea.innerHTML = `<div class="no-words">${message}</div>`;
-    document.getElementById('exampleArea').style.display = 'none';
+    window.WordIllustrations.refreshPrevious(null);
+    document.getElementById('exampleArea').style.display = document.getElementById('previousIllustrationBtn').hidden ? 'none' : 'flex';
+    document.getElementById('exampleArea').classList.add('no-question');
 }
 
 function hideNoWordsMessage() {
@@ -3294,6 +3311,7 @@ function hideNoWordsMessage() {
         setupCardListeners();
     }
     document.getElementById('exampleArea').style.display = 'flex';
+    document.getElementById('exampleArea').classList.remove('no-question');
 }
 
 function setupCardListeners() {
@@ -3353,6 +3371,7 @@ function handleVocabCardClick() {
     // Save state for Undo
     saveState();
     // incrementDailyStats(); // Moved below to exclude "Unlearned -> Perfect" cases
+    window.WordIllustrations.rememberAnswer(currentWord, getWordSourceLevel(currentWord, gameState.currentLevel), vocabularyDatabase);
 
     const key = getWordKeySafe(currentWord, currentWord.__sourceLevel || gameState.currentLevel);
     let msg = "";
@@ -3409,6 +3428,7 @@ function handleMeaningCardClick(e) {
         // Save state for Undo
         saveState();
         checkDailyReset(); // Track interaction for Growth Pace
+        window.WordIllustrations.rememberAnswer(gameState.currentWord, getWordSourceLevel(gameState.currentWord, gameState.currentLevel), vocabularyDatabase);
 
         // Flip = Incorrect / Check
         card.classList.add('flipped');

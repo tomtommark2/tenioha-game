@@ -7,6 +7,8 @@ const indexFile = path.join(root, 'index.html');
 
 const VERSIONED_ASSETS = [
   'style.css',
+  'feedback.css',
+  'js/feedback.js',
   'data/vocabulary.js',
   'data/ipa_overrides.js',
   'data/announcements.js',

@@ -1,0 +1,152 @@
+const { test, expect } = require('@playwright/test');
+
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vocabGame_skipWelcome', 'true');
+    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+  });
+  await page.goto('/index.html');
+  await expect(page.locator('#vocabWord')).toHaveText('クリックしてスタート');
+});
+
+async function select(page, word) {
+  await page.evaluate(word => {
+    activateLearningSessionUI();
+    switchLevel('illustrated');
+    gameState.currentWord = vocabularyDatabase.illustrated.find(item => item.word === word);
+    showWord(gameState.currentWord);
+  }, word);
+}
+
+test('イラスト単語帳は登録済み名詞だけで元の学習キーを共有する', async ({ page }) => {
+  const result = await page.evaluate(() => {
+    const keys = new Set(['junior', 'basic', 'daily', 'exam1'].flatMap(level => vocabularyDatabase[level].map(word => getWordKey(word, level))));
+    return {
+      count: vocabularyDatabase.illustrated.length,
+      manifest: WORD_ILLUSTRATIONS.length,
+      unique: new Set(vocabularyDatabase.illustrated.map(word => getWordKey(word, 'illustrated'))).size,
+      valid: vocabularyDatabase.illustrated.every(word => word.pos === '名' && word.senses.length === 1 && keys.has(getWordKey(word, 'illustrated')) && WordIllustrations.find(word, 'illustrated', vocabularyDatabase)),
+    };
+  });
+  expect(result.count).toBe(result.manifest);
+  expect(result.unique).toBe(result.count);
+  expect(result.valid).toBe(true);
+  await select(page, 'apple');
+  const key = await page.evaluate(() => getWordKeySafe(gameState.currentWord));
+  await page.locator('#meaningCard').click();
+  expect(await page.evaluate(key => gameState.srsData[key].failCount, key)).toBe(1);
+  await page.evaluate(() => switchLevel('junior'));
+  expect(await page.evaluate(key => gameState.wordStates[key], key)).toBe('weak');
+});
+
+test('前の絵は正解後に閲覧でき、採点せず、同じ未回答語とUndoでは隠す', async ({ page }) => {
+  await select(page, 'apple');
+  await expect(page.locator('#previousIllustrationBtn')).toBeHidden();
+  await page.locator('#vocabCard').click();
+  await expect(page.locator('#previousIllustrationBtn')).toBeVisible();
+  const state = await page.evaluate(() => JSON.stringify(gameState));
+  await page.locator('#previousIllustrationBtn').click();
+  await expect(page.locator('#previousIllustrationWord')).toHaveText('apple');
+  await expect(page.locator('#previousIllustrationImage img')).toBeVisible();
+  expect(await page.evaluate(() => JSON.stringify(gameState))).toBe(state);
+  await page.getByRole('button', { name: '前の絵を閉じる', exact: true }).click();
+  await expect(page.locator('#previousIllustrationBtn')).toBeFocused();
+  await page.locator('#undoBtn').click();
+  await expect(page.locator('#previousIllustrationBtn')).toBeHidden();
+  await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
+  await page.evaluate(() => {
+    WordIllustrations.rememberAnswer(gameState.currentWord, 'illustrated', vocabularyDatabase);
+    showWord(gameState.currentWord);
+  });
+  await expect(page.locator('#previousIllustrationBtn')).toBeHidden();
+});
+
+test('前の絵は不正解の次問でも開き、未収録語の回答と再読込で消える', async ({ page }) => {
+  await select(page, 'apple');
+  await page.locator('#meaningCard').click();
+  await expect(page.locator('#previousIllustrationBtn')).toBeHidden();
+  await page.locator('#meaningCard').click();
+  await expect(page.locator('#previousIllustrationBtn')).toBeVisible();
+  await page.evaluate(() => {
+    gameState.currentWord = { word: 'unillustrated-test', pos: '名' };
+    WordIllustrations.rememberAnswer(gameState.currentWord, 'basic', vocabularyDatabase);
+    WordIllustrations.refreshPrevious(null);
+  });
+  await expect(page.locator('#previousIllustrationBtn')).toBeHidden();
+  await page.reload();
+  await expect(page.locator('#previousIllustrationBtn')).toBeHidden();
+});
+
+test('イラスト単語帳の復習は収録語だけを名詞表示で出す', async ({ page }) => {
+  const result = await page.evaluate(() => {
+    gameState.currentLevel = 'illustrated';
+    const illustrated = vocabularyDatabase.illustrated.find(word => word.word === 'back');
+    const other = vocabularyDatabase.basic.find(word => !WordIllustrations.find(word, 'basic', vocabularyDatabase));
+    const key = getWordKey(illustrated, 'illustrated');
+    const otherKey = getWordKey(other, 'basic');
+    gameState.wordStates = { [key]: 'weak', [otherKey]: 'weak' };
+    return getReviewQueueCandidatesAcrossLevels().map(item => ({ key: item.key, word: item.word.word, pos: item.word.pos, senses: item.word.senses.length }));
+  });
+  expect(result).toHaveLength(1);
+  expect(result[0]).toMatchObject({ word: 'back', pos: '名', senses: 1 });
+});
+
+test('イラスト画面は小さい画面でも閉じて学習に戻れる', async ({ page }, testInfo) => {
+  await page.evaluate(() => WordIllustrations.openWordbook());
+  await expect(page.locator('#illustratedWordbookModal')).toBeVisible();
+  await expect(page.locator('.illustrated-word-tile')).toHaveCount(100);
+  await expect.poll(() => page.locator('.illustrated-word-tile img').first().evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: testInfo.outputPath('illustrated-wordbook.png') });
+  await page.getByRole('button', { name: 'イラスト単語帳を閉じる', exact: true }).click();
+  await expect(page.locator('#illustratedWordbookModal')).toBeHidden();
+  await page.evaluate(() => WordIllustrations.openWordbook());
+  await page.locator('#illustratedWordbookModal').click({ position: { x: 1, y: 1 } });
+  await expect(page.locator('#illustratedWordbookModal')).toBeHidden();
+  await page.evaluate(() => WordIllustrations.openWordbook());
+  await expect(page.locator('#illustratedWordbookModal')).toBeVisible();
+  await page.evaluate(() => history.back());
+  await expect(page.locator('#illustratedWordbookModal')).toBeHidden();
+  await page.evaluate(() => WordIllustrations.openWordbook());
+  await page.getByRole('button', { name: 'apple：', exact: false }).click();
+  await expect(page.locator('#illustratedWordbookModal')).toBeHidden();
+  await expect(page.locator('#vocabWord')).toContainText('apple');
+  await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
+  await page.locator('#vocabCard').click();
+  await expect(page.locator('#previousIllustrationBtn')).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('previous-button.png') });
+  await page.locator('#previousIllustrationBtn').click();
+  await expect(page.locator('#previousIllustrationModal')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#previousIllustrationModal')).toBeHidden();
+  await expect(page.locator('#previousIllustrationBtn')).toBeFocused();
+  await page.evaluate(() => WordIllustrations.openWordbook());
+  await page.getByRole('button', { name: '学習する', exact: true }).click();
+  expect(await page.evaluate(() => gameState.currentLevel)).toBe('illustrated');
+  await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
+});
+
+test('前の絵と一覧は320pxでも収まり、最終回答後も絵を開ける', async ({ page }) => {
+  await select(page, 'apple');
+  await page.locator('#vocabCard').click();
+  for (const width of [320, 375, 390, 768, 1280]) {
+    await page.setViewportSize({ width, height: 850 });
+    const rect = await page.locator('#previousIllustrationBtn').boundingBox();
+    expect(rect.x).toBeGreaterThanOrEqual(0);
+    expect(rect.x + rect.width).toBeLessThanOrEqual(width);
+    expect(rect.height).toBeGreaterThanOrEqual(44);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+  await page.evaluate(() => showNoWordsMessage());
+  await page.locator('#previousIllustrationBtn').click();
+  await expect(page.locator('#previousIllustrationWord')).toHaveText('apple');
+  await page.keyboard.press('Escape');
+  await page.evaluate(() => WordIllustrations.openWordbook());
+  await page.setViewportSize({ width: 320, height: 650 });
+  const images = await page.locator('.illustrated-word-tile img').evaluateAll(async images => {
+    await Promise.all(images.map(image => { image.loading = 'eager'; return image.decode(); }));
+    return images.every(image => image.naturalWidth > 0);
+  });
+  expect(images).toBe(true);
+  expect(await page.locator('#illustratedWordbookGallery').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);
+});

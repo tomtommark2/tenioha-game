@@ -16,6 +16,8 @@ const DISMISSIBLE_MODAL_IDS = Object.freeze([
     'offlineAlertModal',
     'announcementModal',
     'wordbookModal',
+    'previousIllustrationModal',
+    'illustratedWordbookModal',
     'leaderboardModal',
     'learningLogModal',
     'purchaseModal',

@@ -11,3 +11,9 @@
 .feedback-status-event{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px;color:#686079;padding:4px 0}
 .feedback-thread-editor{margin-top:12px}.feedback-thread-editor summary{cursor:pointer;color:#59489c;min-height:44px;display:flex;align-items:center;font-size:14px;font-weight:700}.feedback-thread-editor textarea{margin-bottom:6px}.feedback-thread-editor small{display:block}.feedback-thread-editor button{margin-top:8px}
 .feedback-status-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.feedback-status-tools select{font:16px system-ui;min-height:44px;border:1px solid #d8d5ec;border-radius:8px;background:white;padding:6px;color:#51469e}
+.feedback-unread-dot{display:inline-block;width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#f04457;box-shadow:0 0 0 2px #fff;margin-left:auto}
+.feedback-unread-dot[hidden]{display:none!important}
+.feedback-menu-dot{position:absolute;top:7px;right:7px}
+#topActionMenuBtn{position:relative}
+#feedbackOpenBtn{position:relative}
+#feedbackUnreadDot{position:absolute;top:14px;right:14px}

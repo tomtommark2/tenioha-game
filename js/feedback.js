@@ -9,6 +9,45 @@
     let busy = false;
     const drafts = new Map();
     const statusDrafts = new Map();
+    const SEEN_KEY = 'vocabGame_feedbackSeen_v1';
+    const CHECK_INTERVAL = 5 * 60 * 1000;
+    let seen = {};
+    let latestItems = [];
+    let checking = false;
+    let lastCheck = 0;
+    let feedRevision = 0;
+    try {
+        const saved = JSON.parse(localStorage.getItem(SEEN_KEY) || '{}');
+        if (saved && typeof saved === 'object' && !Array.isArray(saved)) seen = saved;
+    } catch { /* Storage may be unavailable; retain session-only read state. */ }
+    const visible = () => modal.style.display === 'flex' && document.visibilityState === 'visible';
+    const signature = post => JSON.stringify([post.createdAt, post.repliedAt, post.status,
+        (post.thread || []).map(entry => [entry.id, entry.role, entry.createdAt, entry.status])]);
+    function updateUnread(items, markRead = false) {
+        latestItems = items.filter(post => !post.hidden);
+        if (markRead) {
+            latestItems.forEach(post => { seen[post.id] = signature(post); });
+            // Retain only bounded identifiers/revisions, never post text or identity data.
+            seen = Object.fromEntries(Object.entries(seen).slice(-200));
+            try { localStorage.setItem(SEEN_KEY, JSON.stringify(seen)); } catch { /* Session-only fallback. */ }
+        }
+        const unread = latestItems.some(post => seen[post.id] !== signature(post));
+        document.getElementById('feedbackUnreadDot').hidden = !unread;
+        document.getElementById('feedbackMenuDot').hidden = !unread;
+        document.getElementById('feedbackOpenBtn').setAttribute('aria-label', unread ? 'ひとこと送る：新しい投稿・返信があります' : 'ひとこと送る');
+        document.getElementById('topActionMenuBtn').setAttribute('aria-label', unread ? '管理メニュー：ひとことに新着があります' : '管理メニュー');
+    }
+    async function checkUnread() {
+        if (checking || visible() || document.visibilityState !== 'visible' || Date.now() - lastCheck < 60000) return;
+        checking = true;
+        lastCheck = Date.now();
+        const revision = feedRevision;
+        try {
+            const result = await api('list', {}, false);
+            if (revision === feedRevision) updateUnread(result.items || []);
+        } catch { /* A failed background check must not clear the badge or show a form error. */ }
+        finally { checking = false; }
+    }
     const statuses = { received: '受付済み', reviewing: '確認中', planned: '対応予定', done: '対応済み' };
     const statusLabel = status => statuses[status] || statuses.received;
     const dateLabel = time => time ? new Date(time).toLocaleString('ja-JP', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
@@ -17,10 +56,10 @@
         document.getElementById('feedbackLogin').hidden = registered();
         form.hidden = !registered();
     }
-    async function api(action, data = {}) {
+    async function api(action, data = {}, authenticated = true) {
         const user = window.firebaseAuth?.currentUser;
         const headers = { 'Content-Type': 'application/json' };
-        if (user && !user.isAnonymous) headers.Authorization = `Bearer ${await user.getIdToken()}`;
+        if (authenticated && user && !user.isAnonymous) headers.Authorization = `Bearer ${await user.getIdToken()}`;
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), 15000);
         try {
@@ -135,12 +174,15 @@
     }
     async function refresh(showStatus = true) {
         const generation = ++loading;
+        feedRevision++;
         authUI();
         if (showStatus) message.textContent = '読み込み中…';
         try {
             const result = await api('list');
             if (generation !== loading) return;
+            feedRevision++;
             render(result.items || [], result.isAdmin === true);
+            updateUnread(result.items || [], visible());
             if (showStatus) message.textContent = '';
         } catch (error) { if (generation === loading) message.textContent = error.message; }
     }
@@ -167,4 +209,18 @@
         if (!text.value.trim()) { message.textContent = 'ひとこと入力してください。'; text.focus(); return; }
         if (await mutate('create', { text: text.value, nickname: nickname.value.trim() || '学習者' })) text.value = '';
     });
+    document.getElementById('topActionMenuBtn').addEventListener('click', checkUnread);
+    document.addEventListener('visibilitychange', checkUnread);
+    window.addEventListener('focus', checkUnread);
+    window.addEventListener('storage', event => {
+        if (event.key !== SEEN_KEY) return;
+        try {
+            const saved = JSON.parse(event.newValue || '{}');
+            if (!saved || typeof saved !== 'object' || Array.isArray(saved)) return;
+            seen = saved;
+        } catch { return; }
+        updateUnread(latestItems);
+    });
+    setTimeout(checkUnread, 1500);
+    setInterval(checkUnread, CHECK_INTERVAL);
 })();

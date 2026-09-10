@@ -19,6 +19,8 @@ const expected = m[1];
 
 const targets = [
   'style.css',
+  'feedback.css',
+  'js/feedback.js',
   'data/vocabulary.js',
   'data/ipa_overrides.js',
   'data/announcements.js',

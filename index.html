@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0909.2335">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0909.2335" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0909.2335" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0909.2335" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0910.1442">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0910.1442" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0910.1442" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0910.1442" as="script">
 </head>
 
 <body>
@@ -227,6 +227,7 @@
                 aria-haspopup="dialog" aria-controls="helpModal"
                 onclick="document.getElementById('helpModal').style.display='flex'">
                 <span class="vertical-dots-icon" aria-hidden="true"></span>
+                <span id="feedbackMenuDot" class="feedback-unread-dot feedback-menu-dot" aria-hidden="true" hidden></span>
             </button>
         </div>
 
@@ -567,15 +568,18 @@
                         <div class="example-label">例文</div>
                         <div class="example-sentence" id="exampleSentence">開始すると例文が表示されます</div>
                     </div>
-                    <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled><span class="undo-icon" aria-hidden="true"></span>戻る</button>
+                    <div class="answer-tools">
+                        <button type="button" class="undo-btn" id="previousIllustrationBtn" onclick="WordIllustrations.openPrevious()" aria-label="前に回答した単語の絵を見る" hidden>前の絵</button>
+                        <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled><span class="undo-icon" aria-hidden="true"></span>戻る</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0909.2335"></script>
-<script src="data/ipa_overrides.js?v=2026.0909.2335"></script>
+    <script src="data/vocabulary.js?v=2026.0910.1442"></script>
+<script src="data/ipa_overrides.js?v=2026.0910.1442"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -660,9 +664,10 @@
                     </span>
                 </button>
 
-                <button type="button" class="help-list-item help-command-item" onclick="openFeedback()">
+                <button type="button" id="feedbackOpenBtn" class="help-list-item help-command-item" onclick="openFeedback()">
                     <span class="help-list-icon app-picto icon-mail" aria-hidden="true"></span>
                     <span class="help-list-copy"><span class="help-list-title">ひとこと送る</span><span class="help-list-desc">みんなの改善案と運営の返信を見る</span></span>
+                    <span id="feedbackUnreadDot" class="feedback-unread-dot" aria-hidden="true" hidden></span>
                 </button>
                 <button type="button" class="help-list-item help-command-item" onclick="location.href='mailto:tenioha.eng@gmail.com'">
                     <span class="help-list-icon app-picto icon-mail" aria-hidden="true"></span>
@@ -777,6 +782,10 @@
             </div>
 
             <div class="wordbook-list">
+                <button class="wordbook-item-btn wordbook-card" data-level="illustrated" onclick="WordIllustrations.openWordbook()">
+                    <span class="wordbook-icon" aria-hidden="true">🖼️</span>
+                    <span class="wordbook-copy"><strong>イラスト単語帳</strong><small>絵のある名詞をまとめて学習</small></span>
+                </button>
                 <button class="wordbook-item-btn wordbook-card" data-level="selection1900"
                     onclick="if(window.selectWordbook){selectWordbook('selection1900')}else{alert('システム読み込み中です。少々お待ち下さい。')}">
                     <span class="wordbook-icon">🦖</span>
@@ -809,6 +818,27 @@
             <div class="wordbook-note">
                 中学・基礎・標準・受験は上部のレベルボタンから選択できます。
             </div>
+        </div>
+    </div>
+
+    <div id="previousIllustrationModal" class="modal-overlay wordbook-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="previousIllustrationTitle">
+        <div class="modal-content illustration-modal-content">
+            <button type="button" class="modal-close-btn" onclick="WordIllustrations.close('previousIllustrationModal')" aria-label="前の絵を閉じる">×</button>
+            <h2 id="previousIllustrationTitle">前の絵</h2>
+            <div id="previousIllustrationImage"></div>
+            <h3 id="previousIllustrationWord"></h3>
+            <p id="previousIllustrationMeaning"></p>
+        </div>
+    </div>
+
+    <div id="illustratedWordbookModal" class="modal-overlay wordbook-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="illustratedWordbookTitle">
+        <div class="modal-content illustration-modal-content illustrated-wordbook-content">
+            <button type="button" class="modal-close-btn" onclick="WordIllustrations.close('illustratedWordbookModal')" aria-label="イラスト単語帳を閉じる">×</button>
+            <h2 id="illustratedWordbookTitle">イラスト単語帳</h2>
+            <p><span id="illustratedWordbookCount"></span> · 学習記録は元の単語と共通</p>
+            <button type="button" class="illustrated-start-btn" onclick="WordIllustrations.startWordbook()">学習する</button>
+            <p class="illustrated-wordbook-hint">語を選んで学習できます。出題中の絵は回答後に表示。</p>
+            <div id="illustratedWordbookGallery" class="illustrated-wordbook-gallery"></div>
         </div>
     </div>
 
@@ -1057,7 +1087,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.0905.0948">
+    <link rel="stylesheet" href="feedback.css?v=2026.0910.1442">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1076,19 +1106,19 @@
             <p class="feedback-note">購入・アカウントのご相談は、従来のお問い合わせメールをご利用ください。</p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.0909.2335"></script>
-    <script src="js/update_manager.js?v=2026.0909.2335"></script>
-    <script src="js/config.js?v=2026.0909.2335"></script>
-    <script src="data/announcements.js?v=2026.0909.2335"></script>
-    <script src="js/utils.js?v=2026.0909.2335"></script>
-    <script src="data/word-illustrations.js?v=2026.0909.2335"></script>
-    <script src="js/word_illustrations.js?v=2026.0909.2335"></script>
+    <script src="js/version.js?v=2026.0910.1442"></script>
+    <script src="js/update_manager.js?v=2026.0910.1442"></script>
+    <script src="js/config.js?v=2026.0910.1442"></script>
+    <script src="data/announcements.js?v=2026.0910.1442"></script>
+    <script src="js/utils.js?v=2026.0910.1442"></script>
+    <script src="data/word-illustrations.js?v=2026.0910.1442"></script>
+    <script src="js/word_illustrations.js?v=2026.0910.1442"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.0909.2335"></script>
-    <script src="js/game_logic.js?v=2026.0909.2335"></script>
-    <script src="js/ui_manager.js?v=2026.0909.2335"></script>
-    <script src="js/feedback.js?v=2026.0905.0948"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0909.2335"></script>
+    <script src="js/word_grouping.js?v=2026.0910.1442"></script>
+    <script src="js/game_logic.js?v=2026.0910.1442"></script>
+    <script src="js/ui_manager.js?v=2026.0910.1442"></script>
+    <script src="js/feedback.js?v=2026.0910.1442"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0910.1442"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
