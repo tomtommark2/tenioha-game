@@ -135,6 +135,8 @@
     }
 
     function showEntry(entry) {
+        // Keep an already displayed illustration mounted when revealing its meaning.
+        if (entry && displayed === entry) return;
         clear();
         const slot = document.getElementById('wordIllustrationSlot');
         if (!entry || !slot) return;

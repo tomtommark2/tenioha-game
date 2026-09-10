@@ -158,6 +158,37 @@ test('前の絵と一覧は320pxでも収まり、最終回答後も絵を開け
   expect(await page.locator('#illustratedWordbookGallery').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);
 });
 
+test('イラスト画面は小さい画面でも表示済みの絵を意味カード操作で消したり作り直したりしない', async ({ page }) => {
+  await select(page, 'apple');
+  await page.locator('#currentIllustrationBtn').click();
+  await expect(page.locator('#wordIllustration')).toBeVisible();
+  await page.evaluate(() => {
+    window.illustrationBefore = document.getElementById('wordIllustration');
+    window.illustrationMutations = [];
+    window.illustrationObserver = new MutationObserver(records => {
+      window.illustrationMutations.push(...records.map(record => record.type));
+    });
+    window.illustrationObserver.observe(document.getElementById('wordIllustrationSlot'), {
+      childList: true, attributes: true, subtree: true
+    });
+  });
+  await page.locator('#currentIllustrationBtn').click();
+  await page.locator('#meaningCard .card-front').click();
+  await expect(page.locator('#meaningCard .card-back')).toBeVisible();
+  await expect(page.locator('#wordIllustration')).toBeVisible();
+  const result = await page.evaluate(() => {
+    window.illustrationObserver.disconnect();
+    return {
+      sameImage: window.illustrationBefore === document.getElementById('wordIllustration'),
+      mutations: window.illustrationMutations,
+      answers: gameState.srsData[getWordKeySafe(gameState.currentWord)].recentAnswers
+    };
+  });
+  expect(result).toEqual({ sameImage: true, mutations: [], answers: [false] });
+  await page.locator('#meaningCard .card-back').click();
+  await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
+});
+
 test('イラスト画面は小さい画面でも回答前に表示・拡大・切替でき、自己申告の採点とUndoを維持する', async ({ page }, testInfo) => {
   await select(page, 'apple');
   const key = await page.evaluate(() => getWordKeySafe(gameState.currentWord));

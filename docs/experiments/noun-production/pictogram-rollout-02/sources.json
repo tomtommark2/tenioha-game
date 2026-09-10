@@ -1,0 +1,187 @@
+{
+  "status": "local-rollout",
+  "date": "2026-09-10",
+  "policy": "boat〜burgerの20画像を新版へ切替。元画像・学習キーは保持。配信画像は可逆WebP（寸法・可視RGBAを変更しない）。",
+  "entries": [
+    {
+      "word": "boat",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/boat.png",
+      "asset": "assets/word-illustrations/boat-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/boat-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/boat-v1.webp"
+    },
+    {
+      "word": "body",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/body.png",
+      "asset": "assets/word-illustrations/body-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/body-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/body-v1.webp"
+    },
+    {
+      "word": "bone",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/bone.png",
+      "asset": "assets/word-illustrations/bone-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bone-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bone-v1.webp"
+    },
+    {
+      "word": "book",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/book.png",
+      "asset": "assets/word-illustrations/book-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/book-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/book-v2.webp"
+    },
+    {
+      "word": "bookstore",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/bookstore.png",
+      "asset": "assets/word-illustrations/bookstore-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bookstore-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bookstore-v1.webp"
+    },
+    {
+      "word": "bottle",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/bottle.png",
+      "asset": "assets/word-illustrations/bottle-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bottle-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bottle-v1.webp"
+    },
+    {
+      "word": "bottom",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/bottom.png",
+      "asset": "assets/word-illustrations/bottom-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bottom-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bottom-v1.webp"
+    },
+    {
+      "word": "bowl",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/bowl.png",
+      "asset": "assets/word-illustrations/bowl-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bowl-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bowl-v1.webp"
+    },
+    {
+      "word": "box",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/box.png",
+      "asset": "assets/word-illustrations/box-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/box-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/box-v1.webp"
+    },
+    {
+      "word": "boy",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/boy.png",
+      "asset": "assets/word-illustrations/boy-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/boy-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/boy-v1.webp"
+    },
+    {
+      "word": "boyfriend",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/boyfriend.png",
+      "asset": "assets/word-illustrations/boyfriend-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/boyfriend-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/boyfriend-v1.webp"
+    },
+    {
+      "word": "brain",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/brain.png",
+      "asset": "assets/word-illustrations/brain-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/brain-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/brain-v1.webp"
+    },
+    {
+      "word": "bread",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/bread.png",
+      "asset": "assets/word-illustrations/bread-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bread-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bread-v1.webp"
+    },
+    {
+      "word": "breakfast",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/breakfast.png",
+      "asset": "assets/word-illustrations/breakfast-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/breakfast-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/breakfast-v1.webp"
+    },
+    {
+      "word": "bridge",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/bridge.png",
+      "asset": "assets/word-illustrations/bridge-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bridge-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bridge-v1.webp"
+    },
+    {
+      "word": "brother",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/brother-v3.png",
+      "asset": "assets/word-illustrations/brother-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/brother-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/brother-v1.webp"
+    },
+    {
+      "word": "brush",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/brush.png",
+      "asset": "assets/word-illustrations/brush-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/brush-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/brush-v1.webp"
+    },
+    {
+      "word": "bucket",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/bucket.png",
+      "asset": "assets/word-illustrations/bucket-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bucket-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bucket-v1.webp"
+    },
+    {
+      "word": "building",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/building.png",
+      "asset": "assets/word-illustrations/building-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/building-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/building-v1.webp"
+    },
+    {
+      "word": "burger",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-a1-004-2026-09-10/burger.png",
+      "asset": "assets/word-illustrations/burger-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/burger-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/burger-v1.webp"
+    }
+  ]
+}

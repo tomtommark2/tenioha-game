@@ -1,0 +1,275 @@
+{
+  "encoding": "lossless WebP, original dimensions, unchanged visible RGBA",
+  "records": [
+    {
+      "source": "assets/word-illustrations/bus-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bus-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 498147,
+      "deliveryBytes": 323338,
+      "transparentPixels": 1038221,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/business-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/business-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 668504,
+      "deliveryBytes": 430840,
+      "transparentPixels": 883798,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/butter-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/butter-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 452514,
+      "deliveryBytes": 289872,
+      "transparentPixels": 1094230,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/butterfly-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/butterfly-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 647490,
+      "deliveryBytes": 412970,
+      "transparentPixels": 908921,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/button-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/button-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 675134,
+      "deliveryBytes": 427300,
+      "transparentPixels": 854940,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/bye-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bye-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 581672,
+      "deliveryBytes": 386778,
+      "transparentPixels": 1086333,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/cafe-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cafe-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 740462,
+      "deliveryBytes": 494352,
+      "transparentPixels": 755002,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/cake-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cake-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 666825,
+      "deliveryBytes": 425596,
+      "transparentPixels": 816258,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/call-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/call-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 673889,
+      "deliveryBytes": 425538,
+      "transparentPixels": 882159,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/camera-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/camera-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 596368,
+      "deliveryBytes": 377096,
+      "transparentPixels": 830556,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/camp-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/camp-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 461047,
+      "deliveryBytes": 290004,
+      "transparentPixels": 1131323,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/candy-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/candy-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 578781,
+      "deliveryBytes": 361156,
+      "transparentPixels": 997836,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/cap-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cap-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 584087,
+      "deliveryBytes": 363260,
+      "transparentPixels": 922914,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/car-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/car-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 562682,
+      "deliveryBytes": 356204,
+      "transparentPixels": 1002973,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/card-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/card-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 619544,
+      "deliveryBytes": 397904,
+      "transparentPixels": 810858,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/care-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/care-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 797368,
+      "deliveryBytes": 541794,
+      "transparentPixels": 818042,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/cartoon-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cartoon-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 808257,
+      "deliveryBytes": 537236,
+      "transparentPixels": 686537,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/barrel-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/barrel-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 784676,
+      "deliveryBytes": 500880,
+      "transparentPixels": 694635,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/chimney-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/chimney-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 495696,
+      "deliveryBytes": 311672,
+      "transparentPixels": 1095129,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/cliff-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cliff-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 724451,
+      "deliveryBytes": 486390,
+      "transparentPixels": 792665,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/creek-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/creek-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 573828,
+      "deliveryBytes": 371968,
+      "transparentPixels": 985028,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/debris-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/debris-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 519981,
+      "deliveryBytes": 340898,
+      "transparentPixels": 1172808,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/harbor-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/harbor-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 577471,
+      "deliveryBytes": 371660,
+      "transparentPixels": 1064122,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/hedge-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/hedge-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 425108,
+      "deliveryBytes": 274218,
+      "transparentPixels": 1132973,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/reef-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/reef-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 640094,
+      "deliveryBytes": 434160,
+      "transparentPixels": 864519,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/ridge-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/ridge-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 391649,
+      "deliveryBytes": 235426,
+      "transparentPixels": 1225466,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/shelter-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/shelter-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 635094,
+      "deliveryBytes": 406850,
+      "transparentPixels": 887882,
+      "visiblePixelsIdentical": true
+    }
+  ]
+}

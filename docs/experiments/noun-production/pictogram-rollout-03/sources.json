@@ -1,0 +1,250 @@
+{
+  "status": "local-rollout-not-deployed",
+  "date": "2026-09-10",
+  "policy": "残り28語・27画像の新版。元画像・学習キーを保持。配信は寸法・可視RGBA不変の可逆WebP。未公開。",
+  "entries": [
+    {
+      "word": "bus",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/bus.png",
+      "asset": "assets/word-illustrations/bus-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bus-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bus-v1.webp"
+    },
+    {
+      "word": "business",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/business.png",
+      "asset": "assets/word-illustrations/business-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/business-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/business-v1.webp"
+    },
+    {
+      "word": "butter",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/butter.png",
+      "asset": "assets/word-illustrations/butter-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/butter-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/butter-v1.webp"
+    },
+    {
+      "word": "butterfly",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/butterfly.png",
+      "asset": "assets/word-illustrations/butterfly-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/butterfly-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/butterfly-v1.webp"
+    },
+    {
+      "word": "button",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/button.png",
+      "asset": "assets/word-illustrations/button-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/button-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/button-v1.webp"
+    },
+    {
+      "word": "bye",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/bye.png",
+      "asset": "assets/word-illustrations/bye-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/bye-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/bye-v1.webp"
+    },
+    {
+      "word": "cafe",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/cafe.png",
+      "asset": "assets/word-illustrations/cafe-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cafe-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/cafe-v1.webp"
+    },
+    {
+      "word": "cake",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/cake.png",
+      "asset": "assets/word-illustrations/cake-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cake-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/cake-v1.webp"
+    },
+    {
+      "word": "call",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/call.png",
+      "asset": "assets/word-illustrations/call-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/call-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/call-v1.webp"
+    },
+    {
+      "word": "camera",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/camera-v4.png",
+      "asset": "assets/word-illustrations/camera-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/camera-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/camera-v1.webp"
+    },
+    {
+      "word": "camp",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/camp.png",
+      "asset": "assets/word-illustrations/camp-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/camp-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/camp-v1.webp"
+    },
+    {
+      "word": "candy",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/candy.png",
+      "asset": "assets/word-illustrations/candy-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/candy-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/candy-v1.webp"
+    },
+    {
+      "word": "cap",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/cap.png",
+      "asset": "assets/word-illustrations/cap-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cap-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/cap-v1.webp"
+    },
+    {
+      "word": "car",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/car.png",
+      "asset": "assets/word-illustrations/car-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/car-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/car-v1.webp"
+    },
+    {
+      "word": "card",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/card.png",
+      "asset": "assets/word-illustrations/card-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/card-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/card-v1.webp"
+    },
+    {
+      "word": "care",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/care.png",
+      "asset": "assets/word-illustrations/care-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/care-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/care-v1.webp"
+    },
+    {
+      "word": "cartoon",
+      "level": "junior",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/cartoon.png",
+      "asset": "assets/word-illustrations/cartoon-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cartoon-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/cartoon-v1.webp"
+    },
+    {
+      "word": "barrel",
+      "level": "daily",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/barrel.png",
+      "asset": "assets/word-illustrations/barrel-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/barrel-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/barrel-v1.webp"
+    },
+    {
+      "word": "chimney",
+      "level": "exam1",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/chimney.png",
+      "asset": "assets/word-illustrations/chimney-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/chimney-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/chimney-v1.webp"
+    },
+    {
+      "word": "cliff",
+      "level": "daily",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/cliff.png",
+      "asset": "assets/word-illustrations/cliff-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cliff-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/cliff-v1.webp"
+    },
+    {
+      "word": "creek",
+      "level": "exam1",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/creek.png",
+      "asset": "assets/word-illustrations/creek-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/creek-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/creek-v1.webp"
+    },
+    {
+      "word": "debris",
+      "level": "daily",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/debris.png",
+      "asset": "assets/word-illustrations/debris-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/debris-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/debris-v1.webp"
+    },
+    {
+      "word": "harbor",
+      "level": "daily",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/harbor.png",
+      "asset": "assets/word-illustrations/harbor-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/harbor-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/harbor-v1.webp"
+    },
+    {
+      "word": "hedge",
+      "level": "exam1",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/hedge.png",
+      "asset": "assets/word-illustrations/hedge-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/hedge-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/hedge-v1.webp"
+    },
+    {
+      "word": "reef",
+      "level": "daily",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/reef.png",
+      "asset": "assets/word-illustrations/reef-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/reef-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/reef-v1.webp"
+    },
+    {
+      "word": "ridge",
+      "level": "exam1",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/ridge.png",
+      "asset": "assets/word-illustrations/ridge-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/ridge-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/ridge-v1.webp"
+    },
+    {
+      "word": "shelter",
+      "level": "daily",
+      "pos": "名",
+      "source": "docs/experiments/pictogram-005-2026-09-10/shelter.png",
+      "asset": "assets/word-illustrations/shelter-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/shelter-pictogram-v1.webp",
+      "oldAsset": "assets/word-illustrations/shelter-v1.webp"
+    }
+  ]
+}
