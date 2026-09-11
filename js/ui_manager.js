@@ -496,7 +496,9 @@ function renderAnnouncements({ featuredOnly = false } = {}) {
                 </div>
             </details>`;
         }
-        const visualHtml = featuredOnly && item.image
+        const visualHtml = featuredOnly && Array.isArray(item.images)
+            ? `<div class="announcement-illustration-preview">${item.images.map(image => `<img src="${escapeAnnouncementText(image.src)}" alt="${escapeAnnouncementText(image.alt)}" width="120" height="120">`).join('')}</div>`
+            : featuredOnly && item.image
             ? `<img class="announcement-feature-visual" src="${escapeAnnouncementText(item.image)}" alt="${escapeAnnouncementText(item.imageAlt || '')}">`
             : '';
         return `
@@ -520,7 +522,7 @@ function setAnnouncementModalMode(featuredAutoOpen) {
     const featured = getFeaturedAnnouncement();
 
     document.getElementById('announcementModal')?.classList.toggle('is-featured-mode', featuredAutoOpen);
-    if (heading) heading.textContent = featuredAutoOpen ? '大型アップデート' : 'お知らせ';
+    if (heading) heading.textContent = featuredAutoOpen ? (featured?.version || '新機能のお知らせ') : 'お知らせ';
     if (actions) actions.style.display = featuredAutoOpen ? 'flex' : 'none';
     if (readTools) readTools.hidden = featuredAutoOpen;
     if (actionButton && featured) {
@@ -610,7 +612,11 @@ window.openAnnouncementFeature = function () {
     const featured = getFeaturedAnnouncement();
     if (featured?.id) markAnnouncementRead(featured.id);
     window.closeAnnouncementModal();
-    if (typeof window.openLeaderboard === 'function') window.openLeaderboard();
+    if (featured?.action === 'illustrated-wordbook') {
+        window.WordIllustrations?.openWordbook();
+    } else if (typeof window.openLeaderboard === 'function') {
+        window.openLeaderboard();
+    }
 };
 
 // --- PROFILE MODAL ---

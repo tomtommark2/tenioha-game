@@ -16,10 +16,10 @@ test('新版97枚を全100語へ割り当て、元の画像を保持する', () 
   expect(secondEncoding.records).toHaveLength(20);
   expect(thirdSources.entries).toHaveLength(27);
   expect(thirdEncoding.records).toHaveLength(27);
-  const updated = illustrations.filter(entry => entry.src.endsWith('-pictogram-v1.webp'));
+  const rolloutAssets = new Set([...sources.entries, ...secondSources.entries, ...thirdSources.entries].map(entry => entry.delivery));
+  const updated = illustrations.filter(entry => rolloutAssets.has(entry.src));
   expect(updated).toHaveLength(100);
   expect(new Set(updated.map(entry => entry.src)).size).toBe(97);
-  expect(illustrations.length - updated.length).toBe(0);
   expect(illustrations.find(entry => entry.word === 'café').src).toBe(illustrations.find(entry => entry.word === 'cafe').src);
   for (const source of [...sources.entries, ...secondSources.entries, ...thirdSources.entries]) {
     const entry = illustrations.find(item => item.word === source.word && item.level === source.level && item.pos === source.pos);

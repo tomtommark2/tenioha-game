@@ -97,7 +97,7 @@ test('イラスト単語帳の復習は収録語だけを名詞表示で出す',
 test('イラスト画面は小さい画面でも閉じて学習に戻れる', async ({ page }, testInfo) => {
   await page.evaluate(() => WordIllustrations.openWordbook());
   await expect(page.locator('#illustratedWordbookModal')).toBeVisible();
-  await expect(page.locator('.illustrated-word-tile')).toHaveCount(100);
+  await expect(page.locator('.illustrated-word-tile')).toHaveCount(151);
   await expect.poll(() => page.locator('.illustrated-word-tile img').first().evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('illustrated-wordbook.png') });
@@ -191,6 +191,11 @@ test('イラスト画面は小さい画面でも表示済みの絵を意味カ�
 
 test('イラスト画面は小さい画面でも回答前に表示・拡大・切替でき、自己申告の採点とUndoを維持する', async ({ page }, testInfo) => {
   await select(page, 'apple');
+  const buttonStyle = await page.locator('#currentIllustrationBtn').evaluate(button => {
+    const style = getComputedStyle(button);
+    return { background: style.backgroundColor, color: style.color, weight: style.fontWeight };
+  });
+  expect(buttonStyle).toEqual({ background: 'rgb(243, 240, 251)', color: 'rgb(101, 85, 143)', weight: '600' });
   const key = await page.evaluate(() => getWordKeySafe(gameState.currentWord));
   const state = await page.evaluate(() => JSON.stringify(gameState));
   await page.locator('#currentIllustrationBtn').focus();
@@ -207,11 +212,13 @@ test('イラスト画面は小さい画面でも回答前に表示・拡大・�
     const geometry = await page.locator('#currentIllustrationBtn').evaluate(button => {
       const rect = button.getBoundingClientRect();
       const label = button.parentElement.querySelector('.card-label').getBoundingClientRect();
-      return { width: rect.width, height: rect.height, overlap: rect.left < label.right && rect.right > label.left && rect.top < label.bottom && rect.bottom > label.top };
+      const card = button.parentElement.getBoundingClientRect();
+      return { width: rect.width, height: rect.height, labelCenterOffset: Math.abs((rect.top + rect.bottom - label.top - label.bottom) / 2), overlap: rect.left < label.right && rect.right > label.left && rect.top < label.bottom && rect.bottom > label.top };
     });
     expect(geometry.width).toBeGreaterThanOrEqual(44);
     expect(geometry.height).toBeGreaterThanOrEqual(44);
     expect(geometry.overlap).toBe(false);
+    expect(geometry.labelCenterOffset).toBeLessThanOrEqual(1);
     await page.screenshot({ path: testInfo.outputPath(`hint-${width}.png`) });
   }
   await page.locator('#vocabCard').click();

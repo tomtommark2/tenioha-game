@@ -1,6 +1,39 @@
 (function (global) {
     global.APP_ANNOUNCEMENTS = [
         {
+            id: "2026-09-11-illustrated-wordbook",
+            date: "2026-09-11",
+            version: "新しい単語帳",
+            title: "イラスト単語帳ができました！",
+            summary: "イラストのある名詞だけを集めた単語帳です。絵と一緒に意味を覚えられます。",
+            images: [
+                { src: "assets/word-illustrations/apple-pictogram-v1.webp", alt: "りんごのイラスト" },
+                { src: "assets/word-illustrations/bicycle-pictogram-v1.webp", alt: "自転車のイラスト" },
+                { src: "assets/word-illustrations/cat-pictogram-v1.webp", alt: "猫のイラスト" }
+            ],
+            featuredBody: [
+                "イラストのある名詞だけを、ひとつの単語帳に。",
+                "絵の一覧から気になる単語を選んだり、まとめて学習したりできます。",
+                "学習記録は元の単語と共通です。"
+            ],
+            body: [
+                "イラスト付きの名詞をまとめた「イラスト単語帳」を追加しました。絵と意味を結びつけながら学習できます。",
+                "単語帳の一覧には絵・英単語・意味が並びます。イラストは順次追加していきます。"
+            ],
+            usage: [
+                "「単語帳から選ぶ」→「イラスト単語帳」で開けます。",
+                "一覧で気になる単語を選ぶと、その単語から学習できます。「学習する」ボタンでまとめて学習することもできます。",
+                "出題中の絵は回答後に表示されます。回答前に見たいときは「イラスト」ボタンで表示でき、表示した絵を押すと拡大できます。"
+            ],
+            impact: [
+                "学習記録は元の単語と共通です。イラスト単語帳を開いても、これまでの学習履歴や復習ポイントはリセットされません。"
+            ],
+            featured: true,
+            autoOpenOnce: true,
+            action: "illustrated-wordbook",
+            actionLabel: "イラスト単語帳を開く"
+        },
+        {
             id: "2026-09-09-word-card-update",
             date: "2026-09-09",
             version: "アップデート",
@@ -62,8 +95,6 @@
                 "苦手単語を復習してポイントを獲得し、週間ランキングを競えるようになりました。",
                 "6種類のアバターから、自分のプロフィールを設定できます。"
             ],
-            featured: true,
-            autoOpenOnce: true,
             actionLabel: "ランキングを見る"
         },
         {

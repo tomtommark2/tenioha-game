@@ -8,7 +8,7 @@ test('復習だけの使い方は通常のお知らせに表示し、学習設�
     if (!localStorage.getItem('vocabGame_lastReadAnnouncementId')) {
       localStorage.setItem('vocabGame_lastReadAnnouncementId', '2026-07-17-review-ranking');
     }
-    localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-07-17-review-ranking');
+    localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-09-11-illustrated-wordbook');
   });
   await page.goto('/index.html');
   await expect(page.locator('#announcementUnreadDot')).toBeVisible();
@@ -24,7 +24,7 @@ test('復習だけの使い方は通常のお知らせに表示し、学習設�
   await expect(first).toContainText('次回も引き継がれます');
   await expect(first).toContainText('「新規＋復習」に戻せます');
   await expect(page.locator('#announcementUnreadDot')).toBeVisible();
-  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 2件');
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 3件');
   await page.locator('#announcementMarkAllRead').click();
   await expect(page.locator('#announcementUnreadDot')).toBeHidden();
   expect(await page.evaluate(() => {
@@ -38,7 +38,7 @@ test('復習だけの使い方は通常のお知らせに表示し、学習設�
   await expect(page.locator('#announcementUnreadDot')).toBeHidden();
 });
 
-test('カード更新のお知らせは概要と履歴への影響を先頭に表示し、既読を保持する', async ({ page }) => {
+test('カード更新のお知らせは概要と履歴への影響を表示し、既読を保持する', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 667 });
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
@@ -46,17 +46,17 @@ test('カード更新のお知らせは概要と履歴への影響を先頭に�
     if (!localStorage.getItem('vocabGame_lastReadAnnouncementId')) {
       localStorage.setItem('vocabGame_lastReadAnnouncementId', '2026-09-08-review-only-guide');
     }
-    localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-07-17-review-ranking');
+    localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-09-11-illustrated-wordbook');
   });
   await page.goto('/index.html');
   await expect(page.locator('#announcementUnreadDot')).toBeVisible();
   await expect(page.locator('#announcementModal')).toBeHidden();
   await page.locator('#announcementBtn').click();
-  const card = page.locator('#announcementList .announcement-card').first();
-  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 2件');
+  const card = page.locator('details[data-announcement-id="2026-09-09-word-card-update"]');
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 3件');
   await expect(card.locator('.announcement-detail')).toBeHidden();
   await card.locator('summary').click();
-  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 1件');
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 2件');
   await expect(card).toContainText('単語カードの統合と例文の見直しを行いました');
   await expect(card).toContainText('用法を切り替えられます');
   await expect(card).toContainText('16語をA2・B1へ移しました');
@@ -66,7 +66,9 @@ test('カード更新のお知らせは概要と履歴への影響を先頭に�
   await expect(card).toContainText('意味・フレーズ・例文');
   await expect(card).toContainText('学習状態が一度だけ未学習に戻ります');
   await expect(card).toContainText('獲得済みの復習ポイントは変わりません');
-  expect(await page.evaluate(() => Boolean(APP_ANNOUNCEMENTS[0].featured || APP_ANNOUNCEMENTS[0].autoOpenOnce))).toBe(false);
+  expect(await page.evaluate(() => Boolean(APP_ANNOUNCEMENTS.find(item => item.id === '2026-09-09-word-card-update').featured))).toBe(false);
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 1件');
+  await page.locator('#announcementMarkAllRead').click();
   await expect(page.locator('#announcementUnreadDot')).toBeHidden();
   await page.reload();
   await expect(page.locator('#announcementUnreadDot')).toBeHidden();

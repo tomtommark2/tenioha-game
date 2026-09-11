@@ -1,0 +1,420 @@
+{
+  "addedWords": 51,
+  "addedAssets": 50,
+  "totalWords": 151,
+  "totalAssets": 147,
+  "previousWordCount": 100,
+  "previousManifestSha256": "c25312ebe3f2f00d400c1d75e323ea17d51239dfc2cd6c11f2797dcba16f7710",
+  "vocabularySha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b",
+  "entries": [
+    {
+      "word": "case",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "場合、ケース",
+      "src": "assets/word-illustrations/case-pictogram-v1.webp",
+      "alt": "火事の場合の避難場面のイメージ（一例）"
+    },
+    {
+      "word": "cat",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "猫",
+      "src": "assets/word-illustrations/cat-pictogram-v1.webp",
+      "alt": "猫のイメージ（一例）"
+    },
+    {
+      "word": "catch",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "捕まえること、キャッチ",
+      "src": "assets/word-illustrations/catch-pictogram-v1.webp",
+      "alt": "ボールを捕ることのイメージ（一例）"
+    },
+    {
+      "word": "CD",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "CD",
+      "src": "assets/word-illustrations/cd-pictogram-v1.webp",
+      "alt": "コンパクトディスクのイメージ（一例）"
+    },
+    {
+      "word": "CD player",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "CDプレーヤー",
+      "src": "assets/word-illustrations/cd-player-pictogram-v1.webp",
+      "alt": "CDプレーヤーのイメージ（一例）"
+    },
+    {
+      "word": "celebration",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "お祝い",
+      "src": "assets/word-illustrations/celebration-pictogram-v1.webp",
+      "alt": "お祝いの場面のイメージ（一例）"
+    },
+    {
+      "word": "chair",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "椅子",
+      "src": "assets/word-illustrations/chair-pictogram-v1.webp",
+      "alt": "椅子のイメージ（一例）"
+    },
+    {
+      "word": "change",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "変化、お釣り",
+      "src": "assets/word-illustrations/change-pictogram-v1.webp",
+      "alt": "お釣りのイメージ（一例）"
+    },
+    {
+      "word": "character",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "性格、登場人物",
+      "src": "assets/word-illustrations/character-pictogram-v1.webp",
+      "alt": "物語の登場人物のイメージ（一例）"
+    },
+    {
+      "word": "check",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "確認、小切手",
+      "src": "assets/word-illustrations/check-pictogram-v1.webp",
+      "alt": "確認のイメージ（一例）"
+    },
+    {
+      "word": "cheese",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "チーズ",
+      "src": "assets/word-illustrations/cheese-pictogram-v1.webp",
+      "alt": "チーズのイメージ（一例）"
+    },
+    {
+      "word": "chicken",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "鶏肉、ニワトリ",
+      "src": "assets/word-illustrations/chicken-pictogram-v1.webp",
+      "alt": "ニワトリのイメージ（一例）"
+    },
+    {
+      "word": "child",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "子供",
+      "src": "assets/word-illustrations/child-pictogram-v1.webp",
+      "alt": "子供のイメージ（一例）"
+    },
+    {
+      "word": "chocolate",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "チョコレート",
+      "src": "assets/word-illustrations/chocolate-pictogram-v1.webp",
+      "alt": "チョコレートのイメージ（一例）"
+    },
+    {
+      "word": "church",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "教会",
+      "src": "assets/word-illustrations/church-pictogram-v1.webp",
+      "alt": "教会のイメージ（一例）"
+    },
+    {
+      "word": "cinema",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "映画館",
+      "src": "assets/word-illustrations/cinema-pictogram-v1.webp",
+      "alt": "映画館のイメージ（一例）"
+    },
+    {
+      "word": "circle",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "円",
+      "src": "assets/word-illustrations/circle-pictogram-v1.webp",
+      "alt": "円のイメージ（一例）"
+    },
+    {
+      "word": "city",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "都市",
+      "src": "assets/word-illustrations/city-pictogram-v1.webp",
+      "alt": "都市のイメージ（一例）"
+    },
+    {
+      "word": "class",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "授業、クラス",
+      "src": "assets/word-illustrations/class-pictogram-v4.webp",
+      "alt": "授業のイメージ（一例）"
+    },
+    {
+      "word": "classmate",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "同級生",
+      "src": "assets/word-illustrations/classmate-pictogram-v1.webp",
+      "alt": "同級生のイメージ（一例）"
+    },
+    {
+      "word": "classroom",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "教室",
+      "src": "assets/word-illustrations/classroom-pictogram-v4.webp",
+      "alt": "教室のイメージ（一例）"
+    },
+    {
+      "word": "climb",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "登ること",
+      "src": "assets/word-illustrations/climb-pictogram-v1.webp",
+      "alt": "登ることのイメージ（一例）"
+    },
+    {
+      "word": "clock",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "時計",
+      "src": "assets/word-illustrations/clock-pictogram-v1.webp",
+      "alt": "時計のイメージ（一例）"
+    },
+    {
+      "word": "cloth",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "布",
+      "src": "assets/word-illustrations/cloth-pictogram-v1.webp",
+      "alt": "布のイメージ（一例）"
+    },
+    {
+      "word": "clothes",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "服",
+      "src": "assets/word-illustrations/clothes-pictogram-v1.webp",
+      "alt": "服のイメージ（一例）"
+    },
+    {
+      "word": "cloud",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "雲",
+      "src": "assets/word-illustrations/cloud-pictogram-v1.webp",
+      "alt": "雲のイメージ（一例）"
+    },
+    {
+      "word": "club",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "クラブ",
+      "src": "assets/word-illustrations/club-pictogram-v1.webp",
+      "alt": "テニスクラブの例のイメージ（一例）"
+    },
+    {
+      "word": "coach",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コーチ、長距離バス",
+      "src": "assets/word-illustrations/coach-pictogram-v1.webp",
+      "alt": "スポーツのコーチのイメージ（一例）"
+    },
+    {
+      "word": "coat",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コート",
+      "src": "assets/word-illustrations/coat-pictogram-v1.webp",
+      "alt": "コートのイメージ（一例）"
+    },
+    {
+      "word": "code",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コード、暗号",
+      "src": "assets/word-illustrations/code-pictogram-v1.webp",
+      "alt": "暗号・コードのイメージ（一例）"
+    },
+    {
+      "word": "coffee",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コーヒー",
+      "src": "assets/word-illustrations/coffee-pictogram-v1.webp",
+      "alt": "コーヒーのイメージ（一例）"
+    },
+    {
+      "word": "coke",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コーラ",
+      "src": "assets/word-illustrations/coke-pictogram-v1.webp",
+      "alt": "コーラのイメージ（一例）"
+    },
+    {
+      "word": "cold",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "風邪",
+      "src": "assets/word-illustrations/cold-pictogram-v1.webp",
+      "alt": "風邪のイメージ（一例）"
+    },
+    {
+      "word": "collection",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コレクション、収集",
+      "src": "assets/word-illustrations/collection-pictogram-v1.webp",
+      "alt": "切手のコレクションの例のイメージ（一例）"
+    },
+    {
+      "word": "college",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "大学",
+      "src": "assets/word-illustrations/college-pictogram-v1.webp",
+      "alt": "大学のイメージ（一例）"
+    },
+    {
+      "word": "color",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "色",
+      "src": "assets/word-illustrations/color-pictogram-v1.webp",
+      "alt": "色のイメージ（一例）"
+    },
+    {
+      "word": "colour",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "色（英）",
+      "src": "assets/word-illustrations/color-pictogram-v1.webp",
+      "alt": "色のイメージ（一例）"
+    },
+    {
+      "word": "computer",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コンピュータ",
+      "src": "assets/word-illustrations/computer-pictogram-v3.webp",
+      "alt": "コンピュータのイメージ（一例）"
+    },
+    {
+      "word": "concert",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コンサート",
+      "src": "assets/word-illustrations/concert-pictogram-v1.webp",
+      "alt": "コンサートのイメージ（一例）"
+    },
+    {
+      "word": "contest",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コンテスト、競争",
+      "src": "assets/word-illustrations/contest-pictogram-v1.webp",
+      "alt": "コンテスト・競争のイメージ（一例）"
+    },
+    {
+      "word": "conversation",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "会話",
+      "src": "assets/word-illustrations/conversation-pictogram-v1.webp",
+      "alt": "会話のイメージ（一例）"
+    },
+    {
+      "word": "cook",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "料理人、コック",
+      "src": "assets/word-illustrations/cook-pictogram-v1.webp",
+      "alt": "料理人のイメージ（一例）"
+    },
+    {
+      "word": "cookie",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "クッキー",
+      "src": "assets/word-illustrations/cookie-pictogram-v1.webp",
+      "alt": "クッキーのイメージ（一例）"
+    },
+    {
+      "word": "cop",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "警官",
+      "src": "assets/word-illustrations/cop-pictogram-v1.webp",
+      "alt": "警官のイメージ（一例）"
+    },
+    {
+      "word": "copy",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コピー、写し",
+      "src": "assets/word-illustrations/copy-pictogram-v1.webp",
+      "alt": "コピー・写しのイメージ（一例）"
+    },
+    {
+      "word": "corn",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "トウモロコシ",
+      "src": "assets/word-illustrations/corn-pictogram-v1.webp",
+      "alt": "トウモロコシのイメージ（一例）"
+    },
+    {
+      "word": "corner",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "角、隅",
+      "src": "assets/word-illustrations/corner-pictogram-v1.webp",
+      "alt": "街角の例のイメージ（一例）"
+    },
+    {
+      "word": "couch",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "カウチ、ソファー",
+      "src": "assets/word-illustrations/couch-pictogram-v1.webp",
+      "alt": "ソファーのイメージ（一例）"
+    },
+    {
+      "word": "course",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コース、進路",
+      "src": "assets/word-illustrations/course-pictogram-v1.webp",
+      "alt": "進路・道筋のイメージ（一例）"
+    },
+    {
+      "word": "cousin",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "いとこ",
+      "src": "assets/word-illustrations/cousin-pictogram-v1.webp",
+      "alt": "いとこの関係のイメージ（一例）"
+    },
+    {
+      "word": "cover",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "カバー、表紙",
+      "src": "assets/word-illustrations/cover-pictogram-v1.webp",
+      "alt": "本の表紙のイメージ（一例）"
+    }
+  ],
+  "scope": "Local addition only; no deployment; original assets retained"
+}

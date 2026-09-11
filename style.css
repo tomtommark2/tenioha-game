@@ -2392,6 +2392,23 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     line-height: 1.65;
 }
 
+.announcement-illustration-preview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    padding: 20px;
+    background: #f3efff;
+    border-radius: 16px;
+}
+
+.announcement-illustration-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 140px;
+    object-fit: contain;
+}
+
 .announcement-feature-visual {
     display: block;
     width: 100%;
@@ -5209,22 +5226,27 @@ body.dismissible-modal-open {
 
 .current-illustration-btn {
     position: absolute;
-    top: 0;
-    right: 4px;
+    top: 2px;
+    right: 8px;
     z-index: 2;
     min-width: 44px;
     min-height: 44px;
-    padding: 4px 6px;
-    border: 0;
+    padding: 4px 10px;
+    border: 1px solid #d9d2ef;
     border-radius: 10px;
-    background: transparent;
-    color: #5f4bd5;
+    background: #f3f0fb;
+    color: #65558f;
     font: inherit;
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
     cursor: pointer;
 }
 
-.current-illustration-btn:hover { background: #7c5cff12; }
+.meaning-card > .card-label { top: 14px; line-height: 20px; }
+
+.current-illustration-btn:hover { background: #eae4f7; }
+.current-illustration-btn:active { background: #e0d8f0; }
 .current-illustration-btn:focus-visible,
 #wordIllustrationSlot:focus-visible { outline: 2px solid #7c5cff; outline-offset: 2px; }
 

@@ -23,8 +23,15 @@
 - Do not deploy the app UI to Firebase Hosting. Hosting has been disabled for the `tenioha-game` Firebase project.
 - For backend changes, prefer explicit deploy targets such as `npx firebase deploy --only functions --project tenioha-game` or `npx firebase deploy --only firestore:rules --project tenioha-game`.
 
+### 2026-09-11 公開チェック（2026.0911.0906）
+
+- 対象：起動時のランキング告知をイラスト単語帳へ差し替え、通常のお知らせに使い方を追加。「イラスト」ボタンは淡色の背景・細枠にし、意味カードのラベルと文字の高さを揃える。新規50画像（color／colour共用で51語）を追加し、累計151語・147画像。
+- 公開前確認：`npm run test:e2e:safe`成功（単体26件・Functions18件・ブラウザー147件）。モバイル36件中35件成功、WebKitのお知らせキーボード操作1件は単独再実行で成功。新規画像の配信ファイルと登録順・既存キーを検証する単体テストも再確認。
+- 公開対象はアプリ・配信用WebP50枚・関連テスト・登録／可逆圧縮記録。原画、未採用画像、投稿用静止画3案と他の作業中資料はローカル保持。GitHub Pagesのmainのみ更新し、Firebase・本番認証・学習記録・投稿は操作しない。
+
 ### 2026-09-10 公開チェック（2026.0910.1735）
 
+- 公開完了：`69050d6`をmainへ反映し、[Pages公開処理](https://github.com/tomtommark2/tenioha-game/actions/runs/34456481662)成功。新画像47枚を含む本番52ファイルがコミットとバイト一致。独立ブラウザー390px幅で新版・全100語／97画像・一覧100画像の読込・page error 0件を確認。遅延読込画像は検証ブラウザーだけ即時読込に切り替えて全件照合し、本番実装は変更しない。
 - 対象：残り47画像（48語）を新版へ切替し、全100語・97画像の新版化を完了。同じ絵を意味カード操作で消去・再生成しない修正も含む。旧画像・語義・学習キーを保持。
 - 公開前確認：`npm run test:e2e:safe`成功（単体25件・Functions18件・ブラウザー146件）、モバイル36件成功（Chromium／WebKit）。HTML・版番号・許可キー同期を確認。
 - 配信画像は原画と同寸法・可視RGBA不変の可逆WebP。試作原画・未採用画像・無関係な作業中資料は対象外。GitHub Pagesのみ公開し、Firebase・認証・本番回答・学習保存・投稿は操作しない。

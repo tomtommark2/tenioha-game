@@ -1506,24 +1506,24 @@ test('大型アップデートは初回だけ自動表示し、あとで閉じ�
   await page.goto('/vocab_clicker_game.html?announcementPreview=1', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#announcementModal')).toBeVisible();
   await expect(page.locator('#announcementModal')).toHaveClass(/is-featured-mode/);
-  await expect(page.locator('#announcementHeading')).toHaveText('大型アップデート');
-  await expect(page.locator('#announcementList')).toContainText('新ランキングシステム、導入！');
-  await expect(page.locator('.announcement-feature-visual')).toBeVisible();
-  await expect(page.locator('.announcement-feature-visual')).toHaveAttribute('src', 'assets/review-ranking-update.png');
-  await expect(page.locator('#announcementList')).toContainText('ランキングを競おう');
-  await expect(page.locator('#announcementPrimaryAction')).toHaveText('ランキングを見る');
+  await expect(page.locator('#announcementHeading')).toHaveText('新しい単語帳');
+  await expect(page.locator('#announcementList')).toContainText('イラスト単語帳ができました！');
+  await expect(page.locator('.announcement-illustration-preview')).toBeVisible();
+  await expect(page.locator('.announcement-illustration-preview img')).toHaveCount(3);
+  await expect(page.locator('#announcementList')).toContainText('学習記録は元の単語と共通');
+  await expect(page.locator('#announcementPrimaryAction')).toHaveText('イラスト単語帳を開く');
   expect(await page.evaluate(() => localStorage.getItem('vocabGame_lastAutoShownAnnouncementId'))).toBeNull();
 
   await page.locator('.announcement-secondary-action').click();
   await expect(page.locator('#announcementModal')).toBeHidden();
   await expect(page.locator('#announcementUnreadDot')).toBeVisible();
   expect(await page.evaluate(() => localStorage.getItem('vocabGame_lastAutoShownAnnouncementId')))
-    .toBe('2026-07-17-review-ranking');
+    .toBe('2026-09-11-illustrated-wordbook');
 
   await page.locator('#announcementBtn').click();
   await expect(page.locator('#announcementHeading')).toHaveText('お知らせ');
   await expect(page.locator('#announcementModal')).not.toHaveClass(/is-featured-mode/);
-  await expect(page.locator('.announcement-feature-visual')).toHaveCount(0);
+  await expect(page.locator('.announcement-illustration-preview')).toHaveCount(0);
   await expect(page.locator('#announcementUnreadDot')).toBeVisible();
   await page.locator('#announcementMarkAllRead').click();
   await expect(page.locator('#announcementUnreadDot')).toBeHidden();
@@ -1538,7 +1538,7 @@ test('大型アップデート画像はiPhone SE幅でも操作可能な範囲�
 
   await page.goto('/vocab_clicker_game.html?announcementPreview=1', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#announcementModal')).toBeVisible();
-  await expect(page.locator('.announcement-feature-visual')).toBeVisible();
+  await expect(page.locator('.announcement-illustration-preview')).toBeVisible();
   await expect(page.locator('#announcementPrimaryAction')).toBeVisible();
   await expect(page.locator('.announcement-secondary-action')).toBeVisible();
 
