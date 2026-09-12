@@ -1,0 +1,505 @@
+{
+  "encoding": "lossless WebP, original dimensions, unchanged visible RGBA",
+  "records": [
+    {
+      "source": "assets/word-illustrations/farmer-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/farmer-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 556255,
+      "deliveryBytes": 377444,
+      "transparentPixels": 1149719,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/father-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/father-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 523103,
+      "deliveryBytes": 337154,
+      "transparentPixels": 1134876,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/favorite-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/favorite-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 439303,
+      "deliveryBytes": 268272,
+      "transparentPixels": 1158776,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/february-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/february-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 657670,
+      "deliveryBytes": 414500,
+      "transparentPixels": 696231,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/feed-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/feed-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 525760,
+      "deliveryBytes": 331174,
+      "transparentPixels": 1063749,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/feeling-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/feeling-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 414935,
+      "deliveryBytes": 271934,
+      "transparentPixels": 1201322,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/festival-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/festival-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 579831,
+      "deliveryBytes": 391688,
+      "transparentPixels": 1038819,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fever-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fever-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 791311,
+      "deliveryBytes": 498994,
+      "transparentPixels": 728558,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/field-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/field-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 486349,
+      "deliveryBytes": 301142,
+      "transparentPixels": 1068258,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fifteen-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fifteen-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 449341,
+      "deliveryBytes": 271228,
+      "transparentPixels": 1065711,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fifty-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fifty-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 505757,
+      "deliveryBytes": 309990,
+      "transparentPixels": 1014135,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fight-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fight-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 592110,
+      "deliveryBytes": 390140,
+      "transparentPixels": 1087193,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/file-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/file-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 649249,
+      "deliveryBytes": 406920,
+      "transparentPixels": 739003,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/finish-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/finish-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 412927,
+      "deliveryBytes": 260804,
+      "transparentPixels": 1255625,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fire-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fire-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 505210,
+      "deliveryBytes": 311750,
+      "transparentPixels": 1067409,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fish-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fish-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 429806,
+      "deliveryBytes": 261850,
+      "transparentPixels": 1123804,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fishing-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fishing-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 424882,
+      "deliveryBytes": 273152,
+      "transparentPixels": 1243648,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/five-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/five-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 446549,
+      "deliveryBytes": 265168,
+      "transparentPixels": 1081091,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/flag-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/flag-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 385759,
+      "deliveryBytes": 230336,
+      "transparentPixels": 1150241,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/flat-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/flat-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 699904,
+      "deliveryBytes": 475886,
+      "transparentPixels": 675730,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/floor-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/floor-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 594047,
+      "deliveryBytes": 372894,
+      "transparentPixels": 849824,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/flower-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/flower-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 492140,
+      "deliveryBytes": 301942,
+      "transparentPixels": 1092105,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fly-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fly-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 518369,
+      "deliveryBytes": 329152,
+      "transparentPixels": 1102770,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/food-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/food-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 617104,
+      "deliveryBytes": 396284,
+      "transparentPixels": 924530,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/football-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/football-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 500413,
+      "deliveryBytes": 326372,
+      "transparentPixels": 1116794,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/foreigner-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/foreigner-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 600577,
+      "deliveryBytes": 395304,
+      "transparentPixels": 1071310,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/form-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/form-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 743715,
+      "deliveryBytes": 474264,
+      "transparentPixels": 593650,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/forty-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/forty-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 418101,
+      "deliveryBytes": 253056,
+      "transparentPixels": 1117097,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/four-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/four-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 390155,
+      "deliveryBytes": 228922,
+      "transparentPixels": 1123458,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fourteen-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fourteen-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 446301,
+      "deliveryBytes": 269872,
+      "transparentPixels": 1041203,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/friday-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/friday-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 666483,
+      "deliveryBytes": 419448,
+      "transparentPixels": 653246,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/friend-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/friend-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 585865,
+      "deliveryBytes": 389090,
+      "transparentPixels": 1092407,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/frog-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/frog-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 682242,
+      "deliveryBytes": 434274,
+      "transparentPixels": 909140,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/front-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/front-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 549054,
+      "deliveryBytes": 335158,
+      "transparentPixels": 897160,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fruit-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fruit-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 629262,
+      "deliveryBytes": 397052,
+      "transparentPixels": 864617,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/fun-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fun-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 500910,
+      "deliveryBytes": 330658,
+      "transparentPixels": 1209148,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/future-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/future-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 516785,
+      "deliveryBytes": 338272,
+      "transparentPixels": 1165144,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/game-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/game-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 486823,
+      "deliveryBytes": 299178,
+      "transparentPixels": 1038208,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/garbage-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/garbage-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 641904,
+      "deliveryBytes": 412062,
+      "transparentPixels": 921324,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/garden-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/garden-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 633828,
+      "deliveryBytes": 414108,
+      "transparentPixels": 930812,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/ghost-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/ghost-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 471302,
+      "deliveryBytes": 283026,
+      "transparentPixels": 987119,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/gift-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/gift-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 639056,
+      "deliveryBytes": 404288,
+      "transparentPixels": 784463,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/girl-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/girl-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 412205,
+      "deliveryBytes": 269546,
+      "transparentPixels": 1243718,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/girlfriend-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/girlfriend-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 642520,
+      "deliveryBytes": 416834,
+      "transparentPixels": 1021012,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/glass-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/glass-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 494825,
+      "deliveryBytes": 309378,
+      "transparentPixels": 1065493,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/glasses-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/glasses-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 222992,
+      "deliveryBytes": 138680,
+      "transparentPixels": 1436100,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/goal-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/goal-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 729984,
+      "deliveryBytes": 459396,
+      "transparentPixels": 761938,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/grade-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/grade-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 677092,
+      "deliveryBytes": 457116,
+      "transparentPixels": 879340,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/grammar-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/grammar-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 371844,
+      "deliveryBytes": 237972,
+      "transparentPixels": 1161208,
+      "visiblePixelsIdentical": true
+    },
+    {
+      "source": "assets/word-illustrations/grandfather-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/grandfather-pictogram-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 566687,
+      "deliveryBytes": 375148,
+      "transparentPixels": 1094007,
+      "visiblePixelsIdentical": true
+    }
+  ]
+}

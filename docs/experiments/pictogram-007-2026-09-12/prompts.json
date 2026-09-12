@@ -1,0 +1,996 @@
+{
+  "date": "2026-09-12",
+  "mode": "built-in image_gen",
+  "vocabularySha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b",
+  "policy": "前回のピクトグラム風を継続。50枚・55語、cow〜farm。別料金API・SVG変換・公開なし。",
+  "referenceCheck": "英語イメージ大図鑑のend/終わり、difference/違い、culture/文化を検索したが対象名詞の直接解説は取得できず。現行語彙データの語義を基準に独自の場面を設計。多義語はsenseに選択語義を記録。",
+  "aliases": [
+    {
+      "word": "daddy",
+      "source": "dad",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "パパ（幼児語）"
+    },
+    {
+      "word": "dancing",
+      "source": "dance",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "踊ること、ダンス"
+    },
+    {
+      "word": "Dr.",
+      "source": "Dr",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "～先生、～博士"
+    },
+    {
+      "word": "e-mail",
+      "source": "email",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "Eメール"
+    },
+    {
+      "word": "E-mail",
+      "source": "email",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "Eメール"
+    }
+  ],
+  "entries": [
+    {
+      "key": "word-v2:junior:cow:%E5%90%8D",
+      "level": "junior",
+      "word": "cow",
+      "pos": "名",
+      "meaning": "牛",
+      "phrase": "milk a cow",
+      "example": "Cows give us milk.",
+      "meaningVariants": [
+        "牛"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "牛",
+      "subject": "One calm dairy cow in three-quarter side view, pale cream body with two large dark brown patches, four short attached legs, two ears, small horns, pink muzzle, a small udder and curved tail. Entire animal visible, no grass or scenery.",
+      "asset": "assets/word-illustrations/cow-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cow-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One calm dairy cow in three-quarter side view, pale cream body with two large dark brown patches, four short attached legs, two ears, small horns, pink muzzle, a small udder and curved tail. Entire animal visible, no grass or scenery. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:cream:%E5%90%8D",
+      "level": "junior",
+      "word": "cream",
+      "pos": "名",
+      "meaning": "クリーム",
+      "phrase": "ice cream",
+      "example": "I like strawberries with cream.",
+      "meaningVariants": [
+        "クリーム"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "乳製品のクリーム",
+      "subject": "A small opaque pale-blue bowl holding a generous soft white swirl of whipped dairy cream, with two simple red strawberries beside it. The white cream must be fully opaque. No ice-cream cone, packaging, writing or texture.",
+      "asset": "assets/word-illustrations/cream-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cream-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A small opaque pale-blue bowl holding a generous soft white swirl of whipped dairy cream, with two simple red strawberries beside it. The white cream must be fully opaque. No ice-cream cone, packaging, writing or texture. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:credit%20card:%E5%90%8D",
+      "level": "junior",
+      "word": "credit card",
+      "pos": "名",
+      "meaning": "クレジットカード",
+      "phrase": "pay by credit card",
+      "example": "Do you accept credit cards?",
+      "meaningVariants": [
+        "クレジットカード"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "クレジットカード",
+      "subject": "One flat opaque warm-orange credit card, rounded rectangle viewed straight on. Exactly one small gold chip on the left and one short cream horizontal signature strip along the lower edge. Leave all other areas completely plain solid orange and fully opaque. No printed number, text, brand, logo, watermark, dark patch, blurry region, gradient, highlight, texture or transparent spot anywhere inside the card.",
+      "asset": "assets/word-illustrations/credit-card-pictogram-v2.png",
+      "delivery": "assets/word-illustrations/credit-card-pictogram-v2.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One flat opaque warm-orange credit card, rounded rectangle viewed straight on. Exactly one small gold chip on the left and one short cream horizontal signature strip along the lower edge. Leave all other areas completely plain solid orange and fully opaque. No printed number, text, brand, logo, watermark, dark patch, blurry region, gradient, highlight, texture or transparent spot anywhere inside the card. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:cry:%E5%90%8D",
+      "level": "junior",
+      "word": "cry",
+      "pos": "名",
+      "meaning": "泣くこと、叫び声",
+      "phrase": "have a good cry",
+      "example": "I heard a cry for help.",
+      "meaningVariants": [
+        "泣くこと、叫び声"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "泣くこと",
+      "subject": "One child in a green shirt with two clearly visible large blue tears on the cheeks, holding a plain tissue near one eye. Upper body, a quietly sad expression, no shouting symbols, words or dramatic exaggeration.",
+      "asset": "assets/word-illustrations/cry-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cry-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One child in a green shirt with two clearly visible large blue tears on the cheeks, holding a plain tissue near one eye. Upper body, a quietly sad expression, no shouting symbols, words or dramatic exaggeration. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:culture:%E5%90%8D",
+      "level": "junior",
+      "word": "culture",
+      "pos": "名",
+      "meaning": "文化",
+      "phrase": "Japanese culture",
+      "example": "I am interested in Japanese culture.",
+      "meaningVariants": [
+        "文化"
+      ],
+      "occurrences": 3,
+      "status": "pending",
+      "sense": "文化の一例：茶道",
+      "subject": "A compact example of Japanese cultural tradition: one adult in a simple muted-blue kimono seated formally at a low table, preparing a plain green tea bowl with a bamboo whisk. Only these essential objects, fully visible human hands, no room backdrop, lettering, national flag or ornament.",
+      "asset": "assets/word-illustrations/culture-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/culture-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A compact example of Japanese cultural tradition: one adult in a simple muted-blue kimono seated formally at a low table, preparing a plain green tea bowl with a bamboo whisk. Only these essential objects, fully visible human hands, no room backdrop, lettering, national flag or ornament. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:cup:%E5%90%8D",
+      "level": "junior",
+      "word": "cup",
+      "pos": "名",
+      "meaning": "カップ、茶碗",
+      "phrase": "cup of tea",
+      "example": "Would you like a cup of tea?",
+      "meaningVariants": [
+        "カップ、茶碗"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "カップ",
+      "subject": "One simple empty orange ceramic cup with an oval open rim, opaque pale interior and one clearly open handle. Slight three-quarter view, no liquid, saucer, steam, lettering or additional objects.",
+      "asset": "assets/word-illustrations/cup-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/cup-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple empty orange ceramic cup with an oval open rim, opaque pale interior and one clearly open handle. Slight three-quarter view, no liquid, saucer, steam, lettering or additional objects. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dad:%E5%90%8D",
+      "level": "junior",
+      "word": "dad",
+      "pos": "名",
+      "meaning": "パパ、お父さん",
+      "phrase": "my dad",
+      "example": "My dad is at work.",
+      "meaningVariants": [
+        "パパ、お父さん"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "父親と幼い子",
+      "subject": "One adult father in a teal shirt gently holding his small child up at chest height with two supporting hands, facing each other calmly. Entire figures visible, natural arm connections, no accessories or lettering.",
+      "asset": "assets/word-illustrations/dad-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dad-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One adult father in a teal shirt gently holding his small child up at chest height with two supporting hands, facing each other calmly. Entire figures visible, natural arm connections, no accessories or lettering. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dance:%E5%90%8D",
+      "level": "junior",
+      "word": "dance",
+      "pos": "名",
+      "meaning": "ダンス",
+      "phrase": "folk dance",
+      "example": "Let's have a dance.",
+      "meaningVariants": [
+        "ダンス"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ダンス",
+      "subject": "Two generic adults dancing together, one in a teal top and one in a muted-orange top, joined by one hand each, free arms extended naturally and feet in simple dance poses. Full bodies, clear separation of limbs, no music notes or stage.",
+      "asset": "assets/word-illustrations/dance-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dance-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Two generic adults dancing together, one in a teal top and one in a muted-orange top, joined by one hand each, free arms extended naturally and feet in simple dance poses. Full bodies, clear separation of limbs, no music notes or stage. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:date:%E5%90%8D",
+      "level": "junior",
+      "word": "date",
+      "pos": "名",
+      "meaning": "日付、デート",
+      "phrase": "what is the date",
+      "example": "What is the date today?",
+      "meaningVariants": [
+        "日付、デート"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "カレンダーの日付",
+      "subject": "A compact upright desk calendar with a blue header and an opaque cream page containing a neat calendar grid. Show exactly one large orange highlighted day cell containing the digit \"15\"; other cells are blank. No month name, weekday text or extra digits.",
+      "asset": "assets/word-illustrations/date-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/date-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A compact upright desk calendar with a blue header and an opaque cream page containing a neat calendar grid. Show exactly one large orange highlighted day cell containing the digit \"15\"; other cells are blank. No month name, weekday text or extra digits. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:daughter:%E5%90%8D",
+      "level": "junior",
+      "word": "daughter",
+      "pos": "名",
+      "meaning": "娘",
+      "phrase": "her daughter",
+      "example": "They have one daughter.",
+      "meaningVariants": [
+        "娘"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "親と娘の関係",
+      "subject": "Two grey-clothed adult parents standing behind their young daughter, who is centered slightly in front wearing an orange shirt and blue skirt. Emphasize the daughter with color while parents stay muted. Three full natural human figures, no arrows, frames, text or extra people.",
+      "asset": "assets/word-illustrations/daughter-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/daughter-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Two grey-clothed adult parents standing behind their young daughter, who is centered slightly in front wearing an orange shirt and blue skirt. Emphasize the daughter with color while parents stay muted. Three full natural human figures, no arrows, frames, text or extra people. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:day:%E5%90%8D",
+      "level": "junior",
+      "word": "day",
+      "pos": "名",
+      "meaning": "日、昼間",
+      "phrase": "every day",
+      "example": "Have a nice day.",
+      "meaningVariants": [
+        "日、昼間"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "昼間",
+      "subject": "A simple daytime scene: one large warm yellow sun above a small green hill and one small plain house. Sun clearly above the horizon, only four broad short rays, no sky rectangle, clock, moon or text.",
+      "asset": "assets/word-illustrations/day-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/day-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A simple daytime scene: one large warm yellow sun above a small green hill and one small plain house. Sun clearly above the horizon, only four broad short rays, no sky rectangle, clock, moon or text. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:December:%E5%90%8D",
+      "level": "junior",
+      "word": "December",
+      "pos": "名",
+      "meaning": "12月",
+      "phrase": "in December",
+      "example": "Christmas is in December.",
+      "meaningVariants": [
+        "12月"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "12月",
+      "subject": "One simple blue-topped calendar with an opaque cream page. Exact text \"DEC\" centered in the header and large \"12\" centered on the page. Only those characters, thick legible lettering, no other dates, holiday decoration, snow or scenery.",
+      "asset": "assets/word-illustrations/december-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/december-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple blue-topped calendar with an opaque cream page. Exact text \"DEC\" centered in the header and large \"12\" centered on the page. Only those characters, thick legible lettering, no other dates, holiday decoration, snow or scenery. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:design:%E5%90%8D",
+      "level": "junior",
+      "word": "design",
+      "pos": "名",
+      "meaning": "デザイン",
+      "phrase": "fashion design",
+      "example": "I like the design of this building.",
+      "meaningVariants": [
+        "デザイン"
+      ],
+      "occurrences": 3,
+      "status": "pending",
+      "sense": "建物のデザインを考える場面",
+      "subject": "One plain cream architectural sketch sheet with a clear simple blue house elevation drawn on it, beside a thick orange pencil and a short triangular set square. The house drawing uses only roof, door and two windows. No writing, dimensions or detailed technical lines.",
+      "asset": "assets/word-illustrations/design-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/design-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One plain cream architectural sketch sheet with a clear simple blue house elevation drawn on it, beside a thick orange pencil and a short triangular set square. The house drawing uses only roof, door and two windows. No writing, dimensions or detailed technical lines. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:desk:%E5%90%8D",
+      "level": "junior",
+      "word": "desk",
+      "pos": "名",
+      "meaning": "机",
+      "phrase": "on the desk",
+      "example": "There is a book on the desk.",
+      "meaningVariants": [
+        "机"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "机",
+      "subject": "One simple wooden study desk in three-quarter view, flat rectangular top, four attached legs and one broad drawer with a small handle. No chair, book, computer or surrounding room.",
+      "asset": "assets/word-illustrations/desk-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/desk-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple wooden study desk in three-quarter view, flat rectangular top, four attached legs and one broad drawer with a small handle. No chair, book, computer or surrounding room. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dictionary:%E5%90%8D",
+      "level": "junior",
+      "word": "dictionary",
+      "pos": "名",
+      "meaning": "辞書",
+      "phrase": "use a dictionary",
+      "example": "Look it up in the dictionary.",
+      "meaningVariants": [
+        "辞書"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "辞書",
+      "subject": "One thick closed dictionary with a completely opaque solid orange cover, visible cream page block, and three broad blue alphabetical index tabs along its fore edge. Exact large dark text \"ABC\" centered on the cover and no other text. The rest of the cover must be perfectly plain solid orange: no dark patches, blurry areas, logo, emblem, watermark, gradients, shine, texture or transparency anywhere inside the book.",
+      "asset": "assets/word-illustrations/dictionary-pictogram-v2.png",
+      "delivery": "assets/word-illustrations/dictionary-pictogram-v2.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One thick closed dictionary with a completely opaque solid orange cover, visible cream page block, and three broad blue alphabetical index tabs along its fore edge. Exact large dark text \"ABC\" centered on the cover and no other text. The rest of the cover must be perfectly plain solid orange: no dark patches, blurry areas, logo, emblem, watermark, gradients, shine, texture or transparency anywhere inside the book. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:difference:%E5%90%8D",
+      "level": "junior",
+      "word": "difference",
+      "pos": "名",
+      "meaning": "違い",
+      "phrase": "big difference",
+      "example": "What is the difference between A and B?",
+      "meaningVariants": [
+        "違い"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "形の違い",
+      "subject": "Two equally sized simple geometric shapes side by side: a blue circle on the left and an orange square on the right. Between them place one dark clear not-equal symbol \"≠\". Flat opaque shapes, no shading, label or extra object.",
+      "asset": "assets/word-illustrations/difference-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/difference-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Two equally sized simple geometric shapes side by side: a blue circle on the left and an orange square on the right. Between them place one dark clear not-equal symbol \"≠\". Flat opaque shapes, no shading, label or extra object. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dining%20room:%E5%90%8D",
+      "level": "junior",
+      "word": "dining room",
+      "pos": "名",
+      "meaning": "食堂、ダイニングルーム",
+      "phrase": "in the dining room",
+      "example": "We eat dinner in the dining room.",
+      "meaningVariants": [
+        "食堂、ダイニングルーム"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ダイニングルーム",
+      "subject": "A compact empty dining-room cutaway: one wooden dining table with four chairs, two simple pale plates on the tabletop and one plain pendant lamp above. No people, kitchen appliances, walls, large floor rectangle or writing.",
+      "asset": "assets/word-illustrations/dining-room-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dining-room-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A compact empty dining-room cutaway: one wooden dining table with four chairs, two simple pale plates on the tabletop and one plain pendant lamp above. No people, kitchen appliances, walls, large floor rectangle or writing. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dinner:%E5%90%8D",
+      "level": "junior",
+      "word": "dinner",
+      "pos": "名",
+      "meaning": "夕食",
+      "phrase": "eat dinner",
+      "example": "What's for dinner?",
+      "meaningVariants": [
+        "夕食"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "夕食",
+      "subject": "One opaque cream dinner plate with three simple food portions: a brown grilled fillet, green vegetables and a pale mound of rice, flanked by a fork and spoon. A small separate navy window tile above shows a yellow crescent moon to indicate evening. No text, table or restaurant scene.",
+      "asset": "assets/word-illustrations/dinner-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dinner-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One opaque cream dinner plate with three simple food portions: a brown grilled fillet, green vegetables and a pale mound of rice, flanked by a fork and spoon. A small separate navy window tile above shows a yellow crescent moon to indicate evening. No text, table or restaurant scene. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dish:%E5%90%8D",
+      "level": "junior",
+      "word": "dish",
+      "pos": "名",
+      "meaning": "皿、料理",
+      "phrase": "wash the dishes",
+      "example": "This is my favorite dish.",
+      "meaningVariants": [
+        "皿、料理"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "皿",
+      "subject": "Two simple round opaque ceramic plates, one teal plate behind and one pale cream plate in front, slightly overlapping. Each has a clearly defined thick rim. No food, utensils, soap, patterns, text or transparent holes in the plate faces.",
+      "asset": "assets/word-illustrations/dish-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dish-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Two simple round opaque ceramic plates, one teal plate behind and one pale cream plate in front, slightly overlapping. Each has a clearly defined thick rim. No food, utensils, soap, patterns, text or transparent holes in the plate faces. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:doctor:%E5%90%8D",
+      "level": "junior",
+      "word": "doctor",
+      "pos": "名",
+      "meaning": "医者",
+      "phrase": "see a doctor",
+      "example": "You should see a doctor.",
+      "meaningVariants": [
+        "医者"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "医者",
+      "subject": "One adult physician in a pale opaque coat over a blue shirt, with a clearly recognizable dark stethoscope around the neck, holding a plain clipboard. Full figure, natural hands, no medical cross, hospital, lettering or name badge.",
+      "asset": "assets/word-illustrations/doctor-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/doctor-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One adult physician in a pale opaque coat over a blue shirt, with a clearly recognizable dark stethoscope around the neck, holding a plain clipboard. Full figure, natural hands, no medical cross, hospital, lettering or name badge. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dog:%E5%90%8D",
+      "level": "junior",
+      "word": "dog",
+      "pos": "名",
+      "meaning": "犬",
+      "phrase": "walk the dog",
+      "example": "I have a big dog.",
+      "meaningVariants": [
+        "犬"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "犬",
+      "subject": "One friendly brown dog sitting calmly with floppy ears, short muzzle, four naturally connected legs and a gently curved tail. Whole animal visible, no collar tag text, leash, bone or scenery.",
+      "asset": "assets/word-illustrations/dog-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dog-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One friendly brown dog sitting calmly with floppy ears, short muzzle, four naturally connected legs and a gently curved tail. Whole animal visible, no collar tag text, leash, bone or scenery. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:doll:%E5%90%8D",
+      "level": "junior",
+      "word": "doll",
+      "pos": "名",
+      "meaning": "人形",
+      "phrase": "play with a doll",
+      "example": "She has a beautiful doll.",
+      "meaningVariants": [
+        "人形"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "人形",
+      "subject": "One simple cloth toy doll sitting upright, round fabric head, yarn hair, simple dot eyes, orange dress and clearly jointed short stuffed arms and legs. Obviously a toy rather than a live child, no textile texture, brand or extra objects.",
+      "asset": "assets/word-illustrations/doll-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/doll-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple cloth toy doll sitting upright, round fabric head, yarn hair, simple dot eyes, orange dress and clearly jointed short stuffed arms and legs. Obviously a toy rather than a live child, no textile texture, brand or extra objects. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dollar:%E5%90%8D",
+      "level": "junior",
+      "word": "dollar",
+      "pos": "名",
+      "meaning": "ドル",
+      "phrase": "ten dollars",
+      "example": "It costs five dollars.",
+      "meaningVariants": [
+        "ドル"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ドル",
+      "subject": "One simple flat ochre-gold circular coin viewed straight on, with exactly one large dark-green \"$\" symbol centered on its fully opaque face. A single darker ochre rim, no shine, metallic texture, glow, gradients, blur, shadow, extra symbols or real currency design. Entire coin occupies the middle 72% of a square canvas, with truly transparent empty space outside the circle. No background color or rectangular panel.",
+      "asset": "assets/word-illustrations/dollar-pictogram-v2.png",
+      "delivery": "assets/word-illustrations/dollar-pictogram-v2.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple flat ochre-gold circular coin viewed straight on, with exactly one large dark-green \"$\" symbol centered on its fully opaque face. A single darker ochre rim, no shine, metallic texture, glow, gradients, blur, shadow, extra symbols or real currency design. Entire coin occupies the middle 72% of a square canvas, with truly transparent empty space outside the circle. No background color or rectangular panel. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:door:%E5%90%8D",
+      "level": "junior",
+      "word": "door",
+      "pos": "名",
+      "meaning": "ドア",
+      "phrase": "open the door",
+      "example": "Someone is at the door.",
+      "meaningVariants": [
+        "ドア"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ドア",
+      "subject": "One orange wooden door inside a simple blue doorframe, slightly open, with one round knob. Door and frame fully visible and opaque, open space behind is transparent. No room scene, wall, person, sign or lettering.",
+      "asset": "assets/word-illustrations/door-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/door-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One orange wooden door inside a simple blue doorframe, slightly open, with one round knob. Door and frame fully visible and opaque, open space behind is transparent. No room scene, wall, person, sign or lettering. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:Dr:%E5%90%8D",
+      "level": "junior",
+      "word": "Dr",
+      "pos": "名",
+      "meaning": "～先生、～博士",
+      "phrase": "Dr. Smith",
+      "example": "I have an appointment with Dr. Jones.",
+      "meaningVariants": [
+        "～先生、～博士"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "博士の敬称",
+      "subject": "One generic academic doctor wearing a simple navy graduation gown and square academic cap, holding a plain book. A small opaque cream nameplate beside the figure reads exactly \"Dr.\" in large dark letters. This represents an academic title, not only a medical occupation. No university insignia, other text or portrait likeness.",
+      "asset": "assets/word-illustrations/dr-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dr-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One generic academic doctor wearing a simple navy graduation gown and square academic cap, holding a plain book. A small opaque cream nameplate beside the figure reads exactly \"Dr.\" in large dark letters. This represents an academic title, not only a medical occupation. No university insignia, other text or portrait likeness. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:drama:%E5%90%8D",
+      "level": "junior",
+      "word": "drama",
+      "pos": "名",
+      "meaning": "演劇、ドラマ",
+      "phrase": "TV drama",
+      "example": "I like watching Korean dramas.",
+      "meaningVariants": [
+        "演劇、ドラマ"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "演劇",
+      "subject": "Two original generic actors facing one another and gesturing during a play on a very small low stage, framed by two simple red side curtains. Full natural figures, no elaborate costumes, real characters, writing or theater audience.",
+      "asset": "assets/word-illustrations/drama-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/drama-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Two original generic actors facing one another and gesturing during a play on a very small low stage, framed by two simple red side curtains. Full natural figures, no elaborate costumes, real characters, writing or theater audience. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dream:%E5%90%8D",
+      "level": "junior",
+      "word": "dream",
+      "pos": "名",
+      "meaning": "夢",
+      "phrase": "have a dream",
+      "example": "I had a strange dream last night.",
+      "meaningVariants": [
+        "夢"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "眠って見る夢",
+      "subject": "One person sleeping with their head on an opaque pale pillow, with one clearly bounded pale-blue dream bubble above showing a tiny simple orange flying fish. The bubble interior is fully opaque. No bed frame, moon, lettering, Z symbols or background.",
+      "asset": "assets/word-illustrations/dream-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dream-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One person sleeping with their head on an opaque pale pillow, with one clearly bounded pale-blue dream bubble above showing a tiny simple orange flying fish. The bubble interior is fully opaque. No bed frame, moon, lettering, Z symbols or background. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:dress:%E5%90%8D",
+      "level": "junior",
+      "word": "dress",
+      "pos": "名",
+      "meaning": "ドレス、ワンピース",
+      "phrase": "wear a dress",
+      "example": "She wore a white dress.",
+      "meaningVariants": [
+        "ドレス、ワンピース"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ワンピース",
+      "subject": "One simple orange knee-length dress on a plain small hanger, short sleeves, fitted waist and gently flared skirt. Whole garment, no wearer, pattern, lace, texture, brand or lettering.",
+      "asset": "assets/word-illustrations/dress-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dress-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple orange knee-length dress on a plain small hanger, short sleeves, fitted waist and gently flared skirt. Whole garment, no wearer, pattern, lace, texture, brand or lettering. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:drink:%E5%90%8D",
+      "level": "junior",
+      "word": "drink",
+      "pos": "名",
+      "meaning": "飲み物",
+      "phrase": "soft drink",
+      "example": "Can I have a drink?",
+      "meaningVariants": [
+        "飲み物"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "飲み物",
+      "subject": "One simple clear tumbler containing orange juice, with a plain blue straw. Use a few broad flat shapes to show the glass rim and liquid, no fruit garnish, ice, brand, words or glossy highlights.",
+      "asset": "assets/word-illustrations/drink-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/drink-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple clear tumbler containing orange juice, with a plain blue straw. Use a few broad flat shapes to show the glass rim and liquid, no fruit garnish, ice, brand, words or glossy highlights. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:drive:%E5%90%8D",
+      "level": "junior",
+      "word": "drive",
+      "pos": "名",
+      "meaning": "ドライブ",
+      "phrase": "go for a drive",
+      "example": "Let's go for a drive.",
+      "meaningVariants": [
+        "ドライブ"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ドライブ",
+      "subject": "A blue compact car carrying a clearly visible generic driver along a short gently curving grey road. Three-quarter view, all wheels and car structure coherent, no large landscape, destination sign, motion blur or text.",
+      "asset": "assets/word-illustrations/drive-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/drive-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A blue compact car carrying a clearly visible generic driver along a short gently curving grey road. Three-quarter view, all wheels and car structure coherent, no large landscape, destination sign, motion blur or text. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:driver:%E5%90%8D",
+      "level": "junior",
+      "word": "driver",
+      "pos": "名",
+      "meaning": "運転手",
+      "phrase": "bus driver",
+      "example": "He is a taxi driver.",
+      "meaningVariants": [
+        "運転手"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "運転手",
+      "subject": "One adult driver seen from the front behind a simple dark steering wheel, both hands naturally gripping opposite sides, wearing a plain blue shirt. A minimal car windshield outline frames the upper body. No passengers, logo, lettering or detailed dashboard.",
+      "asset": "assets/word-illustrations/driver-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/driver-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One adult driver seen from the front behind a simple dark steering wheel, both hands naturally gripping opposite sides, wearing a plain blue shirt. A minimal car windshield outline frames the upper body. No passengers, logo, lettering or detailed dashboard. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:drum:%E5%90%8D",
+      "level": "junior",
+      "word": "drum",
+      "pos": "名",
+      "meaning": "太鼓、ドラム",
+      "phrase": "play the drums",
+      "example": "He plays the drums in a band.",
+      "meaningVariants": [
+        "太鼓、ドラム"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "太鼓",
+      "subject": "One red cylindrical drum with a fully opaque cream circular drumhead and a few broad tension rods, with two wooden drumsticks resting diagonally across the drumhead. No hands, kit, musical notes, logo or writing.",
+      "asset": "assets/word-illustrations/drum-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/drum-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One red cylindrical drum with a fully opaque cream circular drumhead and a few broad tension rods, with two wooden drumsticks resting diagonally across the drumhead. No hands, kit, musical notes, logo or writing. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:DVD:%E5%90%8D",
+      "level": "junior",
+      "word": "DVD",
+      "pos": "名",
+      "meaning": "DVD",
+      "phrase": "watch a DVD",
+      "example": "We watched a DVD yesterday.",
+      "meaningVariants": [
+        "DVD"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "DVD",
+      "subject": "One pale silver-blue optical disc with a clear round center hole, beside a plain blue DVD case. Exact large text \"DVD\" on the case; no other letters, artwork or logos. No rainbow gradients or glossy textures.",
+      "asset": "assets/word-illustrations/dvd-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/dvd-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One pale silver-blue optical disc with a clear round center hole, beside a plain blue DVD case. Exact large text \"DVD\" on the case; no other letters, artwork or logos. No rainbow gradients or glossy textures. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:ear:%E5%90%8D",
+      "level": "junior",
+      "word": "ear",
+      "pos": "名",
+      "meaning": "耳",
+      "phrase": "left ear",
+      "example": "He whispered in my ear.",
+      "meaningVariants": [
+        "耳"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "耳",
+      "subject": "One human outer ear in side view, warm peach color, with only two broad darker inner curves showing the helix and inner bowl. Entire ear visible, not a full head, no piercing, hair, sound waves or labels.",
+      "asset": "assets/word-illustrations/ear-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/ear-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One human outer ear in side view, warm peach color, with only two broad darker inner curves showing the helix and inner bowl. Entire ear visible, not a full head, no piercing, hair, sound waves or labels. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:egg:%E5%90%8D",
+      "level": "junior",
+      "word": "egg",
+      "pos": "名",
+      "meaning": "卵",
+      "phrase": "boiled egg",
+      "example": "I like eggs for breakfast.",
+      "meaningVariants": [
+        "卵"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "卵",
+      "subject": "One whole pale cream egg standing slightly tilted, beside one half of a hard-boiled egg showing a large flat yellow yolk inside an opaque white oval. No plate, shell fragments, text or detailed shading.",
+      "asset": "assets/word-illustrations/egg-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/egg-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One whole pale cream egg standing slightly tilted, beside one half of a hard-boiled egg showing a large flat yellow yolk inside an opaque white oval. No plate, shell fragments, text or detailed shading. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:eight:%E5%90%8D",
+      "level": "junior",
+      "word": "eight",
+      "pos": "名",
+      "meaning": "8",
+      "phrase": "eight years old",
+      "example": "He is eight years old.",
+      "meaningVariants": [
+        "8"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "数字の8",
+      "subject": "Exactly one large bold golden-yellow numeral \"8\" centered on the transparent canvas. Rounded simple sans-serif glyph, clearly open two holes. No letters, other numerals, decorative objects, outlines or shadow.",
+      "asset": "assets/word-illustrations/eight-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/eight-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Exactly one large bold golden-yellow numeral \"8\" centered on the transparent canvas. Rounded simple sans-serif glyph, clearly open two holes. No letters, other numerals, decorative objects, outlines or shadow. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:eighteen:%E5%90%8D",
+      "level": "junior",
+      "word": "eighteen",
+      "pos": "名",
+      "meaning": "18",
+      "phrase": "eighteen people",
+      "example": "There are eighteen students.",
+      "meaningVariants": [
+        "18"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "数字の18",
+      "subject": "Exactly the large bold golden-yellow number \"18\" centered on the transparent canvas. Simple rounded sans-serif digits, clearly spaced but forming one number. No letters, other numerals, decorative objects, outlines or shadow.",
+      "asset": "assets/word-illustrations/eighteen-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/eighteen-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Exactly the large bold golden-yellow number \"18\" centered on the transparent canvas. Simple rounded sans-serif digits, clearly spaced but forming one number. No letters, other numerals, decorative objects, outlines or shadow. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:eighty:%E5%90%8D",
+      "level": "junior",
+      "word": "eighty",
+      "pos": "名",
+      "meaning": "80",
+      "phrase": "eighty percent",
+      "example": "My grandmother is eighty.",
+      "meaningVariants": [
+        "80"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "数字の80",
+      "subject": "Exactly the large bold golden-yellow number \"80\" centered on the transparent canvas. Simple rounded sans-serif digits, clearly spaced but forming one number. No letters, other numerals, decorative objects, outlines or shadow.",
+      "asset": "assets/word-illustrations/eighty-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/eighty-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Exactly the large bold golden-yellow number \"80\" centered on the transparent canvas. Simple rounded sans-serif digits, clearly spaced but forming one number. No letters, other numerals, decorative objects, outlines or shadow. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:eleven:%E5%90%8D",
+      "level": "junior",
+      "word": "eleven",
+      "pos": "名",
+      "meaning": "11",
+      "phrase": "eleven o'clock",
+      "example": "It is eleven o'clock.",
+      "meaningVariants": [
+        "11"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "数字の11",
+      "subject": "Exactly the large bold golden-yellow number \"11\" centered on the transparent canvas. Simple legible sans-serif digits with small angled top flags so they read as ones, not lowercase l. No letters, other numerals, decorative objects, outlines or shadow.",
+      "asset": "assets/word-illustrations/eleven-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/eleven-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Exactly the large bold golden-yellow number \"11\" centered on the transparent canvas. Simple legible sans-serif digits with small angled top flags so they read as ones, not lowercase l. No letters, other numerals, decorative objects, outlines or shadow. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:email:%E5%90%8D",
+      "level": "junior",
+      "word": "email",
+      "pos": "名",
+      "meaning": "Eメール",
+      "phrase": "send an email",
+      "example": "I will send you an email.",
+      "meaningVariants": [
+        "Eメール"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "Eメール",
+      "subject": "One simple blue laptop screen displaying a large opaque cream closed-envelope icon with a clear triangular flap. Minimal laptop base, no keyboard detail, app chrome, brand, text or additional symbols.",
+      "asset": "assets/word-illustrations/email-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/email-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple blue laptop screen displaying a large opaque cream closed-envelope icon with a clear triangular flap. Minimal laptop base, no keyboard detail, app chrome, brand, text or additional symbols. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:end:%E5%90%8D",
+      "level": "junior",
+      "word": "end",
+      "pos": "名",
+      "meaning": "終わり、端",
+      "phrase": "end of the story",
+      "example": "This is the end.",
+      "meaningVariants": [
+        "終わり、端"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "道の終わり",
+      "subject": "A short broad blue path viewed from above ends clearly at one thick orange transverse terminal bar. A small dark arrow on the path points toward that endpoint. The path stops at the bar and nothing continues beyond it. No flag, words, numbers or scenery.",
+      "asset": "assets/word-illustrations/end-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/end-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A short broad blue path viewed from above ends clearly at one thick orange transverse terminal bar. A small dark arrow on the path points toward that endpoint. The path stops at the bar and nothing continues beyond it. No flag, words, numbers or scenery. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:engineer:%E5%90%8D",
+      "level": "junior",
+      "word": "engineer",
+      "pos": "名",
+      "meaning": "エンジニア、技師",
+      "phrase": "software engineer",
+      "example": "He wants to be an engineer.",
+      "meaningVariants": [
+        "エンジニア、技師"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "技師の一例",
+      "subject": "One engineer wearing a plain orange hard hat and teal work clothes, holding an opaque cream technical plan with one simple gear outline, next to a single large blue gear. Full figure, no company mark, digits, lettering, factory or tiny details.",
+      "asset": "assets/word-illustrations/engineer-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/engineer-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One engineer wearing a plain orange hard hat and teal work clothes, holding an opaque cream technical plan with one simple gear outline, next to a single large blue gear. Full figure, no company mark, digits, lettering, factory or tiny details. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:evening:%E5%90%8D",
+      "level": "junior",
+      "word": "evening",
+      "pos": "名",
+      "meaning": "夕方、晩",
+      "phrase": "good evening",
+      "example": "I watch TV in the evening.",
+      "meaningVariants": [
+        "夕方、晩"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "夕方",
+      "subject": "One large orange sun half below a simple dark-blue horizon behind a small plain house, with a warm yellow window. Three broad orange sun rays only, no stars, moon, sky rectangle, clouds, text or gradients.",
+      "asset": "assets/word-illustrations/evening-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/evening-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One large orange sun half below a simple dark-blue horizon behind a small plain house, with a warm yellow window. Three broad orange sun rays only, no stars, moon, sky rectangle, clouds, text or gradients. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:event:%E5%90%8D",
+      "level": "junior",
+      "word": "event",
+      "pos": "名",
+      "meaning": "出来事、イベント",
+      "phrase": "big event",
+      "example": "The festival is a big event.",
+      "meaningVariants": [
+        "出来事、イベント"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "イベントの一例",
+      "subject": "A small community festival scene: one simple striped orange-and-cream stall with a teal counter and three generic visitors gathered in front. Full figures, minimal arrangement, no flags, banners, prices, lettering or detailed merchandise.",
+      "asset": "assets/word-illustrations/event-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/event-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A small community festival scene: one simple striped orange-and-cream stall with a teal counter and three generic visitors gathered in front. Full figures, minimal arrangement, no flags, banners, prices, lettering or detailed merchandise. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:example:%E5%90%8D",
+      "level": "junior",
+      "word": "example",
+      "pos": "名",
+      "meaning": "例",
+      "phrase": "for example",
+      "example": "Can you give me an example?",
+      "meaningVariants": [
+        "例"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "果物の例として示すリンゴ",
+      "subject": "Three simple fruit icons in a compact row: a red apple, a yellow banana and an orange. One plain pointing hand above points specifically at the apple, selecting it as an example from the group. No words, letters, arrows, frame or extra fruits.",
+      "asset": "assets/word-illustrations/example-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/example-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: Three simple fruit icons in a compact row: a red apple, a yellow banana and an orange. One plain pointing hand above points specifically at the apple, selecting it as an example from the group. No words, letters, arrows, frame or extra fruits. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:excuse:%E5%90%8D",
+      "level": "junior",
+      "word": "excuse",
+      "pos": "名",
+      "meaning": "言い訳、弁解",
+      "phrase": "a poor excuse",
+      "example": "He gave a poor excuse for being late.",
+      "meaningVariants": [
+        "言い訳、弁解"
+      ],
+      "occurrences": 2,
+      "status": "pending",
+      "sense": "遅刻の言い訳をする場面",
+      "subject": "One adult arriving late and speaking with one open-handed apologetic gesture, beside a simple wall clock. An opaque pale speech bubble above them contains one small bus icon as the excuse. One person only, clock with hands but no digits, no lettering or additional objects.",
+      "asset": "assets/word-illustrations/excuse-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/excuse-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One adult arriving late and speaking with one open-handed apologetic gesture, beside a simple wall clock. An opaque pale speech bubble above them contains one small bus icon as the excuse. One person only, clock with hands but no digits, no lettering or additional objects. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:fairy:%E5%90%8D",
+      "level": "junior",
+      "word": "fairy",
+      "pos": "名",
+      "meaning": "妖精",
+      "phrase": "fairy tale",
+      "example": "Do you believe in fairies?",
+      "meaningVariants": [
+        "妖精"
+      ],
+      "occurrences": 2,
+      "status": "pending",
+      "sense": "妖精",
+      "subject": "One tiny original fairy hovering upright, with two broad translucent-looking pale-blue wings rendered as opaque flat shapes, a plain green tunic and a short wand tipped with one small yellow star. Full natural human body, no recognizable fictional character, glitter, glow, text or background.",
+      "asset": "assets/word-illustrations/fairy-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fairy-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One tiny original fairy hovering upright, with two broad translucent-looking pale-blue wings rendered as opaque flat shapes, a plain green tunic and a short wand tipped with one small yellow star. Full natural human body, no recognizable fictional character, glitter, glow, text or background. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:family:%E5%90%8D",
+      "level": "junior",
+      "word": "family",
+      "pos": "名",
+      "meaning": "家族",
+      "phrase": "big family",
+      "example": "I love my family.",
+      "meaningVariants": [
+        "家族"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "家族の一例",
+      "subject": "A close group of four generic family members: two adults behind and two children in front, wearing simple blue, green and orange clothes. Full bodies, relaxed friendly faces, natural arms, no house, pets, labels or extra figures.",
+      "asset": "assets/word-illustrations/family-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/family-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: A close group of four generic family members: two adults behind and two children in front, wearing simple blue, green and orange clothes. Full bodies, relaxed friendly faces, natural arms, no house, pets, labels or extra figures. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:fan:%E5%90%8D",
+      "level": "junior",
+      "word": "fan",
+      "pos": "名",
+      "meaning": "ファン、扇風機",
+      "phrase": "baseball fan",
+      "example": "I am a big fan of yours.",
+      "meaningVariants": [
+        "ファン、扇風機"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "応援するファン",
+      "subject": "One enthusiastic sports fan in an orange shirt holding a small plain blue pennant in one hand and raising the other hand, next to a small simple baseball. Full figure, no team logo, text, stadium, electric fan or celebrity.",
+      "asset": "assets/word-illustrations/fan-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/fan-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One enthusiastic sports fan in an orange shirt holding a small plain blue pennant in one hand and raising the other hand, next to a small simple baseball. Full figure, no team logo, text, stadium, electric fan or celebrity. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    },
+    {
+      "key": "word-v2:junior:farm:%E5%90%8D",
+      "level": "junior",
+      "word": "farm",
+      "pos": "名",
+      "meaning": "農場",
+      "phrase": "on a farm",
+      "example": "My uncle lives on a farm.",
+      "meaningVariants": [
+        "農場"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "農場",
+      "subject": "One simple red barn with a cream door, a small green field of three short crop rows in front, and one small brown cow standing beside the barn. Compact coherent farm scene, no sky rectangle, people, signage, elaborate landscape or words.",
+      "asset": "assets/word-illustrations/farm-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/farm-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone vocabulary illustration for a Japanese English-learning app. Quiet reusable teaching material, not a standalone artwork. Square canvas, centered subject occupying about 72% of the canvas with generous padding. Genuinely transparent background with an alpha channel; never draw a checkerboard. Readable at 80–100 CSS pixels. No unrequested text, labels, watermark, badge, border, cast shadow, glow, gradients, surface texture, photographic detail, 3D gloss, dramatic lighting, hand-drawn wobble, paper grain, decorative extras or exaggerated character expression. Subject: One simple red barn with a cream door, a small green field of three short crop rows in front, and one small brown cow standing beside the barn. Compact coherent farm scene, no sky rectangle, people, signage, elaborate landscape or words. Style: simple colored pictographic illustration. Bold readable silhouette, minimal geometric forms, 3–4 solid colors, strongest possible shape economy. No outline except essential structural separations. Remove incidental detail and all shading. Functional and unobtrusive, not decorative clip art."
+    }
+  ]
+}

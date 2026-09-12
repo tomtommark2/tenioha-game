@@ -1,0 +1,419 @@
+{
+  "addedWords": 51,
+  "addedAssets": 50,
+  "totalWords": 257,
+  "totalAssets": 247,
+  "previousWordCount": 206,
+  "previousManifestSha256": "c01bed4ab3ac8fee91cd3d9d2410356da4561cb5292edf388ec6e18fbafa6fe2",
+  "vocabularySha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b",
+  "entries": [
+    {
+      "word": "farmer",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "農家",
+      "src": "assets/word-illustrations/farmer-pictogram-v1.webp",
+      "alt": "農家のイメージ（一例）"
+    },
+    {
+      "word": "father",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "父",
+      "src": "assets/word-illustrations/father-pictogram-v1.webp",
+      "alt": "父と子のイメージ（一例）"
+    },
+    {
+      "word": "favorite",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "お気に入り",
+      "src": "assets/word-illustrations/favorite-pictogram-v1.webp",
+      "alt": "お気に入りの音楽のイメージ（一例）"
+    },
+    {
+      "word": "favourite",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "お気に入り（英）",
+      "src": "assets/word-illustrations/favorite-pictogram-v1.webp",
+      "alt": "お気に入りの音楽のイメージ（一例）"
+    },
+    {
+      "word": "February",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "2月",
+      "src": "assets/word-illustrations/february-pictogram-v1.webp",
+      "alt": "2月のイメージ（一例）"
+    },
+    {
+      "word": "feed",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "飼料、餌",
+      "src": "assets/word-illustrations/feed-pictogram-v1.webp",
+      "alt": "鶏の餌のイメージ（一例）"
+    },
+    {
+      "word": "feeling",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "感情、感覚",
+      "src": "assets/word-illustrations/feeling-pictogram-v1.webp",
+      "alt": "感情の例のイメージ（一例）"
+    },
+    {
+      "word": "festival",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "祭り",
+      "src": "assets/word-illustrations/festival-pictogram-v1.webp",
+      "alt": "祭りの一例のイメージ（一例）"
+    },
+    {
+      "word": "fever",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "熱",
+      "src": "assets/word-illustrations/fever-pictogram-v1.webp",
+      "alt": "熱がある様子のイメージ（一例）"
+    },
+    {
+      "word": "field",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "畑、野原",
+      "src": "assets/word-illustrations/field-pictogram-v1.webp",
+      "alt": "野原のイメージ（一例）"
+    },
+    {
+      "word": "fifteen",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "15",
+      "src": "assets/word-illustrations/fifteen-pictogram-v1.webp",
+      "alt": "数字の15のイメージ（一例）"
+    },
+    {
+      "word": "fifty",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "50",
+      "src": "assets/word-illustrations/fifty-pictogram-v1.webp",
+      "alt": "数字の50のイメージ（一例）"
+    },
+    {
+      "word": "fight",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "戦い、喧嘩",
+      "src": "assets/word-illustrations/fight-pictogram-v1.webp",
+      "alt": "喧嘩の一例のイメージ（一例）"
+    },
+    {
+      "word": "file",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ファイル",
+      "src": "assets/word-illustrations/file-pictogram-v1.webp",
+      "alt": "ファイルのイメージ（一例）"
+    },
+    {
+      "word": "finish",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "終わり",
+      "src": "assets/word-illustrations/finish-pictogram-v1.webp",
+      "alt": "競走の終わりのイメージ（一例）"
+    },
+    {
+      "word": "fire",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "火、火事",
+      "src": "assets/word-illustrations/fire-pictogram-v1.webp",
+      "alt": "火のイメージ（一例）"
+    },
+    {
+      "word": "fish",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "魚",
+      "src": "assets/word-illustrations/fish-pictogram-v1.webp",
+      "alt": "魚のイメージ（一例）"
+    },
+    {
+      "word": "fishing",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "釣り",
+      "src": "assets/word-illustrations/fishing-pictogram-v1.webp",
+      "alt": "釣りのイメージ（一例）"
+    },
+    {
+      "word": "five",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "5",
+      "src": "assets/word-illustrations/five-pictogram-v1.webp",
+      "alt": "数字の5のイメージ（一例）"
+    },
+    {
+      "word": "flag",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "旗",
+      "src": "assets/word-illustrations/flag-pictogram-v1.webp",
+      "alt": "旗のイメージ（一例）"
+    },
+    {
+      "word": "flat",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "アパート（英）",
+      "src": "assets/word-illustrations/flat-pictogram-v1.webp",
+      "alt": "集合住宅の一戸のイメージ（一例）"
+    },
+    {
+      "word": "floor",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "床、階",
+      "src": "assets/word-illustrations/floor-pictogram-v1.webp",
+      "alt": "床のイメージ（一例）"
+    },
+    {
+      "word": "flower",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "花",
+      "src": "assets/word-illustrations/flower-pictogram-v1.webp",
+      "alt": "花のイメージ（一例）"
+    },
+    {
+      "word": "fly",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ハエ",
+      "src": "assets/word-illustrations/fly-pictogram-v1.webp",
+      "alt": "ハエのイメージ（一例）"
+    },
+    {
+      "word": "food",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "食べ物",
+      "src": "assets/word-illustrations/food-pictogram-v1.webp",
+      "alt": "食べ物の例のイメージ（一例）"
+    },
+    {
+      "word": "football",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "サッカー、アメフト",
+      "src": "assets/word-illustrations/football-pictogram-v1.webp",
+      "alt": "サッカーのイメージ（一例）"
+    },
+    {
+      "word": "foreigner",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "外国人",
+      "src": "assets/word-illustrations/foreigner-pictogram-v1.webp",
+      "alt": "海外から来た訪問者の一例のイメージ（一例）"
+    },
+    {
+      "word": "form",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "形、用紙",
+      "src": "assets/word-illustrations/form-pictogram-v1.webp",
+      "alt": "記入用紙のイメージ（一例）"
+    },
+    {
+      "word": "forty",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "40",
+      "src": "assets/word-illustrations/forty-pictogram-v1.webp",
+      "alt": "数字の40のイメージ（一例）"
+    },
+    {
+      "word": "four",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "4",
+      "src": "assets/word-illustrations/four-pictogram-v1.webp",
+      "alt": "数字の4のイメージ（一例）"
+    },
+    {
+      "word": "fourteen",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "14",
+      "src": "assets/word-illustrations/fourteen-pictogram-v1.webp",
+      "alt": "数字の14のイメージ（一例）"
+    },
+    {
+      "word": "Friday",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "金曜日",
+      "src": "assets/word-illustrations/friday-pictogram-v1.webp",
+      "alt": "金曜日のイメージ（一例）"
+    },
+    {
+      "word": "friend",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "友達",
+      "src": "assets/word-illustrations/friend-pictogram-v1.webp",
+      "alt": "友達の一例のイメージ（一例）"
+    },
+    {
+      "word": "frog",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "カエル",
+      "src": "assets/word-illustrations/frog-pictogram-v1.webp",
+      "alt": "カエルのイメージ（一例）"
+    },
+    {
+      "word": "front",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "前、正面",
+      "src": "assets/word-illustrations/front-pictogram-v1.webp",
+      "alt": "家の正面のイメージ（一例）"
+    },
+    {
+      "word": "fruit",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "果物",
+      "src": "assets/word-illustrations/fruit-pictogram-v1.webp",
+      "alt": "果物のイメージ（一例）"
+    },
+    {
+      "word": "fun",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "楽しみ",
+      "src": "assets/word-illustrations/fun-pictogram-v1.webp",
+      "alt": "楽しく遊ぶ場面のイメージ（一例）"
+    },
+    {
+      "word": "future",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "未来",
+      "src": "assets/word-illustrations/future-pictogram-v1.webp",
+      "alt": "将来の姿を思う例のイメージ（一例）"
+    },
+    {
+      "word": "game",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "試合、ゲーム",
+      "src": "assets/word-illustrations/game-pictogram-v1.webp",
+      "alt": "ゲームのイメージ（一例）"
+    },
+    {
+      "word": "garbage",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ゴミ",
+      "src": "assets/word-illustrations/garbage-pictogram-v1.webp",
+      "alt": "ゴミのイメージ（一例）"
+    },
+    {
+      "word": "garden",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "庭",
+      "src": "assets/word-illustrations/garden-pictogram-v1.webp",
+      "alt": "庭のイメージ（一例）"
+    },
+    {
+      "word": "ghost",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "幽霊",
+      "src": "assets/word-illustrations/ghost-pictogram-v1.webp",
+      "alt": "幽霊のイメージ（一例）"
+    },
+    {
+      "word": "gift",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "贈り物",
+      "src": "assets/word-illustrations/gift-pictogram-v1.webp",
+      "alt": "贈り物のイメージ（一例）"
+    },
+    {
+      "word": "girl",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "女の子",
+      "src": "assets/word-illustrations/girl-pictogram-v1.webp",
+      "alt": "女の子のイメージ（一例）"
+    },
+    {
+      "word": "girlfriend",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ガールフレンド",
+      "src": "assets/word-illustrations/girlfriend-pictogram-v1.webp",
+      "alt": "交際相手の女性の一例のイメージ（一例）"
+    },
+    {
+      "word": "glass",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "コップ、ガラス",
+      "src": "assets/word-illustrations/glass-pictogram-v1.webp",
+      "alt": "水の入ったコップのイメージ（一例）"
+    },
+    {
+      "word": "glasses",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "眼鏡",
+      "src": "assets/word-illustrations/glasses-pictogram-v1.webp",
+      "alt": "眼鏡のイメージ（一例）"
+    },
+    {
+      "word": "goal",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "目標、ゴール",
+      "src": "assets/word-illustrations/goal-pictogram-v1.webp",
+      "alt": "目標のイメージのイメージ（一例）"
+    },
+    {
+      "word": "grade",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "学年、成績",
+      "src": "assets/word-illustrations/grade-pictogram-v1.webp",
+      "alt": "学年の例のイメージ（一例）"
+    },
+    {
+      "word": "grammar",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "文法",
+      "src": "assets/word-illustrations/grammar-pictogram-v1.webp",
+      "alt": "文の組み立てのイメージ（一例）"
+    },
+    {
+      "word": "grandfather",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "祖父",
+      "src": "assets/word-illustrations/grandfather-pictogram-v1.webp",
+      "alt": "祖父と孫の一例のイメージ（一例）"
+    }
+  ]
+}

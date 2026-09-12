@@ -1,0 +1,451 @@
+{
+  "addedWords": 55,
+  "addedAssets": 50,
+  "totalWords": 206,
+  "totalAssets": 197,
+  "previousWordCount": 151,
+  "previousManifestSha256": "8be9283ab4d9b8a95a184d255caa4b828edc56f7046e39e593a54bc24dc93807",
+  "vocabularySha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b",
+  "entries": [
+    {
+      "word": "cow",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "牛",
+      "src": "assets/word-illustrations/cow-pictogram-v1.webp",
+      "alt": "牛のイメージ（一例）"
+    },
+    {
+      "word": "cream",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "クリーム",
+      "src": "assets/word-illustrations/cream-pictogram-v1.webp",
+      "alt": "乳製品のクリームのイメージ（一例）"
+    },
+    {
+      "word": "credit card",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "クレジットカード",
+      "src": "assets/word-illustrations/credit-card-pictogram-v2.webp",
+      "alt": "クレジットカードのイメージ（一例）"
+    },
+    {
+      "word": "cry",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "泣くこと、叫び声",
+      "src": "assets/word-illustrations/cry-pictogram-v1.webp",
+      "alt": "泣くことのイメージ（一例）"
+    },
+    {
+      "word": "culture",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "文化",
+      "src": "assets/word-illustrations/culture-pictogram-v1.webp",
+      "alt": "文化の一例：茶道のイメージ（一例）"
+    },
+    {
+      "word": "cup",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "カップ、茶碗",
+      "src": "assets/word-illustrations/cup-pictogram-v1.webp",
+      "alt": "カップのイメージ（一例）"
+    },
+    {
+      "word": "dad",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "パパ、お父さん",
+      "src": "assets/word-illustrations/dad-pictogram-v1.webp",
+      "alt": "父親と幼い子のイメージ（一例）"
+    },
+    {
+      "word": "daddy",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "パパ（幼児語）",
+      "src": "assets/word-illustrations/dad-pictogram-v1.webp",
+      "alt": "父親と幼い子のイメージ（一例）"
+    },
+    {
+      "word": "dance",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ダンス",
+      "src": "assets/word-illustrations/dance-pictogram-v1.webp",
+      "alt": "ダンスのイメージ（一例）"
+    },
+    {
+      "word": "dancing",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "踊ること、ダンス",
+      "src": "assets/word-illustrations/dance-pictogram-v1.webp",
+      "alt": "ダンスのイメージ（一例）"
+    },
+    {
+      "word": "date",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "日付、デート",
+      "src": "assets/word-illustrations/date-pictogram-v1.webp",
+      "alt": "カレンダーの日付のイメージ（一例）"
+    },
+    {
+      "word": "daughter",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "娘",
+      "src": "assets/word-illustrations/daughter-pictogram-v1.webp",
+      "alt": "親と娘の関係のイメージ（一例）"
+    },
+    {
+      "word": "day",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "日、昼間",
+      "src": "assets/word-illustrations/day-pictogram-v1.webp",
+      "alt": "昼間のイメージ（一例）"
+    },
+    {
+      "word": "December",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "12月",
+      "src": "assets/word-illustrations/december-pictogram-v1.webp",
+      "alt": "12月のイメージ（一例）"
+    },
+    {
+      "word": "design",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "デザイン",
+      "src": "assets/word-illustrations/design-pictogram-v1.webp",
+      "alt": "建物のデザインを考える場面のイメージ（一例）"
+    },
+    {
+      "word": "desk",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "机",
+      "src": "assets/word-illustrations/desk-pictogram-v1.webp",
+      "alt": "机のイメージ（一例）"
+    },
+    {
+      "word": "dictionary",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "辞書",
+      "src": "assets/word-illustrations/dictionary-pictogram-v2.webp",
+      "alt": "辞書のイメージ（一例）"
+    },
+    {
+      "word": "difference",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "違い",
+      "src": "assets/word-illustrations/difference-pictogram-v1.webp",
+      "alt": "形の違いのイメージ（一例）"
+    },
+    {
+      "word": "dining room",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "食堂、ダイニングルーム",
+      "src": "assets/word-illustrations/dining-room-pictogram-v1.webp",
+      "alt": "ダイニングルームのイメージ（一例）"
+    },
+    {
+      "word": "dinner",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "夕食",
+      "src": "assets/word-illustrations/dinner-pictogram-v1.webp",
+      "alt": "夕食のイメージ（一例）"
+    },
+    {
+      "word": "dish",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "皿、料理",
+      "src": "assets/word-illustrations/dish-pictogram-v1.webp",
+      "alt": "皿のイメージ（一例）"
+    },
+    {
+      "word": "doctor",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "医者",
+      "src": "assets/word-illustrations/doctor-pictogram-v1.webp",
+      "alt": "医者のイメージ（一例）"
+    },
+    {
+      "word": "dog",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "犬",
+      "src": "assets/word-illustrations/dog-pictogram-v1.webp",
+      "alt": "犬のイメージ（一例）"
+    },
+    {
+      "word": "doll",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "人形",
+      "src": "assets/word-illustrations/doll-pictogram-v1.webp",
+      "alt": "人形のイメージ（一例）"
+    },
+    {
+      "word": "dollar",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ドル",
+      "src": "assets/word-illustrations/dollar-pictogram-v2.webp",
+      "alt": "ドルのイメージ（一例）"
+    },
+    {
+      "word": "door",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ドア",
+      "src": "assets/word-illustrations/door-pictogram-v1.webp",
+      "alt": "ドアのイメージ（一例）"
+    },
+    {
+      "word": "Dr",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "～先生、～博士",
+      "src": "assets/word-illustrations/dr-pictogram-v1.webp",
+      "alt": "博士の敬称のイメージ（一例）"
+    },
+    {
+      "word": "Dr.",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "～先生、～博士",
+      "src": "assets/word-illustrations/dr-pictogram-v1.webp",
+      "alt": "博士の敬称のイメージ（一例）"
+    },
+    {
+      "word": "drama",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "演劇、ドラマ",
+      "src": "assets/word-illustrations/drama-pictogram-v1.webp",
+      "alt": "演劇のイメージ（一例）"
+    },
+    {
+      "word": "dream",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "夢",
+      "src": "assets/word-illustrations/dream-pictogram-v1.webp",
+      "alt": "眠って見る夢のイメージ（一例）"
+    },
+    {
+      "word": "dress",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ドレス、ワンピース",
+      "src": "assets/word-illustrations/dress-pictogram-v1.webp",
+      "alt": "ワンピースのイメージ（一例）"
+    },
+    {
+      "word": "drink",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "飲み物",
+      "src": "assets/word-illustrations/drink-pictogram-v1.webp",
+      "alt": "飲み物のイメージ（一例）"
+    },
+    {
+      "word": "drive",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ドライブ",
+      "src": "assets/word-illustrations/drive-pictogram-v1.webp",
+      "alt": "ドライブのイメージ（一例）"
+    },
+    {
+      "word": "driver",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "運転手",
+      "src": "assets/word-illustrations/driver-pictogram-v1.webp",
+      "alt": "運転手のイメージ（一例）"
+    },
+    {
+      "word": "drum",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "太鼓、ドラム",
+      "src": "assets/word-illustrations/drum-pictogram-v1.webp",
+      "alt": "太鼓のイメージ（一例）"
+    },
+    {
+      "word": "DVD",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "DVD",
+      "src": "assets/word-illustrations/dvd-pictogram-v1.webp",
+      "alt": "DVDのイメージ（一例）"
+    },
+    {
+      "word": "ear",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "耳",
+      "src": "assets/word-illustrations/ear-pictogram-v1.webp",
+      "alt": "耳のイメージ（一例）"
+    },
+    {
+      "word": "egg",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "卵",
+      "src": "assets/word-illustrations/egg-pictogram-v1.webp",
+      "alt": "卵のイメージ（一例）"
+    },
+    {
+      "word": "eight",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "8",
+      "src": "assets/word-illustrations/eight-pictogram-v1.webp",
+      "alt": "数字の8のイメージ（一例）"
+    },
+    {
+      "word": "eighteen",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "18",
+      "src": "assets/word-illustrations/eighteen-pictogram-v1.webp",
+      "alt": "数字の18のイメージ（一例）"
+    },
+    {
+      "word": "eighty",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "80",
+      "src": "assets/word-illustrations/eighty-pictogram-v1.webp",
+      "alt": "数字の80のイメージ（一例）"
+    },
+    {
+      "word": "eleven",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "11",
+      "src": "assets/word-illustrations/eleven-pictogram-v1.webp",
+      "alt": "数字の11のイメージ（一例）"
+    },
+    {
+      "word": "email",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "Eメール",
+      "src": "assets/word-illustrations/email-pictogram-v1.webp",
+      "alt": "Eメールのイメージ（一例）"
+    },
+    {
+      "word": "e-mail",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "Eメール",
+      "src": "assets/word-illustrations/email-pictogram-v1.webp",
+      "alt": "Eメールのイメージ（一例）"
+    },
+    {
+      "word": "E-mail",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "Eメール",
+      "src": "assets/word-illustrations/email-pictogram-v1.webp",
+      "alt": "Eメールのイメージ（一例）"
+    },
+    {
+      "word": "end",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "終わり、端",
+      "src": "assets/word-illustrations/end-pictogram-v1.webp",
+      "alt": "道の終わりのイメージ（一例）"
+    },
+    {
+      "word": "engineer",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "エンジニア、技師",
+      "src": "assets/word-illustrations/engineer-pictogram-v1.webp",
+      "alt": "技師の一例のイメージ（一例）"
+    },
+    {
+      "word": "evening",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "夕方、晩",
+      "src": "assets/word-illustrations/evening-pictogram-v1.webp",
+      "alt": "夕方のイメージ（一例）"
+    },
+    {
+      "word": "event",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "出来事、イベント",
+      "src": "assets/word-illustrations/event-pictogram-v1.webp",
+      "alt": "イベントの一例のイメージ（一例）"
+    },
+    {
+      "word": "example",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "例",
+      "src": "assets/word-illustrations/example-pictogram-v1.webp",
+      "alt": "果物の例として示すリンゴのイメージ（一例）"
+    },
+    {
+      "word": "excuse",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "言い訳、弁解",
+      "src": "assets/word-illustrations/excuse-pictogram-v1.webp",
+      "alt": "遅刻の言い訳をする場面のイメージ（一例）"
+    },
+    {
+      "word": "fairy",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "妖精",
+      "src": "assets/word-illustrations/fairy-pictogram-v1.webp",
+      "alt": "妖精のイメージ（一例）"
+    },
+    {
+      "word": "family",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "家族",
+      "src": "assets/word-illustrations/family-pictogram-v1.webp",
+      "alt": "家族の一例のイメージ（一例）"
+    },
+    {
+      "word": "fan",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "ファン、扇風機",
+      "src": "assets/word-illustrations/fan-pictogram-v1.webp",
+      "alt": "応援するファンのイメージ（一例）"
+    },
+    {
+      "word": "farm",
+      "level": "junior",
+      "pos": "名",
+      "meaning": "農場",
+      "src": "assets/word-illustrations/farm-pictogram-v1.webp",
+      "alt": "農場のイメージ（一例）"
+    }
+  ]
+}

@@ -23,6 +23,13 @@
 - Do not deploy the app UI to Firebase Hosting. Hosting has been disabled for the `tenioha-game` Firebase project.
 - For backend changes, prefer explicit deploy targets such as `npx firebase deploy --only functions --project tenioha-game` or `npx firebase deploy --only firestore:rules --project tenioha-game`.
 
+### 2026-09-12 イラスト追加（2026.0912.1804）
+
+- 公開対象：cow〜grandfatherの新規100画像（表記違いを共用して106語）。累計257語・247画像。語義・学習キー・既存151語は保持し、通常学習とイラスト単語帳の両方で使用する。
+- 配信用の可逆WebPと登録データ、関連テスト・制作記録だけを追加。未公開の無料／有料プラン試作、原画、比較ページ、動画・投稿素材は対象外。Firebase・認証・本番の学習保存・投稿は操作しない。
+- 公開前検証は本番と同じ実装を分離した作業コピーで行う。HTML・版番号・復習キーを同期し、公開後に配信ファイルとブラウザー表示を確認する。
+- 公開前確認：HTML・版番号・復習キー同期、単体28件・Functions18件、全257語の切替を含むブラウザー127件が成功。時間制限1件は分離環境のURL参照を修正し、関連3件の再実行で成功。スマホChromium／WebKitの関連6件も成功。検証用ポート変更は公開対象外。
+
 ### 2026-09-11 公開チェック（2026.0911.0906）
 
 - 対象：起動時のランキング告知をイラスト単語帳へ差し替え、通常のお知らせに使い方を追加。「イラスト」ボタンは淡色の背景・細枠にし、意味カードのラベルと文字の高さを揃える。新規50画像（color／colour共用で51語）を追加し、累計151語・147画像。

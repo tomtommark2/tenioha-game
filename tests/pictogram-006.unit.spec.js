@@ -7,7 +7,8 @@ const encoding = require('../docs/experiments/noun-production/pictogram-006/enco
 
 test('通常生成の追加50画像・51語は未制作順を守り、既存100語を保持する', () => {
   const input = readInputs();
-  const { illustrations, utils, database } = input;
+  const { utils, database } = input;
+  const illustrations = input.illustrations.slice(0, registration.totalWords);
   expect(input.vocabularySha256).toBe(registration.vocabularySha256);
   expect(illustrations).toHaveLength(151);
   expect(new Set(illustrations.map(e => e.src)).size).toBe(147);
@@ -25,5 +26,5 @@ test('通常生成の追加50画像・51語は未制作順を守り、既存100�
   }
   const find = word => illustrations.find(e => e.word === word && e.level === 'junior');
   expect(find('color').src).toBe(find('colour').src);
-  expect(buildQueue(input).entries.find(e => e.status === 'pending').word).toBe('cow');
+  expect(buildQueue({ ...input, illustrations }).entries.find(e => e.status === 'pending').word).toBe('cow');
 });

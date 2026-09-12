@@ -97,7 +97,7 @@ test('イラスト単語帳の復習は収録語だけを名詞表示で出す',
 test('イラスト画面は小さい画面でも閉じて学習に戻れる', async ({ page }, testInfo) => {
   await page.evaluate(() => WordIllustrations.openWordbook());
   await expect(page.locator('#illustratedWordbookModal')).toBeVisible();
-  await expect(page.locator('.illustrated-word-tile')).toHaveCount(151);
+  await expect(page.locator('.illustrated-word-tile')).toHaveCount(await page.evaluate(() => WORD_ILLUSTRATIONS.length));
   await expect.poll(() => page.locator('.illustrated-word-tile img').first().evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('illustrated-wordbook.png') });
