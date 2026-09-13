@@ -2701,8 +2701,8 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 }
 
 .help-redesign .modal-close-btn {
-    background: rgba(255, 255, 255, 0.16);
-    color: #fff;
+    background: #f2f4f8;
+    color: #2f3a52;
 }
 
 .help-redesign .help-share-btn {
