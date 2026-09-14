@@ -1,0 +1,983 @@
+{
+  "date": "2026-09-14",
+  "mode": "built-in image_gen",
+  "vocabularySha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b",
+  "policy": "50 new assets for first 53 pending keys, jacket through May. Jewellery/jewelry and math/maths share images; two lot entries share image and retain legacyKeyPos. Local registration only.",
+  "referenceCheck": "英語イメージ大図鑑をmatter/luckと問題/運で検索。英語検索は一致なし、日本語はaboutの問題の用例・可算不可算・carry等で今回の図案の直接根拠には不採用。書籍の図・文の流用なし。既存データの語義・用例に沿う独自場面。",
+  "aliases": [
+    {
+      "word": "jewelry",
+      "source": "jewellery"
+    },
+    {
+      "word": "maths",
+      "source": "math"
+    }
+  ],
+  "entries": [
+    {
+      "key": "word-v2:junior:jacket:%E5%90%8D",
+      "level": "junior",
+      "word": "jacket",
+      "pos": "名",
+      "meaning": "ジャケット",
+      "phrase": "wear a jacket",
+      "example": "Put on your jacket.",
+      "meaningVariants": [
+        "ジャケット"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ジャケット",
+      "subject": "A single orange casual jacket with blue collar, zipper and two pockets, front view, no person.",
+      "asset": "assets/word-illustrations/jacket-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/jacket-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: jacket. Intended sense: ジャケット.\nSubject: A single orange casual jacket with blue collar, zipper and two pockets, front view, no person."
+    },
+    {
+      "key": "word-v2:junior:January:%E5%90%8D",
+      "level": "junior",
+      "word": "January",
+      "pos": "名",
+      "meaning": "1月",
+      "phrase": "in January",
+      "example": "It is cold in January.",
+      "meaningVariants": [
+        "1月"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "1月",
+      "subject": "A simple cream calendar page with blue header, exact large text JAN and large numeral 1, a small snowflake beside it.",
+      "asset": "assets/word-illustrations/january-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/january-pictogram-v3.webp",
+      "prompt": "Scientific educational colored pictogram of January: blue rounded rectangular calendar with two binding loops, fully solid opaque warm cream paper, large dark blue exact letters \"JAN\" above a large numeral \"1\", small pale blue snowflake at bottom right. Clean flat geometric shapes. Square centered full object with margin. Genuinely transparent alpha exterior background. ALL calendar paper and other object surfaces fully opaque; no translucent stains, no gray marks, no holes, no checkerboard, no texture, no shadows. Readable at 80 pixels.",
+      "rejectedAssets": [
+        "assets/word-illustrations/january-pictogram-v1.png",
+        "assets/word-illustrations/january-pictogram-v2.png"
+      ]
+    },
+    {
+      "key": "word-v2:junior:jeans:%E5%90%8D",
+      "level": "junior",
+      "word": "jeans",
+      "pos": "名",
+      "meaning": "ジーンズ",
+      "phrase": "blue jeans",
+      "example": "He is wearing jeans.",
+      "meaningVariants": [
+        "ジーンズ"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ジーンズ",
+      "subject": "A single pair of blue denim jeans, waist pockets belt loops and two long legs, front view.",
+      "asset": "assets/word-illustrations/jeans-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/jeans-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: jeans. Intended sense: ジーンズ.\nSubject: A single pair of blue denim jeans, waist pockets belt loops and two long legs, front view."
+    },
+    {
+      "key": "word-v2:junior:jet:%E5%90%8D",
+      "level": "junior",
+      "word": "jet",
+      "pos": "名",
+      "meaning": "ジェット機",
+      "phrase": "jet plane",
+      "example": "Look at that jet.",
+      "meaningVariants": [
+        "ジェット機"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ジェット機",
+      "subject": "One blue and cream jet passenger airplane viewed diagonally from above, two jet engines under wings, no propellers.",
+      "asset": "assets/word-illustrations/jet-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/jet-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: jet. Intended sense: ジェット機.\nSubject: One blue and cream jet passenger airplane viewed diagonally from above, two jet engines under wings, no propellers."
+    },
+    {
+      "key": "word-v2:junior:jewellery:%E5%90%8D",
+      "level": "junior",
+      "word": "jewellery",
+      "pos": "名",
+      "meaning": "宝石、アクセサリー",
+      "phrase": "gold jewellery",
+      "example": "She likes jewellery.",
+      "meaningVariants": [
+        "宝石、アクセサリー"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "宝飾品の一例",
+      "subject": "A gold necklace with a blue pendant and a matching gold ring, simple bold shapes.",
+      "asset": "assets/word-illustrations/jewellery-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/jewellery-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: jewellery. Intended sense: 宝飾品の一例.\nSubject: A gold necklace with a blue pendant and a matching gold ring, simple bold shapes."
+    },
+    {
+      "key": "word-v2:junior:job:%E5%90%8D",
+      "level": "junior",
+      "word": "job",
+      "pos": "名",
+      "meaning": "仕事",
+      "phrase": "good job",
+      "example": "I am looking for a job.",
+      "meaningVariants": [
+        "仕事"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "仕事の一例",
+      "subject": "An adult office worker in blue seated at a small desk using a laptop, one orange briefcase beside desk.",
+      "asset": "assets/word-illustrations/job-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/job-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: job. Intended sense: 仕事の一例.\nSubject: An adult office worker in blue seated at a small desk using a laptop, one orange briefcase beside desk."
+    },
+    {
+      "key": "word-v2:junior:juice:%E5%90%8D",
+      "level": "junior",
+      "word": "juice",
+      "pos": "名",
+      "meaning": "ジュース",
+      "phrase": "orange juice",
+      "example": "I want some juice.",
+      "meaningVariants": [
+        "ジュース"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "オレンジジュース",
+      "subject": "One clear glass represented with blue outline, opaque orange juice and one cut orange beside it. No straw.",
+      "asset": "assets/word-illustrations/juice-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/juice-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: juice. Intended sense: オレンジジュース.\nSubject: One clear glass represented with blue outline, opaque orange juice and one cut orange beside it. No straw."
+    },
+    {
+      "key": "word-v2:junior:July:%E5%90%8D",
+      "level": "junior",
+      "word": "July",
+      "pos": "名",
+      "meaning": "7月",
+      "phrase": "in July",
+      "example": "School ends in July.",
+      "meaningVariants": [
+        "7月"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "7月",
+      "subject": "A simple cream calendar page with blue header, exact large text JUL and large numeral 7, a small orange sun beside it.",
+      "asset": "assets/word-illustrations/july-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/july-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: July. Intended sense: 7月.\nSubject: A simple cream calendar page with blue header, exact large text JUL and large numeral 7, a small orange sun beside it."
+    },
+    {
+      "key": "word-v2:junior:June:%E5%90%8D",
+      "level": "junior",
+      "word": "June",
+      "pos": "名",
+      "meaning": "6月",
+      "phrase": "wedding in June",
+      "example": "June is a rainy month.",
+      "meaningVariants": [
+        "6月"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "6月",
+      "subject": "A simple cream calendar page with blue header, exact large text JUN and large numeral 6, a small blue umbrella beside it.",
+      "asset": "assets/word-illustrations/june-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/june-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: June. Intended sense: 6月.\nSubject: A simple cream calendar page with blue header, exact large text JUN and large numeral 6, a small blue umbrella beside it."
+    },
+    {
+      "key": "word-v2:junior:key:%E5%90%8D",
+      "level": "junior",
+      "word": "key",
+      "pos": "名",
+      "meaning": "鍵（名詞）",
+      "phrase": "house key",
+      "example": "I lost my key.",
+      "meaningVariants": [
+        "鍵（名詞）"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "鍵",
+      "subject": "One large gold house key with a round open bow, straight shaft and three distinct teeth.",
+      "asset": "assets/word-illustrations/key-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/key-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: key. Intended sense: 鍵.\nSubject: One large gold house key with a round open bow, straight shaft and three distinct teeth."
+    },
+    {
+      "key": "word-v2:junior:kick:%E5%90%8D",
+      "level": "junior",
+      "word": "kick",
+      "pos": "名",
+      "meaning": "蹴る",
+      "phrase": "kick the ball",
+      "example": "Give it a kick.",
+      "meaningVariants": [
+        "蹴る"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "蹴る動作の一例",
+      "subject": "A close view of one blue-trousered leg and orange shoe kicking a soccer ball, ball just separating from toe, two short motion strokes.",
+      "asset": "assets/word-illustrations/kick-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/kick-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: kick. Intended sense: 蹴る動作の一例.\nSubject: A close view of one blue-trousered leg and orange shoe kicking a soccer ball, ball just separating from toe, two short motion strokes."
+    },
+    {
+      "key": "word-v2:junior:kid:%E5%90%8D",
+      "level": "junior",
+      "word": "kid",
+      "pos": "名",
+      "meaning": "子供",
+      "phrase": "just a kid",
+      "example": "He is just a kid.",
+      "meaningVariants": [
+        "子供"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "子供の一例",
+      "subject": "One cheerful school-age child standing, orange shirt blue shorts green small backpack, full body.",
+      "asset": "assets/word-illustrations/kid-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/kid-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: kid. Intended sense: 子供の一例.\nSubject: One cheerful school-age child standing, orange shirt blue shorts green small backpack, full body."
+    },
+    {
+      "key": "word-v2:junior:kind:%E5%90%8D",
+      "level": "junior",
+      "word": "kind",
+      "pos": "名",
+      "meaning": "種類",
+      "phrase": "a kind of fruit",
+      "example": "A lemon is a kind of fruit.",
+      "meaningVariants": [
+        "種類"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "種類の一例",
+      "subject": "Three separate small cream trays in one row: one tray holds two red apples, one holds two yellow bananas, one holds two orange oranges. Visually grouped fruit kinds, simple clean silhouettes, no labels.",
+      "asset": "assets/word-illustrations/kind-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/kind-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: kind. Intended sense: 種類の一例.\nSubject: Three separate small cream trays in one row: one tray holds two red apples, one holds two yellow bananas, one holds two orange oranges. Visually grouped fruit kinds, simple clean silhouettes, no labels."
+    },
+    {
+      "key": "word-v2:junior:king:%E5%90%8D",
+      "level": "junior",
+      "word": "king",
+      "pos": "名",
+      "meaning": "王様",
+      "phrase": "King of England",
+      "example": "The king lives in a castle.",
+      "meaningVariants": [
+        "王様"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "王様の一例",
+      "subject": "A friendly adult king wearing a gold crown and orange royal cape, blue tunic, full body, no weapons.",
+      "asset": "assets/word-illustrations/king-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/king-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: king. Intended sense: 王様の一例.\nSubject: A friendly adult king wearing a gold crown and orange royal cape, blue tunic, full body, no weapons."
+    },
+    {
+      "key": "word-v2:junior:kiss:%E5%90%8D",
+      "level": "junior",
+      "word": "kiss",
+      "pos": "名",
+      "meaning": "キス",
+      "phrase": "give a kiss",
+      "example": "She gave him a kiss.",
+      "meaningVariants": [
+        "キス"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "キスの一例",
+      "subject": "A parent gently kissing the cheek of a smiling child, shoulder-up view, warm everyday affection, a single small orange heart.",
+      "asset": "assets/word-illustrations/kiss-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/kiss-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: kiss. Intended sense: キスの一例.\nSubject: A parent gently kissing the cheek of a smiling child, shoulder-up view, warm everyday affection, a single small orange heart."
+    },
+    {
+      "key": "word-v2:junior:kitchen:%E5%90%8D",
+      "level": "junior",
+      "word": "kitchen",
+      "pos": "名",
+      "meaning": "台所",
+      "phrase": "in the kitchen",
+      "example": "Mom is in the kitchen.",
+      "meaningVariants": [
+        "台所"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "台所",
+      "subject": "Compact kitchen vignette with blue lower cabinets, cream countertop, sink with faucet and a stove with one orange pot. No room background.",
+      "asset": "assets/word-illustrations/kitchen-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/kitchen-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: kitchen. Intended sense: 台所.\nSubject: Compact kitchen vignette with blue lower cabinets, cream countertop, sink with faucet and a stove with one orange pot. No room background."
+    },
+    {
+      "key": "word-v2:junior:kite:%E5%90%8D",
+      "level": "junior",
+      "word": "kite",
+      "pos": "名",
+      "meaning": "凧",
+      "phrase": "fly a kite",
+      "example": "Let's fly a kite.",
+      "meaningVariants": [
+        "凧"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "凧",
+      "subject": "One orange and blue diamond-shaped kite with cross spars, curved string and three simple tail bows.",
+      "asset": "assets/word-illustrations/kite-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/kite-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: kite. Intended sense: 凧.\nSubject: One orange and blue diamond-shaped kite with cross spars, curved string and three simple tail bows."
+    },
+    {
+      "key": "word-v2:junior:knee:%E5%90%8D",
+      "level": "junior",
+      "word": "knee",
+      "pos": "名",
+      "meaning": "膝",
+      "phrase": "on my knees",
+      "example": "I hurt my knee.",
+      "meaningVariants": [
+        "膝"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "膝",
+      "subject": "Side view of one bare leg slightly bent at the knee, short blue shorts above and foot below, a small orange outline circle clearly marking only the knee joint.",
+      "asset": "assets/word-illustrations/knee-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/knee-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: knee. Intended sense: 膝.\nSubject: Side view of one bare leg slightly bent at the knee, short blue shorts above and foot below, a small orange outline circle clearly marking only the knee joint."
+    },
+    {
+      "key": "word-v2:junior:knife:%E5%90%8D",
+      "level": "junior",
+      "word": "knife",
+      "pos": "名",
+      "meaning": "ナイフ",
+      "phrase": "sharp knife",
+      "example": "Be careful with the knife.",
+      "meaningVariants": [
+        "ナイフ"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "調理用ナイフ",
+      "subject": "One kitchen knife lying diagonally, blue-gray blade and orange handle, simple rounded tip, no people or injury.",
+      "asset": "assets/word-illustrations/knife-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/knife-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: knife. Intended sense: 調理用ナイフ.\nSubject: One kitchen knife lying diagonally, blue-gray blade and orange handle, simple rounded tip, no people or injury."
+    },
+    {
+      "key": "word-v2:junior:lady:%E5%90%8D",
+      "level": "junior",
+      "word": "lady",
+      "pos": "名",
+      "meaning": "女性、レディー",
+      "phrase": "ladies and gentlemen",
+      "example": "She is a nice lady.",
+      "meaningVariants": [
+        "女性、レディー"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "女性の一例",
+      "subject": "A friendly adult woman standing in a green blouse and long blue skirt, short brown hair, full body.",
+      "asset": "assets/word-illustrations/lady-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/lady-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: lady. Intended sense: 女性の一例.\nSubject: A friendly adult woman standing in a green blouse and long blue skirt, short brown hair, full body."
+    },
+    {
+      "key": "word-v2:junior:language:%E5%90%8D",
+      "level": "junior",
+      "word": "language",
+      "pos": "名",
+      "meaning": "言語",
+      "phrase": "foreign language",
+      "example": "English is a language.",
+      "meaningVariants": [
+        "言語"
+      ],
+      "occurrences": 2,
+      "status": "pending",
+      "sense": "言語のイメージ",
+      "subject": "Two overlapping cream speech bubbles, one with large blue text Hello and the other with large orange text こんにちは. No people.",
+      "asset": "assets/word-illustrations/language-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/language-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: language. Intended sense: 言語のイメージ.\nSubject: Two overlapping cream speech bubbles, one with large blue text Hello and the other with large orange text こんにちは. No people."
+    },
+    {
+      "key": "word-v2:junior:last%20name:%E5%90%8D",
+      "level": "junior",
+      "word": "last name",
+      "pos": "名",
+      "meaning": "名字",
+      "phrase": "your last name",
+      "example": "What is your last name?",
+      "meaningVariants": [
+        "名字"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "名字の一例",
+      "subject": "A cream name card with exact text Tom Smith in large blue letters. Highlight ONLY Smith with an orange rounded rectangle behind that word. Tom stays unhighlighted. No other text.",
+      "asset": "assets/word-illustrations/last-name-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/last-name-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: last name. Intended sense: 名字の一例.\nSubject: A cream name card with exact text Tom Smith in large blue letters. Highlight ONLY Smith with an orange rounded rectangle behind that word. Tom stays unhighlighted. No other text."
+    },
+    {
+      "key": "word-v2:junior:leader:%E5%90%8D",
+      "level": "junior",
+      "word": "leader",
+      "pos": "名",
+      "meaning": "リーダー",
+      "phrase": "team leader",
+      "example": "He is our leader.",
+      "meaningVariants": [
+        "リーダー"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "リーダーの一例",
+      "subject": "Three adults walking together: one orange-clad adult at front pointing forward and two blue/green adults following. Clear leader position, no crowns.",
+      "asset": "assets/word-illustrations/leader-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/leader-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: leader. Intended sense: リーダーの一例.\nSubject: Three adults walking together: one orange-clad adult at front pointing forward and two blue/green adults following. Clear leader position, no crowns."
+    },
+    {
+      "key": "word-v2:junior:leaf:%E5%90%8D",
+      "level": "junior",
+      "word": "leaf",
+      "pos": "名",
+      "meaning": "葉",
+      "phrase": "green leaf",
+      "example": "A leaf fell from the tree.",
+      "meaningVariants": [
+        "葉"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "葉",
+      "subject": "A single orange autumn leaf with cream veins and navy outline.",
+      "asset": "assets/word-illustrations/leaf-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/leaf-pictogram-v3.webp",
+      "prompt": "Scientific educational colored pictogram for English noun LEAF. One single orange autumn leaf, broad oval pointed tip, short stem, navy outline, cream central vein with four short side veins. Flat geometric silhouette, entirely solid opaque ORANGE interior, smooth uniform fill. No green anywhere, no spots, no holes, no highlights, no shading, no texture. Square centered composition with padding. Genuinely transparent exterior alpha background, not checkerboard, no text. Readable at 80px.",
+      "rejectedAssets": [
+        "assets/word-illustrations/leaf-pictogram-v1.png",
+        "assets/word-illustrations/leaf-pictogram-v2.png"
+      ]
+    },
+    {
+      "key": "word-v2:junior:leg:%E5%90%8D",
+      "level": "junior",
+      "word": "leg",
+      "pos": "名",
+      "meaning": "脚",
+      "phrase": "long legs",
+      "example": "He broke his leg.",
+      "meaningVariants": [
+        "脚"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "脚",
+      "subject": "A single human leg from upper thigh to foot, short blue shorts at top, clearly complete knee shin ankle and bare foot. No marker circle.",
+      "asset": "assets/word-illustrations/leg-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/leg-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: leg. Intended sense: 脚.\nSubject: A single human leg from upper thigh to foot, short blue shorts at top, clearly complete knee shin ankle and bare foot. No marker circle."
+    },
+    {
+      "key": "word-v2:junior:lesson:%E5%90%8D",
+      "level": "junior",
+      "word": "lesson",
+      "pos": "名",
+      "meaning": "レッスン、授業",
+      "phrase": "piano lesson",
+      "example": "The lesson starts at 10.",
+      "meaningVariants": [
+        "レッスン、授業"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ピアノのレッスンの一例",
+      "subject": "A child seated playing a small blue upright piano while a nearby adult instructor points at the keyboard. Clear hands at keys.",
+      "asset": "assets/word-illustrations/lesson-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/lesson-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: lesson. Intended sense: ピアノのレッスンの一例.\nSubject: A child seated playing a small blue upright piano while a nearby adult instructor points at the keyboard. Clear hands at keys."
+    },
+    {
+      "key": "word-v2:junior:letter:%E5%90%8D",
+      "level": "junior",
+      "word": "letter",
+      "pos": "名",
+      "meaning": "手紙、文字",
+      "phrase": "write a letter",
+      "example": "I wrote a letter to her.",
+      "meaningVariants": [
+        "手紙、文字"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "手紙",
+      "subject": "An open cream envelope with a letter partly visible, three blue horizontal writing lines on paper, orange stamp on envelope, no readable text.",
+      "asset": "assets/word-illustrations/letter-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/letter-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: letter. Intended sense: 手紙.\nSubject: An open cream envelope with a letter partly visible, three blue horizontal writing lines on paper, orange stamp on envelope, no readable text."
+    },
+    {
+      "key": "word-v2:junior:library:%E5%90%8D",
+      "level": "junior",
+      "word": "library",
+      "pos": "名",
+      "meaning": "図書館",
+      "phrase": "go to the library",
+      "example": "Be quiet in the library.",
+      "meaningVariants": [
+        "図書館"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "図書館の一例",
+      "subject": "Two blue bookshelves full of simple orange green cream books, a small reading table with an open book centered in front. No people, no shop signage.",
+      "asset": "assets/word-illustrations/library-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/library-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: library. Intended sense: 図書館の一例.\nSubject: Two blue bookshelves full of simple orange green cream books, a small reading table with an open book centered in front. No people, no shop signage."
+    },
+    {
+      "key": "word-v2:junior:life:%E5%90%8D",
+      "level": "junior",
+      "word": "life",
+      "pos": "名",
+      "meaning": "生活、人生",
+      "phrase": "city life",
+      "example": "Enjoy your life.",
+      "meaningVariants": [
+        "生活、人生"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "人生のイメージ",
+      "subject": "Three stages of one person's life shown simply from left to right: small child, adult, older adult with gray hair. One short arrow between stages, matching blue clothing.",
+      "asset": "assets/word-illustrations/life-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/life-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: life. Intended sense: 人生のイメージ.\nSubject: Three stages of one person's life shown simply from left to right: small child, adult, older adult with gray hair. One short arrow between stages, matching blue clothing."
+    },
+    {
+      "key": "word-v2:junior:light:%E5%90%8D",
+      "level": "junior",
+      "word": "light",
+      "pos": "名",
+      "meaning": "光、明かり",
+      "phrase": "turn on the light",
+      "example": "Turn on the light.",
+      "meaningVariants": [
+        "光、明かり"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "明かり",
+      "subject": "One simple orange pendant lamp emitting three solid yellow rays downward, no room or glow effect.",
+      "asset": "assets/word-illustrations/light-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/light-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: light. Intended sense: 明かり.\nSubject: One simple orange pendant lamp emitting three solid yellow rays downward, no room or glow effect."
+    },
+    {
+      "key": "word-v2:junior:lily:%E5%90%8D",
+      "level": "junior",
+      "word": "lily",
+      "pos": "名",
+      "meaning": "ユリ",
+      "phrase": "white lily",
+      "example": "A lily is a beautiful flower.",
+      "meaningVariants": [
+        "ユリ"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ユリ",
+      "subject": "One cream-white lily flower with six broad petals, orange stamens, green stem and two long leaves, flower interior fully opaque.",
+      "asset": "assets/word-illustrations/lily-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/lily-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: lily. Intended sense: ユリ.\nSubject: One cream-white lily flower with six broad petals, orange stamens, green stem and two long leaves, flower interior fully opaque."
+    },
+    {
+      "key": "word-v2:junior:line:%E5%90%8D",
+      "level": "junior",
+      "word": "line",
+      "pos": "名",
+      "meaning": "線、列",
+      "phrase": "straight line",
+      "example": "Draw a straight line.",
+      "meaningVariants": [
+        "線、列"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "直線",
+      "subject": "One thick clean blue straight diagonal line segment and an orange pencil whose tip touches its endpoint. No grid or letters.",
+      "asset": "assets/word-illustrations/line-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/line-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: line. Intended sense: 直線.\nSubject: One thick clean blue straight diagonal line segment and an orange pencil whose tip touches its endpoint. No grid or letters."
+    },
+    {
+      "key": "word-v2:junior:lion:%E5%90%8D",
+      "level": "junior",
+      "word": "lion",
+      "pos": "名",
+      "meaning": "ライオン",
+      "phrase": "king lion",
+      "example": "The lion is the king of beasts.",
+      "meaningVariants": [
+        "ライオン"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "ライオン",
+      "subject": "One friendly golden lion with round dark-orange mane, standing sideways with four legs and tufted tail, face turned slightly forward.",
+      "asset": "assets/word-illustrations/lion-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/lion-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: lion. Intended sense: ライオン.\nSubject: One friendly golden lion with round dark-orange mane, standing sideways with four legs and tufted tail, face turned slightly forward."
+    },
+    {
+      "key": "word-v2:junior:list:%E5%90%8D",
+      "level": "junior",
+      "word": "list",
+      "pos": "名",
+      "meaning": "リスト、一覧表",
+      "phrase": "make a list",
+      "example": "Make a shopping list.",
+      "meaningVariants": [
+        "リスト、一覧表"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "一覧表",
+      "subject": "A cream rectangular sheet with four evenly spaced blue bullet points and four blue horizontal lines, all rows equal emphasis.",
+      "asset": "assets/word-illustrations/list-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/list-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: list. Intended sense: 一覧表.\nSubject: A cream rectangular sheet with four evenly spaced blue bullet points and four blue horizontal lines, all rows equal emphasis."
+    },
+    {
+      "key": "word-v2:junior:living%20room:%E5%90%8D",
+      "level": "junior",
+      "word": "living room",
+      "pos": "名",
+      "meaning": "居間",
+      "phrase": "in the living room",
+      "example": "We watch TV in the living room.",
+      "meaningVariants": [
+        "居間"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "居間",
+      "subject": "A blue two-seat sofa, small cream coffee table and orange floor lamp as a compact room vignette, no enclosing room background.",
+      "asset": "assets/word-illustrations/living-room-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/living-room-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: living room. Intended sense: 居間.\nSubject: A blue two-seat sofa, small cream coffee table and orange floor lamp as a compact room vignette, no enclosing room background."
+    },
+    {
+      "key": "word-v2:junior:look:%E5%90%8D",
+      "level": "junior",
+      "word": "look",
+      "pos": "名",
+      "meaning": "見ること、外見",
+      "phrase": "have a look",
+      "example": "Let me have a look.",
+      "meaningVariants": [
+        "見ること、外見"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "見ることの一例",
+      "subject": "A person with short brown hair and orange shirt looking at a blue flower.",
+      "asset": "assets/word-illustrations/look-pictogram-v2.png",
+      "delivery": "assets/word-illustrations/look-pictogram-v2.webp",
+      "prompt": "Scientific educational pictogram illustrating LOOK, a person actively looking at a flower held up in front of their face. Friendly young adult with SHORT SOLID BROWN HAIR, orange shirt, large eyes directed toward the small blue flower at right. Bust composition, simple geometric colored pictogram, navy outlines, warm cream skin, flat solid opaque shapes. Entire hair must be opaque brown with NO highlights, NO holes, NO shading. Square centered padding, genuinely transparent exterior alpha, no checkerboard, no text, no texture, no gradients. Readable at 80 pixels.",
+      "rejectedAssets": [
+        "assets/word-illustrations/look-pictogram-v1.png"
+      ]
+    },
+    {
+      "key": "word-v2:junior:lot:%E5%89%AF",
+      "level": "junior",
+      "word": "lot",
+      "pos": "名",
+      "meaning": "大量、多数",
+      "phrase": "a lot of time",
+      "example": "We have a lot of time.",
+      "meaningVariants": [
+        "大量、多数"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "多数のイメージ",
+      "subject": "A compact crowd of twelve simple people, staggered three rows, blue orange green clothing; show many people, all separate heads, no counting text.",
+      "asset": "assets/word-illustrations/lot-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/lot-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: lot. Intended sense: 多数のイメージ.\nSubject: A compact crowd of twelve simple people, staggered three rows, blue orange green clothing; show many people, all separate heads, no counting text."
+    },
+    {
+      "key": "word-v2:junior:love:%E5%90%8D",
+      "level": "junior",
+      "word": "love",
+      "pos": "名",
+      "meaning": "愛",
+      "phrase": "limitless love",
+      "example": "Love is important.",
+      "meaningVariants": [
+        "愛"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "愛のイメージ",
+      "subject": "Two adult hands gently cupping a single large orange-red heart, simple affectionate symbolic illustration.",
+      "asset": "assets/word-illustrations/love-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/love-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: love. Intended sense: 愛のイメージ.\nSubject: Two adult hands gently cupping a single large orange-red heart, simple affectionate symbolic illustration."
+    },
+    {
+      "key": "word-v2:junior:luck:%E5%90%8D",
+      "level": "junior",
+      "word": "luck",
+      "pos": "名",
+      "meaning": "運",
+      "phrase": "good luck",
+      "example": "Good luck!",
+      "meaningVariants": [
+        "運"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "幸運のシンボル",
+      "subject": "One vivid green four-leaf clover with exactly four rounded heart-shaped leaflets and a short stem. Clean simple symbol.",
+      "asset": "assets/word-illustrations/luck-pictogram-v2.png",
+      "delivery": "assets/word-illustrations/luck-pictogram-v2.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: luck. Intended sense: 幸運のシンボル.\nSubject: One vivid green four-leaf clover with exactly four rounded heart-shaped leaflets and a short stem. Clean simple symbol.\nRegenerate as a new clean pictogram. Use MUTED OLIVE GREEN opaque leaf surfaces, dark navy outline and cream vein marks. Uniform SOLID OPAQUE fill, NO holes, NO dark spots, NO highlights, NO bright chroma green. Only exterior background transparent, no checkerboard.",
+      "rejectedAssets": [
+        "assets/word-illustrations/luck-pictogram-v1.png"
+      ]
+    },
+    {
+      "key": "word-v2:junior:lunch:%E5%90%8D",
+      "level": "junior",
+      "word": "lunch",
+      "pos": "名",
+      "meaning": "昼食",
+      "phrase": "eat lunch",
+      "example": "Let's have lunch.",
+      "meaningVariants": [
+        "昼食"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "昼食の一例",
+      "subject": "A lunch plate with a sandwich and apple plus a small clock above showing twelve o'clock. Blue plate orange apple, both clock hands point straight up.",
+      "asset": "assets/word-illustrations/lunch-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/lunch-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: lunch. Intended sense: 昼食の一例.\nSubject: A lunch plate with a sandwich and apple plus a small clock above showing twelve o'clock. Blue plate orange apple, both clock hands point straight up."
+    },
+    {
+      "key": "word-v2:junior:machine:%E5%90%8D",
+      "level": "junior",
+      "word": "machine",
+      "pos": "名",
+      "meaning": "機械",
+      "phrase": "washing machine",
+      "example": "How do you use this machine?",
+      "meaningVariants": [
+        "機械"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "機械の一例・洗濯機",
+      "subject": "One blue and cream front-loading washing machine, circular door with an orange cloth visible, two simple controls, no text.",
+      "asset": "assets/word-illustrations/machine-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/machine-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: machine. Intended sense: 機械の一例・洗濯機.\nSubject: One blue and cream front-loading washing machine, circular door with an orange cloth visible, two simple controls, no text."
+    },
+    {
+      "key": "word-v2:junior:magazine:%E5%90%8D",
+      "level": "junior",
+      "word": "magazine",
+      "pos": "名",
+      "meaning": "雑誌",
+      "phrase": "fashion magazine",
+      "example": "I read a magazine.",
+      "meaningVariants": [
+        "雑誌"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "雑誌",
+      "subject": "One thin slightly open colorful magazine, front cover with a simple orange fashion silhouette and three blue lines, visible few pages, no readable text.",
+      "asset": "assets/word-illustrations/magazine-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/magazine-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: magazine. Intended sense: 雑誌.\nSubject: One thin slightly open colorful magazine, front cover with a simple orange fashion silhouette and three blue lines, visible few pages, no readable text."
+    },
+    {
+      "key": "word-v2:junior:mail:%E5%90%8D",
+      "level": "junior",
+      "word": "mail",
+      "pos": "名",
+      "meaning": "郵便",
+      "phrase": "send by mail",
+      "example": "Is there any mail for me?",
+      "meaningVariants": [
+        "郵便"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "郵便",
+      "subject": "One blue mailbox with open lid and three cream envelopes protruding, orange raised flag, no logos or readable text.",
+      "asset": "assets/word-illustrations/mail-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/mail-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: mail. Intended sense: 郵便.\nSubject: One blue mailbox with open lid and three cream envelopes protruding, orange raised flag, no logos or readable text."
+    },
+    {
+      "key": "word-v2:junior:man:%E5%90%8D",
+      "level": "junior",
+      "word": "man",
+      "pos": "名",
+      "meaning": "男性",
+      "phrase": "tall man",
+      "example": "Who is that man?",
+      "meaningVariants": [
+        "男性"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "男性の一例",
+      "subject": "One adult man standing in green casual shirt and blue trousers, short brown hair, full body and relaxed pose.",
+      "asset": "assets/word-illustrations/man-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/man-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: man. Intended sense: 男性の一例.\nSubject: One adult man standing in green casual shirt and blue trousers, short brown hair, full body and relaxed pose."
+    },
+    {
+      "key": "word-v2:junior:map:%E5%90%8D",
+      "level": "junior",
+      "word": "map",
+      "pos": "名",
+      "meaning": "地図",
+      "phrase": "look at the map",
+      "example": "Show me the map.",
+      "meaningVariants": [
+        "地図"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "地図",
+      "subject": "An unfolded cream paper map with blue river, green park, three orange roads and a red location pin, bold simple map shapes, no names.",
+      "asset": "assets/word-illustrations/map-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/map-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: map. Intended sense: 地図.\nSubject: An unfolded cream paper map with blue river, green park, three orange roads and a red location pin, bold simple map shapes, no names."
+    },
+    {
+      "key": "word-v2:junior:March:%E5%90%8D",
+      "level": "junior",
+      "word": "March",
+      "pos": "名",
+      "meaning": "3月",
+      "phrase": "in March",
+      "example": "School starts in April, not March.",
+      "meaningVariants": [
+        "3月"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "3月",
+      "subject": "A simple cream calendar page with blue header, exact large text MAR and large numeral 3, a small green sprout beside it.",
+      "asset": "assets/word-illustrations/march-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/march-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: March. Intended sense: 3月.\nSubject: A simple cream calendar page with blue header, exact large text MAR and large numeral 3, a small green sprout beside it."
+    },
+    {
+      "key": "word-v2:junior:match:%E5%90%8D",
+      "level": "junior",
+      "word": "match",
+      "pos": "名",
+      "meaning": "試合",
+      "phrase": "soccer match",
+      "example": "We watched the match.",
+      "meaningVariants": [
+        "試合"
+      ],
+      "occurrences": 3,
+      "status": "pending",
+      "sense": "サッカーの試合の一例",
+      "subject": "Two soccer players in orange and blue uniforms competing over one black-and-white ball, a small goal behind, full bodies clear separate limbs.",
+      "asset": "assets/word-illustrations/match-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/match-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: match. Intended sense: サッカーの試合の一例.\nSubject: Two soccer players in orange and blue uniforms competing over one black-and-white ball, a small goal behind, full bodies clear separate limbs."
+    },
+    {
+      "key": "word-v2:junior:math:%E5%90%8D",
+      "level": "junior",
+      "word": "math",
+      "pos": "名",
+      "meaning": "数学",
+      "phrase": "math class",
+      "example": "I study math.",
+      "meaningVariants": [
+        "数学"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "数学",
+      "subject": "A cream classroom board with blue border, exact large equation 2 + 2 = 4 in dark blue and one orange triangle beneath, no other text.",
+      "asset": "assets/word-illustrations/math-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/math-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: math. Intended sense: 数学.\nSubject: A cream classroom board with blue border, exact large equation 2 + 2 = 4 in dark blue and one orange triangle beneath, no other text."
+    },
+    {
+      "key": "word-v2:junior:matter:%E5%90%8D",
+      "level": "junior",
+      "word": "matter",
+      "pos": "名",
+      "meaning": "問題、事柄",
+      "phrase": "what's the matter",
+      "example": "What's the matter with you?",
+      "meaningVariants": [
+        "問題、事柄"
+      ],
+      "occurrences": 3,
+      "status": "pending",
+      "sense": "問題がある場面の一例",
+      "subject": "A worried person holding a broken blue umbrella with one bent spoke, another person looking concerned with a small cream question-mark speech bubble. Everyday problem, no injury.",
+      "asset": "assets/word-illustrations/matter-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/matter-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: matter. Intended sense: 問題がある場面の一例.\nSubject: A worried person holding a broken blue umbrella with one bent spoke, another person looking concerned with a small cream question-mark speech bubble. Everyday problem, no injury."
+    },
+    {
+      "key": "word-v2:junior:May:%E5%90%8D",
+      "level": "junior",
+      "word": "May",
+      "pos": "名",
+      "meaning": "5月",
+      "phrase": "in May",
+      "example": "My birthday is in May.",
+      "meaningVariants": [
+        "5月"
+      ],
+      "occurrences": 1,
+      "status": "pending",
+      "sense": "5月",
+      "subject": "A simple cream calendar page with blue header, exact large text MAY and large numeral 5, one small orange flower beside it.",
+      "asset": "assets/word-illustrations/may-pictogram-v1.png",
+      "delivery": "assets/word-illustrations/may-pictogram-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: standalone English vocabulary illustration for Japanese learners. Style: colored pictogram, bold simple silhouettes, minimal geometric forms, 3-4 main colors, blue/orange/green/cream palette. Square composition centered with generous padding, entire subject visible, readable at 80-100 pixels. Genuinely transparent exterior background (alpha), NOT a drawn checkerboard. Every surface INSIDE objects must be fully opaque flat solid color, no accidental transparent holes. No unrequested text, logos, watermark, borders, ground shadow, glow, gradients, texture, photographic detail, 3D or dramatic lighting. Use thin separation lines only when essential. \nWord: May. Intended sense: 5月.\nSubject: A simple cream calendar page with blue header, exact large text MAY and large numeral 5, one small orange flower beside it."
+    }
+  ]
+}

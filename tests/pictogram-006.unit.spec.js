@@ -1,7 +1,8 @@
 const { test, expect } = require('@playwright/test');
 const crypto = require('node:crypto');
 const fs = require('node:fs');
-const { readInputs, buildQueue } = require('../scripts/word-illustration-queue');
+const { buildQueue } = require('../scripts/word-illustration-queue');
+const { readInputs } = require('./helpers/pictogram-history');
 const registration = require('../docs/experiments/pictogram-006-2026-09-11/registration.json');
 const encoding = require('../docs/experiments/noun-production/pictogram-006/encoding.json');
 

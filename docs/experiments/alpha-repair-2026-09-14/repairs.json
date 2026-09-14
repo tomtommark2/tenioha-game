@@ -1,0 +1,99 @@
+{
+  "mode": "built-in image_gen",
+  "previousManifestSha256": "12e6edc04333740a45dfe9cec82607e43432422e0a1204ac3b7561c50b690594",
+  "entries": [
+    {
+      "name": "ball",
+      "previous": "assets/word-illustrations/ball-pictogram-v1.webp",
+      "asset": "assets/word-illustrations/ball-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/ball-pictogram-v3.webp",
+      "prompt": "Use case: scientific-educational. Create vocabulary pictogram: A circular red yellow blue beach ball made of three opaque curved color panels. Style: geometric cutout assemblage, completely flat solid color shapes, simple crisp clean contours, like precisely cut colored shapes arranged together, NOT textured paper. No gradients, no shading, no blur, no smudges, no noise, no texture, no reflections. All object surfaces solid opaque alpha255. Genuinely transparent alpha exterior and real holes, no checkerboard, no background rectangle. Centered square with safe margin. Readable at80px. No words or extra elements.",
+      "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-180a6495-0024-45f1-9bff-6b0063c7c019.png",
+      "earlierAttempt": {
+        "prompt": "Use case: style-transfer. Image 1 is edit target. Repair and clean up this vocabulary pictogram: Red yellow blue beach ball. Remove vertical smudge in blue panel. Preserve subject, composition, main colors and recognizable details. Render as precisely cut opaque flat colored geometric shapes assembled together. Uniform solid color fills, crisp clean contours. NO gradients, shading, blur, smudges, texture, grain, painted reflections or translucent object surfaces. Genuinely transparent alpha background, never checkerboard or solid background. All physical surfaces fully opaque; only exterior and real gaps transparent. Square centered object with margin, legible at80px. No extra objects or text.",
+        "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-4ef0ab13-49ff-43a3-a89a-f3d1f5925504.png",
+        "selected": false
+      }
+    },
+    {
+      "name": "bicycle",
+      "previous": "assets/word-illustrations/bicycle-pictogram-v1.webp",
+      "asset": "assets/word-illustrations/bicycle-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/bicycle-pictogram-v3.webp",
+      "prompt": "Use case: scientific-educational. Create vocabulary pictogram: Side view teal step-through bicycle, black saddle and two black ring tires, gray spokes. Completely empty transparent spaces between spokes, no white or gray filled discs. Style: geometric cutout assemblage, completely flat solid color shapes, simple crisp clean contours, like precisely cut colored shapes arranged together, NOT textured paper. No gradients, no shading, no blur, no smudges, no noise, no texture, no reflections. All object surfaces solid opaque alpha255. Genuinely transparent alpha exterior and real holes, no checkerboard, no background rectangle. Centered square with safe margin. Readable at80px. No words or extra elements.",
+      "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-b7817253-50c8-4478-8010-49416051c7f6.png",
+      "earlierAttempt": {
+        "prompt": "Use case: style-transfer. Image 1 is edit target. Repair and clean up this vocabulary pictogram: Teal step-through bicycle side view. Black tires and saddle, gray spokes. The empty spaces between spokes must be fully transparent, not filled gray or white discs. Preserve subject, composition, main colors and recognizable details. Render as precisely cut opaque flat colored geometric shapes assembled together. Uniform solid color fills, crisp clean contours. NO gradients, shading, blur, smudges, texture, grain, painted reflections or translucent object surfaces. Genuinely transparent alpha background, never checkerboard or solid background. All physical surfaces fully opaque; only exterior and real gaps transparent. Square centered object with margin, legible at80px. No extra objects or text.",
+        "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-aa8aa101-1c14-4e0d-8f52-59358ee3c638.png",
+        "selected": false
+      }
+    },
+    {
+      "name": "bookstore",
+      "previous": "assets/word-illustrations/bookstore-pictogram-v1.webp",
+      "asset": "assets/word-illustrations/bookstore-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/bookstore-pictogram-v3.webp",
+      "prompt": "Use case: scientific-educational. Create vocabulary pictogram: Green awning bookstore facade, open book icon above, colorful rectangular books in shop window, brown door, two plants. Style: geometric cutout assemblage, completely flat solid color shapes, simple crisp clean contours, like precisely cut colored shapes arranged together, NOT textured paper. No gradients, no shading, no blur, no smudges, no noise, no texture, no reflections. All object surfaces solid opaque alpha255. Genuinely transparent alpha exterior and real holes, no checkerboard, no background rectangle. Centered square with safe margin. Readable at80px. No words or extra elements.",
+      "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-b77dc021-c891-448e-99e8-157939138351.png",
+      "earlierAttempt": {
+        "prompt": "Use case: style-transfer. Image 1 is edit target. Repair and clean up this vocabulary pictogram: Green awning bookstore with open book sign, colorful books in window, brown door and two plants. Remove both stains on green sign. Preserve subject, composition, main colors and recognizable details. Render as precisely cut opaque flat colored geometric shapes assembled together. Uniform solid color fills, crisp clean contours. NO gradients, shading, blur, smudges, texture, grain, painted reflections or translucent object surfaces. Genuinely transparent alpha background, never checkerboard or solid background. All physical surfaces fully opaque; only exterior and real gaps transparent. Square centered object with margin, legible at80px. No extra objects or text.",
+        "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-d13bda3c-7381-4d93-bd46-9455b2f058db.png",
+        "selected": false
+      }
+    },
+    {
+      "name": "cd",
+      "previous": "assets/word-illustrations/cd-pictogram-v1.webp",
+      "asset": "assets/word-illustrations/cd-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/cd-pictogram-v3.webp",
+      "prompt": "Use case: scientific-educational. Create vocabulary pictogram: A circular compact disc with flat gray and pale blue wedge sectors, concentric hub rings and one truly transparent central hole. No reflections. Style: geometric cutout assemblage, completely flat solid color shapes, simple crisp clean contours, like precisely cut colored shapes arranged together, NOT textured paper. No gradients, no shading, no blur, no smudges, no noise, no texture, no reflections. All object surfaces solid opaque alpha255. Genuinely transparent alpha exterior and real holes, no checkerboard, no background rectangle. Centered square with safe margin. Readable at80px. No words or extra elements.",
+      "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-0b22121b-07c6-4c37-9239-378272aa446b.png",
+      "earlierAttempt": {
+        "prompt": "Use case: style-transfer. Image 1 is edit target. Repair and clean up this vocabulary pictogram: Compact disc viewed straight on, gray and pale blue opaque geometric sectors, concentric rings and genuine transparent center hole. Remove blurry reflection streaks. Preserve subject, composition, main colors and recognizable details. Render as precisely cut opaque flat colored geometric shapes assembled together. Uniform solid color fills, crisp clean contours. NO gradients, shading, blur, smudges, texture, grain, painted reflections or translucent object surfaces. Genuinely transparent alpha background, never checkerboard or solid background. All physical surfaces fully opaque; only exterior and real gaps transparent. Square centered object with margin, legible at80px. No extra objects or text.",
+        "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-baad0072-8403-4db6-bced-4156e1dd0455.png",
+        "selected": false
+      }
+    },
+    {
+      "name": "cd-player",
+      "previous": "assets/word-illustrations/cd-player-pictogram-v1.webp",
+      "asset": "assets/word-illustrations/cd-player-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/cd-player-pictogram-v3.webp",
+      "prompt": "Use case: scientific-educational. Create vocabulary pictogram: An open blue portable CD player, dark blue oval lid, gray disc inside, two round speakers, three round buttons with playback symbols. Style: geometric cutout assemblage, completely flat solid color shapes, simple crisp clean contours, like precisely cut colored shapes arranged together, NOT textured paper. No gradients, no shading, no blur, no smudges, no noise, no texture, no reflections. All object surfaces solid opaque alpha255. Genuinely transparent alpha exterior and real holes, no checkerboard, no background rectangle. Centered square with safe margin. Readable at80px. No words or extra elements.",
+      "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-79d24429-3eb6-4c86-a3fa-b7b4b705b2ee.png",
+      "earlierAttempt": {
+        "prompt": "Use case: style-transfer. Image 1 is edit target. Repair and clean up this vocabulary pictogram: Blue open portable CD player with opaque dark blue inner lid, disc, two speakers and three circular playback controls. Remove cloudy smear in lid. Preserve subject, composition, main colors and recognizable details. Render as precisely cut opaque flat colored geometric shapes assembled together. Uniform solid color fills, crisp clean contours. NO gradients, shading, blur, smudges, texture, grain, painted reflections or translucent object surfaces. Genuinely transparent alpha background, never checkerboard or solid background. All physical surfaces fully opaque; only exterior and real gaps transparent. Square centered object with margin, legible at80px. No extra objects or text.",
+        "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-0c94b457-27bf-4c16-9a94-755e31f1d19d.png",
+        "selected": false
+      }
+    },
+    {
+      "name": "dish",
+      "selected": false,
+      "decision": "ユーザー指定により修正前v1を採用。修正案v3は比較用に保持。",
+      "previous": "assets/word-illustrations/dish-pictogram-v1.webp",
+      "asset": "assets/word-illustrations/dish-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/dish-pictogram-v3.webp",
+      "prompt": "Use case: scientific-educational. Create vocabulary pictogram: Two overlapping round plates: teal rear left and cream front right. Each plate made of concentric flat solid circles. Style: geometric cutout assemblage, completely flat solid color shapes, simple crisp clean contours, like precisely cut colored shapes arranged together, NOT textured paper. No gradients, no shading, no blur, no smudges, no noise, no texture, no reflections. All object surfaces solid opaque alpha255. Genuinely transparent alpha exterior and real holes, no checkerboard, no background rectangle. Centered square with safe margin. Readable at80px. No words or extra elements.",
+      "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-f4324ba2-adf4-4e8f-a934-e1876e81ef8f.png",
+      "earlierAttempt": {
+        "prompt": "Use case: style-transfer. Image 1 is edit target. Repair and clean up this vocabulary pictogram: Two overlapping round plates, teal rear left and cream front right, concentric opaque flat rings. Remove stain on rear plate. Preserve subject, composition, main colors and recognizable details. Render as precisely cut opaque flat colored geometric shapes assembled together. Uniform solid color fills, crisp clean contours. NO gradients, shading, blur, smudges, texture, grain, painted reflections or translucent object surfaces. Genuinely transparent alpha background, never checkerboard or solid background. All physical surfaces fully opaque; only exterior and real gaps transparent. Square centered object with margin, legible at80px. No extra objects or text.",
+        "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-7737ca0a-56ca-4507-80cf-31326fb95f05.png",
+        "selected": false
+      }
+    },
+    {
+      "name": "hill",
+      "previous": "assets/word-illustrations/hill-pictogram-v1.webp",
+      "asset": "assets/word-illustrations/hill-pictogram-v3.png",
+      "delivery": "assets/word-illustrations/hill-pictogram-v3.webp",
+      "prompt": "Use case: scientific-educational. Create vocabulary pictogram: Rounded green hill, winding cream path leading to one tree at summit, three simple dark green bushes. Style: geometric cutout assemblage, completely flat solid color shapes, simple crisp clean contours, like precisely cut colored shapes arranged together, NOT textured paper. No gradients, no shading, no blur, no smudges, no noise, no texture, no reflections. All object surfaces solid opaque alpha255. Genuinely transparent alpha exterior and real holes, no checkerboard, no background rectangle. Centered square with safe margin. Readable at80px. No words or extra elements.",
+      "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-c23f837c-1b61-46f5-b9e1-ecb9c8a901eb.png",
+      "earlierAttempt": {
+        "prompt": "Use case: style-transfer. Image 1 is edit target. Repair and clean up this vocabulary pictogram: Green rounded hill with winding cream path, tree on summit and three bushes. Remove patch on left grass. Preserve subject, composition, main colors and recognizable details. Render as precisely cut opaque flat colored geometric shapes assembled together. Uniform solid color fills, crisp clean contours. NO gradients, shading, blur, smudges, texture, grain, painted reflections or translucent object surfaces. Genuinely transparent alpha background, never checkerboard or solid background. All physical surfaces fully opaque; only exterior and real gaps transparent. Square centered object with margin, legible at80px. No extra objects or text.",
+        "generatedSource": "C:\\Users\\warut\\.codex\\generated_images\\01a06c06-a923-7ac0-943b-7d1ae6a5e9f0\\exec-beb2dd97-b7c0-41e4-b61d-1c446e5acba8.png",
+        "selected": false
+      }
+    }
+  ]
+}

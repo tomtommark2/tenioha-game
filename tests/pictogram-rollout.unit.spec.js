@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('node:fs');
-const { readInputs } = require('../scripts/word-illustration-queue');
+const { readInputs } = require('./helpers/pictogram-history');
 const sources = require('../docs/experiments/noun-production/pictogram-rollout-01/sources.json');
 const encoding = require('../docs/experiments/noun-production/pictogram-rollout-01/encoding.json');
 const secondSources = require('../docs/experiments/noun-production/pictogram-rollout-02/sources.json');

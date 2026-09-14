@@ -18,6 +18,13 @@
 
 ## Deployment Targets
 
+### 2026-09-14 イラスト追加・透過汚れ修正（2026.0914.1922）
+
+- 第9・10回の100画像（106登録項目）を追加。累計363登録項目・362学習カード・347画像。Januaryは修正版v3。既存のball・bicycle/bike・bookstore・CD・CD player・hillは修正版v3、dishはユーザー指定で旧版v1を維持。
+- 公開済みmainから分離して検証。画像・登録データ・版番号と関連テスト／制作記録のみ対象。無料／有料プラン等の作業中機能、原画、不採用画像、比較ページは含めず、Firebaseは変更しない。
+- 検証用の8014ポート設定は公開対象外。公開後の配信照合とPages実行結果は元ワークスペースの本節に記録する。
+- 公開前の最終 `test:e2e:safe` は単体31件・Functions18件・ブラウザー130件成功。スマホChromium／WebKitのイラスト関連6件成功。全351配信ファイルのローカル照合と390px幅の362カード・全画像読込を確認。初回の分離環境依存不足と非公開制作ページ用テスト混入は整理後に全体を再実行した。
+
 - Production app UI: GitHub Pages, served from `main` at [https://tomtommark2.github.io/tenioha-game/](https://tomtommark2.github.io/tenioha-game/).
 - Firebase: backend only for Auth, Firestore, and Functions.
 - Do not deploy the app UI to Firebase Hosting. Hosting has been disabled for the `tenioha-game` Firebase project.

@@ -18,17 +18,33 @@ async function select(page, word) {
   }, word);
 }
 
+async function registeredLearningKeys(page) {
+  return page.evaluate(() => {
+    const rows = ['junior', 'basic', 'daily', 'exam1'].flatMap(level =>
+      vocabularyDatabase[level].map(word => ({ level, word })));
+    return WORD_ILLUSTRATIONS.map(entry => {
+      const source = rows.find(({ level, word }) => (word.senses || [word]).some(sense =>
+        sense.word === entry.word && sense.pos === entry.pos && (sense.__sourceLevel || level) === entry.level));
+      if (!source) throw new Error(`Missing registered source: ${entry.level}/${entry.word}`);
+      return getWordKey(source.word, source.level);
+    });
+  });
+}
+
 test('イラスト単語帳は登録済み名詞だけで元の学習キーを共有する', async ({ page }) => {
+  const expectedKeys = [...new Set(await registeredLearningKeys(page))].sort();
   const result = await page.evaluate(() => {
     const keys = new Set(['junior', 'basic', 'daily', 'exam1'].flatMap(level => vocabularyDatabase[level].map(word => getWordKey(word, level))));
     return {
       count: vocabularyDatabase.illustrated.length,
-      manifest: WORD_ILLUSTRATIONS.length,
+      learningKeys: vocabularyDatabase.illustrated.map(word => getWordKey(word, 'illustrated')).sort(),
       unique: new Set(vocabularyDatabase.illustrated.map(word => getWordKey(word, 'illustrated'))).size,
       valid: vocabularyDatabase.illustrated.every(word => word.pos === '名' && word.senses.length === 1 && keys.has(getWordKey(word, 'illustrated')) && WordIllustrations.find(word, 'illustrated', vocabularyDatabase)),
     };
   });
-  expect(result.count).toBe(result.manifest);
+  // Multiple source senses (e.g. lot) can share one existing grouped learning card.
+  expect(result.learningKeys).toEqual(expectedKeys);
+  expect(result.count).toBe(expectedKeys.length);
   expect(result.unique).toBe(result.count);
   expect(result.valid).toBe(true);
   await select(page, 'apple');
@@ -97,7 +113,7 @@ test('イラスト単語帳の復習は収録語だけを名詞表示で出す',
 test('イラスト画面は小さい画面でも閉じて学習に戻れる', async ({ page }, testInfo) => {
   await page.evaluate(() => WordIllustrations.openWordbook());
   await expect(page.locator('#illustratedWordbookModal')).toBeVisible();
-  await expect(page.locator('.illustrated-word-tile')).toHaveCount(await page.evaluate(() => WORD_ILLUSTRATIONS.length));
+  await expect(page.locator('.illustrated-word-tile')).toHaveCount(new Set(await registeredLearningKeys(page)).size);
   await expect.poll(() => page.locator('.illustrated-word-tile img').first().evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('illustrated-wordbook.png') });
