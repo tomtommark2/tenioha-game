@@ -246,6 +246,30 @@ var gameAudioContext = null; // Renamed to avoid collisions
 var wordSpeechTimer = null;
 var speechRequestToken = 0;
 var preferredEnglishVoiceId = null;
+const SPEECH_SETTINGS_KEY = 'vocabGame_speechSettings';
+var speechSettings = { autoRead: true, volume: 1 };
+try {
+    const savedSpeechSettings = JSON.parse(localStorage.getItem(SPEECH_SETTINGS_KEY));
+    if (savedSpeechSettings && typeof savedSpeechSettings.autoRead === 'boolean') {
+        speechSettings.autoRead = savedSpeechSettings.autoRead;
+    }
+    if (savedSpeechSettings && typeof savedSpeechSettings.volume === 'number' && Number.isFinite(savedSpeechSettings.volume)) {
+        speechSettings.volume = Math.max(0, Math.min(1, savedSpeechSettings.volume));
+    }
+} catch { /* Storage may be unavailable; keep the existing defaults. */ }
+
+function updateSpeechSettings(changes) {
+    if (typeof changes.autoRead === 'boolean') speechSettings.autoRead = changes.autoRead;
+    if (typeof changes.volume === 'number' && Number.isFinite(changes.volume)) {
+        speechSettings.volume = Math.max(0, Math.min(1, changes.volume));
+    }
+    // Invalidate both queued and voice-loading speech before applying new settings.
+    if (wordSpeechTimer) clearTimeout(wordSpeechTimer);
+    wordSpeechTimer = null;
+    speechRequestToken++;
+    window.speechSynthesis?.cancel();
+    try { localStorage.setItem(SPEECH_SETTINGS_KEY, JSON.stringify(speechSettings)); } catch { /* Session-only settings. */ }
+}
 var reviewShuffleStatusTimer = null;
 var gameStateHistory = []; // Stack to store previous states
 var learningSessionStarted = false;
@@ -2937,6 +2961,10 @@ function waitForPreferredEnglishVoice(timeoutMs = 1000) {
 function speakEnglishText(text, options = {}) {
     const value = String(text || '').trim();
     if (!value) return;
+    if (options.automatic && !speechSettings.autoRead) return;
+    const volume = typeof options.volume === 'number' && Number.isFinite(options.volume)
+        ? Math.max(0, Math.min(1, options.volume)) : speechSettings.volume;
+    if (volume === 0) return;
 
     if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
         console.warn('Speech synthesis is not supported in this browser.');
@@ -2966,7 +2994,7 @@ function speakEnglishText(text, options = {}) {
 
         utterance.rate = options.rate || 0.9;
         utterance.pitch = options.pitch || 1.0;
-        utterance.volume = options.volume || 1.0;
+        utterance.volume = volume;
 
         speechSynthesis.speak(utterance);
     };
@@ -3238,7 +3266,7 @@ function showNextWord(reviewSnapshot = null) {
     // DOM更新後、少し待ってから音声再生
     wordSpeechTimer = setTimeout(() => {
         wordSpeechTimer = null;
-        speakWord(word.word);
+        speakEnglishText(word.word, { automatic: true });
     }, 200);
 
     checkLevelUp();

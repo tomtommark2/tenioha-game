@@ -5,11 +5,63 @@
 
 console.log("UI Manager Loaded");
 
+function renderSpeechSettings() {
+    const autoRead = document.getElementById('speechAutoRead');
+    const volume = document.getElementById('speechVolume');
+    const button = document.getElementById('speechSettingsBtn');
+    if (!autoRead || !volume || !button) return;
+    autoRead.checked = speechSettings.autoRead;
+    volume.value = String(Math.round(speechSettings.volume * 100));
+    document.getElementById('speechVolumeValue').textContent = `${volume.value}%`;
+    button.classList.toggle('speech-auto-off', !speechSettings.autoRead);
+    button.setAttribute('aria-label', `読み上げ設定：自動読み上げ${speechSettings.autoRead ? 'オン' : 'オフ'}`);
+    const supported = Boolean(window.speechSynthesis && window.SpeechSynthesisUtterance);
+    document.getElementById('speechPreviewBtn').disabled = !supported || speechSettings.volume === 0;
+    document.getElementById('speechSettingsStatus').textContent = !supported
+        ? 'このブラウザは読み上げに対応していません。'
+        : speechSettings.volume === 0 ? '音量が0%のため、音声は再生されません。' : '';
+}
+
+function openSpeechSettings() {
+    renderSpeechSettings();
+    // Safari does not focus buttons on tap; give the shared modal manager an opener.
+    focusWithoutScrolling(document.getElementById('speechSettingsBtn'));
+    document.getElementById('speechSettingsModal').style.display = 'flex';
+}
+
+function closeSpeechSettings() {
+    speechRequestToken++;
+    window.speechSynthesis?.cancel();
+    document.getElementById('speechSettingsModal').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderSpeechSettings();
+    document.getElementById('speechAutoRead')?.addEventListener('change', event => {
+        updateSpeechSettings({ autoRead: event.target.checked });
+        renderSpeechSettings();
+    });
+    document.getElementById('speechVolume')?.addEventListener('input', event => {
+        updateSpeechSettings({ volume: Number(event.target.value) / 100 });
+        renderSpeechSettings();
+    });
+    document.getElementById('speechPreviewBtn')?.addEventListener('click', () => {
+        // A user-initiated preview works even when automatic speech is disabled.
+        if (wordSpeechTimer) clearTimeout(wordSpeechTimer);
+        wordSpeechTimer = null;
+        speakEnglishText('Hello. Let’s learn English together.');
+        if (!getPreferredEnglishVoice()) {
+            document.getElementById('speechSettingsStatus').textContent = '英語音声を確認中です。聞こえない場合は端末の英語音声設定をご確認ください。';
+        }
+    });
+});
+
 const DISMISSIBLE_MODAL_IDS = Object.freeze([
     'installGuideModal',
     'shareModal',
     'wordListModal',
     'studyModeModal',
+    'speechSettingsModal',
     'helpModal',
     'feedbackModal',
     'updatePromptModal',
@@ -124,6 +176,7 @@ function requestDismissibleModalClose(modal) {
         shareModal: 'closeShareModal',
         wordListModal: 'closeWordListModal',
         studyModeModal: 'closeStudyModeModal',
+        speechSettingsModal: 'closeSpeechSettings',
         announcementModal: 'closeAnnouncementModal',
         wordbookModal: 'closeWordbookModal',
         leaderboardModal: 'closeLeaderboard',

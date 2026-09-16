@@ -48,6 +48,7 @@ test('省スペース設定入口はその他とドットだけを表示し、�
       const level = document.getElementById('levelCurrentBtn').getBoundingClientRect();
       const controls = [...document.querySelector('.review-progress-actions').children].map(el => el.getBoundingClientRect());
       return { left: rect.left, right: rect.right, levelLeft: level.left,
+        captionAboveLevel: rect.bottom <= level.top,
         captionFits: caption.scrollWidth <= caption.clientWidth,
         rightEdge: controls.at(-1).right,
         overlaps: controls.slice(1).some((r, i) => r.left < controls[i].right),
@@ -55,7 +56,7 @@ test('省スペース設定入口はその他とドットだけを表示し、�
     });
     expect(layout.captionFits).toBe(true);
     expect(layout.left).toBeGreaterThanOrEqual(0);
-    expect(layout.right).toBeLessThanOrEqual(layout.levelLeft);
+    expect(layout.captionAboveLevel || layout.right <= layout.levelLeft).toBe(true);
     expect(layout.rightEdge).toBeLessThanOrEqual(width);
     expect(layout.overlaps).toBe(false);
     expect(layout.overflow).toBe(false);

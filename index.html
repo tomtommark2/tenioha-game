@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0914.1922">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0914.1922" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0914.1922" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0914.1922" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0916.1322">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0916.1322" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0916.1322" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0916.1322" as="script">
 </head>
 
 <body>
@@ -214,6 +214,11 @@
         <!-- Top Right Navigation -->
         <div class="header-controls">
             <div id="trialTimerDisplay" class="trial-timer">残り 10:00</div>
+            <button type="button" class="icon-btn top-icon-btn speech-settings-button" id="speechSettingsBtn"
+                aria-label="読み上げ設定：自動読み上げオン" title="読み上げ設定" aria-haspopup="dialog"
+                aria-controls="speechSettingsModal" onclick="openSpeechSettings()">
+                <span class="speaker-icon" aria-hidden="true"></span>
+            </button>
             <button class="icon-btn top-icon-btn announcement-btn" id="announcementBtn" title="お知らせ"
                 onclick="openAnnouncementModal()">
                 <svg class="top-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
@@ -579,8 +584,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0914.1922"></script>
-<script src="data/ipa_overrides.js?v=2026.0914.1922"></script>
+    <script src="data/vocabulary.js?v=2026.0916.1322"></script>
+<script src="data/ipa_overrides.js?v=2026.0916.1322"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -1088,7 +1093,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.0914.1922">
+    <link rel="stylesheet" href="feedback.css?v=2026.0916.1322">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1107,19 +1112,42 @@
             <p class="feedback-note">購入・アカウントのご相談は、従来のお問い合わせメールをご利用ください。</p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.0914.1922"></script>
-    <script src="js/update_manager.js?v=2026.0914.1922"></script>
-    <script src="js/config.js?v=2026.0914.1922"></script>
-    <script src="data/announcements.js?v=2026.0914.1922"></script>
-    <script src="js/utils.js?v=2026.0914.1922"></script>
-    <script src="data/word-illustrations.js?v=2026.0914.1922"></script>
-    <script src="js/word_illustrations.js?v=2026.0914.1922"></script>
+    <div id="speechSettingsModal" class="speech-settings-overlay" role="dialog" aria-modal="true"
+        aria-labelledby="speechSettingsTitle" aria-hidden="true" style="display: none;">
+        <section class="speech-settings-panel">
+            <header class="speech-settings-heading">
+                <h2 id="speechSettingsTitle">読み上げ設定</h2>
+                <button type="button" class="speech-settings-close" aria-label="読み上げ設定を閉じる"
+                    onclick="closeSpeechSettings()">×</button>
+            </header>
+            <label class="speech-settings-row" for="speechAutoRead">
+                <span>英単語の自動読み上げ</span>
+                <input id="speechAutoRead" type="checkbox" role="switch" checked>
+            </label>
+            <p class="speech-settings-note">オフでも例文の再生ボタンから聞けます。</p>
+            <div class="speech-settings-volume">
+                <label class="speech-settings-row" for="speechVolume"><span>読み上げ音量</span><output id="speechVolumeValue" for="speechVolume">100%</output></label>
+                <input id="speechVolume" type="range" min="0" max="100" step="5" value="100">
+                <div class="speech-volume-limits" aria-hidden="true"><span>0%</span><span>100%</span></div>
+                <p class="speech-settings-note">効果音の音量は変わりません。</p>
+            </div>
+            <button id="speechPreviewBtn" type="button" class="speech-preview-button">音声を試す</button>
+            <p id="speechSettingsStatus" class="speech-settings-note" role="status"></p>
+        </section>
+    </div>
+    <script src="js/version.js?v=2026.0916.1322"></script>
+    <script src="js/update_manager.js?v=2026.0916.1322"></script>
+    <script src="js/config.js?v=2026.0916.1322"></script>
+    <script src="data/announcements.js?v=2026.0916.1322"></script>
+    <script src="js/utils.js?v=2026.0916.1322"></script>
+    <script src="data/word-illustrations.js?v=2026.0916.1322"></script>
+    <script src="js/word_illustrations.js?v=2026.0916.1322"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.0914.1922"></script>
-    <script src="js/game_logic.js?v=2026.0914.1922"></script>
-    <script src="js/ui_manager.js?v=2026.0914.1922"></script>
-    <script src="js/feedback.js?v=2026.0914.1922"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0914.1922"></script>
+    <script src="js/word_grouping.js?v=2026.0916.1322"></script>
+    <script src="js/game_logic.js?v=2026.0916.1322"></script>
+    <script src="js/ui_manager.js?v=2026.0916.1322"></script>
+    <script src="js/feedback.js?v=2026.0916.1322"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0916.1322"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
