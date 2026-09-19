@@ -76,7 +76,7 @@ test('学習ログを廃止し、語彙力推定と復習ランキングを残�
   await expect(page.locator('#vocabDiagnosisContainer .vocab-diagnosis-card')).toBeVisible();
 });
 
-test('無料版は10分到達後に回答できず再読み込み後もロックされる', async ({ page }) => {
+test('無料版は8分到達後に回答できず再読み込み後もロックされる', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -92,7 +92,7 @@ test('無料版は10分到達後に回答できず再読み込み後もロック
       localStorage.setItem('vocabGame_trialState_v2', JSON.stringify({
         unlocked: false,
         lastPlayDate: today,
-        playTimeSeconds: 599,
+        playTimeSeconds: 479,
       }));
     }
   });
@@ -105,7 +105,7 @@ test('無料版は10分到達後に回答できず再読み込み後もロック
     actions: { ...window.gameState.actionCounts },
   }));
   await page.evaluate(() => {
-    window.trialState.playTimeSeconds = 600;
+    window.trialState.playTimeSeconds = 480;
     window.checkTrialLimit();
   });
 
@@ -125,14 +125,14 @@ test('無料版は10分到達後に回答できず再読み込み後もロック
   }));
   expect(after.word).toBe(before.word);
   expect(after.actions).toEqual(before.actions);
-  expect(after.savedTrial.playTimeSeconds).toBeGreaterThanOrEqual(600);
+  expect(after.savedTrial.playTimeSeconds).toBeGreaterThanOrEqual(480);
 
   await page.reload({ waitUntil: 'domcontentloaded' });
   await expect(page.locator('#trialOverlay')).toBeVisible();
   await expect.poll(() => page.evaluate(() => window.gameState?.currentWord || null)).toBeNull();
 });
 
-test('期限切れのローカル解放状態では10分制限を解除しない', async ({ page }) => {
+test('期限切れのローカル解放状態では8分制限を解除しない', async ({ page }) => {
   await page.addInitScript(() => {
     const today = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Asia/Tokyo',
@@ -147,7 +147,7 @@ test('期限切れのローカル解放状態では10分制限を解除しない
     localStorage.setItem('vocabGame_trialState_v2', JSON.stringify({
       unlocked: true,
       lastPlayDate: today,
-      playTimeSeconds: 600,
+      playTimeSeconds: 480,
     }));
   });
 
@@ -157,7 +157,7 @@ test('期限切れのローカル解放状態では10分制限を解除しない
   await expect.poll(() => page.evaluate(() => window.trialState.unlocked)).toBe(false);
 });
 
-test('有効期限内のプレミアム利用者は10分を超えてもロックしない', async ({ page }) => {
+test('有効期限内のプレミアム利用者は8分を超えてもロックしない', async ({ page }) => {
   await page.addInitScript(() => {
     const today = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Asia/Tokyo',

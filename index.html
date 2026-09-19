@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0919.1821">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0919.1821" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0919.1821" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0919.1821" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0919.1904">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0919.1904" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0919.1904" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0919.1904" as="script">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         <div class="trial-limit-card">
             <div class="trial-limit-status">
                 <span class="trial-limit-plan">無料プラン</span>
-                <span class="trial-limit-time">本日 <strong>10:00</strong> / 10:00</span>
+                <span class="trial-limit-time">本日 <strong>08:00</strong> / 08:00</span>
             </div>
 
             <div class="trial-limit-icon" aria-hidden="true">
@@ -37,7 +37,7 @@
 
             <h2 class="trial-limit-title" id="trialLimitTitle">今日の学習、おつかれさまでした</h2>
             <p class="trial-limit-message">
-                無料版の学習時間は1日10分です。<br>
+                無料版の学習時間は1日8分です。<br>
                 プレミアムなら、このまま続けられます。
             </p>
 
@@ -54,7 +54,7 @@
                 購入済みの方はログイン
             </button>
 
-            <p class="trial-limit-note">無料版は翌日に10分へリセットされます</p>
+            <p class="trial-limit-note">無料版は翌日に8分へリセットされます</p>
         </div>
     </div>
     <!-- TRIAL_END -->
@@ -213,7 +213,7 @@
 
         <!-- Top Right Navigation -->
         <div class="header-controls">
-            <div id="trialTimerDisplay" class="trial-timer">残り 10:00</div>
+            <div id="trialTimerDisplay" class="trial-timer">残り 08:00</div>
             <button type="button" class="icon-btn top-icon-btn speech-settings-button" id="speechSettingsBtn"
                 aria-label="読み上げ設定：自動読み上げオン" title="読み上げ設定" aria-haspopup="dialog"
                 aria-controls="speechSettingsModal" onclick="openSpeechSettings()">
@@ -584,8 +584,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0919.1821"></script>
-<script src="data/ipa_overrides.js?v=2026.0919.1821"></script>
+    <script src="data/vocabulary.js?v=2026.0919.1904"></script>
+<script src="data/ipa_overrides.js?v=2026.0919.1904"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -964,7 +964,7 @@
             <div class="purchase-hero">
                 <div class="purchase-kicker">Premium</div>
                 <h2 class="purchase-title"><span class="title-picto app-picto icon-diamond" aria-hidden="true"></span>プレミアムプラン</h2>
-                <p class="purchase-lead">全ての制限を解除出来ます。</p>
+                <p class="purchase-lead">無料版は1日8分。プレミアムなら、時間制限なしで学習できます。</p>
             </div>
 
             <div class="purchase-legal-row">
@@ -1093,7 +1093,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.0919.1821">
+    <link rel="stylesheet" href="feedback.css?v=2026.0919.1904">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1135,19 +1135,19 @@
             <p id="speechSettingsStatus" class="speech-settings-note" role="status"></p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.0919.1821"></script>
-    <script src="js/update_manager.js?v=2026.0919.1821"></script>
-    <script src="js/config.js?v=2026.0919.1821"></script>
-    <script src="data/announcements.js?v=2026.0919.1821"></script>
-    <script src="js/utils.js?v=2026.0919.1821"></script>
-    <script src="data/word-illustrations.js?v=2026.0919.1821"></script>
-    <script src="js/word_illustrations.js?v=2026.0919.1821"></script>
+    <script src="js/version.js?v=2026.0919.1904"></script>
+    <script src="js/update_manager.js?v=2026.0919.1904"></script>
+    <script src="js/config.js?v=2026.0919.1904"></script>
+    <script src="data/announcements.js?v=2026.0919.1904"></script>
+    <script src="js/utils.js?v=2026.0919.1904"></script>
+    <script src="data/word-illustrations.js?v=2026.0919.1904"></script>
+    <script src="js/word_illustrations.js?v=2026.0919.1904"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.0919.1821"></script>
-    <script src="js/game_logic.js?v=2026.0919.1821"></script>
-    <script src="js/ui_manager.js?v=2026.0919.1821"></script>
-    <script src="js/feedback.js?v=2026.0919.1821"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0919.1821"></script>
+    <script src="js/word_grouping.js?v=2026.0919.1904"></script>
+    <script src="js/game_logic.js?v=2026.0919.1904"></script>
+    <script src="js/ui_manager.js?v=2026.0919.1904"></script>
+    <script src="js/feedback.js?v=2026.0919.1904"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0919.1904"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

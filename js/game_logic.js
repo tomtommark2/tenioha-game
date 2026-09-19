@@ -448,7 +448,7 @@ function updateUndoButton() {
 
 // --- Trial System Config ---
 var TRIAL_CONFIG = (typeof TRIAL_CONFIG !== 'undefined') ? TRIAL_CONFIG : {
-    LIMIT_SECONDS: 600, // 10 minutes
+    LIMIT_SECONDS: 480, // 8 minutes; preserve today's elapsed time.
 
     STORAGE_KEY: "vocabGame_trialState_v2" // Changed key to force reset/migration if needed, or just keep same
 };
