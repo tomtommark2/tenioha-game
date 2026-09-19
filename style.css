@@ -1724,6 +1724,9 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 .illustrated-wordbook-content { width: min(720px, 100%); }
 .illustrated-start-btn { min-height: 44px; padding: 10px 26px; background: #555cc9; color: #fff; border: 0; border-radius: 12px; font-weight: 700; cursor: pointer; }
 .illustrated-wordbook-hint { font-size: 12px; color: #56637a; }
+#illustrationUpgrade { margin-top: 8px; }
+#illustrationUpgrade button { min-height: 44px; padding: 6px 10px; border: 0; background: transparent; color: #454caf; font: inherit; text-decoration: underline; cursor: pointer; }
+#illustrationUpgrade button:focus-visible { outline: 3px solid #555cc9; outline-offset: 2px; }
 .illustrated-wordbook-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(122px, 1fr)); gap: 10px; }
 .illustrated-word-tile { display: flex; align-items: center; flex-direction: column; gap: 6px; padding: 12px 6px; background: #fff; color: #28374f; border: 1px solid #d8e0ef; border-radius: 14px; cursor: pointer; min-width: 0; }
 .illustrated-word-tile strong { font-size: 15px; overflow-wrap: anywhere; }

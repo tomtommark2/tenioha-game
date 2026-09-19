@@ -551,11 +551,13 @@ function saveTrialState() {
 }
 
 function updateTrialTimer() {
+    refreshPlanAccess();
     syncTrialUnlockState();
     resetTrialDayIfNeeded();
 
     if (trialState.unlocked) {
         updateTrialUI(); // Ensure UI is hidden
+        lastTickTime = Date.now();
         return;
     }
 
@@ -633,8 +635,40 @@ function showLockScreen() {
     }
 }
 
+var lastPlanPremium = null;
+function refreshPlanAccess() {
+    const premium = hasValidPremiumAccess();
+    const changed = lastPlanPremium !== null && lastPlanPremium !== premium;
+    lastPlanPremium = premium;
+    window.WordIllustrations.refreshAccessUI();
+    if (!changed) return false;
+    const gallery = document.getElementById('illustratedWordbookModal');
+    if (gallery?.style.display === 'flex') window.WordIllustrations.openWordbook();
+    if (gameState.currentLevel !== 'illustrated') return false;
+    window.WordIllustrations.clear();
+    window.WordIllustrations.resetPrevious();
+    gameState.decks = null;
+    loadVocabularyForLevel();
+    invalidateLearningProgressSnapshot();
+    updateWordbookSelectionUI();
+    updateLevelCurrentButton();
+    if (document.getElementById('wordListModal')?.style.display === 'flex') renderWordList();
+    if (learningSessionStarted) showNextWord();
+    return true;
+}
+
 function ensureTrialAccess() {
-    return !checkTrialLimit();
+    if (checkTrialLimit()) return false;
+    if (refreshPlanAccess()) return false;
+    if (gameState.currentLevel === 'illustrated' && gameState.currentWord &&
+        !window.WordIllustrations.canUseWord(gameState.currentWord, 'illustrated', vocabularyDatabase)) {
+        gameState.currentWord = null;
+        gameState.decks = null;
+        loadVocabularyForLevel();
+        showNextWord();
+        return false;
+    }
+    return true;
 }
 
 // Old unlockGame removed. Now using bridge function at bottom.
@@ -1012,6 +1046,7 @@ function isWordbookLevel(level) {
 }
 
 function updateWordbookSelectionUI() {
+    window.WordIllustrations.refreshAccessUI();
     document.querySelectorAll('.wordbook-item-btn[data-level]').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.level === gameState.currentLevel);
     });
@@ -1098,7 +1133,7 @@ function loadVocabularyForLevel() {
 
     } else {
         // Standard Categories (Basic, Daily, etc.)
-        vocabulary = vocabularyDatabase[gameState.currentLevel] || [];
+        vocabulary = window.WordIllustrations.accessibleWords(gameState.currentLevel, vocabularyDatabase);
     }
     // Expose Total for UI Prediction
     gameState.currentLevelTotal = vocabulary.length;
@@ -1721,7 +1756,7 @@ function getWordListStateForKey(key) {
 function renderWordListControls() {
     const level = normalizeWordListLevel(wordListState.level);
     const levelInfo = WORD_LIST_LEVELS.find(([key]) => key === level) || WORD_LIST_LEVELS[1];
-    const levelWords = vocabularyDatabase[level] || [];
+    const levelWords = window.WordIllustrations.accessibleWords(level, vocabularyDatabase);
     const filterCounts = levelWords.reduce((counts, word) => {
         const state = getWordListStateForKey(getWordKey(word, level));
         counts.all += 1;
@@ -1781,7 +1816,7 @@ function renderWordListControls() {
 function getSortedWordListItems() {
     const level = normalizeWordListLevel(wordListState.level);
     const query = String(wordListState.query || '').trim().toLowerCase();
-    let words = [...(vocabularyDatabase[level] || [])];
+    let words = window.WordIllustrations.accessibleWords(level, vocabularyDatabase);
 
     words = words.filter(word => {
         const key = getWordKey(word, level);
@@ -1890,7 +1925,7 @@ function closeWordListAlphabet() {
 }
 
 function findWordListItemByKey(level, key) {
-    return (vocabularyDatabase[level] || []).find(word => getWordKey(word, level) === key) || null;
+    return window.WordIllustrations.accessibleWords(level, vocabularyDatabase).find(word => getWordKey(word, level) === key) || null;
 }
 
 window.openWordListModal = function () {
@@ -2084,6 +2119,7 @@ function getReviewQueueCandidatesAcrossLevels() {
         let selected = null;
         let selectedRank = Number.POSITIVE_INFINITY;
         entries.forEach(entry => {
+            if (!window.WordIllustrations.canUseWord(entry.word, entry.level, vocabularyDatabase)) return;
             // This curated book reviews only its own nouns, using shared history.
             if (gameState.currentLevel === 'illustrated') {
                 if (entry.level === 'illustrated') { selected = entry; selectedRank = 0; }
@@ -3036,6 +3072,8 @@ function getWordFromDeck(category, sourceWords) {
     // Ensure deck structure exists
     if (!gameState.decks) gameState.decks = {};
     if (!gameState.decks[category]) gameState.decks[category] = [];
+    gameState.decks[category] = gameState.decks[category].filter(word =>
+        window.WordIllustrations.canUseWord(word, gameState.currentLevel, vocabularyDatabase));
 
     const deck = gameState.decks[category];
 
@@ -3278,6 +3316,13 @@ function showNextWord(reviewSnapshot = null) {
 
 // NEW: Function to show a SPECIFIC word (for Undo/Restore)
 function showWord(word) {
+    if (word && !window.WordIllustrations.canUseWord(word, gameState.currentLevel, vocabularyDatabase)) {
+        gameState.currentWord = null;
+        gameState.decks = null;
+        loadVocabularyForLevel();
+        showNextWord();
+        return;
+    }
     window.WordIllustrations?.clear();
     window.WordIllustrations.refreshPrevious(word, getWordSourceLevel(word, gameState.currentLevel), vocabularyDatabase);
     if (!word) return;

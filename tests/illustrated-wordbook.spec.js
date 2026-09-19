@@ -4,6 +4,9 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    // Full-catalogue behavior; free access has dedicated 100-word tests.
+    localStorage.setItem('vocabGame_isUnlocked', 'true');
+    localStorage.setItem('vocabGame_expiry', String(Date.now() + 86400000));
   });
   await page.goto('/index.html');
   await expect(page.locator('#vocabWord')).toHaveText('クリックしてスタート');

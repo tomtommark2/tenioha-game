@@ -4,6 +4,39 @@
     let previous = null;
     let current = null;
     let displayed = null;
+    // Fixed trial set: expanding the catalogue never rotates free access.
+    const freeWords = new Set([
+        'action', 'activity', 'actor', 'address', 'aeroplane', 'afternoon', 'age', 'airplane', 'airport', 'album',
+        'animal', 'answer', 'apple', 'apron', 'arm', 'art', 'article', 'aunt', 'autumn', 'baby',
+        'back', 'bag', 'ball', 'banana', 'band', 'bank', 'bar', 'baseball', 'basketball', 'bat',
+        'bath', 'bathroom', 'beach', 'bean', 'bear', 'bed', 'bedroom', 'bee', 'beef', 'bell',
+        'bicycle', 'bike', 'bird', 'birth', 'birthday', 'biscuit', 'black', 'block', 'blue', 'board',
+        'boat', 'body', 'bone', 'book', 'bookstore', 'bottle', 'bottom', 'bowl', 'box', 'boy',
+        'boyfriend', 'brain', 'bread', 'breakfast', 'bridge', 'brother', 'brush', 'bucket', 'building', 'burger',
+        'bus', 'business', 'butter', 'butterfly', 'button', 'bye', 'cafe', 'cake', 'call', 'camera',
+        'camp', 'candy', 'cap', 'car', 'card', 'care', 'cartoon', 'case', 'cat', 'catch',
+        'celebration', 'chair', 'change', 'character', 'check', 'cheese', 'chicken', 'child', 'chocolate', 'clock'
+    ]);
+    const premium = () => !!window.GameUtils.checkPremiumStatus();
+    const canUseBookEntry = entry => !!entry && (premium() || (entry.level === 'junior' && freeWords.has(entry.word)));
+    // Images are free in the main levels; only the dedicated book is a trial.
+    const canUseEntry = entry => !!entry && (window.gameState?.currentLevel !== 'illustrated' || canUseBookEntry(entry));
+    function canUseWord(word, level, database) {
+        return level !== 'illustrated' || canUseBookEntry(find(word, level, database));
+    }
+    function accessibleWords(level, database) {
+        return (database[level] || []).filter(word => canUseWord(word, level, database));
+    }
+    function explainUpgrade() {
+        // The existing purchase flow handles login and remains dismissible.
+        window.openPurchaseModal();
+    }
+    function refreshAccessUI() {
+        const trial = document.getElementById('illustrationTrialLabel');
+        if (trial) trial.textContent = premium() ? 'すべての収録語を学習可能' : '固定100語を無料で学習';
+        const upgrade = document.getElementById('illustrationUpgrade');
+        if (upgrade) upgrade.hidden = premium();
+    }
 
     function buildCollection(database) {
         const collection = new Map();
@@ -22,10 +55,10 @@
     function refreshPrevious(word, level, database) {
         current = find(word, level, database);
         const currentButton = document.getElementById('currentIllustrationBtn');
-        if (currentButton) currentButton.hidden = !current;
+        if (currentButton) currentButton.hidden = !canUseEntry(current);
         const button = document.getElementById('previousIllustrationBtn');
         const currentKey = word && window.GameUtils.getWordKey(word, level, database);
-        if (button) button.hidden = !previous || previous.key === currentKey;
+        if (button) button.hidden = !previous || !canUseEntry(previous.entry) || previous.key === currentKey;
     }
 
     function rememberAnswer(word, level, database) {
@@ -64,7 +97,7 @@
     }
 
     function enlarge() {
-        if (!displayed) return;
+        if (!canUseEntry(displayed)) return;
         document.getElementById('wordIllustrationSlot').focus({ preventScroll: true });
         document.getElementById('previousIllustrationWord').textContent = displayed.word;
         document.getElementById('previousIllustrationMeaning').textContent = displayed.meaning;
@@ -74,7 +107,8 @@
 
     function openWordbook() {
         const database = window.vocabularyDatabase;
-        const words = database.illustrated || [];
+        const words = accessibleWords('illustrated', database);
+        refreshAccessUI();
         const gallery = document.getElementById('illustratedWordbookGallery');
         gallery.replaceChildren();
         words.forEach(word => {
@@ -96,7 +130,7 @@
             };
             gallery.appendChild(button);
         });
-        document.getElementById('illustratedWordbookCount').textContent = `${words.length}語`;
+        document.getElementById('illustratedWordbookCount').textContent = premium() ? `${words.length}語` : `無料体験 ${words.length}語 / 全${database.illustrated.length}語`;
         document.getElementById('wordbookBtn').focus({ preventScroll: true });
         window.closeWordbookModal();
         document.getElementById('illustratedWordbookModal').style.display = 'flex';
@@ -135,6 +169,7 @@
     }
 
     function showEntry(entry) {
+        if (!canUseEntry(entry)) { clear(); return; }
         // Keep an already displayed illustration mounted when revealing its meaning.
         if (entry && displayed === entry) return;
         clear();
@@ -149,7 +184,7 @@
         image.decoding = 'async';
         image.onload = () => {
             // A slow previous image must never replace the next question's hero.
-            if (activeRequest !== requestId || !image.naturalWidth) return;
+            if (activeRequest !== requestId || !image.naturalWidth || !canUseEntry(entry)) return;
             displayed = entry;
             slot.replaceChildren(image);
             slot.hidden = false;
@@ -161,5 +196,6 @@
     }
 
     window.WordIllustrations = Object.freeze({ find, show, clear, buildCollection,
+        premium, canUseEntry, canUseWord, accessibleWords, explainUpgrade, refreshAccessUI,
         rememberAnswer, refreshPrevious, resetPrevious, openPrevious, openCurrent, enlarge, openWordbook, startWordbook, close });
 })();

@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.0919.1904">
-    <link rel="preload" href="data/vocabulary.js?v=2026.0919.1904" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.0919.1904" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.0919.1904" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.0919.1923">
+    <link rel="preload" href="data/vocabulary.js?v=2026.0919.1923" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.0919.1923" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.0919.1923" as="script">
 </head>
 
 <body>
@@ -584,8 +584,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.0919.1904"></script>
-<script src="data/ipa_overrides.js?v=2026.0919.1904"></script>
+    <script src="data/vocabulary.js?v=2026.0919.1923"></script>
+<script src="data/ipa_overrides.js?v=2026.0919.1923"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -790,7 +790,7 @@
             <div class="wordbook-list">
                 <button class="wordbook-item-btn wordbook-card" data-level="illustrated" onclick="WordIllustrations.openWordbook()">
                     <span class="wordbook-icon" aria-hidden="true">🖼️</span>
-                    <span class="wordbook-copy"><strong>イラスト単語帳</strong><small>絵のある名詞をまとめて学習</small></span>
+                    <span class="wordbook-copy"><strong>イラスト単語帳</strong><small id="illustrationTrialLabel">固定100語を無料で学習</small></span>
                 </button>
                 <button class="wordbook-item-btn wordbook-card" data-level="selection1900"
                     onclick="if(window.selectWordbook){selectWordbook('selection1900')}else{alert('システム読み込み中です。少々お待ち下さい。')}">
@@ -843,6 +843,10 @@
             <h2 id="illustratedWordbookTitle">イラスト単語帳</h2>
             <p><span id="illustratedWordbookCount"></span> · 学習記録は元の単語と共通</p>
             <button type="button" class="illustrated-start-btn" onclick="WordIllustrations.startWordbook()">学習する</button>
+            <div id="illustrationUpgrade" class="illustrated-wordbook-hint">
+                無料版は固定100語を1日8分まで学習できます。プレミアムは全収録語を利用できます。
+                <button type="button" onclick="WordIllustrations.explainUpgrade()">有料版について</button>
+            </div>
             <p class="illustrated-wordbook-hint">語を選んで学習できます。出題中の絵は回答後に表示。</p>
             <div id="illustratedWordbookGallery" class="illustrated-wordbook-gallery"></div>
         </div>
@@ -964,7 +968,7 @@
             <div class="purchase-hero">
                 <div class="purchase-kicker">Premium</div>
                 <h2 class="purchase-title"><span class="title-picto app-picto icon-diamond" aria-hidden="true"></span>プレミアムプラン</h2>
-                <p class="purchase-lead">無料版は1日8分。プレミアムなら、時間制限なしで学習できます。</p>
+                <p class="purchase-lead">無料版は1日8分、イラスト単語帳は100語まで。プレミアムなら時間制限なしで全収録語を学習できます。通常学習のイラストは無料版でもすべて表示されます。</p>
             </div>
 
             <div class="purchase-legal-row">
@@ -1093,7 +1097,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.0919.1904">
+    <link rel="stylesheet" href="feedback.css?v=2026.0919.1923">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1135,19 +1139,19 @@
             <p id="speechSettingsStatus" class="speech-settings-note" role="status"></p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.0919.1904"></script>
-    <script src="js/update_manager.js?v=2026.0919.1904"></script>
-    <script src="js/config.js?v=2026.0919.1904"></script>
-    <script src="data/announcements.js?v=2026.0919.1904"></script>
-    <script src="js/utils.js?v=2026.0919.1904"></script>
-    <script src="data/word-illustrations.js?v=2026.0919.1904"></script>
-    <script src="js/word_illustrations.js?v=2026.0919.1904"></script>
+    <script src="js/version.js?v=2026.0919.1923"></script>
+    <script src="js/update_manager.js?v=2026.0919.1923"></script>
+    <script src="js/config.js?v=2026.0919.1923"></script>
+    <script src="data/announcements.js?v=2026.0919.1923"></script>
+    <script src="js/utils.js?v=2026.0919.1923"></script>
+    <script src="data/word-illustrations.js?v=2026.0919.1923"></script>
+    <script src="js/word_illustrations.js?v=2026.0919.1923"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.0919.1904"></script>
-    <script src="js/game_logic.js?v=2026.0919.1904"></script>
-    <script src="js/ui_manager.js?v=2026.0919.1904"></script>
-    <script src="js/feedback.js?v=2026.0919.1904"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.0919.1904"></script>
+    <script src="js/word_grouping.js?v=2026.0919.1923"></script>
+    <script src="js/game_logic.js?v=2026.0919.1923"></script>
+    <script src="js/ui_manager.js?v=2026.0919.1923"></script>
+    <script src="js/feedback.js?v=2026.0919.1923"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.0919.1923"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>
