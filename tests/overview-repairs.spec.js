@@ -16,7 +16,8 @@ test('全体点検修復の参照先・用法切替・新語の回答と既存�
   const inventory = await page.evaluate(batch => {
     const expected = [...batch.changes.map(c => ({ ...c, added: false })), ...batch.additions.map(c => ({ ...c, added: true }))];
     const targets = [];
-    for (const [level, rows] of Object.entries(vocabularyDatabase)) for (const [index, row] of rows.entries()) {
+    // The derived illustrated collection shares source keys; audit source books once.
+    for (const [level, rows] of Object.entries(vocabularyDatabase).filter(([level]) => level !== 'illustrated')) for (const [index, row] of rows.entries()) {
       const resolved = resolveReferencedVocabularyWord(row, level);
       for (const [senseIndex, sense] of (resolved.senses || [resolved]).entries()) {
         const match = expected.find(c => sense.word === c.after.word && sense.phrase === c.after.phrase && sense.example === c.after.example);

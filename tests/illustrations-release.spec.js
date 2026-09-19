@@ -21,8 +21,8 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('登録済み名詞は意味を開いた後だけ表示され、次問でキャラクターへ戻る', async ({ page }) => {
-  test.setTimeout(180000);
   const entries = await page.evaluate(() => WORD_ILLUSTRATIONS);
+  test.setTimeout(Math.max(180000, entries.length * 1000));
   expect(entries.length).toBeGreaterThanOrEqual(30);
   expect(entries.filter(entry => entry.level === 'junior').length).toBeGreaterThanOrEqual(20);
   for (const entry of entries) {

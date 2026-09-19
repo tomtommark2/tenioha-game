@@ -1,0 +1,24 @@
+const { test, expect } = require('@playwright/test');
+const fs = require('node:fs'), crypto = require('node:crypto');
+const { readInputs, buildQueue } = require('../scripts/word-illustration-queue');
+const r = require('../docs/experiments/pictogram-release-2026-09-19/registration.json');
+test('第11〜16回の300画像・312項目を既存登録と学習キーを保持して追加', () => {
+ const input = readInputs();
+ const previous = input.illustrations.slice(0, r.previousWords);
+ expect(crypto.createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(r.previousManifestSha256);
+ expect(input.vocabularySha256).toBe(r.vocabularySha256);
+ expect(input.illustrations).toHaveLength(675);
+ expect(new Set(input.illustrations.map(e=>e.src)).size).toBe(647);
+ expect(input.illustrations.slice(r.previousWords)).toEqual(r.entries);
+ const pending = buildQueue({...input, illustrations:previous}).entries.filter(e=>e.status==='pending');
+ expect(r.entries.map(e=>input.utils.getWordKey(e,e.level,input.database))).toEqual(pending.slice(0,312).map(e=>e.key));
+ for(const e of r.entries) expect(fs.existsSync(e.src), e.src).toBe(true);
+ expect(buildQueue(input).entries.find(e=>e.status==='pending').word).toBe('accident');
+ const find = w=>input.illustrations.find(e=>e.word===w).src;
+ expect(find('shoulder')).toContain('-v3.webp');
+ expect(find('stone')).toContain('-v2.webp');
+ expect(find('world')).toContain('-v2.webp');
+ expect(find('violin')).toContain('-v5.webp');
+ expect(find('dish')).toContain('-v1.webp');
+ expect(find('TV')).toBe(find('television'));
+});

@@ -148,6 +148,7 @@ test('イラスト画面は小さい画面でも閉じて学習に戻れる', as
 });
 
 test('前の絵と一覧は320pxでも収まり、最終回答後も絵を開ける', async ({ page }) => {
+  test.setTimeout(90000);
   await select(page, 'apple');
   await page.locator('#vocabCard').click();
   for (const width of [320, 375, 390, 768, 1280]) {
@@ -167,7 +168,10 @@ test('前の絵と一覧は320pxでも収まり、最終回答後も絵を開け
   await page.evaluate(() => WordIllustrations.openWordbook());
   await page.setViewportSize({ width: 320, height: 650 });
   const images = await page.locator('.illustrated-word-tile img').evaluateAll(async images => {
-    await Promise.all(images.map(image => { image.loading = 'eager'; return image.decode(); }));
+    // Bound diagnostic eager loads; production uses lazy loading.
+    for (let i = 0; i < images.length; i += 12) {
+      await Promise.all(images.slice(i, i + 12).map(image => { image.loading = 'eager'; return image.decode(); }));
+    }
     return images.every(image => image.naturalWidth > 0);
   });
   expect(images).toBe(true);
