@@ -45,6 +45,6 @@ test('旧10分版の当日消費時間を消さず8分を超えていればロ�
   await expect(page.locator('#trialOverlay')).toBeVisible();
   expect(await page.evaluate(()=>trialState.playTimeSeconds)).toBeGreaterThanOrEqual(550);
   expect(await page.evaluate(()=>TRIAL_CONFIG.LIMIT_SECONDS)).toBe(480);
-  expect(await page.evaluate(()=>WORD_ILLUSTRATIONS.length)).toBe(675);
-  expect(await page.evaluate(()=>vocabularyDatabase.illustrated.length)).toBe(674);
+  expect(await page.evaluate(()=>WORD_ILLUSTRATIONS.length)).toBe(1292);
+  expect(await page.evaluate(()=>vocabularyDatabase.illustrated.length)).toBe(1289);
 });

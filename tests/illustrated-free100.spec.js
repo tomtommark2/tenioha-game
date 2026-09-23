@@ -12,7 +12,7 @@ test.beforeEach(async ({ page, baseURL }) => {
   await page.evaluate(() => updateTrialTimer());
 });
 
-test('無料100語・有料全674語で、通常学習と他単語帳は制限しない', async ({ page }) => {
+test('無料100語・有料全1289語で、通常学習と他単語帳は制限しない', async ({ page }) => {
   const result = await page.evaluate(() => {
     const api = WordIllustrations, db = vocabularyDatabase;
     const free = api.accessibleWords('illustrated', db);
@@ -23,16 +23,16 @@ test('無料100語・有料全674語で、通常学習と他単語帳は制限�
       originals: ['apple','animal','baby','bag','ball','banana','bicycle','bird','boat','book','bottle','box','bread','bus','butterfly','cake','car','cat','chair','clock'].every(w => free.some(item => item.word === w))
     };
   });
-  expect(result).toEqual({ count:100, unique:100, full:674, other:true, originals:true });
+  expect(result).toEqual({ count:100, unique:100, full:1289, other:true, originals:true });
   await page.evaluate(() => WordIllustrations.openWordbook());
   await expect(page.locator('.illustrated-word-tile')).toHaveCount(100);
-  await expect(page.locator('#illustratedWordbookCount')).toHaveText('無料体験 100語 / 全674語');
+  await expect(page.locator('#illustratedWordbookCount')).toHaveText('無料体験 100語 / 全1289語');
   await page.evaluate(() => {
     localStorage.setItem('vocabGame_isUnlocked', 'true');
     localStorage.setItem('vocabGame_expiry', String(Date.now() + 86400000));
     updateTrialTimer();
   });
-  await expect(page.locator('.illustrated-word-tile')).toHaveCount(674);
+  await expect(page.locator('.illustrated-word-tile')).toHaveCount(1289);
   await expect(page.locator('#illustrationUpgrade')).toBeHidden();
 });
 

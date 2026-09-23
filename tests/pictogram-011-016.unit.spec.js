@@ -3,7 +3,8 @@ const fs = require('node:fs'), crypto = require('node:crypto');
 const { readInputs, buildQueue } = require('../scripts/word-illustration-queue');
 const r = require('../docs/experiments/pictogram-release-2026-09-19/registration.json');
 test('第11〜16回の300画像・312項目を既存登録と学習キーを保持して追加', () => {
- const input = readInputs();
+ const current = readInputs();
+ const input = {...current, illustrations:current.illustrations.slice(0,675)};
  const previous = input.illustrations.slice(0, r.previousWords);
  expect(crypto.createHash('sha256').update(JSON.stringify(previous)).digest('hex')).toBe(r.previousManifestSha256);
  expect(input.vocabularySha256).toBe(r.vocabularySha256);

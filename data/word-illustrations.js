@@ -5402,4 +5402,4943 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "src": "assets/word-illustrations/ability-pictogram-v1.webp",
         "alt": "能力の一例のイメージ（一例）"
     }
+,
+
+    {
+        "word": "accident",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "事故",
+        "src": "assets/word-illustrations/accident-pictogram-v1.webp",
+        "alt": "事故のイメージ（一例）"
+    },
+    {
+        "word": "account",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "口座、報告、記述",
+        "src": "assets/word-illustrations/account-pictogram-v1.webp",
+        "alt": "口座、報告、記述のイメージ（一例）"
+    },
+    {
+        "word": "act",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "行為",
+        "src": "assets/word-illustrations/act-pictogram-v1.webp",
+        "alt": "行為のイメージ（一例）"
+    },
+    {
+        "word": "addition",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "追加、足し算",
+        "src": "assets/word-illustrations/addition-pictogram-v1.webp",
+        "alt": "追加、足し算のイメージ（一例）"
+    },
+    {
+        "word": "adjective",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "形容詞",
+        "src": "assets/word-illustrations/adjective-pictogram-v1.webp",
+        "alt": "形容詞のイメージ（一例）"
+    },
+    {
+        "word": "adult",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "大人",
+        "src": "assets/word-illustrations/adult-pictogram-v1.webp",
+        "alt": "大人のイメージ（一例）"
+    },
+    {
+        "word": "advantage",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "利点",
+        "src": "assets/word-illustrations/advantage-pictogram-v1.webp",
+        "alt": "利点のイメージ（一例）"
+    },
+    {
+        "word": "adventure",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "冒険",
+        "src": "assets/word-illustrations/adventure-pictogram-v1.webp",
+        "alt": "冒険のイメージ（一例）"
+    },
+    {
+        "word": "advertisement",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "広告",
+        "src": "assets/word-illustrations/advertisement-pictogram-v1.webp",
+        "alt": "広告のイメージ（一例）"
+    },
+    {
+        "word": "advertising",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "広告、広告業",
+        "src": "assets/word-illustrations/advertising-pictogram-v1.webp",
+        "alt": "広告、広告業のイメージ（一例）"
+    },
+    {
+        "word": "advice",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "助言",
+        "src": "assets/word-illustrations/advice-pictogram-v1.webp",
+        "alt": "助言のイメージ（一例）"
+    },
+    {
+        "word": "affair",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "出来事",
+        "src": "assets/word-illustrations/affair-pictogram-v1.webp",
+        "alt": "出来事のイメージ（一例）"
+    },
+    {
+        "word": "agency",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "代理店",
+        "src": "assets/word-illustrations/agency-pictogram-v1.webp",
+        "alt": "代理店のイメージ（一例）"
+    },
+    {
+        "word": "agent",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "代理人",
+        "src": "assets/word-illustrations/agent-pictogram-v2.webp",
+        "alt": "代理人のイメージ（一例）"
+    },
+    {
+        "word": "air",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "空気",
+        "src": "assets/word-illustrations/air-pictogram-v1.webp",
+        "alt": "空気のイメージ（一例）"
+    },
+    {
+        "word": "aisle",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "通路",
+        "src": "assets/word-illustrations/aisle-pictogram-v1.webp",
+        "alt": "通路のイメージ（一例）"
+    },
+    {
+        "word": "alarm",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "警報",
+        "src": "assets/word-illustrations/alarm-pictogram-v1.webp",
+        "alt": "警報のイメージ（一例）"
+    },
+    {
+        "word": "alarm clock",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "目覚まし時計",
+        "src": "assets/word-illustrations/alarm-clock-pictogram-v1.webp",
+        "alt": "目覚まし時計のイメージ（一例）"
+    },
+    {
+        "word": "ambition",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "野心",
+        "src": "assets/word-illustrations/ambition-pictogram-v1.webp",
+        "alt": "野心のイメージ（一例）"
+    },
+    {
+        "word": "amusement",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "娯楽",
+        "src": "assets/word-illustrations/amusement-pictogram-v1.webp",
+        "alt": "娯楽のイメージ（一例）"
+    },
+    {
+        "word": "ancestor",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "先祖",
+        "src": "assets/word-illustrations/ancestor-pictogram-v1.webp",
+        "alt": "先祖のイメージ（一例）"
+    },
+    {
+        "word": "angel",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "天使",
+        "src": "assets/word-illustrations/angel-pictogram-v1.webp",
+        "alt": "天使のイメージ（一例）"
+    },
+    {
+        "word": "ankle",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "足首",
+        "src": "assets/word-illustrations/ankle-pictogram-v1.webp",
+        "alt": "足首のイメージ（一例）"
+    },
+    {
+        "word": "anniversary",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "記念日",
+        "src": "assets/word-illustrations/anniversary-pictogram-v1.webp",
+        "alt": "記念日のイメージ（一例）"
+    },
+    {
+        "word": "apartment",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "アパート",
+        "src": "assets/word-illustrations/apartment-pictogram-v1.webp",
+        "alt": "アパートのイメージ（一例）"
+    },
+    {
+        "word": "appearance",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "外見",
+        "src": "assets/word-illustrations/appearance-pictogram-v1.webp",
+        "alt": "外見のイメージ（一例）"
+    },
+    {
+        "word": "appointment",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "予約",
+        "src": "assets/word-illustrations/appointment-pictogram-v1.webp",
+        "alt": "予約のイメージ（一例）"
+    },
+    {
+        "word": "architecture",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "建築、建築様式",
+        "src": "assets/word-illustrations/architecture-pictogram-v1.webp",
+        "alt": "建築、建築様式のイメージ（一例）"
+    },
+    {
+        "word": "area",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "地域",
+        "src": "assets/word-illustrations/area-pictogram-v2.webp",
+        "alt": "地域のイメージ（一例）"
+    },
+    {
+        "word": "argument",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "議論",
+        "src": "assets/word-illustrations/argument-pictogram-v1.webp",
+        "alt": "議論のイメージ（一例）"
+    },
+    {
+        "word": "armchair",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ひじ掛け椅子",
+        "src": "assets/word-illustrations/armchair-pictogram-v1.webp",
+        "alt": "ひじ掛け椅子のイメージ（一例）"
+    },
+    {
+        "word": "association",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "協会",
+        "src": "assets/word-illustrations/association-pictogram-v1.webp",
+        "alt": "協会のイメージ（一例）"
+    },
+    {
+        "word": "astronaut",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "宇宙飛行士",
+        "src": "assets/word-illustrations/astronaut-pictogram-v1.webp",
+        "alt": "宇宙飛行士のイメージ（一例）"
+    },
+    {
+        "word": "athlete",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "運動選手",
+        "src": "assets/word-illustrations/athlete-pictogram-v1.webp",
+        "alt": "運動選手のイメージ（一例）"
+    },
+    {
+        "word": "atom",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "原子",
+        "src": "assets/word-illustrations/atom-pictogram-v1.webp",
+        "alt": "原子のイメージ（一例）"
+    },
+    {
+        "word": "attack",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "攻撃",
+        "src": "assets/word-illustrations/attack-pictogram-v1.webp",
+        "alt": "攻撃のイメージ（一例）"
+    },
+    {
+        "word": "attempt",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "試みる",
+        "src": "assets/word-illustrations/attempt-pictogram-v1.webp",
+        "alt": "試みるのイメージ（一例）"
+    },
+    {
+        "word": "attention",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "注意",
+        "src": "assets/word-illustrations/attention-pictogram-v1.webp",
+        "alt": "注意のイメージ（一例）"
+    },
+    {
+        "word": "attitude",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "態度",
+        "src": "assets/word-illustrations/attitude-pictogram-v1.webp",
+        "alt": "態度のイメージ（一例）"
+    },
+    {
+        "word": "audience",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "観客",
+        "src": "assets/word-illustrations/audience-pictogram-v1.webp",
+        "alt": "観客のイメージ（一例）"
+    },
+    {
+        "word": "author",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "著者",
+        "src": "assets/word-illustrations/author-pictogram-v1.webp",
+        "alt": "著者のイメージ（一例）"
+    },
+    {
+        "word": "average",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "平均",
+        "src": "assets/word-illustrations/average-pictogram-v1.webp",
+        "alt": "平均のイメージ（一例）"
+    },
+    {
+        "word": "award",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "賞",
+        "src": "assets/word-illustrations/award-pictogram-v1.webp",
+        "alt": "賞のイメージ（一例）"
+    },
+    {
+        "word": "background",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "背景、経歴",
+        "src": "assets/word-illustrations/background-pictogram-v1.webp",
+        "alt": "背景、経歴のイメージ（一例）"
+    },
+    {
+        "word": "badminton",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "バドミントン",
+        "src": "assets/word-illustrations/badminton-pictogram-v2.webp",
+        "alt": "バドミントンのイメージ（一例）"
+    },
+    {
+        "word": "balcony",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "バルコニー",
+        "src": "assets/word-illustrations/balcony-pictogram-v1.webp",
+        "alt": "バルコニーのイメージ（一例）"
+    },
+    {
+        "word": "balloon",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "風船",
+        "src": "assets/word-illustrations/balloon-pictogram-v2.webp",
+        "alt": "風船のイメージ（一例）"
+    },
+    {
+        "word": "banking",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "銀行業務",
+        "src": "assets/word-illustrations/banking-pictogram-v2.webp",
+        "alt": "銀行業務のイメージ（一例）"
+    },
+    {
+        "word": "barbecue",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "バーベキュー",
+        "src": "assets/word-illustrations/barbecue-pictogram-v1.webp",
+        "alt": "バーベキューのイメージ（一例）"
+    },
+    {
+        "word": "barber",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "理髪師、床屋",
+        "src": "assets/word-illustrations/barber-pictogram-v1.webp",
+        "alt": "理髪師、床屋のイメージ（一例）"
+    },
+    {
+        "word": "bargain",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "買い得品、契約",
+        "src": "assets/word-illustrations/bargain-pictogram-v1.webp",
+        "alt": "買い得品、契約のイメージ（一例）"
+    },
+    {
+        "word": "base",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "基礎、土台、基地",
+        "src": "assets/word-illustrations/base-pictogram-v1.webp",
+        "alt": "基礎、土台、基地のイメージ（一例）"
+    },
+    {
+        "word": "basket",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "かご、バスケット",
+        "src": "assets/word-illustrations/basket-pictogram-v1.webp",
+        "alt": "かご、バスケットのイメージ（一例）"
+    },
+    {
+        "word": "batch",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "一団、一束、バッチ",
+        "src": "assets/word-illustrations/batch-pictogram-v1.webp",
+        "alt": "一団、一束、バッチのイメージ（一例）"
+    },
+    {
+        "word": "battery",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "電池、バッテリー",
+        "src": "assets/word-illustrations/battery-pictogram-v1.webp",
+        "alt": "電池、バッテリーのイメージ（一例）"
+    },
+    {
+        "word": "bay",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "湾、入り江",
+        "src": "assets/word-illustrations/bay-pictogram-v1.webp",
+        "alt": "湾、入り江のイメージ（一例）"
+    },
+    {
+        "word": "beauty",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "美しさ、美人",
+        "src": "assets/word-illustrations/beauty-pictogram-v1.webp",
+        "alt": "美しさ、美人のイメージ（一例）"
+    },
+    {
+        "word": "beer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ビール",
+        "src": "assets/word-illustrations/beer-pictogram-v2.webp",
+        "alt": "ビールのイメージ（一例）"
+    },
+    {
+        "word": "beginner",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "初心者",
+        "src": "assets/word-illustrations/beginner-pictogram-v1.webp",
+        "alt": "初心者のイメージ（一例）"
+    },
+    {
+        "word": "beginning",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "初まり、最初",
+        "src": "assets/word-illustrations/beginning-pictogram-v1.webp",
+        "alt": "初まり、最初のイメージ（一例）"
+    },
+    {
+        "word": "behavior",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "振る舞い、行動",
+        "src": "assets/word-illustrations/behavior-pictogram-v1.webp",
+        "alt": "振る舞い、行動のイメージ（一例）"
+    },
+    {
+        "word": "behaviour",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "振る舞い、行儀",
+        "src": "assets/word-illustrations/behaviour-pictogram-v1.webp",
+        "alt": "振る舞い、行儀のイメージ（一例）"
+    },
+    {
+        "word": "being",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "存在、生き物",
+        "src": "assets/word-illustrations/being-pictogram-v1.webp",
+        "alt": "存在、生き物のイメージ（一例）"
+    },
+    {
+        "word": "belly",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "お腹",
+        "src": "assets/word-illustrations/belly-pictogram-v1.webp",
+        "alt": "お腹のイメージ（一例）"
+    },
+    {
+        "word": "belt",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ベルト",
+        "src": "assets/word-illustrations/belt-pictogram-v1.webp",
+        "alt": "ベルトのイメージ（一例）"
+    },
+    {
+        "word": "bench",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ベンチ",
+        "src": "assets/word-illustrations/bench-pictogram-v1.webp",
+        "alt": "ベンチのイメージ（一例）"
+    },
+    {
+        "word": "bill",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "請求書、紙幣",
+        "src": "assets/word-illustrations/bill-pictogram-v1.webp",
+        "alt": "請求書、紙幣のイメージ（一例）"
+    },
+    {
+        "word": "bit",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "少し",
+        "src": "assets/word-illustrations/bit-pictogram-v1.webp",
+        "alt": "少しのイメージ（一例）"
+    },
+    {
+        "word": "bite",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "（一）噛み、軽い食事",
+        "src": "assets/word-illustrations/bite-pictogram-v1.webp",
+        "alt": "（一）噛み、軽い食事のイメージ（一例）"
+    },
+    {
+        "word": "blackboard",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "黒板",
+        "src": "assets/word-illustrations/blackboard-pictogram-v5.webp",
+        "alt": "黒板のイメージ（一例）"
+    },
+    {
+        "word": "blanket",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "毛布",
+        "src": "assets/word-illustrations/blanket-pictogram-v1.webp",
+        "alt": "毛布のイメージ（一例）"
+    },
+    {
+        "word": "blood",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "血、血液",
+        "src": "assets/word-illustrations/blood-pictogram-v1.webp",
+        "alt": "血、血液のイメージ（一例）"
+    },
+    {
+        "word": "bloom",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "花、開花",
+        "src": "assets/word-illustrations/bloom-pictogram-v1.webp",
+        "alt": "花、開花のイメージ（一例）"
+    },
+    {
+        "word": "blow",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "強打、打撃",
+        "src": "assets/word-illustrations/blow-pictogram-v1.webp",
+        "alt": "強打、打撃のイメージ（一例）"
+    },
+    {
+        "word": "board game",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ボードゲーム",
+        "src": "assets/word-illustrations/board-game-pictogram-v1.webp",
+        "alt": "ボードゲームのイメージ（一例）"
+    },
+    {
+        "word": "bonus",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ボーナス、おまけ",
+        "src": "assets/word-illustrations/bonus-pictogram-v1.webp",
+        "alt": "ボーナス、おまけのイメージ（一例）"
+    },
+    {
+        "word": "bookcase",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "本棚",
+        "src": "assets/word-illustrations/bookcase-pictogram-v1.webp",
+        "alt": "本棚のイメージ（一例）"
+    },
+    {
+        "word": "bookshelf",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "（一つ一つの）書棚",
+        "src": "assets/word-illustrations/bookshelf-pictogram-v1.webp",
+        "alt": "（一つ一つの）書棚のイメージ（一例）"
+    },
+    {
+        "word": "bookshop",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "本屋",
+        "src": "assets/word-illustrations/bookshop-pictogram-v1.webp",
+        "alt": "本屋のイメージ（一例）"
+    },
+    {
+        "word": "boss",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "上司、ボス",
+        "src": "assets/word-illustrations/boss-pictogram-v1.webp",
+        "alt": "上司、ボスのイメージ（一例）"
+    },
+    {
+        "word": "bra",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ブラジャー",
+        "src": "assets/word-illustrations/bra-pictogram-v1.webp",
+        "alt": "ブラジャーのイメージ（一例）"
+    },
+    {
+        "word": "brainstorm",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ブレインストーミング、ひらめき",
+        "src": "assets/word-illustrations/brainstorm-pictogram-v1.webp",
+        "alt": "ブレインストーミング、ひらめきのイメージ（一例）"
+    },
+    {
+        "word": "brake",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ブレーキ",
+        "src": "assets/word-illustrations/brake-pictogram-v1.webp",
+        "alt": "ブレーキのイメージ（一例）"
+    },
+    {
+        "word": "branch",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "枝、支店",
+        "src": "assets/word-illustrations/branch-pictogram-v1.webp",
+        "alt": "枝、支店のイメージ（一例）"
+    },
+    {
+        "word": "brand",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ブランド、銘柄",
+        "src": "assets/word-illustrations/brand-pictogram-v1.webp",
+        "alt": "ブランド、銘柄のイメージ（一例）"
+    },
+    {
+        "word": "break",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "休憩、中断",
+        "src": "assets/word-illustrations/break-pictogram-v1.webp",
+        "alt": "休憩、中断のイメージ（一例）"
+    },
+    {
+        "word": "breeze",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "そよ風",
+        "src": "assets/word-illustrations/breeze-pictogram-v1.webp",
+        "alt": "そよ風のイメージ（一例）"
+    },
+    {
+        "word": "bride",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "花嫁、新婦",
+        "src": "assets/word-illustrations/bride-pictogram-v1.webp",
+        "alt": "花嫁、新婦のイメージ（一例）"
+    },
+    {
+        "word": "brown",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "茶色",
+        "src": "assets/word-illustrations/brown-pictogram-v1.webp",
+        "alt": "茶色のイメージ（一例）"
+    },
+    {
+        "word": "budget",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "予算",
+        "src": "assets/word-illustrations/budget-pictogram-v1.webp",
+        "alt": "予算のイメージ（一例）"
+    },
+    {
+        "word": "bug",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "虫、不具合",
+        "src": "assets/word-illustrations/bug-pictogram-v1.webp",
+        "alt": "虫、不具合のイメージ（一例）"
+    },
+    {
+        "word": "bulb",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "電球、球根",
+        "src": "assets/word-illustrations/bulb-pictogram-v1.webp",
+        "alt": "電球、球根のイメージ（一例）"
+    },
+    {
+        "word": "burn",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "火傷、日焼け",
+        "src": "assets/word-illustrations/burn-pictogram-v1.webp",
+        "alt": "火傷、日焼けのイメージ（一例）"
+    },
+    {
+        "word": "bus station",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "バスターミナル",
+        "src": "assets/word-illustrations/bus-station-pictogram-v1.webp",
+        "alt": "バスターミナルのイメージ（一例）"
+    },
+    {
+        "word": "bus stop",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "バス停",
+        "src": "assets/word-illustrations/bus-stop-pictogram-v1.webp",
+        "alt": "バス停のイメージ（一例）"
+    },
+    {
+        "word": "bush",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "低木、茂み",
+        "src": "assets/word-illustrations/bush-pictogram-v1.webp",
+        "alt": "低木、茂みのイメージ（一例）"
+    },
+    {
+        "word": "businessman",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "実業家、ビジネスマン",
+        "src": "assets/word-illustrations/businessman-pictogram-v1.webp",
+        "alt": "実業家、ビジネスマンのイメージ（一例）"
+    },
+    {
+        "word": "businesswoman",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "女性実業家",
+        "src": "assets/word-illustrations/businesswoman-pictogram-v1.webp",
+        "alt": "女性実業家のイメージ（一例）"
+    },
+    {
+        "word": "cab",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "タクシー",
+        "src": "assets/word-illustrations/cab-pictogram-v1.webp",
+        "alt": "タクシーのイメージ（一例）"
+    },
+    {
+        "word": "cafeteria",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "食堂、カフェテリア",
+        "src": "assets/word-illustrations/cafeteria-pictogram-v1.webp",
+        "alt": "食堂、カフェテリアのイメージ（一例）"
+    },
+    {
+        "word": "calendar",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "カレンダー、行事予定",
+        "src": "assets/word-illustrations/calendar-pictogram-v1.webp",
+        "alt": "カレンダー、行事予定のイメージ（一例）"
+    },
+    {
+        "word": "camping",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "キャンプ、野営",
+        "src": "assets/word-illustrations/camping-pictogram-v1.webp",
+        "alt": "キャンプ、野営のイメージ（一例）"
+    },
+    {
+        "word": "campus",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "キャンパス、構内",
+        "src": "assets/word-illustrations/campus-pictogram-v1.webp",
+        "alt": "キャンパス、構内のイメージ（一例）"
+    },
+    {
+        "word": "can",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "缶、缶詰",
+        "src": "assets/word-illustrations/can-pictogram-v1.webp",
+        "alt": "缶、缶詰のイメージ（一例）"
+    },
+    {
+        "word": "capital",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "首都、資本",
+        "src": "assets/word-illustrations/capital-pictogram-v2.webp",
+        "alt": "首都、資本のイメージ（一例）"
+    },
+    {
+        "word": "capital letter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "大文字",
+        "src": "assets/word-illustrations/capital-letter-pictogram-v2.webp",
+        "alt": "大文字のイメージ（一例）"
+    },
+    {
+        "word": "captain",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "船長、機長、主将",
+        "src": "assets/word-illustrations/captain-pictogram-v1.webp",
+        "alt": "船長、機長、主将のイメージ（一例）"
+    },
+    {
+        "word": "car park",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "駐車場",
+        "src": "assets/word-illustrations/car-park-pictogram-v1.webp",
+        "alt": "駐車場のイメージ（一例）"
+    },
+    {
+        "word": "carrot",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "人参",
+        "src": "assets/word-illustrations/carrot-pictogram-v1.webp",
+        "alt": "人参のイメージ（一例）"
+    },
+    {
+        "word": "cash",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "現金",
+        "src": "assets/word-illustrations/cash-pictogram-v1.webp",
+        "alt": "現金のイメージ（一例）"
+    },
+    {
+        "word": "cassette",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "カセット、カセットテープ",
+        "src": "assets/word-illustrations/cassette-pictogram-v1.webp",
+        "alt": "カセット、カセットテープのイメージ（一例）"
+    },
+    {
+        "word": "castle",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "城",
+        "src": "assets/word-illustrations/castle-pictogram-v1.webp",
+        "alt": "城のイメージ（一例）"
+    },
+    {
+        "word": "cent",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "セント",
+        "src": "assets/word-illustrations/cent-pictogram-v1.webp",
+        "alt": "セントのイメージ（一例）"
+    },
+    {
+        "word": "center",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "中心、センター",
+        "src": "assets/word-illustrations/center-pictogram-v1.webp",
+        "alt": "中心、センターのイメージ（一例）"
+    },
+    {
+        "word": "centimeter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "センチメートル",
+        "src": "assets/word-illustrations/centimeter-pictogram-v1.webp",
+        "alt": "センチメートルのイメージ（一例）"
+    },
+    {
+        "word": "centimetre",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "センチメートル（英）",
+        "src": "assets/word-illustrations/centimetre-pictogram-v1.webp",
+        "alt": "センチメートル（英）のイメージ（一例）"
+    },
+    {
+        "word": "centre",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "中心（英）",
+        "src": "assets/word-illustrations/centre-pictogram-v1.webp",
+        "alt": "中心（英）のイメージ（一例）"
+    },
+    {
+        "word": "century",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "世紀、百年",
+        "src": "assets/word-illustrations/century-pictogram-v1.webp",
+        "alt": "世紀、百年のイメージ（一例）"
+    },
+    {
+        "word": "cereal",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "穀物、シリアル",
+        "src": "assets/word-illustrations/cereal-pictogram-v1.webp",
+        "alt": "穀物、シリアルのイメージ（一例）"
+    },
+    {
+        "word": "chain",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "鎖、連なり、チェーン",
+        "src": "assets/word-illustrations/chain-pictogram-v1.webp",
+        "alt": "鎖、連なり、チェーンのイメージ（一例）"
+    },
+    {
+        "word": "chairman",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "議長、会長",
+        "src": "assets/word-illustrations/chairman-pictogram-v1.webp",
+        "alt": "議長、会長のイメージ（一例）"
+    },
+    {
+        "word": "challenge",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "挑戦、課題",
+        "src": "assets/word-illustrations/challenge-pictogram-v1.webp",
+        "alt": "挑戦、課題のイメージ（一例）"
+    },
+    {
+        "word": "champagne",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "シャンパン",
+        "src": "assets/word-illustrations/champagne-pictogram-v1.webp",
+        "alt": "シャンパンのイメージ（一例）"
+    },
+    {
+        "word": "championship",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "選手権、優勝",
+        "src": "assets/word-illustrations/championship-pictogram-v2.webp",
+        "alt": "選手権、優勝のイメージ（一例）"
+    },
+    {
+        "word": "chance",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "機会、可能性、偶然",
+        "src": "assets/word-illustrations/chance-pictogram-v1.webp",
+        "alt": "機会、可能性、偶然のイメージ（一例）"
+    },
+    {
+        "word": "chapter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "章",
+        "src": "assets/word-illustrations/chapter-pictogram-v1.webp",
+        "alt": "章のイメージ（一例）"
+    },
+    {
+        "word": "chart",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "図表、チャート",
+        "src": "assets/word-illustrations/chart-pictogram-v1.webp",
+        "alt": "図表、チャートのイメージ（一例）"
+    },
+    {
+        "word": "cheek",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "頬（ほほ）",
+        "src": "assets/word-illustrations/cheek-pictogram-v1.webp",
+        "alt": "頬（ほほ）のイメージ（一例）"
+    },
+    {
+        "word": "chef",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "料理長、シェフ",
+        "src": "assets/word-illustrations/chef-pictogram-v1.webp",
+        "alt": "料理長、シェフのイメージ（一例）"
+    },
+    {
+        "word": "cheque",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "小切手",
+        "src": "assets/word-illustrations/cheque-pictogram-v1.webp",
+        "alt": "小切手のイメージ（一例）"
+    },
+    {
+        "word": "chess",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "チェス",
+        "src": "assets/word-illustrations/chess-pictogram-v1.webp",
+        "alt": "チェスのイメージ（一例）"
+    },
+    {
+        "word": "chest",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "胸、大箱",
+        "src": "assets/word-illustrations/chest-pictogram-v1.webp",
+        "alt": "胸、大箱のイメージ（一例）"
+    },
+    {
+        "word": "childhood",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "子供時代、幼少期",
+        "src": "assets/word-illustrations/childhood-pictogram-v1.webp",
+        "alt": "子供時代、幼少期のイメージ（一例）"
+    },
+    {
+        "word": "chili",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "チリ、唐辛子",
+        "src": "assets/word-illustrations/chili-pictogram-v1.webp",
+        "alt": "チリ、唐辛子のイメージ（一例）"
+    },
+    {
+        "word": "chilli",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "チリ（英）",
+        "src": "assets/word-illustrations/chilli-pictogram-v1.webp",
+        "alt": "チリ（英）のイメージ（一例）"
+    },
+    {
+        "word": "chimpanzee",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "チンパンジー",
+        "src": "assets/word-illustrations/chimpanzee-pictogram-v1.webp",
+        "alt": "チンパンジーのイメージ（一例）"
+    },
+    {
+        "word": "chin",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "あご",
+        "src": "assets/word-illustrations/chin-pictogram-v1.webp",
+        "alt": "あごのイメージ（一例）"
+    },
+    {
+        "word": "chirp",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "（鳥が）さえずる",
+        "src": "assets/word-illustrations/chirp-pictogram-v1.webp",
+        "alt": "（鳥が）さえずるのイメージ（一例）"
+    },
+    {
+        "word": "choice",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "選択",
+        "src": "assets/word-illustrations/choice-pictogram-v1.webp",
+        "alt": "選択のイメージ（一例）"
+    },
+    {
+        "word": "cigarette",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "タバコ",
+        "src": "assets/word-illustrations/cigarette-pictogram-v1.webp",
+        "alt": "タバコのイメージ（一例）"
+    },
+    {
+        "word": "citizen",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "市民",
+        "src": "assets/word-illustrations/citizen-pictogram-v1.webp",
+        "alt": "市民のイメージ（一例）"
+    },
+    {
+        "word": "classical music",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "クラシック音楽",
+        "src": "assets/word-illustrations/classical-music-pictogram-v1.webp",
+        "alt": "クラシック音楽のイメージ（一例）"
+    },
+    {
+        "word": "cleaner",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "掃除機、クリーナー",
+        "src": "assets/word-illustrations/cleaner-pictogram-v1.webp",
+        "alt": "掃除機、クリーナーのイメージ（一例）"
+    },
+    {
+        "word": "clerk",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "事務員、店員",
+        "src": "assets/word-illustrations/clerk-pictogram-v1.webp",
+        "alt": "事務員、店員のイメージ（一例）"
+    },
+    {
+        "word": "climbing",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "登山、クライミング",
+        "src": "assets/word-illustrations/climbing-pictogram-v1.webp",
+        "alt": "登山、クライミングのイメージ（一例）"
+    },
+    {
+        "word": "clown",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ピエロ",
+        "src": "assets/word-illustrations/clown-pictogram-v2.webp",
+        "alt": "ピエロのイメージ（一例）"
+    },
+    {
+        "word": "clue",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "手がかり",
+        "src": "assets/word-illustrations/clue-pictogram-v1.webp",
+        "alt": "手がかりのイメージ（一例）"
+    },
+    {
+        "word": "coast",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "海岸",
+        "src": "assets/word-illustrations/coast-pictogram-v1.webp",
+        "alt": "海岸のイメージ（一例）"
+    },
+    {
+        "word": "coin",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "硬貨",
+        "src": "assets/word-illustrations/coin-pictogram-v1.webp",
+        "alt": "硬貨のイメージ（一例）"
+    },
+    {
+        "word": "cola",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "コーラ",
+        "src": "assets/word-illustrations/cola-pictogram-v1.webp",
+        "alt": "コーラのイメージ（一例）"
+    },
+    {
+        "word": "column",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "柱、コラム",
+        "src": "assets/word-illustrations/column-pictogram-v1.webp",
+        "alt": "柱、コラムのイメージ（一例）"
+    },
+    {
+        "word": "comb",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "くし",
+        "src": "assets/word-illustrations/comb-pictogram-v1.webp",
+        "alt": "くしのイメージ（一例）"
+    },
+    {
+        "word": "comic",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "漫画、コミック本",
+        "src": "assets/word-illustrations/comic-pictogram-v1.webp",
+        "alt": "漫画、コミック本のイメージ（一例）"
+    },
+    {
+        "word": "commitment",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "約束、献身、責任",
+        "src": "assets/word-illustrations/commitment-pictogram-v1.webp",
+        "alt": "約束、献身、責任のイメージ（一例）"
+    },
+    {
+        "word": "committee",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "委員会",
+        "src": "assets/word-illustrations/committee-pictogram-v1.webp",
+        "alt": "委員会のイメージ（一例）"
+    },
+    {
+        "word": "communication",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "伝達、通信、意思疎通",
+        "src": "assets/word-illustrations/communication-pictogram-v1.webp",
+        "alt": "伝達、通信、意思疎通のイメージ（一例）"
+    },
+    {
+        "word": "company",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "会社、交際、同席",
+        "src": "assets/word-illustrations/company-pictogram-v1.webp",
+        "alt": "会社、交際、同席のイメージ（一例）"
+    },
+    {
+        "word": "comparative",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "比較の、比較級",
+        "src": "assets/word-illustrations/comparative-pictogram-v1.webp",
+        "alt": "比較の、比較級のイメージ（一例）"
+    },
+    {
+        "word": "competition",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "競争、コンテスト",
+        "src": "assets/word-illustrations/competition-pictogram-v1.webp",
+        "alt": "競争、コンテストのイメージ（一例）"
+    },
+    {
+        "word": "complaint",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "不平、不満、苦情",
+        "src": "assets/word-illustrations/complaint-pictogram-v1.webp",
+        "alt": "不平、不満、苦情のイメージ（一例）"
+    },
+    {
+        "word": "composer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "作曲家",
+        "src": "assets/word-illustrations/composer-pictogram-v1.webp",
+        "alt": "作曲家のイメージ（一例）"
+    },
+    {
+        "word": "concern",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "懸念、心配、関心事",
+        "src": "assets/word-illustrations/concern-pictogram-v1.webp",
+        "alt": "懸念、心配、関心事のイメージ（一例）"
+    },
+    {
+        "word": "condition",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "状態、条件、容態",
+        "src": "assets/word-illustrations/condition-pictogram-v1.webp",
+        "alt": "状態、条件、容態のイメージ（一例）"
+    },
+    {
+        "word": "consequence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "結果、結論、重大性",
+        "src": "assets/word-illustrations/consequence-pictogram-v1.webp",
+        "alt": "結果、結論、重大性のイメージ（一例）"
+    },
+    {
+        "word": "contact",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "連絡",
+        "src": "assets/word-illustrations/contact-pictogram-v1.webp",
+        "alt": "連絡のイメージ（一例）"
+    },
+    {
+        "word": "container",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "容器",
+        "src": "assets/word-illustrations/container-pictogram-v1.webp",
+        "alt": "容器のイメージ（一例）"
+    },
+    {
+        "word": "context",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "文脈",
+        "src": "assets/word-illustrations/context-pictogram-v1.webp",
+        "alt": "文脈のイメージ（一例）"
+    },
+    {
+        "word": "continent",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "大陸",
+        "src": "assets/word-illustrations/continent-pictogram-v1.webp",
+        "alt": "大陸のイメージ（一例）"
+    },
+    {
+        "word": "contrast",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "対照",
+        "src": "assets/word-illustrations/contrast-pictogram-v1.webp",
+        "alt": "対照のイメージ（一例）"
+    },
+    {
+        "word": "control",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "管理、支配",
+        "src": "assets/word-illustrations/control-pictogram-v1.webp",
+        "alt": "管理、支配のイメージ（一例）"
+    },
+    {
+        "word": "convenience",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "便利、便宜",
+        "src": "assets/word-illustrations/convenience-pictogram-v1.webp",
+        "alt": "便利、便宜のイメージ（一例）"
+    },
+    {
+        "word": "cooker",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "調理器具",
+        "src": "assets/word-illustrations/cooker-pictogram-v1.webp",
+        "alt": "調理器具のイメージ（一例）"
+    },
+    {
+        "word": "cooking",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "料理",
+        "src": "assets/word-illustrations/cooking-pictogram-v1.webp",
+        "alt": "料理のイメージ（一例）"
+    },
+    {
+        "word": "cooler",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "クーラー",
+        "src": "assets/word-illustrations/cooler-pictogram-v1.webp",
+        "alt": "クーラーのイメージ（一例）"
+    },
+    {
+        "word": "cost",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "費用",
+        "src": "assets/word-illustrations/cost-pictogram-v1.webp",
+        "alt": "費用のイメージ（一例）"
+    },
+    {
+        "word": "country",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "国",
+        "src": "assets/word-illustrations/country-pictogram-v3.webp",
+        "alt": "国のイメージ（一例）"
+    },
+    {
+        "word": "countryside",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "田舎",
+        "src": "assets/word-illustrations/countryside-pictogram-v1.webp",
+        "alt": "田舎のイメージ（一例）"
+    },
+    {
+        "word": "couple",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "カップル、一対",
+        "src": "assets/word-illustrations/couple-pictogram-v1.webp",
+        "alt": "カップル、一対のイメージ（一例）"
+    },
+    {
+        "word": "court",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "法廷、コート",
+        "src": "assets/word-illustrations/court-pictogram-v1.webp",
+        "alt": "法廷、コートのイメージ（一例）"
+    },
+    {
+        "word": "creativity",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "創造性",
+        "src": "assets/word-illustrations/creativity-pictogram-v1.webp",
+        "alt": "創造性のイメージ（一例）"
+    },
+    {
+        "word": "creature",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "生き物",
+        "src": "assets/word-illustrations/creature-pictogram-v1.webp",
+        "alt": "生き物のイメージ（一例）"
+    },
+    {
+        "word": "credit",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "信用、クレジット",
+        "src": "assets/word-illustrations/credit-pictogram-v2.webp",
+        "alt": "信用、クレジットのイメージ（一例）"
+    },
+    {
+        "word": "cricket",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "クリケット、コオロギ",
+        "src": "assets/word-illustrations/cricket-pictogram-v1.webp",
+        "alt": "クリケット、コオロギのイメージ（一例）"
+    },
+    {
+        "word": "crime",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "犯罪",
+        "src": "assets/word-illustrations/crime-pictogram-v1.webp",
+        "alt": "犯罪のイメージ（一例）"
+    },
+    {
+        "word": "crisp",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "パリパリした、ポテトチップス",
+        "src": "assets/word-illustrations/crisp-pictogram-v1.webp",
+        "alt": "パリパリした、ポテトチップスのイメージ（一例）"
+    },
+    {
+        "word": "cross",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "十字、不機嫌な",
+        "src": "assets/word-illustrations/cross-pictogram-v1.webp",
+        "alt": "十字、不機嫌なのイメージ（一例）"
+    },
+    {
+        "word": "crowd",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "群衆",
+        "src": "assets/word-illustrations/crowd-pictogram-v1.webp",
+        "alt": "群衆のイメージ（一例）"
+    },
+    {
+        "word": "crown",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "王冠",
+        "src": "assets/word-illustrations/crown-pictogram-v1.webp",
+        "alt": "王冠のイメージ（一例）"
+    },
+    {
+        "word": "cruise",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "巡航、クルーズ",
+        "src": "assets/word-illustrations/cruise-pictogram-v1.webp",
+        "alt": "巡航、クルーズのイメージ（一例）"
+    },
+    {
+        "word": "cupboard",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "食器棚",
+        "src": "assets/word-illustrations/cupboard-pictogram-v1.webp",
+        "alt": "食器棚のイメージ（一例）"
+    },
+    {
+        "word": "curry",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "カレー",
+        "src": "assets/word-illustrations/curry-pictogram-v1.webp",
+        "alt": "カレーのイメージ（一例）"
+    },
+    {
+        "word": "curse",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "呪い、ののしる",
+        "src": "assets/word-illustrations/curse-pictogram-v1.webp",
+        "alt": "呪い、ののしるのイメージ（一例）"
+    },
+    {
+        "word": "custom",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "習慣、慣習",
+        "src": "assets/word-illustrations/custom-pictogram-v1.webp",
+        "alt": "習慣、慣習のイメージ（一例）"
+    },
+    {
+        "word": "customer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "顧客",
+        "src": "assets/word-illustrations/customer-pictogram-v1.webp",
+        "alt": "顧客のイメージ（一例）"
+    },
+    {
+        "word": "cycling",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "サイクリング",
+        "src": "assets/word-illustrations/cycling-pictogram-v1.webp",
+        "alt": "サイクリングのイメージ（一例）"
+    },
+    {
+        "word": "dam",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ダム",
+        "src": "assets/word-illustrations/dam-pictogram-v1.webp",
+        "alt": "ダムのイメージ（一例）"
+    },
+    {
+        "word": "dancer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ダンサー",
+        "src": "assets/word-illustrations/dancer-pictogram-v1.webp",
+        "alt": "ダンサーのイメージ（一例）"
+    },
+    {
+        "word": "danger",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "危険",
+        "src": "assets/word-illustrations/danger-pictogram-v1.webp",
+        "alt": "危険のイメージ（一例）"
+    },
+    {
+        "word": "daylight",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "日光、昼間",
+        "src": "assets/word-illustrations/daylight-pictogram-v1.webp",
+        "alt": "日光、昼間のイメージ（一例）"
+    },
+    {
+        "word": "deal",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "取引",
+        "src": "assets/word-illustrations/deal-pictogram-v1.webp",
+        "alt": "取引のイメージ（一例）"
+    },
+    {
+        "word": "death",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "死",
+        "src": "assets/word-illustrations/death-pictogram-v1.webp",
+        "alt": "死のイメージ（一例）"
+    },
+    {
+        "word": "debate",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "討論",
+        "src": "assets/word-illustrations/debate-pictogram-v1.webp",
+        "alt": "討論のイメージ（一例）"
+    },
+    {
+        "word": "degree",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "程度、度、学位",
+        "src": "assets/word-illustrations/degree-pictogram-v1.webp",
+        "alt": "程度、度、学位のイメージ（一例）"
+    },
+    {
+        "word": "delay",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "遅延、延期",
+        "src": "assets/word-illustrations/delay-pictogram-v1.webp",
+        "alt": "遅延、延期のイメージ（一例）"
+    },
+    {
+        "word": "dentist",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "歯科医",
+        "src": "assets/word-illustrations/dentist-pictogram-v1.webp",
+        "alt": "歯科医のイメージ（一例）"
+    },
+    {
+        "word": "department store",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "百貨店、デパート",
+        "src": "assets/word-illustrations/department-store-pictogram-v1.webp",
+        "alt": "百貨店、デパートのイメージ（一例）"
+    },
+    {
+        "word": "description",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "描写、説明",
+        "src": "assets/word-illustrations/description-pictogram-v1.webp",
+        "alt": "描写、説明のイメージ（一例）"
+    },
+    {
+        "word": "desert",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "砂漠",
+        "src": "assets/word-illustrations/desert-pictogram-v1.webp",
+        "alt": "砂漠のイメージ（一例）"
+    },
+    {
+        "word": "dessert",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "デザート",
+        "src": "assets/word-illustrations/dessert-pictogram-v1.webp",
+        "alt": "デザートのイメージ（一例）"
+    },
+    {
+        "word": "detail",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "詳細、細部",
+        "src": "assets/word-illustrations/detail-pictogram-v2.webp",
+        "alt": "詳細、細部のイメージ（一例）"
+    },
+    {
+        "word": "diamond",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ダイヤモンド、ひし形",
+        "src": "assets/word-illustrations/diamond-pictogram-v1.webp",
+        "alt": "ダイヤモンド、ひし形のイメージ（一例）"
+    },
+    {
+        "word": "diary",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "日記、スケジュール帳",
+        "src": "assets/word-illustrations/diary-pictogram-v1.webp",
+        "alt": "日記、スケジュール帳のイメージ（一例）"
+    },
+    {
+        "word": "diet",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "日常の食物、ダイエット",
+        "src": "assets/word-illustrations/diet-pictogram-v1.webp",
+        "alt": "日常の食物、ダイエットのイメージ（一例）"
+    },
+    {
+        "word": "difficulty",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "困難、苦労",
+        "src": "assets/word-illustrations/difficulty-pictogram-v1.webp",
+        "alt": "困難、苦労のイメージ（一例）"
+    },
+    {
+        "word": "digital camera",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "デジカメ、デジタルカメラ",
+        "src": "assets/word-illustrations/digital-camera-pictogram-v1.webp",
+        "alt": "デジカメ、デジタルカメラのイメージ（一例）"
+    },
+    {
+        "word": "dinosaur",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "恐竜",
+        "src": "assets/word-illustrations/dinosaur-pictogram-v1.webp",
+        "alt": "恐竜のイメージ（一例）"
+    },
+    {
+        "word": "direction",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "方向、方角、指示",
+        "src": "assets/word-illustrations/direction-pictogram-v1.webp",
+        "alt": "方向、方角、指示のイメージ（一例）"
+    },
+    {
+        "word": "director",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "監督、責任者、理事",
+        "src": "assets/word-illustrations/director-pictogram-v1.webp",
+        "alt": "監督、責任者、理事のイメージ（一例）"
+    },
+    {
+        "word": "disadvantage",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "不利、欠点、デメリット",
+        "src": "assets/word-illustrations/disadvantage-pictogram-v1.webp",
+        "alt": "不利、欠点、デメリットのイメージ（一例）"
+    },
+    {
+        "word": "disco",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ディスコ",
+        "src": "assets/word-illustrations/disco-pictogram-v1.webp",
+        "alt": "ディスコのイメージ（一例）"
+    },
+    {
+        "word": "discussion",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "議論、話し合い",
+        "src": "assets/word-illustrations/discussion-pictogram-v1.webp",
+        "alt": "議論、話し合いのイメージ（一例）"
+    },
+    {
+        "word": "dislike",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "嫌悪、嫌いなもの",
+        "src": "assets/word-illustrations/dislike-pictogram-v1.webp",
+        "alt": "嫌悪、嫌いなもののイメージ（一例）"
+    },
+    {
+        "word": "display",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "展示、陳列、表示",
+        "src": "assets/word-illustrations/display-pictogram-v1.webp",
+        "alt": "展示、陳列、表示のイメージ（一例）"
+    },
+    {
+        "word": "doubt",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "疑い",
+        "src": "assets/word-illustrations/doubt-pictogram-v1.webp",
+        "alt": "疑いのイメージ（一例）"
+    },
+    {
+        "word": "draw",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "試合、引き分け",
+        "src": "assets/word-illustrations/draw-pictogram-v1.webp",
+        "alt": "試合、引き分けのイメージ（一例）"
+    },
+    {
+        "word": "drawer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "引き出し",
+        "src": "assets/word-illustrations/drawer-pictogram-v1.webp",
+        "alt": "引き出しのイメージ（一例）"
+    },
+    {
+        "word": "drawing",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "絵、デッサン",
+        "src": "assets/word-illustrations/drawing-pictogram-v1.webp",
+        "alt": "絵、デッサンのイメージ（一例）"
+    },
+    {
+        "word": "drill",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "訓練、ドリル",
+        "src": "assets/word-illustrations/drill-pictogram-v1.webp",
+        "alt": "訓練、ドリルのイメージ（一例）"
+    },
+    {
+        "word": "driving licence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "運転免許証（英）",
+        "src": "assets/word-illustrations/driving-licence-pictogram-v1.webp",
+        "alt": "運転免許証（英）のイメージ（一例）"
+    },
+    {
+        "word": "drop",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "一滴、しずく、下落",
+        "src": "assets/word-illustrations/drop-pictogram-v1.webp",
+        "alt": "一滴、しずく、下落のイメージ（一例）"
+    },
+    {
+        "word": "drug",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "薬、麻薬",
+        "src": "assets/word-illustrations/drug-pictogram-v1.webp",
+        "alt": "薬、麻薬のイメージ（一例）"
+    },
+    {
+        "word": "drugstore",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ドラッグストア、薬局",
+        "src": "assets/word-illustrations/drugstore-pictogram-v1.webp",
+        "alt": "ドラッグストア、薬局のイメージ（一例）"
+    },
+    {
+        "word": "duck",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "アヒル、カモ",
+        "src": "assets/word-illustrations/duck-pictogram-v1.webp",
+        "alt": "アヒル、カモのイメージ（一例）"
+    },
+    {
+        "word": "dust",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ほこり、ちり",
+        "src": "assets/word-illustrations/dust-pictogram-v1.webp",
+        "alt": "ほこり、ちりのイメージ（一例）"
+    },
+    {
+        "word": "earring",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "イヤリング、ピアス",
+        "src": "assets/word-illustrations/earring-pictogram-v1.webp",
+        "alt": "イヤリング、ピアスのイメージ（一例）"
+    },
+    {
+        "word": "earth",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "地球、土",
+        "src": "assets/word-illustrations/earth-pictogram-v2.webp",
+        "alt": "地球、土のイメージ（一例）"
+    },
+    {
+        "word": "earthquake",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "地震",
+        "src": "assets/word-illustrations/earthquake-pictogram-v1.webp",
+        "alt": "地震のイメージ（一例）"
+    },
+    {
+        "word": "east",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "東",
+        "src": "assets/word-illustrations/east-pictogram-v1.webp",
+        "alt": "東のイメージ（一例）"
+    },
+    {
+        "word": "editor",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "編集者",
+        "src": "assets/word-illustrations/editor-pictogram-v1.webp",
+        "alt": "編集者のイメージ（一例）"
+    },
+    {
+        "word": "education",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "教育",
+        "src": "assets/word-illustrations/education-pictogram-v1.webp",
+        "alt": "教育のイメージ（一例）"
+    },
+    {
+        "word": "effect",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "効果、影響、結果",
+        "src": "assets/word-illustrations/effect-pictogram-v1.webp",
+        "alt": "効果、影響、結果のイメージ（一例）"
+    },
+    {
+        "word": "effort",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "努力、骨折り",
+        "src": "assets/word-illustrations/effort-pictogram-v1.webp",
+        "alt": "努力、骨折りのイメージ（一例）"
+    },
+    {
+        "word": "elephant",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ゾウ",
+        "src": "assets/word-illustrations/elephant-pictogram-v1.webp",
+        "alt": "ゾウのイメージ（一例）"
+    },
+    {
+        "word": "elevator",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "エレベーター",
+        "src": "assets/word-illustrations/elevator-pictogram-v1.webp",
+        "alt": "エレベーターのイメージ（一例）"
+    },
+    {
+        "word": "emergency",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "緊急事態",
+        "src": "assets/word-illustrations/emergency-pictogram-v1.webp",
+        "alt": "緊急事態のイメージ（一例）"
+    },
+    {
+        "word": "ending",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "結末",
+        "src": "assets/word-illustrations/ending-pictogram-v1.webp",
+        "alt": "結末のイメージ（一例）"
+    },
+    {
+        "word": "entertainment",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "娯楽、催し物",
+        "src": "assets/word-illustrations/entertainment-pictogram-v1.webp",
+        "alt": "娯楽、催し物のイメージ（一例）"
+    },
+    {
+        "word": "entrance",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "入り口、入学",
+        "src": "assets/word-illustrations/entrance-pictogram-v1.webp",
+        "alt": "入り口、入学のイメージ（一例）"
+    },
+    {
+        "word": "envelope",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "封筒",
+        "src": "assets/word-illustrations/envelope-pictogram-v1.webp",
+        "alt": "封筒のイメージ（一例）"
+    },
+    {
+        "word": "envy",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ねたみ、うらやみ",
+        "src": "assets/word-illustrations/envy-pictogram-v1.webp",
+        "alt": "ねたみ、うらやみのイメージ（一例）"
+    },
+    {
+        "word": "episode",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "話、エピソード、一事件",
+        "src": "assets/word-illustrations/episode-pictogram-v1.webp",
+        "alt": "話、エピソード、一事件のイメージ（一例）"
+    },
+    {
+        "word": "error",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "誤り、間違い、エラー",
+        "src": "assets/word-illustrations/error-pictogram-v1.webp",
+        "alt": "誤り、間違い、エラーのイメージ（一例）"
+    },
+    {
+        "word": "escalator",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "エスカレーター",
+        "src": "assets/word-illustrations/escalator-pictogram-v1.webp",
+        "alt": "エスカレーターのイメージ（一例）"
+    },
+    {
+        "word": "escape",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "逃げる",
+        "src": "assets/word-illustrations/escape-pictogram-v1.webp",
+        "alt": "逃げるのイメージ（一例）"
+    },
+    {
+        "word": "essay",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "小論文、随筆、エッセイ",
+        "src": "assets/word-illustrations/essay-pictogram-v1.webp",
+        "alt": "小論文、随筆、エッセイのイメージ（一例）"
+    },
+    {
+        "word": "euro",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ユーロ",
+        "src": "assets/word-illustrations/euro-pictogram-v1.webp",
+        "alt": "ユーロのイメージ（一例）"
+    },
+    {
+        "word": "evidence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "証拠",
+        "src": "assets/word-illustrations/evidence-pictogram-v1.webp",
+        "alt": "証拠のイメージ（一例）"
+    },
+    {
+        "word": "exam",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "試験、考査",
+        "src": "assets/word-illustrations/exam-pictogram-v1.webp",
+        "alt": "試験、考査のイメージ（一例）"
+    },
+    {
+        "word": "exchange",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "交換、やり取り、両替",
+        "src": "assets/word-illustrations/exchange-pictogram-v1.webp",
+        "alt": "交換、やり取り、両替のイメージ（一例）"
+    },
+    {
+        "word": "exercise",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "運動",
+        "src": "assets/word-illustrations/exercise-pictogram-v1.webp",
+        "alt": "運動のイメージ（一例）"
+    },
+    {
+        "word": "exhibition",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "展示会、展覧会",
+        "src": "assets/word-illustrations/exhibition-pictogram-v1.webp",
+        "alt": "展示会、展覧会のイメージ（一例）"
+    },
+    {
+        "word": "experience",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "経験、体験",
+        "src": "assets/word-illustrations/experience-pictogram-v1.webp",
+        "alt": "経験、体験のイメージ（一例）"
+    },
+    {
+        "word": "expert",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "専門家",
+        "src": "assets/word-illustrations/expert-pictogram-v1.webp",
+        "alt": "専門家のイメージ（一例）"
+    },
+    {
+        "word": "explanation",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "説明、解釈",
+        "src": "assets/word-illustrations/explanation-pictogram-v1.webp",
+        "alt": "説明、解釈のイメージ（一例）"
+    },
+    {
+        "word": "express",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "急行",
+        "src": "assets/word-illustrations/express-pictogram-v1.webp",
+        "alt": "急行のイメージ（一例）"
+    },
+    {
+        "word": "expression",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "表現、表情",
+        "src": "assets/word-illustrations/expression-pictogram-v1.webp",
+        "alt": "表現、表情のイメージ（一例）"
+    },
+    {
+        "word": "fact",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "事実",
+        "src": "assets/word-illustrations/fact-pictogram-v1.webp",
+        "alt": "事実のイメージ（一例）"
+    },
+    {
+        "word": "fare",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "運賃",
+        "src": "assets/word-illustrations/fare-pictogram-v1.webp",
+        "alt": "運賃のイメージ（一例）"
+    },
+    {
+        "word": "fashion",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ファッション、流行",
+        "src": "assets/word-illustrations/fashion-pictogram-v1.webp",
+        "alt": "ファッション、流行のイメージ（一例）"
+    },
+    {
+        "word": "fast food",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ファストフード",
+        "src": "assets/word-illustrations/fast-food-pictogram-v1.webp",
+        "alt": "ファストフードのイメージ（一例）"
+    },
+    {
+        "word": "fault",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "落ち度、欠点",
+        "src": "assets/word-illustrations/fault-pictogram-v1.webp",
+        "alt": "落ち度、欠点のイメージ（一例）"
+    },
+    {
+        "word": "favor",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "好意、恩恵",
+        "src": "assets/word-illustrations/favor-pictogram-v1.webp",
+        "alt": "好意、恩恵のイメージ（一例）"
+    },
+    {
+        "word": "fear",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "恐怖",
+        "src": "assets/word-illustrations/fear-pictogram-v1.webp",
+        "alt": "恐怖のイメージ（一例）"
+    },
+    {
+        "word": "feather",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "羽根",
+        "src": "assets/word-illustrations/feather-pictogram-v1.webp",
+        "alt": "羽根のイメージ（一例）"
+    },
+    {
+        "word": "feature",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "特徴、呼び物、顔立ち",
+        "src": "assets/word-illustrations/feature-pictogram-v1.webp",
+        "alt": "特徴、呼び物、顔立ちのイメージ（一例）"
+    },
+    {
+        "word": "fee",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "料金、謝礼",
+        "src": "assets/word-illustrations/fee-pictogram-v1.webp",
+        "alt": "料金、謝礼のイメージ（一例）"
+    },
+    {
+        "word": "feel",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "感じ、手触り",
+        "src": "assets/word-illustrations/feel-pictogram-v1.webp",
+        "alt": "感じ、手触りのイメージ（一例）"
+    },
+    {
+        "word": "fence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "柵、垣根、フェンス",
+        "src": "assets/word-illustrations/fence-pictogram-v1.webp",
+        "alt": "柵、垣根、フェンスのイメージ（一例）"
+    },
+    {
+        "word": "fiction",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "小説、フィクション",
+        "src": "assets/word-illustrations/fiction-pictogram-v1.webp",
+        "alt": "小説、フィクションのイメージ（一例）"
+    },
+    {
+        "word": "fighter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "戦士、格闘家、戦闘機",
+        "src": "assets/word-illustrations/fighter-pictogram-v1.webp",
+        "alt": "戦士、格闘家、戦闘機のイメージ（一例）"
+    },
+    {
+        "word": "figure",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "数字、体つき、図",
+        "src": "assets/word-illustrations/figure-pictogram-v1.webp",
+        "alt": "数字、体つき、図のイメージ（一例）"
+    },
+    {
+        "word": "film",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "映画、フィルム",
+        "src": "assets/word-illustrations/film-pictogram-v1.webp",
+        "alt": "映画、フィルムのイメージ（一例）"
+    },
+    {
+        "word": "final",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "決勝、期末試験",
+        "src": "assets/word-illustrations/final-pictogram-v1.webp",
+        "alt": "決勝、期末試験のイメージ（一例）"
+    },
+    {
+        "word": "first name",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "下の名前",
+        "src": "assets/word-illustrations/first-name-pictogram-v1.webp",
+        "alt": "下の名前のイメージ（一例）"
+    },
+    {
+        "word": "fisherman",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "漁師、釣り人",
+        "src": "assets/word-illustrations/fisherman-pictogram-v2.webp",
+        "alt": "漁師、釣り人のイメージ（一例）"
+    },
+    {
+        "word": "fix",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "窮地、難局",
+        "src": "assets/word-illustrations/fix-pictogram-v1.webp",
+        "alt": "窮地、難局のイメージ（一例）"
+    },
+    {
+        "word": "flea",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ノミ",
+        "src": "assets/word-illustrations/flea-pictogram-v1.webp",
+        "alt": "ノミのイメージ（一例）"
+    },
+    {
+        "word": "flight",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "飛行、航空便",
+        "src": "assets/word-illustrations/flight-pictogram-v1.webp",
+        "alt": "飛行、航空便のイメージ（一例）"
+    },
+    {
+        "word": "float",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "浮き物、山車",
+        "src": "assets/word-illustrations/float-pictogram-v1.webp",
+        "alt": "浮き物、山車のイメージ（一例）"
+    },
+    {
+        "word": "flood",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "洪水、氾濫",
+        "src": "assets/word-illustrations/flood-pictogram-v1.webp",
+        "alt": "洪水、氾濫のイメージ（一例）"
+    },
+    {
+        "word": "flour",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "小麦粉",
+        "src": "assets/word-illustrations/flour-pictogram-v1.webp",
+        "alt": "小麦粉のイメージ（一例）"
+    },
+    {
+        "word": "fog",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "霧",
+        "src": "assets/word-illustrations/fog-pictogram-v2.webp",
+        "alt": "霧のイメージ（一例）"
+    },
+    {
+        "word": "folder",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "フォルダー、紙挟み",
+        "src": "assets/word-illustrations/folder-pictogram-v1.webp",
+        "alt": "フォルダー、紙挟みのイメージ（一例）"
+    },
+    {
+        "word": "fool",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "馬鹿、だます",
+        "src": "assets/word-illustrations/fool-pictogram-v1.webp",
+        "alt": "馬鹿、だますのイメージ（一例）"
+    },
+    {
+        "word": "footballer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "サッカー選手",
+        "src": "assets/word-illustrations/footballer-pictogram-v1.webp",
+        "alt": "サッカー選手のイメージ（一例）"
+    },
+    {
+        "word": "force",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "力、軍隊",
+        "src": "assets/word-illustrations/force-pictogram-v1.webp",
+        "alt": "力、軍隊のイメージ（一例）"
+    },
+    {
+        "word": "forest",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "森",
+        "src": "assets/word-illustrations/forest-pictogram-v1.webp",
+        "alt": "森のイメージ（一例）"
+    },
+    {
+        "word": "fork",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "フォーク、分かれ道",
+        "src": "assets/word-illustrations/fork-pictogram-v1.webp",
+        "alt": "フォーク、分かれ道のイメージ（一例）"
+    },
+    {
+        "word": "fortune",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "運勢、財産",
+        "src": "assets/word-illustrations/fortune-pictogram-v1.webp",
+        "alt": "運勢、財産のイメージ（一例）"
+    },
+    {
+        "word": "frame",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "枠、額縁、骨組み",
+        "src": "assets/word-illustrations/frame-pictogram-v1.webp",
+        "alt": "枠、額縁、骨組みのイメージ（一例）"
+    },
+    {
+        "word": "freedom",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "自由、解放",
+        "src": "assets/word-illustrations/freedom-pictogram-v1.webp",
+        "alt": "自由、解放のイメージ（一例）"
+    },
+    {
+        "word": "fridge",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "冷蔵庫",
+        "src": "assets/word-illustrations/fridge-pictogram-v1.webp",
+        "alt": "冷蔵庫のイメージ（一例）"
+    },
+    {
+        "word": "friendship",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "友情、友愛",
+        "src": "assets/word-illustrations/friendship-pictogram-v1.webp",
+        "alt": "友情、友愛のイメージ（一例）"
+    },
+    {
+        "word": "front",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "正面、前部、前面",
+        "src": "assets/word-illustrations/front-pictogram-v2.webp",
+        "alt": "正面、前部、前面のイメージ（一例）"
+    },
+    {
+        "word": "fry",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "揚げ物、フライ",
+        "src": "assets/word-illustrations/fry-pictogram-v1.webp",
+        "alt": "揚げ物、フライのイメージ（一例）"
+    },
+    {
+        "word": "furniture",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "家具",
+        "src": "assets/word-illustrations/furniture-pictogram-v1.webp",
+        "alt": "家具のイメージ（一例）"
+    },
+    {
+        "word": "gallery",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "画廊、ギャラリー、回廊",
+        "src": "assets/word-illustrations/gallery-pictogram-v1.webp",
+        "alt": "画廊、ギャラリー、回廊のイメージ（一例）"
+    },
+    {
+        "word": "garage",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "車庫、ガレージ",
+        "src": "assets/word-illustrations/garage-pictogram-v1.webp",
+        "alt": "車庫、ガレージのイメージ（一例）"
+    },
+    {
+        "word": "garlic",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ニンニク",
+        "src": "assets/word-illustrations/garlic-pictogram-v1.webp",
+        "alt": "ニンニクのイメージ（一例）"
+    },
+    {
+        "word": "gas",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ガス、ガソリン",
+        "src": "assets/word-illustrations/gas-pictogram-v1.webp",
+        "alt": "ガス、ガソリンのイメージ（一例）"
+    },
+    {
+        "word": "gate",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "門、搭乗口",
+        "src": "assets/word-illustrations/gate-pictogram-v1.webp",
+        "alt": "門、搭乗口のイメージ（一例）"
+    },
+    {
+        "word": "gender",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "性、性別",
+        "src": "assets/word-illustrations/gender-pictogram-v1.webp",
+        "alt": "性、性別のイメージ（一例）"
+    },
+    {
+        "word": "generation",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "世代、一世代",
+        "src": "assets/word-illustrations/generation-pictogram-v1.webp",
+        "alt": "世代、一世代のイメージ（一例）"
+    },
+    {
+        "word": "globe",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "地球、世界、球体",
+        "src": "assets/word-illustrations/globe-pictogram-v1.webp",
+        "alt": "地球、世界、球体のイメージ（一例）"
+    },
+    {
+        "word": "glove",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "手袋、グローブ",
+        "src": "assets/word-illustrations/glove-pictogram-v1.webp",
+        "alt": "手袋、グローブのイメージ（一例）"
+    },
+    {
+        "word": "gold",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "金、黄金",
+        "src": "assets/word-illustrations/gold-pictogram-v1.webp",
+        "alt": "金、黄金のイメージ（一例）"
+    },
+    {
+        "word": "golf",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ゴルフ",
+        "src": "assets/word-illustrations/golf-pictogram-v1.webp",
+        "alt": "ゴルフのイメージ（一例）"
+    },
+    {
+        "word": "government",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "政府、政治",
+        "src": "assets/word-illustrations/government-pictogram-v1.webp",
+        "alt": "政府、政治のイメージ（一例）"
+    },
+    {
+        "word": "grace",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "優雅さ、上品さ、猶予",
+        "src": "assets/word-illustrations/grace-pictogram-v1.webp",
+        "alt": "優雅さ、上品さ、猶予のイメージ（一例）"
+    },
+    {
+        "word": "gram",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "グラム",
+        "src": "assets/word-illustrations/gram-pictogram-v1.webp",
+        "alt": "グラムのイメージ（一例）"
+    },
+    {
+        "word": "grandchild",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "孫",
+        "src": "assets/word-illustrations/grandchild-pictogram-v1.webp",
+        "alt": "孫のイメージ（一例）"
+    },
+    {
+        "word": "granddad",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "おじいちゃん",
+        "src": "assets/word-illustrations/granddad-pictogram-v1.webp",
+        "alt": "おじいちゃんのイメージ（一例）"
+    },
+    {
+        "word": "granddaughter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "孫娘",
+        "src": "assets/word-illustrations/granddaughter-pictogram-v1.webp",
+        "alt": "孫娘のイメージ（一例）"
+    },
+    {
+        "word": "grandson",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "孫息子",
+        "src": "assets/word-illustrations/grandson-pictogram-v1.webp",
+        "alt": "孫息子のイメージ（一例）"
+    },
+    {
+        "word": "granny",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "おばあちゃん",
+        "src": "assets/word-illustrations/granny-pictogram-v1.webp",
+        "alt": "おばあちゃんのイメージ（一例）"
+    },
+    {
+        "word": "green",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "緑、青空、芝生",
+        "src": "assets/word-illustrations/green-pictogram-v3.webp",
+        "alt": "緑、青空、芝生のイメージ（一例）"
+    },
+    {
+        "word": "grocery store",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "食料雑貨店、スーパー",
+        "src": "assets/word-illustrations/grocery-store-pictogram-v1.webp",
+        "alt": "食料雑貨店、スーパーのイメージ（一例）"
+    },
+    {
+        "word": "guard",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "見守り、護衛、守備",
+        "src": "assets/word-illustrations/guard-pictogram-v1.webp",
+        "alt": "見守り、護衛、守備のイメージ（一例）"
+    },
+    {
+        "word": "guidebook",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ガイドブック",
+        "src": "assets/word-illustrations/guidebook-pictogram-v1.webp",
+        "alt": "ガイドブックのイメージ（一例）"
+    },
+    {
+        "word": "gun",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "銃、鉄砲",
+        "src": "assets/word-illustrations/gun-pictogram-v1.webp",
+        "alt": "銃、鉄砲のイメージ（一例）"
+    },
+    {
+        "word": "ham",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ハム",
+        "src": "assets/word-illustrations/ham-pictogram-v1.webp",
+        "alt": "ハムのイメージ（一例）"
+    },
+    {
+        "word": "handbag",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ハンドバッグ、手提げ袋",
+        "src": "assets/word-illustrations/handbag-pictogram-v2.webp",
+        "alt": "ハンドバッグ、手提げ袋のイメージ（一例）"
+    },
+    {
+        "word": "handle",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "取っ手、ハンドル、柄",
+        "src": "assets/word-illustrations/handle-pictogram-v1.webp",
+        "alt": "取っ手、ハンドル、柄のイメージ（一例）"
+    },
+    {
+        "word": "happiness",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "幸せ、幸福",
+        "src": "assets/word-illustrations/happiness-pictogram-v1.webp",
+        "alt": "幸せ、幸福のイメージ（一例）"
+    },
+    {
+        "word": "harmony",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "調和、和声、ハーモニー",
+        "src": "assets/word-illustrations/harmony-pictogram-v1.webp",
+        "alt": "調和、和声、ハーモニーのイメージ（一例）"
+    },
+    {
+        "word": "harvest",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "収穫、収穫期",
+        "src": "assets/word-illustrations/harvest-pictogram-v1.webp",
+        "alt": "収穫、収穫期のイメージ（一例）"
+    },
+    {
+        "word": "headphone",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ヘッドホン",
+        "src": "assets/word-illustrations/headphone-pictogram-v1.webp",
+        "alt": "ヘッドホンのイメージ（一例）"
+    },
+    {
+        "word": "headteacher",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "校長（英）",
+        "src": "assets/word-illustrations/headteacher-pictogram-v1.webp",
+        "alt": "校長（英）のイメージ（一例）"
+    },
+    {
+        "word": "heat",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "熱、暑さ、加熱",
+        "src": "assets/word-illustrations/heat-pictogram-v1.webp",
+        "alt": "熱、暑さ、加熱のイメージ（一例）"
+    },
+    {
+        "word": "heating",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "暖房",
+        "src": "assets/word-illustrations/heating-pictogram-v1.webp",
+        "alt": "暖房のイメージ（一例）"
+    },
+    {
+        "word": "help",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "助け、援助",
+        "src": "assets/word-illustrations/help-pictogram-v1.webp",
+        "alt": "助け、援助のイメージ（一例）"
+    },
+    {
+        "word": "hero",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "英雄、ヒーロー、主人公",
+        "src": "assets/word-illustrations/hero-pictogram-v1.webp",
+        "alt": "英雄、ヒーロー、主人公のイメージ（一例）"
+    },
+    {
+        "word": "high school",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "高校",
+        "src": "assets/word-illustrations/high-school-pictogram-v1.webp",
+        "alt": "高校のイメージ（一例）"
+    },
+    {
+        "word": "highway",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "幹線道路、ハイウェイ",
+        "src": "assets/word-illustrations/highway-pictogram-v1.webp",
+        "alt": "幹線道路、ハイウェイのイメージ（一例）"
+    },
+    {
+        "word": "hike",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ハイキング、値上げ",
+        "src": "assets/word-illustrations/hike-pictogram-v1.webp",
+        "alt": "ハイキング、値上げのイメージ（一例）"
+    },
+    {
+        "word": "hiking",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ハイキング",
+        "src": "assets/word-illustrations/hiking-pictogram-v1.webp",
+        "alt": "ハイキングのイメージ（一例）"
+    },
+    {
+        "word": "hip hop",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ヒップホップ",
+        "src": "assets/word-illustrations/hip-hop-pictogram-v1.webp",
+        "alt": "ヒップホップのイメージ（一例）"
+    },
+    {
+        "word": "hockey",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ホッケー",
+        "src": "assets/word-illustrations/hockey-pictogram-v1.webp",
+        "alt": "ホッケーのイメージ（一例）"
+    },
+    {
+        "word": "honey",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ハチミツ",
+        "src": "assets/word-illustrations/honey-pictogram-v1.webp",
+        "alt": "ハチミツのイメージ（一例）"
+    },
+    {
+        "word": "honor",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "名誉、光栄",
+        "src": "assets/word-illustrations/honor-pictogram-v1.webp",
+        "alt": "名誉、光栄のイメージ（一例）"
+    },
+    {
+        "word": "favour",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "好意、恩恵",
+        "src": "assets/word-illustrations/favor-pictogram-v1.webp",
+        "alt": "好意、恩恵のイメージ（一例）"
+    },
+    {
+        "word": "gramme",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "グラム（英）",
+        "src": "assets/word-illustrations/gram-pictogram-v1.webp",
+        "alt": "グラム（英）のイメージ（一例）"
+    },
+    {
+        "word": "hiphop",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ヒップホップ（続き）",
+        "src": "assets/word-illustrations/hip-hop-pictogram-v1.webp",
+        "alt": "ヒップホップ（続き）のイメージ（一例）"
+    },
+    {
+        "word": "hip-hop",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ヒップホップ",
+        "src": "assets/word-illustrations/hip-hop-pictogram-v1.webp",
+        "alt": "ヒップホップのイメージ（一例）"
+    },
+    {
+        "word": "honour",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "名誉、光栄（英）",
+        "src": "assets/word-illustrations/honor-pictogram-v1.webp",
+        "alt": "名誉、光栄（英）のイメージ（一例）"
+    },
+    {
+        "word": "horror",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "恐怖、ホラー",
+        "src": "assets/word-illustrations/horror-pictogram-v1.webp",
+        "alt": "恐怖、ホラーのイメージ（一例）"
+    },
+    {
+        "word": "host",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "主催者、主人",
+        "src": "assets/word-illustrations/host-pictogram-v1.webp",
+        "alt": "主催者、主人のイメージ（一例）"
+    },
+    {
+        "word": "hunter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ハンター、狩人",
+        "src": "assets/word-illustrations/hunter-pictogram-v1.webp",
+        "alt": "ハンター、狩人のイメージ（一例）"
+    },
+    {
+        "word": "ID",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "身分証明書",
+        "src": "assets/word-illustrations/id-pictogram-v1.webp",
+        "alt": "身分証明書のイメージ（一例）"
+    },
+    {
+        "word": "image",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "像、印象、画像",
+        "src": "assets/word-illustrations/image-pictogram-v1.webp",
+        "alt": "像、印象、画像のイメージ（一例）"
+    },
+    {
+        "word": "imagination",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "想像（力）",
+        "src": "assets/word-illustrations/imagination-pictogram-v1.webp",
+        "alt": "想像（力）のイメージ（一例）"
+    },
+    {
+        "word": "impact",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "影響、衝撃",
+        "src": "assets/word-illustrations/impact-pictogram-v1.webp",
+        "alt": "影響、衝撃のイメージ（一例）"
+    },
+    {
+        "word": "importance",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "重要性",
+        "src": "assets/word-illustrations/importance-pictogram-v1.webp",
+        "alt": "重要性のイメージ（一例）"
+    },
+    {
+        "word": "inch",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "インチ",
+        "src": "assets/word-illustrations/inch-pictogram-v1.webp",
+        "alt": "インチのイメージ（一例）"
+    },
+    {
+        "word": "independence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "独立、自立",
+        "src": "assets/word-illustrations/independence-pictogram-v1.webp",
+        "alt": "独立、自立のイメージ（一例）"
+    },
+    {
+        "word": "influence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "影響（力）",
+        "src": "assets/word-illustrations/influence-pictogram-v1.webp",
+        "alt": "影響（力）のイメージ（一例）"
+    },
+    {
+        "word": "insect",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "昆虫",
+        "src": "assets/word-illustrations/insect-pictogram-v1.webp",
+        "alt": "昆虫のイメージ（一例）"
+    },
+    {
+        "word": "inspiration",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "インスピレーション、霊感",
+        "src": "assets/word-illustrations/inspiration-pictogram-v1.webp",
+        "alt": "インスピレーション、霊感のイメージ（一例）"
+    },
+    {
+        "word": "instrument",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "楽器、器具",
+        "src": "assets/word-illustrations/instrument-pictogram-v2.webp",
+        "alt": "楽器、器具のイメージ（一例）"
+    },
+    {
+        "word": "intelligence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "知能、知性、情報",
+        "src": "assets/word-illustrations/intelligence-pictogram-v3.webp",
+        "alt": "知能、知性、情報のイメージ（一例）"
+    },
+    {
+        "word": "interest",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "興味",
+        "src": "assets/word-illustrations/interest-pictogram-v1.webp",
+        "alt": "興味のイメージ（一例）"
+    },
+    {
+        "word": "invention",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "発明（品）",
+        "src": "assets/word-illustrations/invention-pictogram-v1.webp",
+        "alt": "発明（品）のイメージ（一例）"
+    },
+    {
+        "word": "issue",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "問題、発行",
+        "src": "assets/word-illustrations/issue-pictogram-v1.webp",
+        "alt": "問題、発行のイメージ（一例）"
+    },
+    {
+        "word": "IT",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "情報技術",
+        "src": "assets/word-illustrations/it-pictogram-v1.webp",
+        "alt": "情報技術のイメージ（一例）"
+    },
+    {
+        "word": "jam",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ジャム、混雑、行き詰まり",
+        "src": "assets/word-illustrations/jam-pictogram-v1.webp",
+        "alt": "ジャム、混雑、行き詰まりのイメージ（一例）"
+    },
+    {
+        "word": "jelly",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ゼリー",
+        "src": "assets/word-illustrations/jelly-pictogram-v1.webp",
+        "alt": "ゼリーのイメージ（一例）"
+    },
+    {
+        "word": "joke",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "冗談、ジョーク",
+        "src": "assets/word-illustrations/joke-pictogram-v1.webp",
+        "alt": "冗談、ジョークのイメージ（一例）"
+    },
+    {
+        "word": "journey",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "旅、道のり",
+        "src": "assets/word-illustrations/journey-pictogram-v2.webp",
+        "alt": "旅、道のりのイメージ（一例）"
+    },
+    {
+        "word": "joy",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "喜び",
+        "src": "assets/word-illustrations/joy-pictogram-v1.webp",
+        "alt": "喜びのイメージ（一例）"
+    },
+    {
+        "word": "junk",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "くず、がらくた",
+        "src": "assets/word-illustrations/junk-pictogram-v1.webp",
+        "alt": "くず、がらくたのイメージ（一例）"
+    },
+    {
+        "word": "killer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "殺人者",
+        "src": "assets/word-illustrations/killer-pictogram-v1.webp",
+        "alt": "殺人者のイメージ（一例）"
+    },
+    {
+        "word": "kilo",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "キログラム",
+        "src": "assets/word-illustrations/kilo-pictogram-v1.webp",
+        "alt": "キログラムのイメージ（一例）"
+    },
+    {
+        "word": "kilometer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "キロメートル",
+        "src": "assets/word-illustrations/kilometer-pictogram-v1.webp",
+        "alt": "キロメートルのイメージ（一例）"
+    },
+    {
+        "word": "kingdom",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "王国",
+        "src": "assets/word-illustrations/kingdom-pictogram-v1.webp",
+        "alt": "王国のイメージ（一例）"
+    },
+    {
+        "word": "kit",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "道具一式、キット",
+        "src": "assets/word-illustrations/kit-pictogram-v1.webp",
+        "alt": "道具一式、キットのイメージ（一例）"
+    },
+    {
+        "word": "knock",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ノック、たたく",
+        "src": "assets/word-illustrations/knock-pictogram-v1.webp",
+        "alt": "ノック、たたくのイメージ（一例）"
+    },
+    {
+        "word": "knowledge",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "知識、学識",
+        "src": "assets/word-illustrations/knowledge-pictogram-v1.webp",
+        "alt": "知識、学識のイメージ（一例）"
+    },
+    {
+        "word": "labor",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "労働、骨折り",
+        "src": "assets/word-illustrations/labor-pictogram-v1.webp",
+        "alt": "労働、骨折りのイメージ（一例）"
+    },
+    {
+        "word": "lack",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "不足",
+        "src": "assets/word-illustrations/lack-pictogram-v1.webp",
+        "alt": "不足のイメージ（一例）"
+    },
+    {
+        "word": "lake",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "湖",
+        "src": "assets/word-illustrations/lake-pictogram-v1.webp",
+        "alt": "湖のイメージ（一例）"
+    },
+    {
+        "word": "lamp",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ランプ、電気",
+        "src": "assets/word-illustrations/lamp-pictogram-v1.webp",
+        "alt": "ランプ、電気のイメージ（一例）"
+    },
+    {
+        "word": "landscape",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "風景、眺め",
+        "src": "assets/word-illustrations/landscape-pictogram-v1.webp",
+        "alt": "風景、眺めのイメージ（一例）"
+    },
+    {
+        "word": "lane",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "小道、車線",
+        "src": "assets/word-illustrations/lane-pictogram-v1.webp",
+        "alt": "小道、車線のイメージ（一例）"
+    },
+    {
+        "word": "law",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "法律",
+        "src": "assets/word-illustrations/law-pictogram-v1.webp",
+        "alt": "法律のイメージ（一例）"
+    },
+    {
+        "word": "lawyer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "弁護士",
+        "src": "assets/word-illustrations/lawyer-pictogram-v1.webp",
+        "alt": "弁護士のイメージ（一例）"
+    },
+    {
+        "word": "laziness",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "怠惰、ものぐさ",
+        "src": "assets/word-illustrations/laziness-pictogram-v1.webp",
+        "alt": "怠惰、ものぐさのイメージ（一例）"
+    },
+    {
+        "word": "lead",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "導く、リード",
+        "src": "assets/word-illustrations/lead-pictogram-v1.webp",
+        "alt": "導く、リードのイメージ（一例）"
+    },
+    {
+        "word": "learner",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "学習者",
+        "src": "assets/word-illustrations/learner-pictogram-v1.webp",
+        "alt": "学習者のイメージ（一例）"
+    },
+    {
+        "word": "leather",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "革、レザー",
+        "src": "assets/word-illustrations/leather-pictogram-v1.webp",
+        "alt": "革、レザーのイメージ（一例）"
+    },
+    {
+        "word": "left",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "左",
+        "src": "assets/word-illustrations/left-pictogram-v1.webp",
+        "alt": "左のイメージ（一例）"
+    },
+    {
+        "word": "leisure",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "レジャー、余暇",
+        "src": "assets/word-illustrations/leisure-pictogram-v1.webp",
+        "alt": "レジャー、余暇のイメージ（一例）"
+    },
+    {
+        "word": "lemon",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "レモン",
+        "src": "assets/word-illustrations/lemon-pictogram-v1.webp",
+        "alt": "レモンのイメージ（一例）"
+    },
+    {
+        "word": "lemonade",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "レモネード",
+        "src": "assets/word-illustrations/lemonade-pictogram-v1.webp",
+        "alt": "レモネードのイメージ（一例）"
+    },
+    {
+        "word": "level",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "レベル、水準",
+        "src": "assets/word-illustrations/level-pictogram-v1.webp",
+        "alt": "レベル、水準のイメージ（一例）"
+    },
+    {
+        "word": "liberty",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "自由",
+        "src": "assets/word-illustrations/liberty-pictogram-v1.webp",
+        "alt": "自由のイメージ（一例）"
+    },
+    {
+        "word": "lifestyle",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ライフスタイル、生活様式",
+        "src": "assets/word-illustrations/lifestyle-pictogram-v1.webp",
+        "alt": "ライフスタイル、生活様式のイメージ（一例）"
+    },
+    {
+        "word": "lip",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "唇",
+        "src": "assets/word-illustrations/lip-pictogram-v1.webp",
+        "alt": "唇のイメージ（一例）"
+    },
+    {
+        "word": "liter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "リットル",
+        "src": "assets/word-illustrations/liter-pictogram-v1.webp",
+        "alt": "リットルのイメージ（一例）"
+    },
+    {
+        "word": "load",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "積み荷、負担",
+        "src": "assets/word-illustrations/load-pictogram-v1.webp",
+        "alt": "積み荷、負担のイメージ（一例）"
+    },
+    {
+        "word": "lock",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "鍵をかける、錠",
+        "src": "assets/word-illustrations/lock-pictogram-v1.webp",
+        "alt": "鍵をかける、錠のイメージ（一例）"
+    },
+    {
+        "word": "lot",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "たくさん、分け前",
+        "src": "assets/word-illustrations/lot-pictogram-v2.webp",
+        "alt": "たくさん、分け前のイメージ（一例）"
+    },
+    {
+        "word": "lover",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "愛好家、恋人",
+        "src": "assets/word-illustrations/lover-pictogram-v1.webp",
+        "alt": "愛好家、恋人のイメージ（一例）"
+    },
+    {
+        "word": "lunchtime",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "昼食時",
+        "src": "assets/word-illustrations/lunchtime-pictogram-v1.webp",
+        "alt": "昼食時のイメージ（一例）"
+    },
+    {
+        "word": "magic",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "魔法、魔術",
+        "src": "assets/word-illustrations/magic-pictogram-v1.webp",
+        "alt": "魔法、魔術のイメージ（一例）"
+    },
+    {
+        "word": "main course",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "メインディッシュ",
+        "src": "assets/word-illustrations/main-course-pictogram-v1.webp",
+        "alt": "メインディッシュのイメージ（一例）"
+    },
+    {
+        "word": "maker",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "作る人、メーカー",
+        "src": "assets/word-illustrations/maker-pictogram-v1.webp",
+        "alt": "作る人、メーカーのイメージ（一例）"
+    },
+    {
+        "word": "make-up",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "化粧（品）、構成",
+        "src": "assets/word-illustrations/make-up-pictogram-v1.webp",
+        "alt": "化粧（品）、構成のイメージ（一例）"
+    },
+    {
+        "word": "male",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "男性、オス",
+        "src": "assets/word-illustrations/male-pictogram-v1.webp",
+        "alt": "男性、オスのイメージ（一例）"
+    },
+    {
+        "word": "mall",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "モール、ショッピングセンター",
+        "src": "assets/word-illustrations/mall-pictogram-v1.webp",
+        "alt": "モール、ショッピングセンターのイメージ（一例）"
+    },
+    {
+        "word": "manager",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "マネージャー、経営者",
+        "src": "assets/word-illustrations/manager-pictogram-v1.webp",
+        "alt": "マネージャー、経営者のイメージ（一例）"
+    },
+    {
+        "word": "manner",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "方法、態度、行儀",
+        "src": "assets/word-illustrations/manner-pictogram-v1.webp",
+        "alt": "方法、態度、行儀のイメージ（一例）"
+    },
+    {
+        "word": "mark",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "印、点数",
+        "src": "assets/word-illustrations/mark-pictogram-v1.webp",
+        "alt": "印、点数のイメージ（一例）"
+    },
+    {
+        "word": "market",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "市場",
+        "src": "assets/word-illustrations/market-pictogram-v1.webp",
+        "alt": "市場のイメージ（一例）"
+    },
+    {
+        "word": "material",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "材料、生地、資料",
+        "src": "assets/word-illustrations/material-pictogram-v1.webp",
+        "alt": "材料、生地、資料のイメージ（一例）"
+    },
+    {
+        "word": "max",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "最大限",
+        "src": "assets/word-illustrations/max-pictogram-v1.webp",
+        "alt": "最大限のイメージ（一例）"
+    },
+    {
+        "word": "meaning",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "意味",
+        "src": "assets/word-illustrations/meaning-pictogram-v1.webp",
+        "alt": "意味のイメージ（一例）"
+    },
+    {
+        "word": "medal",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "メダル",
+        "src": "assets/word-illustrations/medal-pictogram-v1.webp",
+        "alt": "メダルのイメージ（一例）"
+    },
+    {
+        "word": "melon",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "メロン",
+        "src": "assets/word-illustrations/melon-pictogram-v1.webp",
+        "alt": "メロンのイメージ（一例）"
+    },
+    {
+        "word": "member",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "メンバー、一員",
+        "src": "assets/word-illustrations/member-pictogram-v1.webp",
+        "alt": "メンバー、一員のイメージ（一例）"
+    },
+    {
+        "word": "mention",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "言及",
+        "src": "assets/word-illustrations/mention-pictogram-v1.webp",
+        "alt": "言及のイメージ（一例）"
+    },
+    {
+        "word": "menu",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "メニュー",
+        "src": "assets/word-illustrations/menu-pictogram-v1.webp",
+        "alt": "メニューのイメージ（一例）"
+    },
+    {
+        "word": "metal",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "金属",
+        "src": "assets/word-illustrations/metal-pictogram-v1.webp",
+        "alt": "金属のイメージ（一例）"
+    },
+    {
+        "word": "meter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "メートル、計器",
+        "src": "assets/word-illustrations/meter-pictogram-v1.webp",
+        "alt": "メートル、計器のイメージ（一例）"
+    },
+    {
+        "word": "method",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "方法",
+        "src": "assets/word-illustrations/method-pictogram-v1.webp",
+        "alt": "方法のイメージ（一例）"
+    },
+    {
+        "word": "midday",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "正午",
+        "src": "assets/word-illustrations/midday-pictogram-v1.webp",
+        "alt": "正午のイメージ（一例）"
+    },
+    {
+        "word": "middle",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "真ん中、中央",
+        "src": "assets/word-illustrations/middle-pictogram-v1.webp",
+        "alt": "真ん中、中央のイメージ（一例）"
+    },
+    {
+        "word": "midnight",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "真夜中",
+        "src": "assets/word-illustrations/midnight-pictogram-v1.webp",
+        "alt": "真夜中のイメージ（一例）"
+    },
+    {
+        "word": "mineral water",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ミネラルウォーター",
+        "src": "assets/word-illustrations/mineral-water-pictogram-v1.webp",
+        "alt": "ミネラルウォーターのイメージ（一例）"
+    },
+    {
+        "word": "mirror",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "鏡",
+        "src": "assets/word-illustrations/mirror-pictogram-v1.webp",
+        "alt": "鏡のイメージ（一例）"
+    },
+    {
+        "word": "mistake",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "間違い",
+        "src": "assets/word-illustrations/mistake-pictogram-v1.webp",
+        "alt": "間違いのイメージ（一例）"
+    },
+    {
+        "word": "model",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "モデル、型",
+        "src": "assets/word-illustrations/model-pictogram-v1.webp",
+        "alt": "モデル、型のイメージ（一例）"
+    },
+    {
+        "word": "mood",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "気分、機嫌",
+        "src": "assets/word-illustrations/mood-pictogram-v1.webp",
+        "alt": "気分、機嫌のイメージ（一例）"
+    },
+    {
+        "word": "mosque",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "モスク、イスラム教寺院",
+        "src": "assets/word-illustrations/mosque-pictogram-v1.webp",
+        "alt": "モスク、イスラム教寺院のイメージ（一例）"
+    },
+    {
+        "word": "motorway",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "高速道路",
+        "src": "assets/word-illustrations/motorway-pictogram-v1.webp",
+        "alt": "高速道路のイメージ（一例）"
+    },
+    {
+        "word": "MP3 player",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "MP3プレーヤー",
+        "src": "assets/word-illustrations/mp3-player-pictogram-v1.webp",
+        "alt": "MP3プレーヤーのイメージ（一例）"
+    },
+    {
+        "word": "Ms",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "（未婚・既婚を問わず女子の姓・名の前につけて）～さん",
+        "src": "assets/word-illustrations/ms-pictogram-v1.webp",
+        "alt": "（未婚・既婚を問わず女子の姓・名の前につけて）～さんのイメージ（一例）"
+    },
+    {
+        "word": "mug",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "マグカップ",
+        "src": "assets/word-illustrations/mug-pictogram-v1.webp",
+        "alt": "マグカップのイメージ（一例）"
+    },
+    {
+        "word": "murder",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "殺人、ひどい目に遭わせる",
+        "src": "assets/word-illustrations/murder-pictogram-v1.webp",
+        "alt": "殺人、ひどい目に遭わせるのイメージ（一例）"
+    },
+    {
+        "word": "museum",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "博物館、美術館",
+        "src": "assets/word-illustrations/museum-pictogram-v1.webp",
+        "alt": "博物館、美術館のイメージ（一例）"
+    },
+    {
+        "word": "mushroom",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "キノコ",
+        "src": "assets/word-illustrations/mushroom-pictogram-v1.webp",
+        "alt": "キノコのイメージ（一例）"
+    },
+    {
+        "word": "mystery",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "謎、ミステリー",
+        "src": "assets/word-illustrations/mystery-pictogram-v1.webp",
+        "alt": "謎、ミステリーのイメージ（一例）"
+    },
+    {
+        "word": "napkin",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ナプキン",
+        "src": "assets/word-illustrations/napkin-pictogram-v1.webp",
+        "alt": "ナプキンのイメージ（一例）"
+    },
+    {
+        "word": "nation",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "国家、国民",
+        "src": "assets/word-illustrations/nation-pictogram-v1.webp",
+        "alt": "国家、国民のイメージ（一例）"
+    },
+    {
+        "word": "nature",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "自然、性質",
+        "src": "assets/word-illustrations/nature-pictogram-v1.webp",
+        "alt": "自然、性質のイメージ（一例）"
+    },
+    {
+        "word": "north",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "北",
+        "src": "assets/word-illustrations/north-pictogram-v1.webp",
+        "alt": "北のイメージ（一例）"
+    },
+    {
+        "word": "ID card",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "身分証",
+        "src": "assets/word-illustrations/id-pictogram-v1.webp",
+        "alt": "身分証のイメージ（一例）"
+    },
+    {
+        "word": "kilogram",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "キログラム",
+        "src": "assets/word-illustrations/kilo-pictogram-v1.webp",
+        "alt": "キログラムのイメージ（一例）"
+    },
+    {
+        "word": "kilogramme",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "キログラム",
+        "src": "assets/word-illustrations/kilo-pictogram-v1.webp",
+        "alt": "キログラムのイメージ（一例）"
+    },
+    {
+        "word": "kilometre",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "キロメートル",
+        "src": "assets/word-illustrations/kilometer-pictogram-v1.webp",
+        "alt": "キロメートルのイメージ（一例）"
+    },
+    {
+        "word": "labour",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "労働",
+        "src": "assets/word-illustrations/labor-pictogram-v1.webp",
+        "alt": "労働のイメージ（一例）"
+    },
+    {
+        "word": "litre",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "リットル",
+        "src": "assets/word-illustrations/liter-pictogram-v1.webp",
+        "alt": "リットルのイメージ（一例）"
+    },
+    {
+        "word": "metre",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "メートル",
+        "src": "assets/word-illustrations/meter-pictogram-v1.webp",
+        "alt": "メートルのイメージ（一例）"
+    },
+    {
+        "word": "Ms.",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "～さん",
+        "src": "assets/word-illustrations/ms-pictogram-v1.webp",
+        "alt": "～さんのイメージ（一例）"
+    },
+    {
+        "word": "noon",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "正午",
+        "src": "assets/word-illustrations/midday-pictogram-v1.webp",
+        "alt": "正午のイメージ（一例）"
+    },
+    {
+        "word": "notice",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "通知、掲示、注目",
+        "src": "assets/word-illustrations/notice-pictogram-v1.webp",
+        "alt": "通知、掲示、注目のイメージ（一例）"
+    },
+    {
+        "word": "noun",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "名詞",
+        "src": "assets/word-illustrations/noun-pictogram-v1.webp",
+        "alt": "名詞のイメージ（一例）"
+    },
+    {
+        "word": "novel",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "小説",
+        "src": "assets/word-illustrations/novel-pictogram-v1.webp",
+        "alt": "小説のイメージ（一例）"
+    },
+    {
+        "word": "oak",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "オーク、樫（かし）の木",
+        "src": "assets/word-illustrations/oak-pictogram-v1.webp",
+        "alt": "オーク、樫（かし）の木のイメージ（一例）"
+    },
+    {
+        "word": "occupation",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "職業",
+        "src": "assets/word-illustrations/occupation-pictogram-v1.webp",
+        "alt": "職業のイメージ（一例）"
+    },
+    {
+        "word": "offer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "申し出、提示",
+        "src": "assets/word-illustrations/offer-pictogram-v1.webp",
+        "alt": "申し出、提示のイメージ（一例）"
+    },
+    {
+        "word": "oil",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "油、石油",
+        "src": "assets/word-illustrations/oil-pictogram-v1.webp",
+        "alt": "油、石油のイメージ（一例）"
+    },
+    {
+        "word": "olive oil",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "オリーブ油",
+        "src": "assets/word-illustrations/olive-oil-pictogram-v1.webp",
+        "alt": "オリーブ油のイメージ（一例）"
+    },
+    {
+        "word": "omelet",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "オムレツ",
+        "src": "assets/word-illustrations/omelet-pictogram-v1.webp",
+        "alt": "オムレツのイメージ（一例）"
+    },
+    {
+        "word": "onion",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "玉ねぎ",
+        "src": "assets/word-illustrations/onion-pictogram-v1.webp",
+        "alt": "玉ねぎのイメージ（一例）"
+    },
+    {
+        "word": "opinion",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "意見",
+        "src": "assets/word-illustrations/opinion-pictogram-v1.webp",
+        "alt": "意見のイメージ（一例）"
+    },
+    {
+        "word": "opportunity",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "機会",
+        "src": "assets/word-illustrations/opportunity-pictogram-v1.webp",
+        "alt": "機会のイメージ（一例）"
+    },
+    {
+        "word": "orphan",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "孤児",
+        "src": "assets/word-illustrations/orphan-pictogram-v1.webp",
+        "alt": "孤児のイメージ（一例）"
+    },
+    {
+        "word": "oven",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "オーブン",
+        "src": "assets/word-illustrations/oven-pictogram-v1.webp",
+        "alt": "オーブンのイメージ（一例）"
+    },
+    {
+        "word": "pack",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "パック、包み",
+        "src": "assets/word-illustrations/pack-pictogram-v1.webp",
+        "alt": "パック、包みのイメージ（一例）"
+    },
+    {
+        "word": "painter",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "画家、ペンキ屋",
+        "src": "assets/word-illustrations/painter-pictogram-v1.webp",
+        "alt": "画家、ペンキ屋のイメージ（一例）"
+    },
+    {
+        "word": "pal",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "友達、仲良し",
+        "src": "assets/word-illustrations/pal-pictogram-v1.webp",
+        "alt": "友達、仲良しのイメージ（一例）"
+    },
+    {
+        "word": "pan",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "平鍋、パン",
+        "src": "assets/word-illustrations/pan-pictogram-v1.webp",
+        "alt": "平鍋、パンのイメージ（一例）"
+    },
+    {
+        "word": "panic",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "パニック、恐怖",
+        "src": "assets/word-illustrations/panic-pictogram-v2.webp",
+        "alt": "パニック、恐怖のイメージ（一例）"
+    },
+    {
+        "word": "part",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "部分、役目、側",
+        "src": "assets/word-illustrations/part-pictogram-v1.webp",
+        "alt": "部分、役目、側のイメージ（一例）"
+    },
+    {
+        "word": "pass",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "合格、パス、通行許可証",
+        "src": "assets/word-illustrations/pass-pictogram-v1.webp",
+        "alt": "合格、パス、通行許可証のイメージ（一例）"
+    },
+    {
+        "word": "passage",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "通路、一節",
+        "src": "assets/word-illustrations/passage-pictogram-v1.webp",
+        "alt": "通路、一節のイメージ（一例）"
+    },
+    {
+        "word": "passenger",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "乗客",
+        "src": "assets/word-illustrations/passenger-pictogram-v1.webp",
+        "alt": "乗客のイメージ（一例）"
+    },
+    {
+        "word": "pasta",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "パスタ",
+        "src": "assets/word-illustrations/pasta-pictogram-v1.webp",
+        "alt": "パスタのイメージ（一例）"
+    },
+    {
+        "word": "path",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "小道、経路",
+        "src": "assets/word-illustrations/path-pictogram-v1.webp",
+        "alt": "小道、経路のイメージ（一例）"
+    },
+    {
+        "word": "patient",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "患者",
+        "src": "assets/word-illustrations/patient-pictogram-v1.webp",
+        "alt": "患者のイメージ（一例）"
+    },
+    {
+        "word": "PC",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "パソコン",
+        "src": "assets/word-illustrations/pc-pictogram-v1.webp",
+        "alt": "パソコンのイメージ（一例）"
+    },
+    {
+        "word": "pea",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "エンドウ豆",
+        "src": "assets/word-illustrations/pea-pictogram-v1.webp",
+        "alt": "エンドウ豆のイメージ（一例）"
+    },
+    {
+        "word": "pear",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "梨（なし）",
+        "src": "assets/word-illustrations/pear-pictogram-v1.webp",
+        "alt": "梨（なし）のイメージ（一例）"
+    },
+    {
+        "word": "pen friend",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ペンフレンド",
+        "src": "assets/word-illustrations/pen-friend-pictogram-v1.webp",
+        "alt": "ペンフレンドのイメージ（一例）"
+    },
+    {
+        "word": "pence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ペンス（ペニーの複数形）",
+        "src": "assets/word-illustrations/pence-pictogram-v1.webp",
+        "alt": "ペンス（ペニーの複数形）のイメージ（一例）"
+    },
+    {
+        "word": "pepper",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "コショウ、ピーマン",
+        "src": "assets/word-illustrations/pepper-pictogram-v1.webp",
+        "alt": "コショウ、ピーマンのイメージ（一例）"
+    },
+    {
+        "word": "performance",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "公演、成績、動作",
+        "src": "assets/word-illustrations/performance-pictogram-v1.webp",
+        "alt": "公演、成績、動作のイメージ（一例）"
+    },
+    {
+        "word": "perfume",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "香水、香り",
+        "src": "assets/word-illustrations/perfume-pictogram-v1.webp",
+        "alt": "香水、香りのイメージ（一例）"
+    },
+    {
+        "word": "permission",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "許可",
+        "src": "assets/word-illustrations/permission-pictogram-v1.webp",
+        "alt": "許可のイメージ（一例）"
+    },
+    {
+        "word": "personality",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "個性、性格",
+        "src": "assets/word-illustrations/personality-pictogram-v1.webp",
+        "alt": "個性、性格のイメージ（一例）"
+    },
+    {
+        "word": "petrol",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ガソリン",
+        "src": "assets/word-illustrations/petrol-pictogram-v1.webp",
+        "alt": "ガソリンのイメージ（一例）"
+    },
+    {
+        "word": "petrol station",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ガソリンスタンド",
+        "src": "assets/word-illustrations/petrol-station-pictogram-v1.webp",
+        "alt": "ガソリンスタンドのイメージ（一例）"
+    },
+    {
+        "word": "photograph",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "写真",
+        "src": "assets/word-illustrations/photograph-pictogram-v1.webp",
+        "alt": "写真のイメージ（一例）"
+    },
+    {
+        "word": "photographer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "写真家",
+        "src": "assets/word-illustrations/photographer-pictogram-v1.webp",
+        "alt": "写真家のイメージ（一例）"
+    },
+    {
+        "word": "photography",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "写真撮影",
+        "src": "assets/word-illustrations/photography-pictogram-v1.webp",
+        "alt": "写真撮影のイメージ（一例）"
+    },
+    {
+        "word": "pile",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "積み重ね、山",
+        "src": "assets/word-illustrations/pile-pictogram-v1.webp",
+        "alt": "積み重ね、山のイメージ（一例）"
+    },
+    {
+        "word": "pilgrim",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "巡礼者",
+        "src": "assets/word-illustrations/pilgrim-pictogram-v1.webp",
+        "alt": "巡礼者のイメージ（一例）"
+    },
+    {
+        "word": "pill",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "錠剤、ピル",
+        "src": "assets/word-illustrations/pill-pictogram-v1.webp",
+        "alt": "錠剤、ピルのイメージ（一例）"
+    },
+    {
+        "word": "pilot",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "パイロット、操縦士",
+        "src": "assets/word-illustrations/pilot-pictogram-v1.webp",
+        "alt": "パイロット、操縦士のイメージ（一例）"
+    },
+    {
+        "word": "pink",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ピンク色",
+        "src": "assets/word-illustrations/pink-pictogram-v1.webp",
+        "alt": "ピンク色のイメージ（一例）"
+    },
+    {
+        "word": "pity",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "残念なこと、あわれみ",
+        "src": "assets/word-illustrations/pity-pictogram-v1.webp",
+        "alt": "残念なこと、あわれみのイメージ（一例）"
+    },
+    {
+        "word": "planet",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "惑星",
+        "src": "assets/word-illustrations/planet-pictogram-v1.webp",
+        "alt": "惑星のイメージ（一例）"
+    },
+    {
+        "word": "plant",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "植物、工場",
+        "src": "assets/word-illustrations/plant-pictogram-v1.webp",
+        "alt": "植物、工場のイメージ（一例）"
+    },
+    {
+        "word": "plate",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "皿、プレート",
+        "src": "assets/word-illustrations/plate-pictogram-v1.webp",
+        "alt": "皿、プレートのイメージ（一例）"
+    },
+    {
+        "word": "omelette",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "オムレツ",
+        "src": "assets/word-illustrations/omelet-pictogram-v1.webp",
+        "alt": "オムレツのイメージ（一例）"
+    },
+    {
+        "word": "penfriend",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ペンフレンド",
+        "src": "assets/word-illustrations/pen-friend-pictogram-v1.webp",
+        "alt": "ペンフレンドのイメージ（一例）"
+    },
+    {
+        "word": "playground",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "遊び場、運動場",
+        "src": "assets/word-illustrations/playground-pictogram-v1.webp",
+        "alt": "遊び場、運動場のイメージ（一例）"
+    },
+    {
+        "word": "plenty",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "たくさん、十分な量",
+        "src": "assets/word-illustrations/plenty-pictogram-v1.webp",
+        "alt": "たくさん、十分な量のイメージ（一例）"
+    },
+    {
+        "word": "plural",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "複数形、複数の",
+        "src": "assets/word-illustrations/plural-pictogram-v1.webp",
+        "alt": "複数形、複数ののイメージ（一例）"
+    },
+    {
+        "word": "police",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "警察",
+        "src": "assets/word-illustrations/police-pictogram-v1.webp",
+        "alt": "警察のイメージ（一例）"
+    },
+    {
+        "word": "police officer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "警察官",
+        "src": "assets/word-illustrations/police-officer-pictogram-v1.webp",
+        "alt": "警察官のイメージ（一例）"
+    },
+    {
+        "word": "police station",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "警察署",
+        "src": "assets/word-illustrations/police-station-pictogram-v1.webp",
+        "alt": "警察署のイメージ（一例）"
+    },
+    {
+        "word": "policeman",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "警察官（男）",
+        "src": "assets/word-illustrations/policeman-pictogram-v2.webp",
+        "alt": "警察官（男）のイメージ（一例）"
+    },
+    {
+        "word": "policewoman",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "警察官（女）",
+        "src": "assets/word-illustrations/policewoman-pictogram-v1.webp",
+        "alt": "警察官（女）のイメージ（一例）"
+    },
+    {
+        "word": "population",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "人口",
+        "src": "assets/word-illustrations/population-pictogram-v1.webp",
+        "alt": "人口のイメージ（一例）"
+    },
+    {
+        "word": "portrait",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "肖像（画）",
+        "src": "assets/word-illustrations/portrait-pictogram-v1.webp",
+        "alt": "肖像（画）のイメージ（一例）"
+    },
+    {
+        "word": "position",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "位置、場所、立場",
+        "src": "assets/word-illustrations/position-pictogram-v1.webp",
+        "alt": "位置、場所、立場のイメージ（一例）"
+    },
+    {
+        "word": "post office",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "郵便局",
+        "src": "assets/word-illustrations/post-office-pictogram-v1.webp",
+        "alt": "郵便局のイメージ（一例）"
+    },
+    {
+        "word": "power",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "力、権力、電力",
+        "src": "assets/word-illustrations/power-pictogram-v1.webp",
+        "alt": "力、権力、電力のイメージ（一例）"
+    },
+    {
+        "word": "prediction",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "予測、予言",
+        "src": "assets/word-illustrations/prediction-pictogram-v1.webp",
+        "alt": "予測、予言のイメージ（一例）"
+    },
+    {
+        "word": "pressure",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "圧力、重圧",
+        "src": "assets/word-illustrations/pressure-pictogram-v1.webp",
+        "alt": "圧力、重圧のイメージ（一例）"
+    },
+    {
+        "word": "pride",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "誇り、自尊心",
+        "src": "assets/word-illustrations/pride-pictogram-v1.webp",
+        "alt": "誇り、自尊心のイメージ（一例）"
+    },
+    {
+        "word": "printer",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "プリンター",
+        "src": "assets/word-illustrations/printer-pictogram-v1.webp",
+        "alt": "プリンターのイメージ（一例）"
+    },
+    {
+        "word": "pro",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "プロの",
+        "src": "assets/word-illustrations/pro-pictogram-v1.webp",
+        "alt": "プロののイメージ（一例）"
+    },
+    {
+        "word": "product",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "製品、産物",
+        "src": "assets/word-illustrations/product-pictogram-v1.webp",
+        "alt": "製品、産物のイメージ（一例）"
+    },
+    {
+        "word": "production",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "生産、演出",
+        "src": "assets/word-illustrations/production-pictogram-v1.webp",
+        "alt": "生産、演出のイメージ（一例）"
+    },
+    {
+        "word": "promise",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "約束、見込み",
+        "src": "assets/word-illustrations/promise-pictogram-v1.webp",
+        "alt": "約束、見込みのイメージ（一例）"
+    },
+    {
+        "word": "pronunciation",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "発音",
+        "src": "assets/word-illustrations/pronunciation-pictogram-v1.webp",
+        "alt": "発音のイメージ（一例）"
+    },
+    {
+        "word": "psychologist",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "心理学者",
+        "src": "assets/word-illustrations/psychologist-pictogram-v1.webp",
+        "alt": "心理学者のイメージ（一例）"
+    },
+    {
+        "word": "public",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "公衆、一般の人々",
+        "src": "assets/word-illustrations/public-pictogram-v1.webp",
+        "alt": "公衆、一般の人々のイメージ（一例）"
+    },
+    {
+        "word": "punctuation",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "句読点、句読法",
+        "src": "assets/word-illustrations/punctuation-pictogram-v1.webp",
+        "alt": "句読点、句読法のイメージ（一例）"
+    },
+    {
+        "word": "purpose",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "目的、意図",
+        "src": "assets/word-illustrations/purpose-pictogram-v1.webp",
+        "alt": "目的、意図のイメージ（一例）"
+    },
+    {
+        "word": "quality",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "質、品質",
+        "src": "assets/word-illustrations/quality-pictogram-v1.webp",
+        "alt": "質、品質のイメージ（一例）"
+    },
+    {
+        "word": "queen",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "女王",
+        "src": "assets/word-illustrations/queen-pictogram-v1.webp",
+        "alt": "女王のイメージ（一例）"
+    },
+    {
+        "word": "quiz",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "クイズ、小テスト",
+        "src": "assets/word-illustrations/quiz-pictogram-v1.webp",
+        "alt": "クイズ、小テストのイメージ（一例）"
+    },
+    {
+        "word": "racket",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ラケット",
+        "src": "assets/word-illustrations/racket-pictogram-v1.webp",
+        "alt": "ラケットのイメージ（一例）"
+    },
+    {
+        "word": "raincoat",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "レインコート",
+        "src": "assets/word-illustrations/raincoat-pictogram-v1.webp",
+        "alt": "レインコートのイメージ（一例）"
+    },
+    {
+        "word": "range",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "範囲、山脈",
+        "src": "assets/word-illustrations/range-pictogram-v1.webp",
+        "alt": "範囲、山脈のイメージ（一例）"
+    },
+    {
+        "word": "rap",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ラップ（音楽）",
+        "src": "assets/word-illustrations/rap-pictogram-v1.webp",
+        "alt": "ラップ（音楽）のイメージ（一例）"
+    },
+    {
+        "word": "rate",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "割合、速度、料金",
+        "src": "assets/word-illustrations/rate-pictogram-v1.webp",
+        "alt": "割合、速度、料金のイメージ（一例）"
+    },
+    {
+        "word": "rating",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "評価、格付け",
+        "src": "assets/word-illustrations/rating-pictogram-v1.webp",
+        "alt": "評価、格付けのイメージ（一例）"
+    },
+    {
+        "word": "ray",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "光線、一筋の光",
+        "src": "assets/word-illustrations/ray-pictogram-v1.webp",
+        "alt": "光線、一筋の光のイメージ（一例）"
+    },
+    {
+        "word": "receipt",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "領収書、レシート",
+        "src": "assets/word-illustrations/receipt-pictogram-v1.webp",
+        "alt": "領収書、レシートのイメージ（一例）"
+    },
+    {
+        "word": "receptionist",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "接客係、受付係",
+        "src": "assets/word-illustrations/receptionist-pictogram-v1.webp",
+        "alt": "接客係、受付係のイメージ（一例）"
+    },
+    {
+        "word": "red",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "赤、赤色",
+        "src": "assets/word-illustrations/red-pictogram-v1.webp",
+        "alt": "赤、赤色のイメージ（一例）"
+    },
+    {
+        "word": "refrigerator",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "冷蔵庫",
+        "src": "assets/word-illustrations/refrigerator-pictogram-v1.webp",
+        "alt": "冷蔵庫のイメージ（一例）"
+    },
+    {
+        "word": "release",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "放出、発売、公開",
+        "src": "assets/word-illustrations/release-pictogram-v1.webp",
+        "alt": "放出、発売、公開のイメージ（一例）"
+    },
+    {
+        "word": "rent",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "家賃、賃貸料",
+        "src": "assets/word-illustrations/rent-pictogram-v1.webp",
+        "alt": "家賃、賃貸料のイメージ（一例）"
+    },
+    {
+        "word": "repair",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "修理、修復",
+        "src": "assets/word-illustrations/repair-pictogram-v1.webp",
+        "alt": "修理、修復のイメージ（一例）"
+    },
+    {
+        "word": "reply",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "返事、回答",
+        "src": "assets/word-illustrations/reply-pictogram-v1.webp",
+        "alt": "返事、回答のイメージ（一例）"
+    },
+    {
+        "word": "report",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "報告、レポート",
+        "src": "assets/word-illustrations/report-pictogram-v1.webp",
+        "alt": "報告、レポートのイメージ（一例）"
+    },
+    {
+        "word": "request",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "要請、依頼",
+        "src": "assets/word-illustrations/request-pictogram-v1.webp",
+        "alt": "要請、依頼のイメージ（一例）"
+    },
+    {
+        "word": "research",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "研究、調査",
+        "src": "assets/word-illustrations/research-pictogram-v1.webp",
+        "alt": "研究、調査のイメージ（一例）"
+    },
+    {
+        "word": "response",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "反応、回答",
+        "src": "assets/word-illustrations/response-pictogram-v1.webp",
+        "alt": "反応、回答のイメージ（一例）"
+    },
+    {
+        "word": "return",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "帰宅、戻り、返却",
+        "src": "assets/word-illustrations/return-pictogram-v1.webp",
+        "alt": "帰宅、戻り、返却のイメージ（一例）"
+    },
+    {
+        "word": "reunion",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "再会、親睦会",
+        "src": "assets/word-illustrations/reunion-pictogram-v1.webp",
+        "alt": "再会、親睦会のイメージ（一例）"
+    },
+    {
+        "word": "rhythm",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "リズム",
+        "src": "assets/word-illustrations/rhythm-pictogram-v2.webp",
+        "alt": "リズムのイメージ（一例）"
+    },
+    {
+        "word": "right",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "権利、右、正しいこと",
+        "src": "assets/word-illustrations/right-pictogram-v2.webp",
+        "alt": "権利、右、正しいことのイメージ（一例）"
+    },
+    {
+        "word": "ring",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "指輪、輪",
+        "src": "assets/word-illustrations/ring-pictogram-v1.webp",
+        "alt": "指輪、輪のイメージ（一例）"
+    },
+    {
+        "word": "road",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "道路、道",
+        "src": "assets/word-illustrations/road-pictogram-v1.webp",
+        "alt": "道路、道のイメージ（一例）"
+    },
+    {
+        "word": "robbery",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "強盗（事件）",
+        "src": "assets/word-illustrations/robbery-pictogram-v1.webp",
+        "alt": "強盗（事件）のイメージ（一例）"
+    },
+    {
+        "word": "robin",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "コマドリ",
+        "src": "assets/word-illustrations/robin-pictogram-v1.webp",
+        "alt": "コマドリのイメージ（一例）"
+    },
+    {
+        "word": "rock",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "岩、ロック（音楽）",
+        "src": "assets/word-illustrations/rock-pictogram-v1.webp",
+        "alt": "岩、ロック（音楽）のイメージ（一例）"
+    },
+    {
+        "word": "roll",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "巻いたもの、名簿、パン",
+        "src": "assets/word-illustrations/roll-pictogram-v1.webp",
+        "alt": "巻いたもの、名簿、パンのイメージ（一例）"
+    },
+    {
+        "word": "romance",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ロマンス、恋愛",
+        "src": "assets/word-illustrations/romance-pictogram-v1.webp",
+        "alt": "ロマンス、恋愛のイメージ（一例）"
+    },
+    {
+        "word": "roof",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "屋根",
+        "src": "assets/word-illustrations/roof-pictogram-v1.webp",
+        "alt": "屋根のイメージ（一例）"
+    },
+    {
+        "word": "root",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "根、根源",
+        "src": "assets/word-illustrations/root-pictogram-v1.webp",
+        "alt": "根、根源のイメージ（一例）"
+    },
+    {
+        "word": "rope",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ロープ、綱",
+        "src": "assets/word-illustrations/rope-pictogram-v1.webp",
+        "alt": "ロープ、綱のイメージ（一例）"
+    },
+    {
+        "word": "roundabout",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "回転交差点、メリーゴーランド、遠回りの",
+        "src": "assets/word-illustrations/roundabout-pictogram-v2.webp",
+        "alt": "回転交差点、メリーゴーランド、遠回りののイメージ（一例）"
+    },
+    {
+        "word": "rugby",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ラグビー",
+        "src": "assets/word-illustrations/rugby-pictogram-v1.webp",
+        "alt": "ラグビーのイメージ（一例）"
+    },
+    {
+        "word": "rumor",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "うわさ",
+        "src": "assets/word-illustrations/rumor-pictogram-v2.webp",
+        "alt": "うわさのイメージ（一例）"
+    },
+    {
+        "word": "runner",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "走る人、走者",
+        "src": "assets/word-illustrations/runner-pictogram-v1.webp",
+        "alt": "走る人、走者のイメージ（一例）"
+    },
+    {
+        "word": "running",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "走ること、ランニング",
+        "src": "assets/word-illustrations/running-pictogram-v1.webp",
+        "alt": "走ること、ランニングのイメージ（一例）"
+    },
+    {
+        "word": "rush",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "突進、大急ぎ、ラッシュ",
+        "src": "assets/word-illustrations/rush-pictogram-v1.webp",
+        "alt": "突進、大急ぎ、ラッシュのイメージ（一例）"
+    },
+    {
+        "word": "sailing",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "帆走、セーリング",
+        "src": "assets/word-illustrations/sailing-pictogram-v1.webp",
+        "alt": "帆走、セーリングのイメージ（一例）"
+    },
+    {
+        "word": "sake",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "目的、利益、日本酒",
+        "src": "assets/word-illustrations/sake-pictogram-v1.webp",
+        "alt": "目的、利益、日本酒のイメージ（一例）"
+    },
+    {
+        "word": "salt",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "塩",
+        "src": "assets/word-illustrations/salt-pictogram-v1.webp",
+        "alt": "塩のイメージ（一例）"
+    },
+    {
+        "word": "sample",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "サンプル、見本",
+        "src": "assets/word-illustrations/sample-pictogram-v1.webp",
+        "alt": "サンプル、見本のイメージ（一例）"
+    },
+    {
+        "word": "sauce",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ソース",
+        "src": "assets/word-illustrations/sauce-pictogram-v1.webp",
+        "alt": "ソースのイメージ（一例）"
+    },
+    {
+        "word": "sausage",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ソーセージ",
+        "src": "assets/word-illustrations/sausage-pictogram-v1.webp",
+        "alt": "ソーセージのイメージ（一例）"
+    },
+    {
+        "word": "scale",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "目盛り、規模、はかり",
+        "src": "assets/word-illustrations/scale-pictogram-v1.webp",
+        "alt": "目盛り、規模、はかりのイメージ（一例）"
+    },
+    {
+        "word": "scarf",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スカーフ、マフラー",
+        "src": "assets/word-illustrations/scarf-pictogram-v1.webp",
+        "alt": "スカーフ、マフラーのイメージ（一例）"
+    },
+    {
+        "word": "scene",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "場面、シーン、景色",
+        "src": "assets/word-illustrations/scene-pictogram-v2.webp",
+        "alt": "場面、シーン、景色のイメージ（一例）"
+    },
+    {
+        "word": "scenery",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "風景、景色",
+        "src": "assets/word-illustrations/scenery-pictogram-v1.webp",
+        "alt": "風景、景色のイメージ（一例）"
+    },
+    {
+        "word": "schedule",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "予定、スケジュール",
+        "src": "assets/word-illustrations/schedule-pictogram-v1.webp",
+        "alt": "予定、スケジュールのイメージ（一例）"
+    },
+    {
+        "word": "schoolchild",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "学童、生徒",
+        "src": "assets/word-illustrations/schoolchild-pictogram-v1.webp",
+        "alt": "学童、生徒のイメージ（一例）"
+    },
+    {
+        "word": "schoolwork",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "学業、学校の課題",
+        "src": "assets/word-illustrations/schoolwork-pictogram-v2.webp",
+        "alt": "学業、学校の課題のイメージ（一例）"
+    },
+    {
+        "word": "scissors",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "はさみ",
+        "src": "assets/word-illustrations/scissors-pictogram-v1.webp",
+        "alt": "はさみのイメージ（一例）"
+    },
+    {
+        "word": "scream",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "叫び声、悲鳴",
+        "src": "assets/word-illustrations/scream-pictogram-v1.webp",
+        "alt": "叫び声、悲鳴のイメージ（一例）"
+    },
+    {
+        "word": "screen",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "画面、スクリーン",
+        "src": "assets/word-illustrations/screen-pictogram-v1.webp",
+        "alt": "画面、スクリーンのイメージ（一例）"
+    },
+    {
+        "word": "screw",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ねじ",
+        "src": "assets/word-illustrations/screw-pictogram-v1.webp",
+        "alt": "ねじのイメージ（一例）"
+    },
+    {
+        "word": "script",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "台本、スクリプト",
+        "src": "assets/word-illustrations/script-pictogram-v1.webp",
+        "alt": "台本、スクリプトのイメージ（一例）"
+    },
+    {
+        "word": "seafood",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "シーフード、海産物",
+        "src": "assets/word-illustrations/seafood-pictogram-v1.webp",
+        "alt": "シーフード、海産物のイメージ（一例）"
+    },
+    {
+        "word": "search",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "探すこと、探索",
+        "src": "assets/word-illustrations/search-pictogram-v1.webp",
+        "alt": "探すこと、探索のイメージ（一例）"
+    },
+    {
+        "word": "seaside",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "海辺",
+        "src": "assets/word-illustrations/seaside-pictogram-v1.webp",
+        "alt": "海辺のイメージ（一例）"
+    },
+    {
+        "word": "second",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "秒、二番目",
+        "src": "assets/word-illustrations/second-pictogram-v1.webp",
+        "alt": "秒、二番目のイメージ（一例）"
+    },
+    {
+        "word": "secret",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "秘密",
+        "src": "assets/word-illustrations/secret-pictogram-v1.webp",
+        "alt": "秘密のイメージ（一例）"
+    },
+    {
+        "word": "secretary",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "秘書",
+        "src": "assets/word-illustrations/secretary-pictogram-v1.webp",
+        "alt": "秘書のイメージ（一例）"
+    },
+    {
+        "word": "seed",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "種、実",
+        "src": "assets/word-illustrations/seed-pictogram-v1.webp",
+        "alt": "種、実のイメージ（一例）"
+    },
+    {
+        "word": "semester",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "（2学期制の）学期",
+        "src": "assets/word-illustrations/semester-pictogram-v2.webp",
+        "alt": "（2学期制の）学期のイメージ（一例）"
+    },
+    {
+        "word": "senior",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "年長者、上級生、高齢者",
+        "src": "assets/word-illustrations/senior-pictogram-v1.webp",
+        "alt": "年長者、上級生、高齢者のイメージ（一例）"
+    },
+    {
+        "word": "sense",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "感覚、五感、意味",
+        "src": "assets/word-illustrations/sense-pictogram-v2.webp",
+        "alt": "感覚、五感、意味のイメージ（一例）"
+    },
+    {
+        "word": "set",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "セット、一揃い",
+        "src": "assets/word-illustrations/set-pictogram-v1.webp",
+        "alt": "セット、一揃いのイメージ（一例）"
+    },
+    {
+        "word": "shade",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "陰、日陰",
+        "src": "assets/word-illustrations/shade-pictogram-v1.webp",
+        "alt": "陰、日陰のイメージ（一例）"
+    },
+    {
+        "word": "shadow",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "影",
+        "src": "assets/word-illustrations/shadow-pictogram-v2.webp",
+        "alt": "影のイメージ（一例）"
+    },
+    {
+        "word": "shampoo",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "シャンプー",
+        "src": "assets/word-illustrations/shampoo-pictogram-v1.webp",
+        "alt": "シャンプーのイメージ（一例）"
+    },
+    {
+        "word": "rumour",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "うわさ",
+        "src": "assets/word-illustrations/rumor-pictogram-v2.webp",
+        "alt": "うわさのイメージ（一例）"
+    }
+
 ].map(Object.freeze));

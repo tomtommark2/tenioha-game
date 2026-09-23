@@ -7,6 +7,11 @@ async function selectWord(page, word = 'shelter', level = 'daily', pos = '名') 
     gameState.currentWord = vocabularyDatabase[level].find(item => item.word === word && (item.pos === pos || item.senses?.some(sense => sense.pos === pos)))
       || ['junior', 'basic', 'daily', 'exam1'].flatMap(source => vocabularyDatabase[source]).find(item => item.word === word && item.senses?.some(sense => sense.pos === pos && sense.__sourceLevel === level));
     if (!gameState.currentWord) throw new Error(`Missing vocabulary: ${level}/${word}`);
+    // Exercise each registered source sense without changing its grouped learning key.
+    // Normal grouped cards use their first illustrated sense (covered by wordbook tests).
+    const grouped = gameState.currentWord;
+    const sense = grouped.senses?.find(item => item.word === word && item.pos === pos && (item.__sourceLevel || level) === level);
+    if (sense) gameState.currentWord = { ...sense, senses: [sense], __groupKey: getWordKeySafe(grouped) };
     showWord(gameState.currentWord);
   }, { word, level, pos });
 }
