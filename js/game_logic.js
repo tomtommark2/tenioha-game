@@ -270,6 +270,33 @@ function updateSpeechSettings(changes) {
     window.speechSynthesis?.cancel();
     try { localStorage.setItem(SPEECH_SETTINGS_KEY, JSON.stringify(speechSettings)); } catch { /* Session-only settings. */ }
 }
+// A display-only preference: keep it outside learning saves, cloud sync and Undo.
+const CARD_STATUS_VISIBLE_KEY = 'vocabGame_cardStatusVisible';
+var cardStatusVisible = true;
+try {
+    cardStatusVisible = localStorage.getItem(CARD_STATUS_VISIBLE_KEY) !== 'false';
+} catch { /* Storage may be unavailable; show the existing indicators by default. */ }
+
+function renderCardStatusSettings(message = '') {
+    const input = document.getElementById('cardStatusVisible');
+    if (input) input.checked = cardStatusVisible;
+    const status = document.getElementById('cardStatusSettingsStatus');
+    if (status) status.textContent = message || 'このブラウザに保存されます。';
+}
+
+function setCardStatusVisible(visible) {
+    if (typeof visible !== 'boolean') return;
+    try {
+        localStorage.setItem(CARD_STATUS_VISIBLE_KEY, String(visible));
+    } catch {
+        renderCardStatusSettings('保存できなかったため、変更前の設定に戻しました。');
+        return;
+    }
+    cardStatusVisible = visible;
+    updateQuestionReasonUI();
+    renderCardStatusSettings('このブラウザに保存しました。');
+}
+
 var reviewShuffleStatusTimer = null;
 var gameStateHistory = []; // Stack to store previous states
 var learningSessionStarted = false;
@@ -1437,6 +1464,7 @@ window.openStudyModeModal = function () {
         renderMasterySettings();
         renderReviewTiming();
         renderReviewLevelCheckboxes();
+        renderCardStatusSettings();
         updateReviewProgressUI();
         const content = m.querySelector('.study-mode-modal-content');
         if (content) content.scrollTop = 0;
@@ -1658,6 +1686,7 @@ function updateCardAccuracyUI() {
     const card = document.getElementById('vocabCard');
     if (!card) return;
     card.querySelector('.card-accuracy')?.remove();
+    if (!cardStatusVisible) return;
     const word = gameState.currentWord;
     if (!word) return;
     const key = getWordKeySafe(word, word.__sourceLevel || gameState.currentLevel);
@@ -1680,7 +1709,7 @@ function updateQuestionReasonUI() {
     if (!label) return;
 
     const info = QUESTION_REASON_INFO[gameState.currentQuestionReason];
-    if (!gameState.isReviewWord || !info) {
+    if (!cardStatusVisible || !gameState.isReviewWord || !info) {
         label.style.display = 'none';
         label.textContent = '';
         label.removeAttribute('data-tone');

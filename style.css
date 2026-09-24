@@ -851,6 +851,13 @@ body.level-selector-open .level-selector {
 .mastery-settings .study-mode-details { padding: 12px 0; }
 .mastery-settings .study-mode-details summary { min-height: 44px; font-size: 16px; }
 .mastery-settings .study-mode-details p { font-size: 14px; }
+.card-status-toggle { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; cursor: pointer; font-size: 16px; font-weight: 700; }
+.card-status-toggle input { appearance: none; flex: 0 0 44px; width: 44px; height: 26px; margin: 0; border: 1px solid #8b90a3; border-radius: 20px; background: #8b90a3; cursor: pointer; position: relative; }
+.card-status-toggle input::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+.card-status-toggle input:checked { background: #6046ce; border-color: #6046ce; }
+.card-status-toggle input:checked::after { transform: translateX(18px); }
+.card-status-toggle input:focus-visible { outline: 3px solid #8775e6; outline-offset: 3px; }
+.card-status-settings p { margin: 8px 0 0; font-size: 13px; color: #596177; }
 body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 @media (max-width: 600px) {
     .study-mode-modal:has(.mastery-settings) { padding: 0; }
