@@ -2165,7 +2165,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "習慣",
-        "src": "assets/word-illustrations/habit-pictogram-v1.webp",
+        "src": "assets/word-illustrations/habit-pictogram-natural-pre21-v1.webp",
         "alt": "毎日の習慣の一例のイメージ（一例）"
     },
     {
@@ -2581,7 +2581,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "子供",
-        "src": "assets/word-illustrations/kid-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kid-pictogram-natural-pre21-v1.webp",
         "alt": "子供の一例のイメージ（一例）"
     },
     {
@@ -2605,7 +2605,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "キス",
-        "src": "assets/word-illustrations/kiss-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kiss-pictogram-natural-pre21-v1.webp",
         "alt": "キスの一例のイメージ（一例）"
     },
     {
@@ -2669,7 +2669,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "リーダー",
-        "src": "assets/word-illustrations/leader-pictogram-v1.webp",
+        "src": "assets/word-illustrations/leader-pictogram-natural-pre21-v1.webp",
         "alt": "リーダーの一例のイメージ（一例）"
     },
     {
@@ -2693,7 +2693,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "レッスン、授業",
-        "src": "assets/word-illustrations/lesson-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lesson-pictogram-natural-pre21-v1.webp",
         "alt": "ピアノのレッスンの一例のイメージ（一例）"
     },
     {
@@ -2717,7 +2717,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "生活、人生",
-        "src": "assets/word-illustrations/life-pictogram-v1.webp",
+        "src": "assets/word-illustrations/life-pictogram-natural-pre21-v1.webp",
         "alt": "人生のイメージ（一例）"
     },
     {
@@ -2773,7 +2773,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "見ること、外見",
-        "src": "assets/word-illustrations/look-pictogram-v2.webp",
+        "src": "assets/word-illustrations/look-pictogram-natural-pre21-v2.webp",
         "alt": "見ることの一例のイメージ（一例）"
     },
     {
@@ -2782,7 +2782,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "pos": "名",
         "legacyKeyPos": "副",
         "meaning": "大量、多数",
-        "src": "assets/word-illustrations/lot-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lot-pictogram-natural-pre21-v1.webp",
         "alt": "多数のイメージ（一例）"
     },
     {
@@ -2791,7 +2791,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "pos": "名",
         "legacyKeyPos": "代",
         "meaning": "大量、多数",
-        "src": "assets/word-illustrations/lot-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lot-pictogram-natural-pre21-v1.webp",
         "alt": "多数のイメージ（一例）"
     },
     {
@@ -2871,7 +2871,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "試合",
-        "src": "assets/word-illustrations/match-pictogram-v1.webp",
+        "src": "assets/word-illustrations/match-pictogram-natural-pre21-v1.webp",
         "alt": "サッカーの試合の一例のイメージ（一例）"
     },
     {
@@ -2895,7 +2895,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "問題、事柄",
-        "src": "assets/word-illustrations/matter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/matter-pictogram-natural-pre21-v1.webp",
         "alt": "問題がある場面の一例のイメージ（一例）"
     },
     {
@@ -2983,7 +2983,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "～さん（未婚女性）",
-        "src": "assets/word-illustrations/miss-pictogram-v1.webp",
+        "src": "assets/word-illustrations/miss-pictogram-natural-pre21-v1.webp",
         "alt": "女性への敬称Missの一例のイメージ（一例）"
     },
     {
@@ -3135,7 +3135,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "～氏",
-        "src": "assets/word-illustrations/mr-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mr-pictogram-natural-pre21-v1.webp",
         "alt": "男性への敬称Mrの一例のイメージ（一例）"
     },
     {
@@ -3143,7 +3143,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "～氏",
-        "src": "assets/word-illustrations/mr-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mr-pictogram-natural-pre21-v1.webp",
         "alt": "男性への敬称Mrの一例のイメージ（一例）"
     },
     {
@@ -3151,7 +3151,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "～夫人",
-        "src": "assets/word-illustrations/mrs-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mrs-pictogram-natural-pre21-v1.webp",
         "alt": "女性への敬称Mrsの一例のイメージ（一例）"
     },
     {
@@ -3159,7 +3159,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "～夫人",
-        "src": "assets/word-illustrations/mrs-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mrs-pictogram-natural-pre21-v1.webp",
         "alt": "女性への敬称Mrsの一例のイメージ（一例）"
     },
     {
@@ -3255,7 +3255,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "騒音",
-        "src": "assets/word-illustrations/noise-pictogram-v1.webp",
+        "src": "assets/word-illustrations/noise-pictogram-natural-pre21-v1.webp",
         "alt": "騒音のイメージ（一例）"
     },
     {
@@ -4303,7 +4303,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "微笑み",
-        "src": "assets/word-illustrations/smile-pictogram-v1.webp",
+        "src": "assets/word-illustrations/smile-pictogram-natural-pre21-v1.webp",
         "alt": "微笑みのイメージ（一例）"
     },
     {
@@ -5039,7 +5039,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "junior",
         "pos": "名",
         "meaning": "順番、回転",
-        "src": "assets/word-illustrations/turn-pictogram-v1.webp",
+        "src": "assets/word-illustrations/turn-pictogram-natural-pre21-v1.webp",
         "alt": "順番の一例のイメージ（一例）"
     },
     {
@@ -5905,7 +5905,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "存在、生き物",
-        "src": "assets/word-illustrations/being-pictogram-v1.webp",
+        "src": "assets/word-illustrations/being-pictogram-natural-pre21-v1.webp",
         "alt": "存在、生き物のイメージ（一例）"
     },
     {
@@ -5961,7 +5961,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "黒板",
-        "src": "assets/word-illustrations/blackboard-pictogram-v5.webp",
+        "src": "assets/word-illustrations/blackboard-pictogram-natural-pre21-v1.webp",
         "alt": "黒板のイメージ（一例）"
     },
     {
@@ -6257,7 +6257,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "船長、機長、主将",
-        "src": "assets/word-illustrations/captain-pictogram-v1.webp",
+        "src": "assets/word-illustrations/captain-pictogram-natural-pre21-v1.webp",
         "alt": "船長、機長、主将のイメージ（一例）"
     },
     {
@@ -6425,7 +6425,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "頬（ほほ）",
-        "src": "assets/word-illustrations/cheek-pictogram-v1.webp",
+        "src": "assets/word-illustrations/cheek-pictogram-natural-pre21-v1.webp",
         "alt": "頬（ほほ）のイメージ（一例）"
     },
     {
@@ -6457,7 +6457,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "胸、大箱",
-        "src": "assets/word-illustrations/chest-pictogram-v1.webp",
+        "src": "assets/word-illustrations/chest-pictogram-natural-pre21-v2.webp",
         "alt": "胸、大箱のイメージ（一例）"
     },
     {
@@ -6465,7 +6465,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "子供時代、幼少期",
-        "src": "assets/word-illustrations/childhood-pictogram-v1.webp",
+        "src": "assets/word-illustrations/childhood-pictogram-natural-pre21-v1.webp",
         "alt": "子供時代、幼少期のイメージ（一例）"
     },
     {
@@ -6497,7 +6497,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "あご",
-        "src": "assets/word-illustrations/chin-pictogram-v1.webp",
+        "src": "assets/word-illustrations/chin-pictogram-natural-pre21-v1.webp",
         "alt": "あごのイメージ（一例）"
     },
     {
@@ -6633,7 +6633,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "約束、献身、責任",
-        "src": "assets/word-illustrations/commitment-pictogram-v1.webp",
+        "src": "assets/word-illustrations/commitment-pictogram-natural-pre21-v1.webp",
         "alt": "約束、献身、責任のイメージ（一例）"
     },
     {
@@ -6689,7 +6689,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "作曲家",
-        "src": "assets/word-illustrations/composer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/composer-pictogram-natural-pre21-v1.webp",
         "alt": "作曲家のイメージ（一例）"
     },
     {
@@ -6697,7 +6697,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "懸念、心配、関心事",
-        "src": "assets/word-illustrations/concern-pictogram-v1.webp",
+        "src": "assets/word-illustrations/concern-pictogram-natural-pre21-v1.webp",
         "alt": "懸念、心配、関心事のイメージ（一例）"
     },
     {
@@ -7041,7 +7041,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "歯科医",
-        "src": "assets/word-illustrations/dentist-pictogram-v1.webp",
+        "src": "assets/word-illustrations/dentist-pictogram-natural-pre21-v1.webp",
         "alt": "歯科医のイメージ（一例）"
     },
     {
@@ -7177,7 +7177,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "嫌悪、嫌いなもの",
-        "src": "assets/word-illustrations/dislike-pictogram-v1.webp",
+        "src": "assets/word-illustrations/dislike-pictogram-natural-pre21-v1.webp",
         "alt": "嫌悪、嫌いなもののイメージ（一例）"
     },
     {
@@ -7193,7 +7193,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "疑い",
-        "src": "assets/word-illustrations/doubt-pictogram-v1.webp",
+        "src": "assets/word-illustrations/doubt-pictogram-natural-pre21-v1.webp",
         "alt": "疑いのイメージ（一例）"
     },
     {
@@ -7401,7 +7401,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ねたみ、うらやみ",
-        "src": "assets/word-illustrations/envy-pictogram-v1.webp",
+        "src": "assets/word-illustrations/envy-pictogram-natural-pre21-v1.webp",
         "alt": "ねたみ、うらやみのイメージ（一例）"
     },
     {
@@ -7409,7 +7409,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "話、エピソード、一事件",
-        "src": "assets/word-illustrations/episode-pictogram-v1.webp",
+        "src": "assets/word-illustrations/episode-pictogram-natural-v1.webp",
         "alt": "話、エピソード、一事件のイメージ（一例）"
     },
     {
@@ -7417,7 +7417,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "誤り、間違い、エラー",
-        "src": "assets/word-illustrations/error-pictogram-v1.webp",
+        "src": "assets/word-illustrations/error-pictogram-natural-v1.webp",
         "alt": "誤り、間違い、エラーのイメージ（一例）"
     },
     {
@@ -7425,7 +7425,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "エスカレーター",
-        "src": "assets/word-illustrations/escalator-pictogram-v1.webp",
+        "src": "assets/word-illustrations/escalator-pictogram-natural-v1.webp",
         "alt": "エスカレーターのイメージ（一例）"
     },
     {
@@ -7433,7 +7433,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "逃げる",
-        "src": "assets/word-illustrations/escape-pictogram-v1.webp",
+        "src": "assets/word-illustrations/escape-pictogram-natural-v1.webp",
         "alt": "逃げるのイメージ（一例）"
     },
     {
@@ -7441,7 +7441,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "小論文、随筆、エッセイ",
-        "src": "assets/word-illustrations/essay-pictogram-v1.webp",
+        "src": "assets/word-illustrations/essay-pictogram-natural-v1.webp",
         "alt": "小論文、随筆、エッセイのイメージ（一例）"
     },
     {
@@ -7449,7 +7449,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ユーロ",
-        "src": "assets/word-illustrations/euro-pictogram-v1.webp",
+        "src": "assets/word-illustrations/euro-pictogram-natural-v1.webp",
         "alt": "ユーロのイメージ（一例）"
     },
     {
@@ -7457,7 +7457,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "証拠",
-        "src": "assets/word-illustrations/evidence-pictogram-v1.webp",
+        "src": "assets/word-illustrations/evidence-pictogram-natural-v1.webp",
         "alt": "証拠のイメージ（一例）"
     },
     {
@@ -7465,7 +7465,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "試験、考査",
-        "src": "assets/word-illustrations/exam-pictogram-v1.webp",
+        "src": "assets/word-illustrations/exam-pictogram-natural-v1.webp",
         "alt": "試験、考査のイメージ（一例）"
     },
     {
@@ -7473,7 +7473,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "交換、やり取り、両替",
-        "src": "assets/word-illustrations/exchange-pictogram-v1.webp",
+        "src": "assets/word-illustrations/exchange-pictogram-natural-v1.webp",
         "alt": "交換、やり取り、両替のイメージ（一例）"
     },
     {
@@ -7481,7 +7481,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "運動",
-        "src": "assets/word-illustrations/exercise-pictogram-v1.webp",
+        "src": "assets/word-illustrations/exercise-pictogram-natural-v1.webp",
         "alt": "運動のイメージ（一例）"
     },
     {
@@ -7489,7 +7489,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "展示会、展覧会",
-        "src": "assets/word-illustrations/exhibition-pictogram-v1.webp",
+        "src": "assets/word-illustrations/exhibition-pictogram-natural-v1.webp",
         "alt": "展示会、展覧会のイメージ（一例）"
     },
     {
@@ -7497,7 +7497,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "経験、体験",
-        "src": "assets/word-illustrations/experience-pictogram-v1.webp",
+        "src": "assets/word-illustrations/experience-pictogram-natural-v1.webp",
         "alt": "経験、体験のイメージ（一例）"
     },
     {
@@ -7505,7 +7505,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "専門家",
-        "src": "assets/word-illustrations/expert-pictogram-v1.webp",
+        "src": "assets/word-illustrations/expert-pictogram-natural-v1.webp",
         "alt": "専門家のイメージ（一例）"
     },
     {
@@ -7513,7 +7513,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "説明、解釈",
-        "src": "assets/word-illustrations/explanation-pictogram-v1.webp",
+        "src": "assets/word-illustrations/explanation-pictogram-natural-v1.webp",
         "alt": "説明、解釈のイメージ（一例）"
     },
     {
@@ -7521,7 +7521,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "急行",
-        "src": "assets/word-illustrations/express-pictogram-v1.webp",
+        "src": "assets/word-illustrations/express-pictogram-natural-v1.webp",
         "alt": "急行のイメージ（一例）"
     },
     {
@@ -7529,7 +7529,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "表現、表情",
-        "src": "assets/word-illustrations/expression-pictogram-v1.webp",
+        "src": "assets/word-illustrations/expression-pictogram-natural-v1.webp",
         "alt": "表現、表情のイメージ（一例）"
     },
     {
@@ -7537,7 +7537,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "事実",
-        "src": "assets/word-illustrations/fact-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fact-pictogram-natural-v1.webp",
         "alt": "事実のイメージ（一例）"
     },
     {
@@ -7545,7 +7545,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "運賃",
-        "src": "assets/word-illustrations/fare-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fare-pictogram-natural-v1.webp",
         "alt": "運賃のイメージ（一例）"
     },
     {
@@ -7553,7 +7553,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ファッション、流行",
-        "src": "assets/word-illustrations/fashion-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fashion-pictogram-natural-v1.webp",
         "alt": "ファッション、流行のイメージ（一例）"
     },
     {
@@ -7561,7 +7561,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ファストフード",
-        "src": "assets/word-illustrations/fast-food-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fast-food-pictogram-natural-v1.webp",
         "alt": "ファストフードのイメージ（一例）"
     },
     {
@@ -7569,7 +7569,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "落ち度、欠点",
-        "src": "assets/word-illustrations/fault-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fault-pictogram-natural-v1.webp",
         "alt": "落ち度、欠点のイメージ（一例）"
     },
     {
@@ -7577,7 +7577,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "好意、恩恵",
-        "src": "assets/word-illustrations/favor-pictogram-v1.webp",
+        "src": "assets/word-illustrations/favor-pictogram-natural-v1.webp",
         "alt": "好意、恩恵のイメージ（一例）"
     },
     {
@@ -7585,7 +7585,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "恐怖",
-        "src": "assets/word-illustrations/fear-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fear-pictogram-natural-v1.webp",
         "alt": "恐怖のイメージ（一例）"
     },
     {
@@ -7593,7 +7593,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "羽根",
-        "src": "assets/word-illustrations/feather-pictogram-v1.webp",
+        "src": "assets/word-illustrations/feather-pictogram-natural-v1.webp",
         "alt": "羽根のイメージ（一例）"
     },
     {
@@ -7601,7 +7601,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "特徴、呼び物、顔立ち",
-        "src": "assets/word-illustrations/feature-pictogram-v1.webp",
+        "src": "assets/word-illustrations/feature-pictogram-natural-v1.webp",
         "alt": "特徴、呼び物、顔立ちのイメージ（一例）"
     },
     {
@@ -7609,7 +7609,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "料金、謝礼",
-        "src": "assets/word-illustrations/fee-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fee-pictogram-natural-v1.webp",
         "alt": "料金、謝礼のイメージ（一例）"
     },
     {
@@ -7617,7 +7617,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "感じ、手触り",
-        "src": "assets/word-illustrations/feel-pictogram-v1.webp",
+        "src": "assets/word-illustrations/feel-pictogram-natural-v1.webp",
         "alt": "感じ、手触りのイメージ（一例）"
     },
     {
@@ -7625,7 +7625,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "柵、垣根、フェンス",
-        "src": "assets/word-illustrations/fence-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fence-pictogram-natural-v1.webp",
         "alt": "柵、垣根、フェンスのイメージ（一例）"
     },
     {
@@ -7633,7 +7633,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "小説、フィクション",
-        "src": "assets/word-illustrations/fiction-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fiction-pictogram-natural-v1.webp",
         "alt": "小説、フィクションのイメージ（一例）"
     },
     {
@@ -7641,7 +7641,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "戦士、格闘家、戦闘機",
-        "src": "assets/word-illustrations/fighter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fighter-pictogram-natural-v1.webp",
         "alt": "戦士、格闘家、戦闘機のイメージ（一例）"
     },
     {
@@ -7649,7 +7649,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "数字、体つき、図",
-        "src": "assets/word-illustrations/figure-pictogram-v1.webp",
+        "src": "assets/word-illustrations/figure-pictogram-natural-v1.webp",
         "alt": "数字、体つき、図のイメージ（一例）"
     },
     {
@@ -7657,7 +7657,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "映画、フィルム",
-        "src": "assets/word-illustrations/film-pictogram-v1.webp",
+        "src": "assets/word-illustrations/film-pictogram-natural-v1.webp",
         "alt": "映画、フィルムのイメージ（一例）"
     },
     {
@@ -7665,7 +7665,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "決勝、期末試験",
-        "src": "assets/word-illustrations/final-pictogram-v1.webp",
+        "src": "assets/word-illustrations/final-pictogram-natural-v1.webp",
         "alt": "決勝、期末試験のイメージ（一例）"
     },
     {
@@ -7673,7 +7673,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "下の名前",
-        "src": "assets/word-illustrations/first-name-pictogram-v1.webp",
+        "src": "assets/word-illustrations/first-name-pictogram-natural-v1.webp",
         "alt": "下の名前のイメージ（一例）"
     },
     {
@@ -7681,7 +7681,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "漁師、釣り人",
-        "src": "assets/word-illustrations/fisherman-pictogram-v2.webp",
+        "src": "assets/word-illustrations/fisherman-pictogram-natural-v1.webp",
         "alt": "漁師、釣り人のイメージ（一例）"
     },
     {
@@ -7689,7 +7689,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "窮地、難局",
-        "src": "assets/word-illustrations/fix-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fix-pictogram-natural-v2.webp",
         "alt": "窮地、難局のイメージ（一例）"
     },
     {
@@ -7697,7 +7697,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ノミ",
-        "src": "assets/word-illustrations/flea-pictogram-v1.webp",
+        "src": "assets/word-illustrations/flea-pictogram-natural-v1.webp",
         "alt": "ノミのイメージ（一例）"
     },
     {
@@ -7705,7 +7705,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "飛行、航空便",
-        "src": "assets/word-illustrations/flight-pictogram-v1.webp",
+        "src": "assets/word-illustrations/flight-pictogram-natural-v1.webp",
         "alt": "飛行、航空便のイメージ（一例）"
     },
     {
@@ -7713,7 +7713,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "浮き物、山車",
-        "src": "assets/word-illustrations/float-pictogram-v1.webp",
+        "src": "assets/word-illustrations/float-pictogram-natural-v1.webp",
         "alt": "浮き物、山車のイメージ（一例）"
     },
     {
@@ -7721,7 +7721,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "洪水、氾濫",
-        "src": "assets/word-illustrations/flood-pictogram-v1.webp",
+        "src": "assets/word-illustrations/flood-pictogram-natural-v1.webp",
         "alt": "洪水、氾濫のイメージ（一例）"
     },
     {
@@ -7729,7 +7729,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "小麦粉",
-        "src": "assets/word-illustrations/flour-pictogram-v1.webp",
+        "src": "assets/word-illustrations/flour-pictogram-natural-v1.webp",
         "alt": "小麦粉のイメージ（一例）"
     },
     {
@@ -7737,7 +7737,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "霧",
-        "src": "assets/word-illustrations/fog-pictogram-v2.webp",
+        "src": "assets/word-illustrations/fog-pictogram-natural-v1.webp",
         "alt": "霧のイメージ（一例）"
     },
     {
@@ -7745,7 +7745,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "フォルダー、紙挟み",
-        "src": "assets/word-illustrations/folder-pictogram-v1.webp",
+        "src": "assets/word-illustrations/folder-pictogram-natural-v1.webp",
         "alt": "フォルダー、紙挟みのイメージ（一例）"
     },
     {
@@ -7753,7 +7753,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "馬鹿、だます",
-        "src": "assets/word-illustrations/fool-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fool-pictogram-natural-v1.webp",
         "alt": "馬鹿、だますのイメージ（一例）"
     },
     {
@@ -7761,7 +7761,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "サッカー選手",
-        "src": "assets/word-illustrations/footballer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/footballer-pictogram-natural-v1.webp",
         "alt": "サッカー選手のイメージ（一例）"
     },
     {
@@ -7769,7 +7769,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "力、軍隊",
-        "src": "assets/word-illustrations/force-pictogram-v1.webp",
+        "src": "assets/word-illustrations/force-pictogram-natural-v1.webp",
         "alt": "力、軍隊のイメージ（一例）"
     },
     {
@@ -7777,7 +7777,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "森",
-        "src": "assets/word-illustrations/forest-pictogram-v1.webp",
+        "src": "assets/word-illustrations/forest-pictogram-natural-v1.webp",
         "alt": "森のイメージ（一例）"
     },
     {
@@ -7785,7 +7785,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "フォーク、分かれ道",
-        "src": "assets/word-illustrations/fork-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fork-pictogram-natural-v1.webp",
         "alt": "フォーク、分かれ道のイメージ（一例）"
     },
     {
@@ -7793,7 +7793,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "運勢、財産",
-        "src": "assets/word-illustrations/fortune-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fortune-pictogram-natural-v1.webp",
         "alt": "運勢、財産のイメージ（一例）"
     },
     {
@@ -7801,7 +7801,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "枠、額縁、骨組み",
-        "src": "assets/word-illustrations/frame-pictogram-v1.webp",
+        "src": "assets/word-illustrations/frame-pictogram-natural-v1.webp",
         "alt": "枠、額縁、骨組みのイメージ（一例）"
     },
     {
@@ -7809,7 +7809,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "自由、解放",
-        "src": "assets/word-illustrations/freedom-pictogram-v1.webp",
+        "src": "assets/word-illustrations/freedom-pictogram-natural-v1.webp",
         "alt": "自由、解放のイメージ（一例）"
     },
     {
@@ -7817,7 +7817,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "冷蔵庫",
-        "src": "assets/word-illustrations/fridge-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fridge-pictogram-natural-v1.webp",
         "alt": "冷蔵庫のイメージ（一例）"
     },
     {
@@ -7825,7 +7825,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "友情、友愛",
-        "src": "assets/word-illustrations/friendship-pictogram-v1.webp",
+        "src": "assets/word-illustrations/friendship-pictogram-natural-v1.webp",
         "alt": "友情、友愛のイメージ（一例）"
     },
     {
@@ -7833,7 +7833,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "正面、前部、前面",
-        "src": "assets/word-illustrations/front-pictogram-v2.webp",
+        "src": "assets/word-illustrations/front-pictogram-natural-v1.webp",
         "alt": "正面、前部、前面のイメージ（一例）"
     },
     {
@@ -7841,7 +7841,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "揚げ物、フライ",
-        "src": "assets/word-illustrations/fry-pictogram-v1.webp",
+        "src": "assets/word-illustrations/fry-pictogram-natural-v1.webp",
         "alt": "揚げ物、フライのイメージ（一例）"
     },
     {
@@ -7849,7 +7849,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "家具",
-        "src": "assets/word-illustrations/furniture-pictogram-v1.webp",
+        "src": "assets/word-illustrations/furniture-pictogram-natural-v1.webp",
         "alt": "家具のイメージ（一例）"
     },
     {
@@ -7857,7 +7857,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "画廊、ギャラリー、回廊",
-        "src": "assets/word-illustrations/gallery-pictogram-v1.webp",
+        "src": "assets/word-illustrations/gallery-pictogram-natural-v1.webp",
         "alt": "画廊、ギャラリー、回廊のイメージ（一例）"
     },
     {
@@ -7865,7 +7865,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "車庫、ガレージ",
-        "src": "assets/word-illustrations/garage-pictogram-v1.webp",
+        "src": "assets/word-illustrations/garage-pictogram-natural-v1.webp",
         "alt": "車庫、ガレージのイメージ（一例）"
     },
     {
@@ -7873,7 +7873,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ニンニク",
-        "src": "assets/word-illustrations/garlic-pictogram-v1.webp",
+        "src": "assets/word-illustrations/garlic-pictogram-natural-v1.webp",
         "alt": "ニンニクのイメージ（一例）"
     },
     {
@@ -7881,7 +7881,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ガス、ガソリン",
-        "src": "assets/word-illustrations/gas-pictogram-v1.webp",
+        "src": "assets/word-illustrations/gas-pictogram-natural-v1.webp",
         "alt": "ガス、ガソリンのイメージ（一例）"
     },
     {
@@ -7889,7 +7889,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "門、搭乗口",
-        "src": "assets/word-illustrations/gate-pictogram-v1.webp",
+        "src": "assets/word-illustrations/gate-pictogram-natural-v1.webp",
         "alt": "門、搭乗口のイメージ（一例）"
     },
     {
@@ -7897,7 +7897,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "性、性別",
-        "src": "assets/word-illustrations/gender-pictogram-v1.webp",
+        "src": "assets/word-illustrations/gender-pictogram-natural-v1.webp",
         "alt": "性、性別のイメージ（一例）"
     },
     {
@@ -7905,7 +7905,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "世代、一世代",
-        "src": "assets/word-illustrations/generation-pictogram-v1.webp",
+        "src": "assets/word-illustrations/generation-pictogram-natural-v1.webp",
         "alt": "世代、一世代のイメージ（一例）"
     },
     {
@@ -7913,7 +7913,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "地球、世界、球体",
-        "src": "assets/word-illustrations/globe-pictogram-v1.webp",
+        "src": "assets/word-illustrations/globe-pictogram-natural-v1.webp",
         "alt": "地球、世界、球体のイメージ（一例）"
     },
     {
@@ -7921,7 +7921,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "手袋、グローブ",
-        "src": "assets/word-illustrations/glove-pictogram-v1.webp",
+        "src": "assets/word-illustrations/glove-pictogram-natural-v1.webp",
         "alt": "手袋、グローブのイメージ（一例）"
     },
     {
@@ -7929,7 +7929,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "金、黄金",
-        "src": "assets/word-illustrations/gold-pictogram-v1.webp",
+        "src": "assets/word-illustrations/gold-pictogram-natural-v1.webp",
         "alt": "金、黄金のイメージ（一例）"
     },
     {
@@ -7937,7 +7937,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ゴルフ",
-        "src": "assets/word-illustrations/golf-pictogram-v1.webp",
+        "src": "assets/word-illustrations/golf-pictogram-natural-v1.webp",
         "alt": "ゴルフのイメージ（一例）"
     },
     {
@@ -7945,7 +7945,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "政府、政治",
-        "src": "assets/word-illustrations/government-pictogram-v1.webp",
+        "src": "assets/word-illustrations/government-pictogram-natural-v1.webp",
         "alt": "政府、政治のイメージ（一例）"
     },
     {
@@ -7953,7 +7953,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "優雅さ、上品さ、猶予",
-        "src": "assets/word-illustrations/grace-pictogram-v1.webp",
+        "src": "assets/word-illustrations/grace-pictogram-natural-v1.webp",
         "alt": "優雅さ、上品さ、猶予のイメージ（一例）"
     },
     {
@@ -7961,7 +7961,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "グラム",
-        "src": "assets/word-illustrations/gram-pictogram-v1.webp",
+        "src": "assets/word-illustrations/gram-pictogram-natural-v1.webp",
         "alt": "グラムのイメージ（一例）"
     },
     {
@@ -7969,7 +7969,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "孫",
-        "src": "assets/word-illustrations/grandchild-pictogram-v1.webp",
+        "src": "assets/word-illustrations/grandchild-pictogram-natural-v1.webp",
         "alt": "孫のイメージ（一例）"
     },
     {
@@ -7977,7 +7977,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "おじいちゃん",
-        "src": "assets/word-illustrations/granddad-pictogram-v1.webp",
+        "src": "assets/word-illustrations/granddad-pictogram-natural-v1.webp",
         "alt": "おじいちゃんのイメージ（一例）"
     },
     {
@@ -7985,7 +7985,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "孫娘",
-        "src": "assets/word-illustrations/granddaughter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/granddaughter-pictogram-natural-v1.webp",
         "alt": "孫娘のイメージ（一例）"
     },
     {
@@ -7993,7 +7993,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "孫息子",
-        "src": "assets/word-illustrations/grandson-pictogram-v1.webp",
+        "src": "assets/word-illustrations/grandson-pictogram-natural-v1.webp",
         "alt": "孫息子のイメージ（一例）"
     },
     {
@@ -8001,7 +8001,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "おばあちゃん",
-        "src": "assets/word-illustrations/granny-pictogram-v1.webp",
+        "src": "assets/word-illustrations/granny-pictogram-natural-v1.webp",
         "alt": "おばあちゃんのイメージ（一例）"
     },
     {
@@ -8009,7 +8009,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "緑、青空、芝生",
-        "src": "assets/word-illustrations/green-pictogram-v3.webp",
+        "src": "assets/word-illustrations/green-pictogram-natural-v1.webp",
         "alt": "緑、青空、芝生のイメージ（一例）"
     },
     {
@@ -8017,7 +8017,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "食料雑貨店、スーパー",
-        "src": "assets/word-illustrations/grocery-store-pictogram-v1.webp",
+        "src": "assets/word-illustrations/grocery-store-pictogram-natural-v1.webp",
         "alt": "食料雑貨店、スーパーのイメージ（一例）"
     },
     {
@@ -8025,7 +8025,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "見守り、護衛、守備",
-        "src": "assets/word-illustrations/guard-pictogram-v1.webp",
+        "src": "assets/word-illustrations/guard-pictogram-natural-v1.webp",
         "alt": "見守り、護衛、守備のイメージ（一例）"
     },
     {
@@ -8033,7 +8033,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ガイドブック",
-        "src": "assets/word-illustrations/guidebook-pictogram-v1.webp",
+        "src": "assets/word-illustrations/guidebook-pictogram-natural-v1.webp",
         "alt": "ガイドブックのイメージ（一例）"
     },
     {
@@ -8041,7 +8041,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "銃、鉄砲",
-        "src": "assets/word-illustrations/gun-pictogram-v1.webp",
+        "src": "assets/word-illustrations/gun-pictogram-natural-v1.webp",
         "alt": "銃、鉄砲のイメージ（一例）"
     },
     {
@@ -8049,7 +8049,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ハム",
-        "src": "assets/word-illustrations/ham-pictogram-v1.webp",
+        "src": "assets/word-illustrations/ham-pictogram-natural-v1.webp",
         "alt": "ハムのイメージ（一例）"
     },
     {
@@ -8057,7 +8057,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ハンドバッグ、手提げ袋",
-        "src": "assets/word-illustrations/handbag-pictogram-v2.webp",
+        "src": "assets/word-illustrations/handbag-pictogram-natural-v1.webp",
         "alt": "ハンドバッグ、手提げ袋のイメージ（一例）"
     },
     {
@@ -8065,7 +8065,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "取っ手、ハンドル、柄",
-        "src": "assets/word-illustrations/handle-pictogram-v1.webp",
+        "src": "assets/word-illustrations/handle-pictogram-natural-v1.webp",
         "alt": "取っ手、ハンドル、柄のイメージ（一例）"
     },
     {
@@ -8073,7 +8073,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "幸せ、幸福",
-        "src": "assets/word-illustrations/happiness-pictogram-v1.webp",
+        "src": "assets/word-illustrations/happiness-pictogram-natural-v1.webp",
         "alt": "幸せ、幸福のイメージ（一例）"
     },
     {
@@ -8081,7 +8081,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "調和、和声、ハーモニー",
-        "src": "assets/word-illustrations/harmony-pictogram-v1.webp",
+        "src": "assets/word-illustrations/harmony-pictogram-natural-v1.webp",
         "alt": "調和、和声、ハーモニーのイメージ（一例）"
     },
     {
@@ -8089,7 +8089,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "収穫、収穫期",
-        "src": "assets/word-illustrations/harvest-pictogram-v1.webp",
+        "src": "assets/word-illustrations/harvest-pictogram-natural-v1.webp",
         "alt": "収穫、収穫期のイメージ（一例）"
     },
     {
@@ -8097,7 +8097,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ヘッドホン",
-        "src": "assets/word-illustrations/headphone-pictogram-v1.webp",
+        "src": "assets/word-illustrations/headphone-pictogram-natural-v1.webp",
         "alt": "ヘッドホンのイメージ（一例）"
     },
     {
@@ -8105,7 +8105,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "校長（英）",
-        "src": "assets/word-illustrations/headteacher-pictogram-v1.webp",
+        "src": "assets/word-illustrations/headteacher-pictogram-natural-v1.webp",
         "alt": "校長（英）のイメージ（一例）"
     },
     {
@@ -8113,7 +8113,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "熱、暑さ、加熱",
-        "src": "assets/word-illustrations/heat-pictogram-v1.webp",
+        "src": "assets/word-illustrations/heat-pictogram-natural-v1.webp",
         "alt": "熱、暑さ、加熱のイメージ（一例）"
     },
     {
@@ -8121,7 +8121,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "暖房",
-        "src": "assets/word-illustrations/heating-pictogram-v1.webp",
+        "src": "assets/word-illustrations/heating-pictogram-natural-v1.webp",
         "alt": "暖房のイメージ（一例）"
     },
     {
@@ -8129,7 +8129,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "助け、援助",
-        "src": "assets/word-illustrations/help-pictogram-v1.webp",
+        "src": "assets/word-illustrations/help-pictogram-natural-v1.webp",
         "alt": "助け、援助のイメージ（一例）"
     },
     {
@@ -8137,7 +8137,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "英雄、ヒーロー、主人公",
-        "src": "assets/word-illustrations/hero-pictogram-v1.webp",
+        "src": "assets/word-illustrations/hero-pictogram-natural-v1.webp",
         "alt": "英雄、ヒーロー、主人公のイメージ（一例）"
     },
     {
@@ -8145,7 +8145,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "高校",
-        "src": "assets/word-illustrations/high-school-pictogram-v1.webp",
+        "src": "assets/word-illustrations/high-school-pictogram-natural-v1.webp",
         "alt": "高校のイメージ（一例）"
     },
     {
@@ -8153,7 +8153,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "幹線道路、ハイウェイ",
-        "src": "assets/word-illustrations/highway-pictogram-v1.webp",
+        "src": "assets/word-illustrations/highway-pictogram-natural-v1.webp",
         "alt": "幹線道路、ハイウェイのイメージ（一例）"
     },
     {
@@ -8161,7 +8161,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ハイキング、値上げ",
-        "src": "assets/word-illustrations/hike-pictogram-v1.webp",
+        "src": "assets/word-illustrations/hike-pictogram-natural-v1.webp",
         "alt": "ハイキング、値上げのイメージ（一例）"
     },
     {
@@ -8169,7 +8169,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ハイキング",
-        "src": "assets/word-illustrations/hiking-pictogram-v1.webp",
+        "src": "assets/word-illustrations/hiking-pictogram-natural-v1.webp",
         "alt": "ハイキングのイメージ（一例）"
     },
     {
@@ -8177,7 +8177,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ヒップホップ",
-        "src": "assets/word-illustrations/hip-hop-pictogram-v1.webp",
+        "src": "assets/word-illustrations/hip-hop-pictogram-natural-v1.webp",
         "alt": "ヒップホップのイメージ（一例）"
     },
     {
@@ -8185,7 +8185,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ホッケー",
-        "src": "assets/word-illustrations/hockey-pictogram-v1.webp",
+        "src": "assets/word-illustrations/hockey-pictogram-natural-v1.webp",
         "alt": "ホッケーのイメージ（一例）"
     },
     {
@@ -8193,7 +8193,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ハチミツ",
-        "src": "assets/word-illustrations/honey-pictogram-v1.webp",
+        "src": "assets/word-illustrations/honey-pictogram-natural-v1.webp",
         "alt": "ハチミツのイメージ（一例）"
     },
     {
@@ -8201,7 +8201,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "名誉、光栄",
-        "src": "assets/word-illustrations/honor-pictogram-v1.webp",
+        "src": "assets/word-illustrations/honor-pictogram-natural-v1.webp",
         "alt": "名誉、光栄のイメージ（一例）"
     },
     {
@@ -8209,7 +8209,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "好意、恩恵",
-        "src": "assets/word-illustrations/favor-pictogram-v1.webp",
+        "src": "assets/word-illustrations/favor-pictogram-natural-v1.webp",
         "alt": "好意、恩恵のイメージ（一例）"
     },
     {
@@ -8217,7 +8217,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "グラム（英）",
-        "src": "assets/word-illustrations/gram-pictogram-v1.webp",
+        "src": "assets/word-illustrations/gram-pictogram-natural-v1.webp",
         "alt": "グラム（英）のイメージ（一例）"
     },
     {
@@ -8225,7 +8225,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ヒップホップ（続き）",
-        "src": "assets/word-illustrations/hip-hop-pictogram-v1.webp",
+        "src": "assets/word-illustrations/hip-hop-pictogram-natural-v1.webp",
         "alt": "ヒップホップ（続き）のイメージ（一例）"
     },
     {
@@ -8233,7 +8233,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ヒップホップ",
-        "src": "assets/word-illustrations/hip-hop-pictogram-v1.webp",
+        "src": "assets/word-illustrations/hip-hop-pictogram-natural-v1.webp",
         "alt": "ヒップホップのイメージ（一例）"
     },
     {
@@ -8241,7 +8241,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "名誉、光栄（英）",
-        "src": "assets/word-illustrations/honor-pictogram-v1.webp",
+        "src": "assets/word-illustrations/honor-pictogram-natural-v1.webp",
         "alt": "名誉、光栄（英）のイメージ（一例）"
     },
     {
@@ -8249,7 +8249,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "恐怖、ホラー",
-        "src": "assets/word-illustrations/horror-pictogram-v1.webp",
+        "src": "assets/word-illustrations/horror-pictogram-natural-v1.webp",
         "alt": "恐怖、ホラーのイメージ（一例）"
     },
     {
@@ -8257,7 +8257,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "主催者、主人",
-        "src": "assets/word-illustrations/host-pictogram-v1.webp",
+        "src": "assets/word-illustrations/host-pictogram-natural-v1.webp",
         "alt": "主催者、主人のイメージ（一例）"
     },
     {
@@ -8265,7 +8265,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ハンター、狩人",
-        "src": "assets/word-illustrations/hunter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/hunter-pictogram-natural-v1.webp",
         "alt": "ハンター、狩人のイメージ（一例）"
     },
     {
@@ -8273,7 +8273,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "身分証明書",
-        "src": "assets/word-illustrations/id-pictogram-v1.webp",
+        "src": "assets/word-illustrations/id-pictogram-natural-v1.webp",
         "alt": "身分証明書のイメージ（一例）"
     },
     {
@@ -8281,7 +8281,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "像、印象、画像",
-        "src": "assets/word-illustrations/image-pictogram-v1.webp",
+        "src": "assets/word-illustrations/image-pictogram-natural-v1.webp",
         "alt": "像、印象、画像のイメージ（一例）"
     },
     {
@@ -8289,7 +8289,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "想像（力）",
-        "src": "assets/word-illustrations/imagination-pictogram-v1.webp",
+        "src": "assets/word-illustrations/imagination-pictogram-natural-v1.webp",
         "alt": "想像（力）のイメージ（一例）"
     },
     {
@@ -8297,7 +8297,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "影響、衝撃",
-        "src": "assets/word-illustrations/impact-pictogram-v1.webp",
+        "src": "assets/word-illustrations/impact-pictogram-natural-v1.webp",
         "alt": "影響、衝撃のイメージ（一例）"
     },
     {
@@ -8305,7 +8305,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "重要性",
-        "src": "assets/word-illustrations/importance-pictogram-v1.webp",
+        "src": "assets/word-illustrations/importance-pictogram-natural-v1.webp",
         "alt": "重要性のイメージ（一例）"
     },
     {
@@ -8313,7 +8313,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "インチ",
-        "src": "assets/word-illustrations/inch-pictogram-v1.webp",
+        "src": "assets/word-illustrations/inch-pictogram-natural-v1.webp",
         "alt": "インチのイメージ（一例）"
     },
     {
@@ -8321,7 +8321,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "独立、自立",
-        "src": "assets/word-illustrations/independence-pictogram-v1.webp",
+        "src": "assets/word-illustrations/independence-pictogram-natural-v2.webp",
         "alt": "独立、自立のイメージ（一例）"
     },
     {
@@ -8329,7 +8329,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "影響（力）",
-        "src": "assets/word-illustrations/influence-pictogram-v1.webp",
+        "src": "assets/word-illustrations/influence-pictogram-natural-v1.webp",
         "alt": "影響（力）のイメージ（一例）"
     },
     {
@@ -8337,7 +8337,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "昆虫",
-        "src": "assets/word-illustrations/insect-pictogram-v1.webp",
+        "src": "assets/word-illustrations/insect-pictogram-natural-v1.webp",
         "alt": "昆虫のイメージ（一例）"
     },
     {
@@ -8345,7 +8345,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "インスピレーション、霊感",
-        "src": "assets/word-illustrations/inspiration-pictogram-v1.webp",
+        "src": "assets/word-illustrations/inspiration-pictogram-natural-v2.webp",
         "alt": "インスピレーション、霊感のイメージ（一例）"
     },
     {
@@ -8353,7 +8353,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "楽器、器具",
-        "src": "assets/word-illustrations/instrument-pictogram-v2.webp",
+        "src": "assets/word-illustrations/instrument-pictogram-natural-v1.webp",
         "alt": "楽器、器具のイメージ（一例）"
     },
     {
@@ -8361,7 +8361,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "知能、知性、情報",
-        "src": "assets/word-illustrations/intelligence-pictogram-v3.webp",
+        "src": "assets/word-illustrations/intelligence-pictogram-natural-v1.webp",
         "alt": "知能、知性、情報のイメージ（一例）"
     },
     {
@@ -8369,7 +8369,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "興味",
-        "src": "assets/word-illustrations/interest-pictogram-v1.webp",
+        "src": "assets/word-illustrations/interest-pictogram-natural-v1.webp",
         "alt": "興味のイメージ（一例）"
     },
     {
@@ -8377,7 +8377,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "発明（品）",
-        "src": "assets/word-illustrations/invention-pictogram-v1.webp",
+        "src": "assets/word-illustrations/invention-pictogram-natural-v1.webp",
         "alt": "発明（品）のイメージ（一例）"
     },
     {
@@ -8385,7 +8385,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "問題、発行",
-        "src": "assets/word-illustrations/issue-pictogram-v1.webp",
+        "src": "assets/word-illustrations/issue-pictogram-natural-v1.webp",
         "alt": "問題、発行のイメージ（一例）"
     },
     {
@@ -8393,7 +8393,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "情報技術",
-        "src": "assets/word-illustrations/it-pictogram-v1.webp",
+        "src": "assets/word-illustrations/it-pictogram-natural-v1.webp",
         "alt": "情報技術のイメージ（一例）"
     },
     {
@@ -8401,7 +8401,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ジャム、混雑、行き詰まり",
-        "src": "assets/word-illustrations/jam-pictogram-v1.webp",
+        "src": "assets/word-illustrations/jam-pictogram-natural-v1.webp",
         "alt": "ジャム、混雑、行き詰まりのイメージ（一例）"
     },
     {
@@ -8409,7 +8409,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ゼリー",
-        "src": "assets/word-illustrations/jelly-pictogram-v1.webp",
+        "src": "assets/word-illustrations/jelly-pictogram-natural-v1.webp",
         "alt": "ゼリーのイメージ（一例）"
     },
     {
@@ -8417,7 +8417,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "冗談、ジョーク",
-        "src": "assets/word-illustrations/joke-pictogram-v1.webp",
+        "src": "assets/word-illustrations/joke-pictogram-natural-v1.webp",
         "alt": "冗談、ジョークのイメージ（一例）"
     },
     {
@@ -8425,7 +8425,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "旅、道のり",
-        "src": "assets/word-illustrations/journey-pictogram-v2.webp",
+        "src": "assets/word-illustrations/journey-pictogram-natural-v1.webp",
         "alt": "旅、道のりのイメージ（一例）"
     },
     {
@@ -8433,7 +8433,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "喜び",
-        "src": "assets/word-illustrations/joy-pictogram-v1.webp",
+        "src": "assets/word-illustrations/joy-pictogram-natural-v2.webp",
         "alt": "喜びのイメージ（一例）"
     },
     {
@@ -8441,7 +8441,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "くず、がらくた",
-        "src": "assets/word-illustrations/junk-pictogram-v1.webp",
+        "src": "assets/word-illustrations/junk-pictogram-natural-v1.webp",
         "alt": "くず、がらくたのイメージ（一例）"
     },
     {
@@ -8449,7 +8449,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "殺人者",
-        "src": "assets/word-illustrations/killer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/killer-pictogram-natural-v1.webp",
         "alt": "殺人者のイメージ（一例）"
     },
     {
@@ -8457,7 +8457,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "キログラム",
-        "src": "assets/word-illustrations/kilo-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kilo-pictogram-natural-v1.webp",
         "alt": "キログラムのイメージ（一例）"
     },
     {
@@ -8465,7 +8465,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "キロメートル",
-        "src": "assets/word-illustrations/kilometer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kilometer-pictogram-natural-v1.webp",
         "alt": "キロメートルのイメージ（一例）"
     },
     {
@@ -8473,7 +8473,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "王国",
-        "src": "assets/word-illustrations/kingdom-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kingdom-pictogram-natural-v1.webp",
         "alt": "王国のイメージ（一例）"
     },
     {
@@ -8481,7 +8481,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "道具一式、キット",
-        "src": "assets/word-illustrations/kit-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kit-pictogram-natural-v1.webp",
         "alt": "道具一式、キットのイメージ（一例）"
     },
     {
@@ -8489,7 +8489,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ノック、たたく",
-        "src": "assets/word-illustrations/knock-pictogram-v1.webp",
+        "src": "assets/word-illustrations/knock-pictogram-natural-v1.webp",
         "alt": "ノック、たたくのイメージ（一例）"
     },
     {
@@ -8497,7 +8497,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "知識、学識",
-        "src": "assets/word-illustrations/knowledge-pictogram-v1.webp",
+        "src": "assets/word-illustrations/knowledge-pictogram-natural-v1.webp",
         "alt": "知識、学識のイメージ（一例）"
     },
     {
@@ -8505,7 +8505,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "労働、骨折り",
-        "src": "assets/word-illustrations/labor-pictogram-v1.webp",
+        "src": "assets/word-illustrations/labor-pictogram-natural-v1.webp",
         "alt": "労働、骨折りのイメージ（一例）"
     },
     {
@@ -8513,7 +8513,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "不足",
-        "src": "assets/word-illustrations/lack-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lack-pictogram-natural-v1.webp",
         "alt": "不足のイメージ（一例）"
     },
     {
@@ -8521,7 +8521,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "湖",
-        "src": "assets/word-illustrations/lake-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lake-pictogram-natural-v1.webp",
         "alt": "湖のイメージ（一例）"
     },
     {
@@ -8529,7 +8529,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ランプ、電気",
-        "src": "assets/word-illustrations/lamp-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lamp-pictogram-natural-v1.webp",
         "alt": "ランプ、電気のイメージ（一例）"
     },
     {
@@ -8537,7 +8537,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "風景、眺め",
-        "src": "assets/word-illustrations/landscape-pictogram-v1.webp",
+        "src": "assets/word-illustrations/landscape-pictogram-natural-v1.webp",
         "alt": "風景、眺めのイメージ（一例）"
     },
     {
@@ -8545,7 +8545,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "小道、車線",
-        "src": "assets/word-illustrations/lane-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lane-pictogram-natural-v1.webp",
         "alt": "小道、車線のイメージ（一例）"
     },
     {
@@ -8553,7 +8553,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "法律",
-        "src": "assets/word-illustrations/law-pictogram-v1.webp",
+        "src": "assets/word-illustrations/law-pictogram-natural-v1.webp",
         "alt": "法律のイメージ（一例）"
     },
     {
@@ -8561,7 +8561,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "弁護士",
-        "src": "assets/word-illustrations/lawyer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lawyer-pictogram-natural-v1.webp",
         "alt": "弁護士のイメージ（一例）"
     },
     {
@@ -8569,7 +8569,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "怠惰、ものぐさ",
-        "src": "assets/word-illustrations/laziness-pictogram-v1.webp",
+        "src": "assets/word-illustrations/laziness-pictogram-natural-v1.webp",
         "alt": "怠惰、ものぐさのイメージ（一例）"
     },
     {
@@ -8577,7 +8577,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "導く、リード",
-        "src": "assets/word-illustrations/lead-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lead-pictogram-natural-v1.webp",
         "alt": "導く、リードのイメージ（一例）"
     },
     {
@@ -8585,7 +8585,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "学習者",
-        "src": "assets/word-illustrations/learner-pictogram-v1.webp",
+        "src": "assets/word-illustrations/learner-pictogram-natural-v1.webp",
         "alt": "学習者のイメージ（一例）"
     },
     {
@@ -8593,7 +8593,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "革、レザー",
-        "src": "assets/word-illustrations/leather-pictogram-v1.webp",
+        "src": "assets/word-illustrations/leather-pictogram-natural-v1.webp",
         "alt": "革、レザーのイメージ（一例）"
     },
     {
@@ -8601,7 +8601,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "左",
-        "src": "assets/word-illustrations/left-pictogram-v1.webp",
+        "src": "assets/word-illustrations/left-pictogram-natural-v1.webp",
         "alt": "左のイメージ（一例）"
     },
     {
@@ -8609,7 +8609,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "レジャー、余暇",
-        "src": "assets/word-illustrations/leisure-pictogram-v1.webp",
+        "src": "assets/word-illustrations/leisure-pictogram-natural-v1.webp",
         "alt": "レジャー、余暇のイメージ（一例）"
     },
     {
@@ -8617,7 +8617,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "レモン",
-        "src": "assets/word-illustrations/lemon-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lemon-pictogram-natural-v1.webp",
         "alt": "レモンのイメージ（一例）"
     },
     {
@@ -8625,7 +8625,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "レモネード",
-        "src": "assets/word-illustrations/lemonade-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lemonade-pictogram-natural-v1.webp",
         "alt": "レモネードのイメージ（一例）"
     },
     {
@@ -8633,7 +8633,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "レベル、水準",
-        "src": "assets/word-illustrations/level-pictogram-v1.webp",
+        "src": "assets/word-illustrations/level-pictogram-natural-v1.webp",
         "alt": "レベル、水準のイメージ（一例）"
     },
     {
@@ -8641,7 +8641,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "自由",
-        "src": "assets/word-illustrations/liberty-pictogram-v1.webp",
+        "src": "assets/word-illustrations/liberty-pictogram-natural-v1.webp",
         "alt": "自由のイメージ（一例）"
     },
     {
@@ -8649,7 +8649,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ライフスタイル、生活様式",
-        "src": "assets/word-illustrations/lifestyle-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lifestyle-pictogram-natural-v1.webp",
         "alt": "ライフスタイル、生活様式のイメージ（一例）"
     },
     {
@@ -8657,7 +8657,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "唇",
-        "src": "assets/word-illustrations/lip-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lip-pictogram-natural-v1.webp",
         "alt": "唇のイメージ（一例）"
     },
     {
@@ -8665,7 +8665,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "リットル",
-        "src": "assets/word-illustrations/liter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/liter-pictogram-natural-v1.webp",
         "alt": "リットルのイメージ（一例）"
     },
     {
@@ -8673,7 +8673,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "積み荷、負担",
-        "src": "assets/word-illustrations/load-pictogram-v1.webp",
+        "src": "assets/word-illustrations/load-pictogram-natural-v1.webp",
         "alt": "積み荷、負担のイメージ（一例）"
     },
     {
@@ -8681,7 +8681,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "鍵をかける、錠",
-        "src": "assets/word-illustrations/lock-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lock-pictogram-natural-v1.webp",
         "alt": "鍵をかける、錠のイメージ（一例）"
     },
     {
@@ -8689,7 +8689,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "たくさん、分け前",
-        "src": "assets/word-illustrations/lot-pictogram-v2.webp",
+        "src": "assets/word-illustrations/lot-pictogram-natural-v1.webp",
         "alt": "たくさん、分け前のイメージ（一例）"
     },
     {
@@ -8697,7 +8697,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "愛好家、恋人",
-        "src": "assets/word-illustrations/lover-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lover-pictogram-natural-v2.webp",
         "alt": "愛好家、恋人のイメージ（一例）"
     },
     {
@@ -8705,7 +8705,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "昼食時",
-        "src": "assets/word-illustrations/lunchtime-pictogram-v1.webp",
+        "src": "assets/word-illustrations/lunchtime-pictogram-natural-v1.webp",
         "alt": "昼食時のイメージ（一例）"
     },
     {
@@ -8713,7 +8713,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "魔法、魔術",
-        "src": "assets/word-illustrations/magic-pictogram-v1.webp",
+        "src": "assets/word-illustrations/magic-pictogram-natural-v1.webp",
         "alt": "魔法、魔術のイメージ（一例）"
     },
     {
@@ -8721,7 +8721,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "メインディッシュ",
-        "src": "assets/word-illustrations/main-course-pictogram-v1.webp",
+        "src": "assets/word-illustrations/main-course-pictogram-natural-v1.webp",
         "alt": "メインディッシュのイメージ（一例）"
     },
     {
@@ -8729,7 +8729,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "作る人、メーカー",
-        "src": "assets/word-illustrations/maker-pictogram-v1.webp",
+        "src": "assets/word-illustrations/maker-pictogram-natural-v2.webp",
         "alt": "作る人、メーカーのイメージ（一例）"
     },
     {
@@ -8737,7 +8737,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "化粧（品）、構成",
-        "src": "assets/word-illustrations/make-up-pictogram-v1.webp",
+        "src": "assets/word-illustrations/make-up-pictogram-natural-v1.webp",
         "alt": "化粧（品）、構成のイメージ（一例）"
     },
     {
@@ -8745,7 +8745,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "男性、オス",
-        "src": "assets/word-illustrations/male-pictogram-v1.webp",
+        "src": "assets/word-illustrations/male-pictogram-natural-v2.webp",
         "alt": "男性、オスのイメージ（一例）"
     },
     {
@@ -8753,7 +8753,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "モール、ショッピングセンター",
-        "src": "assets/word-illustrations/mall-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mall-pictogram-natural-v1.webp",
         "alt": "モール、ショッピングセンターのイメージ（一例）"
     },
     {
@@ -8761,7 +8761,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "マネージャー、経営者",
-        "src": "assets/word-illustrations/manager-pictogram-v1.webp",
+        "src": "assets/word-illustrations/manager-pictogram-natural-v1.webp",
         "alt": "マネージャー、経営者のイメージ（一例）"
     },
     {
@@ -8769,7 +8769,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "方法、態度、行儀",
-        "src": "assets/word-illustrations/manner-pictogram-v1.webp",
+        "src": "assets/word-illustrations/manner-pictogram-natural-v2.webp",
         "alt": "方法、態度、行儀のイメージ（一例）"
     },
     {
@@ -8777,7 +8777,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "印、点数",
-        "src": "assets/word-illustrations/mark-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mark-pictogram-natural-v1.webp",
         "alt": "印、点数のイメージ（一例）"
     },
     {
@@ -8785,7 +8785,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "市場",
-        "src": "assets/word-illustrations/market-pictogram-v1.webp",
+        "src": "assets/word-illustrations/market-pictogram-natural-v1.webp",
         "alt": "市場のイメージ（一例）"
     },
     {
@@ -8793,7 +8793,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "材料、生地、資料",
-        "src": "assets/word-illustrations/material-pictogram-v1.webp",
+        "src": "assets/word-illustrations/material-pictogram-natural-v1.webp",
         "alt": "材料、生地、資料のイメージ（一例）"
     },
     {
@@ -8801,7 +8801,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "最大限",
-        "src": "assets/word-illustrations/max-pictogram-v1.webp",
+        "src": "assets/word-illustrations/max-pictogram-natural-v1.webp",
         "alt": "最大限のイメージ（一例）"
     },
     {
@@ -8809,7 +8809,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "意味",
-        "src": "assets/word-illustrations/meaning-pictogram-v1.webp",
+        "src": "assets/word-illustrations/meaning-pictogram-natural-v1.webp",
         "alt": "意味のイメージ（一例）"
     },
     {
@@ -8817,7 +8817,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "メダル",
-        "src": "assets/word-illustrations/medal-pictogram-v1.webp",
+        "src": "assets/word-illustrations/medal-pictogram-natural-v1.webp",
         "alt": "メダルのイメージ（一例）"
     },
     {
@@ -8825,7 +8825,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "メロン",
-        "src": "assets/word-illustrations/melon-pictogram-v1.webp",
+        "src": "assets/word-illustrations/melon-pictogram-natural-v1.webp",
         "alt": "メロンのイメージ（一例）"
     },
     {
@@ -8833,7 +8833,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "メンバー、一員",
-        "src": "assets/word-illustrations/member-pictogram-v1.webp",
+        "src": "assets/word-illustrations/member-pictogram-natural-v1.webp",
         "alt": "メンバー、一員のイメージ（一例）"
     },
     {
@@ -8841,7 +8841,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "言及",
-        "src": "assets/word-illustrations/mention-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mention-pictogram-natural-v1.webp",
         "alt": "言及のイメージ（一例）"
     },
     {
@@ -8849,7 +8849,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "メニュー",
-        "src": "assets/word-illustrations/menu-pictogram-v1.webp",
+        "src": "assets/word-illustrations/menu-pictogram-natural-v1.webp",
         "alt": "メニューのイメージ（一例）"
     },
     {
@@ -8857,7 +8857,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "金属",
-        "src": "assets/word-illustrations/metal-pictogram-v1.webp",
+        "src": "assets/word-illustrations/metal-pictogram-natural-v1.webp",
         "alt": "金属のイメージ（一例）"
     },
     {
@@ -8865,7 +8865,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "メートル、計器",
-        "src": "assets/word-illustrations/meter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/meter-pictogram-natural-v1.webp",
         "alt": "メートル、計器のイメージ（一例）"
     },
     {
@@ -8873,7 +8873,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "方法",
-        "src": "assets/word-illustrations/method-pictogram-v1.webp",
+        "src": "assets/word-illustrations/method-pictogram-natural-v1.webp",
         "alt": "方法のイメージ（一例）"
     },
     {
@@ -8881,7 +8881,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "正午",
-        "src": "assets/word-illustrations/midday-pictogram-v1.webp",
+        "src": "assets/word-illustrations/midday-pictogram-natural-v1.webp",
         "alt": "正午のイメージ（一例）"
     },
     {
@@ -8889,7 +8889,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "真ん中、中央",
-        "src": "assets/word-illustrations/middle-pictogram-v1.webp",
+        "src": "assets/word-illustrations/middle-pictogram-natural-v1.webp",
         "alt": "真ん中、中央のイメージ（一例）"
     },
     {
@@ -8897,7 +8897,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "真夜中",
-        "src": "assets/word-illustrations/midnight-pictogram-v1.webp",
+        "src": "assets/word-illustrations/midnight-pictogram-natural-v1.webp",
         "alt": "真夜中のイメージ（一例）"
     },
     {
@@ -8905,7 +8905,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ミネラルウォーター",
-        "src": "assets/word-illustrations/mineral-water-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mineral-water-pictogram-natural-v1.webp",
         "alt": "ミネラルウォーターのイメージ（一例）"
     },
     {
@@ -8913,7 +8913,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "鏡",
-        "src": "assets/word-illustrations/mirror-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mirror-pictogram-natural-v1.webp",
         "alt": "鏡のイメージ（一例）"
     },
     {
@@ -8921,7 +8921,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "間違い",
-        "src": "assets/word-illustrations/mistake-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mistake-pictogram-natural-v1.webp",
         "alt": "間違いのイメージ（一例）"
     },
     {
@@ -8929,7 +8929,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "モデル、型",
-        "src": "assets/word-illustrations/model-pictogram-v1.webp",
+        "src": "assets/word-illustrations/model-pictogram-natural-v1.webp",
         "alt": "モデル、型のイメージ（一例）"
     },
     {
@@ -8937,7 +8937,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "気分、機嫌",
-        "src": "assets/word-illustrations/mood-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mood-pictogram-natural-v1.webp",
         "alt": "気分、機嫌のイメージ（一例）"
     },
     {
@@ -8945,7 +8945,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "モスク、イスラム教寺院",
-        "src": "assets/word-illustrations/mosque-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mosque-pictogram-natural-v1.webp",
         "alt": "モスク、イスラム教寺院のイメージ（一例）"
     },
     {
@@ -8953,7 +8953,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "高速道路",
-        "src": "assets/word-illustrations/motorway-pictogram-v1.webp",
+        "src": "assets/word-illustrations/motorway-pictogram-natural-v1.webp",
         "alt": "高速道路のイメージ（一例）"
     },
     {
@@ -8961,7 +8961,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "MP3プレーヤー",
-        "src": "assets/word-illustrations/mp3-player-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mp3-player-pictogram-natural-v1.webp",
         "alt": "MP3プレーヤーのイメージ（一例）"
     },
     {
@@ -8969,7 +8969,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "（未婚・既婚を問わず女子の姓・名の前につけて）～さん",
-        "src": "assets/word-illustrations/ms-pictogram-v1.webp",
+        "src": "assets/word-illustrations/ms-pictogram-natural-v1.webp",
         "alt": "（未婚・既婚を問わず女子の姓・名の前につけて）～さんのイメージ（一例）"
     },
     {
@@ -8977,7 +8977,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "マグカップ",
-        "src": "assets/word-illustrations/mug-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mug-pictogram-natural-v1.webp",
         "alt": "マグカップのイメージ（一例）"
     },
     {
@@ -8985,7 +8985,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "殺人、ひどい目に遭わせる",
-        "src": "assets/word-illustrations/murder-pictogram-v1.webp",
+        "src": "assets/word-illustrations/murder-pictogram-natural-v1.webp",
         "alt": "殺人、ひどい目に遭わせるのイメージ（一例）"
     },
     {
@@ -8993,7 +8993,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "博物館、美術館",
-        "src": "assets/word-illustrations/museum-pictogram-v1.webp",
+        "src": "assets/word-illustrations/museum-pictogram-natural-v1.webp",
         "alt": "博物館、美術館のイメージ（一例）"
     },
     {
@@ -9001,7 +9001,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "キノコ",
-        "src": "assets/word-illustrations/mushroom-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mushroom-pictogram-natural-v1.webp",
         "alt": "キノコのイメージ（一例）"
     },
     {
@@ -9009,7 +9009,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "謎、ミステリー",
-        "src": "assets/word-illustrations/mystery-pictogram-v1.webp",
+        "src": "assets/word-illustrations/mystery-pictogram-natural-v1.webp",
         "alt": "謎、ミステリーのイメージ（一例）"
     },
     {
@@ -9017,7 +9017,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ナプキン",
-        "src": "assets/word-illustrations/napkin-pictogram-v1.webp",
+        "src": "assets/word-illustrations/napkin-pictogram-natural-v1.webp",
         "alt": "ナプキンのイメージ（一例）"
     },
     {
@@ -9025,7 +9025,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "国家、国民",
-        "src": "assets/word-illustrations/nation-pictogram-v1.webp",
+        "src": "assets/word-illustrations/nation-pictogram-natural-v1.webp",
         "alt": "国家、国民のイメージ（一例）"
     },
     {
@@ -9033,7 +9033,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "自然、性質",
-        "src": "assets/word-illustrations/nature-pictogram-v1.webp",
+        "src": "assets/word-illustrations/nature-pictogram-natural-v1.webp",
         "alt": "自然、性質のイメージ（一例）"
     },
     {
@@ -9041,7 +9041,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "北",
-        "src": "assets/word-illustrations/north-pictogram-v1.webp",
+        "src": "assets/word-illustrations/north-pictogram-natural-v1.webp",
         "alt": "北のイメージ（一例）"
     },
     {
@@ -9049,7 +9049,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "身分証",
-        "src": "assets/word-illustrations/id-pictogram-v1.webp",
+        "src": "assets/word-illustrations/id-pictogram-natural-v1.webp",
         "alt": "身分証のイメージ（一例）"
     },
     {
@@ -9057,7 +9057,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "キログラム",
-        "src": "assets/word-illustrations/kilo-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kilo-pictogram-natural-v1.webp",
         "alt": "キログラムのイメージ（一例）"
     },
     {
@@ -9065,7 +9065,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "キログラム",
-        "src": "assets/word-illustrations/kilo-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kilo-pictogram-natural-v1.webp",
         "alt": "キログラムのイメージ（一例）"
     },
     {
@@ -9073,7 +9073,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "キロメートル",
-        "src": "assets/word-illustrations/kilometer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/kilometer-pictogram-natural-v1.webp",
         "alt": "キロメートルのイメージ（一例）"
     },
     {
@@ -9081,7 +9081,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "労働",
-        "src": "assets/word-illustrations/labor-pictogram-v1.webp",
+        "src": "assets/word-illustrations/labor-pictogram-natural-v1.webp",
         "alt": "労働のイメージ（一例）"
     },
     {
@@ -9089,7 +9089,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "リットル",
-        "src": "assets/word-illustrations/liter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/liter-pictogram-natural-v1.webp",
         "alt": "リットルのイメージ（一例）"
     },
     {
@@ -9097,7 +9097,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "メートル",
-        "src": "assets/word-illustrations/meter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/meter-pictogram-natural-v1.webp",
         "alt": "メートルのイメージ（一例）"
     },
     {
@@ -9105,7 +9105,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "～さん",
-        "src": "assets/word-illustrations/ms-pictogram-v1.webp",
+        "src": "assets/word-illustrations/ms-pictogram-natural-v1.webp",
         "alt": "～さんのイメージ（一例）"
     },
     {
@@ -9113,7 +9113,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "正午",
-        "src": "assets/word-illustrations/midday-pictogram-v1.webp",
+        "src": "assets/word-illustrations/midday-pictogram-natural-v1.webp",
         "alt": "正午のイメージ（一例）"
     },
     {
@@ -9121,7 +9121,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "通知、掲示、注目",
-        "src": "assets/word-illustrations/notice-pictogram-v1.webp",
+        "src": "assets/word-illustrations/notice-pictogram-natural-v1.webp",
         "alt": "通知、掲示、注目のイメージ（一例）"
     },
     {
@@ -9129,7 +9129,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "名詞",
-        "src": "assets/word-illustrations/noun-pictogram-v1.webp",
+        "src": "assets/word-illustrations/noun-pictogram-natural-v2.webp",
         "alt": "名詞のイメージ（一例）"
     },
     {
@@ -9137,7 +9137,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "小説",
-        "src": "assets/word-illustrations/novel-pictogram-v1.webp",
+        "src": "assets/word-illustrations/novel-pictogram-natural-v1.webp",
         "alt": "小説のイメージ（一例）"
     },
     {
@@ -9145,7 +9145,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "オーク、樫（かし）の木",
-        "src": "assets/word-illustrations/oak-pictogram-v1.webp",
+        "src": "assets/word-illustrations/oak-pictogram-natural-v1.webp",
         "alt": "オーク、樫（かし）の木のイメージ（一例）"
     },
     {
@@ -9153,7 +9153,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "職業",
-        "src": "assets/word-illustrations/occupation-pictogram-v1.webp",
+        "src": "assets/word-illustrations/occupation-pictogram-natural-v1.webp",
         "alt": "職業のイメージ（一例）"
     },
     {
@@ -9161,7 +9161,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "申し出、提示",
-        "src": "assets/word-illustrations/offer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/offer-pictogram-natural-v1.webp",
         "alt": "申し出、提示のイメージ（一例）"
     },
     {
@@ -9169,7 +9169,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "油、石油",
-        "src": "assets/word-illustrations/oil-pictogram-v1.webp",
+        "src": "assets/word-illustrations/oil-pictogram-natural-v1.webp",
         "alt": "油、石油のイメージ（一例）"
     },
     {
@@ -9177,7 +9177,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "オリーブ油",
-        "src": "assets/word-illustrations/olive-oil-pictogram-v1.webp",
+        "src": "assets/word-illustrations/olive-oil-pictogram-natural-v1.webp",
         "alt": "オリーブ油のイメージ（一例）"
     },
     {
@@ -9185,7 +9185,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "オムレツ",
-        "src": "assets/word-illustrations/omelet-pictogram-v1.webp",
+        "src": "assets/word-illustrations/omelet-pictogram-natural-v1.webp",
         "alt": "オムレツのイメージ（一例）"
     },
     {
@@ -9193,7 +9193,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "玉ねぎ",
-        "src": "assets/word-illustrations/onion-pictogram-v1.webp",
+        "src": "assets/word-illustrations/onion-pictogram-natural-v1.webp",
         "alt": "玉ねぎのイメージ（一例）"
     },
     {
@@ -9201,7 +9201,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "意見",
-        "src": "assets/word-illustrations/opinion-pictogram-v1.webp",
+        "src": "assets/word-illustrations/opinion-pictogram-natural-v1.webp",
         "alt": "意見のイメージ（一例）"
     },
     {
@@ -9209,7 +9209,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "機会",
-        "src": "assets/word-illustrations/opportunity-pictogram-v1.webp",
+        "src": "assets/word-illustrations/opportunity-pictogram-natural-v1.webp",
         "alt": "機会のイメージ（一例）"
     },
     {
@@ -9217,7 +9217,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "孤児",
-        "src": "assets/word-illustrations/orphan-pictogram-v1.webp",
+        "src": "assets/word-illustrations/orphan-pictogram-natural-v1.webp",
         "alt": "孤児のイメージ（一例）"
     },
     {
@@ -9225,7 +9225,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "オーブン",
-        "src": "assets/word-illustrations/oven-pictogram-v1.webp",
+        "src": "assets/word-illustrations/oven-pictogram-natural-v1.webp",
         "alt": "オーブンのイメージ（一例）"
     },
     {
@@ -9233,7 +9233,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "パック、包み",
-        "src": "assets/word-illustrations/pack-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pack-pictogram-natural-v1.webp",
         "alt": "パック、包みのイメージ（一例）"
     },
     {
@@ -9241,7 +9241,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "画家、ペンキ屋",
-        "src": "assets/word-illustrations/painter-pictogram-v1.webp",
+        "src": "assets/word-illustrations/painter-pictogram-natural-v1.webp",
         "alt": "画家、ペンキ屋のイメージ（一例）"
     },
     {
@@ -9249,7 +9249,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "友達、仲良し",
-        "src": "assets/word-illustrations/pal-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pal-pictogram-natural-v1.webp",
         "alt": "友達、仲良しのイメージ（一例）"
     },
     {
@@ -9257,7 +9257,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "平鍋、パン",
-        "src": "assets/word-illustrations/pan-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pan-pictogram-natural-v1.webp",
         "alt": "平鍋、パンのイメージ（一例）"
     },
     {
@@ -9265,7 +9265,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "パニック、恐怖",
-        "src": "assets/word-illustrations/panic-pictogram-v2.webp",
+        "src": "assets/word-illustrations/panic-pictogram-natural-v2.webp",
         "alt": "パニック、恐怖のイメージ（一例）"
     },
     {
@@ -9273,7 +9273,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "部分、役目、側",
-        "src": "assets/word-illustrations/part-pictogram-v1.webp",
+        "src": "assets/word-illustrations/part-pictogram-natural-v1.webp",
         "alt": "部分、役目、側のイメージ（一例）"
     },
     {
@@ -9281,7 +9281,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "合格、パス、通行許可証",
-        "src": "assets/word-illustrations/pass-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pass-pictogram-natural-v1.webp",
         "alt": "合格、パス、通行許可証のイメージ（一例）"
     },
     {
@@ -9289,7 +9289,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "通路、一節",
-        "src": "assets/word-illustrations/passage-pictogram-v1.webp",
+        "src": "assets/word-illustrations/passage-pictogram-natural-v1.webp",
         "alt": "通路、一節のイメージ（一例）"
     },
     {
@@ -9297,7 +9297,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "乗客",
-        "src": "assets/word-illustrations/passenger-pictogram-v1.webp",
+        "src": "assets/word-illustrations/passenger-pictogram-natural-v1.webp",
         "alt": "乗客のイメージ（一例）"
     },
     {
@@ -9305,7 +9305,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "パスタ",
-        "src": "assets/word-illustrations/pasta-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pasta-pictogram-natural-v1.webp",
         "alt": "パスタのイメージ（一例）"
     },
     {
@@ -9313,7 +9313,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "小道、経路",
-        "src": "assets/word-illustrations/path-pictogram-v1.webp",
+        "src": "assets/word-illustrations/path-pictogram-natural-v1.webp",
         "alt": "小道、経路のイメージ（一例）"
     },
     {
@@ -9321,7 +9321,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "患者",
-        "src": "assets/word-illustrations/patient-pictogram-v1.webp",
+        "src": "assets/word-illustrations/patient-pictogram-natural-v1.webp",
         "alt": "患者のイメージ（一例）"
     },
     {
@@ -9329,7 +9329,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "パソコン",
-        "src": "assets/word-illustrations/pc-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pc-pictogram-natural-v1.webp",
         "alt": "パソコンのイメージ（一例）"
     },
     {
@@ -9337,7 +9337,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "エンドウ豆",
-        "src": "assets/word-illustrations/pea-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pea-pictogram-natural-v1.webp",
         "alt": "エンドウ豆のイメージ（一例）"
     },
     {
@@ -9345,7 +9345,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "梨（なし）",
-        "src": "assets/word-illustrations/pear-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pear-pictogram-natural-v1.webp",
         "alt": "梨（なし）のイメージ（一例）"
     },
     {
@@ -9353,7 +9353,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ペンフレンド",
-        "src": "assets/word-illustrations/pen-friend-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pen-friend-pictogram-natural-v1.webp",
         "alt": "ペンフレンドのイメージ（一例）"
     },
     {
@@ -9361,7 +9361,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ペンス（ペニーの複数形）",
-        "src": "assets/word-illustrations/pence-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pence-pictogram-natural-v1.webp",
         "alt": "ペンス（ペニーの複数形）のイメージ（一例）"
     },
     {
@@ -9369,7 +9369,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "コショウ、ピーマン",
-        "src": "assets/word-illustrations/pepper-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pepper-pictogram-natural-v1.webp",
         "alt": "コショウ、ピーマンのイメージ（一例）"
     },
     {
@@ -9377,7 +9377,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "公演、成績、動作",
-        "src": "assets/word-illustrations/performance-pictogram-v1.webp",
+        "src": "assets/word-illustrations/performance-pictogram-natural-v1.webp",
         "alt": "公演、成績、動作のイメージ（一例）"
     },
     {
@@ -9385,7 +9385,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "香水、香り",
-        "src": "assets/word-illustrations/perfume-pictogram-v1.webp",
+        "src": "assets/word-illustrations/perfume-pictogram-natural-v1.webp",
         "alt": "香水、香りのイメージ（一例）"
     },
     {
@@ -9393,7 +9393,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "許可",
-        "src": "assets/word-illustrations/permission-pictogram-v1.webp",
+        "src": "assets/word-illustrations/permission-pictogram-natural-v1.webp",
         "alt": "許可のイメージ（一例）"
     },
     {
@@ -9401,7 +9401,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "個性、性格",
-        "src": "assets/word-illustrations/personality-pictogram-v1.webp",
+        "src": "assets/word-illustrations/personality-pictogram-natural-v1.webp",
         "alt": "個性、性格のイメージ（一例）"
     },
     {
@@ -9409,7 +9409,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ガソリン",
-        "src": "assets/word-illustrations/petrol-pictogram-v1.webp",
+        "src": "assets/word-illustrations/petrol-pictogram-natural-v1.webp",
         "alt": "ガソリンのイメージ（一例）"
     },
     {
@@ -9417,7 +9417,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ガソリンスタンド",
-        "src": "assets/word-illustrations/petrol-station-pictogram-v1.webp",
+        "src": "assets/word-illustrations/petrol-station-pictogram-natural-v1.webp",
         "alt": "ガソリンスタンドのイメージ（一例）"
     },
     {
@@ -9425,7 +9425,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "写真",
-        "src": "assets/word-illustrations/photograph-pictogram-v1.webp",
+        "src": "assets/word-illustrations/photograph-pictogram-natural-v2.webp",
         "alt": "写真のイメージ（一例）"
     },
     {
@@ -9433,7 +9433,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "写真家",
-        "src": "assets/word-illustrations/photographer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/photographer-pictogram-natural-v2.webp",
         "alt": "写真家のイメージ（一例）"
     },
     {
@@ -9441,7 +9441,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "写真撮影",
-        "src": "assets/word-illustrations/photography-pictogram-v1.webp",
+        "src": "assets/word-illustrations/photography-pictogram-natural-v1.webp",
         "alt": "写真撮影のイメージ（一例）"
     },
     {
@@ -9449,7 +9449,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "積み重ね、山",
-        "src": "assets/word-illustrations/pile-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pile-pictogram-natural-v1.webp",
         "alt": "積み重ね、山のイメージ（一例）"
     },
     {
@@ -9457,7 +9457,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "巡礼者",
-        "src": "assets/word-illustrations/pilgrim-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pilgrim-pictogram-natural-v1.webp",
         "alt": "巡礼者のイメージ（一例）"
     },
     {
@@ -9465,7 +9465,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "錠剤、ピル",
-        "src": "assets/word-illustrations/pill-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pill-pictogram-natural-v1.webp",
         "alt": "錠剤、ピルのイメージ（一例）"
     },
     {
@@ -9473,7 +9473,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "パイロット、操縦士",
-        "src": "assets/word-illustrations/pilot-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pilot-pictogram-natural-v1.webp",
         "alt": "パイロット、操縦士のイメージ（一例）"
     },
     {
@@ -9481,7 +9481,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ピンク色",
-        "src": "assets/word-illustrations/pink-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pink-pictogram-natural-v1.webp",
         "alt": "ピンク色のイメージ（一例）"
     },
     {
@@ -9489,7 +9489,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "残念なこと、あわれみ",
-        "src": "assets/word-illustrations/pity-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pity-pictogram-natural-v1.webp",
         "alt": "残念なこと、あわれみのイメージ（一例）"
     },
     {
@@ -9497,7 +9497,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "惑星",
-        "src": "assets/word-illustrations/planet-pictogram-v1.webp",
+        "src": "assets/word-illustrations/planet-pictogram-natural-v1.webp",
         "alt": "惑星のイメージ（一例）"
     },
     {
@@ -9505,7 +9505,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "植物、工場",
-        "src": "assets/word-illustrations/plant-pictogram-v1.webp",
+        "src": "assets/word-illustrations/plant-pictogram-natural-v1.webp",
         "alt": "植物、工場のイメージ（一例）"
     },
     {
@@ -9513,7 +9513,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "皿、プレート",
-        "src": "assets/word-illustrations/plate-pictogram-v1.webp",
+        "src": "assets/word-illustrations/plate-pictogram-natural-v1.webp",
         "alt": "皿、プレートのイメージ（一例）"
     },
     {
@@ -9521,7 +9521,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "オムレツ",
-        "src": "assets/word-illustrations/omelet-pictogram-v1.webp",
+        "src": "assets/word-illustrations/omelet-pictogram-natural-v1.webp",
         "alt": "オムレツのイメージ（一例）"
     },
     {
@@ -9529,7 +9529,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ペンフレンド",
-        "src": "assets/word-illustrations/pen-friend-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pen-friend-pictogram-natural-v1.webp",
         "alt": "ペンフレンドのイメージ（一例）"
     },
     {
@@ -9537,7 +9537,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "遊び場、運動場",
-        "src": "assets/word-illustrations/playground-pictogram-v1.webp",
+        "src": "assets/word-illustrations/playground-pictogram-natural-v1.webp",
         "alt": "遊び場、運動場のイメージ（一例）"
     },
     {
@@ -9545,7 +9545,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "たくさん、十分な量",
-        "src": "assets/word-illustrations/plenty-pictogram-v1.webp",
+        "src": "assets/word-illustrations/plenty-pictogram-natural-v1.webp",
         "alt": "たくさん、十分な量のイメージ（一例）"
     },
     {
@@ -9553,7 +9553,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "複数形、複数の",
-        "src": "assets/word-illustrations/plural-pictogram-v1.webp",
+        "src": "assets/word-illustrations/plural-pictogram-natural-v1.webp",
         "alt": "複数形、複数ののイメージ（一例）"
     },
     {
@@ -9561,7 +9561,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "警察",
-        "src": "assets/word-illustrations/police-pictogram-v1.webp",
+        "src": "assets/word-illustrations/police-pictogram-natural-v1.webp",
         "alt": "警察のイメージ（一例）"
     },
     {
@@ -9569,7 +9569,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "警察官",
-        "src": "assets/word-illustrations/police-officer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/police-officer-pictogram-natural-v1.webp",
         "alt": "警察官のイメージ（一例）"
     },
     {
@@ -9577,7 +9577,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "警察署",
-        "src": "assets/word-illustrations/police-station-pictogram-v1.webp",
+        "src": "assets/word-illustrations/police-station-pictogram-natural-v1.webp",
         "alt": "警察署のイメージ（一例）"
     },
     {
@@ -9585,7 +9585,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "警察官（男）",
-        "src": "assets/word-illustrations/policeman-pictogram-v2.webp",
+        "src": "assets/word-illustrations/policeman-pictogram-natural-v1.webp",
         "alt": "警察官（男）のイメージ（一例）"
     },
     {
@@ -9593,7 +9593,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "警察官（女）",
-        "src": "assets/word-illustrations/policewoman-pictogram-v1.webp",
+        "src": "assets/word-illustrations/policewoman-pictogram-natural-v1.webp",
         "alt": "警察官（女）のイメージ（一例）"
     },
     {
@@ -9601,7 +9601,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "人口",
-        "src": "assets/word-illustrations/population-pictogram-v1.webp",
+        "src": "assets/word-illustrations/population-pictogram-natural-v1.webp",
         "alt": "人口のイメージ（一例）"
     },
     {
@@ -9609,7 +9609,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "肖像（画）",
-        "src": "assets/word-illustrations/portrait-pictogram-v1.webp",
+        "src": "assets/word-illustrations/portrait-pictogram-natural-v1.webp",
         "alt": "肖像（画）のイメージ（一例）"
     },
     {
@@ -9617,7 +9617,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "位置、場所、立場",
-        "src": "assets/word-illustrations/position-pictogram-v1.webp",
+        "src": "assets/word-illustrations/position-pictogram-natural-v1.webp",
         "alt": "位置、場所、立場のイメージ（一例）"
     },
     {
@@ -9625,7 +9625,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "郵便局",
-        "src": "assets/word-illustrations/post-office-pictogram-v1.webp",
+        "src": "assets/word-illustrations/post-office-pictogram-natural-v1.webp",
         "alt": "郵便局のイメージ（一例）"
     },
     {
@@ -9633,7 +9633,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "力、権力、電力",
-        "src": "assets/word-illustrations/power-pictogram-v1.webp",
+        "src": "assets/word-illustrations/power-pictogram-natural-v1.webp",
         "alt": "力、権力、電力のイメージ（一例）"
     },
     {
@@ -9641,7 +9641,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "予測、予言",
-        "src": "assets/word-illustrations/prediction-pictogram-v1.webp",
+        "src": "assets/word-illustrations/prediction-pictogram-natural-v1.webp",
         "alt": "予測、予言のイメージ（一例）"
     },
     {
@@ -9649,7 +9649,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "圧力、重圧",
-        "src": "assets/word-illustrations/pressure-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pressure-pictogram-natural-v1.webp",
         "alt": "圧力、重圧のイメージ（一例）"
     },
     {
@@ -9657,7 +9657,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "誇り、自尊心",
-        "src": "assets/word-illustrations/pride-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pride-pictogram-natural-v1.webp",
         "alt": "誇り、自尊心のイメージ（一例）"
     },
     {
@@ -9665,7 +9665,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "プリンター",
-        "src": "assets/word-illustrations/printer-pictogram-v1.webp",
+        "src": "assets/word-illustrations/printer-pictogram-natural-v1.webp",
         "alt": "プリンターのイメージ（一例）"
     },
     {
@@ -9673,7 +9673,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "プロの",
-        "src": "assets/word-illustrations/pro-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pro-pictogram-natural-v1.webp",
         "alt": "プロののイメージ（一例）"
     },
     {
@@ -9681,7 +9681,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "製品、産物",
-        "src": "assets/word-illustrations/product-pictogram-v1.webp",
+        "src": "assets/word-illustrations/product-pictogram-natural-v1.webp",
         "alt": "製品、産物のイメージ（一例）"
     },
     {
@@ -9689,7 +9689,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "生産、演出",
-        "src": "assets/word-illustrations/production-pictogram-v1.webp",
+        "src": "assets/word-illustrations/production-pictogram-natural-v1.webp",
         "alt": "生産、演出のイメージ（一例）"
     },
     {
@@ -9697,7 +9697,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "約束、見込み",
-        "src": "assets/word-illustrations/promise-pictogram-v1.webp",
+        "src": "assets/word-illustrations/promise-pictogram-natural-v1.webp",
         "alt": "約束、見込みのイメージ（一例）"
     },
     {
@@ -9705,7 +9705,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "発音",
-        "src": "assets/word-illustrations/pronunciation-pictogram-v1.webp",
+        "src": "assets/word-illustrations/pronunciation-pictogram-natural-v1.webp",
         "alt": "発音のイメージ（一例）"
     },
     {
@@ -9713,7 +9713,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "心理学者",
-        "src": "assets/word-illustrations/psychologist-pictogram-v1.webp",
+        "src": "assets/word-illustrations/psychologist-pictogram-natural-v1.webp",
         "alt": "心理学者のイメージ（一例）"
     },
     {
@@ -9721,7 +9721,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "公衆、一般の人々",
-        "src": "assets/word-illustrations/public-pictogram-v1.webp",
+        "src": "assets/word-illustrations/public-pictogram-natural-v1.webp",
         "alt": "公衆、一般の人々のイメージ（一例）"
     },
     {
@@ -9729,7 +9729,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "句読点、句読法",
-        "src": "assets/word-illustrations/punctuation-pictogram-v1.webp",
+        "src": "assets/word-illustrations/punctuation-pictogram-natural-v1.webp",
         "alt": "句読点、句読法のイメージ（一例）"
     },
     {
@@ -9737,7 +9737,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "目的、意図",
-        "src": "assets/word-illustrations/purpose-pictogram-v1.webp",
+        "src": "assets/word-illustrations/purpose-pictogram-natural-v1.webp",
         "alt": "目的、意図のイメージ（一例）"
     },
     {
@@ -9745,7 +9745,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "質、品質",
-        "src": "assets/word-illustrations/quality-pictogram-v1.webp",
+        "src": "assets/word-illustrations/quality-pictogram-natural-v1.webp",
         "alt": "質、品質のイメージ（一例）"
     },
     {
@@ -9753,7 +9753,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "女王",
-        "src": "assets/word-illustrations/queen-pictogram-v1.webp",
+        "src": "assets/word-illustrations/queen-pictogram-natural-v1.webp",
         "alt": "女王のイメージ（一例）"
     },
     {
@@ -9761,7 +9761,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "クイズ、小テスト",
-        "src": "assets/word-illustrations/quiz-pictogram-v1.webp",
+        "src": "assets/word-illustrations/quiz-pictogram-natural-v1.webp",
         "alt": "クイズ、小テストのイメージ（一例）"
     },
     {
@@ -9769,7 +9769,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ラケット",
-        "src": "assets/word-illustrations/racket-pictogram-v1.webp",
+        "src": "assets/word-illustrations/racket-pictogram-natural-v1.webp",
         "alt": "ラケットのイメージ（一例）"
     },
     {
@@ -9777,7 +9777,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "レインコート",
-        "src": "assets/word-illustrations/raincoat-pictogram-v1.webp",
+        "src": "assets/word-illustrations/raincoat-pictogram-natural-v1.webp",
         "alt": "レインコートのイメージ（一例）"
     },
     {
@@ -9785,7 +9785,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "範囲、山脈",
-        "src": "assets/word-illustrations/range-pictogram-v1.webp",
+        "src": "assets/word-illustrations/range-pictogram-natural-v1.webp",
         "alt": "範囲、山脈のイメージ（一例）"
     },
     {
@@ -9793,7 +9793,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ラップ（音楽）",
-        "src": "assets/word-illustrations/rap-pictogram-v1.webp",
+        "src": "assets/word-illustrations/rap-pictogram-natural-v1.webp",
         "alt": "ラップ（音楽）のイメージ（一例）"
     },
     {
@@ -9801,7 +9801,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "割合、速度、料金",
-        "src": "assets/word-illustrations/rate-pictogram-v1.webp",
+        "src": "assets/word-illustrations/rate-pictogram-natural-v1.webp",
         "alt": "割合、速度、料金のイメージ（一例）"
     },
     {
@@ -9809,7 +9809,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "評価、格付け",
-        "src": "assets/word-illustrations/rating-pictogram-v1.webp",
+        "src": "assets/word-illustrations/rating-pictogram-natural-v1.webp",
         "alt": "評価、格付けのイメージ（一例）"
     },
     {
@@ -9817,7 +9817,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "光線、一筋の光",
-        "src": "assets/word-illustrations/ray-pictogram-v1.webp",
+        "src": "assets/word-illustrations/ray-pictogram-natural-v1.webp",
         "alt": "光線、一筋の光のイメージ（一例）"
     },
     {
@@ -9825,7 +9825,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "領収書、レシート",
-        "src": "assets/word-illustrations/receipt-pictogram-v1.webp",
+        "src": "assets/word-illustrations/receipt-pictogram-natural-v1.webp",
         "alt": "領収書、レシートのイメージ（一例）"
     },
     {
@@ -9833,7 +9833,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "接客係、受付係",
-        "src": "assets/word-illustrations/receptionist-pictogram-v1.webp",
+        "src": "assets/word-illustrations/receptionist-pictogram-natural-v1.webp",
         "alt": "接客係、受付係のイメージ（一例）"
     },
     {
@@ -9841,7 +9841,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "赤、赤色",
-        "src": "assets/word-illustrations/red-pictogram-v1.webp",
+        "src": "assets/word-illustrations/red-pictogram-natural-v1.webp",
         "alt": "赤、赤色のイメージ（一例）"
     },
     {
@@ -9849,7 +9849,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "冷蔵庫",
-        "src": "assets/word-illustrations/refrigerator-pictogram-v1.webp",
+        "src": "assets/word-illustrations/refrigerator-pictogram-natural-v1.webp",
         "alt": "冷蔵庫のイメージ（一例）"
     },
     {
@@ -9857,7 +9857,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "放出、発売、公開",
-        "src": "assets/word-illustrations/release-pictogram-v1.webp",
+        "src": "assets/word-illustrations/release-pictogram-natural-v1.webp",
         "alt": "放出、発売、公開のイメージ（一例）"
     },
     {
@@ -9865,7 +9865,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "家賃、賃貸料",
-        "src": "assets/word-illustrations/rent-pictogram-v1.webp",
+        "src": "assets/word-illustrations/rent-pictogram-natural-v1.webp",
         "alt": "家賃、賃貸料のイメージ（一例）"
     },
     {
@@ -9873,7 +9873,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "修理、修復",
-        "src": "assets/word-illustrations/repair-pictogram-v1.webp",
+        "src": "assets/word-illustrations/repair-pictogram-natural-v1.webp",
         "alt": "修理、修復のイメージ（一例）"
     },
     {
@@ -9881,7 +9881,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "返事、回答",
-        "src": "assets/word-illustrations/reply-pictogram-v1.webp",
+        "src": "assets/word-illustrations/reply-pictogram-natural-v1.webp",
         "alt": "返事、回答のイメージ（一例）"
     },
     {
@@ -9889,7 +9889,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "報告、レポート",
-        "src": "assets/word-illustrations/report-pictogram-v1.webp",
+        "src": "assets/word-illustrations/report-pictogram-natural-v1.webp",
         "alt": "報告、レポートのイメージ（一例）"
     },
     {
@@ -9897,7 +9897,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "要請、依頼",
-        "src": "assets/word-illustrations/request-pictogram-v1.webp",
+        "src": "assets/word-illustrations/request-pictogram-natural-v1.webp",
         "alt": "要請、依頼のイメージ（一例）"
     },
     {
@@ -9905,7 +9905,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "研究、調査",
-        "src": "assets/word-illustrations/research-pictogram-v1.webp",
+        "src": "assets/word-illustrations/research-pictogram-natural-v1.webp",
         "alt": "研究、調査のイメージ（一例）"
     },
     {
@@ -9913,7 +9913,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "反応、回答",
-        "src": "assets/word-illustrations/response-pictogram-v1.webp",
+        "src": "assets/word-illustrations/response-pictogram-natural-v1.webp",
         "alt": "反応、回答のイメージ（一例）"
     },
     {
@@ -9921,7 +9921,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "帰宅、戻り、返却",
-        "src": "assets/word-illustrations/return-pictogram-v1.webp",
+        "src": "assets/word-illustrations/return-pictogram-natural-v1.webp",
         "alt": "帰宅、戻り、返却のイメージ（一例）"
     },
     {
@@ -9929,7 +9929,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "再会、親睦会",
-        "src": "assets/word-illustrations/reunion-pictogram-v1.webp",
+        "src": "assets/word-illustrations/reunion-pictogram-natural-v1.webp",
         "alt": "再会、親睦会のイメージ（一例）"
     },
     {
@@ -9937,7 +9937,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "リズム",
-        "src": "assets/word-illustrations/rhythm-pictogram-v2.webp",
+        "src": "assets/word-illustrations/rhythm-pictogram-natural-v1.webp",
         "alt": "リズムのイメージ（一例）"
     },
     {
@@ -9945,7 +9945,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "権利、右、正しいこと",
-        "src": "assets/word-illustrations/right-pictogram-v2.webp",
+        "src": "assets/word-illustrations/right-pictogram-natural-v1.webp",
         "alt": "権利、右、正しいことのイメージ（一例）"
     },
     {
@@ -9953,7 +9953,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "指輪、輪",
-        "src": "assets/word-illustrations/ring-pictogram-v1.webp",
+        "src": "assets/word-illustrations/ring-pictogram-natural-v1.webp",
         "alt": "指輪、輪のイメージ（一例）"
     },
     {
@@ -9961,7 +9961,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "道路、道",
-        "src": "assets/word-illustrations/road-pictogram-v1.webp",
+        "src": "assets/word-illustrations/road-pictogram-natural-v1.webp",
         "alt": "道路、道のイメージ（一例）"
     },
     {
@@ -9969,7 +9969,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "強盗（事件）",
-        "src": "assets/word-illustrations/robbery-pictogram-v1.webp",
+        "src": "assets/word-illustrations/robbery-pictogram-natural-v1.webp",
         "alt": "強盗（事件）のイメージ（一例）"
     },
     {
@@ -9977,7 +9977,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "コマドリ",
-        "src": "assets/word-illustrations/robin-pictogram-v1.webp",
+        "src": "assets/word-illustrations/robin-pictogram-natural-v1.webp",
         "alt": "コマドリのイメージ（一例）"
     },
     {
@@ -9985,7 +9985,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "岩、ロック（音楽）",
-        "src": "assets/word-illustrations/rock-pictogram-v1.webp",
+        "src": "assets/word-illustrations/rock-pictogram-natural-v1.webp",
         "alt": "岩、ロック（音楽）のイメージ（一例）"
     },
     {
@@ -9993,7 +9993,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "巻いたもの、名簿、パン",
-        "src": "assets/word-illustrations/roll-pictogram-v1.webp",
+        "src": "assets/word-illustrations/roll-pictogram-natural-v1.webp",
         "alt": "巻いたもの、名簿、パンのイメージ（一例）"
     },
     {
@@ -10001,7 +10001,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ロマンス、恋愛",
-        "src": "assets/word-illustrations/romance-pictogram-v1.webp",
+        "src": "assets/word-illustrations/romance-pictogram-natural-v1.webp",
         "alt": "ロマンス、恋愛のイメージ（一例）"
     },
     {
@@ -10009,7 +10009,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "屋根",
-        "src": "assets/word-illustrations/roof-pictogram-v1.webp",
+        "src": "assets/word-illustrations/roof-pictogram-natural-v1.webp",
         "alt": "屋根のイメージ（一例）"
     },
     {
@@ -10017,7 +10017,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "根、根源",
-        "src": "assets/word-illustrations/root-pictogram-v1.webp",
+        "src": "assets/word-illustrations/root-pictogram-natural-v1.webp",
         "alt": "根、根源のイメージ（一例）"
     },
     {
@@ -10025,7 +10025,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ロープ、綱",
-        "src": "assets/word-illustrations/rope-pictogram-v1.webp",
+        "src": "assets/word-illustrations/rope-pictogram-natural-v1.webp",
         "alt": "ロープ、綱のイメージ（一例）"
     },
     {
@@ -10033,7 +10033,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "回転交差点、メリーゴーランド、遠回りの",
-        "src": "assets/word-illustrations/roundabout-pictogram-v2.webp",
+        "src": "assets/word-illustrations/roundabout-pictogram-natural-v1.webp",
         "alt": "回転交差点、メリーゴーランド、遠回りののイメージ（一例）"
     },
     {
@@ -10041,7 +10041,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ラグビー",
-        "src": "assets/word-illustrations/rugby-pictogram-v1.webp",
+        "src": "assets/word-illustrations/rugby-pictogram-natural-v1.webp",
         "alt": "ラグビーのイメージ（一例）"
     },
     {
@@ -10049,7 +10049,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "うわさ",
-        "src": "assets/word-illustrations/rumor-pictogram-v2.webp",
+        "src": "assets/word-illustrations/rumor-pictogram-natural-v1.webp",
         "alt": "うわさのイメージ（一例）"
     },
     {
@@ -10057,7 +10057,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "走る人、走者",
-        "src": "assets/word-illustrations/runner-pictogram-v1.webp",
+        "src": "assets/word-illustrations/runner-pictogram-natural-v1.webp",
         "alt": "走る人、走者のイメージ（一例）"
     },
     {
@@ -10065,7 +10065,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "走ること、ランニング",
-        "src": "assets/word-illustrations/running-pictogram-v1.webp",
+        "src": "assets/word-illustrations/running-pictogram-natural-v1.webp",
         "alt": "走ること、ランニングのイメージ（一例）"
     },
     {
@@ -10073,7 +10073,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "突進、大急ぎ、ラッシュ",
-        "src": "assets/word-illustrations/rush-pictogram-v1.webp",
+        "src": "assets/word-illustrations/rush-pictogram-natural-v1.webp",
         "alt": "突進、大急ぎ、ラッシュのイメージ（一例）"
     },
     {
@@ -10081,7 +10081,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "帆走、セーリング",
-        "src": "assets/word-illustrations/sailing-pictogram-v1.webp",
+        "src": "assets/word-illustrations/sailing-pictogram-natural-v1.webp",
         "alt": "帆走、セーリングのイメージ（一例）"
     },
     {
@@ -10089,7 +10089,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "目的、利益、日本酒",
-        "src": "assets/word-illustrations/sake-pictogram-v1.webp",
+        "src": "assets/word-illustrations/sake-pictogram-natural-v1.webp",
         "alt": "目的、利益、日本酒のイメージ（一例）"
     },
     {
@@ -10097,7 +10097,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "塩",
-        "src": "assets/word-illustrations/salt-pictogram-v1.webp",
+        "src": "assets/word-illustrations/salt-pictogram-natural-v1.webp",
         "alt": "塩のイメージ（一例）"
     },
     {
@@ -10105,7 +10105,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "サンプル、見本",
-        "src": "assets/word-illustrations/sample-pictogram-v1.webp",
+        "src": "assets/word-illustrations/sample-pictogram-natural-v1.webp",
         "alt": "サンプル、見本のイメージ（一例）"
     },
     {
@@ -10113,7 +10113,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ソース",
-        "src": "assets/word-illustrations/sauce-pictogram-v1.webp",
+        "src": "assets/word-illustrations/sauce-pictogram-natural-v1.webp",
         "alt": "ソースのイメージ（一例）"
     },
     {
@@ -10121,7 +10121,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ソーセージ",
-        "src": "assets/word-illustrations/sausage-pictogram-v1.webp",
+        "src": "assets/word-illustrations/sausage-pictogram-natural-v1.webp",
         "alt": "ソーセージのイメージ（一例）"
     },
     {
@@ -10129,7 +10129,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "目盛り、規模、はかり",
-        "src": "assets/word-illustrations/scale-pictogram-v1.webp",
+        "src": "assets/word-illustrations/scale-pictogram-natural-v1.webp",
         "alt": "目盛り、規模、はかりのイメージ（一例）"
     },
     {
@@ -10137,7 +10137,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "スカーフ、マフラー",
-        "src": "assets/word-illustrations/scarf-pictogram-v1.webp",
+        "src": "assets/word-illustrations/scarf-pictogram-natural-v1.webp",
         "alt": "スカーフ、マフラーのイメージ（一例）"
     },
     {
@@ -10145,7 +10145,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "場面、シーン、景色",
-        "src": "assets/word-illustrations/scene-pictogram-v2.webp",
+        "src": "assets/word-illustrations/scene-pictogram-natural-v1.webp",
         "alt": "場面、シーン、景色のイメージ（一例）"
     },
     {
@@ -10153,7 +10153,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "風景、景色",
-        "src": "assets/word-illustrations/scenery-pictogram-v1.webp",
+        "src": "assets/word-illustrations/scenery-pictogram-natural-v1.webp",
         "alt": "風景、景色のイメージ（一例）"
     },
     {
@@ -10161,7 +10161,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "予定、スケジュール",
-        "src": "assets/word-illustrations/schedule-pictogram-v1.webp",
+        "src": "assets/word-illustrations/schedule-pictogram-natural-v1.webp",
         "alt": "予定、スケジュールのイメージ（一例）"
     },
     {
@@ -10169,7 +10169,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "学童、生徒",
-        "src": "assets/word-illustrations/schoolchild-pictogram-v1.webp",
+        "src": "assets/word-illustrations/schoolchild-pictogram-natural-v2.webp",
         "alt": "学童、生徒のイメージ（一例）"
     },
     {
@@ -10177,7 +10177,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "学業、学校の課題",
-        "src": "assets/word-illustrations/schoolwork-pictogram-v2.webp",
+        "src": "assets/word-illustrations/schoolwork-pictogram-natural-v2.webp",
         "alt": "学業、学校の課題のイメージ（一例）"
     },
     {
@@ -10185,7 +10185,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "はさみ",
-        "src": "assets/word-illustrations/scissors-pictogram-v1.webp",
+        "src": "assets/word-illustrations/scissors-pictogram-natural-v1.webp",
         "alt": "はさみのイメージ（一例）"
     },
     {
@@ -10193,7 +10193,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "叫び声、悲鳴",
-        "src": "assets/word-illustrations/scream-pictogram-v1.webp",
+        "src": "assets/word-illustrations/scream-pictogram-natural-v1.webp",
         "alt": "叫び声、悲鳴のイメージ（一例）"
     },
     {
@@ -10201,7 +10201,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "画面、スクリーン",
-        "src": "assets/word-illustrations/screen-pictogram-v1.webp",
+        "src": "assets/word-illustrations/screen-pictogram-natural-v1.webp",
         "alt": "画面、スクリーンのイメージ（一例）"
     },
     {
@@ -10209,7 +10209,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "ねじ",
-        "src": "assets/word-illustrations/screw-pictogram-v1.webp",
+        "src": "assets/word-illustrations/screw-pictogram-natural-v1.webp",
         "alt": "ねじのイメージ（一例）"
     },
     {
@@ -10217,7 +10217,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "台本、スクリプト",
-        "src": "assets/word-illustrations/script-pictogram-v1.webp",
+        "src": "assets/word-illustrations/script-pictogram-natural-v2.webp",
         "alt": "台本、スクリプトのイメージ（一例）"
     },
     {
@@ -10225,7 +10225,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "シーフード、海産物",
-        "src": "assets/word-illustrations/seafood-pictogram-v1.webp",
+        "src": "assets/word-illustrations/seafood-pictogram-natural-v1.webp",
         "alt": "シーフード、海産物のイメージ（一例）"
     },
     {
@@ -10233,7 +10233,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "探すこと、探索",
-        "src": "assets/word-illustrations/search-pictogram-v1.webp",
+        "src": "assets/word-illustrations/search-pictogram-natural-v1.webp",
         "alt": "探すこと、探索のイメージ（一例）"
     },
     {
@@ -10241,7 +10241,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "海辺",
-        "src": "assets/word-illustrations/seaside-pictogram-v1.webp",
+        "src": "assets/word-illustrations/seaside-pictogram-natural-v1.webp",
         "alt": "海辺のイメージ（一例）"
     },
     {
@@ -10249,7 +10249,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "秒、二番目",
-        "src": "assets/word-illustrations/second-pictogram-v1.webp",
+        "src": "assets/word-illustrations/second-pictogram-natural-v1.webp",
         "alt": "秒、二番目のイメージ（一例）"
     },
     {
@@ -10257,7 +10257,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "秘密",
-        "src": "assets/word-illustrations/secret-pictogram-v1.webp",
+        "src": "assets/word-illustrations/secret-pictogram-natural-v2.webp",
         "alt": "秘密のイメージ（一例）"
     },
     {
@@ -10265,7 +10265,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "秘書",
-        "src": "assets/word-illustrations/secretary-pictogram-v1.webp",
+        "src": "assets/word-illustrations/secretary-pictogram-natural-v1.webp",
         "alt": "秘書のイメージ（一例）"
     },
     {
@@ -10273,7 +10273,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "種、実",
-        "src": "assets/word-illustrations/seed-pictogram-v1.webp",
+        "src": "assets/word-illustrations/seed-pictogram-natural-v1.webp",
         "alt": "種、実のイメージ（一例）"
     },
     {
@@ -10281,7 +10281,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "（2学期制の）学期",
-        "src": "assets/word-illustrations/semester-pictogram-v2.webp",
+        "src": "assets/word-illustrations/semester-pictogram-natural-v1.webp",
         "alt": "（2学期制の）学期のイメージ（一例）"
     },
     {
@@ -10289,7 +10289,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "年長者、上級生、高齢者",
-        "src": "assets/word-illustrations/senior-pictogram-v1.webp",
+        "src": "assets/word-illustrations/senior-pictogram-natural-v1.webp",
         "alt": "年長者、上級生、高齢者のイメージ（一例）"
     },
     {
@@ -10297,7 +10297,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "感覚、五感、意味",
-        "src": "assets/word-illustrations/sense-pictogram-v2.webp",
+        "src": "assets/word-illustrations/sense-pictogram-natural-v2.webp",
         "alt": "感覚、五感、意味のイメージ（一例）"
     },
     {
@@ -10305,7 +10305,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "セット、一揃い",
-        "src": "assets/word-illustrations/set-pictogram-v1.webp",
+        "src": "assets/word-illustrations/set-pictogram-natural-v1.webp",
         "alt": "セット、一揃いのイメージ（一例）"
     },
     {
@@ -10313,7 +10313,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "陰、日陰",
-        "src": "assets/word-illustrations/shade-pictogram-v1.webp",
+        "src": "assets/word-illustrations/shade-pictogram-natural-v1.webp",
         "alt": "陰、日陰のイメージ（一例）"
     },
     {
@@ -10321,7 +10321,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "影",
-        "src": "assets/word-illustrations/shadow-pictogram-v2.webp",
+        "src": "assets/word-illustrations/shadow-pictogram-natural-v1.webp",
         "alt": "影のイメージ（一例）"
     },
     {
@@ -10329,7 +10329,7 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "シャンプー",
-        "src": "assets/word-illustrations/shampoo-pictogram-v1.webp",
+        "src": "assets/word-illustrations/shampoo-pictogram-natural-v1.webp",
         "alt": "シャンプーのイメージ（一例）"
     },
     {
@@ -10337,8 +10337,1639 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "level": "basic",
         "pos": "名",
         "meaning": "うわさ",
-        "src": "assets/word-illustrations/rumor-pictogram-v2.webp",
+        "src": "assets/word-illustrations/rumor-pictogram-natural-v1.webp",
         "alt": "うわさのイメージ（一例）"
+    },
+    {
+        "word": "shape",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "形、状態",
+        "src": "assets/word-illustrations/shape-pictogram-natural-v1.webp",
+        "alt": "形、状態のイメージ（一例）"
+    },
+    {
+        "word": "share",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "分け前、株、共有",
+        "src": "assets/word-illustrations/share-pictogram-natural-v1.webp",
+        "alt": "分け前、株、共有のイメージ（一例）"
+    },
+    {
+        "word": "shell",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "貝殻、殻",
+        "src": "assets/word-illustrations/shell-pictogram-natural-v1.webp",
+        "alt": "貝殻、殻のイメージ（一例）"
+    },
+    {
+        "word": "shock",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "衝撃、ショック",
+        "src": "assets/word-illustrations/shock-pictogram-natural-v1.webp",
+        "alt": "衝撃、ショックのイメージ（一例）"
+    },
+    {
+        "word": "shop assistant",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "店員",
+        "src": "assets/word-illustrations/shop-assistant-pictogram-natural-v1.webp",
+        "alt": "店員のイメージ（一例）"
+    },
+    {
+        "word": "shore",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "岸、海岸",
+        "src": "assets/word-illustrations/shore-pictogram-natural-v1.webp",
+        "alt": "岸、海岸のイメージ（一例）"
+    },
+    {
+        "word": "short",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "短編映画、（shortsで）ショートパンツ",
+        "src": "assets/word-illustrations/short-pictogram-natural-v1.webp",
+        "alt": "短編映画、（shortsで）ショートパンツのイメージ（一例）"
+    },
+    {
+        "word": "shorts",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ショートパンツ",
+        "src": "assets/word-illustrations/shorts-pictogram-natural-v1.webp",
+        "alt": "ショートパンツのイメージ（一例）"
+    },
+    {
+        "word": "shot",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "一撃、発砲、試み、写真",
+        "src": "assets/word-illustrations/shot-pictogram-natural-v1.webp",
+        "alt": "一撃、発砲、試み、写真のイメージ（一例）"
+    },
+    {
+        "word": "shout",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "叫び、叫び声",
+        "src": "assets/word-illustrations/shout-pictogram-natural-v1.webp",
+        "alt": "叫び、叫び声のイメージ（一例）"
+    },
+    {
+        "word": "show",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ショー、番組、見せ物",
+        "src": "assets/word-illustrations/show-pictogram-natural-v1.webp",
+        "alt": "ショー、番組、見せ物のイメージ（一例）"
+    },
+    {
+        "word": "sightseeing",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "観光",
+        "src": "assets/word-illustrations/sightseeing-pictogram-natural-v1.webp",
+        "alt": "観光のイメージ（一例）"
+    },
+    {
+        "word": "silence",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "沈黙、静けさ",
+        "src": "assets/word-illustrations/silence-pictogram-natural-v2.webp",
+        "alt": "沈黙、静けさのイメージ（一例）"
+    },
+    {
+        "word": "silver",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "銀、銀製品",
+        "src": "assets/word-illustrations/silver-pictogram-natural-v1.webp",
+        "alt": "銀、銀製品のイメージ（一例）"
+    },
+    {
+        "word": "singing",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "歌うこと、歌唱",
+        "src": "assets/word-illustrations/singing-pictogram-natural-v1.webp",
+        "alt": "歌うこと、歌唱のイメージ（一例）"
+    },
+    {
+        "word": "singular",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "単数形",
+        "src": "assets/word-illustrations/singular-pictogram-natural-v1.webp",
+        "alt": "単数形のイメージ（一例）"
+    },
+    {
+        "word": "sink",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "シンク、流し",
+        "src": "assets/word-illustrations/sink-pictogram-natural-v1.webp",
+        "alt": "シンク、流しのイメージ（一例）"
+    },
+    {
+        "word": "sitting room",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "居間",
+        "src": "assets/word-illustrations/sitting-room-pictogram-natural-v1.webp",
+        "alt": "居間のイメージ（一例）"
+    },
+    {
+        "word": "situation",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "状況、立場",
+        "src": "assets/word-illustrations/situation-pictogram-natural-v1.webp",
+        "alt": "状況、立場のイメージ（一例）"
+    },
+    {
+        "word": "skate",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スケート（靴）",
+        "src": "assets/word-illustrations/skate-pictogram-natural-v1.webp",
+        "alt": "スケート（靴）のイメージ（一例）"
+    },
+    {
+        "word": "skateboarding",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スケートボード（をすること）",
+        "src": "assets/word-illustrations/skateboarding-pictogram-natural-v1.webp",
+        "alt": "スケートボード（をすること）のイメージ（一例）"
+    },
+    {
+        "word": "skating",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スケート（をすること）",
+        "src": "assets/word-illustrations/skating-pictogram-natural-v1.webp",
+        "alt": "スケート（をすること）のイメージ（一例）"
+    },
+    {
+        "word": "ski",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スキー（板）",
+        "src": "assets/word-illustrations/ski-pictogram-natural-v2.webp",
+        "alt": "スキー（板）のイメージ（一例）"
+    },
+    {
+        "word": "skiing",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スキー（をすること）",
+        "src": "assets/word-illustrations/skiing-pictogram-natural-v1.webp",
+        "alt": "スキー（をすること）のイメージ（一例）"
+    },
+    {
+        "word": "slave",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "奴隷",
+        "src": "assets/word-illustrations/slave-pictogram-natural-v1.webp",
+        "alt": "奴隷のイメージ（一例）"
+    },
+    {
+        "word": "slice",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "（薄く切った）一枚、スライス",
+        "src": "assets/word-illustrations/slice-pictogram-natural-v1.webp",
+        "alt": "（薄く切った）一枚、スライスのイメージ（一例）"
+    },
+    {
+        "word": "slide",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "滑り台、スライド",
+        "src": "assets/word-illustrations/slide-pictogram-natural-v1.webp",
+        "alt": "滑り台、スライドのイメージ（一例）"
+    },
+    {
+        "word": "snack",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "軽食、おやつ",
+        "src": "assets/word-illustrations/snack-pictogram-natural-v1.webp",
+        "alt": "軽食、おやつのイメージ（一例）"
+    },
+    {
+        "word": "snowboarding",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スノーボード（をすること）",
+        "src": "assets/word-illustrations/snowboarding-pictogram-natural-v1.webp",
+        "alt": "スノーボード（をすること）のイメージ（一例）"
+    },
+    {
+        "word": "soap",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "石鹸（せっけん）",
+        "src": "assets/word-illustrations/soap-pictogram-natural-v1.webp",
+        "alt": "石鹸（せっけん）のイメージ（一例）"
+    },
+    {
+        "word": "society",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "社会、協会、交際",
+        "src": "assets/word-illustrations/society-pictogram-natural-v1.webp",
+        "alt": "社会、協会、交際のイメージ（一例）"
+    },
+    {
+        "word": "sock",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "靴下",
+        "src": "assets/word-illustrations/sock-pictogram-natural-v1.webp",
+        "alt": "靴下のイメージ（一例）"
+    },
+    {
+        "word": "soda",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ソーダ、炭酸水",
+        "src": "assets/word-illustrations/soda-pictogram-natural-v1.webp",
+        "alt": "ソーダ、炭酸水のイメージ（一例）"
+    },
+    {
+        "word": "soft drink",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ソフトドリンク、清涼飲料水",
+        "src": "assets/word-illustrations/soft-drink-pictogram-natural-v2.webp",
+        "alt": "ソフトドリンク、清涼飲料水のイメージ（一例）"
+    },
+    {
+        "word": "software",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ソフトウェア",
+        "src": "assets/word-illustrations/software-pictogram-natural-v1.webp",
+        "alt": "ソフトウェアのイメージ（一例）"
+    },
+    {
+        "word": "soldier",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "軍人、兵士",
+        "src": "assets/word-illustrations/soldier-pictogram-natural-v1.webp",
+        "alt": "軍人、兵士のイメージ（一例）"
+    },
+    {
+        "word": "solution",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "解決策、解答、溶液",
+        "src": "assets/word-illustrations/solution-pictogram-natural-v1.webp",
+        "alt": "解決策、解答、溶液のイメージ（一例）"
+    },
+    {
+        "word": "sound",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "音、響き",
+        "src": "assets/word-illustrations/sound-pictogram-natural-v1.webp",
+        "alt": "音、響きのイメージ（一例）"
+    },
+    {
+        "word": "source",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "源、情報源、原因",
+        "src": "assets/word-illustrations/source-pictogram-natural-v1.webp",
+        "alt": "源、情報源、原因のイメージ（一例）"
+    },
+    {
+        "word": "south",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "南",
+        "src": "assets/word-illustrations/south-pictogram-natural-v1.webp",
+        "alt": "南のイメージ（一例）"
+    },
+    {
+        "word": "space",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "空間、場所、宇宙",
+        "src": "assets/word-illustrations/space-pictogram-natural-v1.webp",
+        "alt": "空間、場所、宇宙のイメージ（一例）"
+    },
+    {
+        "word": "spaceship",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "宇宙船",
+        "src": "assets/word-illustrations/spaceship-pictogram-natural-v1.webp",
+        "alt": "宇宙船のイメージ（一例）"
+    },
+    {
+        "word": "spaghetti",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スパゲッティ",
+        "src": "assets/word-illustrations/spaghetti-pictogram-natural-v1.webp",
+        "alt": "スパゲッティのイメージ（一例）"
+    },
+    {
+        "word": "speaker",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "話し手、演説者、スピーカー",
+        "src": "assets/word-illustrations/speaker-pictogram-natural-v1.webp",
+        "alt": "話し手、演説者、スピーカーのイメージ（一例）"
+    },
+    {
+        "word": "speed",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "速度、速さ",
+        "src": "assets/word-illustrations/speed-pictogram-natural-v1.webp",
+        "alt": "速度、速さのイメージ（一例）"
+    },
+    {
+        "word": "spoon",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スプーン",
+        "src": "assets/word-illustrations/spoon-pictogram-natural-v1.webp",
+        "alt": "スプーンのイメージ（一例）"
+    },
+    {
+        "word": "sports center",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スポーツセンター",
+        "src": "assets/word-illustrations/sports-center-pictogram-natural-v3.webp",
+        "alt": "スポーツセンターのイメージ（一例）"
+    },
+    {
+        "word": "sports centre",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スポーツセンター",
+        "src": "assets/word-illustrations/sports-center-pictogram-natural-v3.webp",
+        "alt": "スポーツセンターのイメージ（一例）"
+    },
+    {
+        "word": "spread",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "広がり、普及",
+        "src": "assets/word-illustrations/spread-pictogram-natural-v2.webp",
+        "alt": "広がり、普及のイメージ（一例）"
+    },
+    {
+        "word": "square",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "正方形、広場、二乗",
+        "src": "assets/word-illustrations/square-pictogram-natural-v1.webp",
+        "alt": "正方形、広場、二乗のイメージ（一例）"
+    },
+    {
+        "word": "stadium",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スタジアム、競技場",
+        "src": "assets/word-illustrations/stadium-pictogram-natural-v1.webp",
+        "alt": "スタジアム、競技場のイメージ（一例）"
+    },
+    {
+        "word": "staff",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "職員、スタッフ",
+        "src": "assets/word-illustrations/staff-pictogram-natural-v1.webp",
+        "alt": "職員、スタッフのイメージ（一例）"
+    },
+    {
+        "word": "stair",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "階段（の一段）",
+        "src": "assets/word-illustrations/stair-pictogram-natural-v1.webp",
+        "alt": "階段（の一段）のイメージ（一例）"
+    },
+    {
+        "word": "stamp",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "切手、スタンプ",
+        "src": "assets/word-illustrations/stamp-pictogram-natural-v1.webp",
+        "alt": "切手、スタンプのイメージ（一例）"
+    },
+    {
+        "word": "state",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "状態、国家、州",
+        "src": "assets/word-illustrations/state-pictogram-natural-v1.webp",
+        "alt": "状態、国家、州のイメージ（一例）"
+    },
+    {
+        "word": "statement",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "声明、記述、陳述",
+        "src": "assets/word-illustrations/statement-pictogram-natural-v1.webp",
+        "alt": "声明、記述、陳述のイメージ（一例）"
+    },
+    {
+        "word": "statue",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "像、彫像",
+        "src": "assets/word-illustrations/statue-pictogram-natural-v1.webp",
+        "alt": "像、彫像のイメージ（一例）"
+    },
+    {
+        "word": "steak",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ステーキ",
+        "src": "assets/word-illustrations/steak-pictogram-natural-v1.webp",
+        "alt": "ステーキのイメージ（一例）"
+    },
+    {
+        "word": "step",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "一歩、歩み、階段",
+        "src": "assets/word-illustrations/step-pictogram-natural-v1.webp",
+        "alt": "一歩、歩み、階段のイメージ（一例）"
+    },
+    {
+        "word": "stomach",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "胃、腹部",
+        "src": "assets/word-illustrations/stomach-pictogram-natural-v1.webp",
+        "alt": "胃、腹部のイメージ（一例）"
+    },
+    {
+        "word": "stomachache",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "胃痛、腹痛",
+        "src": "assets/word-illustrations/stomachache-pictogram-natural-v1.webp",
+        "alt": "胃痛、腹痛のイメージ（一例）"
+    },
+    {
+        "word": "storm",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "嵐、暴風雨",
+        "src": "assets/word-illustrations/storm-pictogram-natural-v1.webp",
+        "alt": "嵐、暴風雨のイメージ（一例）"
+    },
+    {
+        "word": "stove",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ストーブ、コンロ",
+        "src": "assets/word-illustrations/stove-pictogram-natural-v1.webp",
+        "alt": "ストーブ、コンロのイメージ（一例）"
+    },
+    {
+        "word": "stranger",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "知らない人、他人、不慣れな人",
+        "src": "assets/word-illustrations/stranger-pictogram-natural-v1.webp",
+        "alt": "知らない人、他人、不慣れな人のイメージ（一例）"
+    },
+    {
+        "word": "strategy",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "戦略、計画",
+        "src": "assets/word-illustrations/strategy-pictogram-natural-v1.webp",
+        "alt": "戦略、計画のイメージ（一例）"
+    },
+    {
+        "word": "strength",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "強さ、力、長所",
+        "src": "assets/word-illustrations/strength-pictogram-natural-v1.webp",
+        "alt": "強さ、力、長所のイメージ（一例）"
+    },
+    {
+        "word": "strike",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ストライキ、打撃、襲撃",
+        "src": "assets/word-illustrations/strike-pictogram-natural-v1.webp",
+        "alt": "ストライキ、打撃、襲撃のイメージ（一例）"
+    },
+    {
+        "word": "string",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ひも、糸、列",
+        "src": "assets/word-illustrations/string-pictogram-natural-v1.webp",
+        "alt": "ひも、糸、列のイメージ（一例）"
+    },
+    {
+        "word": "structure",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "構造、構成、建物",
+        "src": "assets/word-illustrations/structure-pictogram-natural-v1.webp",
+        "alt": "構造、構成、建物のイメージ（一例）"
+    },
+    {
+        "word": "study",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "勉強、研究、書斎",
+        "src": "assets/word-illustrations/study-pictogram-natural-v1.webp",
+        "alt": "勉強、研究、書斎のイメージ（一例）"
+    },
+    {
+        "word": "stuff",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "物、材料、詰め込む",
+        "src": "assets/word-illustrations/stuff-pictogram-natural-v1.webp",
+        "alt": "物、材料、詰め込むのイメージ（一例）"
+    },
+    {
+        "word": "style",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スタイル、様式、流儀",
+        "src": "assets/word-illustrations/style-pictogram-natural-v1.webp",
+        "alt": "スタイル、様式、流儀のイメージ（一例）"
+    },
+    {
+        "word": "success",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "成功、合格",
+        "src": "assets/word-illustrations/success-pictogram-natural-v1.webp",
+        "alt": "成功、合格のイメージ（一例）"
+    },
+    {
+        "word": "suit",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スーツ、一揃い",
+        "src": "assets/word-illustrations/suit-pictogram-natural-v1.webp",
+        "alt": "スーツ、一揃いのイメージ（一例）"
+    },
+    {
+        "word": "suitcase",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スーツケース、旅行かばん",
+        "src": "assets/word-illustrations/suitcase-pictogram-natural-v1.webp",
+        "alt": "スーツケース、旅行かばんのイメージ（一例）"
+    },
+    {
+        "word": "summary",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "要約、概略",
+        "src": "assets/word-illustrations/summary-pictogram-natural-v1.webp",
+        "alt": "要約、概略のイメージ（一例）"
+    },
+    {
+        "word": "sunflower",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ひまわり",
+        "src": "assets/word-illustrations/sunflower-pictogram-natural-v1.webp",
+        "alt": "ひまわりのイメージ（一例）"
+    },
+    {
+        "word": "sunglasses",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "サングラス",
+        "src": "assets/word-illustrations/sunglasses-pictogram-natural-v1.webp",
+        "alt": "サングラスのイメージ（一例）"
+    },
+    {
+        "word": "sunlight",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "日光",
+        "src": "assets/word-illustrations/sunlight-pictogram-natural-v1.webp",
+        "alt": "日光のイメージ（一例）"
+    },
+    {
+        "word": "superlative",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "最高級、最高のもの",
+        "src": "assets/word-illustrations/superlative-pictogram-natural-v1.webp",
+        "alt": "最高級、最高のもののイメージ（一例）"
+    },
+    {
+        "word": "superstar",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "スーパースター",
+        "src": "assets/word-illustrations/superstar-pictogram-natural-v1.webp",
+        "alt": "スーパースターのイメージ（一例）"
+    },
+    {
+        "word": "supper",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "夕食、夜食",
+        "src": "assets/word-illustrations/supper-pictogram-natural-v1.webp",
+        "alt": "夕食、夜食のイメージ（一例）"
+    },
+    {
+        "word": "support",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "支え、支持、扶養",
+        "src": "assets/word-illustrations/support-pictogram-natural-v1.webp",
+        "alt": "支え、支持、扶養のイメージ（一例）"
+    },
+    {
+        "word": "surfing",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "サーフィン",
+        "src": "assets/word-illustrations/surfing-pictogram-natural-v1.webp",
+        "alt": "サーフィンのイメージ（一例）"
+    },
+    {
+        "word": "surname",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "苗子、姓",
+        "src": "assets/word-illustrations/surname-pictogram-natural-v1.webp",
+        "alt": "苗子、姓のイメージ（一例）"
+    },
+    {
+        "word": "sweater",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "セーター",
+        "src": "assets/word-illustrations/sweater-pictogram-natural-v1.webp",
+        "alt": "セーターのイメージ（一例）"
+    },
+    {
+        "word": "sweet",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "甘いもの、お菓子",
+        "src": "assets/word-illustrations/sweet-pictogram-natural-v1.webp",
+        "alt": "甘いもの、お菓子のイメージ（一例）"
+    },
+    {
+        "word": "sweetheart",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "恋人、愛する人",
+        "src": "assets/word-illustrations/sweetheart-pictogram-natural-v1.webp",
+        "alt": "恋人、愛する人のイメージ（一例）"
+    },
+    {
+        "word": "swimming costume",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "水着",
+        "src": "assets/word-illustrations/swimming-costume-pictogram-natural-v1.webp",
+        "alt": "水着のイメージ（一例）"
+    },
+    {
+        "word": "swimsuit",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "水着",
+        "src": "assets/word-illustrations/swimming-costume-pictogram-natural-v1.webp",
+        "alt": "水着のイメージ（一例）"
+    },
+    {
+        "word": "symbol",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "象徴、記号、シンボル",
+        "src": "assets/word-illustrations/symbol-pictogram-natural-v1.webp",
+        "alt": "象徴、記号、シンボルのイメージ（一例）"
+    },
+    {
+        "word": "symphony",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "交響曲、シンフォニー",
+        "src": "assets/word-illustrations/symphony-pictogram-natural-v1.webp",
+        "alt": "交響曲、シンフォニーのイメージ（一例）"
+    },
+    {
+        "word": "system",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "体系、制度、システム",
+        "src": "assets/word-illustrations/system-pictogram-natural-v1.webp",
+        "alt": "体系、制度、システムのイメージ（一例）"
+    },
+    {
+        "word": "table tennis",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "卓球",
+        "src": "assets/word-illustrations/table-tennis-pictogram-natural-v1.webp",
+        "alt": "卓球のイメージ（一例）"
+    },
+    {
+        "word": "tablespoon",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "大さじ",
+        "src": "assets/word-illustrations/tablespoon-pictogram-natural-v1.webp",
+        "alt": "大さじのイメージ（一例）"
+    },
+    {
+        "word": "talent",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "才能、才能のある人",
+        "src": "assets/word-illustrations/talent-pictogram-natural-v1.webp",
+        "alt": "才能、才能のある人のイメージ（一例）"
+    },
+    {
+        "word": "tap",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "蛇口、軽くたたくこと",
+        "src": "assets/word-illustrations/tap-pictogram-natural-v1.webp",
+        "alt": "蛇口、軽くたたくことのイメージ（一例）"
+    },
+    {
+        "word": "tape",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "テープ、録音テープ",
+        "src": "assets/word-illustrations/tape-pictogram-natural-v1.webp",
+        "alt": "テープ、録音テープのイメージ（一例）"
+    },
+    {
+        "word": "target",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "標的、目標",
+        "src": "assets/word-illustrations/target-pictogram-natural-v1.webp",
+        "alt": "標的、目標のイメージ（一例）"
+    },
+    {
+        "word": "task",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "仕事、課題、任務",
+        "src": "assets/word-illustrations/task-pictogram-natural-v1.webp",
+        "alt": "仕事、課題、任務のイメージ（一例）"
+    },
+    {
+        "word": "tear",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "涙、裂け目",
+        "src": "assets/word-illustrations/tear-pictogram-natural-v1.webp",
+        "alt": "涙、裂け目のイメージ（一例）"
+    },
+    {
+        "word": "teenager",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "10代の若者",
+        "src": "assets/word-illustrations/teenager-pictogram-natural-v1.webp",
+        "alt": "10代の若者のイメージ（一例）"
+    },
+    {
+        "word": "temperature",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "温度、体温、気温",
+        "src": "assets/word-illustrations/temperature-pictogram-natural-v1.webp",
+        "alt": "温度、体温、気温のイメージ（一例）"
+    },
+    {
+        "word": "text",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "本文、テキスト、教科書",
+        "src": "assets/word-illustrations/text-pictogram-natural-v1.webp",
+        "alt": "本文、テキスト、教科書のイメージ（一例）"
+    },
+    {
+        "word": "text message",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "テキストメッセージ、メール",
+        "src": "assets/word-illustrations/text-message-pictogram-natural-v1.webp",
+        "alt": "テキストメッセージ、メールのイメージ（一例）"
+    },
+    {
+        "word": "textbook",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "教科書",
+        "src": "assets/word-illustrations/textbook-pictogram-natural-v1.webp",
+        "alt": "教科書のイメージ（一例）"
+    },
+    {
+        "word": "thief",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "泥棒",
+        "src": "assets/word-illustrations/thief-pictogram-natural-v1.webp",
+        "alt": "泥棒のイメージ（一例）"
+    },
+    {
+        "word": "thought",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "考え、思考、思いやり",
+        "src": "assets/word-illustrations/thought-pictogram-natural-v1.webp",
+        "alt": "考え、思考、思いやりのイメージ（一例）"
+    },
+    {
+        "word": "thunderstorm",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "雷雨",
+        "src": "assets/word-illustrations/thunderstorm-pictogram-natural-v1.webp",
+        "alt": "雷雨のイメージ（一例）"
+    },
+    {
+        "word": "tie",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ネクタイ、結び目、ネクタイを締める",
+        "src": "assets/word-illustrations/tie-pictogram-natural-v1.webp",
+        "alt": "ネクタイ、結び目、ネクタイを締めるのイメージ（一例）"
+    },
+    {
+        "word": "tights",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "タイツ",
+        "src": "assets/word-illustrations/tights-pictogram-natural-v1.webp",
+        "alt": "タイツのイメージ（一例）"
+    },
+    {
+        "word": "timetable",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "時刻表、時間割",
+        "src": "assets/word-illustrations/timetable-pictogram-natural-v1.webp",
+        "alt": "時刻表、時間割のイメージ（一例）"
+    },
+    {
+        "word": "tip",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "助言、ヒント、チップ、先端",
+        "src": "assets/word-illustrations/tip-pictogram-natural-v1.webp",
+        "alt": "助言、ヒント、チップ、先端のイメージ（一例）"
+    },
+    {
+        "word": "title",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "タイトル、題名、肩書き",
+        "src": "assets/word-illustrations/title-pictogram-natural-v1.webp",
+        "alt": "タイトル、題名、肩書きのイメージ（一例）"
+    },
+    {
+        "word": "toast",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "トースト",
+        "src": "assets/word-illustrations/toast-pictogram-natural-v1.webp",
+        "alt": "トーストのイメージ（一例）"
+    },
+    {
+        "word": "toe",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "足の指",
+        "src": "assets/word-illustrations/toe-pictogram-natural-v1.webp",
+        "alt": "足の指のイメージ（一例）"
+    },
+    {
+        "word": "tone",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "音色、口調、風潮",
+        "src": "assets/word-illustrations/tone-pictogram-natural-v1.webp",
+        "alt": "音色、口調、風潮のイメージ（一例）"
+    },
+    {
+        "word": "tonight",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "今夜、今夜は",
+        "src": "assets/word-illustrations/tonight-pictogram-natural-v1.webp",
+        "alt": "今夜、今夜はのイメージ（一例）"
+    },
+    {
+        "word": "toothache",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "歯痛",
+        "src": "assets/word-illustrations/toothache-pictogram-natural-v1.webp",
+        "alt": "歯痛のイメージ（一例）"
+    },
+    {
+        "word": "toothbrush",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "歯ブラシ",
+        "src": "assets/word-illustrations/toothbrush-pictogram-natural-v1.webp",
+        "alt": "歯ブラシのイメージ（一例）"
+    },
+    {
+        "word": "tour",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "旅行、巡回、見学",
+        "src": "assets/word-illustrations/tour-pictogram-natural-v1.webp",
+        "alt": "旅行、巡回、見学のイメージ（一例）"
+    },
+    {
+        "word": "tour guide",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ツアーガイド",
+        "src": "assets/word-illustrations/tour-guide-pictogram-natural-v1.webp",
+        "alt": "ツアーガイドのイメージ（一例）"
+    },
+    {
+        "word": "tourist",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "観光客",
+        "src": "assets/word-illustrations/tourist-pictogram-natural-v1.webp",
+        "alt": "観光客のイメージ（一例）"
+    },
+    {
+        "word": "track",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "小道、足跡、線路、競技用トラック",
+        "src": "assets/word-illustrations/track-pictogram-natural-v4.webp",
+        "alt": "小道、足跡、線路、競技用トラックのイメージ（一例）"
+    },
+    {
+        "word": "trade",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "貿易、商売",
+        "src": "assets/word-illustrations/trade-pictogram-natural-v1.webp",
+        "alt": "貿易、商売のイメージ（一例）"
+    },
+    {
+        "word": "tradition",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "伝統、しきたり",
+        "src": "assets/word-illustrations/tradition-pictogram-natural-v1.webp",
+        "alt": "伝統、しきたりのイメージ（一例）"
+    },
+    {
+        "word": "traffic",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "交通、往来",
+        "src": "assets/word-illustrations/traffic-pictogram-natural-v1.webp",
+        "alt": "交通、往来のイメージ（一例）"
+    },
+    {
+        "word": "traffic light",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "交通信号（灯）",
+        "src": "assets/word-illustrations/traffic-light-pictogram-natural-v1.webp",
+        "alt": "交通信号（灯）のイメージ（一例）"
+    },
+    {
+        "word": "training",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "訓練、トレーニング",
+        "src": "assets/word-illustrations/training-pictogram-natural-v1.webp",
+        "alt": "訓練、トレーニングのイメージ（一例）"
+    },
+    {
+        "word": "tram",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "路面電車、市電",
+        "src": "assets/word-illustrations/tram-pictogram-natural-v1.webp",
+        "alt": "路面電車、市電のイメージ（一例）"
+    },
+    {
+        "word": "trap",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "わな、計略",
+        "src": "assets/word-illustrations/trap-pictogram-natural-v1.webp",
+        "alt": "わな、計略のイメージ（一例）"
+    },
+    {
+        "word": "travel",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "旅、旅行記",
+        "src": "assets/word-illustrations/travel-pictogram-natural-v1.webp",
+        "alt": "旅、旅行記のイメージ（一例）"
+    },
+    {
+        "word": "traveler",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "旅行者",
+        "src": "assets/word-illustrations/traveler-pictogram-natural-v1.webp",
+        "alt": "旅行者のイメージ（一例）"
+    },
+    {
+        "word": "traveller",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "旅行者",
+        "src": "assets/word-illustrations/traveler-pictogram-natural-v1.webp",
+        "alt": "旅行者のイメージ（一例）"
+    },
+    {
+        "word": "treasure",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "宝、財宝",
+        "src": "assets/word-illustrations/treasure-pictogram-natural-v1.webp",
+        "alt": "宝、財宝のイメージ（一例）"
+    },
+    {
+        "word": "trick",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "いたずら、計略、手品",
+        "src": "assets/word-illustrations/trick-pictogram-natural-v1.webp",
+        "alt": "いたずら、計略、手品のイメージ（一例）"
+    },
+    {
+        "word": "trouble",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "心配、困難、迷惑",
+        "src": "assets/word-illustrations/trouble-pictogram-natural-v1.webp",
+        "alt": "心配、困難、迷惑のイメージ（一例）"
+    },
+    {
+        "word": "truth",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "真実、誠実さ",
+        "src": "assets/word-illustrations/truth-pictogram-natural-v1.webp",
+        "alt": "真実、誠実さのイメージ（一例）"
+    },
+    {
+        "word": "tune",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "旋律、調和、正しい調子",
+        "src": "assets/word-illustrations/tune-pictogram-natural-v1.webp",
+        "alt": "旋律、調和、正しい調子のイメージ（一例）"
+    },
+    {
+        "word": "uniform",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "制服",
+        "src": "assets/word-illustrations/uniform-pictogram-natural-v1.webp",
+        "alt": "制服のイメージ（一例）"
+    },
+    {
+        "word": "unit",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "単位、部隊、ユニット",
+        "src": "assets/word-illustrations/unit-pictogram-natural-v1.webp",
+        "alt": "単位、部隊、ユニットのイメージ（一例）"
+    },
+    {
+        "word": "university",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "大学",
+        "src": "assets/word-illustrations/university-pictogram-natural-v1.webp",
+        "alt": "大学のイメージ（一例）"
+    },
+    {
+        "word": "use",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "使用、利用、用途",
+        "src": "assets/word-illustrations/use-pictogram-natural-v1.webp",
+        "alt": "使用、利用、用途のイメージ（一例）"
+    },
+    {
+        "word": "valley",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "谷、渓谷",
+        "src": "assets/word-illustrations/valley-pictogram-natural-v1.webp",
+        "alt": "谷、渓谷のイメージ（一例）"
+    },
+    {
+        "word": "value",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "価値、重要性、価格",
+        "src": "assets/word-illustrations/value-pictogram-natural-v1.webp",
+        "alt": "価値、重要性、価格のイメージ（一例）"
+    },
+    {
+        "word": "verb",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "動詞",
+        "src": "assets/word-illustrations/verb-pictogram-natural-v1.webp",
+        "alt": "動詞のイメージ（一例）"
+    },
+    {
+        "word": "video game",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "テレビゲーム、ビデオゲーム",
+        "src": "assets/word-illustrations/video-game-pictogram-natural-v1.webp",
+        "alt": "テレビゲーム、ビデオゲームのイメージ（一例）"
+    },
+    {
+        "word": "view",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "見晴らし、眺め、意見",
+        "src": "assets/word-illustrations/view-pictogram-natural-v1.webp",
+        "alt": "見晴らし、眺め、意見のイメージ（一例）"
+    },
+    {
+        "word": "village",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "村、村落",
+        "src": "assets/word-illustrations/village-pictogram-natural-v1.webp",
+        "alt": "村、村落のイメージ（一例）"
+    },
+    {
+        "word": "violin",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "バイオリン",
+        "src": "assets/word-illustrations/violin-pictogram-natural-v1.webp",
+        "alt": "バイオリンのイメージ（一例）"
+    },
+    {
+        "word": "visitor",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "訪問者、来訪者",
+        "src": "assets/word-illustrations/visitor-pictogram-natural-v1.webp",
+        "alt": "訪問者、来訪者のイメージ（一例）"
+    },
+    {
+        "word": "vocabulary",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "語彙（ごい）",
+        "src": "assets/word-illustrations/vocabulary-pictogram-natural-v1.webp",
+        "alt": "語彙（ごい）のイメージ（一例）"
+    },
+    {
+        "word": "voice",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "声、意見",
+        "src": "assets/word-illustrations/voice-pictogram-natural-v1.webp",
+        "alt": "声、意見のイメージ（一例）"
+    },
+    {
+        "word": "walking",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "歩くこと、ウォーキング",
+        "src": "assets/word-illustrations/walking-pictogram-natural-v1.webp",
+        "alt": "歩くこと、ウォーキングのイメージ（一例）"
+    },
+    {
+        "word": "wallet",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "財布",
+        "src": "assets/word-illustrations/wallet-pictogram-natural-v1.webp",
+        "alt": "財布のイメージ（一例）"
+    },
+    {
+        "word": "washing machine",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "洗濯機",
+        "src": "assets/word-illustrations/washing-machine-pictogram-natural-v1.webp",
+        "alt": "洗濯機のイメージ（一例）"
+    },
+    {
+        "word": "washing-up",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "皿洗い",
+        "src": "assets/word-illustrations/washing-up-pictogram-natural-v2.webp",
+        "alt": "皿洗いのイメージ（一例）"
+    },
+    {
+        "word": "wave",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "波、揺れ",
+        "src": "assets/word-illustrations/wave-pictogram-natural-v1.webp",
+        "alt": "波、揺れのイメージ（一例）"
+    },
+    {
+        "word": "wealth",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "富、財産、豊富",
+        "src": "assets/word-illustrations/wealth-pictogram-natural-v1.webp",
+        "alt": "富、財産、豊富のイメージ（一例）"
+    },
+    {
+        "word": "web",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "クモの巣、ウェブ",
+        "src": "assets/word-illustrations/web-pictogram-natural-v2.webp",
+        "alt": "クモの巣、ウェブのイメージ（一例）"
+    },
+    {
+        "word": "web page",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ウェブページ",
+        "src": "assets/word-illustrations/web-page-pictogram-natural-v1.webp",
+        "alt": "ウェブページのイメージ（一例）"
+    },
+    {
+        "word": "website",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ウェブサイト",
+        "src": "assets/word-illustrations/website-pictogram-natural-v1.webp",
+        "alt": "ウェブサイトのイメージ（一例）"
+    },
+    {
+        "word": "wedding",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "結婚式",
+        "src": "assets/word-illustrations/wedding-pictogram-natural-v1.webp",
+        "alt": "結婚式のイメージ（一例）"
+    },
+    {
+        "word": "weekday",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "平日",
+        "src": "assets/word-illustrations/weekday-pictogram-natural-v1.webp",
+        "alt": "平日のイメージ（一例）"
+    },
+    {
+        "word": "weep",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "泣き、嗚咽",
+        "src": "assets/word-illustrations/weep-pictogram-natural-v1.webp",
+        "alt": "泣き、嗚咽のイメージ（一例）"
+    },
+    {
+        "word": "weight",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "重さ、体重、重要性",
+        "src": "assets/word-illustrations/weight-pictogram-natural-v1.webp",
+        "alt": "重さ、体重、重要性のイメージ（一例）"
+    },
+    {
+        "word": "west",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "西",
+        "src": "assets/word-illustrations/west-pictogram-natural-v1.webp",
+        "alt": "西のイメージ（一例）"
+    },
+    {
+        "word": "wheelchair",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "車椅子",
+        "src": "assets/word-illustrations/wheelchair-pictogram-natural-v1.webp",
+        "alt": "車椅子のイメージ（一例）"
+    },
+    {
+        "word": "wine",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "ワイン、ぶどう酒",
+        "src": "assets/word-illustrations/wine-pictogram-natural-v1.webp",
+        "alt": "ワイン、ぶどう酒のイメージ（一例）"
+    },
+    {
+        "word": "winner",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "勝者、受賞者",
+        "src": "assets/word-illustrations/winner-pictogram-natural-v1.webp",
+        "alt": "勝者、受賞者のイメージ（一例）"
+    },
+    {
+        "word": "wisdom",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "知恵、賢さ",
+        "src": "assets/word-illustrations/wisdom-pictogram-natural-v1.webp",
+        "alt": "知恵、賢さのイメージ（一例）"
+    },
+    {
+        "word": "wood",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "木、材木、森",
+        "src": "assets/word-illustrations/wood-pictogram-natural-v1.webp",
+        "alt": "木、材木、森のイメージ（一例）"
+    },
+    {
+        "word": "wool",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "羊毛、毛糸、ウール",
+        "src": "assets/word-illustrations/wool-pictogram-natural-v1.webp",
+        "alt": "羊毛、毛糸、ウールのイメージ（一例）"
+    },
+    {
+        "word": "writing",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "書くこと、執筆、著作、筆跡",
+        "src": "assets/word-illustrations/writing-pictogram-natural-v1.webp",
+        "alt": "書くこと、執筆、著作、筆跡のイメージ（一例）"
+    },
+    {
+        "word": "youth",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "若さ、元気、若者、青年期",
+        "src": "assets/word-illustrations/youth-pictogram-natural-v1.webp",
+        "alt": "若さ、元気、若者、青年期のイメージ（一例）"
+    },
+    {
+        "word": "zone",
+        "level": "basic",
+        "pos": "名",
+        "meaning": "地帯、区域、ゾーン",
+        "src": "assets/word-illustrations/zone-pictogram-natural-v1.webp",
+        "alt": "地帯、区域、ゾーンのイメージ（一例）"
+    },
+    {
+        "word": "upstairs",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】２階",
+        "src": "assets/word-illustrations/upstairs-pictogram-natural-v1.webp",
+        "alt": "【名】２階のイメージ（一例）"
+    },
+    {
+        "word": "urge",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】衝動",
+        "src": "assets/word-illustrations/urge-pictogram-natural-v1.webp",
+        "alt": "【名】衝動のイメージ（一例）"
+    },
+    {
+        "word": "usage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】使用法、慣習",
+        "src": "assets/word-illustrations/usage-pictogram-natural-v2.webp",
+        "alt": "【名】使用法、慣習のイメージ（一例）"
+    },
+    {
+        "word": "vacancy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】空き、欠員",
+        "src": "assets/word-illustrations/vacancy-pictogram-natural-v1.webp",
+        "alt": "【名】空き、欠員のイメージ（一例）"
+    },
+    {
+        "word": "van",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】バン、小型トラック",
+        "src": "assets/word-illustrations/van-pictogram-natural-v1.webp",
+        "alt": "【名】バン、小型トラックのイメージ（一例）"
+    },
+    {
+        "word": "variety",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】多様性、種類",
+        "src": "assets/word-illustrations/variety-pictogram-natural-v1.webp",
+        "alt": "【名】多様性、種類のイメージ（一例）"
+    },
+    {
+        "word": "vegetarian",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】菜食主義者",
+        "src": "assets/word-illustrations/vegetarian-pictogram-natural-v1.webp",
+        "alt": "【名】菜食主義者のイメージ（一例）"
+    },
+    {
+        "word": "vehicle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】乗り物",
+        "src": "assets/word-illustrations/vehicle-pictogram-natural-v1.webp",
+        "alt": "【名】乗り物のイメージ（一例）"
+    },
+    {
+        "word": "vein",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】静脈",
+        "src": "assets/word-illustrations/vein-pictogram-natural-v1.webp",
+        "alt": "【名】静脈のイメージ（一例）"
+    },
+    {
+        "word": "vessel",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】船、容器、血管",
+        "src": "assets/word-illustrations/vessel-pictogram-natural-v1.webp",
+        "alt": "【名】船、容器、血管のイメージ（一例）"
+    },
+    {
+        "word": "vet",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】獣医",
+        "src": "assets/word-illustrations/vet-pictogram-natural-v1.webp",
+        "alt": "【名】獣医のイメージ（一例）"
+    },
+    {
+        "word": "vice president",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】副大統領、副社長",
+        "src": "assets/word-illustrations/vice-president-pictogram-natural-v1.webp",
+        "alt": "【名】副大統領、副社長のイメージ（一例）"
+    },
+    {
+        "word": "victim",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】犠牲者",
+        "src": "assets/word-illustrations/victim-pictogram-natural-v1.webp",
+        "alt": "【名】犠牲者のイメージ（一例）"
+    },
+    {
+        "word": "victory",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】勝利",
+        "src": "assets/word-illustrations/victory-pictogram-natural-v1.webp",
+        "alt": "【名】勝利のイメージ（一例）"
+    },
+    {
+        "word": "video clip",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ビデオクリップ",
+        "src": "assets/word-illustrations/video-clip-pictogram-natural-v1.webp",
+        "alt": "【名】ビデオクリップのイメージ（一例）"
+    },
+    {
+        "word": "viewpoint",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】観点",
+        "src": "assets/word-illustrations/viewpoint-pictogram-natural-v1.webp",
+        "alt": "【名】観点のイメージ（一例）"
+    },
+    {
+        "word": "violence",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】暴力",
+        "src": "assets/word-illustrations/violence-pictogram-natural-v1.webp",
+        "alt": "【名】暴力のイメージ（一例）"
+    },
+    {
+        "word": "virus",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ウイルス",
+        "src": "assets/word-illustrations/virus-pictogram-natural-v1.webp",
+        "alt": "【名】ウイルスのイメージ（一例）"
+    },
+    {
+        "word": "visa",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ビザ",
+        "src": "assets/word-illustrations/visa-pictogram-natural-v1.webp",
+        "alt": "【名】ビザのイメージ（一例）"
+    },
+    {
+        "word": "vision",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】視力、展望",
+        "src": "assets/word-illustrations/vision-pictogram-natural-v1.webp",
+        "alt": "【名】視力、展望のイメージ（一例）"
+    },
+    {
+        "word": "volcano",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】火山",
+        "src": "assets/word-illustrations/volcano-pictogram-natural-v1.webp",
+        "alt": "【名】火山のイメージ（一例）"
+    },
+    {
+        "word": "volume",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】音量、巻",
+        "src": "assets/word-illustrations/volume-pictogram-natural-v1.webp",
+        "alt": "【名】音量、巻のイメージ（一例）"
+    },
+    {
+        "word": "vowel",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】母音",
+        "src": "assets/word-illustrations/vowel-pictogram-natural-v1.webp",
+        "alt": "【名】母音のイメージ（一例）"
+    },
+    {
+        "word": "voyage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】航海",
+        "src": "assets/word-illustrations/voyage-pictogram-natural-v1.webp",
+        "alt": "【名】航海のイメージ（一例）"
+    },
+    {
+        "word": "waggon",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】荷馬車（英）",
+        "src": "assets/word-illustrations/waggon-pictogram-natural-v1.webp",
+        "alt": "【名】荷馬車（英）のイメージ（一例）"
+    },
+    {
+        "word": "wagon",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】荷馬車（米）",
+        "src": "assets/word-illustrations/waggon-pictogram-natural-v1.webp",
+        "alt": "【名】荷馬車（米）のイメージ（一例）"
+    },
+    {
+        "word": "ward",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】病棟、区",
+        "src": "assets/word-illustrations/ward-pictogram-natural-v1.webp",
+        "alt": "【名】病棟、区のイメージ（一例）"
+    },
+    {
+        "word": "wardrobe",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】衣装だんす",
+        "src": "assets/word-illustrations/wardrobe-pictogram-natural-v1.webp",
+        "alt": "【名】衣装だんすのイメージ（一例）"
     }
-
 ].map(Object.freeze));

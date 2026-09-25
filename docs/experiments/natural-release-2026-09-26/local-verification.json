@@ -1,0 +1,69 @@
+{
+  "live": false,
+  "version": "2026.0926.0019",
+  "assetHashesChecked": 580,
+  "checkedFiles": [
+    "index.html",
+    "vocab_clicker_game.html",
+    "js/version.js",
+    "data/word-illustrations.js",
+    "assets/word-illustrations/episode-pictogram-natural-v1.webp",
+    "assets/word-illustrations/freedom-pictogram-natural-v1.webp",
+    "assets/word-illustrations/horror-pictogram-natural-v1.webp",
+    "assets/word-illustrations/lifestyle-pictogram-natural-v1.webp",
+    "assets/word-illustrations/notice-pictogram-natural-v1.webp",
+    "assets/word-illustrations/rhythm-pictogram-natural-v1.webp",
+    "assets/word-illustrations/shape-pictogram-natural-v1.webp",
+    "assets/word-illustrations/staff-pictogram-natural-v1.webp",
+    "assets/word-illustrations/track-pictogram-natural-v4.webp",
+    "assets/word-illustrations/wardrobe-pictogram-natural-v1.webp",
+    "assets/word-illustrations/look-pictogram-natural-pre21-v2.webp",
+    "assets/word-illustrations/chest-pictogram-natural-pre21-v2.webp"
+  ],
+  "viewports": [
+    {
+      "width": 320,
+      "version": "2026.0926.0019",
+      "rows": 1496,
+      "collection": 1454,
+      "free": 100,
+      "limit": 480,
+      "premium": 1454,
+      "checked": [
+        "chest",
+        "wardrobe"
+      ],
+      "enlarge": true,
+      "recordsUnchanged": true,
+      "fits": true,
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "version": "2026.0926.0019",
+      "rows": 1496,
+      "collection": 1454,
+      "free": 100,
+      "limit": 480,
+      "premium": 1454,
+      "checked": [
+        "episode",
+        "freedom",
+        "horror",
+        "lifestyle",
+        "notice",
+        "rhythm",
+        "shape",
+        "staff",
+        "track",
+        "wardrobe",
+        "look",
+        "chest"
+      ],
+      "enlarge": true,
+      "recordsUnchanged": true,
+      "fits": true,
+      "errors": []
+    }
+  ]
+}
