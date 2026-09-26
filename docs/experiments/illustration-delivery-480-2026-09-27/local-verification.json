@@ -1,0 +1,73 @@
+{
+  "live": false,
+  "version": "2026.0927.0025",
+  "delivery480": true,
+  "assetHashesChecked": 2147,
+  "checkedFiles": [
+    "index.html",
+    "vocab_clicker_game.html",
+    "js/version.js",
+    "data/word-illustrations.js",
+    "assets/word-illustrations/apple-pictogram-v1.webp",
+    "assets/word-illustrations/violin-pictogram-v5.webp",
+    "assets/word-illustrations/violin-pictogram-natural-v1.webp",
+    "assets/word-illustrations/warmth-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/underpants-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/saucer-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/regulation-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/process-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/mankind-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/jungle-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/laboratory-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/harbour-daily-pictogram-natural-v3.webp",
+    "assets/word-illustrations/humor-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/ice-hockey-daily-pictogram-natural-v1.webp"
+  ],
+  "viewports": [
+    {
+      "width": 320,
+      "version": "2026.0927.0025",
+      "rows": 2206,
+      "collection": 2160,
+      "free": 100,
+      "limit": 480,
+      "premium": 2160,
+      "checked": [
+        "harbour",
+        "ice hockey"
+      ],
+      "enlarge": true,
+      "recordsUnchanged": true,
+      "fits": true,
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "version": "2026.0927.0025",
+      "rows": 2206,
+      "collection": 2160,
+      "free": 100,
+      "limit": 480,
+      "premium": 2160,
+      "checked": [
+        "apple",
+        "violin",
+        "warmth",
+        "underpants",
+        "saucer",
+        "regulation",
+        "process",
+        "mankind",
+        "jungle",
+        "lab",
+        "humour",
+        "harbour",
+        "ice hockey"
+      ],
+      "enlarge": true,
+      "recordsUnchanged": true,
+      "fits": true,
+      "errors": []
+    }
+  ]
+}

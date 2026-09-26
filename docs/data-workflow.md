@@ -2,6 +2,11 @@
 
 ## Source Data
 
+- 2026-09-27配信対象（2026.0927.0025）：第27〜33回の700画像・710登録行を追加し、合計2,206登録行・2,147画像、アプリ内単語帳2,160語。既存行・語義・学習キー・無料100語・1日8分は維持。
+- 登録済み画像は長辺480px・縦横比維持・可逆WebPに統一。2,147枚で798.89MB→152.29MB（80.94%削減）。原本と旧版は制作ワークスペースに保持し、公開用チェックアウトだけ配信版へ差し替える。既存旧配信画像は削除しない。
+- 今後の新作にも `scripts/prepare-illustration-delivery.cjs --root <原本ワークスペース> --apply-to <公開用チェックアウト> --sharp-root <sharpのあるnode_modules>` を適用する。原本／公開先の登録一致、元ファイルSHA、配信WebPの可視RGBAを検証し、無関係な既存変更は上書きしない。制作元と公開用のファイルを一括同期しない。
+- [480px変換記録](experiments/illustration-delivery-480-2026-09-27/delivery-manifest.json)／[代表表示確認](experiments/illustration-delivery-480-2026-09-27/local-verification.json)。キャッシュ方式・Firebase・アプリ処理は変更しない。画像更新時は配信版を再作成する。`lot` の旧品詞を区別する2行は既存互換用として保持する。
+
 - Runtime vocabulary dataset: `data/vocabulary.js`
 - IPA overlay dataset: `data/ipa_overrides.js`
 - CEFR CSV inputs at repo root are source materials, not runtime files
