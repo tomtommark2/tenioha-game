@@ -17651,5 +17651,18973 @@ window.WORD_ILLUSTRATIONS = Object.freeze([
         "meaning": "【名】アイスホッケー",
         "src": "assets/word-illustrations/ice-hockey-daily-pictogram-natural-v1.webp",
         "alt": "【名】アイスホッケーのイメージ（一例）"
+    },
+    {
+        "word": "ice skating",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】アイススケート",
+        "src": "assets/word-illustrations/ice-skating-daily-pictogram-natural-v1.webp",
+        "alt": "【名】アイススケートのイメージ（一例）"
+    },
+    {
+        "word": "identity",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】身元、アイデンティティ",
+        "src": "assets/word-illustrations/identity-daily-pictogram-natural-v1.webp",
+        "alt": "【名】身元、アイデンティティのイメージ（一例）"
+    },
+    {
+        "word": "identity card",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】身分証明書",
+        "src": "assets/word-illustrations/identity-card-daily-pictogram-natural-v1.webp",
+        "alt": "【名】身分証明書のイメージ（一例）"
+    },
+    {
+        "word": "idiom",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】慣用句",
+        "src": "assets/word-illustrations/idiom-daily-pictogram-natural-v1.webp",
+        "alt": "【名】慣用句のイメージ（一例）"
+    },
+    {
+        "word": "idol",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】アイドル",
+        "src": "assets/word-illustrations/idol-daily-pictogram-natural-v1.webp",
+        "alt": "【名】アイドルのイメージ（一例）"
+    },
+    {
+        "word": "illness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】病気",
+        "src": "assets/word-illustrations/illness-daily-pictogram-natural-v1.webp",
+        "alt": "【名】病気のイメージ（一例）"
+    },
+    {
+        "word": "immigration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】移住、入国管理",
+        "src": "assets/word-illustrations/immigration-daily-pictogram-natural-v1.webp",
+        "alt": "【名】移住、入国管理のイメージ（一例）"
+    },
+    {
+        "word": "impression",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】印象",
+        "src": "assets/word-illustrations/impression-daily-pictogram-natural-v1.webp",
+        "alt": "【名】印象のイメージ（一例）"
+    },
+    {
+        "word": "improvement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】改善",
+        "src": "assets/word-illustrations/improvement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】改善のイメージ（一例）"
+    },
+    {
+        "word": "incident",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】出来事、事件",
+        "src": "assets/word-illustrations/incident-daily-pictogram-natural-v1.webp",
+        "alt": "【名】出来事、事件のイメージ（一例）"
+    },
+    {
+        "word": "income",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】収入",
+        "src": "assets/word-illustrations/income-daily-pictogram-natural-v1.webp",
+        "alt": "【名】収入のイメージ（一例）"
+    },
+    {
+        "word": "increase",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】増加",
+        "src": "assets/word-illustrations/increase-daily-pictogram-natural-v1.webp",
+        "alt": "【名】増加のイメージ（一例）"
+    },
+    {
+        "word": "indefinite article",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不定冠詞",
+        "src": "assets/word-illustrations/indefinite-article-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不定冠詞のイメージ（一例）"
+    },
+    {
+        "word": "industry",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】産業、工業",
+        "src": "assets/word-illustrations/industry-daily-pictogram-natural-v1.webp",
+        "alt": "【名】産業、工業のイメージ（一例）"
+    },
+    {
+        "word": "infection",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】感染",
+        "src": "assets/word-illustrations/infection-daily-pictogram-natural-v1.webp",
+        "alt": "【名】感染のイメージ（一例）"
+    },
+    {
+        "word": "infinitive",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不定詞",
+        "src": "assets/word-illustrations/infinitive-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不定詞のイメージ（一例）"
+    },
+    {
+        "word": "fifth",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】5番目、5分の1",
+        "src": "assets/word-illustrations/fifth-daily-pictogram-natural-v1.webp",
+        "alt": "【名】5番目、5分の1のイメージ（一例）"
+    },
+    {
+        "word": "filling",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】詰め物",
+        "src": "assets/word-illustrations/filling-daily-pictogram-natural-v1.webp",
+        "alt": "【名】詰め物のイメージ（一例）"
+    },
+    {
+        "word": "film-maker",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】映画製作者",
+        "src": "assets/word-illustrations/film-maker-daily-pictogram-natural-v1.webp",
+        "alt": "【名】映画製作者のイメージ（一例）"
+    },
+    {
+        "word": "filter",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】フィルター",
+        "src": "assets/word-illustrations/filter-daily-pictogram-natural-v1.webp",
+        "alt": "【名】フィルターのイメージ（一例）"
+    },
+    {
+        "word": "finding",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】発見、結果",
+        "src": "assets/word-illustrations/finding-daily-pictogram-natural-v1.webp",
+        "alt": "【名】発見、結果のイメージ（一例）"
+    },
+    {
+        "word": "fine",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】罰金",
+        "src": "assets/word-illustrations/fine-daily-pictogram-natural-v1.webp",
+        "alt": "【名】罰金のイメージ（一例）"
+    },
+    {
+        "word": "finger",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】指",
+        "src": "assets/word-illustrations/finger-daily-pictogram-natural-v1.webp",
+        "alt": "【名】指のイメージ（一例）"
+    },
+    {
+        "word": "fire station",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】消防署",
+        "src": "assets/word-illustrations/fire-station-daily-pictogram-natural-v1.webp",
+        "alt": "【名】消防署のイメージ（一例）"
+    },
+    {
+        "word": "firefighter",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】消防士",
+        "src": "assets/word-illustrations/firefighter-daily-pictogram-natural-v1.webp",
+        "alt": "【名】消防士のイメージ（一例）"
+    },
+    {
+        "word": "firework",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】花火",
+        "src": "assets/word-illustrations/firework-daily-pictogram-natural-v1.webp",
+        "alt": "【名】花火のイメージ（一例）"
+    },
+    {
+        "word": "firm",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】会社",
+        "src": "assets/word-illustrations/firm-daily-pictogram-natural-v1.webp",
+        "alt": "【名】会社のイメージ（一例）"
+    },
+    {
+        "word": "first floor",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】1階（英では2階）",
+        "src": "assets/word-illustrations/first-floor-daily-pictogram-natural-v1.webp",
+        "alt": "【名】1階（英では2階）のイメージ（一例）"
+    },
+    {
+        "word": "first lady",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】大統領夫人",
+        "src": "assets/word-illustrations/first-lady-daily-pictogram-natural-v1.webp",
+        "alt": "【名】大統領夫人のイメージ（一例）"
+    },
+    {
+        "word": "fitness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】健康、適合性",
+        "src": "assets/word-illustrations/fitness-daily-pictogram-natural-v1.webp",
+        "alt": "【名】健康、適合性のイメージ（一例）"
+    },
+    {
+        "word": "flavor",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】風味（米）",
+        "src": "assets/word-illustrations/flavor-daily-pictogram-natural-v1.webp",
+        "alt": "【名】風味（米）のイメージ（一例）"
+    },
+    {
+        "word": "flavour",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】風味",
+        "src": "assets/word-illustrations/flavor-daily-pictogram-natural-v1.webp",
+        "alt": "【名】風味のイメージ（一例）"
+    },
+    {
+        "word": "flock",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】群れ",
+        "src": "assets/word-illustrations/flock-daily-pictogram-natural-v1.webp",
+        "alt": "【名】群れのイメージ（一例）"
+    },
+    {
+        "word": "flow",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】流れ",
+        "src": "assets/word-illustrations/flow-daily-pictogram-natural-v1.webp",
+        "alt": "【名】流れのイメージ（一例）"
+    },
+    {
+        "word": "flu",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】インフルエンザ",
+        "src": "assets/word-illustrations/flu-daily-pictogram-natural-v1.webp",
+        "alt": "【名】インフルエンザのイメージ（一例）"
+    },
+    {
+        "word": "flute",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】フルート",
+        "src": "assets/word-illustrations/flute-daily-pictogram-natural-v1.webp",
+        "alt": "【名】フルートのイメージ（一例）"
+    },
+    {
+        "word": "fold",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】折り目",
+        "src": "assets/word-illustrations/fold-daily-pictogram-natural-v1.webp",
+        "alt": "【名】折り目のイメージ（一例）"
+    },
+    {
+        "word": "folk",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】人々",
+        "src": "assets/word-illustrations/folk-daily-pictogram-natural-v1.webp",
+        "alt": "【名】人々のイメージ（一例）"
+    },
+    {
+        "word": "fondness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】愛着",
+        "src": "assets/word-illustrations/fondness-daily-pictogram-natural-v2.webp",
+        "alt": "【名】愛着のイメージ（一例）"
+    },
+    {
+        "word": "foot",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】足、フィート",
+        "src": "assets/word-illustrations/foot-daily-pictogram-natural-v1.webp",
+        "alt": "【名】足、フィートのイメージ（一例）"
+    },
+    {
+        "word": "forecast",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】予報",
+        "src": "assets/word-illustrations/forecast-daily-pictogram-natural-v1.webp",
+        "alt": "【名】予報のイメージ（一例）"
+    },
+    {
+        "word": "forehead",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】額",
+        "src": "assets/word-illustrations/forehead-daily-pictogram-natural-v1.webp",
+        "alt": "【名】額のイメージ（一例）"
+    },
+    {
+        "word": "format",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】形式",
+        "src": "assets/word-illustrations/format-daily-pictogram-natural-v1.webp",
+        "alt": "【名】形式のイメージ（一例）"
+    },
+    {
+        "word": "formula",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】公式",
+        "src": "assets/word-illustrations/formula-daily-pictogram-natural-v1.webp",
+        "alt": "【名】公式のイメージ（一例）"
+    },
+    {
+        "word": "fortnight",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】2週間",
+        "src": "assets/word-illustrations/fortnight-daily-pictogram-natural-v1.webp",
+        "alt": "【名】2週間のイメージ（一例）"
+    },
+    {
+        "word": "foundation",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】基礎、財団",
+        "src": "assets/word-illustrations/foundation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】基礎、財団のイメージ（一例）"
+    },
+    {
+        "word": "fountain",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】噴水",
+        "src": "assets/word-illustrations/fountain-daily-pictogram-natural-v1.webp",
+        "alt": "【名】噴水のイメージ（一例）"
+    },
+    {
+        "word": "fragment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】破片",
+        "src": "assets/word-illustrations/fragment-daily-pictogram-natural-v2.webp",
+        "alt": "【名】破片のイメージ（一例）"
+    },
+    {
+        "word": "freezer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】冷凍庫",
+        "src": "assets/word-illustrations/freezer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】冷凍庫のイメージ（一例）"
+    },
+    {
+        "word": "frequency",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】頻度、周波数",
+        "src": "assets/word-illustrations/frequency-daily-pictogram-natural-v1.webp",
+        "alt": "【名】頻度、周波数のイメージ（一例）"
+    },
+    {
+        "word": "freshman",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】新入生（米）",
+        "src": "assets/word-illustrations/freshman-daily-pictogram-natural-v1.webp",
+        "alt": "【名】新入生（米）のイメージ（一例）"
+    },
+    {
+        "word": "friendliness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】親しみやすさ",
+        "src": "assets/word-illustrations/friendliness-daily-pictogram-natural-v1.webp",
+        "alt": "【名】親しみやすさのイメージ（一例）"
+    },
+    {
+        "word": "fright",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】恐怖",
+        "src": "assets/word-illustrations/fright-daily-pictogram-natural-v1.webp",
+        "alt": "【名】恐怖のイメージ（一例）"
+    },
+    {
+        "word": "frost",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】霜",
+        "src": "assets/word-illustrations/frost-daily-pictogram-natural-v1.webp",
+        "alt": "【名】霜のイメージ（一例）"
+    },
+    {
+        "word": "frustration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】欲求不満",
+        "src": "assets/word-illustrations/frustration-daily-pictogram-natural-v1.webp",
+        "alt": "【名】欲求不満のイメージ（一例）"
+    },
+    {
+        "word": "frying pan",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】フライパン",
+        "src": "assets/word-illustrations/frying-pan-daily-pictogram-natural-v1.webp",
+        "alt": "【名】フライパンのイメージ（一例）"
+    },
+    {
+        "word": "fuel",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】燃料",
+        "src": "assets/word-illustrations/fuel-daily-pictogram-natural-v1.webp",
+        "alt": "【名】燃料のイメージ（一例）"
+    },
+    {
+        "word": "full stop",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】終止符（ピリオド）",
+        "src": "assets/word-illustrations/full-stop-daily-pictogram-natural-v1.webp",
+        "alt": "【名】終止符（ピリオド）のイメージ（一例）"
+    },
+    {
+        "word": "function",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】機能、行事",
+        "src": "assets/word-illustrations/function-daily-pictogram-natural-v1.webp",
+        "alt": "【名】機能、行事のイメージ（一例）"
+    },
+    {
+        "word": "fund",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】資金",
+        "src": "assets/word-illustrations/fund-daily-pictogram-natural-v1.webp",
+        "alt": "【名】資金のイメージ（一例）"
+    },
+    {
+        "word": "funeral",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】葬儀",
+        "src": "assets/word-illustrations/funeral-daily-pictogram-natural-v1.webp",
+        "alt": "【名】葬儀のイメージ（一例）"
+    },
+    {
+        "word": "fur",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】毛皮",
+        "src": "assets/word-illustrations/fur-daily-pictogram-natural-v1.webp",
+        "alt": "【名】毛皮のイメージ（一例）"
+    },
+    {
+        "word": "fuss",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】大騒ぎ",
+        "src": "assets/word-illustrations/fuss-daily-pictogram-natural-v1.webp",
+        "alt": "【名】大騒ぎのイメージ（一例）"
+    },
+    {
+        "word": "gain",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】利益",
+        "src": "assets/word-illustrations/gain-daily-pictogram-natural-v1.webp",
+        "alt": "【名】利益のイメージ（一例）"
+    },
+    {
+        "word": "gall",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】厚かましさ、胆汁",
+        "src": "assets/word-illustrations/gall-daily-pictogram-natural-v1.webp",
+        "alt": "【名】厚かましさ、胆汁のイメージ（一例）"
+    },
+    {
+        "word": "gallon",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ガロン",
+        "src": "assets/word-illustrations/gallon-daily-pictogram-natural-v2.webp",
+        "alt": "【名】ガロンのイメージ（一例）"
+    },
+    {
+        "word": "gaol",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】刑務所（英古語）",
+        "src": "assets/word-illustrations/gaol-daily-pictogram-natural-v1.webp",
+        "alt": "【名】刑務所（英古語）のイメージ（一例）"
+    },
+    {
+        "word": "gap",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】隙間、格差",
+        "src": "assets/word-illustrations/gap-daily-pictogram-natural-v1.webp",
+        "alt": "【名】隙間、格差のイメージ（一例）"
+    },
+    {
+        "word": "gardening",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】園芸",
+        "src": "assets/word-illustrations/gardening-daily-pictogram-natural-v1.webp",
+        "alt": "【名】園芸のイメージ（一例）"
+    },
+    {
+        "word": "garment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】衣服",
+        "src": "assets/word-illustrations/garment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】衣服のイメージ（一例）"
+    },
+    {
+        "word": "gene",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】遺伝子",
+        "src": "assets/word-illustrations/gene-daily-pictogram-natural-v1.webp",
+        "alt": "【名】遺伝子のイメージ（一例）"
+    },
+    {
+        "word": "general",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】将軍",
+        "src": "assets/word-illustrations/general-daily-pictogram-natural-v1.webp",
+        "alt": "【名】将軍のイメージ（一例）"
+    },
+    {
+        "word": "genetics",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】遺伝学",
+        "src": "assets/word-illustrations/genetics-daily-pictogram-natural-v1.webp",
+        "alt": "【名】遺伝学のイメージ（一例）"
+    },
+    {
+        "word": "gentleman",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】紳士",
+        "src": "assets/word-illustrations/gentleman-daily-pictogram-natural-v1.webp",
+        "alt": "【名】紳士のイメージ（一例）"
+    },
+    {
+        "word": "geography",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】地理",
+        "src": "assets/word-illustrations/geography-daily-pictogram-natural-v1.webp",
+        "alt": "【名】地理のイメージ（一例）"
+    },
+    {
+        "word": "geology",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】地質学",
+        "src": "assets/word-illustrations/geology-daily-pictogram-natural-v1.webp",
+        "alt": "【名】地質学のイメージ（一例）"
+    },
+    {
+        "word": "gesture",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】身振り",
+        "src": "assets/word-illustrations/gesture-daily-pictogram-natural-v1.webp",
+        "alt": "【名】身振りのイメージ（一例）"
+    },
+    {
+        "word": "giggle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】くすくす笑い",
+        "src": "assets/word-illustrations/giggle-daily-pictogram-natural-v1.webp",
+        "alt": "【名】くすくす笑いのイメージ（一例）"
+    },
+    {
+        "word": "ginger",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】生姜",
+        "src": "assets/word-illustrations/ginger-daily-pictogram-natural-v1.webp",
+        "alt": "【名】生姜のイメージ（一例）"
+    },
+    {
+        "word": "giraffe",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】キリン",
+        "src": "assets/word-illustrations/giraffe-daily-pictogram-natural-v1.webp",
+        "alt": "【名】キリンのイメージ（一例）"
+    },
+    {
+        "word": "glance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】一瞥",
+        "src": "assets/word-illustrations/glance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】一瞥のイメージ（一例）"
+    },
+    {
+        "word": "glide",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】滑走",
+        "src": "assets/word-illustrations/glide-daily-pictogram-natural-v1.webp",
+        "alt": "【名】滑走のイメージ（一例）"
+    },
+    {
+        "word": "glimpse",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ちらりと見えること",
+        "src": "assets/word-illustrations/glimpse-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ちらりと見えることのイメージ（一例）"
+    },
+    {
+        "word": "glint",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】きらめき",
+        "src": "assets/word-illustrations/glint-daily-pictogram-natural-v1.webp",
+        "alt": "【名】きらめきのイメージ（一例）"
+    },
+    {
+        "word": "glory",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】栄光",
+        "src": "assets/word-illustrations/glory-daily-pictogram-natural-v1.webp",
+        "alt": "【名】栄光のイメージ（一例）"
+    },
+    {
+        "word": "go",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】試み、番",
+        "src": "assets/word-illustrations/go-daily-pictogram-natural-v1.webp",
+        "alt": "【名】試み、番のイメージ（一例）"
+    },
+    {
+        "word": "goalkeeper",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ゴールキーパー",
+        "src": "assets/word-illustrations/goalkeeper-daily-pictogram-natural-v2.webp",
+        "alt": "【名】ゴールキーパーのイメージ（一例）"
+    },
+    {
+        "word": "goddess",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】女神",
+        "src": "assets/word-illustrations/goddess-daily-pictogram-natural-v1.webp",
+        "alt": "【名】女神のイメージ（一例）"
+    },
+    {
+        "word": "golfer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ゴルファー",
+        "src": "assets/word-illustrations/golfer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ゴルファーのイメージ（一例）"
+    },
+    {
+        "word": "goods",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】商品",
+        "src": "assets/word-illustrations/goods-daily-pictogram-natural-v1.webp",
+        "alt": "【名】商品のイメージ（一例）"
+    },
+    {
+        "word": "gorilla",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ゴリラ",
+        "src": "assets/word-illustrations/gorilla-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ゴリラのイメージ（一例）"
+    },
+    {
+        "word": "gossip",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】噂話",
+        "src": "assets/word-illustrations/gossip-daily-pictogram-natural-v1.webp",
+        "alt": "【名】噂話のイメージ（一例）"
+    },
+    {
+        "word": "governor",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】知事",
+        "src": "assets/word-illustrations/governor-daily-pictogram-natural-v1.webp",
+        "alt": "【名】知事のイメージ（一例）"
+    },
+    {
+        "word": "gown",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ガウン、ドレス",
+        "src": "assets/word-illustrations/gown-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ガウン、ドレスのイメージ（一例）"
+    },
+    {
+        "word": "graduate",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】卒業生",
+        "src": "assets/word-illustrations/graduate-daily-pictogram-natural-v1.webp",
+        "alt": "【名】卒業生のイメージ（一例）"
+    },
+    {
+        "word": "graduation",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】卒業",
+        "src": "assets/word-illustrations/graduation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】卒業のイメージ（一例）"
+    },
+    {
+        "word": "grant",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】助成金",
+        "src": "assets/word-illustrations/grant-daily-pictogram-natural-v1.webp",
+        "alt": "【名】助成金のイメージ（一例）"
+    },
+    {
+        "word": "graph",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】グラフ",
+        "src": "assets/word-illustrations/graph-daily-pictogram-natural-v1.webp",
+        "alt": "【名】グラフのイメージ（一例）"
+    },
+    {
+        "word": "economics",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】経済学",
+        "src": "assets/word-illustrations/economics-daily-pictogram-natural-v1.webp",
+        "alt": "【名】経済学のイメージ（一例）"
+    },
+    {
+        "word": "ecosystem",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】生態系",
+        "src": "assets/word-illustrations/ecosystem-daily-pictogram-natural-v1.webp",
+        "alt": "【名】生態系のイメージ（一例）"
+    },
+    {
+        "word": "ecstasy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】有頂天、恍惚",
+        "src": "assets/word-illustrations/ecstasy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】有頂天、恍惚のイメージ（一例）"
+    },
+    {
+        "word": "edge",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】端、縁",
+        "src": "assets/word-illustrations/edge-daily-pictogram-natural-v1.webp",
+        "alt": "【名】端、縁のイメージ（一例）"
+    },
+    {
+        "word": "edition",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】版",
+        "src": "assets/word-illustrations/edition-daily-pictogram-natural-v1.webp",
+        "alt": "【名】版のイメージ（一例）"
+    },
+    {
+        "word": "efficiency",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】効率",
+        "src": "assets/word-illustrations/efficiency-daily-pictogram-natural-v1.webp",
+        "alt": "【名】効率のイメージ（一例）"
+    },
+    {
+        "word": "elbow",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】肘",
+        "src": "assets/word-illustrations/elbow-daily-pictogram-natural-v1.webp",
+        "alt": "【名】肘のイメージ（一例）"
+    },
+    {
+        "word": "election",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】選挙",
+        "src": "assets/word-illustrations/election-daily-pictogram-natural-v1.webp",
+        "alt": "【名】選挙のイメージ（一例）"
+    },
+    {
+        "word": "electricity",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】電気",
+        "src": "assets/word-illustrations/electricity-daily-pictogram-natural-v1.webp",
+        "alt": "【名】電気のイメージ（一例）"
+    },
+    {
+        "word": "electron",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】電子",
+        "src": "assets/word-illustrations/electron-daily-pictogram-natural-v1.webp",
+        "alt": "【名】電子のイメージ（一例）"
+    },
+    {
+        "word": "element",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】要素、元素",
+        "src": "assets/word-illustrations/element-daily-pictogram-natural-v1.webp",
+        "alt": "【名】要素、元素のイメージ（一例）"
+    },
+    {
+        "word": "embarrassment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】当惑、恥ずかしさ",
+        "src": "assets/word-illustrations/embarrassment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】当惑、恥ずかしさのイメージ（一例）"
+    },
+    {
+        "word": "emotion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】感情",
+        "src": "assets/word-illustrations/emotion-daily-pictogram-natural-v1.webp",
+        "alt": "【名】感情のイメージ（一例）"
+    },
+    {
+        "word": "emperor",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】皇帝",
+        "src": "assets/word-illustrations/emperor-daily-pictogram-natural-v1.webp",
+        "alt": "【名】皇帝のイメージ（一例）"
+    },
+    {
+        "word": "emphasis",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】強調",
+        "src": "assets/word-illustrations/emphasis-daily-pictogram-natural-v1.webp",
+        "alt": "【名】強調のイメージ（一例）"
+    },
+    {
+        "word": "empire",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】帝国",
+        "src": "assets/word-illustrations/empire-daily-pictogram-natural-v1.webp",
+        "alt": "【名】帝国のイメージ（一例）"
+    },
+    {
+        "word": "employment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】雇用",
+        "src": "assets/word-illustrations/employment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】雇用のイメージ（一例）"
+    },
+    {
+        "word": "encounter",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】出会い、遭遇",
+        "src": "assets/word-illustrations/encounter-daily-pictogram-natural-v1.webp",
+        "alt": "【名】出会い、遭遇のイメージ（一例）"
+    },
+    {
+        "word": "encouragement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】激励",
+        "src": "assets/word-illustrations/encouragement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】激励のイメージ（一例）"
+    },
+    {
+        "word": "encyclopaedia",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】百科事典",
+        "src": "assets/word-illustrations/encyclopaedia-daily-pictogram-natural-v1.webp",
+        "alt": "【名】百科事典のイメージ（一例）"
+    },
+    {
+        "word": "encyclopedia",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】百科事典（米）",
+        "src": "assets/word-illustrations/encyclopaedia-daily-pictogram-natural-v1.webp",
+        "alt": "【名】百科事典（米）のイメージ（一例）"
+    },
+    {
+        "word": "enemy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】敵",
+        "src": "assets/word-illustrations/enemy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】敵のイメージ（一例）"
+    },
+    {
+        "word": "engine",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】エンジン",
+        "src": "assets/word-illustrations/engine-daily-pictogram-natural-v1.webp",
+        "alt": "【名】エンジンのイメージ（一例）"
+    },
+    {
+        "word": "engineering",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】工学",
+        "src": "assets/word-illustrations/engineering-daily-pictogram-natural-v1.webp",
+        "alt": "【名】工学のイメージ（一例）"
+    },
+    {
+        "word": "Englishman",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】イギリス人男性",
+        "src": "assets/word-illustrations/englishman-daily-pictogram-natural-v1.webp",
+        "alt": "【名】イギリス人男性のイメージ（一例）"
+    },
+    {
+        "word": "enjoyment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】楽しみ",
+        "src": "assets/word-illustrations/enjoyment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】楽しみのイメージ（一例）"
+    },
+    {
+        "word": "enquiry",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】問い合わせ",
+        "src": "assets/word-illustrations/enquiry-daily-pictogram-natural-v1.webp",
+        "alt": "【名】問い合わせのイメージ（一例）"
+    },
+    {
+        "word": "entertainer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】芸能人、エンターテイナー",
+        "src": "assets/word-illustrations/entertainer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】芸能人、エンターテイナーのイメージ（一例）"
+    },
+    {
+        "word": "enthusiasm",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】熱意",
+        "src": "assets/word-illustrations/enthusiasm-daily-pictogram-natural-v1.webp",
+        "alt": "【名】熱意のイメージ（一例）"
+    },
+    {
+        "word": "enthusiast",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】熱心な人",
+        "src": "assets/word-illustrations/enthusiast-daily-pictogram-natural-v1.webp",
+        "alt": "【名】熱心な人のイメージ（一例）"
+    },
+    {
+        "word": "entry",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】入り口、参加、項目",
+        "src": "assets/word-illustrations/entry-daily-pictogram-natural-v1.webp",
+        "alt": "【名】入り口、参加、項目のイメージ（一例）"
+    },
+    {
+        "word": "environmentalist",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】環境保護論者",
+        "src": "assets/word-illustrations/environmentalist-daily-pictogram-natural-v1.webp",
+        "alt": "【名】環境保護論者のイメージ（一例）"
+    },
+    {
+        "word": "equality",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】平等",
+        "src": "assets/word-illustrations/equality-daily-pictogram-natural-v1.webp",
+        "alt": "【名】平等のイメージ（一例）"
+    },
+    {
+        "word": "equipment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】装備、機器",
+        "src": "assets/word-illustrations/equipment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】装備、機器のイメージ（一例）"
+    },
+    {
+        "word": "era",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】時代",
+        "src": "assets/word-illustrations/era-daily-pictogram-natural-v1.webp",
+        "alt": "【名】時代のイメージ（一例）"
+    },
+    {
+        "word": "essence",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】本質",
+        "src": "assets/word-illustrations/essence-daily-pictogram-natural-v1.webp",
+        "alt": "【名】本質のイメージ（一例）"
+    },
+    {
+        "word": "establishment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】設立、施設",
+        "src": "assets/word-illustrations/establishment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】設立、施設のイメージ（一例）"
+    },
+    {
+        "word": "eternity",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】永遠",
+        "src": "assets/word-illustrations/eternity-daily-pictogram-natural-v1.webp",
+        "alt": "【名】永遠のイメージ（一例）"
+    },
+    {
+        "word": "examination",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】試験、検査",
+        "src": "assets/word-illustrations/examination-daily-pictogram-natural-v1.webp",
+        "alt": "【名】試験、検査のイメージ（一例）"
+    },
+    {
+        "word": "examiner",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】試験官",
+        "src": "assets/word-illustrations/examiner-daily-pictogram-natural-v1.webp",
+        "alt": "【名】試験官のイメージ（一例）"
+    },
+    {
+        "word": "excellence",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】優秀さ",
+        "src": "assets/word-illustrations/excellence-daily-pictogram-natural-v1.webp",
+        "alt": "【名】優秀さのイメージ（一例）"
+    },
+    {
+        "word": "excess",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】過剰、超過",
+        "src": "assets/word-illustrations/excess-daily-pictogram-natural-v1.webp",
+        "alt": "【名】過剰、超過のイメージ（一例）"
+    },
+    {
+        "word": "exchange rate",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】為替レート",
+        "src": "assets/word-illustrations/exchange-rate-daily-pictogram-natural-v1.webp",
+        "alt": "【名】為替レートのイメージ（一例）"
+    },
+    {
+        "word": "excitement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】興奮",
+        "src": "assets/word-illustrations/excitement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】興奮のイメージ（一例）"
+    },
+    {
+        "word": "existence",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】存在",
+        "src": "assets/word-illustrations/existence-daily-pictogram-natural-v1.webp",
+        "alt": "【名】存在のイメージ（一例）"
+    },
+    {
+        "word": "exit",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】出口",
+        "src": "assets/word-illustrations/exit-daily-pictogram-natural-v1.webp",
+        "alt": "【名】出口のイメージ（一例）"
+    },
+    {
+        "word": "expense",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】費用",
+        "src": "assets/word-illustrations/expense-daily-pictogram-natural-v1.webp",
+        "alt": "【名】費用のイメージ（一例）"
+    },
+    {
+        "word": "experiment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】実験",
+        "src": "assets/word-illustrations/experiment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】実験のイメージ（一例）"
+    },
+    {
+        "word": "exploration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】探検",
+        "src": "assets/word-illustrations/exploration-daily-pictogram-natural-v1.webp",
+        "alt": "【名】探検のイメージ（一例）"
+    },
+    {
+        "word": "explosion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】爆発",
+        "src": "assets/word-illustrations/explosion-daily-pictogram-natural-v1.webp",
+        "alt": "【名】爆発のイメージ（一例）"
+    },
+    {
+        "word": "extent",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】程度、範囲",
+        "src": "assets/word-illustrations/extent-daily-pictogram-natural-v2.webp",
+        "alt": "【名】程度、範囲のイメージ（一例）"
+    },
+    {
+        "word": "extinction",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】絶滅",
+        "src": "assets/word-illustrations/extinction-daily-pictogram-natural-v1.webp",
+        "alt": "【名】絶滅のイメージ（一例）"
+    },
+    {
+        "word": "extra",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】余分なもの、エキストラ",
+        "src": "assets/word-illustrations/extra-daily-pictogram-natural-v1.webp",
+        "alt": "【名】余分なもの、エキストラのイメージ（一例）"
+    },
+    {
+        "word": "extreme sports",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】エクストリームスポーツ",
+        "src": "assets/word-illustrations/extreme-sports-daily-pictogram-natural-v1.webp",
+        "alt": "【名】エクストリームスポーツのイメージ（一例）"
+    },
+    {
+        "word": "eyesight",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】視力",
+        "src": "assets/word-illustrations/eyesight-daily-pictogram-natural-v1.webp",
+        "alt": "【名】視力のイメージ（一例）"
+    },
+    {
+        "word": "facility",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】施設、設備",
+        "src": "assets/word-illustrations/facility-daily-pictogram-natural-v1.webp",
+        "alt": "【名】施設、設備のイメージ（一例）"
+    },
+    {
+        "word": "failure",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】失敗",
+        "src": "assets/word-illustrations/failure-daily-pictogram-natural-v1.webp",
+        "alt": "【名】失敗のイメージ（一例）"
+    },
+    {
+        "word": "fair",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】見本市、フェア",
+        "src": "assets/word-illustrations/fair-daily-pictogram-natural-v1.webp",
+        "alt": "【名】見本市、フェアのイメージ（一例）"
+    },
+    {
+        "word": "fall",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】落下、秋（米）",
+        "src": "assets/word-illustrations/fall-daily-pictogram-natural-v1.webp",
+        "alt": "【名】落下、秋（米）のイメージ（一例）"
+    },
+    {
+        "word": "fancy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】空想、好み",
+        "src": "assets/word-illustrations/fancy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】空想、好みのイメージ（一例）"
+    },
+    {
+        "word": "fantasy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】空想、ファンタジー",
+        "src": "assets/word-illustrations/fantasy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】空想、ファンタジーのイメージ（一例）"
+    },
+    {
+        "word": "farewell",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】別れ",
+        "src": "assets/word-illustrations/farewell-daily-pictogram-natural-v1.webp",
+        "alt": "【名】別れのイメージ（一例）"
+    },
+    {
+        "word": "farming",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】農業",
+        "src": "assets/word-illustrations/farming-daily-pictogram-natural-v1.webp",
+        "alt": "【名】農業のイメージ（一例）"
+    },
+    {
+        "word": "farmland",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】農地",
+        "src": "assets/word-illustrations/farmland-daily-pictogram-natural-v1.webp",
+        "alt": "【名】農地のイメージ（一例）"
+    },
+    {
+        "word": "fax",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ファックス",
+        "src": "assets/word-illustrations/fax-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ファックスのイメージ（一例）"
+    },
+    {
+        "word": "feast",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】宴会、ごちそう",
+        "src": "assets/word-illustrations/feast-daily-pictogram-natural-v1.webp",
+        "alt": "【名】宴会、ごちそうのイメージ（一例）"
+    },
+    {
+        "word": "fellow",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】男、仲間",
+        "src": "assets/word-illustrations/fellow-daily-pictogram-natural-v1.webp",
+        "alt": "【名】男、仲間のイメージ（一例）"
+    },
+    {
+        "word": "ferry",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】フェリー",
+        "src": "assets/word-illustrations/ferry-daily-pictogram-natural-v1.webp",
+        "alt": "【名】フェリーのイメージ（一例）"
+    },
+    {
+        "word": "decrease",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】減少",
+        "src": "assets/word-illustrations/decrease-daily-pictogram-natural-v1.webp",
+        "alt": "【名】減少のイメージ（一例）"
+    },
+    {
+        "word": "deed",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】行為",
+        "src": "assets/word-illustrations/deed-daily-pictogram-natural-v1.webp",
+        "alt": "【名】行為のイメージ（一例）"
+    },
+    {
+        "word": "defence",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】防御、弁護",
+        "src": "assets/word-illustrations/defence-daily-pictogram-natural-v1.webp",
+        "alt": "【名】防御、弁護のイメージ（一例）"
+    },
+    {
+        "word": "defender",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】防御者",
+        "src": "assets/word-illustrations/defender-daily-pictogram-natural-v1.webp",
+        "alt": "【名】防御者のイメージ（一例）"
+    },
+    {
+        "word": "defense",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】防御（米）",
+        "src": "assets/word-illustrations/defence-daily-pictogram-natural-v1.webp",
+        "alt": "【名】防御（米）のイメージ（一例）"
+    },
+    {
+        "word": "deficiency",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不足、欠陥",
+        "src": "assets/word-illustrations/deficiency-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不足、欠陥のイメージ（一例）"
+    },
+    {
+        "word": "definite article",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】定冠詞",
+        "src": "assets/word-illustrations/definite-article-daily-pictogram-natural-v1.webp",
+        "alt": "【名】定冠詞のイメージ（一例）"
+    },
+    {
+        "word": "definition",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】定義",
+        "src": "assets/word-illustrations/definition-daily-pictogram-natural-v1.webp",
+        "alt": "【名】定義のイメージ（一例）"
+    },
+    {
+        "word": "delight",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】喜び",
+        "src": "assets/word-illustrations/delight-daily-pictogram-natural-v1.webp",
+        "alt": "【名】喜びのイメージ（一例）"
+    },
+    {
+        "word": "delivery",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】配達",
+        "src": "assets/word-illustrations/delivery-daily-pictogram-natural-v1.webp",
+        "alt": "【名】配達のイメージ（一例）"
+    },
+    {
+        "word": "demand",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】要求、需要",
+        "src": "assets/word-illustrations/demand-daily-pictogram-natural-v1.webp",
+        "alt": "【名】要求、需要のイメージ（一例）"
+    },
+    {
+        "word": "democracy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】民主主義",
+        "src": "assets/word-illustrations/democracy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】民主主義のイメージ（一例）"
+    },
+    {
+        "word": "demonstration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】実演、デモ",
+        "src": "assets/word-illustrations/demonstration-daily-pictogram-natural-v1.webp",
+        "alt": "【名】実演、デモのイメージ（一例）"
+    },
+    {
+        "word": "department",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】部門、学科",
+        "src": "assets/word-illustrations/department-daily-pictogram-natural-v1.webp",
+        "alt": "【名】部門、学科のイメージ（一例）"
+    },
+    {
+        "word": "departure",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】出発",
+        "src": "assets/word-illustrations/departure-daily-pictogram-natural-v1.webp",
+        "alt": "【名】出発のイメージ（一例）"
+    },
+    {
+        "word": "deposit",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】預金、手付金",
+        "src": "assets/word-illustrations/deposit-daily-pictogram-natural-v1.webp",
+        "alt": "【名】預金、手付金のイメージ（一例）"
+    },
+    {
+        "word": "depression",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不況、憂鬱",
+        "src": "assets/word-illustrations/depression-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不況、憂鬱のイメージ（一例）"
+    },
+    {
+        "word": "depth",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】深さ",
+        "src": "assets/word-illustrations/depth-daily-pictogram-natural-v1.webp",
+        "alt": "【名】深さのイメージ（一例）"
+    },
+    {
+        "word": "designer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】デザイナー",
+        "src": "assets/word-illustrations/designer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】デザイナーのイメージ（一例）"
+    },
+    {
+        "word": "desire",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】欲望",
+        "src": "assets/word-illustrations/desire-daily-pictogram-natural-v1.webp",
+        "alt": "【名】欲望のイメージ（一例）"
+    },
+    {
+        "word": "despair",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】絶望",
+        "src": "assets/word-illustrations/despair-daily-pictogram-natural-v1.webp",
+        "alt": "【名】絶望のイメージ（一例）"
+    },
+    {
+        "word": "destination",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】目的地",
+        "src": "assets/word-illustrations/destination-daily-pictogram-natural-v1.webp",
+        "alt": "【名】目的地のイメージ（一例）"
+    },
+    {
+        "word": "destruction",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】破壊",
+        "src": "assets/word-illustrations/destruction-daily-pictogram-natural-v1.webp",
+        "alt": "【名】破壊のイメージ（一例）"
+    },
+    {
+        "word": "detective",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】探偵、刑事",
+        "src": "assets/word-illustrations/detective-daily-pictogram-natural-v1.webp",
+        "alt": "【名】探偵、刑事のイメージ（一例）"
+    },
+    {
+        "word": "determination",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】決意",
+        "src": "assets/word-illustrations/determination-daily-pictogram-natural-v1.webp",
+        "alt": "【名】決意のイメージ（一例）"
+    },
+    {
+        "word": "development",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】発展、開発",
+        "src": "assets/word-illustrations/development-daily-pictogram-natural-v1.webp",
+        "alt": "【名】発展、開発のイメージ（一例）"
+    },
+    {
+        "word": "device",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】装置",
+        "src": "assets/word-illustrations/device-daily-pictogram-natural-v1.webp",
+        "alt": "【名】装置のイメージ（一例）"
+    },
+    {
+        "word": "devotion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】献身",
+        "src": "assets/word-illustrations/devotion-daily-pictogram-natural-v1.webp",
+        "alt": "【名】献身のイメージ（一例）"
+    },
+    {
+        "word": "diagram",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】図、図表",
+        "src": "assets/word-illustrations/diagram-daily-pictogram-natural-v1.webp",
+        "alt": "【名】図、図表のイメージ（一例）"
+    },
+    {
+        "word": "dial",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】文字盤",
+        "src": "assets/word-illustrations/dial-daily-pictogram-natural-v1.webp",
+        "alt": "【名】文字盤のイメージ（一例）"
+    },
+    {
+        "word": "dialog",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】対話（米綴り）",
+        "src": "assets/word-illustrations/dialog-daily-pictogram-natural-v1.webp",
+        "alt": "【名】対話（米綴り）のイメージ（一例）"
+    },
+    {
+        "word": "dialogue",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】対話",
+        "src": "assets/word-illustrations/dialog-daily-pictogram-natural-v1.webp",
+        "alt": "【名】対話のイメージ（一例）"
+    },
+    {
+        "word": "diameter",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】直径",
+        "src": "assets/word-illustrations/diameter-daily-pictogram-natural-v1.webp",
+        "alt": "【名】直径のイメージ（一例）"
+    },
+    {
+        "word": "diaper",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】おむつ",
+        "src": "assets/word-illustrations/diaper-daily-pictogram-natural-v1.webp",
+        "alt": "【名】おむつのイメージ（一例）"
+    },
+    {
+        "word": "diligence",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】勤勉",
+        "src": "assets/word-illustrations/diligence-daily-pictogram-natural-v1.webp",
+        "alt": "【名】勤勉のイメージ（一例）"
+    },
+    {
+        "word": "dioxide",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】二酸化物",
+        "src": "assets/word-illustrations/dioxide-daily-pictogram-natural-v1.webp",
+        "alt": "【名】二酸化物のイメージ（一例）"
+    },
+    {
+        "word": "disability",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】障害",
+        "src": "assets/word-illustrations/disability-daily-pictogram-natural-v1.webp",
+        "alt": "【名】障害のイメージ（一例）"
+    },
+    {
+        "word": "disagreement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不一致",
+        "src": "assets/word-illustrations/disagreement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不一致のイメージ（一例）"
+    },
+    {
+        "word": "disappointment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】失望",
+        "src": "assets/word-illustrations/disappointment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】失望のイメージ（一例）"
+    },
+    {
+        "word": "disaster",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】災害",
+        "src": "assets/word-illustrations/disaster-daily-pictogram-natural-v1.webp",
+        "alt": "【名】災害のイメージ（一例）"
+    },
+    {
+        "word": "disc",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】円盤、ディスク",
+        "src": "assets/word-illustrations/disc-daily-pictogram-natural-v5.webp",
+        "alt": "【名】円盤、ディスクのイメージ（一例）"
+    },
+    {
+        "word": "disc jockey",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】DJ",
+        "src": "assets/word-illustrations/disc-jockey-daily-pictogram-natural-v1.webp",
+        "alt": "【名】DJのイメージ（一例）"
+    },
+    {
+        "word": "discomfort",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不快",
+        "src": "assets/word-illustrations/discomfort-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不快のイメージ（一例）"
+    },
+    {
+        "word": "discount",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】割引",
+        "src": "assets/word-illustrations/discount-daily-pictogram-natural-v1.webp",
+        "alt": "【名】割引のイメージ（一例）"
+    },
+    {
+        "word": "discovery",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】発見",
+        "src": "assets/word-illustrations/discovery-daily-pictogram-natural-v1.webp",
+        "alt": "【名】発見のイメージ（一例）"
+    },
+    {
+        "word": "discrimination",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】差別",
+        "src": "assets/word-illustrations/discrimination-daily-pictogram-natural-v1.webp",
+        "alt": "【名】差別のイメージ（一例）"
+    },
+    {
+        "word": "disease",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】病気",
+        "src": "assets/word-illustrations/disease-daily-pictogram-natural-v1.webp",
+        "alt": "【名】病気のイメージ（一例）"
+    },
+    {
+        "word": "disk",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ディスク（米綴り）",
+        "src": "assets/word-illustrations/disc-daily-pictogram-natural-v5.webp",
+        "alt": "【名】ディスク（米綴り）のイメージ（一例）"
+    },
+    {
+        "word": "disk jockey",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】DJ（米綴り）",
+        "src": "assets/word-illustrations/disc-jockey-daily-pictogram-natural-v1.webp",
+        "alt": "【名】DJ（米綴り）のイメージ（一例）"
+    },
+    {
+        "word": "distance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】距離",
+        "src": "assets/word-illustrations/distance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】距離のイメージ（一例）"
+    },
+    {
+        "word": "distinction",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】区別、特徴",
+        "src": "assets/word-illustrations/distinction-daily-pictogram-natural-v1.webp",
+        "alt": "【名】区別、特徴のイメージ（一例）"
+    },
+    {
+        "word": "distribution",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】分配、分布",
+        "src": "assets/word-illustrations/distribution-daily-pictogram-natural-v1.webp",
+        "alt": "【名】分配、分布のイメージ（一例）"
+    },
+    {
+        "word": "district",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】地区",
+        "src": "assets/word-illustrations/district-daily-pictogram-natural-v1.webp",
+        "alt": "【名】地区のイメージ（一例）"
+    },
+    {
+        "word": "disturbance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】騒乱、妨害",
+        "src": "assets/word-illustrations/disturbance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】騒乱、妨害のイメージ（一例）"
+    },
+    {
+        "word": "dive",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】飛び込み",
+        "src": "assets/word-illustrations/dive-daily-pictogram-natural-v1.webp",
+        "alt": "【名】飛び込みのイメージ（一例）"
+    },
+    {
+        "word": "diver",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ダイバー",
+        "src": "assets/word-illustrations/diver-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ダイバーのイメージ（一例）"
+    },
+    {
+        "word": "divide",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】分割、分水嶺",
+        "src": "assets/word-illustrations/divide-daily-pictogram-natural-v1.webp",
+        "alt": "【名】分割、分水嶺のイメージ（一例）"
+    },
+    {
+        "word": "diving",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ダイビング",
+        "src": "assets/word-illustrations/diving-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ダイビングのイメージ（一例）"
+    },
+    {
+        "word": "DJ",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】DJ",
+        "src": "assets/word-illustrations/disc-jockey-daily-pictogram-natural-v1.webp",
+        "alt": "【名】DJのイメージ（一例）"
+    },
+    {
+        "word": "doc",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】医者（略語）",
+        "src": "assets/word-illustrations/doc-daily-pictogram-natural-v1.webp",
+        "alt": "【名】医者（略語）のイメージ（一例）"
+    },
+    {
+        "word": "document",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】文書",
+        "src": "assets/word-illustrations/document-daily-pictogram-natural-v1.webp",
+        "alt": "【名】文書のイメージ（一例）"
+    },
+    {
+        "word": "documentary",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ドキュメンタリー",
+        "src": "assets/word-illustrations/documentary-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ドキュメンタリーのイメージ（一例）"
+    },
+    {
+        "word": "dolphin",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】イルカ",
+        "src": "assets/word-illustrations/dolphin-daily-pictogram-natural-v1.webp",
+        "alt": "【名】イルカのイメージ（一例）"
+    },
+    {
+        "word": "dot",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】点、ドット",
+        "src": "assets/word-illustrations/dot-daily-pictogram-natural-v1.webp",
+        "alt": "【名】点、ドットのイメージ（一例）"
+    },
+    {
+        "word": "doze",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】うたた寝",
+        "src": "assets/word-illustrations/doze-daily-pictogram-natural-v1.webp",
+        "alt": "【名】うたた寝のイメージ（一例）"
+    },
+    {
+        "word": "dozen",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ダース（12個）",
+        "src": "assets/word-illustrations/dozen-daily-pictogram-natural-v2.webp",
+        "alt": "【名】ダース（12個）のイメージ（一例）"
+    },
+    {
+        "word": "dude",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】男、やつ（スラング）",
+        "src": "assets/word-illustrations/dude-daily-pictogram-natural-v1.webp",
+        "alt": "【名】男、やつ（スラング）のイメージ（一例）"
+    },
+    {
+        "word": "dump",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ゴミ捨て場",
+        "src": "assets/word-illustrations/dump-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ゴミ捨て場のイメージ（一例）"
+    },
+    {
+        "word": "duty",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】義務、関税",
+        "src": "assets/word-illustrations/duty-daily-pictogram-natural-v1.webp",
+        "alt": "【名】義務、関税のイメージ（一例）"
+    },
+    {
+        "word": "dynasty",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】王朝",
+        "src": "assets/word-illustrations/dynasty-daily-pictogram-natural-v1.webp",
+        "alt": "【名】王朝のイメージ（一例）"
+    },
+    {
+        "word": "eagerness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】熱意",
+        "src": "assets/word-illustrations/eagerness-daily-pictogram-natural-v1.webp",
+        "alt": "【名】熱意のイメージ（一例）"
+    },
+    {
+        "word": "earache",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】耳の痛み",
+        "src": "assets/word-illustrations/earache-daily-pictogram-natural-v1.webp",
+        "alt": "【名】耳の痛みのイメージ（一例）"
+    },
+    {
+        "word": "eco",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】エコ",
+        "src": "assets/word-illustrations/eco-daily-pictogram-natural-v1.webp",
+        "alt": "【名】エコのイメージ（一例）"
+    },
+    {
+        "word": "ecology",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】生態学",
+        "src": "assets/word-illustrations/ecology-daily-pictogram-natural-v2.webp",
+        "alt": "【名】生態学のイメージ（一例）"
+    },
+    {
+        "word": "cod",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】タラ",
+        "src": "assets/word-illustrations/cod-daily-pictogram-natural-v1.webp",
+        "alt": "【名】タラのイメージ（一例）"
+    },
+    {
+        "word": "coffin",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】棺",
+        "src": "assets/word-illustrations/coffin-daily-pictogram-natural-v1.webp",
+        "alt": "【名】棺のイメージ（一例）"
+    },
+    {
+        "word": "collapse",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】崩壊、倒壊",
+        "src": "assets/word-illustrations/collapse-daily-pictogram-natural-v1.webp",
+        "alt": "【名】崩壊、倒壊のイメージ（一例）"
+    },
+    {
+        "word": "collar",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】襟、首輪",
+        "src": "assets/word-illustrations/collar-daily-pictogram-natural-v1.webp",
+        "alt": "【名】襟、首輪のイメージ（一例）"
+    },
+    {
+        "word": "columnist",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】コラムニスト",
+        "src": "assets/word-illustrations/columnist-daily-pictogram-natural-v1.webp",
+        "alt": "【名】コラムニストのイメージ（一例）"
+    },
+    {
+        "word": "combination",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】組み合わせ",
+        "src": "assets/word-illustrations/combination-daily-pictogram-natural-v3.webp",
+        "alt": "【名】組み合わせのイメージ（一例）"
+    },
+    {
+        "word": "comedian",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】コメディアン",
+        "src": "assets/word-illustrations/comedian-daily-pictogram-natural-v1.webp",
+        "alt": "【名】コメディアンのイメージ（一例）"
+    },
+    {
+        "word": "comedy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】喜劇、コメディ",
+        "src": "assets/word-illustrations/comedy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】喜劇、コメディのイメージ（一例）"
+    },
+    {
+        "word": "comet",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】彗星",
+        "src": "assets/word-illustrations/comet-daily-pictogram-natural-v1.webp",
+        "alt": "【名】彗星のイメージ（一例）"
+    },
+    {
+        "word": "comfort",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】快適さ、慰め",
+        "src": "assets/word-illustrations/comfort-daily-pictogram-natural-v1.webp",
+        "alt": "【名】快適さ、慰めのイメージ（一例）"
+    },
+    {
+        "word": "comma",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】コンマ",
+        "src": "assets/word-illustrations/comma-daily-pictogram-natural-v1.webp",
+        "alt": "【名】コンマのイメージ（一例）"
+    },
+    {
+        "word": "command",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】命令、指揮",
+        "src": "assets/word-illustrations/command-daily-pictogram-natural-v1.webp",
+        "alt": "【名】命令、指揮のイメージ（一例）"
+    },
+    {
+        "word": "comment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】論評、コメント",
+        "src": "assets/word-illustrations/comment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】論評、コメントのイメージ（一例）"
+    },
+    {
+        "word": "common sense",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】常識",
+        "src": "assets/word-illustrations/common-sense-daily-pictogram-natural-v1.webp",
+        "alt": "【名】常識のイメージ（一例）"
+    },
+    {
+        "word": "companion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】仲間、連れ",
+        "src": "assets/word-illustrations/companion-daily-pictogram-natural-v1.webp",
+        "alt": "【名】仲間、連れのイメージ（一例）"
+    },
+    {
+        "word": "comparison",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】比較",
+        "src": "assets/word-illustrations/comparison-daily-pictogram-natural-v1.webp",
+        "alt": "【名】比較のイメージ（一例）"
+    },
+    {
+        "word": "competitor",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】競争相手",
+        "src": "assets/word-illustrations/competitor-daily-pictogram-natural-v1.webp",
+        "alt": "【名】競争相手のイメージ（一例）"
+    },
+    {
+        "word": "complement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】補完物、補語",
+        "src": "assets/word-illustrations/complement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】補完物、補語のイメージ（一例）"
+    },
+    {
+        "word": "compliment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】賛辞、褒め言葉",
+        "src": "assets/word-illustrations/compliment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】賛辞、褒め言葉のイメージ（一例）"
+    },
+    {
+        "word": "composition",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】構成、作文",
+        "src": "assets/word-illustrations/composition-daily-pictogram-natural-v1.webp",
+        "alt": "【名】構成、作文のイメージ（一例）"
+    },
+    {
+        "word": "compound",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】化合物、複合語",
+        "src": "assets/word-illustrations/compound-daily-pictogram-natural-v1.webp",
+        "alt": "【名】化合物、複合語のイメージ（一例）"
+    },
+    {
+        "word": "compromise",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】妥協",
+        "src": "assets/word-illustrations/compromise-daily-pictogram-natural-v1.webp",
+        "alt": "【名】妥協のイメージ（一例）"
+    },
+    {
+        "word": "concentration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】集中（力）、濃度",
+        "src": "assets/word-illustrations/concentration-daily-pictogram-natural-v1.webp",
+        "alt": "【名】集中（力）、濃度のイメージ（一例）"
+    },
+    {
+        "word": "concept",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】概念",
+        "src": "assets/word-illustrations/concept-daily-pictogram-natural-v1.webp",
+        "alt": "【名】概念のイメージ（一例）"
+    },
+    {
+        "word": "conclusion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】結論",
+        "src": "assets/word-illustrations/conclusion-daily-pictogram-natural-v1.webp",
+        "alt": "【名】結論のイメージ（一例）"
+    },
+    {
+        "word": "conduct",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】行い、管理",
+        "src": "assets/word-illustrations/conduct-daily-pictogram-natural-v1.webp",
+        "alt": "【名】行い、管理のイメージ（一例）"
+    },
+    {
+        "word": "confidence",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】自信、信頼",
+        "src": "assets/word-illustrations/confidence-daily-pictogram-natural-v1.webp",
+        "alt": "【名】自信、信頼のイメージ（一例）"
+    },
+    {
+        "word": "confirmation",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】確認",
+        "src": "assets/word-illustrations/confirmation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】確認のイメージ（一例）"
+    },
+    {
+        "word": "conflict",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】衝突、紛争",
+        "src": "assets/word-illustrations/conflict-daily-pictogram-natural-v1.webp",
+        "alt": "【名】衝突、紛争のイメージ（一例）"
+    },
+    {
+        "word": "confusion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】混乱",
+        "src": "assets/word-illustrations/confusion-daily-pictogram-natural-v1.webp",
+        "alt": "【名】混乱のイメージ（一例）"
+    },
+    {
+        "word": "connection",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】つながり、関係",
+        "src": "assets/word-illustrations/connection-daily-pictogram-natural-v1.webp",
+        "alt": "【名】つながり、関係のイメージ（一例）"
+    },
+    {
+        "word": "connexion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】関係（connectionの英綴り）",
+        "src": "assets/word-illustrations/connection-daily-pictogram-natural-v1.webp",
+        "alt": "【名】関係（connectionの英綴り）のイメージ（一例）"
+    },
+    {
+        "word": "conservation",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】保護、保存",
+        "src": "assets/word-illustrations/conservation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】保護、保存のイメージ（一例）"
+    },
+    {
+        "word": "consideration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】考慮",
+        "src": "assets/word-illustrations/consideration-daily-pictogram-natural-v2.webp",
+        "alt": "【名】考慮のイメージ（一例）"
+    },
+    {
+        "word": "consonant",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】子音",
+        "src": "assets/word-illustrations/consonant-daily-pictogram-natural-v1.webp",
+        "alt": "【名】子音のイメージ（一例）"
+    },
+    {
+        "word": "constitution",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】憲法、構成",
+        "src": "assets/word-illustrations/constitution-daily-pictogram-natural-v2.webp",
+        "alt": "【名】憲法、構成のイメージ（一例）"
+    },
+    {
+        "word": "construction",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】建設",
+        "src": "assets/word-illustrations/construction-daily-pictogram-natural-v1.webp",
+        "alt": "【名】建設のイメージ（一例）"
+    },
+    {
+        "word": "consumer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】消費者",
+        "src": "assets/word-illustrations/consumer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】消費者のイメージ（一例）"
+    },
+    {
+        "word": "consumption",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】消費",
+        "src": "assets/word-illustrations/consumption-daily-pictogram-natural-v3.webp",
+        "alt": "【名】消費のイメージ（一例）"
+    },
+    {
+        "word": "content",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】内容、中身",
+        "src": "assets/word-illustrations/content-daily-pictogram-natural-v1.webp",
+        "alt": "【名】内容、中身のイメージ（一例）"
+    },
+    {
+        "word": "contribution",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】寄付、貢献",
+        "src": "assets/word-illustrations/contribution-daily-pictogram-natural-v1.webp",
+        "alt": "【名】寄付、貢献のイメージ（一例）"
+    },
+    {
+        "word": "copyright",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】著作権",
+        "src": "assets/word-illustrations/copyright-daily-pictogram-natural-v1.webp",
+        "alt": "【名】著作権のイメージ（一例）"
+    },
+    {
+        "word": "correction",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】訂正",
+        "src": "assets/word-illustrations/correction-daily-pictogram-natural-v1.webp",
+        "alt": "【名】訂正のイメージ（一例）"
+    },
+    {
+        "word": "cotton",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】綿",
+        "src": "assets/word-illustrations/cotton-daily-pictogram-natural-v1.webp",
+        "alt": "【名】綿のイメージ（一例）"
+    },
+    {
+        "word": "council",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】会議、評議会",
+        "src": "assets/word-illustrations/council-daily-pictogram-natural-v1.webp",
+        "alt": "【名】会議、評議会のイメージ（一例）"
+    },
+    {
+        "word": "counseling",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】カウンセリング",
+        "src": "assets/word-illustrations/counseling-daily-pictogram-natural-v1.webp",
+        "alt": "【名】カウンセリングのイメージ（一例）"
+    },
+    {
+        "word": "counselling",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】カウンセリング（英綴り）",
+        "src": "assets/word-illustrations/counseling-daily-pictogram-natural-v1.webp",
+        "alt": "【名】カウンセリング（英綴り）のイメージ（一例）"
+    },
+    {
+        "word": "count",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】計算、総数",
+        "src": "assets/word-illustrations/count-daily-pictogram-natural-v1.webp",
+        "alt": "【名】計算、総数のイメージ（一例）"
+    },
+    {
+        "word": "county",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】郡",
+        "src": "assets/word-illustrations/county-daily-pictogram-natural-v1.webp",
+        "alt": "【名】郡のイメージ（一例）"
+    },
+    {
+        "word": "courage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】勇気",
+        "src": "assets/word-illustrations/courage-daily-pictogram-natural-v1.webp",
+        "alt": "【名】勇気のイメージ（一例）"
+    },
+    {
+        "word": "courgette",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ズッキーニ",
+        "src": "assets/word-illustrations/courgette-daily-pictogram-natural-v2.webp",
+        "alt": "【名】ズッキーニのイメージ（一例）"
+    },
+    {
+        "word": "craft",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】工芸、技術",
+        "src": "assets/word-illustrations/craft-daily-pictogram-natural-v1.webp",
+        "alt": "【名】工芸、技術のイメージ（一例）"
+    },
+    {
+        "word": "crash",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】衝突、墜落",
+        "src": "assets/word-illustrations/crash-daily-pictogram-natural-v1.webp",
+        "alt": "【名】衝突、墜落のイメージ（一例）"
+    },
+    {
+        "word": "creator",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】創作者",
+        "src": "assets/word-illustrations/creator-daily-pictogram-natural-v1.webp",
+        "alt": "【名】創作者のイメージ（一例）"
+    },
+    {
+        "word": "criminal",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】犯罪者",
+        "src": "assets/word-illustrations/criminal-daily-pictogram-natural-v1.webp",
+        "alt": "【名】犯罪者のイメージ（一例）"
+    },
+    {
+        "word": "crisis",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】危機",
+        "src": "assets/word-illustrations/crisis-daily-pictogram-natural-v1.webp",
+        "alt": "【名】危機のイメージ（一例）"
+    },
+    {
+        "word": "critic",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】批評家",
+        "src": "assets/word-illustrations/critic-daily-pictogram-natural-v1.webp",
+        "alt": "【名】批評家のイメージ（一例）"
+    },
+    {
+        "word": "crop",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】作物、収穫高",
+        "src": "assets/word-illustrations/crop-daily-pictogram-natural-v1.webp",
+        "alt": "【名】作物、収穫高のイメージ（一例）"
+    },
+    {
+        "word": "crossing",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】横断、踏切",
+        "src": "assets/word-illustrations/crossing-daily-pictogram-natural-v1.webp",
+        "alt": "【名】横断、踏切のイメージ（一例）"
+    },
+    {
+        "word": "crossroads",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】交差点、岐路",
+        "src": "assets/word-illustrations/crossroads-daily-pictogram-natural-v1.webp",
+        "alt": "【名】交差点、岐路のイメージ（一例）"
+    },
+    {
+        "word": "crow",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】カラス",
+        "src": "assets/word-illustrations/crow-daily-pictogram-natural-v1.webp",
+        "alt": "【名】カラスのイメージ（一例）"
+    },
+    {
+        "word": "crush",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】押しつぶすこと、片思い",
+        "src": "assets/word-illustrations/crush-daily-pictogram-natural-v1.webp",
+        "alt": "【名】押しつぶすこと、片思いのイメージ（一例）"
+    },
+    {
+        "word": "cucumber",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】キュウリ",
+        "src": "assets/word-illustrations/cucumber-daily-pictogram-natural-v1.webp",
+        "alt": "【名】キュウリのイメージ（一例）"
+    },
+    {
+        "word": "cure",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】治療法、治癒",
+        "src": "assets/word-illustrations/cure-daily-pictogram-natural-v1.webp",
+        "alt": "【名】治療法、治癒のイメージ（一例）"
+    },
+    {
+        "word": "curiosity",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】好奇心",
+        "src": "assets/word-illustrations/curiosity-daily-pictogram-natural-v1.webp",
+        "alt": "【名】好奇心のイメージ（一例）"
+    },
+    {
+        "word": "currency",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】通貨",
+        "src": "assets/word-illustrations/currency-daily-pictogram-natural-v1.webp",
+        "alt": "【名】通貨のイメージ（一例）"
+    },
+    {
+        "word": "curriculum",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】カリキュラム",
+        "src": "assets/word-illustrations/curriculum-daily-pictogram-natural-v1.webp",
+        "alt": "【名】カリキュラムのイメージ（一例）"
+    },
+    {
+        "word": "curve",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】曲線、カーブ",
+        "src": "assets/word-illustrations/curve-daily-pictogram-natural-v1.webp",
+        "alt": "【名】曲線、カーブのイメージ（一例）"
+    },
+    {
+        "word": "customs",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】税関",
+        "src": "assets/word-illustrations/customs-daily-pictogram-natural-v1.webp",
+        "alt": "【名】税関のイメージ（一例）"
+    },
+    {
+        "word": "cut",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】切り傷、カット",
+        "src": "assets/word-illustrations/cut-daily-pictogram-natural-v1.webp",
+        "alt": "【名】切り傷、カットのイメージ（一例）"
+    },
+    {
+        "word": "CV",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】履歴書",
+        "src": "assets/word-illustrations/cv-daily-pictogram-natural-v1.webp",
+        "alt": "【名】履歴書のイメージ（一例）"
+    },
+    {
+        "word": "cycle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】周期、自転車",
+        "src": "assets/word-illustrations/cycle-daily-pictogram-natural-v1.webp",
+        "alt": "【名】周期、自転車のイメージ（一例）"
+    },
+    {
+        "word": "daisy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ヒナギク",
+        "src": "assets/word-illustrations/daisy-daily-pictogram-natural-v2.webp",
+        "alt": "【名】ヒナギクのイメージ（一例）"
+    },
+    {
+        "word": "damage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】損害",
+        "src": "assets/word-illustrations/damage-daily-pictogram-natural-v1.webp",
+        "alt": "【名】損害のイメージ（一例）"
+    },
+    {
+        "word": "darkness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】暗闇",
+        "src": "assets/word-illustrations/darkness-daily-pictogram-natural-v1.webp",
+        "alt": "【名】暗闇のイメージ（一例）"
+    },
+    {
+        "word": "dating",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】デート",
+        "src": "assets/word-illustrations/dating-daily-pictogram-natural-v1.webp",
+        "alt": "【名】デートのイメージ（一例）"
+    },
+    {
+        "word": "daze",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】呆然とした状態",
+        "src": "assets/word-illustrations/daze-daily-pictogram-natural-v1.webp",
+        "alt": "【名】呆然とした状態のイメージ（一例）"
+    },
+    {
+        "word": "dazzle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】輝き (verb usually)",
+        "src": "assets/word-illustrations/dazzle-daily-pictogram-natural-v2.webp",
+        "alt": "【名】輝き (verb usually)のイメージ（一例）"
+    },
+    {
+        "word": "deadline",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】締め切り",
+        "src": "assets/word-illustrations/deadline-daily-pictogram-natural-v1.webp",
+        "alt": "【名】締め切りのイメージ（一例）"
+    },
+    {
+        "word": "dealer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】業者、ディーラー",
+        "src": "assets/word-illustrations/dealer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】業者、ディーラーのイメージ（一例）"
+    },
+    {
+        "word": "debt",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】借金",
+        "src": "assets/word-illustrations/debt-daily-pictogram-natural-v1.webp",
+        "alt": "【名】借金のイメージ（一例）"
+    },
+    {
+        "word": "decision",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】決定",
+        "src": "assets/word-illustrations/decision-daily-pictogram-natural-v1.webp",
+        "alt": "【名】決定のイメージ（一例）"
+    },
+    {
+        "word": "declaration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】宣言",
+        "src": "assets/word-illustrations/declaration-daily-pictogram-natural-v1.webp",
+        "alt": "【名】宣言のイメージ（一例）"
+    },
+    {
+        "word": "decline",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】減少、衰退",
+        "src": "assets/word-illustrations/decline-daily-pictogram-natural-v1.webp",
+        "alt": "【名】減少、衰退のイメージ（一例）"
+    },
+    {
+        "word": "boom",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】好景気、ブーム",
+        "src": "assets/word-illustrations/boom-daily-pictogram-natural-v1.webp",
+        "alt": "【名】好景気、ブームのイメージ（一例）"
+    },
+    {
+        "word": "boot",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ブーツ、長靴",
+        "src": "assets/word-illustrations/boot-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ブーツ、長靴のイメージ（一例）"
+    },
+    {
+        "word": "border",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】国境、境界",
+        "src": "assets/word-illustrations/border-daily-pictogram-natural-v4.webp",
+        "alt": "【名】国境、境界のイメージ（一例）"
+    },
+    {
+        "word": "boredom",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】退屈",
+        "src": "assets/word-illustrations/boredom-daily-pictogram-natural-v1.webp",
+        "alt": "【名】退屈のイメージ（一例）"
+    },
+    {
+        "word": "bother",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】面倒、厄介",
+        "src": "assets/word-illustrations/bother-daily-pictogram-natural-v1.webp",
+        "alt": "【名】面倒、厄介のイメージ（一例）"
+    },
+    {
+        "word": "bow",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】弓",
+        "src": "assets/word-illustrations/bow-daily-pictogram-natural-v1.webp",
+        "alt": "【名】弓のイメージ（一例）"
+    },
+    {
+        "word": "boxing",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ボクシング",
+        "src": "assets/word-illustrations/boxing-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ボクシングのイメージ（一例）"
+    },
+    {
+        "word": "bracelet",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ブレスレット",
+        "src": "assets/word-illustrations/bracelet-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ブレスレットのイメージ（一例）"
+    },
+    {
+        "word": "brainstorming",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ブレインストーミング",
+        "src": "assets/word-illustrations/brainstorming-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ブレインストーミングのイメージ（一例）"
+    },
+    {
+        "word": "brass",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】真鍮",
+        "src": "assets/word-illustrations/brass-daily-pictogram-natural-v1.webp",
+        "alt": "【名】真鍮のイメージ（一例）"
+    },
+    {
+        "word": "breakthrough",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】画期的な進歩、突破口",
+        "src": "assets/word-illustrations/breakthrough-daily-pictogram-natural-v1.webp",
+        "alt": "【名】画期的な進歩、突破口のイメージ（一例）"
+    },
+    {
+        "word": "breast",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】胸",
+        "src": "assets/word-illustrations/breast-daily-pictogram-natural-v1.webp",
+        "alt": "【名】胸のイメージ（一例）"
+    },
+    {
+        "word": "breath",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】息、呼吸",
+        "src": "assets/word-illustrations/breath-daily-pictogram-natural-v1.webp",
+        "alt": "【名】息、呼吸のイメージ（一例）"
+    },
+    {
+        "word": "breeding",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】繁殖、育ち",
+        "src": "assets/word-illustrations/breeding-daily-pictogram-natural-v1.webp",
+        "alt": "【名】繁殖、育ちのイメージ（一例）"
+    },
+    {
+        "word": "brick",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】レンガ",
+        "src": "assets/word-illustrations/brick-daily-pictogram-natural-v1.webp",
+        "alt": "【名】レンガのイメージ（一例）"
+    },
+    {
+        "word": "broadcast",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】放送",
+        "src": "assets/word-illustrations/broadcast-daily-pictogram-natural-v1.webp",
+        "alt": "【名】放送のイメージ（一例）"
+    },
+    {
+        "word": "broccoli",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ブロッコリー",
+        "src": "assets/word-illustrations/broccoli-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ブロッコリーのイメージ（一例）"
+    },
+    {
+        "word": "bronze",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】青銅、銅",
+        "src": "assets/word-illustrations/bronze-daily-pictogram-natural-v1.webp",
+        "alt": "【名】青銅、銅のイメージ（一例）"
+    },
+    {
+        "word": "brotherhood",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】兄弟関係、連帯",
+        "src": "assets/word-illustrations/brotherhood-daily-pictogram-natural-v1.webp",
+        "alt": "【名】兄弟関係、連帯のイメージ（一例）"
+    },
+    {
+        "word": "bubble",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】泡",
+        "src": "assets/word-illustrations/bubble-daily-pictogram-natural-v1.webp",
+        "alt": "【名】泡のイメージ（一例）"
+    },
+    {
+        "word": "buddy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】相棒、親友",
+        "src": "assets/word-illustrations/buddy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】相棒、親友のイメージ（一例）"
+    },
+    {
+        "word": "builder",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】建築業者",
+        "src": "assets/word-illustrations/builder-daily-pictogram-natural-v1.webp",
+        "alt": "【名】建築業者のイメージ（一例）"
+    },
+    {
+        "word": "bull",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】雄牛",
+        "src": "assets/word-illustrations/bull-daily-pictogram-natural-v1.webp",
+        "alt": "【名】雄牛のイメージ（一例）"
+    },
+    {
+        "word": "bullet",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】銃弾",
+        "src": "assets/word-illustrations/bullet-daily-pictogram-natural-v1.webp",
+        "alt": "【名】銃弾のイメージ（一例）"
+    },
+    {
+        "word": "bulletin",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】掲示、速報",
+        "src": "assets/word-illustrations/bulletin-daily-pictogram-natural-v1.webp",
+        "alt": "【名】掲示、速報のイメージ（一例）"
+    },
+    {
+        "word": "bunch",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】房、束",
+        "src": "assets/word-illustrations/bunch-daily-pictogram-natural-v1.webp",
+        "alt": "【名】房、束のイメージ（一例）"
+    },
+    {
+        "word": "burden",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】重荷、負担",
+        "src": "assets/word-illustrations/burden-daily-pictogram-natural-v2.webp",
+        "alt": "【名】重荷、負担のイメージ（一例）"
+    },
+    {
+        "word": "bureau",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】案内所、局",
+        "src": "assets/word-illustrations/bureau-daily-pictogram-natural-v1.webp",
+        "alt": "【名】案内所、局のイメージ（一例）"
+    },
+    {
+        "word": "burglar",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】強盗",
+        "src": "assets/word-illustrations/burglar-daily-pictogram-natural-v1.webp",
+        "alt": "【名】強盗のイメージ（一例）"
+    },
+    {
+        "word": "butcher",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】肉屋",
+        "src": "assets/word-illustrations/butcher-daily-pictogram-natural-v1.webp",
+        "alt": "【名】肉屋のイメージ（一例）"
+    },
+    {
+        "word": "buyer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】買い手",
+        "src": "assets/word-illustrations/buyer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】買い手のイメージ（一例）"
+    },
+    {
+        "word": "cabbage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】キャベツ",
+        "src": "assets/word-illustrations/cabbage-daily-pictogram-natural-v1.webp",
+        "alt": "【名】キャベツのイメージ（一例）"
+    },
+    {
+        "word": "cabin",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】小屋、客室",
+        "src": "assets/word-illustrations/cabin-daily-pictogram-natural-v1.webp",
+        "alt": "【名】小屋、客室のイメージ（一例）"
+    },
+    {
+        "word": "cage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】檻、鳥かご",
+        "src": "assets/word-illustrations/cage-daily-pictogram-natural-v1.webp",
+        "alt": "【名】檻、鳥かごのイメージ（一例）"
+    },
+    {
+        "word": "calculation",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】計算",
+        "src": "assets/word-illustrations/calculation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】計算のイメージ（一例）"
+    },
+    {
+        "word": "calculator",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】電卓",
+        "src": "assets/word-illustrations/calculator-daily-pictogram-natural-v1.webp",
+        "alt": "【名】電卓のイメージ（一例）"
+    },
+    {
+        "word": "calf",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】子牛、ふくらはぎ",
+        "src": "assets/word-illustrations/calf-daily-pictogram-natural-v1.webp",
+        "alt": "【名】子牛、ふくらはぎのイメージ（一例）"
+    },
+    {
+        "word": "caller",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】電話をかける人、訪問客",
+        "src": "assets/word-illustrations/caller-daily-pictogram-natural-v1.webp",
+        "alt": "【名】電話をかける人、訪問客のイメージ（一例）"
+    },
+    {
+        "word": "calmness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】静けさ、沈着",
+        "src": "assets/word-illustrations/calmness-daily-pictogram-natural-v1.webp",
+        "alt": "【名】静けさ、沈着のイメージ（一例）"
+    },
+    {
+        "word": "camel",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ラクダ",
+        "src": "assets/word-illustrations/camel-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ラクダのイメージ（一例）"
+    },
+    {
+        "word": "campsite",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】キャンプ場",
+        "src": "assets/word-illustrations/campsite-daily-pictogram-natural-v1.webp",
+        "alt": "【名】キャンプ場のイメージ（一例）"
+    },
+    {
+        "word": "canal",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】運河 (skip candidate)",
+        "src": "assets/word-illustrations/canal-daily-pictogram-natural-v1.webp",
+        "alt": "【名】運河 (skip candidate)のイメージ（一例）"
+    },
+    {
+        "word": "cancer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】癌",
+        "src": "assets/word-illustrations/cancer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】癌のイメージ（一例）"
+    },
+    {
+        "word": "canteen",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】食堂、水筒",
+        "src": "assets/word-illustrations/canteen-daily-pictogram-natural-v1.webp",
+        "alt": "【名】食堂、水筒のイメージ（一例）"
+    },
+    {
+        "word": "capacity",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】容量、能力",
+        "src": "assets/word-illustrations/capacity-daily-pictogram-natural-v1.webp",
+        "alt": "【名】容量、能力のイメージ（一例）"
+    },
+    {
+        "word": "capsule",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】カプセル",
+        "src": "assets/word-illustrations/capsule-daily-pictogram-natural-v1.webp",
+        "alt": "【名】カプセルのイメージ（一例）"
+    },
+    {
+        "word": "capture",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】捕獲",
+        "src": "assets/word-illustrations/capture-daily-pictogram-natural-v1.webp",
+        "alt": "【名】捕獲のイメージ（一例）"
+    },
+    {
+        "word": "carelessness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不注意",
+        "src": "assets/word-illustrations/carelessness-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不注意のイメージ（一例）"
+    },
+    {
+        "word": "carriage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】馬車、客車",
+        "src": "assets/word-illustrations/carriage-daily-pictogram-natural-v1.webp",
+        "alt": "【名】馬車、客車のイメージ（一例）"
+    },
+    {
+        "word": "carton",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】紙パック、箱",
+        "src": "assets/word-illustrations/carton-daily-pictogram-natural-v1.webp",
+        "alt": "【名】紙パック、箱のイメージ（一例）"
+    },
+    {
+        "word": "cashpoint",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】現金自動預払機（ATM）",
+        "src": "assets/word-illustrations/cashpoint-daily-pictogram-natural-v2.webp",
+        "alt": "【名】現金自動預払機（ATM）のイメージ（一例）"
+    },
+    {
+        "word": "category",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】範疇、カテゴリー",
+        "src": "assets/word-illustrations/category-daily-pictogram-natural-v2.webp",
+        "alt": "【名】範疇、カテゴリーのイメージ（一例）"
+    },
+    {
+        "word": "cattle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】畜牛",
+        "src": "assets/word-illustrations/cattle-daily-pictogram-natural-v1.webp",
+        "alt": "【名】畜牛のイメージ（一例）"
+    },
+    {
+        "word": "caution",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】用心、警告",
+        "src": "assets/word-illustrations/caution-daily-pictogram-natural-v1.webp",
+        "alt": "【名】用心、警告のイメージ（一例）"
+    },
+    {
+        "word": "cave",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】洞窟",
+        "src": "assets/word-illustrations/cave-daily-pictogram-natural-v1.webp",
+        "alt": "【名】洞窟のイメージ（一例）"
+    },
+    {
+        "word": "CD-ROM",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】CD-ROM",
+        "src": "assets/word-illustrations/cd-rom-daily-pictogram-natural-v1.webp",
+        "alt": "【名】CD-ROMのイメージ（一例）"
+    },
+    {
+        "word": "celebrity",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】有名人",
+        "src": "assets/word-illustrations/celebrity-daily-pictogram-natural-v1.webp",
+        "alt": "【名】有名人のイメージ（一例）"
+    },
+    {
+        "word": "cell",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】細胞、独房",
+        "src": "assets/word-illustrations/cell-daily-pictogram-natural-v1.webp",
+        "alt": "【名】細胞、独房のイメージ（一例）"
+    },
+    {
+        "word": "central heating",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】セントラルヒーティング",
+        "src": "assets/word-illustrations/central-heating-daily-pictogram-natural-v1.webp",
+        "alt": "【名】セントラルヒーティングのイメージ（一例）"
+    },
+    {
+        "word": "certainty",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】確実性",
+        "src": "assets/word-illustrations/certainty-daily-pictogram-natural-v1.webp",
+        "alt": "【名】確実性のイメージ（一例）"
+    },
+    {
+        "word": "champion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】チャンピオン",
+        "src": "assets/word-illustrations/champion-daily-pictogram-natural-v1.webp",
+        "alt": "【名】チャンピオンのイメージ（一例）"
+    },
+    {
+        "word": "channel",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】海峡、チャンネル",
+        "src": "assets/word-illustrations/channel-daily-pictogram-natural-v1.webp",
+        "alt": "【名】海峡、チャンネルのイメージ（一例）"
+    },
+    {
+        "word": "chaos",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】大混乱",
+        "src": "assets/word-illustrations/chaos-daily-pictogram-natural-v1.webp",
+        "alt": "【名】大混乱のイメージ（一例）"
+    },
+    {
+        "word": "characteristic",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】特徴",
+        "src": "assets/word-illustrations/characteristic-daily-pictogram-natural-v1.webp",
+        "alt": "【名】特徴のイメージ（一例）"
+    },
+    {
+        "word": "charge",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】料金、責任",
+        "src": "assets/word-illustrations/charge-daily-pictogram-natural-v1.webp",
+        "alt": "【名】料金、責任のイメージ（一例）"
+    },
+    {
+        "word": "chariot",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】（古代の）戦車",
+        "src": "assets/word-illustrations/chariot-daily-pictogram-natural-v1.webp",
+        "alt": "【名】（古代の）戦車のイメージ（一例）"
+    },
+    {
+        "word": "charity",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】慈善",
+        "src": "assets/word-illustrations/charity-daily-pictogram-natural-v1.webp",
+        "alt": "【名】慈善のイメージ（一例）"
+    },
+    {
+        "word": "charm",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】魅力",
+        "src": "assets/word-illustrations/charm-daily-pictogram-natural-v1.webp",
+        "alt": "【名】魅力のイメージ（一例）"
+    },
+    {
+        "word": "chase",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】追跡",
+        "src": "assets/word-illustrations/chase-daily-pictogram-natural-v1.webp",
+        "alt": "【名】追跡のイメージ（一例）"
+    },
+    {
+        "word": "chat",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】おしゃべり",
+        "src": "assets/word-illustrations/chat-daily-pictogram-natural-v1.webp",
+        "alt": "【名】おしゃべりのイメージ（一例）"
+    },
+    {
+        "word": "chat show",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】トークショー",
+        "src": "assets/word-illustrations/chat-show-daily-pictogram-natural-v1.webp",
+        "alt": "【名】トークショーのイメージ（一例）"
+    },
+    {
+        "word": "check-in",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】チェックイン",
+        "src": "assets/word-illustrations/check-in-daily-pictogram-natural-v1.webp",
+        "alt": "【名】チェックインのイメージ（一例）"
+    },
+    {
+        "word": "checkout",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】レジ、チェックアウト",
+        "src": "assets/word-illustrations/checkout-daily-pictogram-natural-v1.webp",
+        "alt": "【名】レジ、チェックアウトのイメージ（一例）"
+    },
+    {
+        "word": "chemical",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】化学物質",
+        "src": "assets/word-illustrations/chemical-daily-pictogram-natural-v1.webp",
+        "alt": "【名】化学物質のイメージ（一例）"
+    },
+    {
+        "word": "chemist",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】薬剤師、化学者",
+        "src": "assets/word-illustrations/chemist-daily-pictogram-natural-v1.webp",
+        "alt": "【名】薬剤師、化学者のイメージ（一例）"
+    },
+    {
+        "word": "chemistry",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】化学",
+        "src": "assets/word-illustrations/chemistry-daily-pictogram-natural-v1.webp",
+        "alt": "【名】化学のイメージ（一例）"
+    },
+    {
+        "word": "chest of drawers",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】タンス",
+        "src": "assets/word-illustrations/chest-of-drawers-daily-pictogram-natural-v1.webp",
+        "alt": "【名】タンスのイメージ（一例）"
+    },
+    {
+        "word": "chewing gum",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】チューインガム",
+        "src": "assets/word-illustrations/chewing-gum-daily-pictogram-natural-v1.webp",
+        "alt": "【名】チューインガムのイメージ（一例）"
+    },
+    {
+        "word": "choir",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】聖歌隊、合唱団",
+        "src": "assets/word-illustrations/choir-daily-pictogram-natural-v1.webp",
+        "alt": "【名】聖歌隊、合唱団のイメージ（一例）"
+    },
+    {
+        "word": "chuckle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】くすくす笑い",
+        "src": "assets/word-illustrations/chuckle-daily-pictogram-natural-v2.webp",
+        "alt": "【名】くすくす笑いのイメージ（一例）"
+    },
+    {
+        "word": "circus",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】サーカス",
+        "src": "assets/word-illustrations/circus-daily-pictogram-natural-v1.webp",
+        "alt": "【名】サーカスのイメージ（一例）"
+    },
+    {
+        "word": "citizenship",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】市民権",
+        "src": "assets/word-illustrations/citizenship-daily-pictogram-natural-v1.webp",
+        "alt": "【名】市民権のイメージ（一例）"
+    },
+    {
+        "word": "civilisation",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】文明",
+        "src": "assets/word-illustrations/civilisation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】文明のイメージ（一例）"
+    },
+    {
+        "word": "civilization",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】文明（米）",
+        "src": "assets/word-illustrations/civilisation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】文明（米）のイメージ（一例）"
+    },
+    {
+        "word": "claim",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】主張、請求",
+        "src": "assets/word-illustrations/claim-daily-pictogram-natural-v1.webp",
+        "alt": "【名】主張、請求のイメージ（一例）"
+    },
+    {
+        "word": "click",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】クリック音",
+        "src": "assets/word-illustrations/click-daily-pictogram-natural-v1.webp",
+        "alt": "【名】クリック音のイメージ（一例）"
+    },
+    {
+        "word": "climate",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】気候",
+        "src": "assets/word-illustrations/climate-daily-pictogram-natural-v1.webp",
+        "alt": "【名】気候のイメージ（一例）"
+    },
+    {
+        "word": "climber",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】登山者",
+        "src": "assets/word-illustrations/climber-daily-pictogram-natural-v1.webp",
+        "alt": "【名】登山者のイメージ（一例）"
+    },
+    {
+        "word": "clinic",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】診療所",
+        "src": "assets/word-illustrations/clinic-daily-pictogram-natural-v2.webp",
+        "alt": "【名】診療所のイメージ（一例）"
+    },
+    {
+        "word": "clip",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】クリップ、切り抜き",
+        "src": "assets/word-illustrations/clip-daily-pictogram-natural-v1.webp",
+        "alt": "【名】クリップ、切り抜きのイメージ（一例）"
+    },
+    {
+        "word": "coal",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】石炭",
+        "src": "assets/word-illustrations/coal-daily-pictogram-natural-v1.webp",
+        "alt": "【名】石炭のイメージ（一例）"
+    },
+    {
+        "word": "antonym",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】対義語",
+        "src": "assets/word-illustrations/antonym-daily-pictogram-natural-v1.webp",
+        "alt": "【名】対義語のイメージ（一例）"
+    },
+    {
+        "word": "anxiety",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不安、心配",
+        "src": "assets/word-illustrations/anxiety-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不安、心配のイメージ（一例）"
+    },
+    {
+        "word": "ape",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】類人猿",
+        "src": "assets/word-illustrations/ape-daily-pictogram-natural-v1.webp",
+        "alt": "【名】類人猿のイメージ（一例）"
+    },
+    {
+        "word": "apology",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】謝罪",
+        "src": "assets/word-illustrations/apology-daily-pictogram-natural-v1.webp",
+        "alt": "【名】謝罪のイメージ（一例）"
+    },
+    {
+        "word": "appetite",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】食欲",
+        "src": "assets/word-illustrations/appetite-daily-pictogram-natural-v2.webp",
+        "alt": "【名】食欲のイメージ（一例）"
+    },
+    {
+        "word": "applause",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】拍手",
+        "src": "assets/word-illustrations/applause-daily-pictogram-natural-v1.webp",
+        "alt": "【名】拍手のイメージ（一例）"
+    },
+    {
+        "word": "application",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】申し込み、適用、アプリ",
+        "src": "assets/word-illustrations/application-daily-pictogram-natural-v1.webp",
+        "alt": "【名】申し込み、適用、アプリのイメージ（一例）"
+    },
+    {
+        "word": "appreciation",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】感謝、鑑賞、理解",
+        "src": "assets/word-illustrations/appreciation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】感謝、鑑賞、理解のイメージ（一例）"
+    },
+    {
+        "word": "approach",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】接近、取り組み方",
+        "src": "assets/word-illustrations/approach-daily-pictogram-natural-v1.webp",
+        "alt": "【名】接近、取り組み方のイメージ（一例）"
+    },
+    {
+        "word": "approval",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】承認、賛成",
+        "src": "assets/word-illustrations/approval-daily-pictogram-natural-v1.webp",
+        "alt": "【名】承認、賛成のイメージ（一例）"
+    },
+    {
+        "word": "architect",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】建築家",
+        "src": "assets/word-illustrations/architect-daily-pictogram-natural-v1.webp",
+        "alt": "【名】建築家のイメージ（一例）"
+    },
+    {
+        "word": "arithmetic",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】算数",
+        "src": "assets/word-illustrations/arithmetic-daily-pictogram-natural-v3.webp",
+        "alt": "【名】算数のイメージ（一例）"
+    },
+    {
+        "word": "army",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】陸軍",
+        "src": "assets/word-illustrations/army-daily-pictogram-natural-v1.webp",
+        "alt": "【名】陸軍のイメージ（一例）"
+    },
+    {
+        "word": "arrangement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】手配、配置",
+        "src": "assets/word-illustrations/arrangement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】手配、配置のイメージ（一例）"
+    },
+    {
+        "word": "arrest",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】逮捕",
+        "src": "assets/word-illustrations/arrest-daily-pictogram-natural-v1.webp",
+        "alt": "【名】逮捕のイメージ（一例）"
+    },
+    {
+        "word": "arrival",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】到着",
+        "src": "assets/word-illustrations/arrival-daily-pictogram-natural-v2.webp",
+        "alt": "【名】到着のイメージ（一例）"
+    },
+    {
+        "word": "arrow",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】矢",
+        "src": "assets/word-illustrations/arrow-daily-pictogram-natural-v1.webp",
+        "alt": "【名】矢のイメージ（一例）"
+    },
+    {
+        "word": "artist",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】芸術家",
+        "src": "assets/word-illustrations/artist-daily-pictogram-natural-v1.webp",
+        "alt": "【名】芸術家のイメージ（一例）"
+    },
+    {
+        "word": "aspect",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】側面",
+        "src": "assets/word-illustrations/aspect-daily-pictogram-natural-v1.webp",
+        "alt": "【名】側面のイメージ（一例）"
+    },
+    {
+        "word": "aspirin",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】アスピリン（鎮痛剤）",
+        "src": "assets/word-illustrations/aspirin-daily-pictogram-natural-v1.webp",
+        "alt": "【名】アスピリン（鎮痛剤）のイメージ（一例）"
+    },
+    {
+        "word": "assignment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】課題、宿題、割り当て",
+        "src": "assets/word-illustrations/assignment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】課題、宿題、割り当てのイメージ（一例）"
+    },
+    {
+        "word": "assistance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】援助",
+        "src": "assets/word-illustrations/assistance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】援助のイメージ（一例）"
+    },
+    {
+        "word": "assistant",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】助手",
+        "src": "assets/word-illustrations/assistant-daily-pictogram-natural-v1.webp",
+        "alt": "【名】助手のイメージ（一例）"
+    },
+    {
+        "word": "astronomer",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】天文学者",
+        "src": "assets/word-illustrations/astronomer-daily-pictogram-natural-v1.webp",
+        "alt": "【名】天文学者のイメージ（一例）"
+    },
+    {
+        "word": "atmosphere",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】雰囲気、大気",
+        "src": "assets/word-illustrations/atmosphere-daily-pictogram-natural-v1.webp",
+        "alt": "【名】雰囲気、大気のイメージ（一例）"
+    },
+    {
+        "word": "attachment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】添付、愛着",
+        "src": "assets/word-illustrations/attachment-daily-pictogram-natural-v1.webp",
+        "alt": "【名】添付、愛着のイメージ（一例）"
+    },
+    {
+        "word": "attraction",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】魅力、呼び物",
+        "src": "assets/word-illustrations/attraction-daily-pictogram-natural-v1.webp",
+        "alt": "【名】魅力、呼び物のイメージ（一例）"
+    },
+    {
+        "word": "authority",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】権威、当局",
+        "src": "assets/word-illustrations/authority-daily-pictogram-natural-v1.webp",
+        "alt": "【名】権威、当局のイメージ（一例）"
+    },
+    {
+        "word": "avenue",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】大通り",
+        "src": "assets/word-illustrations/avenue-daily-pictogram-natural-v1.webp",
+        "alt": "【名】大通りのイメージ（一例）"
+    },
+    {
+        "word": "awareness",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】認識、意識",
+        "src": "assets/word-illustrations/awareness-daily-pictogram-natural-v1.webp",
+        "alt": "【名】認識、意識のイメージ（一例）"
+    },
+    {
+        "word": "babysitter",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ベビーシッター",
+        "src": "assets/word-illustrations/babysitter-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ベビーシッターのイメージ（一例）"
+    },
+    {
+        "word": "backache",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】背中の痛み",
+        "src": "assets/word-illustrations/backache-daily-pictogram-natural-v1.webp",
+        "alt": "【名】背中の痛みのイメージ（一例）"
+    },
+    {
+        "word": "backpack",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】バックパック、リュック",
+        "src": "assets/word-illustrations/backpack-daily-pictogram-natural-v2.webp",
+        "alt": "【名】バックパック、リュックのイメージ（一例）"
+    },
+    {
+        "word": "backpacker",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】バックパッカー",
+        "src": "assets/word-illustrations/backpacker-daily-pictogram-natural-v1.webp",
+        "alt": "【名】バックパッカーのイメージ（一例）"
+    },
+    {
+        "word": "backpacking",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】バックパック旅行",
+        "src": "assets/word-illustrations/backpacking-daily-pictogram-natural-v1.webp",
+        "alt": "【名】バックパック旅行のイメージ（一例）"
+    },
+    {
+        "word": "bacon",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ベーコン",
+        "src": "assets/word-illustrations/bacon-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ベーコンのイメージ（一例）"
+    },
+    {
+        "word": "baggage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】手荷物",
+        "src": "assets/word-illustrations/baggage-daily-pictogram-natural-v1.webp",
+        "alt": "【名】手荷物のイメージ（一例）"
+    },
+    {
+        "word": "baker",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】パン屋",
+        "src": "assets/word-illustrations/baker-daily-pictogram-natural-v1.webp",
+        "alt": "【名】パン屋のイメージ（一例）"
+    },
+    {
+        "word": "bakery",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】パン屋（店）",
+        "src": "assets/word-illustrations/bakery-daily-pictogram-natural-v2.webp",
+        "alt": "【名】パン屋（店）のイメージ（一例）"
+    },
+    {
+        "word": "balance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】均衡、バランス、残高",
+        "src": "assets/word-illustrations/balance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】均衡、バランス、残高のイメージ（一例）"
+    },
+    {
+        "word": "bandage",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】包帯",
+        "src": "assets/word-illustrations/bandage-daily-pictogram-natural-v1.webp",
+        "alt": "【名】包帯のイメージ（一例）"
+    },
+    {
+        "word": "bang",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ドスンという音、強打",
+        "src": "assets/word-illustrations/bang-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ドスンという音、強打のイメージ（一例）"
+    },
+    {
+        "word": "bank account",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】銀行口座",
+        "src": "assets/word-illustrations/bank-account-daily-pictogram-natural-v1.webp",
+        "alt": "【名】銀行口座のイメージ（一例）"
+    },
+    {
+        "word": "bark",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】吠え声、樹皮",
+        "src": "assets/word-illustrations/bark-daily-pictogram-natural-v1.webp",
+        "alt": "【名】吠え声、樹皮のイメージ（一例）"
+    },
+    {
+        "word": "barman",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】バーテンダー",
+        "src": "assets/word-illustrations/barman-daily-pictogram-natural-v1.webp",
+        "alt": "【名】バーテンダーのイメージ（一例）"
+    },
+    {
+        "word": "basement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】地下室",
+        "src": "assets/word-illustrations/basement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】地下室のイメージ（一例）"
+    },
+    {
+        "word": "basin",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】洗面器、盆地",
+        "src": "assets/word-illustrations/basin-daily-pictogram-natural-v1.webp",
+        "alt": "【名】洗面器、盆地のイメージ（一例）"
+    },
+    {
+        "word": "basis",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】基礎、根拠",
+        "src": "assets/word-illustrations/basis-daily-pictogram-natural-v1.webp",
+        "alt": "【名】基礎、根拠のイメージ（一例）"
+    },
+    {
+        "word": "battle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】戦い",
+        "src": "assets/word-illustrations/battle-daily-pictogram-natural-v1.webp",
+        "alt": "【名】戦いのイメージ（一例）"
+    },
+    {
+        "word": "beard",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】あごひげ",
+        "src": "assets/word-illustrations/beard-daily-pictogram-natural-v1.webp",
+        "alt": "【名】あごひげのイメージ（一例）"
+    },
+    {
+        "word": "beast",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】野獣",
+        "src": "assets/word-illustrations/beast-daily-pictogram-natural-v1.webp",
+        "alt": "【名】野獣のイメージ（一例）"
+    },
+    {
+        "word": "beaver",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ビーバー",
+        "src": "assets/word-illustrations/beaver-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ビーバーのイメージ（一例）"
+    },
+    {
+        "word": "bedside",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ベッドの脇",
+        "src": "assets/word-illustrations/bedside-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ベッドの脇のイメージ（一例）"
+    },
+    {
+        "word": "behalf",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】味方、支持、利益",
+        "src": "assets/word-illustrations/behalf-daily-pictogram-natural-v1.webp",
+        "alt": "【名】味方、支持、利益のイメージ（一例）"
+    },
+    {
+        "word": "belief",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】信念、信じること",
+        "src": "assets/word-illustrations/belief-daily-pictogram-natural-v1.webp",
+        "alt": "【名】信念、信じることのイメージ（一例）"
+    },
+    {
+        "word": "benefit",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】利益、恩恵",
+        "src": "assets/word-illustrations/benefit-daily-pictogram-natural-v1.webp",
+        "alt": "【名】利益、恩恵のイメージ（一例）"
+    },
+    {
+        "word": "biochemistry",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】生化学",
+        "src": "assets/word-illustrations/biochemistry-daily-pictogram-natural-v2.webp",
+        "alt": "【名】生化学のイメージ（一例）"
+    },
+    {
+        "word": "biography",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】伝記",
+        "src": "assets/word-illustrations/biography-daily-pictogram-natural-v1.webp",
+        "alt": "【名】伝記のイメージ（一例）"
+    },
+    {
+        "word": "biology",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】生物学",
+        "src": "assets/word-illustrations/biology-daily-pictogram-natural-v1.webp",
+        "alt": "【名】生物学のイメージ（一例）"
+    },
+    {
+        "word": "bishop",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】司教",
+        "src": "assets/word-illustrations/bishop-daily-pictogram-natural-v1.webp",
+        "alt": "【名】司教のイメージ（一例）"
+    },
+    {
+        "word": "blame",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】非難、責任",
+        "src": "assets/word-illustrations/blame-daily-pictogram-natural-v1.webp",
+        "alt": "【名】非難、責任のイメージ（一例）"
+    },
+    {
+        "word": "blessing",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】祝福、恩恵",
+        "src": "assets/word-illustrations/blessing-daily-pictogram-natural-v1.webp",
+        "alt": "【名】祝福、恩恵のイメージ（一例）"
+    },
+    {
+        "word": "blog",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ブログ",
+        "src": "assets/word-illustrations/blog-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ブログのイメージ（一例）"
+    },
+    {
+        "word": "blogger",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ブロガー",
+        "src": "assets/word-illustrations/blogger-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ブロガーのイメージ（一例）"
+    },
+    {
+        "word": "blush",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】赤面",
+        "src": "assets/word-illustrations/blush-daily-pictogram-natural-v1.webp",
+        "alt": "【名】赤面のイメージ（一例）"
+    },
+    {
+        "word": "bomb",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】爆弾",
+        "src": "assets/word-illustrations/bomb-daily-pictogram-natural-v2.webp",
+        "alt": "【名】爆弾のイメージ（一例）"
+    },
+    {
+        "word": "bond",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】絆、債券",
+        "src": "assets/word-illustrations/bond-daily-pictogram-natural-v1.webp",
+        "alt": "【名】絆、債券のイメージ（一例）"
+    },
+    {
+        "word": "booking",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】予約",
+        "src": "assets/word-illustrations/booking-daily-pictogram-natural-v1.webp",
+        "alt": "【名】予約のイメージ（一例）"
+    },
+    {
+        "word": "adverb",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】副詞",
+        "src": "assets/word-illustrations/adverb-daily-pictogram-natural-v1.webp",
+        "alt": "【名】副詞のイメージ（一例）"
+    },
+    {
+        "word": "advert",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】広告（adの口語）",
+        "src": "assets/word-illustrations/advert-daily-pictogram-natural-v1.webp",
+        "alt": "【名】広告（adの口語）のイメージ（一例）"
+    },
+    {
+        "word": "adviser",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】助言者、顧問",
+        "src": "assets/word-illustrations/adviser-daily-pictogram-natural-v1.webp",
+        "alt": "【名】助言者、顧問のイメージ（一例）"
+    },
+    {
+        "word": "advisor",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】助言者（adviserと同じ）",
+        "src": "assets/word-illustrations/adviser-daily-pictogram-natural-v1.webp",
+        "alt": "【名】助言者（adviserと同じ）のイメージ（一例）"
+    },
+    {
+        "word": "aerobics",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】エアロビクス",
+        "src": "assets/word-illustrations/aerobics-daily-pictogram-natural-v1.webp",
+        "alt": "【名】エアロビクスのイメージ（一例）"
+    },
+    {
+        "word": "affection",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】愛情",
+        "src": "assets/word-illustrations/affection-daily-pictogram-natural-v1.webp",
+        "alt": "【名】愛情のイメージ（一例）"
+    },
+    {
+        "word": "agenda",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】議題",
+        "src": "assets/word-illustrations/agenda-daily-pictogram-natural-v1.webp",
+        "alt": "【名】議題のイメージ（一例）"
+    },
+    {
+        "word": "agreement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】合意、協定",
+        "src": "assets/word-illustrations/agreement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】合意、協定のイメージ（一例）"
+    },
+    {
+        "word": "agriculture",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】農業",
+        "src": "assets/word-illustrations/agriculture-daily-pictogram-natural-v1.webp",
+        "alt": "【名】農業のイメージ（一例）"
+    },
+    {
+        "word": "aid",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】援助",
+        "src": "assets/word-illustrations/aid-daily-pictogram-natural-v1.webp",
+        "alt": "【名】援助のイメージ（一例）"
+    },
+    {
+        "word": "aim",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】目的、狙い",
+        "src": "assets/word-illustrations/aim-daily-pictogram-natural-v1.webp",
+        "alt": "【名】目的、狙いのイメージ（一例）"
+    },
+    {
+        "word": "air conditioning",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】空調",
+        "src": "assets/word-illustrations/air-conditioning-daily-pictogram-natural-v1.webp",
+        "alt": "【名】空調のイメージ（一例）"
+    },
+    {
+        "word": "air force",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】空軍",
+        "src": "assets/word-illustrations/air-force-daily-pictogram-natural-v1.webp",
+        "alt": "【名】空軍のイメージ（一例）"
+    },
+    {
+        "word": "airline",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】航空会社",
+        "src": "assets/word-illustrations/airline-daily-pictogram-natural-v1.webp",
+        "alt": "【名】航空会社のイメージ（一例）"
+    },
+    {
+        "word": "alcohol",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】アルコール",
+        "src": "assets/word-illustrations/alcohol-daily-pictogram-natural-v1.webp",
+        "alt": "【名】アルコールのイメージ（一例）"
+    },
+    {
+        "word": "allowance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】手当、小遣い",
+        "src": "assets/word-illustrations/allowance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】手当、小遣いのイメージ（一例）"
+    },
+    {
+        "word": "alphabet",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】アルファベット",
+        "src": "assets/word-illustrations/alphabet-daily-pictogram-natural-v1.webp",
+        "alt": "【名】アルファベットのイメージ（一例）"
+    },
+    {
+        "word": "ambulance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】救急車",
+        "src": "assets/word-illustrations/ambulance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】救急車のイメージ（一例）"
+    },
+    {
+        "word": "amount",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】量、総額",
+        "src": "assets/word-illustrations/amount-daily-pictogram-natural-v1.webp",
+        "alt": "【名】量、総額のイメージ（一例）"
+    },
+    {
+        "word": "analysis",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】分析",
+        "src": "assets/word-illustrations/analysis-daily-pictogram-natural-v1.webp",
+        "alt": "【名】分析のイメージ（一例）"
+    },
+    {
+        "word": "anger",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】怒り",
+        "src": "assets/word-illustrations/anger-daily-pictogram-natural-v1.webp",
+        "alt": "【名】怒りのイメージ（一例）"
+    },
+    {
+        "word": "angle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】角度、角",
+        "src": "assets/word-illustrations/angle-daily-pictogram-natural-v1.webp",
+        "alt": "【名】角度、角のイメージ（一例）"
+    },
+    {
+        "word": "animation",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】アニメーション、活気",
+        "src": "assets/word-illustrations/animation-daily-pictogram-natural-v1.webp",
+        "alt": "【名】アニメーション、活気のイメージ（一例）"
+    },
+    {
+        "word": "announcement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】発表、告知",
+        "src": "assets/word-illustrations/announcement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】発表、告知のイメージ（一例）"
+    },
+    {
+        "word": "annoyance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】苛立ち、迷惑",
+        "src": "assets/word-illustrations/annoyance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】苛立ち、迷惑のイメージ（一例）"
+    },
+    {
+        "word": "ant",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】アリ",
+        "src": "assets/word-illustrations/ant-daily-pictogram-natural-v3.webp",
+        "alt": "【名】アリのイメージ（一例）"
+    },
+    {
+        "word": "antique",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】骨董品",
+        "src": "assets/word-illustrations/antique-daily-pictogram-natural-v1.webp",
+        "alt": "【名】骨董品のイメージ（一例）"
+    },
+    {
+        "word": "aborigine",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】先住民（特にオーストラリアの）",
+        "src": "assets/word-illustrations/aborigine-daily-pictogram-natural-v1.webp",
+        "alt": "【名】先住民（特にオーストラリアの）のイメージ（一例）"
+    },
+    {
+        "word": "absence",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】不在、欠席",
+        "src": "assets/word-illustrations/absence-daily-pictogram-natural-v1.webp",
+        "alt": "【名】不在、欠席のイメージ（一例）"
+    },
+    {
+        "word": "abundance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】豊富、大量",
+        "src": "assets/word-illustrations/abundance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】豊富、大量のイメージ（一例）"
+    },
+    {
+        "word": "academy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】学院、専門学校",
+        "src": "assets/word-illustrations/academy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】学院、専門学校のイメージ（一例）"
+    },
+    {
+        "word": "accent",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】なまり、アクセント",
+        "src": "assets/word-illustrations/accent-daily-pictogram-natural-v1.webp",
+        "alt": "【名】なまり、アクセントのイメージ（一例）"
+    },
+    {
+        "word": "acceptance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】受諾、受け入れ",
+        "src": "assets/word-illustrations/acceptance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】受諾、受け入れのイメージ（一例）"
+    },
+    {
+        "word": "accessory",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】アクセサリー、付属品",
+        "src": "assets/word-illustrations/accessory-daily-pictogram-natural-v1.webp",
+        "alt": "【名】アクセサリー、付属品のイメージ（一例）"
+    },
+    {
+        "word": "accountant",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】会計士",
+        "src": "assets/word-illustrations/accountant-daily-pictogram-natural-v1.webp",
+        "alt": "【名】会計士のイメージ（一例）"
+    },
+    {
+        "word": "accuracy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】正確さ",
+        "src": "assets/word-illustrations/accuracy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】正確さのイメージ（一例）"
+    },
+    {
+        "word": "ache",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】痛み",
+        "src": "assets/word-illustrations/ache-daily-pictogram-natural-v1.webp",
+        "alt": "【名】痛みのイメージ（一例）"
+    },
+    {
+        "word": "achievement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】達成、業績",
+        "src": "assets/word-illustrations/achievement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】達成、業績のイメージ（一例）"
+    },
+    {
+        "word": "acknowledgement",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】承認、謝辞",
+        "src": "assets/word-illustrations/acknowledgement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】承認、謝辞のイメージ（一例）"
+    },
+    {
+        "word": "acknowledgment",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】承認（acknowledgementの異綴り）",
+        "src": "assets/word-illustrations/acknowledgement-daily-pictogram-natural-v1.webp",
+        "alt": "【名】承認（acknowledgementの異綴り）のイメージ（一例）"
+    },
+    {
+        "word": "acquaintance",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】知人",
+        "src": "assets/word-illustrations/acquaintance-daily-pictogram-natural-v1.webp",
+        "alt": "【名】知人のイメージ（一例）"
+    },
+    {
+        "word": "actress",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】女優",
+        "src": "assets/word-illustrations/actress-daily-pictogram-natural-v2.webp",
+        "alt": "【名】女優のイメージ（一例）"
+    },
+    {
+        "word": "ad",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】広告（advertisementの略）",
+        "src": "assets/word-illustrations/ad-daily-pictogram-natural-v1.webp",
+        "alt": "【名】広告（advertisementの略）のイメージ（一例）"
+    },
+    {
+        "word": "addressee",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】受信人、宛名",
+        "src": "assets/word-illustrations/addressee-daily-pictogram-natural-v1.webp",
+        "alt": "【名】受信人、宛名のイメージ（一例）"
+    },
+    {
+        "word": "administration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】管理、行政、政府",
+        "src": "assets/word-illustrations/administration-daily-pictogram-natural-v1.webp",
+        "alt": "【名】管理、行政、政府のイメージ（一例）"
+    },
+    {
+        "word": "admiration",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】賞賛",
+        "src": "assets/word-illustrations/admiration-daily-pictogram-natural-v1.webp",
+        "alt": "【名】賞賛のイメージ（一例）"
+    },
+    {
+        "word": "admission",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】入場、入学",
+        "src": "assets/word-illustrations/admission-daily-pictogram-natural-v1.webp",
+        "alt": "【名】入場、入学のイメージ（一例）"
+    },
+    {
+        "word": "access",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】接近、利用",
+        "src": "assets/word-illustrations/access-daily-pictogram-natural-v1.webp",
+        "alt": "【名】接近、利用のイメージ（一例）"
+    },
+    {
+        "word": "appeal",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】懇願、魅力",
+        "src": "assets/word-illustrations/appeal-daily-pictogram-natural-v2.webp",
+        "alt": "【名】懇願、魅力のイメージ（一例）"
+    },
+    {
+        "word": "bin",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ゴミ箱（重複回避対象だが意味確認）",
+        "src": "assets/word-illustrations/bin-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ゴミ箱（重複回避対象だが意味確認）のイメージ（一例）"
+    },
+    {
+        "word": "candle",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ろうそく (skip candidate)",
+        "src": "assets/word-illustrations/candle-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ろうそく (skip candidate)のイメージ（一例）"
+    },
+    {
+        "word": "career",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】経歴 (skip candidate)",
+        "src": "assets/word-illustrations/career-daily-pictogram-natural-v2.webp",
+        "alt": "【名】経歴 (skip candidate)のイメージ（一例）"
+    },
+    {
+        "word": "carpet",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】カーペット (skip candidate)",
+        "src": "assets/word-illustrations/carpet-daily-pictogram-natural-v1.webp",
+        "alt": "【名】カーペット (skip candidate)のイメージ（一例）"
+    },
+    {
+        "word": "ceremony",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】儀式 (skip candidate)",
+        "src": "assets/word-illustrations/ceremony-daily-pictogram-natural-v2.webp",
+        "alt": "【名】儀式 (skip candidate)のイメージ（一例）"
+    },
+    {
+        "word": "curtain",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】カーテン (skip - duplicate)",
+        "src": "assets/word-illustrations/curtain-daily-pictogram-natural-v1.webp",
+        "alt": "【名】カーテン (skip - duplicate)のイメージ（一例）"
+    },
+    {
+        "word": "cushion",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】クッション (skip - duplicate)",
+        "src": "assets/word-illustrations/cushion-daily-pictogram-natural-v1.webp",
+        "alt": "【名】クッション (skip - duplicate)のイメージ（一例）"
+    },
+    {
+        "word": "dirt",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】泥、汚れ",
+        "src": "assets/word-illustrations/dirt-daily-pictogram-natural-v1.webp",
+        "alt": "【名】泥、汚れのイメージ（一例）"
+    },
+    {
+        "word": "dishwasher",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】食洗機 (skip? no, check POS/dup)",
+        "src": "assets/word-illustrations/dishwasher-daily-pictogram-natural-v1.webp",
+        "alt": "【名】食洗機 (skip? no, check POS/dup)のイメージ（一例）"
+    },
+    {
+        "word": "dustbin",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】ゴミ箱（英）",
+        "src": "assets/word-illustrations/dustbin-daily-pictogram-natural-v1.webp",
+        "alt": "【名】ゴミ箱（英）のイメージ（一例）"
+    },
+    {
+        "word": "duvet",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】羽毛布団",
+        "src": "assets/word-illustrations/duvet-daily-pictogram-natural-v1.webp",
+        "alt": "【名】羽毛布団のイメージ（一例）"
+    },
+    {
+        "word": "economy",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "【名】経済、節約",
+        "src": "assets/word-illustrations/economy-daily-pictogram-natural-v1.webp",
+        "alt": "【名】経済、節約のイメージ（一例）"
+    },
+    {
+        "word": "check-in counter",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "搭乗手続きカウンター",
+        "src": "assets/word-illustrations/check-in-counter-daily-pictogram-natural-v1.webp",
+        "alt": "搭乗手続きカウンターのイメージ（一例）"
+    },
+    {
+        "word": "check-in desk",
+        "level": "daily",
+        "pos": "名",
+        "meaning": "搭乗手続きカウンター",
+        "src": "assets/word-illustrations/check-in-counter-daily-pictogram-natural-v1.webp",
+        "alt": "搭乗手続きカウンターのイメージ（一例）"
+    },
+    {
+        "word": "capacity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "能力、容量",
+        "src": "assets/word-illustrations/capacity-exam1-pictogram-natural-v1.webp",
+        "alt": "能力、容量のイメージ（一例）"
+    },
+    {
+        "word": "negotiation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "交渉",
+        "src": "assets/word-illustrations/negotiation-exam1-pictogram-natural-v1.webp",
+        "alt": "交渉のイメージ（一例）"
+    },
+    {
+        "word": "absentee",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不在者",
+        "src": "assets/word-illustrations/absentee-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不在者のイメージ（一例）"
+    },
+    {
+        "word": "abuse",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】乱用、虐待",
+        "src": "assets/word-illustrations/abuse-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】乱用、虐待のイメージ（一例）"
+    },
+    {
+        "word": "accessibility",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】接近しやすさ",
+        "src": "assets/word-illustrations/accessibility-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】接近しやすさのイメージ（一例）"
+    },
+    {
+        "word": "accommodation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】宿泊施設",
+        "src": "assets/word-illustrations/accommodation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】宿泊施設のイメージ（一例）"
+    },
+    {
+        "word": "accusation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】告発、非難",
+        "src": "assets/word-illustrations/accusation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】告発、非難のイメージ（一例）"
+    },
+    {
+        "word": "acid",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】酸",
+        "src": "assets/word-illustrations/acid-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】酸のイメージ（一例）"
+    },
+    {
+        "word": "acquisition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】獲得、習得",
+        "src": "assets/word-illustrations/acquisition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】獲得、習得のイメージ（一例）"
+    },
+    {
+        "word": "addict",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】中毒者",
+        "src": "assets/word-illustrations/addict-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】中毒者のイメージ（一例）"
+    },
+    {
+        "word": "addiction",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】中毒",
+        "src": "assets/word-illustrations/addiction-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】中毒のイメージ（一例）"
+    },
+    {
+        "word": "adjustment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】調整",
+        "src": "assets/word-illustrations/adjustment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】調整のイメージ（一例）"
+    },
+    {
+        "word": "adoption",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】養子縁組、採用",
+        "src": "assets/word-illustrations/adoption-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】養子縁組、採用のイメージ（一例）"
+    },
+    {
+        "word": "advance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】前進、進歩",
+        "src": "assets/word-illustrations/advance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】前進、進歩のイメージ（一例）"
+    },
+    {
+        "word": "advancement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】昇進、進歩",
+        "src": "assets/word-illustrations/advancement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】昇進、進歩のイメージ（一例）"
+    },
+    {
+        "word": "advent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】到来",
+        "src": "assets/word-illustrations/advent-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】到来のイメージ（一例）"
+    },
+    {
+        "word": "adversity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】逆境",
+        "src": "assets/word-illustrations/adversity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】逆境のイメージ（一例）"
+    },
+    {
+        "word": "agony",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】激痛、苦悩",
+        "src": "assets/word-illustrations/agony-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】激痛、苦悩のイメージ（一例）"
+    },
+    {
+        "word": "aircraft",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】航空機",
+        "src": "assets/word-illustrations/aircraft-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】航空機のイメージ（一例）"
+    },
+    {
+        "word": "aircrew",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】搭乗員",
+        "src": "assets/word-illustrations/aircrew-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】搭乗員のイメージ（一例）"
+    },
+    {
+        "word": "alcoholic",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アルコール依存症患者",
+        "src": "assets/word-illustrations/alcoholic-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アルコール依存症患者のイメージ（一例）"
+    },
+    {
+        "word": "alcoholism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アルコール中毒",
+        "src": "assets/word-illustrations/alcoholism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アルコール中毒のイメージ（一例）"
+    },
+    {
+        "word": "allegation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】申し立て",
+        "src": "assets/word-illustrations/allegation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】申し立てのイメージ（一例）"
+    },
+    {
+        "word": "alliance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】同盟",
+        "src": "assets/word-illustrations/alliance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】同盟のイメージ（一例）"
+    },
+    {
+        "word": "ally",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】同盟国、味方",
+        "src": "assets/word-illustrations/ally-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】同盟国、味方のイメージ（一例）"
+    },
+    {
+        "word": "altar",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】祭壇",
+        "src": "assets/word-illustrations/altar-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】祭壇のイメージ（一例）"
+    },
+    {
+        "word": "altitude",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】高度",
+        "src": "assets/word-illustrations/altitude-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】高度のイメージ（一例）"
+    },
+    {
+        "word": "aluminium",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アルミニウム",
+        "src": "assets/word-illustrations/aluminium-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アルミニウムのイメージ（一例）"
+    },
+    {
+        "word": "aluminum",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アルミニウム (米)",
+        "src": "assets/word-illustrations/aluminium-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アルミニウム (米)のイメージ（一例）"
+    },
+    {
+        "word": "amazement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】驚嘆",
+        "src": "assets/word-illustrations/amazement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】驚嘆のイメージ（一例）"
+    },
+    {
+        "word": "ambassador",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大使",
+        "src": "assets/word-illustrations/ambassador-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大使のイメージ（一例）"
+    },
+    {
+        "word": "ambiguity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】曖昧さ",
+        "src": "assets/word-illustrations/ambiguity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】曖昧さのイメージ（一例）"
+    },
+    {
+        "word": "ammonia",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アンモニア",
+        "src": "assets/word-illustrations/ammonia-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アンモニアのイメージ（一例）"
+    },
+    {
+        "word": "amplifier",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アンプ、増幅器",
+        "src": "assets/word-illustrations/amplifier-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アンプ、増幅器のイメージ（一例）"
+    },
+    {
+        "word": "analogy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】類推、類似",
+        "src": "assets/word-illustrations/analogy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】類推、類似のイメージ（一例）"
+    },
+    {
+        "word": "analyst",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】分析家",
+        "src": "assets/word-illustrations/analyst-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】分析家のイメージ（一例）"
+    },
+    {
+        "word": "anchor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】錨、アンカー",
+        "src": "assets/word-illustrations/anchor-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】錨、アンカーのイメージ（一例）"
+    },
+    {
+        "word": "anchorage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】停泊地",
+        "src": "assets/word-illustrations/anchorage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】停泊地のイメージ（一例）"
+    },
+    {
+        "word": "anchorman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ニュースキャスター",
+        "src": "assets/word-illustrations/anchorman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ニュースキャスターのイメージ（一例）"
+    },
+    {
+        "word": "anchorperson",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ニュースキャスター",
+        "src": "assets/word-illustrations/anchorperson-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ニュースキャスターのイメージ（一例）"
+    },
+    {
+        "word": "anguish",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】苦悩",
+        "src": "assets/word-illustrations/anguish-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】苦悩のイメージ（一例）"
+    },
+    {
+        "word": "anticancer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】抗がん剤",
+        "src": "assets/word-illustrations/anticancer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】抗がん剤のイメージ（一例）"
+    },
+    {
+        "word": "anticipation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】予想、期待",
+        "src": "assets/word-illustrations/anticipation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】予想、期待のイメージ（一例）"
+    },
+    {
+        "word": "antipollution",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】公害防止",
+        "src": "assets/word-illustrations/antipollution-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】公害防止のイメージ（一例）"
+    },
+    {
+        "word": "antivirus",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】抗ウイルス",
+        "src": "assets/word-illustrations/antivirus-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】抗ウイルスのイメージ（一例）"
+    },
+    {
+        "word": "apostrophe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アポストロフィ",
+        "src": "assets/word-illustrations/apostrophe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アポストロフィのイメージ（一例）"
+    },
+    {
+        "word": "applicant",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】応募者",
+        "src": "assets/word-illustrations/applicant-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】応募者のイメージ（一例）"
+    },
+    {
+        "word": "arch",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アーチ",
+        "src": "assets/word-illustrations/arch-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アーチのイメージ（一例）"
+    },
+    {
+        "word": "archaeologist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】考古学者",
+        "src": "assets/word-illustrations/archaeologist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】考古学者のイメージ（一例）"
+    },
+    {
+        "word": "archeologist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】考古学者 (米)",
+        "src": "assets/word-illustrations/archaeologist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】考古学者 (米)のイメージ（一例）"
+    },
+    {
+        "word": "arena",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】競技場、アリーナ",
+        "src": "assets/word-illustrations/arena-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】競技場、アリーナのイメージ（一例）"
+    },
+    {
+        "word": "aristocracy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】貴族",
+        "src": "assets/word-illustrations/aristocracy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】貴族のイメージ（一例）"
+    },
+    {
+        "word": "armful",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】腕一杯の",
+        "src": "assets/word-illustrations/armful-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】腕一杯ののイメージ（一例）"
+    },
+    {
+        "word": "artery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】動脈",
+        "src": "assets/word-illustrations/artery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】動脈のイメージ（一例）"
+    },
+    {
+        "word": "artistry",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】芸術的才能",
+        "src": "assets/word-illustrations/artistry-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】芸術的才能のイメージ（一例）"
+    },
+    {
+        "word": "ash",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】灰",
+        "src": "assets/word-illustrations/ash-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】灰のイメージ（一例）"
+    },
+    {
+        "word": "aspiration",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】熱望",
+        "src": "assets/word-illustrations/aspiration-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】熱望のイメージ（一例）"
+    },
+    {
+        "word": "assault",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】暴行、攻撃",
+        "src": "assets/word-illustrations/assault-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】暴行、攻撃のイメージ（一例）"
+    },
+    {
+        "word": "assembly",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】集会、組み立て",
+        "src": "assets/word-illustrations/assembly-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】集会、組み立てのイメージ（一例）"
+    },
+    {
+        "word": "assessment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】評価、査定",
+        "src": "assets/word-illustrations/assessment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】評価、査定のイメージ（一例）"
+    },
+    {
+        "word": "assumption",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】仮定",
+        "src": "assets/word-illustrations/assumption-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】仮定のイメージ（一例）"
+    },
+    {
+        "word": "assurance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】保証、確信",
+        "src": "assets/word-illustrations/assurance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】保証、確信のイメージ（一例）"
+    },
+    {
+        "word": "astonishment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】驚き",
+        "src": "assets/word-illustrations/astonishment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】驚きのイメージ（一例）"
+    },
+    {
+        "word": "astronomy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】天文学",
+        "src": "assets/word-illustrations/astronomy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】天文学のイメージ（一例）"
+    },
+    {
+        "word": "athletics",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】陸上競技",
+        "src": "assets/word-illustrations/athletics-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】陸上競技のイメージ（一例）"
+    },
+    {
+        "word": "attainment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】達成",
+        "src": "assets/word-illustrations/attainment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】達成のイメージ（一例）"
+    },
+    {
+        "word": "attendance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】出席",
+        "src": "assets/word-illustrations/attendance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】出席のイメージ（一例）"
+    },
+    {
+        "word": "attractiveness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】魅力",
+        "src": "assets/word-illustrations/attractiveness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】魅力のイメージ（一例）"
+    },
+    {
+        "word": "attribute",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】属性、特性",
+        "src": "assets/word-illustrations/attribute-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】属性、特性のイメージ（一例）"
+    },
+    {
+        "word": "aubergine",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ナス (英)",
+        "src": "assets/word-illustrations/aubergine-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ナス (英)のイメージ（一例）"
+    },
+    {
+        "word": "audit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】監査",
+        "src": "assets/word-illustrations/audit-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】監査のイメージ（一例）"
+    },
+    {
+        "word": "audition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オーディション",
+        "src": "assets/word-illustrations/audition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オーディションのイメージ（一例）"
+    },
+    {
+        "word": "availability",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】有用性、入手可能性",
+        "src": "assets/word-illustrations/availability-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】有用性、入手可能性のイメージ（一例）"
+    },
+    {
+        "word": "awe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】畏敬",
+        "src": "assets/word-illustrations/awe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】畏敬のイメージ（一例）"
+    },
+    {
+        "word": "ax",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】斧",
+        "src": "assets/word-illustrations/ax-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】斧のイメージ（一例）"
+    },
+    {
+        "word": "axe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】斧（英）",
+        "src": "assets/word-illustrations/ax-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】斧（英）のイメージ（一例）"
+    },
+    {
+        "word": "axis",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】軸",
+        "src": "assets/word-illustrations/axis-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】軸のイメージ（一例）"
+    },
+    {
+        "word": "backup",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】予備、支援",
+        "src": "assets/word-illustrations/backup-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】予備、支援のイメージ（一例）"
+    },
+    {
+        "word": "backyard",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】裏庭",
+        "src": "assets/word-illustrations/backyard-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】裏庭のイメージ（一例）"
+    },
+    {
+        "word": "badge",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】記章、バッジ",
+        "src": "assets/word-illustrations/badge-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】記章、バッジのイメージ（一例）"
+    },
+    {
+        "word": "ballad",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】バラード",
+        "src": "assets/word-illustrations/ballad-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】バラードのイメージ（一例）"
+    },
+    {
+        "word": "ballet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】バレエ",
+        "src": "assets/word-illustrations/ballet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】バレエのイメージ（一例）"
+    },
+    {
+        "word": "ballot",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】投票用ふだ、投票",
+        "src": "assets/word-illustrations/ballot-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】投票用ふだ、投票のイメージ（一例）"
+    },
+    {
+        "word": "ban",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】禁止",
+        "src": "assets/word-illustrations/ban-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】禁止のイメージ（一例）"
+    },
+    {
+        "word": "banker",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】銀行家",
+        "src": "assets/word-illustrations/banker-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】銀行家のイメージ（一例）"
+    },
+    {
+        "word": "bankruptcy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】倒産",
+        "src": "assets/word-illustrations/bankruptcy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】倒産のイメージ（一例）"
+    },
+    {
+        "word": "barbershop",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】理髪店",
+        "src": "assets/word-illustrations/barbershop-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】理髪店のイメージ（一例）"
+    },
+    {
+        "word": "barley",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大麦",
+        "src": "assets/word-illustrations/barley-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大麦のイメージ（一例）"
+    },
+    {
+        "word": "barn",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】納屋",
+        "src": "assets/word-illustrations/barn-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】納屋のイメージ（一例）"
+    },
+    {
+        "word": "barometer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】気圧計、指標",
+        "src": "assets/word-illustrations/barometer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】気圧計、指標のイメージ（一例）"
+    },
+    {
+        "word": "barrier",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】障壁",
+        "src": "assets/word-illustrations/barrier-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】障壁のイメージ（一例）"
+    },
+    {
+        "word": "bartender",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】バーテンダー",
+        "src": "assets/word-illustrations/bartender-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】バーテンダーのイメージ（一例）"
+    },
+    {
+        "word": "bathhouse",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】公衆浴場",
+        "src": "assets/word-illustrations/bathhouse-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】公衆浴場のイメージ（一例）"
+    },
+    {
+        "word": "battlefield",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】戦場",
+        "src": "assets/word-illustrations/battlefield-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】戦場のイメージ（一例）"
+    },
+    {
+        "word": "beagle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ビーグル犬",
+        "src": "assets/word-illustrations/beagle-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ビーグル犬のイメージ（一例）"
+    },
+    {
+        "word": "beak",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】くちばし",
+        "src": "assets/word-illustrations/beak-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】くちばしのイメージ（一例）"
+    },
+    {
+        "word": "beam",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】光線、梁",
+        "src": "assets/word-illustrations/beam-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】光線、梁のイメージ（一例）"
+    },
+    {
+        "word": "bearing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】態度、関係",
+        "src": "assets/word-illustrations/bearing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】態度、関係のイメージ（一例）"
+    },
+    {
+        "word": "beat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】鼓動、拍子",
+        "src": "assets/word-illustrations/beat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】鼓動、拍子のイメージ（一例）"
+    },
+    {
+        "word": "belongings",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】所持品",
+        "src": "assets/word-illustrations/belongings-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】所持品のイメージ（一例）"
+    },
+    {
+        "word": "bend",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】曲がり角",
+        "src": "assets/word-illustrations/bend-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】曲がり角のイメージ（一例）"
+    },
+    {
+        "word": "benevolence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】慈悲",
+        "src": "assets/word-illustrations/benevolence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】慈悲のイメージ（一例）"
+    },
+    {
+        "word": "berry",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ベリー",
+        "src": "assets/word-illustrations/berry-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ベリーのイメージ（一例）"
+    },
+    {
+        "word": "bestseller",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ベストセラー",
+        "src": "assets/word-illustrations/bestseller-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ベストセラーのイメージ（一例）"
+    },
+    {
+        "word": "bewilderment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】当惑",
+        "src": "assets/word-illustrations/bewilderment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】当惑のイメージ（一例）"
+    },
+    {
+        "word": "bidding",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】入札、命令",
+        "src": "assets/word-illustrations/bidding-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】入札、命令のイメージ（一例）"
+    },
+    {
+        "word": "bikini",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ビキニ",
+        "src": "assets/word-illustrations/bikini-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ビキニのイメージ（一例）"
+    },
+    {
+        "word": "billion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】10億",
+        "src": "assets/word-illustrations/billion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】10億のイメージ（一例）"
+    },
+    {
+        "word": "bio",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】経歴（biographyの略）",
+        "src": "assets/word-illustrations/bio-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】経歴（biographyの略）のイメージ（一例）"
+    },
+    {
+        "word": "biotechnology",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】バイオテクノロジー",
+        "src": "assets/word-illustrations/biotechnology-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】バイオテクノロジーのイメージ（一例）"
+    },
+    {
+        "word": "birdcage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】鳥かご",
+        "src": "assets/word-illustrations/birdcage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】鳥かごのイメージ（一例）"
+    },
+    {
+        "word": "birthplace",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】出生地",
+        "src": "assets/word-illustrations/birthplace-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】出生地のイメージ（一例）"
+    },
+    {
+        "word": "blade",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】刃",
+        "src": "assets/word-illustrations/blade-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】刃のイメージ（一例）"
+    },
+    {
+        "word": "blast",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】爆発、突風",
+        "src": "assets/word-illustrations/blast-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】爆発、突風のイメージ（一例）"
+    },
+    {
+        "word": "blaze",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】炎",
+        "src": "assets/word-illustrations/blaze-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】炎のイメージ（一例）"
+    },
+    {
+        "word": "blend",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】混合物",
+        "src": "assets/word-illustrations/blend-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】混合物のイメージ（一例）"
+    },
+    {
+        "word": "blindness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】盲目",
+        "src": "assets/word-illustrations/blindness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】盲目のイメージ（一例）"
+    },
+    {
+        "word": "bloodstream",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】血流",
+        "src": "assets/word-illustrations/bloodstream-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】血流のイメージ（一例）"
+    },
+    {
+        "word": "blossom",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】花",
+        "src": "assets/word-illustrations/blossom-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】花のイメージ（一例）"
+    },
+    {
+        "word": "blurt",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】出し抜けに言う",
+        "src": "assets/word-illustrations/blurt-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】出し抜けに言うのイメージ（一例）"
+    },
+    {
+        "word": "bold",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】太字",
+        "src": "assets/word-illustrations/bold-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】太字のイメージ（一例）"
+    },
+    {
+        "word": "bolt",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ボルト、稲妻",
+        "src": "assets/word-illustrations/bolt-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ボルト、稲妻のイメージ（一例）"
+    },
+    {
+        "word": "bombard",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】砲撃する (CSV says noun?)",
+        "src": "assets/word-illustrations/bombard-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】砲撃する (CSV says noun?)のイメージ（一例）"
+    },
+    {
+        "word": "bomber",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】爆撃機",
+        "src": "assets/word-illustrations/bomber-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】爆撃機のイメージ（一例）"
+    },
+    {
+        "word": "bombing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】爆撃",
+        "src": "assets/word-illustrations/bombing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】爆撃のイメージ（一例）"
+    },
+    {
+        "word": "booklet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小冊子",
+        "src": "assets/word-illustrations/booklet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小冊子のイメージ（一例）"
+    },
+    {
+        "word": "bookmark",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】しおり",
+        "src": "assets/word-illustrations/bookmark-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】しおりのイメージ（一例）"
+    },
+    {
+        "word": "boost",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】後押し",
+        "src": "assets/word-illustrations/boost-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】後押しのイメージ（一例）"
+    },
+    {
+        "word": "booth",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ブース",
+        "src": "assets/word-illustrations/booth-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ブースのイメージ（一例）"
+    },
+    {
+        "word": "botany",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】植物学",
+        "src": "assets/word-illustrations/botany-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】植物学のイメージ（一例）"
+    },
+    {
+        "word": "bounce",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】跳ね返り",
+        "src": "assets/word-illustrations/bounce-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】跳ね返りのイメージ（一例）"
+    },
+    {
+        "word": "bourbon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】バーボン",
+        "src": "assets/word-illustrations/bourbon-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】バーボンのイメージ（一例）"
+    },
+    {
+        "word": "boxer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ボクサー",
+        "src": "assets/word-illustrations/boxer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ボクサーのイメージ（一例）"
+    },
+    {
+        "word": "bracket",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】括弧",
+        "src": "assets/word-illustrations/bracket-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】括弧のイメージ（一例）"
+    },
+    {
+        "word": "brag",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】自慢 (verb mostly)",
+        "src": "assets/word-illustrations/brag-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】自慢 (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "bravery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】勇敢さ",
+        "src": "assets/word-illustrations/bravery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】勇敢さのイメージ（一例）"
+    },
+    {
+        "word": "breakdown",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】故障、崩壊",
+        "src": "assets/word-illustrations/breakdown-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】故障、崩壊のイメージ（一例）"
+    },
+    {
+        "word": "breakup",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】解散、破局",
+        "src": "assets/word-illustrations/breakup-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】解散、破局のイメージ（一例）"
+    },
+    {
+        "word": "breed",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】品種",
+        "src": "assets/word-illustrations/breed-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】品種のイメージ（一例）"
+    },
+    {
+        "word": "brewery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】醸造所",
+        "src": "assets/word-illustrations/brewery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】醸造所のイメージ（一例）"
+    },
+    {
+        "word": "broadband",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ブロードバンド",
+        "src": "assets/word-illustrations/broadband-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ブロードバンドのイメージ（一例）"
+    },
+    {
+        "word": "broadcaster",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】放送局、アナウンサー",
+        "src": "assets/word-illustrations/broadcaster-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】放送局、アナウンサーのイメージ（一例）"
+    },
+    {
+        "word": "brochure",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パンフレット",
+        "src": "assets/word-illustrations/brochure-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パンフレットのイメージ（一例）"
+    },
+    {
+        "word": "brother-in-law",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】義理の兄弟",
+        "src": "assets/word-illustrations/brother-in-law-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】義理の兄弟のイメージ（一例）"
+    },
+    {
+        "word": "browser",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ブラウザ",
+        "src": "assets/word-illustrations/browser-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ブラウザのイメージ（一例）"
+    },
+    {
+        "word": "bruise",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】あざ",
+        "src": "assets/word-illustrations/bruise-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】あざのイメージ（一例）"
+    },
+    {
+        "word": "bud",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】つぼみ",
+        "src": "assets/word-illustrations/bud-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】つぼみのイメージ（一例）"
+    },
+    {
+        "word": "bulimia",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】過食症",
+        "src": "assets/word-illustrations/bulimia-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】過食症のイメージ（一例）"
+    },
+    {
+        "word": "bum",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】浮浪者、尻",
+        "src": "assets/word-illustrations/bum-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】浮浪者、尻のイメージ（一例）"
+    },
+    {
+        "word": "bumper",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】バンパー",
+        "src": "assets/word-illustrations/bumper-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】バンパーのイメージ（一例）"
+    },
+    {
+        "word": "bun",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小型のパン、髷",
+        "src": "assets/word-illustrations/bun-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小型のパン、髷のイメージ（一例）"
+    },
+    {
+        "word": "bureaucracy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】官僚主義",
+        "src": "assets/word-illustrations/bureaucracy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】官僚主義のイメージ（一例）"
+    },
+    {
+        "word": "burglary",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】強盗",
+        "src": "assets/word-illustrations/burglary-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】強盗のイメージ（一例）"
+    },
+    {
+        "word": "burial",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】埋葬",
+        "src": "assets/word-illustrations/burial-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】埋葬のイメージ（一例）"
+    },
+    {
+        "word": "buzz",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ブーンという音、噂",
+        "src": "assets/word-illustrations/buzz-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ブーンという音、噂のイメージ（一例）"
+    },
+    {
+        "word": "cabinet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】飾り棚、内閣",
+        "src": "assets/word-illustrations/cabinet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】飾り棚、内閣のイメージ（一例）"
+    },
+    {
+        "word": "cable",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ケーブル",
+        "src": "assets/word-illustrations/cable-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ケーブルのイメージ（一例）"
+    },
+    {
+        "word": "campaign",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】キャンペーン、運動",
+        "src": "assets/word-illustrations/campaign-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】キャンペーン、運動のイメージ（一例）"
+    },
+    {
+        "word": "candidate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】候補者",
+        "src": "assets/word-illustrations/candidate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】候補者のイメージ（一例）"
+    },
+    {
+        "word": "cane",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】杖",
+        "src": "assets/word-illustrations/cane-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】杖のイメージ（一例）"
+    },
+    {
+        "word": "cannonball",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】砲弾",
+        "src": "assets/word-illustrations/cannonball-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】砲弾のイメージ（一例）"
+    },
+    {
+        "word": "canon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】規範、正典",
+        "src": "assets/word-illustrations/canon-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】規範、正典のイメージ（一例）"
+    },
+    {
+        "word": "capability",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】能力",
+        "src": "assets/word-illustrations/capability-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】能力のイメージ（一例）"
+    },
+    {
+        "word": "caption",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】説明文、字幕",
+        "src": "assets/word-illustrations/caption-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】説明文、字幕のイメージ（一例）"
+    },
+    {
+        "word": "captive",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】捕虜",
+        "src": "assets/word-illustrations/captive-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】捕虜のイメージ（一例）"
+    },
+    {
+        "word": "caravan",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】キャラバン、移動住宅",
+        "src": "assets/word-illustrations/caravan-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】キャラバン、移動住宅のイメージ（一例）"
+    },
+    {
+        "word": "carbon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】炭素",
+        "src": "assets/word-illustrations/carbon-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】炭素のイメージ（一例）"
+    },
+    {
+        "word": "carbon dioxide",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】二酸化炭素",
+        "src": "assets/word-illustrations/carbon-dioxide-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】二酸化炭素のイメージ（一例）"
+    },
+    {
+        "word": "carbon footprint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】二酸化炭素排出量",
+        "src": "assets/word-illustrations/carbon-footprint-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】二酸化炭素排出量のイメージ（一例）"
+    },
+    {
+        "word": "carbon monoxide",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】一酸化炭素",
+        "src": "assets/word-illustrations/carbon-monoxide-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】一酸化炭素のイメージ（一例）"
+    },
+    {
+        "word": "cardboard",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】段ボール",
+        "src": "assets/word-illustrations/cardboard-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】段ボールのイメージ（一例）"
+    },
+    {
+        "word": "cardigan",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カーディガン",
+        "src": "assets/word-illustrations/cardigan-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カーディガンのイメージ（一例）"
+    },
+    {
+        "word": "carnival",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カーニバル、謝肉祭",
+        "src": "assets/word-illustrations/carnival-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】カーニバル、謝肉祭のイメージ（一例）"
+    },
+    {
+        "word": "carpool",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】相乗り",
+        "src": "assets/word-illustrations/carpool-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】相乗りのイメージ（一例）"
+    },
+    {
+        "word": "cascade",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小滝",
+        "src": "assets/word-illustrations/cascade-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小滝のイメージ（一例）"
+    },
+    {
+        "word": "cast",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】配役、ギプス",
+        "src": "assets/word-illustrations/cast-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】配役、ギプスのイメージ（一例）"
+    },
+    {
+        "word": "catalog",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カタログ",
+        "src": "assets/word-illustrations/catalog-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カタログのイメージ（一例）"
+    },
+    {
+        "word": "catalogue",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カタログ（英）",
+        "src": "assets/word-illustrations/catalog-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カタログ（英）のイメージ（一例）"
+    },
+    {
+        "word": "catalyst",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】触媒、きっかけ",
+        "src": "assets/word-illustrations/catalyst-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】触媒、きっかけのイメージ（一例）"
+    },
+    {
+        "word": "catastrophe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大惨事",
+        "src": "assets/word-illustrations/catastrophe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大惨事のイメージ（一例）"
+    },
+    {
+        "word": "categorisation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】分類（英）",
+        "src": "assets/word-illustrations/categorisation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】分類（英）のイメージ（一例）"
+    },
+    {
+        "word": "categorization",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】分類",
+        "src": "assets/word-illustrations/categorisation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】分類のイメージ（一例）"
+    },
+    {
+        "word": "catering",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】仕出し、ケータリング",
+        "src": "assets/word-illustrations/catering-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】仕出し、ケータリングのイメージ（一例）"
+    },
+    {
+        "word": "cathedral",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大聖堂",
+        "src": "assets/word-illustrations/cathedral-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大聖堂のイメージ（一例）"
+    },
+    {
+        "word": "cause",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】原因、大義",
+        "src": "assets/word-illustrations/cause-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】原因、大義のイメージ（一例）"
+    },
+    {
+        "word": "ceiling",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】天井",
+        "src": "assets/word-illustrations/ceiling-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】天井のイメージ（一例）"
+    },
+    {
+        "word": "cellar",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】地下室",
+        "src": "assets/word-illustrations/cellar-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】地下室のイメージ（一例）"
+    },
+    {
+        "word": "cellist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】チェロ奏者",
+        "src": "assets/word-illustrations/cellist-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】チェロ奏者のイメージ（一例）"
+    },
+    {
+        "word": "cello",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】チェロ",
+        "src": "assets/word-illustrations/cello-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】チェロのイメージ（一例）"
+    },
+    {
+        "word": "cemetery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】墓地",
+        "src": "assets/word-illustrations/cemetery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】墓地のイメージ（一例）"
+    },
+    {
+        "word": "centigrade",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】摂氏",
+        "src": "assets/word-illustrations/centigrade-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】摂氏のイメージ（一例）"
+    },
+    {
+        "word": "certificate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】証明書",
+        "src": "assets/word-illustrations/certificate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】証明書のイメージ（一例）"
+    },
+    {
+        "word": "certification",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】証明、検定",
+        "src": "assets/word-illustrations/certification-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】証明、検定のイメージ（一例）"
+    },
+    {
+        "word": "chancellor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】首相、学長",
+        "src": "assets/word-illustrations/chancellor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】首相、学長のイメージ（一例）"
+    },
+    {
+        "word": "checkpoint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】検問所",
+        "src": "assets/word-illustrations/checkpoint-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】検問所のイメージ（一例）"
+    },
+    {
+        "word": "cheerfulness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】陽気さ",
+        "src": "assets/word-illustrations/cheerfulness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】陽気さのイメージ（一例）"
+    },
+    {
+        "word": "chemotherapy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】化学療法",
+        "src": "assets/word-illustrations/chemotherapy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】化学療法のイメージ（一例）"
+    },
+    {
+        "word": "cherry",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サクランボ",
+        "src": "assets/word-illustrations/cherry-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】サクランボのイメージ（一例）"
+    },
+    {
+        "word": "chief",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】長、チーフ",
+        "src": "assets/word-illustrations/chief-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】長、チーフのイメージ（一例）"
+    },
+    {
+        "word": "chip",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】欠け、チップ",
+        "src": "assets/word-illustrations/chip-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】欠け、チップのイメージ（一例）"
+    },
+    {
+        "word": "chunk",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】塊",
+        "src": "assets/word-illustrations/chunk-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】塊のイメージ（一例）"
+    },
+    {
+        "word": "circuit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】回路、周回",
+        "src": "assets/word-illustrations/circuit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】回路、周回のイメージ（一例）"
+    },
+    {
+        "word": "circuitry",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】回路構成",
+        "src": "assets/word-illustrations/circuitry-exam1-pictogram-natural-v4.webp",
+        "alt": "【名】回路構成のイメージ（一例）"
+    },
+    {
+        "word": "circumstance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】状況",
+        "src": "assets/word-illustrations/circumstance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】状況のイメージ（一例）"
+    },
+    {
+        "word": "clam",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ハマグリ",
+        "src": "assets/word-illustrations/clam-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ハマグリのイメージ（一例）"
+    },
+    {
+        "word": "classic",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】傑作、古典",
+        "src": "assets/word-illustrations/classic-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】傑作、古典のイメージ（一例）"
+    },
+    {
+        "word": "classification",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】分類",
+        "src": "assets/word-illustrations/classification-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】分類のイメージ（一例）"
+    },
+    {
+        "word": "clause",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】条項、節",
+        "src": "assets/word-illustrations/clause-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】条項、節のイメージ（一例）"
+    },
+    {
+        "word": "clearness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】明瞭さ",
+        "src": "assets/word-illustrations/clearness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】明瞭さのイメージ（一例）"
+    },
+    {
+        "word": "client",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】依頼人",
+        "src": "assets/word-illustrations/client-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】依頼人のイメージ（一例）"
+    },
+    {
+        "word": "climate change",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】気候変動",
+        "src": "assets/word-illustrations/climate-change-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】気候変動のイメージ（一例）"
+    },
+    {
+        "word": "closure",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】閉鎖、決着",
+        "src": "assets/word-illustrations/closure-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】閉鎖、決着のイメージ（一例）"
+    },
+    {
+        "word": "clothing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】衣類",
+        "src": "assets/word-illustrations/clothing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】衣類のイメージ（一例）"
+    },
+    {
+        "word": "coaching",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】コーチング",
+        "src": "assets/word-illustrations/coaching-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】コーチングのイメージ（一例）"
+    },
+    {
+        "word": "coalition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】連立、提携",
+        "src": "assets/word-illustrations/coalition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】連立、提携のイメージ（一例）"
+    },
+    {
+        "word": "coastline",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】海岸線",
+        "src": "assets/word-illustrations/coastline-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】海岸線のイメージ（一例）"
+    },
+    {
+        "word": "cocktail",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カクテル",
+        "src": "assets/word-illustrations/cocktail-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カクテルのイメージ（一例）"
+    },
+    {
+        "word": "cocoa",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ココア",
+        "src": "assets/word-illustrations/cocoa-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】ココアのイメージ（一例）"
+    },
+    {
+        "word": "coconut",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ココナッツ",
+        "src": "assets/word-illustrations/coconut-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ココナッツのイメージ（一例）"
+    },
+    {
+        "word": "coherence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】一貫性",
+        "src": "assets/word-illustrations/coherence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】一貫性のイメージ（一例）"
+    },
+    {
+        "word": "coincidence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】偶然の一致",
+        "src": "assets/word-illustrations/coincidence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】偶然の一致のイメージ（一例）"
+    },
+    {
+        "word": "colleague",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】同僚",
+        "src": "assets/word-illustrations/colleague-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】同僚のイメージ（一例）"
+    },
+    {
+        "word": "collector",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】収集家",
+        "src": "assets/word-illustrations/collector-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】収集家のイメージ（一例）"
+    },
+    {
+        "word": "collocation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】コロケーション（語の連結）",
+        "src": "assets/word-illustrations/collocation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】コロケーション（語の連結）のイメージ（一例）"
+    },
+    {
+        "word": "colon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】コロン",
+        "src": "assets/word-illustrations/colon-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】コロンのイメージ（一例）"
+    },
+    {
+        "word": "coma",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】昏睡",
+        "src": "assets/word-illustrations/coma-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】昏睡のイメージ（一例）"
+    },
+    {
+        "word": "commander",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】指揮官",
+        "src": "assets/word-illustrations/commander-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】指揮官のイメージ（一例）"
+    },
+    {
+        "word": "commerce",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】商業",
+        "src": "assets/word-illustrations/commerce-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】商業のイメージ（一例）"
+    },
+    {
+        "word": "commercial",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】コマーシャル",
+        "src": "assets/word-illustrations/commercial-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】コマーシャルのイメージ（一例）"
+    },
+    {
+        "word": "commission",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】委員会、手数料",
+        "src": "assets/word-illustrations/commission-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】委員会、手数料のイメージ（一例）"
+    },
+    {
+        "word": "commonwealth",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】連邦",
+        "src": "assets/word-illustrations/commonwealth-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】連邦のイメージ（一例）"
+    },
+    {
+        "word": "community",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】地域社会、共同体",
+        "src": "assets/word-illustrations/community-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】地域社会、共同体のイメージ（一例）"
+    },
+    {
+        "word": "compassion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】思いやり、哀れみ",
+        "src": "assets/word-illustrations/compassion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】思いやり、哀れみのイメージ（一例）"
+    },
+    {
+        "word": "compensation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】補償、報酬",
+        "src": "assets/word-illustrations/compensation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】補償、報酬のイメージ（一例）"
+    },
+    {
+        "word": "competence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】能力、適性",
+        "src": "assets/word-illustrations/competence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】能力、適性のイメージ（一例）"
+    },
+    {
+        "word": "completion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】完了",
+        "src": "assets/word-illustrations/completion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】完了のイメージ（一例）"
+    },
+    {
+        "word": "complexion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】顔色",
+        "src": "assets/word-illustrations/complexion-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】顔色のイメージ（一例）"
+    },
+    {
+        "word": "complexity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】複雑さ",
+        "src": "assets/word-illustrations/complexity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】複雑さのイメージ（一例）"
+    },
+    {
+        "word": "component",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】構成要素",
+        "src": "assets/word-illustrations/component-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】構成要素のイメージ（一例）"
+    },
+    {
+        "word": "comprehension",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】理解",
+        "src": "assets/word-illustrations/comprehension-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】理解のイメージ（一例）"
+    },
+    {
+        "word": "compress",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】湿布 (mostly verb 'compress')",
+        "src": "assets/word-illustrations/compress-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】湿布 (mostly verb 'compress')のイメージ（一例）"
+    },
+    {
+        "word": "compression",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】圧縮",
+        "src": "assets/word-illustrations/compression-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】圧縮のイメージ（一例）"
+    },
+    {
+        "word": "conceit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】うぬぼれ",
+        "src": "assets/word-illustrations/conceit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】うぬぼれのイメージ（一例）"
+    },
+    {
+        "word": "conception",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】概念、妊娠",
+        "src": "assets/word-illustrations/conception-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】概念、妊娠のイメージ（一例）"
+    },
+    {
+        "word": "concession",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】譲歩",
+        "src": "assets/word-illustrations/concession-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】譲歩のイメージ（一例）"
+    },
+    {
+        "word": "concrete",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】コンクリート",
+        "src": "assets/word-illustrations/concrete-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】コンクリートのイメージ（一例）"
+    },
+    {
+        "word": "conductor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】指揮者、車掌",
+        "src": "assets/word-illustrations/conductor-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】指揮者、車掌のイメージ（一例）"
+    },
+    {
+        "word": "cone",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】円錐",
+        "src": "assets/word-illustrations/cone-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】円錐のイメージ（一例）"
+    },
+    {
+        "word": "conference",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】会議",
+        "src": "assets/word-illustrations/conference-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】会議のイメージ（一例）"
+    },
+    {
+        "word": "conferencing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】会議（システム）",
+        "src": "assets/word-illustrations/conferencing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】会議（システム）のイメージ（一例）"
+    },
+    {
+        "word": "confession",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】告白",
+        "src": "assets/word-illustrations/confession-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】告白のイメージ（一例）"
+    },
+    {
+        "word": "conjunction",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】接続詞、結合",
+        "src": "assets/word-illustrations/conjunction-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】接続詞、結合のイメージ（一例）"
+    },
+    {
+        "word": "conquest",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】征服",
+        "src": "assets/word-illustrations/conquest-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】征服のイメージ（一例）"
+    },
+    {
+        "word": "conscience",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】良心",
+        "src": "assets/word-illustrations/conscience-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】良心のイメージ（一例）"
+    },
+    {
+        "word": "consciousness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】意識",
+        "src": "assets/word-illustrations/consciousness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】意識のイメージ（一例）"
+    },
+    {
+        "word": "consensus",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】合意",
+        "src": "assets/word-illustrations/consensus-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】合意のイメージ（一例）"
+    },
+    {
+        "word": "consent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】同意",
+        "src": "assets/word-illustrations/consent-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】同意のイメージ（一例）"
+    },
+    {
+        "word": "consolation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】慰め",
+        "src": "assets/word-illustrations/consolation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】慰めのイメージ（一例）"
+    },
+    {
+        "word": "consultant",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】コンサルタント",
+        "src": "assets/word-illustrations/consultant-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】コンサルタントのイメージ（一例）"
+    },
+    {
+        "word": "contempt",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】軽蔑",
+        "src": "assets/word-illustrations/contempt-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】軽蔑のイメージ（一例）"
+    },
+    {
+        "word": "contract",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】契約",
+        "src": "assets/word-illustrations/contract-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】契約のイメージ（一例）"
+    },
+    {
+        "word": "contradiction",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】矛盾",
+        "src": "assets/word-illustrations/contradiction-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】矛盾のイメージ（一例）"
+    },
+    {
+        "word": "controversy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】論争",
+        "src": "assets/word-illustrations/controversy-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】論争のイメージ（一例）"
+    },
+    {
+        "word": "convention",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】慣習、大会",
+        "src": "assets/word-illustrations/convention-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】慣習、大会のイメージ（一例）"
+    },
+    {
+        "word": "converse",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】会話する (noun in CSV but usually verb here)",
+        "src": "assets/word-illustrations/converse-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】会話する (noun in CSV but usually verb here)のイメージ（一例）"
+    },
+    {
+        "word": "conversion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】転換",
+        "src": "assets/word-illustrations/conversion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】転換のイメージ（一例）"
+    },
+    {
+        "word": "cooperation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】協力",
+        "src": "assets/word-illustrations/cooperation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】協力のイメージ（一例）"
+    },
+    {
+        "word": "copper",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】銅",
+        "src": "assets/word-illustrations/copper-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】銅のイメージ（一例）"
+    },
+    {
+        "word": "coral",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サンゴ",
+        "src": "assets/word-illustrations/coral-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】サンゴのイメージ（一例）"
+    },
+    {
+        "word": "core",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】核心",
+        "src": "assets/word-illustrations/core-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】核心のイメージ（一例）"
+    },
+    {
+        "word": "cornerstone",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】礎石",
+        "src": "assets/word-illustrations/cornerstone-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】礎石のイメージ（一例）"
+    },
+    {
+        "word": "cornet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】コルネット",
+        "src": "assets/word-illustrations/cornet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】コルネットのイメージ（一例）"
+    },
+    {
+        "word": "corona",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】コロナ",
+        "src": "assets/word-illustrations/corona-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】コロナのイメージ（一例）"
+    },
+    {
+        "word": "corporation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】法人",
+        "src": "assets/word-illustrations/corporation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】法人のイメージ（一例）"
+    },
+    {
+        "word": "correctness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】正確さ",
+        "src": "assets/word-illustrations/correctness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】正確さのイメージ（一例）"
+    },
+    {
+        "word": "correspondence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】通信、一致",
+        "src": "assets/word-illustrations/correspondence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】通信、一致のイメージ（一例）"
+    },
+    {
+        "word": "correspondent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】特派員",
+        "src": "assets/word-illustrations/correspondent-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】特派員のイメージ（一例）"
+    },
+    {
+        "word": "corridor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】廊下",
+        "src": "assets/word-illustrations/corridor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】廊下のイメージ（一例）"
+    },
+    {
+        "word": "corruption",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】汚職",
+        "src": "assets/word-illustrations/corruption-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】汚職のイメージ（一例）"
+    },
+    {
+        "word": "cosiness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】居心地の良さ（英）",
+        "src": "assets/word-illustrations/cosiness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】居心地の良さ（英）のイメージ（一例）"
+    },
+    {
+        "word": "costume",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】衣装",
+        "src": "assets/word-illustrations/costume-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】衣装のイメージ（一例）"
+    },
+    {
+        "word": "cottage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小別荘",
+        "src": "assets/word-illustrations/cottage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小別荘のイメージ（一例）"
+    },
+    {
+        "word": "cough",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】咳",
+        "src": "assets/word-illustrations/cough-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】咳のイメージ（一例）"
+    },
+    {
+        "word": "counter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カウンター、反対",
+        "src": "assets/word-illustrations/counter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カウンター、反対のイメージ（一例）"
+    },
+    {
+        "word": "countryman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】同胞",
+        "src": "assets/word-illustrations/countryman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】同胞のイメージ（一例）"
+    },
+    {
+        "word": "courtesy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】礼儀",
+        "src": "assets/word-illustrations/courtesy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】礼儀のイメージ（一例）"
+    },
+    {
+        "word": "coward",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】臆病者",
+        "src": "assets/word-illustrations/coward-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】臆病者のイメージ（一例）"
+    },
+    {
+        "word": "coziness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】居心地の良さ",
+        "src": "assets/word-illustrations/cosiness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】居心地の良さのイメージ（一例）"
+    },
+    {
+        "word": "crab",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カニ",
+        "src": "assets/word-illustrations/crab-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】カニのイメージ（一例）"
+    },
+    {
+        "word": "crack",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】割れ目",
+        "src": "assets/word-illustrations/crack-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】割れ目のイメージ（一例）"
+    },
+    {
+        "word": "craftsman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】職人",
+        "src": "assets/word-illustrations/craftsman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】職人のイメージ（一例）"
+    },
+    {
+        "word": "crater",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】噴火口",
+        "src": "assets/word-illustrations/crater-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】噴火口のイメージ（一例）"
+    },
+    {
+        "word": "crease",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】しわ、折り目",
+        "src": "assets/word-illustrations/crease-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】しわ、折り目のイメージ（一例）"
+    },
+    {
+        "word": "creation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】創造、作品",
+        "src": "assets/word-illustrations/creation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】創造、作品のイメージ（一例）"
+    },
+    {
+        "word": "crew",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】乗組員",
+        "src": "assets/word-illustrations/crew-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】乗組員のイメージ（一例）"
+    },
+    {
+        "word": "cripple",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不自由な人（差別的）",
+        "src": "assets/word-illustrations/cripple-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不自由な人（差別的）のイメージ（一例）"
+    },
+    {
+        "word": "criticism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】批判",
+        "src": "assets/word-illustrations/criticism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】批判のイメージ（一例）"
+    },
+    {
+        "word": "crocodile",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ワニ",
+        "src": "assets/word-illustrations/crocodile-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ワニのイメージ（一例）"
+    },
+    {
+        "word": "cruelty",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】残酷さ",
+        "src": "assets/word-illustrations/cruelty-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】残酷さのイメージ（一例）"
+    },
+    {
+        "word": "cube",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】立方体",
+        "src": "assets/word-illustrations/cube-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】立方体のイメージ（一例）"
+    },
+    {
+        "word": "cubism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】キュビズム",
+        "src": "assets/word-illustrations/cubism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】キュビズムのイメージ（一例）"
+    },
+    {
+        "word": "cuff",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】袖口",
+        "src": "assets/word-illustrations/cuff-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】袖口のイメージ（一例）"
+    },
+    {
+        "word": "culmination",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】最高潮",
+        "src": "assets/word-illustrations/culmination-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】最高潮のイメージ（一例）"
+    },
+    {
+        "word": "curl",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】巻き毛、カール",
+        "src": "assets/word-illustrations/curl-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】巻き毛、カールのイメージ（一例）"
+    },
+    {
+        "word": "cursor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カーソル",
+        "src": "assets/word-illustrations/cursor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カーソルのイメージ（一例）"
+    },
+    {
+        "word": "cyberaddict",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ネット中毒者",
+        "src": "assets/word-illustrations/cyberaddict-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ネット中毒者のイメージ（一例）"
+    },
+    {
+        "word": "cybercafe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ネットカフェ",
+        "src": "assets/word-illustrations/cybercafe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ネットカフェのイメージ（一例）"
+    },
+    {
+        "word": "cybercafé",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ネットカフェ（表記揺れ）",
+        "src": "assets/word-illustrations/cybercafe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ネットカフェ（表記揺れ）のイメージ（一例）"
+    },
+    {
+        "word": "cybercrime",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サイバー犯罪",
+        "src": "assets/word-illustrations/cybercrime-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】サイバー犯罪のイメージ（一例）"
+    },
+    {
+        "word": "cyberpet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】電子ペット",
+        "src": "assets/word-illustrations/cyberpet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】電子ペットのイメージ（一例）"
+    },
+    {
+        "word": "cyberschool",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サイバースクール",
+        "src": "assets/word-illustrations/cyberschool-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】サイバースクールのイメージ（一例）"
+    },
+    {
+        "word": "cyberspace",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サイバースペース",
+        "src": "assets/word-illustrations/cyberspace-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】サイバースペースのイメージ（一例）"
+    },
+    {
+        "word": "cyclist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】自転車に乗る人",
+        "src": "assets/word-illustrations/cyclist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】自転車に乗る人のイメージ（一例）"
+    },
+    {
+        "word": "dandelion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】タンポポ",
+        "src": "assets/word-illustrations/dandelion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】タンポポのイメージ（一例）"
+    },
+    {
+        "word": "darling",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】あなた、最愛の人",
+        "src": "assets/word-illustrations/darling-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】あなた、最愛の人のイメージ（一例）"
+    },
+    {
+        "word": "dash",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】突進、ダッシュ",
+        "src": "assets/word-illustrations/dash-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】突進、ダッシュのイメージ（一例）"
+    },
+    {
+        "word": "data",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】データ",
+        "src": "assets/word-illustrations/data-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】データのイメージ（一例）"
+    },
+    {
+        "word": "database",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】データベース",
+        "src": "assets/word-illustrations/database-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】データベースのイメージ（一例）"
+    },
+    {
+        "word": "daughter-in-law",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】義理の娘",
+        "src": "assets/word-illustrations/daughter-in-law-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】義理の娘のイメージ（一例）"
+    },
+    {
+        "word": "dawn",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】夜明け",
+        "src": "assets/word-illustrations/dawn-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】夜明けのイメージ（一例）"
+    },
+    {
+        "word": "daytime",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】昼間",
+        "src": "assets/word-illustrations/daytime-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】昼間のイメージ（一例）"
+    },
+    {
+        "word": "dear",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】あなた（呼びかけ）",
+        "src": "assets/word-illustrations/dear-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】あなた（呼びかけ）のイメージ（一例）"
+    },
+    {
+        "word": "debit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】借方、引き落とし",
+        "src": "assets/word-illustrations/debit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】借方、引き落としのイメージ（一例）"
+    },
+    {
+        "word": "debit card",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】デビットカード",
+        "src": "assets/word-illustrations/debit-card-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】デビットカードのイメージ（一例）"
+    },
+    {
+        "word": "decade",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】10年間",
+        "src": "assets/word-illustrations/decade-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】10年間のイメージ（一例）"
+    },
+    {
+        "word": "deck",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】甲板",
+        "src": "assets/word-illustrations/deck-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】甲板のイメージ（一例）"
+    },
+    {
+        "word": "decomposition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】分解、腐敗",
+        "src": "assets/word-illustrations/decomposition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】分解、腐敗のイメージ（一例）"
+    },
+    {
+        "word": "decoration",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】装飾",
+        "src": "assets/word-illustrations/decoration-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】装飾のイメージ（一例）"
+    },
+    {
+        "word": "dedication",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】献身",
+        "src": "assets/word-illustrations/dedication-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】献身のイメージ（一例）"
+    },
+    {
+        "word": "deduction",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】推論、控除",
+        "src": "assets/word-illustrations/deduction-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】推論、控除のイメージ（一例）"
+    },
+    {
+        "word": "deer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】鹿",
+        "src": "assets/word-illustrations/deer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】鹿のイメージ（一例）"
+    },
+    {
+        "word": "defeat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】敗北",
+        "src": "assets/word-illustrations/defeat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】敗北のイメージ（一例）"
+    },
+    {
+        "word": "deficit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】赤字",
+        "src": "assets/word-illustrations/deficit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】赤字のイメージ（一例）"
+    },
+    {
+        "word": "deforestation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】森林破壊",
+        "src": "assets/word-illustrations/deforestation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】森林破壊のイメージ（一例）"
+    },
+    {
+        "word": "delegate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】代表者",
+        "src": "assets/word-illustrations/delegate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】代表者のイメージ（一例）"
+    },
+    {
+        "word": "delicacy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】繊細さ、珍味",
+        "src": "assets/word-illustrations/delicacy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】繊細さ、珍味のイメージ（一例）"
+    },
+    {
+        "word": "denim",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】デニム",
+        "src": "assets/word-illustrations/denim-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】デニムのイメージ（一例）"
+    },
+    {
+        "word": "deputy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】代理人",
+        "src": "assets/word-illustrations/deputy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】代理人のイメージ（一例）"
+    },
+    {
+        "word": "desktop",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】デスクトップ",
+        "src": "assets/word-illustrations/desktop-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】デスクトップのイメージ（一例）"
+    },
+    {
+        "word": "desolation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】荒廃",
+        "src": "assets/word-illustrations/desolation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】荒廃のイメージ（一例）"
+    },
+    {
+        "word": "desperation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】絶望、必死",
+        "src": "assets/word-illustrations/desperation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】絶望、必死のイメージ（一例）"
+    },
+    {
+        "word": "destiny",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】運命",
+        "src": "assets/word-illustrations/destiny-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】運命のイメージ（一例）"
+    },
+    {
+        "word": "detachment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】分離、無関心",
+        "src": "assets/word-illustrations/detachment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】分離、無関心のイメージ（一例）"
+    },
+    {
+        "word": "determiner",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】限定詞",
+        "src": "assets/word-illustrations/determiner-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】限定詞のイメージ（一例）"
+    },
+    {
+        "word": "devil",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】悪魔",
+        "src": "assets/word-illustrations/devil-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】悪魔のイメージ（一例）"
+    },
+    {
+        "word": "diarrhea",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】下痢",
+        "src": "assets/word-illustrations/diarrhea-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】下痢のイメージ（一例）"
+    },
+    {
+        "word": "diarrhoea",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】下痢（英）",
+        "src": "assets/word-illustrations/diarrhea-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】下痢（英）のイメージ（一例）"
+    },
+    {
+        "word": "dictator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】独裁者",
+        "src": "assets/word-illustrations/dictator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】独裁者のイメージ（一例）"
+    },
+    {
+        "word": "digest",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】要約 (verb mostly)",
+        "src": "assets/word-illustrations/digest-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】要約 (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "dignity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】尊厳",
+        "src": "assets/word-illustrations/dignity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】尊厳のイメージ（一例）"
+    },
+    {
+        "word": "dilemma",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ジレンマ",
+        "src": "assets/word-illustrations/dilemma-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ジレンマのイメージ（一例）"
+    },
+    {
+        "word": "dime",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】10セント硬貨",
+        "src": "assets/word-illustrations/dime-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】10セント硬貨のイメージ（一例）"
+    },
+    {
+        "word": "dimension",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】次元、寸法",
+        "src": "assets/word-illustrations/dimension-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】次元、寸法のイメージ（一例）"
+    },
+    {
+        "word": "diphtheria",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ジフテリア",
+        "src": "assets/word-illustrations/diphtheria-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ジフテリアのイメージ（一例）"
+    },
+    {
+        "word": "diploma",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】卒業証書",
+        "src": "assets/word-illustrations/diploma-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】卒業証書のイメージ（一例）"
+    },
+    {
+        "word": "diplomat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】外交官",
+        "src": "assets/word-illustrations/diplomat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】外交官のイメージ（一例）"
+    },
+    {
+        "word": "disappearance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】失踪",
+        "src": "assets/word-illustrations/disappearance-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】失踪のイメージ（一例）"
+    },
+    {
+        "word": "disapproval",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不承認、不賛成",
+        "src": "assets/word-illustrations/disapproval-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不承認、不賛成のイメージ（一例）"
+    },
+    {
+        "word": "discharge",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】解放、排出",
+        "src": "assets/word-illustrations/discharge-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】解放、排出のイメージ（一例）"
+    },
+    {
+        "word": "disciple",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】弟子",
+        "src": "assets/word-illustrations/disciple-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】弟子のイメージ（一例）"
+    },
+    {
+        "word": "discipline",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】規律、しつけ",
+        "src": "assets/word-illustrations/discipline-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】規律、しつけのイメージ（一例）"
+    },
+    {
+        "word": "disgrace",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不名誉",
+        "src": "assets/word-illustrations/disgrace-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不名誉のイメージ（一例）"
+    },
+    {
+        "word": "disguise",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】変装",
+        "src": "assets/word-illustrations/disguise-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】変装のイメージ（一例）"
+    },
+    {
+        "word": "dishonesty",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不正直",
+        "src": "assets/word-illustrations/dishonesty-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不正直のイメージ（一例）"
+    },
+    {
+        "word": "disorder",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】無秩序、障害",
+        "src": "assets/word-illustrations/disorder-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】無秩序、障害のイメージ（一例）"
+    },
+    {
+        "word": "displeasure",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不快",
+        "src": "assets/word-illustrations/displeasure-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不快のイメージ（一例）"
+    },
+    {
+        "word": "disposal",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】処分",
+        "src": "assets/word-illustrations/disposal-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】処分のイメージ（一例）"
+    },
+    {
+        "word": "disposition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】気質",
+        "src": "assets/word-illustrations/disposition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】気質のイメージ（一例）"
+    },
+    {
+        "word": "dispute",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】論争",
+        "src": "assets/word-illustrations/dispute-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】論争のイメージ（一例）"
+    },
+    {
+        "word": "disregard",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】無視",
+        "src": "assets/word-illustrations/disregard-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】無視のイメージ（一例）"
+    },
+    {
+        "word": "dissatisfaction",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不満",
+        "src": "assets/word-illustrations/dissatisfaction-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不満のイメージ（一例）"
+    },
+    {
+        "word": "dissident",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】反体制派",
+        "src": "assets/word-illustrations/dissident-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】反体制派のイメージ（一例）"
+    },
+    {
+        "word": "distortion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歪曲",
+        "src": "assets/word-illustrations/distortion-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】歪曲のイメージ（一例）"
+    },
+    {
+        "word": "distraction",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】気晴らし、注意散漫",
+        "src": "assets/word-illustrations/distraction-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】気晴らし、注意散漫のイメージ（一例）"
+    },
+    {
+        "word": "distributor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】販売代理店",
+        "src": "assets/word-illustrations/distributor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】販売代理店のイメージ（一例）"
+    },
+    {
+        "word": "diversion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】転換、気晴らし",
+        "src": "assets/word-illustrations/diversion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】転換、気晴らしのイメージ（一例）"
+    },
+    {
+        "word": "division",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】分割、部門",
+        "src": "assets/word-illustrations/division-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】分割、部門のイメージ（一例）"
+    },
+    {
+        "word": "divorce",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】離婚",
+        "src": "assets/word-illustrations/divorce-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】離婚のイメージ（一例）"
+    },
+    {
+        "word": "DNA",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】DNA",
+        "src": "assets/word-illustrations/dna-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】DNAのイメージ（一例）"
+    },
+    {
+        "word": "dock",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】波止場",
+        "src": "assets/word-illustrations/dock-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】波止場のイメージ（一例）"
+    },
+    {
+        "word": "donation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】寄付",
+        "src": "assets/word-illustrations/donation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】寄付のイメージ（一例）"
+    },
+    {
+        "word": "donkey",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ロバ",
+        "src": "assets/word-illustrations/donkey-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ロバのイメージ（一例）"
+    },
+    {
+        "word": "doom",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】破滅",
+        "src": "assets/word-illustrations/doom-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】破滅のイメージ（一例）"
+    },
+    {
+        "word": "doorkeeper",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ドア係",
+        "src": "assets/word-illustrations/doorkeeper-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ドア係のイメージ（一例）"
+    },
+    {
+        "word": "doorway",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】戸口",
+        "src": "assets/word-illustrations/doorway-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】戸口のイメージ（一例）"
+    },
+    {
+        "word": "dorm",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】寮",
+        "src": "assets/word-illustrations/dorm-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】寮のイメージ（一例）"
+    },
+    {
+        "word": "dormitory",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】寮（正式）",
+        "src": "assets/word-illustrations/dorm-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】寮（正式）のイメージ（一例）"
+    },
+    {
+        "word": "dose",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】服用量",
+        "src": "assets/word-illustrations/dose-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】服用量のイメージ（一例）"
+    },
+    {
+        "word": "double",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】二倍",
+        "src": "assets/word-illustrations/double-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】二倍のイメージ（一例）"
+    },
+    {
+        "word": "dove",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ハト",
+        "src": "assets/word-illustrations/dove-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ハトのイメージ（一例）"
+    },
+    {
+        "word": "downfall",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】転落、崩壊",
+        "src": "assets/word-illustrations/downfall-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】転落、崩壊のイメージ（一例）"
+    },
+    {
+        "word": "download",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ダウンロード",
+        "src": "assets/word-illustrations/download-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ダウンロードのイメージ（一例）"
+    },
+    {
+        "word": "dowry",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】持参金",
+        "src": "assets/word-illustrations/dowry-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】持参金のイメージ（一例）"
+    },
+    {
+        "word": "draft",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】下書き",
+        "src": "assets/word-illustrations/draft-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】下書きのイメージ（一例）"
+    },
+    {
+        "word": "drain",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】排水溝、流出",
+        "src": "assets/word-illustrations/drain-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】排水溝、流出のイメージ（一例）"
+    },
+    {
+        "word": "drapery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】（厚手の）カーテン",
+        "src": "assets/word-illustrations/drapery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】（厚手の）カーテンのイメージ（一例）"
+    },
+    {
+        "word": "draught",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】隙間風、ドラフト",
+        "src": "assets/word-illustrations/draught-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】隙間風、ドラフトのイメージ（一例）"
+    },
+    {
+        "word": "droop",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】垂れ下がり (verb mostly)",
+        "src": "assets/word-illustrations/droop-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】垂れ下がり (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "dropout",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】中退者",
+        "src": "assets/word-illustrations/dropout-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】中退者のイメージ（一例）"
+    },
+    {
+        "word": "drought",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】干ばつ",
+        "src": "assets/word-illustrations/drought-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】干ばつのイメージ（一例）"
+    },
+    {
+        "word": "duel",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】決闘",
+        "src": "assets/word-illustrations/duel-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】決闘のイメージ（一例）"
+    },
+    {
+        "word": "duplicate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】複製",
+        "src": "assets/word-illustrations/duplicate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】複製のイメージ（一例）"
+    },
+    {
+        "word": "duplication",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】重複",
+        "src": "assets/word-illustrations/duplication-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】重複のイメージ（一例）"
+    },
+    {
+        "word": "dwarf",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小人",
+        "src": "assets/word-illustrations/dwarf-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小人のイメージ（一例）"
+    },
+    {
+        "word": "dye",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】染料",
+        "src": "assets/word-illustrations/dye-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】染料のイメージ（一例）"
+    },
+    {
+        "word": "eagle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ワシ",
+        "src": "assets/word-illustrations/eagle-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ワシのイメージ（一例）"
+    },
+    {
+        "word": "earnings",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】所得",
+        "src": "assets/word-illustrations/earnings-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】所得のイメージ（一例）"
+    },
+    {
+        "word": "ease",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】容易さ、安らぎ",
+        "src": "assets/word-illustrations/ease-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】容易さ、安らぎのイメージ（一例）"
+    },
+    {
+        "word": "ecologist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】生態学者",
+        "src": "assets/word-illustrations/ecologist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】生態学者のイメージ（一例）"
+    },
+    {
+        "word": "economist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】経済学者",
+        "src": "assets/word-illustrations/economist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】経済学者のイメージ（一例）"
+    },
+    {
+        "word": "edit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】編集",
+        "src": "assets/word-illustrations/edit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】編集のイメージ（一例）"
+    },
+    {
+        "word": "editorial",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】社説",
+        "src": "assets/word-illustrations/editorial-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】社説のイメージ（一例）"
+    },
+    {
+        "word": "educator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】教育者",
+        "src": "assets/word-illustrations/educator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】教育者のイメージ（一例）"
+    },
+    {
+        "word": "effectiveness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】有効性",
+        "src": "assets/word-illustrations/effectiveness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】有効性のイメージ（一例）"
+    },
+    {
+        "word": "electrician",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】電気技師",
+        "src": "assets/word-illustrations/electrician-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】電気技師のイメージ（一例）"
+    },
+    {
+        "word": "electronics",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】電子工学、電子機器",
+        "src": "assets/word-illustrations/electronics-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】電子工学、電子機器のイメージ（一例）"
+    },
+    {
+        "word": "elegance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】優雅さ",
+        "src": "assets/word-illustrations/elegance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】優雅さのイメージ（一例）"
+    },
+    {
+        "word": "elite",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】エリート",
+        "src": "assets/word-illustrations/elite-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】エリートのイメージ（一例）"
+    },
+    {
+        "word": "eloquence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】雄弁さ",
+        "src": "assets/word-illustrations/eloquence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】雄弁さのイメージ（一例）"
+    },
+    {
+        "word": "embassy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大使館",
+        "src": "assets/word-illustrations/embassy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大使館のイメージ（一例）"
+    },
+    {
+        "word": "embrace",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】抱擁",
+        "src": "assets/word-illustrations/embrace-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】抱擁のイメージ（一例）"
+    },
+    {
+        "word": "emergence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】出現",
+        "src": "assets/word-illustrations/emergence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】出現のイメージ（一例）"
+    },
+    {
+        "word": "employee",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】従業員",
+        "src": "assets/word-illustrations/employee-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】従業員のイメージ（一例）"
+    },
+    {
+        "word": "employer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】雇用主",
+        "src": "assets/word-illustrations/employer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】雇用主のイメージ（一例）"
+    },
+    {
+        "word": "endeavor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】努力",
+        "src": "assets/word-illustrations/endeavor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】努力のイメージ（一例）"
+    },
+    {
+        "word": "endeavour",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】努力（英）",
+        "src": "assets/word-illustrations/endeavor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】努力（英）のイメージ（一例）"
+    },
+    {
+        "word": "endurance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】忍耐",
+        "src": "assets/word-illustrations/endurance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】忍耐のイメージ（一例）"
+    },
+    {
+        "word": "energy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】エネルギー",
+        "src": "assets/word-illustrations/energy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】エネルギーのイメージ（一例）"
+    },
+    {
+        "word": "engagement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】婚約、約束",
+        "src": "assets/word-illustrations/engagement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】婚約、約束のイメージ（一例）"
+    },
+    {
+        "word": "enterprise",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】企業、冒険心",
+        "src": "assets/word-illustrations/enterprise-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】企業、冒険心のイメージ（一例）"
+    },
+    {
+        "word": "entrepreneur",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】起業家",
+        "src": "assets/word-illustrations/entrepreneur-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】起業家のイメージ（一例）"
+    },
+    {
+        "word": "environment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】環境",
+        "src": "assets/word-illustrations/environment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】環境のイメージ（一例）"
+    },
+    {
+        "word": "equal",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】対等の人",
+        "src": "assets/word-illustrations/equal-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】対等の人のイメージ（一例）"
+    },
+    {
+        "word": "equation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】方程式",
+        "src": "assets/word-illustrations/equation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】方程式のイメージ（一例）"
+    },
+    {
+        "word": "equity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】公平、株式",
+        "src": "assets/word-illustrations/equity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】公平、株式のイメージ（一例）"
+    },
+    {
+        "word": "eruption",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】噴火",
+        "src": "assets/word-illustrations/eruption-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】噴火のイメージ（一例）"
+    },
+    {
+        "word": "essayist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】随筆家",
+        "src": "assets/word-illustrations/essayist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】随筆家のイメージ（一例）"
+    },
+    {
+        "word": "estate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】地所、財産",
+        "src": "assets/word-illustrations/estate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】地所、財産のイメージ（一例）"
+    },
+    {
+        "word": "estimate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】見積もり",
+        "src": "assets/word-illustrations/estimate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】見積もりのイメージ（一例）"
+    },
+    {
+        "word": "ethic",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】倫理",
+        "src": "assets/word-illustrations/ethic-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】倫理のイメージ（一例）"
+    },
+    {
+        "word": "evacuation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】避難",
+        "src": "assets/word-illustrations/evacuation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】避難のイメージ（一例）"
+    },
+    {
+        "word": "evaluation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】評価",
+        "src": "assets/word-illustrations/evaluation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】評価のイメージ（一例）"
+    },
+    {
+        "word": "evil",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】悪",
+        "src": "assets/word-illustrations/evil-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】悪のイメージ（一例）"
+    },
+    {
+        "word": "evolution",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】進化",
+        "src": "assets/word-illustrations/evolution-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】進化のイメージ（一例）"
+    },
+    {
+        "word": "exactness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】正確さ",
+        "src": "assets/word-illustrations/exactness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】正確さのイメージ（一例）"
+    },
+    {
+        "word": "exaggeration",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】誇張",
+        "src": "assets/word-illustrations/exaggeration-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】誇張のイメージ（一例）"
+    },
+    {
+        "word": "examinee",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】受験者",
+        "src": "assets/word-illustrations/examinee-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】受験者のイメージ（一例）"
+    },
+    {
+        "word": "exception",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】例外",
+        "src": "assets/word-illustrations/exception-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】例外のイメージ（一例）"
+    },
+    {
+        "word": "exclamation mark",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】感嘆符",
+        "src": "assets/word-illustrations/exclamation-mark-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】感嘆符のイメージ（一例）"
+    },
+    {
+        "word": "exclusion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】除外",
+        "src": "assets/word-illustrations/exclusion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】除外のイメージ（一例）"
+    },
+    {
+        "word": "excursion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】遠足",
+        "src": "assets/word-illustrations/excursion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】遠足のイメージ（一例）"
+    },
+    {
+        "word": "execution",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】処刑、実行",
+        "src": "assets/word-illustrations/execution-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】処刑、実行のイメージ（一例）"
+    },
+    {
+        "word": "executive",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】重役",
+        "src": "assets/word-illustrations/executive-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】重役のイメージ（一例）"
+    },
+    {
+        "word": "exhaust",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】排気",
+        "src": "assets/word-illustrations/exhaust-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】排気のイメージ（一例）"
+    },
+    {
+        "word": "exhaustion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】疲労困憊",
+        "src": "assets/word-illustrations/exhaustion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】疲労困憊のイメージ（一例）"
+    },
+    {
+        "word": "exile",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】追放",
+        "src": "assets/word-illustrations/exile-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】追放のイメージ（一例）"
+    },
+    {
+        "word": "expansion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】拡大",
+        "src": "assets/word-illustrations/expansion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】拡大のイメージ（一例）"
+    },
+    {
+        "word": "expectation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】期待",
+        "src": "assets/word-illustrations/expectation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】期待のイメージ（一例）"
+    },
+    {
+        "word": "expedition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】探検、遠征",
+        "src": "assets/word-illustrations/expedition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】探検、遠征のイメージ（一例）"
+    },
+    {
+        "word": "explorer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】探検家",
+        "src": "assets/word-illustrations/explorer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】探検家のイメージ（一例）"
+    },
+    {
+        "word": "explosive",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】爆発物",
+        "src": "assets/word-illustrations/explosive-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】爆発物のイメージ（一例）"
+    },
+    {
+        "word": "export",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】輸出",
+        "src": "assets/word-illustrations/export-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】輸出のイメージ（一例）"
+    },
+    {
+        "word": "extension",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】延長、内線",
+        "src": "assets/word-illustrations/extension-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】延長、内線のイメージ（一例）"
+    },
+    {
+        "word": "extract",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】抜粋、エキス",
+        "src": "assets/word-illustrations/extract-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】抜粋、エキスのイメージ（一例）"
+    },
+    {
+        "word": "eyebrow",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】眉毛",
+        "src": "assets/word-illustrations/eyebrow-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】眉毛のイメージ（一例）"
+    },
+    {
+        "word": "eyelash",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】まつげ",
+        "src": "assets/word-illustrations/eyelash-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】まつげのイメージ（一例）"
+    },
+    {
+        "word": "eyelid",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】まぶた",
+        "src": "assets/word-illustrations/eyelid-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】まぶたのイメージ（一例）"
+    },
+    {
+        "word": "fabric",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】織物",
+        "src": "assets/word-illustrations/fabric-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】織物のイメージ（一例）"
+    },
+    {
+        "word": "facilities",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】設備",
+        "src": "assets/word-illustrations/facilities-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】設備のイメージ（一例）"
+    },
+    {
+        "word": "factor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】要因",
+        "src": "assets/word-illustrations/factor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】要因のイメージ（一例）"
+    },
+    {
+        "word": "faculty",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】学部、能力",
+        "src": "assets/word-illustrations/faculty-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】学部、能力のイメージ（一例）"
+    },
+    {
+        "word": "faith",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】信仰、信頼",
+        "src": "assets/word-illustrations/faith-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】信仰、信頼のイメージ（一例）"
+    },
+    {
+        "word": "fame",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】名声",
+        "src": "assets/word-illustrations/fame-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】名声のイメージ（一例）"
+    },
+    {
+        "word": "fascination",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】魅力",
+        "src": "assets/word-illustrations/fascination-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】魅力のイメージ（一例）"
+    },
+    {
+        "word": "fat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】脂肪",
+        "src": "assets/word-illustrations/fat-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】脂肪のイメージ（一例）"
+    },
+    {
+        "word": "fate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】運命",
+        "src": "assets/word-illustrations/fate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】運命のイメージ（一例）"
+    },
+    {
+        "word": "father-in-law",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】義理の父",
+        "src": "assets/word-illustrations/father-in-law-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】義理の父のイメージ（一例）"
+    },
+    {
+        "word": "feat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】偉業",
+        "src": "assets/word-illustrations/feat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】偉業のイメージ（一例）"
+    },
+    {
+        "word": "feedback",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】フィードバック",
+        "src": "assets/word-illustrations/feedback-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】フィードバックのイメージ（一例）"
+    },
+    {
+        "word": "female",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】女性",
+        "src": "assets/word-illustrations/female-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】女性のイメージ（一例）"
+    },
+    {
+        "word": "ferryboat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】フェリーボート",
+        "src": "assets/word-illustrations/ferryboat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】フェリーボートのイメージ（一例）"
+    },
+    {
+        "word": "fiber",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】繊維",
+        "src": "assets/word-illustrations/fiber-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】繊維のイメージ（一例）"
+    },
+    {
+        "word": "fibre",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】繊維（英）",
+        "src": "assets/word-illustrations/fiber-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】繊維（英）のイメージ（一例）"
+    },
+    {
+        "word": "fighting",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】戦い",
+        "src": "assets/word-illustrations/fighting-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】戦いのイメージ（一例）"
+    },
+    {
+        "word": "finance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】財政、金融",
+        "src": "assets/word-illustrations/finance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】財政、金融のイメージ（一例）"
+    },
+    {
+        "word": "fingernail",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】爪",
+        "src": "assets/word-illustrations/fingernail-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】爪のイメージ（一例）"
+    },
+    {
+        "word": "fire brigade",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】消防隊",
+        "src": "assets/word-illustrations/fire-brigade-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】消防隊のイメージ（一例）"
+    },
+    {
+        "word": "firearm",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】火器",
+        "src": "assets/word-illustrations/firearm-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】火器のイメージ（一例）"
+    },
+    {
+        "word": "marketplace",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】市場、売買の場",
+        "src": "assets/word-illustrations/marketplace-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】市場、売買の場のイメージ（一例）"
+    },
+    {
+        "word": "firmness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】堅固さ",
+        "src": "assets/word-illustrations/firmness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】堅固さのイメージ（一例）"
+    },
+    {
+        "word": "first language",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】母語",
+        "src": "assets/word-illustrations/first-language-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】母語のイメージ（一例）"
+    },
+    {
+        "word": "first person",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】一人称",
+        "src": "assets/word-illustrations/first-person-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】一人称のイメージ（一例）"
+    },
+    {
+        "word": "fit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】発作、適合",
+        "src": "assets/word-illustrations/fit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】発作、適合のイメージ（一例）"
+    },
+    {
+        "word": "flame",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】炎",
+        "src": "assets/word-illustrations/flame-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】炎のイメージ（一例）"
+    },
+    {
+        "word": "flash",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】閃光",
+        "src": "assets/word-illustrations/flash-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】閃光のイメージ（一例）"
+    },
+    {
+        "word": "flaw",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】欠陥",
+        "src": "assets/word-illustrations/flaw-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】欠陥のイメージ（一例）"
+    },
+    {
+        "word": "flax",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】亜麻",
+        "src": "assets/word-illustrations/flax-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】亜麻のイメージ（一例）"
+    },
+    {
+        "word": "fleet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】艦隊",
+        "src": "assets/word-illustrations/fleet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】艦隊のイメージ（一例）"
+    },
+    {
+        "word": "flesh",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】肉",
+        "src": "assets/word-illustrations/flesh-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】肉のイメージ（一例）"
+    },
+    {
+        "word": "flexibility",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】柔軟性",
+        "src": "assets/word-illustrations/flexibility-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】柔軟性のイメージ（一例）"
+    },
+    {
+        "word": "fluency",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】流暢さ",
+        "src": "assets/word-illustrations/fluency-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】流暢さのイメージ（一例）"
+    },
+    {
+        "word": "flutter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】はためき (verb mostly)",
+        "src": "assets/word-illustrations/flutter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】はためき (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "focus",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】焦点",
+        "src": "assets/word-illustrations/focus-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】焦点のイメージ（一例）"
+    },
+    {
+        "word": "follower",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】信奉者、フォロワー",
+        "src": "assets/word-illustrations/follower-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】信奉者、フォロワーのイメージ（一例）"
+    },
+    {
+        "word": "folly",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】愚かさ",
+        "src": "assets/word-illustrations/folly-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】愚かさのイメージ（一例）"
+    },
+    {
+        "word": "footnote",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】脚注",
+        "src": "assets/word-illustrations/footnote-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】脚注のイメージ（一例）"
+    },
+    {
+        "word": "foreman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】現場監督",
+        "src": "assets/word-illustrations/foreman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】現場監督のイメージ（一例）"
+    },
+    {
+        "word": "forestry",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】林業",
+        "src": "assets/word-illustrations/forestry-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】林業のイメージ（一例）"
+    },
+    {
+        "word": "formation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】形成、隊形",
+        "src": "assets/word-illustrations/formation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】形成、隊形のイメージ（一例）"
+    },
+    {
+        "word": "fox",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】キツネ",
+        "src": "assets/word-illustrations/fox-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】キツネのイメージ（一例）"
+    },
+    {
+        "word": "fragrance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】芳香",
+        "src": "assets/word-illustrations/fragrance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】芳香のイメージ（一例）"
+    },
+    {
+        "word": "fraud",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】詐欺",
+        "src": "assets/word-illustrations/fraud-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】詐欺のイメージ（一例）"
+    },
+    {
+        "word": "frigate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】フリゲート艦",
+        "src": "assets/word-illustrations/frigate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】フリゲート艦のイメージ（一例）"
+    },
+    {
+        "word": "frontier",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】国境、辺境",
+        "src": "assets/word-illustrations/frontier-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】国境、辺境のイメージ（一例）"
+    },
+    {
+        "word": "fume",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ガス、煙",
+        "src": "assets/word-illustrations/fume-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ガス、煙のイメージ（一例）"
+    },
+    {
+        "word": "functionality",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】機能性",
+        "src": "assets/word-illustrations/functionality-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】機能性のイメージ（一例）"
+    },
+    {
+        "word": "funk",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ファンク",
+        "src": "assets/word-illustrations/funk-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ファンクのイメージ（一例）"
+    },
+    {
+        "word": "furor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】熱狂、激怒",
+        "src": "assets/word-illustrations/furor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】熱狂、激怒のイメージ（一例）"
+    },
+    {
+        "word": "furore",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】激怒、騒動（英）",
+        "src": "assets/word-illustrations/furor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】激怒、騒動（英）のイメージ（一例）"
+    },
+    {
+        "word": "gaiety",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】陽気",
+        "src": "assets/word-illustrations/gaiety-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】陽気のイメージ（一例）"
+    },
+    {
+        "word": "gambling",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ギャンブル",
+        "src": "assets/word-illustrations/gambling-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ギャンブルのイメージ（一例）"
+    },
+    {
+        "word": "gang",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ギャング、一団",
+        "src": "assets/word-illustrations/gang-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ギャング、一団のイメージ（一例）"
+    },
+    {
+        "word": "gangster",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】暴力団員",
+        "src": "assets/word-illustrations/gangster-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】暴力団員のイメージ（一例）"
+    },
+    {
+        "word": "gardener",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】庭師",
+        "src": "assets/word-illustrations/gardener-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】庭師のイメージ（一例）"
+    },
+    {
+        "word": "gasp",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】あえぎ",
+        "src": "assets/word-illustrations/gasp-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】あえぎのイメージ（一例）"
+    },
+    {
+        "word": "gateway",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】入り口",
+        "src": "assets/word-illustrations/gateway-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】入り口のイメージ（一例）"
+    },
+    {
+        "word": "gaze",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】凝視",
+        "src": "assets/word-illustrations/gaze-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】凝視のイメージ（一例）"
+    },
+    {
+        "word": "gear",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歯車、用具",
+        "src": "assets/word-illustrations/gear-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歯車、用具のイメージ（一例）"
+    },
+    {
+        "word": "generalisation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】一般化（英）",
+        "src": "assets/word-illustrations/generalisation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】一般化（英）のイメージ（一例）"
+    },
+    {
+        "word": "generalization",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】一般化",
+        "src": "assets/word-illustrations/generalisation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】一般化のイメージ（一例）"
+    },
+    {
+        "word": "generosity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】寛大さ",
+        "src": "assets/word-illustrations/generosity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】寛大さのイメージ（一例）"
+    },
+    {
+        "word": "genius",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】天才",
+        "src": "assets/word-illustrations/genius-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】天才のイメージ（一例）"
+    },
+    {
+        "word": "genre",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ジャンル",
+        "src": "assets/word-illustrations/genre-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ジャンルのイメージ（一例）"
+    },
+    {
+        "word": "germ",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】細菌",
+        "src": "assets/word-illustrations/germ-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】細菌のイメージ（一例）"
+    },
+    {
+        "word": "getaway",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】逃走、休暇",
+        "src": "assets/word-illustrations/getaway-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】逃走、休暇のイメージ（一例）"
+    },
+    {
+        "word": "ghetto",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スラム街",
+        "src": "assets/word-illustrations/ghetto-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スラム街のイメージ（一例）"
+    },
+    {
+        "word": "giveaway",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】無料サンプル",
+        "src": "assets/word-illustrations/giveaway-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】無料サンプルのイメージ（一例）"
+    },
+    {
+        "word": "glacis",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】斜堤",
+        "src": "assets/word-illustrations/glacis-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】斜堤のイメージ（一例）"
+    },
+    {
+        "word": "glare",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】まぶしい光、睨み",
+        "src": "assets/word-illustrations/glare-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】まぶしい光、睨みのイメージ（一例）"
+    },
+    {
+        "word": "gleam",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】きらめき",
+        "src": "assets/word-illustrations/gleam-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】きらめきのイメージ（一例）"
+    },
+    {
+        "word": "glee",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大喜び",
+        "src": "assets/word-illustrations/glee-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大喜びのイメージ（一例）"
+    },
+    {
+        "word": "global warming",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】地球温暖化",
+        "src": "assets/word-illustrations/global-warming-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】地球温暖化のイメージ（一例）"
+    },
+    {
+        "word": "glow",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】輝き",
+        "src": "assets/word-illustrations/glow-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】輝きのイメージ（一例）"
+    },
+    {
+        "word": "goat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ヤギ",
+        "src": "assets/word-illustrations/goat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ヤギのイメージ（一例）"
+    },
+    {
+        "word": "god",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】神",
+        "src": "assets/word-illustrations/god-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】神のイメージ（一例）"
+    },
+    {
+        "word": "good",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】善、利益",
+        "src": "assets/word-illustrations/good-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】善、利益のイメージ（一例）"
+    },
+    {
+        "word": "goodwill",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】善意",
+        "src": "assets/word-illustrations/goodwill-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】善意のイメージ（一例）"
+    },
+    {
+        "word": "gook",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】（蔑称）東洋人 (Usage Warning: Offensive)",
+        "src": "assets/word-illustrations/gook-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】（蔑称）東洋人 (Usage Warning: Offensive)のイメージ（一例）"
+    },
+    {
+        "word": "gorge",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】峡谷",
+        "src": "assets/word-illustrations/gorge-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】峡谷のイメージ（一例）"
+    },
+    {
+        "word": "gracefulness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】優雅さ",
+        "src": "assets/word-illustrations/gracefulness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】優雅さのイメージ（一例）"
+    },
+    {
+        "word": "grain",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】穀物、粒",
+        "src": "assets/word-illustrations/grain-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】穀物、粒のイメージ（一例）"
+    },
+    {
+        "word": "grasp",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】把握、握り",
+        "src": "assets/word-illustrations/grasp-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】把握、握りのイメージ（一例）"
+    },
+    {
+        "word": "gravestone",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】墓石",
+        "src": "assets/word-illustrations/gravestone-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】墓石のイメージ（一例）"
+    },
+    {
+        "word": "gravitation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】引力",
+        "src": "assets/word-illustrations/gravitation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】引力のイメージ（一例）"
+    },
+    {
+        "word": "greatness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】偉大さ",
+        "src": "assets/word-illustrations/greatness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】偉大さのイメージ（一例）"
+    },
+    {
+        "word": "grief",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】深い悲しみ",
+        "src": "assets/word-illustrations/grief-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】深い悲しみのイメージ（一例）"
+    },
+    {
+        "word": "grin",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】にやり笑い",
+        "src": "assets/word-illustrations/grin-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】にやり笑いのイメージ（一例）"
+    },
+    {
+        "word": "grip",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】握り、支配",
+        "src": "assets/word-illustrations/grip-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】握り、支配のイメージ（一例）"
+    },
+    {
+        "word": "grown-up",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大人",
+        "src": "assets/word-illustrations/grown-up-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大人のイメージ（一例）"
+    },
+    {
+        "word": "guerrilla",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ゲリラ",
+        "src": "assets/word-illustrations/guerrilla-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ゲリラのイメージ（一例）"
+    },
+    {
+        "word": "guideline",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】指針",
+        "src": "assets/word-illustrations/guideline-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】指針のイメージ（一例）"
+    },
+    {
+        "word": "gulp",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ごくりと飲むこと",
+        "src": "assets/word-illustrations/gulp-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ごくりと飲むことのイメージ（一例）"
+    },
+    {
+        "word": "gum",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歯茎、ガム",
+        "src": "assets/word-illustrations/gum-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歯茎、ガムのイメージ（一例）"
+    },
+    {
+        "word": "gunshot",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】銃声",
+        "src": "assets/word-illustrations/gunshot-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】銃声のイメージ（一例）"
+    },
+    {
+        "word": "guts",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】根性、内臓",
+        "src": "assets/word-illustrations/guts-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】根性、内臓のイメージ（一例）"
+    },
+    {
+        "word": "habitant",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】住民",
+        "src": "assets/word-illustrations/habitant-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】住民のイメージ（一例）"
+    },
+    {
+        "word": "handicap",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ハンディキャップ",
+        "src": "assets/word-illustrations/handicap-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ハンディキャップのイメージ（一例）"
+    },
+    {
+        "word": "handicraft",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】手芸",
+        "src": "assets/word-illustrations/handicraft-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】手芸のイメージ（一例）"
+    },
+    {
+        "word": "handout",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】配布資料",
+        "src": "assets/word-illustrations/handout-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】配布資料のイメージ（一例）"
+    },
+    {
+        "word": "handrail",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】手すり",
+        "src": "assets/word-illustrations/handrail-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】手すりのイメージ（一例）"
+    },
+    {
+        "word": "hang",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】扱い方、コツ",
+        "src": "assets/word-illustrations/hang-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】扱い方、コツのイメージ（一例）"
+    },
+    {
+        "word": "hard drive",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ハードドライブ",
+        "src": "assets/word-illustrations/hard-drive-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】ハードドライブのイメージ（一例）"
+    },
+    {
+        "word": "hardware",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ハードウェア、金物",
+        "src": "assets/word-illustrations/hardware-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ハードウェア、金物のイメージ（一例）"
+    },
+    {
+        "word": "harm",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】害",
+        "src": "assets/word-illustrations/harm-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】害のイメージ（一例）"
+    },
+    {
+        "word": "harrow",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】砕土機",
+        "src": "assets/word-illustrations/harrow-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】砕土機のイメージ（一例）"
+    },
+    {
+        "word": "haste",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】急ぎ",
+        "src": "assets/word-illustrations/haste-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】急ぎのイメージ（一例）"
+    },
+    {
+        "word": "hatching",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】孵化、ハッチング（描画）",
+        "src": "assets/word-illustrations/hatching-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】孵化、ハッチング（描画）のイメージ（一例）"
+    },
+    {
+        "word": "hay",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】干し草",
+        "src": "assets/word-illustrations/hay-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】干し草のイメージ（一例）"
+    },
+    {
+        "word": "headquarters",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】本部",
+        "src": "assets/word-illustrations/headquarters-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】本部のイメージ（一例）"
+    },
+    {
+        "word": "health care",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】医療",
+        "src": "assets/word-illustrations/health-care-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】医療のイメージ（一例）"
+    },
+    {
+        "word": "heap",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】積み重ね",
+        "src": "assets/word-illustrations/heap-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】積み重ねのイメージ（一例）"
+    },
+    {
+        "word": "helicopter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ヘリコプター",
+        "src": "assets/word-illustrations/helicopter-exam1-pictogram-natural-v4.webp",
+        "alt": "【名】ヘリコプターのイメージ（一例）"
+    },
+    {
+        "word": "hell",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】地獄",
+        "src": "assets/word-illustrations/hell-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】地獄のイメージ（一例）"
+    },
+    {
+        "word": "helper",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】助手",
+        "src": "assets/word-illustrations/helper-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】助手のイメージ（一例）"
+    },
+    {
+        "word": "hemp",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】麻",
+        "src": "assets/word-illustrations/hemp-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】麻のイメージ（一例）"
+    },
+    {
+        "word": "herb",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ハーブ",
+        "src": "assets/word-illustrations/herb-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ハーブのイメージ（一例）"
+    },
+    {
+        "word": "heritage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】遺産",
+        "src": "assets/word-illustrations/heritage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】遺産のイメージ（一例）"
+    },
+    {
+        "word": "hesitation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ためらい",
+        "src": "assets/word-illustrations/hesitation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ためらいのイメージ（一例）"
+    },
+    {
+        "word": "highlight",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】見所",
+        "src": "assets/word-illustrations/highlight-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】見所のイメージ（一例）"
+    },
+    {
+        "word": "hijack",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】乗っ取り",
+        "src": "assets/word-illustrations/hijack-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】乗っ取りのイメージ（一例）"
+    },
+    {
+        "word": "hint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ヒント、気配",
+        "src": "assets/word-illustrations/hint-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ヒント、気配のイメージ（一例）"
+    },
+    {
+        "word": "holder",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】保持者、ホルダー",
+        "src": "assets/word-illustrations/holder-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】保持者、ホルダーのイメージ（一例）"
+    },
+    {
+        "word": "holocaust",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大虐殺",
+        "src": "assets/word-illustrations/holocaust-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大虐殺のイメージ（一例）"
+    },
+    {
+        "word": "hone",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】砥石 (verb mostly)",
+        "src": "assets/word-illustrations/hone-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】砥石 (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "hood",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】フード、ボンネット",
+        "src": "assets/word-illustrations/hood-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】フード、ボンネットのイメージ（一例）"
+    },
+    {
+        "word": "hook",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】フック",
+        "src": "assets/word-illustrations/hook-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】フックのイメージ（一例）"
+    },
+    {
+        "word": "hospice",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ホスピス",
+        "src": "assets/word-illustrations/hospice-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ホスピスのイメージ（一例）"
+    },
+    {
+        "word": "hospitality",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歓待",
+        "src": "assets/word-illustrations/hospitality-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歓待のイメージ（一例）"
+    },
+    {
+        "word": "housekeeper",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】家政婦",
+        "src": "assets/word-illustrations/housekeeper-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】家政婦のイメージ（一例）"
+    },
+    {
+        "word": "housemaster",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】寮監",
+        "src": "assets/word-illustrations/housemaster-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】寮監のイメージ（一例）"
+    },
+    {
+        "word": "housewife",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】主婦",
+        "src": "assets/word-illustrations/housewife-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】主婦のイメージ（一例）"
+    },
+    {
+        "word": "hug",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】抱擁",
+        "src": "assets/word-illustrations/hug-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】抱擁のイメージ（一例）"
+    },
+    {
+        "word": "human rights",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】人権",
+        "src": "assets/word-illustrations/human-rights-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】人権のイメージ（一例）"
+    },
+    {
+        "word": "humanist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】人道主義者",
+        "src": "assets/word-illustrations/humanist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】人道主義者のイメージ（一例）"
+    },
+    {
+        "word": "humbug",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】詐欺、ペテン",
+        "src": "assets/word-illustrations/humbug-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】詐欺、ペテンのイメージ（一例）"
+    },
+    {
+        "word": "humiliation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】屈辱",
+        "src": "assets/word-illustrations/humiliation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】屈辱のイメージ（一例）"
+    },
+    {
+        "word": "hunting",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】狩猟",
+        "src": "assets/word-illustrations/hunting-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】狩猟のイメージ（一例）"
+    },
+    {
+        "word": "hygiene",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】衛生",
+        "src": "assets/word-illustrations/hygiene-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】衛生のイメージ（一例）"
+    },
+    {
+        "word": "hyperbole",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】誇張法",
+        "src": "assets/word-illustrations/hyperbole-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】誇張法のイメージ（一例）"
+    },
+    {
+        "word": "hyphen",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ハイフン",
+        "src": "assets/word-illustrations/hyphen-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ハイフンのイメージ（一例）"
+    },
+    {
+        "word": "iceman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】氷屋、アイスマン",
+        "src": "assets/word-illustrations/iceman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】氷屋、アイスマンのイメージ（一例）"
+    },
+    {
+        "word": "icon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アイコン、聖像",
+        "src": "assets/word-illustrations/icon-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アイコン、聖像のイメージ（一例）"
+    },
+    {
+        "word": "identification",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】身元確認",
+        "src": "assets/word-illustrations/identification-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】身元確認のイメージ（一例）"
+    },
+    {
+        "word": "ideology",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】イデオロギー",
+        "src": "assets/word-illustrations/ideology-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】イデオロギーのイメージ（一例）"
+    },
+    {
+        "word": "idiot",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】馬鹿",
+        "src": "assets/word-illustrations/idiot-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】馬鹿のイメージ（一例）"
+    },
+    {
+        "word": "ignorance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】無知",
+        "src": "assets/word-illustrations/ignorance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】無知のイメージ（一例）"
+    },
+    {
+        "word": "illustration",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】挿絵、実例",
+        "src": "assets/word-illustrations/illustration-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】挿絵、実例のイメージ（一例）"
+    },
+    {
+        "word": "imagery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】比喩的表現、画像",
+        "src": "assets/word-illustrations/imagery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】比喩的表現、画像のイメージ（一例）"
+    },
+    {
+        "word": "imitation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】模倣",
+        "src": "assets/word-illustrations/imitation-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】模倣のイメージ（一例）"
+    },
+    {
+        "word": "immigrant",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】移民",
+        "src": "assets/word-illustrations/immigrant-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】移民のイメージ（一例）"
+    },
+    {
+        "word": "immortality",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不死",
+        "src": "assets/word-illustrations/immortality-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不死のイメージ（一例）"
+    },
+    {
+        "word": "imperative",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】命令、必須事項",
+        "src": "assets/word-illustrations/imperative-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】命令、必須事項のイメージ（一例）"
+    },
+    {
+        "word": "implement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】道具",
+        "src": "assets/word-illustrations/implement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】道具のイメージ（一例）"
+    },
+    {
+        "word": "implication",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】含意、関与",
+        "src": "assets/word-illustrations/implication-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】含意、関与のイメージ（一例）"
+    },
+    {
+        "word": "impossibility",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不可能",
+        "src": "assets/word-illustrations/impossibility-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】不可能のイメージ（一例）"
+    },
+    {
+        "word": "impressionism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】印象派",
+        "src": "assets/word-illustrations/impressionism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】印象派のイメージ（一例）"
+    },
+    {
+        "word": "impressionist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】印象派の画家",
+        "src": "assets/word-illustrations/impressionist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】印象派の画家のイメージ（一例）"
+    },
+    {
+        "word": "imprisonment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】投獄",
+        "src": "assets/word-illustrations/imprisonment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】投獄のイメージ（一例）"
+    },
+    {
+        "word": "impulse",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】衝動",
+        "src": "assets/word-illustrations/impulse-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】衝動のイメージ（一例）"
+    },
+    {
+        "word": "incense",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】香",
+        "src": "assets/word-illustrations/incense-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】香のイメージ（一例）"
+    },
+    {
+        "word": "incentive",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】動機、報奨金",
+        "src": "assets/word-illustrations/incentive-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】動機、報奨金のイメージ（一例）"
+    },
+    {
+        "word": "index",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】索引、指数",
+        "src": "assets/word-illustrations/index-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】索引、指数のイメージ（一例）"
+    },
+    {
+        "word": "indignity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】屈辱",
+        "src": "assets/word-illustrations/indignity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】屈辱のイメージ（一例）"
+    },
+    {
+        "word": "individual",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】個人",
+        "src": "assets/word-illustrations/individual-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】個人のイメージ（一例）"
+    },
+    {
+        "word": "infant",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】幼児",
+        "src": "assets/word-illustrations/infant-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】幼児のイメージ（一例）"
+    },
+    {
+        "word": "inference",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】推論",
+        "src": "assets/word-illustrations/inference-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】推論のイメージ（一例）"
+    },
+    {
+        "word": "inflammation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】炎症",
+        "src": "assets/word-illustrations/inflammation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】炎症のイメージ（一例）"
+    },
+    {
+        "word": "inflation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】インフレ",
+        "src": "assets/word-illustrations/inflation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】インフレのイメージ（一例）"
+    },
+    {
+        "word": "influenza",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】インフルエンザ",
+        "src": "assets/word-illustrations/influenza-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】インフルエンザのイメージ（一例）"
+    },
+    {
+        "word": "infringement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】侵害",
+        "src": "assets/word-illustrations/infringement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】侵害のイメージ（一例）"
+    },
+    {
+        "word": "initiative",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】主導権、自発性",
+        "src": "assets/word-illustrations/initiative-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】主導権、自発性のイメージ（一例）"
+    },
+    {
+        "word": "injection",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】注射、注入",
+        "src": "assets/word-illustrations/injection-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】注射、注入のイメージ（一例）"
+    },
+    {
+        "word": "innovation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】革新",
+        "src": "assets/word-illustrations/innovation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】革新のイメージ（一例）"
+    },
+    {
+        "word": "input",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】入力、意見",
+        "src": "assets/word-illustrations/input-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】入力、意見のイメージ（一例）"
+    },
+    {
+        "word": "inside",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】内側",
+        "src": "assets/word-illustrations/inside-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】内側のイメージ（一例）"
+    },
+    {
+        "word": "inspector",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】検査官",
+        "src": "assets/word-illustrations/inspector-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】検査官のイメージ（一例）"
+    },
+    {
+        "word": "instinct",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】本能",
+        "src": "assets/word-illustrations/instinct-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】本能のイメージ（一例）"
+    },
+    {
+        "word": "institution",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】機関、制度",
+        "src": "assets/word-illustrations/institution-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】機関、制度のイメージ（一例）"
+    },
+    {
+        "word": "insult",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】侮辱",
+        "src": "assets/word-illustrations/insult-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】侮辱のイメージ（一例）"
+    },
+    {
+        "word": "intellectual",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】知識人",
+        "src": "assets/word-illustrations/intellectual-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】知識人のイメージ（一例）"
+    },
+    {
+        "word": "interior",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】内部",
+        "src": "assets/word-illustrations/interior-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】内部のイメージ（一例）"
+    },
+    {
+        "word": "interpretation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】解釈、通訳",
+        "src": "assets/word-illustrations/interpretation-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】解釈、通訳のイメージ（一例）"
+    },
+    {
+        "word": "interpreter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】通訳者",
+        "src": "assets/word-illustrations/interpreter-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】通訳者のイメージ（一例）"
+    },
+    {
+        "word": "interruption",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】中断",
+        "src": "assets/word-illustrations/interruption-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】中断のイメージ（一例）"
+    },
+    {
+        "word": "intersection",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】交差点",
+        "src": "assets/word-illustrations/intersection-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】交差点のイメージ（一例）"
+    },
+    {
+        "word": "intruder",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】侵入者",
+        "src": "assets/word-illustrations/intruder-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】侵入者のイメージ（一例）"
+    },
+    {
+        "word": "intrusion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】侵入",
+        "src": "assets/word-illustrations/intrusion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】侵入のイメージ（一例）"
+    },
+    {
+        "word": "inventor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】発明家",
+        "src": "assets/word-illustrations/inventor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】発明家のイメージ（一例）"
+    },
+    {
+        "word": "inverted commas",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】引用符",
+        "src": "assets/word-illustrations/inverted-commas-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】引用符のイメージ（一例）"
+    },
+    {
+        "word": "investigator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】捜査官、研究者",
+        "src": "assets/word-illustrations/investigator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】捜査官、研究者のイメージ（一例）"
+    },
+    {
+        "word": "investment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】投資",
+        "src": "assets/word-illustrations/investment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】投資のイメージ（一例）"
+    },
+    {
+        "word": "investor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】投資家",
+        "src": "assets/word-illustrations/investor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】投資家のイメージ（一例）"
+    },
+    {
+        "word": "involvement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】関与",
+        "src": "assets/word-illustrations/involvement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】関与のイメージ（一例）"
+    },
+    {
+        "word": "irritation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】いらだち",
+        "src": "assets/word-illustrations/irritation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】いらだちのイメージ（一例）"
+    },
+    {
+        "word": "islander",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】島民",
+        "src": "assets/word-illustrations/islander-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】島民のイメージ（一例）"
+    },
+    {
+        "word": "jaw",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】あご",
+        "src": "assets/word-illustrations/jaw-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】あごのイメージ（一例）"
+    },
+    {
+        "word": "jeweler",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】宝石商",
+        "src": "assets/word-illustrations/jeweler-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】宝石商のイメージ（一例）"
+    },
+    {
+        "word": "jeweller",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】宝石商（英）",
+        "src": "assets/word-illustrations/jeweler-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】宝石商（英）のイメージ（一例）"
+    },
+    {
+        "word": "jog",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ジョギング",
+        "src": "assets/word-illustrations/jog-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ジョギングのイメージ（一例）"
+    },
+    {
+        "word": "joint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】関節、継ぎ目",
+        "src": "assets/word-illustrations/joint-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】関節、継ぎ目のイメージ（一例）"
+    },
+    {
+        "word": "journalism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ジャーナリズム",
+        "src": "assets/word-illustrations/journalism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ジャーナリズムのイメージ（一例）"
+    },
+    {
+        "word": "judo",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】柔道",
+        "src": "assets/word-illustrations/judo-exam1-pictogram-natural-v4.webp",
+        "alt": "【名】柔道のイメージ（一例）"
+    },
+    {
+        "word": "jump",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ジャンプ",
+        "src": "assets/word-illustrations/jump-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ジャンプのイメージ（一例）"
+    },
+    {
+        "word": "junk food",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ジャンクフード",
+        "src": "assets/word-illustrations/junk-food-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ジャンクフードのイメージ（一例）"
+    },
+    {
+        "word": "juror",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】陪審員",
+        "src": "assets/word-illustrations/juror-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】陪審員のイメージ（一例）"
+    },
+    {
+        "word": "jury",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】陪審",
+        "src": "assets/word-illustrations/jury-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】陪審のイメージ（一例）"
+    },
+    {
+        "word": "kangaroo",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カンガルー",
+        "src": "assets/word-illustrations/kangaroo-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カンガルーのイメージ（一例）"
+    },
+    {
+        "word": "karaoke",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カラオケ",
+        "src": "assets/word-illustrations/karaoke-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】カラオケのイメージ（一例）"
+    },
+    {
+        "word": "keeper",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】番人、飼育係",
+        "src": "assets/word-illustrations/keeper-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】番人、飼育係のイメージ（一例）"
+    },
+    {
+        "word": "kerosene",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】灯油",
+        "src": "assets/word-illustrations/kerosene-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】灯油のイメージ（一例）"
+    },
+    {
+        "word": "keystroke",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】キー入力",
+        "src": "assets/word-illustrations/keystroke-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】キー入力のイメージ（一例）"
+    },
+    {
+        "word": "knot",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】結び目",
+        "src": "assets/word-illustrations/knot-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】結び目のイメージ（一例）"
+    },
+    {
+        "word": "label",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ラベル",
+        "src": "assets/word-illustrations/label-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ラベルのイメージ（一例）"
+    },
+    {
+        "word": "laborer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】労働者",
+        "src": "assets/word-illustrations/laborer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】労働者のイメージ（一例）"
+    },
+    {
+        "word": "labourer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】労働者（英）",
+        "src": "assets/word-illustrations/laborer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】労働者（英）のイメージ（一例）"
+    },
+    {
+        "word": "lance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】槍",
+        "src": "assets/word-illustrations/lance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】槍のイメージ（一例）"
+    },
+    {
+        "word": "landing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】着陸、踊り場",
+        "src": "assets/word-illustrations/landing-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】着陸、踊り場のイメージ（一例）"
+    },
+    {
+        "word": "landlady",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】女主人",
+        "src": "assets/word-illustrations/landlady-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】女主人のイメージ（一例）"
+    },
+    {
+        "word": "landslide",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】地滑り、圧勝",
+        "src": "assets/word-illustrations/landslide-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】地滑り、圧勝のイメージ（一例）"
+    },
+    {
+        "word": "lap",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】膝（座った時の）",
+        "src": "assets/word-illustrations/lap-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】膝（座った時の）のイメージ（一例）"
+    },
+    {
+        "word": "laptop",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ノートパソコン",
+        "src": "assets/word-illustrations/laptop-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ノートパソコンのイメージ（一例）"
+    },
+    {
+        "word": "lark",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ヒバリ、おふざけ",
+        "src": "assets/word-illustrations/lark-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ヒバリ、おふざけのイメージ（一例）"
+    },
+    {
+        "word": "laser",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】レーザー",
+        "src": "assets/word-illustrations/laser-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】レーザーのイメージ（一例）"
+    },
+    {
+        "word": "last minute",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】土壇場",
+        "src": "assets/word-illustrations/last-minute-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】土壇場のイメージ（一例）"
+    },
+    {
+        "word": "laundry",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】洗濯物",
+        "src": "assets/word-illustrations/laundry-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】洗濯物のイメージ（一例）"
+    },
+    {
+        "word": "lava",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】溶岩",
+        "src": "assets/word-illustrations/lava-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】溶岩のイメージ（一例）"
+    },
+    {
+        "word": "lawmaker",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】立法者",
+        "src": "assets/word-illustrations/lawmaker-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】立法者のイメージ（一例）"
+    },
+    {
+        "word": "lawn",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】芝生",
+        "src": "assets/word-illustrations/lawn-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】芝生のイメージ（一例）"
+    },
+    {
+        "word": "lawsuit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】訴訟",
+        "src": "assets/word-illustrations/lawsuit-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】訴訟のイメージ（一例）"
+    },
+    {
+        "word": "layabout",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】怠け者",
+        "src": "assets/word-illustrations/layabout-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】怠け者のイメージ（一例）"
+    },
+    {
+        "word": "leaflet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】チラシ",
+        "src": "assets/word-illustrations/leaflet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】チラシのイメージ（一例）"
+    },
+    {
+        "word": "leak",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】漏れ",
+        "src": "assets/word-illustrations/leak-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】漏れのイメージ（一例）"
+    },
+    {
+        "word": "leap",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】跳躍",
+        "src": "assets/word-illustrations/leap-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】跳躍のイメージ（一例）"
+    },
+    {
+        "word": "learning",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】学習、知識",
+        "src": "assets/word-illustrations/learning-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】学習、知識のイメージ（一例）"
+    },
+    {
+        "word": "lease",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】賃貸借契約",
+        "src": "assets/word-illustrations/lease-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】賃貸借契約のイメージ（一例）"
+    },
+    {
+        "word": "leash",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】リード（犬の）",
+        "src": "assets/word-illustrations/leash-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】リード（犬の）のイメージ（一例）"
+    },
+    {
+        "word": "lecturer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】講師",
+        "src": "assets/word-illustrations/lecturer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】講師のイメージ（一例）"
+    },
+    {
+        "word": "leek",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】西洋ネギ",
+        "src": "assets/word-illustrations/leek-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】西洋ネギのイメージ（一例）"
+    },
+    {
+        "word": "legend",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】伝説",
+        "src": "assets/word-illustrations/legend-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】伝説のイメージ（一例）"
+    },
+    {
+        "word": "legislation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】立法、法律",
+        "src": "assets/word-illustrations/legislation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】立法、法律のイメージ（一例）"
+    },
+    {
+        "word": "legislator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】議員",
+        "src": "assets/word-illustrations/legislator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】議員のイメージ（一例）"
+    },
+    {
+        "word": "legislature",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】議会",
+        "src": "assets/word-illustrations/legislature-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】議会のイメージ（一例）"
+    },
+    {
+        "word": "leopard",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ヒョウ",
+        "src": "assets/word-illustrations/leopard-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ヒョウのイメージ（一例）"
+    },
+    {
+        "word": "lid",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】蓋",
+        "src": "assets/word-illustrations/lid-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】蓋のイメージ（一例）"
+    },
+    {
+        "word": "lifetime",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】生涯",
+        "src": "assets/word-illustrations/lifetime-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】生涯のイメージ（一例）"
+    },
+    {
+        "word": "lighting",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】照明",
+        "src": "assets/word-illustrations/lighting-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】照明のイメージ（一例）"
+    },
+    {
+        "word": "limb",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】手足",
+        "src": "assets/word-illustrations/limb-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】手足のイメージ（一例）"
+    },
+    {
+        "word": "linen",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】亜麻布、リネン",
+        "src": "assets/word-illustrations/linen-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】亜麻布、リネンのイメージ（一例）"
+    },
+    {
+        "word": "liner",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】定期船",
+        "src": "assets/word-illustrations/liner-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】定期船のイメージ（一例）"
+    },
+    {
+        "word": "ling",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】リング（魚）",
+        "src": "assets/word-illustrations/ling-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】リング（魚）のイメージ（一例）"
+    },
+    {
+        "word": "listener",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】聞き手",
+        "src": "assets/word-illustrations/listener-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】聞き手のイメージ（一例）"
+    },
+    {
+        "word": "litter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ごみ、一腹の子",
+        "src": "assets/word-illustrations/litter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ごみ、一腹の子のイメージ（一例）"
+    },
+    {
+        "word": "living",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】生計、生活",
+        "src": "assets/word-illustrations/living-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】生計、生活のイメージ（一例）"
+    },
+    {
+        "word": "loan",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ローン、貸付",
+        "src": "assets/word-illustrations/loan-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ローン、貸付のイメージ（一例）"
+    },
+    {
+        "word": "lobby",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ロビー",
+        "src": "assets/word-illustrations/lobby-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ロビーのイメージ（一例）"
+    },
+    {
+        "word": "loneliness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】孤独",
+        "src": "assets/word-illustrations/loneliness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】孤独のイメージ（一例）"
+    },
+    {
+        "word": "lowland",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】低地",
+        "src": "assets/word-illustrations/lowland-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】低地のイメージ（一例）"
+    },
+    {
+        "word": "lyrics",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歌詞",
+        "src": "assets/word-illustrations/lyrics-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歌詞のイメージ（一例）"
+    },
+    {
+        "word": "madam",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】奥様",
+        "src": "assets/word-illustrations/madam-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】奥様のイメージ（一例）"
+    },
+    {
+        "word": "madame",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】夫人（フランス語圏）",
+        "src": "assets/word-illustrations/madame-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】夫人（フランス語圏）のイメージ（一例）"
+    },
+    {
+        "word": "madness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】狂気",
+        "src": "assets/word-illustrations/madness-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】狂気のイメージ（一例）"
+    },
+    {
+        "word": "maestro",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マエストロ、巨匠",
+        "src": "assets/word-illustrations/maestro-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】マエストロ、巨匠のイメージ（一例）"
+    },
+    {
+        "word": "major",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】専攻、少佐",
+        "src": "assets/word-illustrations/major-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】専攻、少佐のイメージ（一例）"
+    },
+    {
+        "word": "make",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】型、銘柄",
+        "src": "assets/word-illustrations/make-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】型、銘柄のイメージ（一例）"
+    },
+    {
+        "word": "malady",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】病気",
+        "src": "assets/word-illustrations/malady-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】病気のイメージ（一例）"
+    },
+    {
+        "word": "malaria",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マラリア",
+        "src": "assets/word-illustrations/malaria-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マラリアのイメージ（一例）"
+    },
+    {
+        "word": "mama",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ママ",
+        "src": "assets/word-illustrations/mama-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ママのイメージ（一例）"
+    },
+    {
+        "word": "mamma",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ママ（つづり違い）",
+        "src": "assets/word-illustrations/mama-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ママ（つづり違い）のイメージ（一例）"
+    },
+    {
+        "word": "mango",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マンゴー",
+        "src": "assets/word-illustrations/mango-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マンゴーのイメージ（一例）"
+    },
+    {
+        "word": "mansion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大邸宅",
+        "src": "assets/word-illustrations/mansion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大邸宅のイメージ（一例）"
+    },
+    {
+        "word": "manual",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】説明書",
+        "src": "assets/word-illustrations/manual-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】説明書のイメージ（一例）"
+    },
+    {
+        "word": "manufacture",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】製造",
+        "src": "assets/word-illustrations/manufacture-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】製造のイメージ（一例）"
+    },
+    {
+        "word": "manufacturer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】製造業者",
+        "src": "assets/word-illustrations/manufacturer-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】製造業者のイメージ（一例）"
+    },
+    {
+        "word": "manufacturing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】製造業",
+        "src": "assets/word-illustrations/manufacturing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】製造業のイメージ（一例）"
+    },
+    {
+        "word": "marathon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マラソン",
+        "src": "assets/word-illustrations/marathon-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マラソンのイメージ（一例）"
+    },
+    {
+        "word": "margin",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】余白、差",
+        "src": "assets/word-illustrations/margin-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】余白、差のイメージ（一例）"
+    },
+    {
+        "word": "marketing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マーケティング",
+        "src": "assets/word-illustrations/marketing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マーケティングのイメージ（一例）"
+    },
+    {
+        "word": "martial art",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】武道",
+        "src": "assets/word-illustrations/martial-art-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】武道のイメージ（一例）"
+    },
+    {
+        "word": "mask",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マスク",
+        "src": "assets/word-illustrations/mask-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マスクのイメージ（一例）"
+    },
+    {
+        "word": "mass",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】塊、大衆",
+        "src": "assets/word-illustrations/mass-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】塊、大衆のイメージ（一例）"
+    },
+    {
+        "word": "massacre",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大虐殺",
+        "src": "assets/word-illustrations/massacre-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大虐殺のイメージ（一例）"
+    },
+    {
+        "word": "massage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マッサージ",
+        "src": "assets/word-illustrations/massage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マッサージのイメージ（一例）"
+    },
+    {
+        "word": "masseur",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マッサージ師",
+        "src": "assets/word-illustrations/masseur-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マッサージ師のイメージ（一例）"
+    },
+    {
+        "word": "master",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】主人、名人",
+        "src": "assets/word-illustrations/master-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】主人、名人のイメージ（一例）"
+    },
+    {
+        "word": "masterpiece",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】傑作",
+        "src": "assets/word-illustrations/masterpiece-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】傑作のイメージ（一例）"
+    },
+    {
+        "word": "mastery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】熟達、支配",
+        "src": "assets/word-illustrations/mastery-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】熟達、支配のイメージ（一例）"
+    },
+    {
+        "word": "mate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】仲間、連れ合い",
+        "src": "assets/word-illustrations/mate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】仲間、連れ合いのイメージ（一例）"
+    },
+    {
+        "word": "mausoleum",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】霊廟",
+        "src": "assets/word-illustrations/mausoleum-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】霊廟のイメージ（一例）"
+    },
+    {
+        "word": "mean",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】平均",
+        "src": "assets/word-illustrations/mean-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】平均のイメージ（一例）"
+    },
+    {
+        "word": "means",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】手段、財力",
+        "src": "assets/word-illustrations/means-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】手段、財力のイメージ（一例）"
+    },
+    {
+        "word": "media",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】メディア",
+        "src": "assets/word-illustrations/media-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】メディアのイメージ（一例）"
+    },
+    {
+        "word": "medication",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】薬物治療、薬",
+        "src": "assets/word-illustrations/medication-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】薬物治療、薬のイメージ（一例）"
+    },
+    {
+        "word": "melody",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】旋律",
+        "src": "assets/word-illustrations/melody-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】旋律のイメージ（一例）"
+    },
+    {
+        "word": "memorial",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】記念碑",
+        "src": "assets/word-illustrations/memorial-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】記念碑のイメージ（一例）"
+    },
+    {
+        "word": "mentor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】助言者",
+        "src": "assets/word-illustrations/mentor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】助言者のイメージ（一例）"
+    },
+    {
+        "word": "merchandise",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】商品",
+        "src": "assets/word-illustrations/merchandise-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】商品のイメージ（一例）"
+    },
+    {
+        "word": "mercy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】慈悲",
+        "src": "assets/word-illustrations/mercy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】慈悲のイメージ（一例）"
+    },
+    {
+        "word": "merger",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】合併",
+        "src": "assets/word-illustrations/merger-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】合併のイメージ（一例）"
+    },
+    {
+        "word": "messenger",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】使者",
+        "src": "assets/word-illustrations/messenger-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】使者のイメージ（一例）"
+    },
+    {
+        "word": "metaphor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】隠喩",
+        "src": "assets/word-illustrations/metaphor-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】隠喩のイメージ（一例）"
+    },
+    {
+        "word": "micro",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マイクロ",
+        "src": "assets/word-illustrations/micro-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マイクロのイメージ（一例）"
+    },
+    {
+        "word": "microbe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】微生物",
+        "src": "assets/word-illustrations/microbe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】微生物のイメージ（一例）"
+    },
+    {
+        "word": "microcomputer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マイクロコンピュータ",
+        "src": "assets/word-illustrations/microcomputer-exam1-pictogram-natural-v4.webp",
+        "alt": "【名】マイクロコンピュータのイメージ（一例）"
+    },
+    {
+        "word": "micrometer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マイクロメートル",
+        "src": "assets/word-illustrations/micrometer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マイクロメートルのイメージ（一例）"
+    },
+    {
+        "word": "micrometre",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マイクロメートル（英）",
+        "src": "assets/word-illustrations/micrometer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マイクロメートル（英）のイメージ（一例）"
+    },
+    {
+        "word": "microorganism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】微生物",
+        "src": "assets/word-illustrations/microorganism-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】微生物のイメージ（一例）"
+    },
+    {
+        "word": "microphone",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】マイク",
+        "src": "assets/word-illustrations/microphone-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】マイクのイメージ（一例）"
+    },
+    {
+        "word": "microscope",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】顕微鏡",
+        "src": "assets/word-illustrations/microscope-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】顕微鏡のイメージ（一例）"
+    },
+    {
+        "word": "microscopy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】顕微鏡使用法",
+        "src": "assets/word-illustrations/microscopy-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】顕微鏡使用法のイメージ（一例）"
+    },
+    {
+        "word": "microwave",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】電子レンジ",
+        "src": "assets/word-illustrations/microwave-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】電子レンジのイメージ（一例）"
+    },
+    {
+        "word": "midst",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】真ん中",
+        "src": "assets/word-illustrations/midst-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】真ん中のイメージ（一例）"
+    },
+    {
+        "word": "migration",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】移動、移住",
+        "src": "assets/word-illustrations/migration-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】移動、移住のイメージ（一例）"
+    },
+    {
+        "word": "mill",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】工場、製粉所",
+        "src": "assets/word-illustrations/mill-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】工場、製粉所のイメージ（一例）"
+    },
+    {
+        "word": "millimeter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ミリメートル",
+        "src": "assets/word-illustrations/millimeter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ミリメートルのイメージ（一例）"
+    },
+    {
+        "word": "millimetre",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ミリメートル（英）",
+        "src": "assets/word-illustrations/millimeter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ミリメートル（英）のイメージ（一例）"
+    },
+    {
+        "word": "millionaire",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】百万長者",
+        "src": "assets/word-illustrations/millionaire-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】百万長者のイメージ（一例）"
+    },
+    {
+        "word": "mimic",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】物真似師 (verb mostly)",
+        "src": "assets/word-illustrations/mimic-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】物真似師 (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "mine",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】鉱山、地雷",
+        "src": "assets/word-illustrations/mine-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】鉱山、地雷のイメージ（一例）"
+    },
+    {
+        "word": "minister",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大臣、牧師",
+        "src": "assets/word-illustrations/minister-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】大臣、牧師のイメージ（一例）"
+    },
+    {
+        "word": "mint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ミント、造幣局",
+        "src": "assets/word-illustrations/mint-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ミント、造幣局のイメージ（一例）"
+    },
+    {
+        "word": "misconception",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】誤解",
+        "src": "assets/word-illustrations/misconception-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】誤解のイメージ（一例）"
+    },
+    {
+        "word": "misfortune",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不運",
+        "src": "assets/word-illustrations/misfortune-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不運のイメージ（一例）"
+    },
+    {
+        "word": "missile",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ミサイル",
+        "src": "assets/word-illustrations/missile-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ミサイルのイメージ（一例）"
+    },
+    {
+        "word": "mist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】霧",
+        "src": "assets/word-illustrations/mist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】霧のイメージ（一例）"
+    },
+    {
+        "word": "mix",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】混合",
+        "src": "assets/word-illustrations/mix-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】混合のイメージ（一例）"
+    },
+    {
+        "word": "mixture",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】混合物",
+        "src": "assets/word-illustrations/mixture-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】混合物のイメージ（一例）"
+    },
+    {
+        "word": "mobility",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】可動性",
+        "src": "assets/word-illustrations/mobility-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】可動性のイメージ（一例）"
+    },
+    {
+        "word": "modernisation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】近代化（英）",
+        "src": "assets/word-illustrations/modernization-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】近代化（英）のイメージ（一例）"
+    },
+    {
+        "word": "modernization",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】近代化",
+        "src": "assets/word-illustrations/modernization-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】近代化のイメージ（一例）"
+    },
+    {
+        "word": "modification",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】変更、修正",
+        "src": "assets/word-illustrations/modification-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】変更、修正のイメージ（一例）"
+    },
+    {
+        "word": "mogul",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大物",
+        "src": "assets/word-illustrations/mogul-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大物のイメージ（一例）"
+    },
+    {
+        "word": "mold",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カビ、型",
+        "src": "assets/word-illustrations/mold-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カビ、型のイメージ（一例）"
+    },
+    {
+        "word": "monastery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】修道院",
+        "src": "assets/word-illustrations/monastery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】修道院のイメージ（一例）"
+    },
+    {
+        "word": "moonlight",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】月光",
+        "src": "assets/word-illustrations/moonlight-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】月光のイメージ（一例）"
+    },
+    {
+        "word": "moonscape",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】月面のような風景",
+        "src": "assets/word-illustrations/moonscape-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】月面のような風景のイメージ（一例）"
+    },
+    {
+        "word": "morality",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】道徳",
+        "src": "assets/word-illustrations/morality-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】道徳のイメージ（一例）"
+    },
+    {
+        "word": "mortar",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】モルタル、迫撃砲",
+        "src": "assets/word-illustrations/mortar-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】モルタル、迫撃砲のイメージ（一例）"
+    },
+    {
+        "word": "mortgage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】住宅ローン",
+        "src": "assets/word-illustrations/mortgage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】住宅ローンのイメージ（一例）"
+    },
+    {
+        "word": "mother-in-law",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】義理の母",
+        "src": "assets/word-illustrations/mother-in-law-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】義理の母のイメージ（一例）"
+    },
+    {
+        "word": "motion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】動き、動議",
+        "src": "assets/word-illustrations/motion-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】動き、動議のイメージ（一例）"
+    },
+    {
+        "word": "motorbike",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オートバイ",
+        "src": "assets/word-illustrations/motorbike-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オートバイのイメージ（一例）"
+    },
+    {
+        "word": "motorist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ドライバー",
+        "src": "assets/word-illustrations/motorist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ドライバーのイメージ（一例）"
+    },
+    {
+        "word": "mould",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カビ、型（英）",
+        "src": "assets/word-illustrations/mold-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カビ、型（英）のイメージ（一例）"
+    },
+    {
+        "word": "moustache",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】口ひげ",
+        "src": "assets/word-illustrations/moustache-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】口ひげのイメージ（一例）"
+    },
+    {
+        "word": "mover",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】引っ越し業者、提案者",
+        "src": "assets/word-illustrations/mover-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】引っ越し業者、提案者のイメージ（一例）"
+    },
+    {
+        "word": "mumble",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】つぶやき (verb mostly)",
+        "src": "assets/word-illustrations/mumble-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】つぶやき (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "murmur",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ささやき",
+        "src": "assets/word-illustrations/murmur-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】ささやきのイメージ（一例）"
+    },
+    {
+        "word": "musical",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ミュージカル",
+        "src": "assets/word-illustrations/musical-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ミュージカルのイメージ（一例）"
+    },
+    {
+        "word": "mustache",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】口ひげ（米）",
+        "src": "assets/word-illustrations/moustache-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】口ひげ（米）のイメージ（一例）"
+    },
+    {
+        "word": "mutability",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】変わりやすさ",
+        "src": "assets/word-illustrations/mutability-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】変わりやすさのイメージ（一例）"
+    },
+    {
+        "word": "mutter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】つぶやき (verb mostly)",
+        "src": "assets/word-illustrations/mutter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】つぶやき (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "mutton",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】羊肉",
+        "src": "assets/word-illustrations/mutton-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】羊肉のイメージ（一例）"
+    },
+    {
+        "word": "nano",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ナノ",
+        "src": "assets/word-illustrations/nano-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ナノのイメージ（一例）"
+    },
+    {
+        "word": "narrator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】語り手",
+        "src": "assets/word-illustrations/narrator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】語り手のイメージ（一例）"
+    },
+    {
+        "word": "native speaker",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ネイティブスピーカー",
+        "src": "assets/word-illustrations/native-speaker-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ネイティブスピーカーのイメージ（一例）"
+    },
+    {
+        "word": "navigation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】航海、ナビゲーション",
+        "src": "assets/word-illustrations/navigation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】航海、ナビゲーションのイメージ（一例）"
+    },
+    {
+        "word": "navy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】海軍",
+        "src": "assets/word-illustrations/navy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】海軍のイメージ（一例）"
+    },
+    {
+        "word": "necessity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】必要性",
+        "src": "assets/word-illustrations/necessity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】必要性のイメージ（一例）"
+    },
+    {
+        "word": "need",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】必要",
+        "src": "assets/word-illustrations/need-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】必要のイメージ（一例）"
+    },
+    {
+        "word": "neglect",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】怠慢、無視",
+        "src": "assets/word-illustrations/neglect-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】怠慢、無視のイメージ（一例）"
+    },
+    {
+        "word": "nerve",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】神経",
+        "src": "assets/word-illustrations/nerve-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】神経のイメージ（一例）"
+    },
+    {
+        "word": "nerves",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】神経過敏",
+        "src": "assets/word-illustrations/nerves-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】神経過敏のイメージ（一例）"
+    },
+    {
+        "word": "net surfer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ネットサーファー",
+        "src": "assets/word-illustrations/net-surfer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ネットサーファーのイメージ（一例）"
+    },
+    {
+        "word": "netsurfer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ネットサーファー",
+        "src": "assets/word-illustrations/net-surfer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ネットサーファーのイメージ（一例）"
+    },
+    {
+        "word": "neurosis",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ノイローゼ",
+        "src": "assets/word-illustrations/neurosis-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ノイローゼのイメージ（一例）"
+    },
+    {
+        "word": "newscaster",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ニュースキャスター",
+        "src": "assets/word-illustrations/newscaster-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ニュースキャスターのイメージ（一例）"
+    },
+    {
+        "word": "nightclub",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ナイトクラブ",
+        "src": "assets/word-illustrations/nightclub-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ナイトクラブのイメージ（一例）"
+    },
+    {
+        "word": "nightmare",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】悪夢",
+        "src": "assets/word-illustrations/nightmare-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】悪夢のイメージ（一例）"
+    },
+    {
+        "word": "nobility",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】貴族",
+        "src": "assets/word-illustrations/nobility-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】貴族のイメージ（一例）"
+    },
+    {
+        "word": "nobleman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】貴族",
+        "src": "assets/word-illustrations/nobleman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】貴族のイメージ（一例）"
+    },
+    {
+        "word": "nomad",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】遊牧民",
+        "src": "assets/word-illustrations/nomad-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】遊牧民のイメージ（一例）"
+    },
+    {
+        "word": "nomination",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】指名",
+        "src": "assets/word-illustrations/nomination-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】指名のイメージ（一例）"
+    },
+    {
+        "word": "nominee",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】指名された人",
+        "src": "assets/word-illustrations/nominee-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】指名された人のイメージ（一例）"
+    },
+    {
+        "word": "nostril",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】鼻孔",
+        "src": "assets/word-illustrations/nostril-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】鼻孔のイメージ（一例）"
+    },
+    {
+        "word": "nought",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ゼロ",
+        "src": "assets/word-illustrations/nought-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ゼロのイメージ（一例）"
+    },
+    {
+        "word": "nourishment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】栄養",
+        "src": "assets/word-illustrations/nourishment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】栄養のイメージ（一例）"
+    },
+    {
+        "word": "novelty",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】目新しさ",
+        "src": "assets/word-illustrations/novelty-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】目新しさのイメージ（一例）"
+    },
+    {
+        "word": "nuisance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】迷惑",
+        "src": "assets/word-illustrations/nuisance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】迷惑のイメージ（一例）"
+    },
+    {
+        "word": "nursery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】保育園、苗床",
+        "src": "assets/word-illustrations/nursery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】保育園、苗床のイメージ（一例）"
+    },
+    {
+        "word": "nut",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】木の実、変人",
+        "src": "assets/word-illustrations/nut-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】木の実、変人のイメージ（一例）"
+    },
+    {
+        "word": "nutshell",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】木の実の殻",
+        "src": "assets/word-illustrations/nutshell-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】木の実の殻のイメージ（一例）"
+    },
+    {
+        "word": "oath",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】誓い",
+        "src": "assets/word-illustrations/oath-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】誓いのイメージ（一例）"
+    },
+    {
+        "word": "obedience",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】服従",
+        "src": "assets/word-illustrations/obedience-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】服従のイメージ（一例）"
+    },
+    {
+        "word": "obituary",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】死亡記事",
+        "src": "assets/word-illustrations/obituary-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】死亡記事のイメージ（一例）"
+    },
+    {
+        "word": "obligation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】義務",
+        "src": "assets/word-illustrations/obligation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】義務のイメージ（一例）"
+    },
+    {
+        "word": "observer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】観察者",
+        "src": "assets/word-illustrations/observer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】観察者のイメージ（一例）"
+    },
+    {
+        "word": "obsession",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】強迫観念",
+        "src": "assets/word-illustrations/obsession-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】強迫観念のイメージ（一例）"
+    },
+    {
+        "word": "offence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】犯罪、侮辱（英）",
+        "src": "assets/word-illustrations/offence-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】犯罪、侮辱（英）のイメージ（一例）"
+    },
+    {
+        "word": "offender",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】犯罪者",
+        "src": "assets/word-illustrations/offender-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】犯罪者のイメージ（一例）"
+    },
+    {
+        "word": "offense",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】犯罪、攻撃（米）",
+        "src": "assets/word-illustrations/offence-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】犯罪、攻撃（米）のイメージ（一例）"
+    },
+    {
+        "word": "official",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】役人",
+        "src": "assets/word-illustrations/official-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】役人のイメージ（一例）"
+    },
+    {
+        "word": "ointment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】軟膏",
+        "src": "assets/word-illustrations/ointment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】軟膏のイメージ（一例）"
+    },
+    {
+        "word": "olive",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オリーブ",
+        "src": "assets/word-illustrations/olive-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オリーブのイメージ（一例）"
+    },
+    {
+        "word": "Olympia",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オリンピア",
+        "src": "assets/word-illustrations/olympia-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オリンピアのイメージ（一例）"
+    },
+    {
+        "word": "Olympiad",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オリンピアード",
+        "src": "assets/word-illustrations/olympiad-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オリンピアードのイメージ（一例）"
+    },
+    {
+        "word": "operator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】操作者、交換手",
+        "src": "assets/word-illustrations/operator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】操作者、交換手のイメージ（一例）"
+    },
+    {
+        "word": "opponent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】相手",
+        "src": "assets/word-illustrations/opponent-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】相手のイメージ（一例）"
+    },
+    {
+        "word": "optimism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】楽観主義",
+        "src": "assets/word-illustrations/optimism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】楽観主義のイメージ（一例）"
+    },
+    {
+        "word": "optimist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】楽観主義者",
+        "src": "assets/word-illustrations/optimist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】楽観主義者のイメージ（一例）"
+    },
+    {
+        "word": "orator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】演説者",
+        "src": "assets/word-illustrations/orator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】演説者のイメージ（一例）"
+    },
+    {
+        "word": "orchid",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】蘭",
+        "src": "assets/word-illustrations/orchid-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】蘭のイメージ（一例）"
+    },
+    {
+        "word": "organiser",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】主催者（英）",
+        "src": "assets/word-illustrations/organiser-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】主催者（英）のイメージ（一例）"
+    },
+    {
+        "word": "organizer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】主催者",
+        "src": "assets/word-illustrations/organiser-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】主催者のイメージ（一例）"
+    },
+    {
+        "word": "original",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】原本",
+        "src": "assets/word-illustrations/original-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】原本のイメージ（一例）"
+    },
+    {
+        "word": "originality",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】独創性",
+        "src": "assets/word-illustrations/originality-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】独創性のイメージ（一例）"
+    },
+    {
+        "word": "ornament",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】装飾品",
+        "src": "assets/word-illustrations/ornament-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】装飾品のイメージ（一例）"
+    },
+    {
+        "word": "ounce",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オンス",
+        "src": "assets/word-illustrations/ounce-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オンスのイメージ（一例）"
+    },
+    {
+        "word": "outback",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】奥地（豪）",
+        "src": "assets/word-illustrations/outback-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】奥地（豪）のイメージ（一例）"
+    },
+    {
+        "word": "outbreak",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】発生",
+        "src": "assets/word-illustrations/outbreak-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】発生のイメージ（一例）"
+    },
+    {
+        "word": "outcome",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】結果",
+        "src": "assets/word-illustrations/outcome-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】結果のイメージ（一例）"
+    },
+    {
+        "word": "outfit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】服装",
+        "src": "assets/word-illustrations/outfit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】服装のイメージ（一例）"
+    },
+    {
+        "word": "outing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】遠出",
+        "src": "assets/word-illustrations/outing-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】遠出のイメージ（一例）"
+    },
+    {
+        "word": "outlet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】出口、直販店",
+        "src": "assets/word-illustrations/outlet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】出口、直販店のイメージ（一例）"
+    },
+    {
+        "word": "outline",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】概要、輪郭",
+        "src": "assets/word-illustrations/outline-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】概要、輪郭のイメージ（一例）"
+    },
+    {
+        "word": "outlook",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】見通し、見解",
+        "src": "assets/word-illustrations/outlook-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】見通し、見解のイメージ（一例）"
+    },
+    {
+        "word": "outpatient",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】外来患者",
+        "src": "assets/word-illustrations/outpatient-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】外来患者のイメージ（一例）"
+    },
+    {
+        "word": "output",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】生産高、出力",
+        "src": "assets/word-illustrations/output-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】生産高、出力のイメージ（一例）"
+    },
+    {
+        "word": "outrage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】激怒、非道",
+        "src": "assets/word-illustrations/outrage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】激怒、非道のイメージ（一例）"
+    },
+    {
+        "word": "outside",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】外側",
+        "src": "assets/word-illustrations/outside-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】外側のイメージ（一例）"
+    },
+    {
+        "word": "outsider",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】部外者",
+        "src": "assets/word-illustrations/outsider-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】部外者のイメージ（一例）"
+    },
+    {
+        "word": "outskirts",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】郊外",
+        "src": "assets/word-illustrations/outskirts-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】郊外のイメージ（一例）"
+    },
+    {
+        "word": "overcoat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オーバーコート",
+        "src": "assets/word-illustrations/overcoat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オーバーコートのイメージ（一例）"
+    },
+    {
+        "word": "overlap",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】重複",
+        "src": "assets/word-illustrations/overlap-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】重複のイメージ（一例）"
+    },
+    {
+        "word": "overtime",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】残業",
+        "src": "assets/word-illustrations/overtime-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】残業のイメージ（一例）"
+    },
+    {
+        "word": "ow",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】痛っ",
+        "src": "assets/word-illustrations/ow-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】痛っのイメージ（一例）"
+    },
+    {
+        "word": "owl",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】フクロウ",
+        "src": "assets/word-illustrations/owl-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】フクロウのイメージ（一例）"
+    },
+    {
+        "word": "ox",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】雄牛",
+        "src": "assets/word-illustrations/ox-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】雄牛のイメージ（一例）"
+    },
+    {
+        "word": "ozone",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オゾン",
+        "src": "assets/word-illustrations/ozone-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オゾンのイメージ（一例）"
+    },
+    {
+        "word": "pa",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パパ",
+        "src": "assets/word-illustrations/pa-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パパのイメージ（一例）"
+    },
+    {
+        "word": "packet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小包",
+        "src": "assets/word-illustrations/packet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小包のイメージ（一例）"
+    },
+    {
+        "word": "pad",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】詰め物、パッド",
+        "src": "assets/word-illustrations/pad-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】詰め物、パッドのイメージ（一例）"
+    },
+    {
+        "word": "paintbrush",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】絵筆",
+        "src": "assets/word-illustrations/paintbrush-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】絵筆のイメージ（一例）"
+    },
+    {
+        "word": "pajamas",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パジャマ",
+        "src": "assets/word-illustrations/pajamas-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パジャマのイメージ（一例）"
+    },
+    {
+        "word": "pallet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パレット",
+        "src": "assets/word-illustrations/pallet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パレットのイメージ（一例）"
+    },
+    {
+        "word": "pancake",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パンケーキ",
+        "src": "assets/word-illustrations/pancake-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パンケーキのイメージ（一例）"
+    },
+    {
+        "word": "panel",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パネル、羽目板",
+        "src": "assets/word-illustrations/panel-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パネル、羽目板のイメージ（一例）"
+    },
+    {
+        "word": "papaya",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パパイヤ",
+        "src": "assets/word-illustrations/papaya-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パパイヤのイメージ（一例）"
+    },
+    {
+        "word": "paperwork",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】事務処理",
+        "src": "assets/word-illustrations/paperwork-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】事務処理のイメージ（一例）"
+    },
+    {
+        "word": "parade",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パレード",
+        "src": "assets/word-illustrations/parade-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パレードのイメージ（一例）"
+    },
+    {
+        "word": "paradox",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】逆説",
+        "src": "assets/word-illustrations/paradox-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】逆説のイメージ（一例）"
+    },
+    {
+        "word": "paralysis",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】麻痺",
+        "src": "assets/word-illustrations/paralysis-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】麻痺のイメージ（一例）"
+    },
+    {
+        "word": "paratrooper",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】落下傘兵",
+        "src": "assets/word-illustrations/paratrooper-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】落下傘兵のイメージ（一例）"
+    },
+    {
+        "word": "parliament",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】議会",
+        "src": "assets/word-illustrations/parliament-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】議会のイメージ（一例）"
+    },
+    {
+        "word": "participation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】参加",
+        "src": "assets/word-illustrations/participation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】参加のイメージ（一例）"
+    },
+    {
+        "word": "particle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】粒子",
+        "src": "assets/word-illustrations/particle-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】粒子のイメージ（一例）"
+    },
+    {
+        "word": "partisan",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】党派心のある人、パルチザン",
+        "src": "assets/word-illustrations/partisan-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】党派心のある人、パルチザンのイメージ（一例）"
+    },
+    {
+        "word": "partnership",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】提携",
+        "src": "assets/word-illustrations/partnership-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】提携のイメージ（一例）"
+    },
+    {
+        "word": "pastor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】牧師",
+        "src": "assets/word-illustrations/pastor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】牧師のイメージ（一例）"
+    },
+    {
+        "word": "patch",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】継ぎ、区画",
+        "src": "assets/word-illustrations/patch-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】継ぎ、区画のイメージ（一例）"
+    },
+    {
+        "word": "patriot",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】愛国者",
+        "src": "assets/word-illustrations/patriot-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】愛国者のイメージ（一例）"
+    },
+    {
+        "word": "patriotism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】愛国心",
+        "src": "assets/word-illustrations/patriotism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】愛国心のイメージ（一例）"
+    },
+    {
+        "word": "patron",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】後援者",
+        "src": "assets/word-illustrations/patron-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】後援者のイメージ（一例）"
+    },
+    {
+        "word": "pavement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歩道（英）",
+        "src": "assets/word-illustrations/pavement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歩道（英）のイメージ（一例）"
+    },
+    {
+        "word": "paw",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】足（動物の）",
+        "src": "assets/word-illustrations/paw-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】足（動物の）のイメージ（一例）"
+    },
+    {
+        "word": "pawnbroker",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】質屋",
+        "src": "assets/word-illustrations/pawnbroker-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】質屋のイメージ（一例）"
+    },
+    {
+        "word": "pawnshop",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】質店",
+        "src": "assets/word-illustrations/pawnshop-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】質店のイメージ（一例）"
+    },
+    {
+        "word": "payment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】支払い",
+        "src": "assets/word-illustrations/payment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】支払いのイメージ（一例）"
+    },
+    {
+        "word": "peach",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】桃",
+        "src": "assets/word-illustrations/peach-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】桃のイメージ（一例）"
+    },
+    {
+        "word": "peak",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】頂点",
+        "src": "assets/word-illustrations/peak-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】頂点のイメージ（一例）"
+    },
+    {
+        "word": "pearl",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】真珠",
+        "src": "assets/word-illustrations/pearl-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】真珠のイメージ（一例）"
+    },
+    {
+        "word": "pebble",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小石",
+        "src": "assets/word-illustrations/pebble-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小石のイメージ（一例）"
+    },
+    {
+        "word": "pedal",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ペダル",
+        "src": "assets/word-illustrations/pedal-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ペダルのイメージ（一例）"
+    },
+    {
+        "word": "pedestrian",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歩行者",
+        "src": "assets/word-illustrations/pedestrian-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歩行者のイメージ（一例）"
+    },
+    {
+        "word": "peel",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】皮",
+        "src": "assets/word-illustrations/peel-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】皮のイメージ（一例）"
+    },
+    {
+        "word": "peep",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】のぞき見",
+        "src": "assets/word-illustrations/peep-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】のぞき見のイメージ（一例）"
+    },
+    {
+        "word": "peer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】同等の人、貴族",
+        "src": "assets/word-illustrations/peer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】同等の人、貴族のイメージ（一例）"
+    },
+    {
+        "word": "peg",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】留め釘、洗濯バサミ",
+        "src": "assets/word-illustrations/peg-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】留め釘、洗濯バサミのイメージ（一例）"
+    },
+    {
+        "word": "penalty",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】刑罰",
+        "src": "assets/word-illustrations/penalty-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】刑罰のイメージ（一例）"
+    },
+    {
+        "word": "penguin",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ペンギン",
+        "src": "assets/word-illustrations/penguin-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ペンギンのイメージ（一例）"
+    },
+    {
+        "word": "penicillin",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ペニシリン",
+        "src": "assets/word-illustrations/penicillin-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ペニシリンのイメージ（一例）"
+    },
+    {
+        "word": "pension",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】年金",
+        "src": "assets/word-illustrations/pension-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】年金のイメージ（一例）"
+    },
+    {
+        "word": "pentagon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】五角形",
+        "src": "assets/word-illustrations/pentagon-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】五角形のイメージ（一例）"
+    },
+    {
+        "word": "percentage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】割合",
+        "src": "assets/word-illustrations/percentage-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】割合のイメージ（一例）"
+    },
+    {
+        "word": "perception",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】知覚",
+        "src": "assets/word-illustrations/perception-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】知覚のイメージ（一例）"
+    },
+    {
+        "word": "permanence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】永続性",
+        "src": "assets/word-illustrations/permanence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】永続性のイメージ（一例）"
+    },
+    {
+        "word": "perseverance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】忍耐",
+        "src": "assets/word-illustrations/perseverance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】忍耐のイメージ（一例）"
+    },
+    {
+        "word": "persistence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】粘り強さ",
+        "src": "assets/word-illustrations/persistence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】粘り強さのイメージ（一例）"
+    },
+    {
+        "word": "personification",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】擬人化、権化",
+        "src": "assets/word-illustrations/personification-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】擬人化、権化のイメージ（一例）"
+    },
+    {
+        "word": "personnel",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】職員、人事",
+        "src": "assets/word-illustrations/personnel-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】職員、人事のイメージ（一例）"
+    },
+    {
+        "word": "perspective",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】視点、遠近法",
+        "src": "assets/word-illustrations/perspective-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】視点、遠近法のイメージ（一例）"
+    },
+    {
+        "word": "perspiration",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】発汗",
+        "src": "assets/word-illustrations/perspiration-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】発汗のイメージ（一例）"
+    },
+    {
+        "word": "persuasion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】説得",
+        "src": "assets/word-illustrations/persuasion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】説得のイメージ（一例）"
+    },
+    {
+        "word": "pessimist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】悲観主義者",
+        "src": "assets/word-illustrations/pessimist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】悲観主義者のイメージ（一例）"
+    },
+    {
+        "word": "pH",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】水素イオン指数",
+        "src": "assets/word-illustrations/ph-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】水素イオン指数のイメージ（一例）"
+    },
+    {
+        "word": "pharmacist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】薬剤師",
+        "src": "assets/word-illustrations/pharmacist-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】薬剤師のイメージ（一例）"
+    },
+    {
+        "word": "phase",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】段階",
+        "src": "assets/word-illustrations/phase-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】段階のイメージ（一例）"
+    },
+    {
+        "word": "physician",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】医師",
+        "src": "assets/word-illustrations/physician-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】医師のイメージ（一例）"
+    },
+    {
+        "word": "pi",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】円周率",
+        "src": "assets/word-illustrations/pi-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】円周率のイメージ（一例）"
+    },
+    {
+        "word": "pickle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】漬物",
+        "src": "assets/word-illustrations/pickle-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】漬物のイメージ（一例）"
+    },
+    {
+        "word": "pillowcase",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】枕カバー",
+        "src": "assets/word-illustrations/pillowcase-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】枕カバーのイメージ（一例）"
+    },
+    {
+        "word": "pin",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ピン",
+        "src": "assets/word-illustrations/pin-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ピンのイメージ（一例）"
+    },
+    {
+        "word": "pine",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】松",
+        "src": "assets/word-illustrations/pine-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】松のイメージ（一例）"
+    },
+    {
+        "word": "pint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パイント",
+        "src": "assets/word-illustrations/pint-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パイントのイメージ（一例）"
+    },
+    {
+        "word": "piracy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】海賊行為",
+        "src": "assets/word-illustrations/piracy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】海賊行為のイメージ（一例）"
+    },
+    {
+        "word": "pirate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】海賊",
+        "src": "assets/word-illustrations/pirate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】海賊のイメージ（一例）"
+    },
+    {
+        "word": "pitch",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】音の高さ、ピッチ",
+        "src": "assets/word-illustrations/pitch-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】音の高さ、ピッチのイメージ（一例）"
+    },
+    {
+        "word": "plague",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】疫病",
+        "src": "assets/word-illustrations/plague-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】疫病のイメージ（一例）"
+    },
+    {
+        "word": "planning",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】計画",
+        "src": "assets/word-illustrations/planning-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】計画のイメージ（一例）"
+    },
+    {
+        "word": "playmate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】遊び相手",
+        "src": "assets/word-illustrations/playmate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】遊び相手のイメージ（一例）"
+    },
+    {
+        "word": "playwright",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】劇作家",
+        "src": "assets/word-illustrations/playwright-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】劇作家のイメージ（一例）"
+    },
+    {
+        "word": "plot",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】筋、陰謀",
+        "src": "assets/word-illustrations/plot-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】筋、陰謀のイメージ（一例）"
+    },
+    {
+        "word": "plum",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プラム",
+        "src": "assets/word-illustrations/plum-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】プラムのイメージ（一例）"
+    },
+    {
+        "word": "plumber",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】配管工",
+        "src": "assets/word-illustrations/plumber-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】配管工のイメージ（一例）"
+    },
+    {
+        "word": "plus",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プラス面",
+        "src": "assets/word-illustrations/plus-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】プラス面のイメージ（一例）"
+    },
+    {
+        "word": "pneumonia",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】肺炎",
+        "src": "assets/word-illustrations/pneumonia-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】肺炎のイメージ（一例）"
+    },
+    {
+        "word": "point of view",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】観点",
+        "src": "assets/word-illustrations/point-of-view-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】観点のイメージ（一例）"
+    },
+    {
+        "word": "polar bear",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ホッキョクグマ",
+        "src": "assets/word-illustrations/polar-bear-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ホッキョクグマのイメージ（一例）"
+    },
+    {
+        "word": "polio",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ポリオ",
+        "src": "assets/word-illustrations/polio-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ポリオのイメージ（一例）"
+    },
+    {
+        "word": "polish",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】艶出し剤",
+        "src": "assets/word-illustrations/polish-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】艶出し剤のイメージ（一例）"
+    },
+    {
+        "word": "politeness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】礼儀正しさ",
+        "src": "assets/word-illustrations/politeness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】礼儀正しさのイメージ（一例）"
+    },
+    {
+        "word": "polity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】政治形態",
+        "src": "assets/word-illustrations/polity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】政治形態のイメージ（一例）"
+    },
+    {
+        "word": "polo",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ポロ",
+        "src": "assets/word-illustrations/polo-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ポロのイメージ（一例）"
+    },
+    {
+        "word": "popularity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】人気",
+        "src": "assets/word-illustrations/popularity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】人気のイメージ（一例）"
+    },
+    {
+        "word": "porch",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ポーチ",
+        "src": "assets/word-illustrations/porch-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ポーチのイメージ（一例）"
+    },
+    {
+        "word": "portion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】部分、一人前",
+        "src": "assets/word-illustrations/portion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】部分、一人前のイメージ（一例）"
+    },
+    {
+        "word": "pose",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】姿勢、見せかけ",
+        "src": "assets/word-illustrations/pose-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】姿勢、見せかけのイメージ（一例）"
+    },
+    {
+        "word": "practicality",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】実用性",
+        "src": "assets/word-illustrations/practicality-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】実用性のイメージ（一例）"
+    },
+    {
+        "word": "prance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】跳ね回り (verb mostly)",
+        "src": "assets/word-illustrations/prance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】跳ね回り (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "prawn",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】車エビ",
+        "src": "assets/word-illustrations/prawn-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】車エビのイメージ（一例）"
+    },
+    {
+        "word": "predicament",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】苦境",
+        "src": "assets/word-illustrations/predicament-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】苦境のイメージ（一例）"
+    },
+    {
+        "word": "predictor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】予測因子",
+        "src": "assets/word-illustrations/predictor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】予測因子のイメージ（一例）"
+    },
+    {
+        "word": "prefect",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】監督生、県知事",
+        "src": "assets/word-illustrations/prefect-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】監督生、県知事のイメージ（一例）"
+    },
+    {
+        "word": "prehuman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】原人",
+        "src": "assets/word-illustrations/prehuman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】原人のイメージ（一例）"
+    },
+    {
+        "word": "presenter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】贈呈者、司会者",
+        "src": "assets/word-illustrations/presenter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】贈呈者、司会者のイメージ（一例）"
+    },
+    {
+        "word": "presidency",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大統領の職",
+        "src": "assets/word-illustrations/presidency-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大統領の職のイメージ（一例）"
+    },
+    {
+        "word": "prestige",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】威信",
+        "src": "assets/word-illustrations/prestige-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】威信のイメージ（一例）"
+    },
+    {
+        "word": "prevention",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】防止",
+        "src": "assets/word-illustrations/prevention-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】防止のイメージ（一例）"
+    },
+    {
+        "word": "prick",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ちくりとした痛み、突き傷",
+        "src": "assets/word-illustrations/prick-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ちくりとした痛み、突き傷のイメージ（一例）"
+    },
+    {
+        "word": "prime minister",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】首相",
+        "src": "assets/word-illustrations/prime-minister-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】首相のイメージ（一例）"
+    },
+    {
+        "word": "principal",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】校長、長",
+        "src": "assets/word-illustrations/principal-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】校長、長のイメージ（一例）"
+    },
+    {
+        "word": "priority",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】優先事項",
+        "src": "assets/word-illustrations/priority-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】優先事項のイメージ（一例）"
+    },
+    {
+        "word": "privilege",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】特権",
+        "src": "assets/word-illustrations/privilege-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】特権のイメージ（一例）"
+    },
+    {
+        "word": "probe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】探査機、厳密な調査",
+        "src": "assets/word-illustrations/probe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】探査機、厳密な調査のイメージ（一例）"
+    },
+    {
+        "word": "procedure",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】手順",
+        "src": "assets/word-illustrations/procedure-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】手順のイメージ（一例）"
+    },
+    {
+        "word": "professional",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】専門家",
+        "src": "assets/word-illustrations/professional-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】専門家のイメージ（一例）"
+    },
+    {
+        "word": "profile",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】横顔、プロフィール",
+        "src": "assets/word-illustrations/profile-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】横顔、プロフィールのイメージ（一例）"
+    },
+    {
+        "word": "profit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】利益",
+        "src": "assets/word-illustrations/profit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】利益のイメージ（一例）"
+    },
+    {
+        "word": "programer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プログラマー",
+        "src": "assets/word-illustrations/programer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】プログラマーのイメージ（一例）"
+    },
+    {
+        "word": "programing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プログラミング",
+        "src": "assets/word-illustrations/programing-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】プログラミングのイメージ（一例）"
+    },
+    {
+        "word": "programmer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プログラマー（つづり違い）",
+        "src": "assets/word-illustrations/programer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】プログラマー（つづり違い）のイメージ（一例）"
+    },
+    {
+        "word": "programming",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プログラミング（つづり違い）",
+        "src": "assets/word-illustrations/programing-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】プログラミング（つづり違い）のイメージ（一例）"
+    },
+    {
+        "word": "project",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】計画",
+        "src": "assets/word-illustrations/project-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】計画のイメージ（一例）"
+    },
+    {
+        "word": "projection",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】投影、予測",
+        "src": "assets/word-illustrations/projection-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】投影、予測のイメージ（一例）"
+    },
+    {
+        "word": "prom",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プロム",
+        "src": "assets/word-illustrations/prom-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】プロムのイメージ（一例）"
+    },
+    {
+        "word": "prominence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】卓越",
+        "src": "assets/word-illustrations/prominence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】卓越のイメージ（一例）"
+    },
+    {
+        "word": "prompt",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プロンプト",
+        "src": "assets/word-illustrations/prompt-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】プロンプトのイメージ（一例）"
+    },
+    {
+        "word": "proponent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】支持者",
+        "src": "assets/word-illustrations/proponent-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】支持者のイメージ（一例）"
+    },
+    {
+        "word": "prose",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】散文",
+        "src": "assets/word-illustrations/prose-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】散文のイメージ（一例）"
+    },
+    {
+        "word": "prospect",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】見込み",
+        "src": "assets/word-illustrations/prospect-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】見込みのイメージ（一例）"
+    },
+    {
+        "word": "province",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】州、地方",
+        "src": "assets/word-illustrations/province-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】州、地方のイメージ（一例）"
+    },
+    {
+        "word": "provision",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】供給、規定",
+        "src": "assets/word-illustrations/provision-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】供給、規定のイメージ（一例）"
+    },
+    {
+        "word": "proximity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】近接",
+        "src": "assets/word-illustrations/proximity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】近接のイメージ（一例）"
+    },
+    {
+        "word": "psychology",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】心理学",
+        "src": "assets/word-illustrations/psychology-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】心理学のイメージ（一例）"
+    },
+    {
+        "word": "publication",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】出版",
+        "src": "assets/word-illustrations/publication-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】出版のイメージ（一例）"
+    },
+    {
+        "word": "publicity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】宣伝",
+        "src": "assets/word-illustrations/publicity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】宣伝のイメージ（一例）"
+    },
+    {
+        "word": "pudding",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】プディング",
+        "src": "assets/word-illustrations/pudding-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】プディングのイメージ（一例）"
+    },
+    {
+        "word": "pulse",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】脈拍",
+        "src": "assets/word-illustrations/pulse-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】脈拍のイメージ（一例）"
+    },
+    {
+        "word": "pumpkin",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】カボチャ",
+        "src": "assets/word-illustrations/pumpkin-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】カボチャのイメージ（一例）"
+    },
+    {
+        "word": "punch",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パンチ",
+        "src": "assets/word-illustrations/punch-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パンチのイメージ（一例）"
+    },
+    {
+        "word": "punctuality",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】時間厳守",
+        "src": "assets/word-illustrations/punctuality-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】時間厳守のイメージ（一例）"
+    },
+    {
+        "word": "purchase",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】購入",
+        "src": "assets/word-illustrations/purchase-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】購入のイメージ（一例）"
+    },
+    {
+        "word": "pursuit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】追跡、追求",
+        "src": "assets/word-illustrations/pursuit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】追跡、追求のイメージ（一例）"
+    },
+    {
+        "word": "pyjamas",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】パジャマ（英）",
+        "src": "assets/word-illustrations/pyjamas-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】パジャマ（英）のイメージ（一例）"
+    },
+    {
+        "word": "qualification",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】資格",
+        "src": "assets/word-illustrations/qualification-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】資格のイメージ（一例）"
+    },
+    {
+        "word": "quarantine",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】隔離",
+        "src": "assets/word-illustrations/quarantine-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】隔離のイメージ（一例）"
+    },
+    {
+        "word": "quarrel",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】口論",
+        "src": "assets/word-illustrations/quarrel-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】口論のイメージ（一例）"
+    },
+    {
+        "word": "query",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】質問",
+        "src": "assets/word-illustrations/query-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】質問のイメージ（一例）"
+    },
+    {
+        "word": "quiet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】静寂",
+        "src": "assets/word-illustrations/quiet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】静寂のイメージ（一例）"
+    },
+    {
+        "word": "quotation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】引用",
+        "src": "assets/word-illustrations/quotation-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】引用のイメージ（一例）"
+    },
+    {
+        "word": "quote",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】引用",
+        "src": "assets/word-illustrations/quotation-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】引用のイメージ（一例）"
+    },
+    {
+        "word": "racism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】人種差別",
+        "src": "assets/word-illustrations/racism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】人種差別のイメージ（一例）"
+    },
+    {
+        "word": "racist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】人種差別主義者",
+        "src": "assets/word-illustrations/racist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】人種差別主義者のイメージ（一例）"
+    },
+    {
+        "word": "rack",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】棚",
+        "src": "assets/word-illustrations/rack-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】棚のイメージ（一例）"
+    },
+    {
+        "word": "radar",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】レーダー",
+        "src": "assets/word-illustrations/radar-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】レーダーのイメージ（一例）"
+    },
+    {
+        "word": "radical",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】急進論者",
+        "src": "assets/word-illustrations/radical-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】急進論者のイメージ（一例）"
+    },
+    {
+        "word": "radium",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ラジウム",
+        "src": "assets/word-illustrations/radium-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ラジウムのイメージ（一例）"
+    },
+    {
+        "word": "rafter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】垂木",
+        "src": "assets/word-illustrations/rafter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】垂木のイメージ（一例）"
+    },
+    {
+        "word": "rag",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ぼろ布",
+        "src": "assets/word-illustrations/rag-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ぼろ布のイメージ（一例）"
+    },
+    {
+        "word": "rainbow",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】虹",
+        "src": "assets/word-illustrations/rainbow-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】虹のイメージ（一例）"
+    },
+    {
+        "word": "rainstorm",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】暴風雨",
+        "src": "assets/word-illustrations/rainstorm-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】暴風雨のイメージ（一例）"
+    },
+    {
+        "word": "rally",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】集会、ラリー",
+        "src": "assets/word-illustrations/rally-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】集会、ラリーのイメージ（一例）"
+    },
+    {
+        "word": "ram",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】雄羊",
+        "src": "assets/word-illustrations/ram-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】雄羊のイメージ（一例）"
+    },
+    {
+        "word": "ramp",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スロープ",
+        "src": "assets/word-illustrations/ramp-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スロープのイメージ（一例）"
+    },
+    {
+        "word": "ranger",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】レンジャー",
+        "src": "assets/word-illustrations/ranger-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】レンジャーのイメージ（一例）"
+    },
+    {
+        "word": "rape",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】強姦",
+        "src": "assets/word-illustrations/rape-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】強姦のイメージ（一例）"
+    },
+    {
+        "word": "rattle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ガラガラ音",
+        "src": "assets/word-illustrations/rattle-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ガラガラ音のイメージ（一例）"
+    },
+    {
+        "word": "ravage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】破壊",
+        "src": "assets/word-illustrations/ravage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】破壊のイメージ（一例）"
+    },
+    {
+        "word": "reaction",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】反応",
+        "src": "assets/word-illustrations/reaction-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】反応のイメージ（一例）"
+    },
+    {
+        "word": "real estate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不動産",
+        "src": "assets/word-illustrations/real-estate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不動産のイメージ（一例）"
+    },
+    {
+        "word": "realisation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】実感、実現（英）",
+        "src": "assets/word-illustrations/realisation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】実感、実現（英）のイメージ（一例）"
+    },
+    {
+        "word": "realization",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】実感、実現",
+        "src": "assets/word-illustrations/realisation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】実感、実現のイメージ（一例）"
+    },
+    {
+        "word": "rebel",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】反逆者",
+        "src": "assets/word-illustrations/rebel-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】反逆者のイメージ（一例）"
+    },
+    {
+        "word": "recession",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不況",
+        "src": "assets/word-illustrations/recession-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不況のイメージ（一例）"
+    },
+    {
+        "word": "recipe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】レシピ",
+        "src": "assets/word-illustrations/recipe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】レシピのイメージ（一例）"
+    },
+    {
+        "word": "recognition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】認識、承認",
+        "src": "assets/word-illustrations/recognition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】認識、承認のイメージ（一例）"
+    },
+    {
+        "word": "recollection",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】記憶",
+        "src": "assets/word-illustrations/recollection-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】記憶のイメージ（一例）"
+    },
+    {
+        "word": "recommendation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】推薦",
+        "src": "assets/word-illustrations/recommendation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】推薦のイメージ（一例）"
+    },
+    {
+        "word": "recreation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】レクリエーション",
+        "src": "assets/word-illustrations/recreation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】レクリエーションのイメージ（一例）"
+    },
+    {
+        "word": "reed",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】葦",
+        "src": "assets/word-illustrations/reed-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】葦のイメージ（一例）"
+    },
+    {
+        "word": "reference",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】言及、参照",
+        "src": "assets/word-illustrations/reference-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】言及、参照のイメージ（一例）"
+    },
+    {
+        "word": "refinery",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】精製所",
+        "src": "assets/word-illustrations/refinery-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】精製所のイメージ（一例）"
+    },
+    {
+        "word": "reform",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】改革",
+        "src": "assets/word-illustrations/reform-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】改革のイメージ（一例）"
+    },
+    {
+        "word": "refrain",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】リフレイン(繰り返し)",
+        "src": "assets/word-illustrations/refrain-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】リフレイン(繰り返し)のイメージ（一例）"
+    },
+    {
+        "word": "refresh",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】リフレッシュ (verb mostly)",
+        "src": "assets/word-illustrations/refresh-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】リフレッシュ (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "refuge",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】避難所",
+        "src": "assets/word-illustrations/refuge-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】避難所のイメージ（一例）"
+    },
+    {
+        "word": "refugee",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】難民",
+        "src": "assets/word-illustrations/refugee-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】難民のイメージ（一例）"
+    },
+    {
+        "word": "regard",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】配慮、尊敬",
+        "src": "assets/word-illustrations/regard-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】配慮、尊敬のイメージ（一例）"
+    },
+    {
+        "word": "reggae",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】レゲエ",
+        "src": "assets/word-illustrations/reggae-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】レゲエのイメージ（一例）"
+    },
+    {
+        "word": "regime",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】政権",
+        "src": "assets/word-illustrations/regime-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】政権のイメージ（一例）"
+    },
+    {
+        "word": "regret",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】後悔",
+        "src": "assets/word-illustrations/regret-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】後悔のイメージ（一例）"
+    },
+    {
+        "word": "rehearsal",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】リハーサル",
+        "src": "assets/word-illustrations/rehearsal-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】リハーサルのイメージ（一例）"
+    },
+    {
+        "word": "reinforcement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】補強、増援",
+        "src": "assets/word-illustrations/reinforcement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】補強、増援のイメージ（一例）"
+    },
+    {
+        "word": "rejection",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】拒絶",
+        "src": "assets/word-illustrations/rejection-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】拒絶のイメージ（一例）"
+    },
+    {
+        "word": "relativity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】相対性",
+        "src": "assets/word-illustrations/relativity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】相対性のイメージ（一例）"
+    },
+    {
+        "word": "relaxation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】くつろぎ",
+        "src": "assets/word-illustrations/relaxation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】くつろぎのイメージ（一例）"
+    },
+    {
+        "word": "relay",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】リレー、中継",
+        "src": "assets/word-illustrations/relay-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】リレー、中継のイメージ（一例）"
+    },
+    {
+        "word": "relic",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】遺物",
+        "src": "assets/word-illustrations/relic-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】遺物のイメージ（一例）"
+    },
+    {
+        "word": "relief",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】安らぎ、救援",
+        "src": "assets/word-illustrations/relief-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】安らぎ、救援のイメージ（一例）"
+    },
+    {
+        "word": "remains",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】残り",
+        "src": "assets/word-illustrations/remains-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】残りのイメージ（一例）"
+    },
+    {
+        "word": "remark",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】発言",
+        "src": "assets/word-illustrations/remark-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】発言のイメージ（一例）"
+    },
+    {
+        "word": "reminder",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】思い出させるもの",
+        "src": "assets/word-illustrations/reminder-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】思い出させるもののイメージ（一例）"
+    },
+    {
+        "word": "rental",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】賃貸",
+        "src": "assets/word-illustrations/rental-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】賃貸のイメージ（一例）"
+    },
+    {
+        "word": "repaint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】塗り直し (verb mostly)",
+        "src": "assets/word-illustrations/repaint-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】塗り直し (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "repertoire",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】レパートリー",
+        "src": "assets/word-illustrations/repertoire-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】レパートリーのイメージ（一例）"
+    },
+    {
+        "word": "repetition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】繰り返し",
+        "src": "assets/word-illustrations/repetition-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】繰り返しのイメージ（一例）"
+    },
+    {
+        "word": "replacement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】交換",
+        "src": "assets/word-illustrations/replacement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】交換のイメージ（一例）"
+    },
+    {
+        "word": "replica",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】レプリカ",
+        "src": "assets/word-illustrations/replica-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】レプリカのイメージ（一例）"
+    },
+    {
+        "word": "repression",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】抑圧",
+        "src": "assets/word-illustrations/repression-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】抑圧のイメージ（一例）"
+    },
+    {
+        "word": "reprint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】増刷",
+        "src": "assets/word-illustrations/reprint-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】増刷のイメージ（一例）"
+    },
+    {
+        "word": "residence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】住居",
+        "src": "assets/word-illustrations/residence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】住居のイメージ（一例）"
+    },
+    {
+        "word": "resident",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】居住者",
+        "src": "assets/word-illustrations/resident-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】居住者のイメージ（一例）"
+    },
+    {
+        "word": "resignation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】辞職、諦め",
+        "src": "assets/word-illustrations/resignation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】辞職、諦めのイメージ（一例）"
+    },
+    {
+        "word": "resistance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】抵抗",
+        "src": "assets/word-illustrations/resistance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】抵抗のイメージ（一例）"
+    },
+    {
+        "word": "resolution",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】解決、決意",
+        "src": "assets/word-illustrations/resolution-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】解決、決意のイメージ（一例）"
+    },
+    {
+        "word": "respiration",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】呼吸",
+        "src": "assets/word-illustrations/respiration-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】呼吸のイメージ（一例）"
+    },
+    {
+        "word": "restriction",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】制限",
+        "src": "assets/word-illustrations/restriction-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】制限のイメージ（一例）"
+    },
+    {
+        "word": "retailer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小売業者",
+        "src": "assets/word-illustrations/retailer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小売業者のイメージ（一例）"
+    },
+    {
+        "word": "retina",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】網膜",
+        "src": "assets/word-illustrations/retina-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】網膜のイメージ（一例）"
+    },
+    {
+        "word": "retirement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】退職",
+        "src": "assets/word-illustrations/retirement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】退職のイメージ（一例）"
+    },
+    {
+        "word": "retreat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】後退、隠居所",
+        "src": "assets/word-illustrations/retreat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】後退、隠居所のイメージ（一例）"
+    },
+    {
+        "word": "revelation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】暴露、啓示",
+        "src": "assets/word-illustrations/revelation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】暴露、啓示のイメージ（一例）"
+    },
+    {
+        "word": "revenge",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】復讐",
+        "src": "assets/word-illustrations/revenge-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】復讐のイメージ（一例）"
+    },
+    {
+        "word": "revenue",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歳入、収益",
+        "src": "assets/word-illustrations/revenue-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歳入、収益のイメージ（一例）"
+    },
+    {
+        "word": "reverence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】崇拝",
+        "src": "assets/word-illustrations/reverence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】崇拝のイメージ（一例）"
+    },
+    {
+        "word": "revival",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】復活",
+        "src": "assets/word-illustrations/revival-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】復活のイメージ（一例）"
+    },
+    {
+        "word": "revolution",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】革命",
+        "src": "assets/word-illustrations/revolution-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】革命のイメージ（一例）"
+    },
+    {
+        "word": "rhinoceros",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サイ",
+        "src": "assets/word-illustrations/rhinoceros-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】サイのイメージ（一例）"
+    },
+    {
+        "word": "rib",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】肋骨",
+        "src": "assets/word-illustrations/rib-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】肋骨のイメージ（一例）"
+    },
+    {
+        "word": "riddle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】なぞなぞ",
+        "src": "assets/word-illustrations/riddle-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】なぞなぞのイメージ（一例）"
+    },
+    {
+        "word": "rider",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】乗り手",
+        "src": "assets/word-illustrations/rider-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】乗り手のイメージ（一例）"
+    },
+    {
+        "word": "righteousness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】正義",
+        "src": "assets/word-illustrations/righteousness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】正義のイメージ（一例）"
+    },
+    {
+        "word": "rim",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】縁",
+        "src": "assets/word-illustrations/rim-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】縁のイメージ（一例）"
+    },
+    {
+        "word": "rite",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】儀式",
+        "src": "assets/word-illustrations/rite-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】儀式のイメージ（一例）"
+    },
+    {
+        "word": "ritual",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】儀式",
+        "src": "assets/word-illustrations/ritual-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】儀式のイメージ（一例）"
+    },
+    {
+        "word": "rival",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ライバル",
+        "src": "assets/word-illustrations/rival-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ライバルのイメージ（一例）"
+    },
+    {
+        "word": "roam",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】放浪 (verb mostly)",
+        "src": "assets/word-illustrations/roam-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】放浪 (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "rocket",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ロケット",
+        "src": "assets/word-illustrations/rocket-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ロケットのイメージ（一例）"
+    },
+    {
+        "word": "roommate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ルームメイト",
+        "src": "assets/word-illustrations/roommate-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ルームメイトのイメージ（一例）"
+    },
+    {
+        "word": "route",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】経路",
+        "src": "assets/word-illustrations/route-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】経路のイメージ（一例）"
+    },
+    {
+        "word": "royalty",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】王族、印税",
+        "src": "assets/word-illustrations/royalty-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】王族、印税のイメージ（一例）"
+    },
+    {
+        "word": "rubble",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】がれき",
+        "src": "assets/word-illustrations/rubble-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】がれきのイメージ（一例）"
+    },
+    {
+        "word": "rug",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】敷物",
+        "src": "assets/word-illustrations/rug-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】敷物のイメージ（一例）"
+    },
+    {
+        "word": "rush hour",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ラッシュアワー",
+        "src": "assets/word-illustrations/rush-hour-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ラッシュアワーのイメージ（一例）"
+    },
+    {
+        "word": "sag",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】たるみ (verb mostly)",
+        "src": "assets/word-illustrations/sag-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】たるみ (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "sage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】賢人",
+        "src": "assets/word-illustrations/sage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】賢人のイメージ（一例）"
+    },
+    {
+        "word": "salary",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】給料",
+        "src": "assets/word-illustrations/salary-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】給料のイメージ（一例）"
+    },
+    {
+        "word": "salesmanship",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】販売術",
+        "src": "assets/word-illustrations/salesmanship-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】販売術のイメージ（一例）"
+    },
+    {
+        "word": "salesperson",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】販売員",
+        "src": "assets/word-illustrations/salesperson-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】販売員のイメージ（一例）"
+    },
+    {
+        "word": "saleswoman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】女性販売員",
+        "src": "assets/word-illustrations/saleswoman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】女性販売員のイメージ（一例）"
+    },
+    {
+        "word": "salon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サロン",
+        "src": "assets/word-illustrations/salon-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】サロンのイメージ（一例）"
+    },
+    {
+        "word": "salsa",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サルサ",
+        "src": "assets/word-illustrations/salsa-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】サルサのイメージ（一例）"
+    },
+    {
+        "word": "sandstone",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】砂岩",
+        "src": "assets/word-illustrations/sandstone-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】砂岩のイメージ（一例）"
+    },
+    {
+        "word": "sanitation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】衛生設備",
+        "src": "assets/word-illustrations/sanitation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】衛生設備のイメージ（一例）"
+    },
+    {
+        "word": "saving",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】節約、救助",
+        "src": "assets/word-illustrations/saving-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】節約、救助のイメージ（一例）"
+    },
+    {
+        "word": "savings",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】貯蓄",
+        "src": "assets/word-illustrations/savings-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】貯蓄のイメージ（一例）"
+    },
+    {
+        "word": "say",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】言い分",
+        "src": "assets/word-illustrations/say-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】言い分のイメージ（一例）"
+    },
+    {
+        "word": "scandal",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スキャンダル",
+        "src": "assets/word-illustrations/scandal-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スキャンダルのイメージ（一例）"
+    },
+    {
+        "word": "scar",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】傷跡",
+        "src": "assets/word-illustrations/scar-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】傷跡のイメージ（一例）"
+    },
+    {
+        "word": "scarlet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】深紅色",
+        "src": "assets/word-illustrations/scarlet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】深紅色のイメージ（一例）"
+    },
+    {
+        "word": "scent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】香り",
+        "src": "assets/word-illustrations/scent-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】香りのイメージ（一例）"
+    },
+    {
+        "word": "scheme",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】計画、陰謀",
+        "src": "assets/word-illustrations/scheme-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】計画、陰謀のイメージ（一例）"
+    },
+    {
+        "word": "scholasticism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スコラ学、学究的傾向",
+        "src": "assets/word-illustrations/scholasticism-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】スコラ学、学究的傾向のイメージ（一例）"
+    },
+    {
+        "word": "schoolgirl",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】女子生徒",
+        "src": "assets/word-illustrations/schoolgirl-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】女子生徒のイメージ（一例）"
+    },
+    {
+        "word": "scooter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スクーター",
+        "src": "assets/word-illustrations/scooter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スクーターのイメージ（一例）"
+    },
+    {
+        "word": "scribble",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】走り書き",
+        "src": "assets/word-illustrations/scribble-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】走り書きのイメージ（一例）"
+    },
+    {
+        "word": "scrooge",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】守銭奴",
+        "src": "assets/word-illustrations/scrooge-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】守銭奴のイメージ（一例）"
+    },
+    {
+        "word": "scuba",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スキューバ",
+        "src": "assets/word-illustrations/scuba-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】スキューバのイメージ（一例）"
+    },
+    {
+        "word": "scythe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大鎌",
+        "src": "assets/word-illustrations/scythe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大鎌のイメージ（一例）"
+    },
+    {
+        "word": "seal",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】アザラシ、印鑑",
+        "src": "assets/word-illustrations/seal-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】アザラシ、印鑑のイメージ（一例）"
+    },
+    {
+        "word": "second person",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】二人称",
+        "src": "assets/word-illustrations/second-person-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】二人称のイメージ（一例）"
+    },
+    {
+        "word": "sector",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】部門",
+        "src": "assets/word-illustrations/sector-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】部門のイメージ（一例）"
+    },
+    {
+        "word": "seesaw",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】シーソー",
+        "src": "assets/word-illustrations/seesaw-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】シーソーのイメージ（一例）"
+    },
+    {
+        "word": "segment",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】区分",
+        "src": "assets/word-illustrations/segment-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】区分のイメージ（一例）"
+    },
+    {
+        "word": "self-confidence",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】自信",
+        "src": "assets/word-illustrations/self-confidence-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】自信のイメージ（一例）"
+    },
+    {
+        "word": "seller",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】売り手",
+        "src": "assets/word-illustrations/seller-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】売り手のイメージ（一例）"
+    },
+    {
+        "word": "semicolon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】セミコロン",
+        "src": "assets/word-illustrations/semicolon-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】セミコロンのイメージ（一例）"
+    },
+    {
+        "word": "semi-final",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】準決勝",
+        "src": "assets/word-illustrations/semi-final-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】準決勝のイメージ（一例）"
+    },
+    {
+        "word": "seminar",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ゼミ、セミナー",
+        "src": "assets/word-illustrations/seminar-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ゼミ、セミナーのイメージ（一例）"
+    },
+    {
+        "word": "senator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】上院議員",
+        "src": "assets/word-illustrations/senator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】上院議員のイメージ（一例）"
+    },
+    {
+        "word": "servant",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】召使い",
+        "src": "assets/word-illustrations/servant-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】召使いのイメージ（一例）"
+    },
+    {
+        "word": "setback",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】挫折",
+        "src": "assets/word-illustrations/setback-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】挫折のイメージ（一例）"
+    },
+    {
+        "word": "sexism",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】性差別",
+        "src": "assets/word-illustrations/sexism-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】性差別のイメージ（一例）"
+    },
+    {
+        "word": "shed",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小屋",
+        "src": "assets/word-illustrations/shed-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小屋のイメージ（一例）"
+    },
+    {
+        "word": "shield",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】盾",
+        "src": "assets/word-illustrations/shield-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】盾のイメージ（一例）"
+    },
+    {
+        "word": "shift",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】変化、交代",
+        "src": "assets/word-illustrations/shift-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】変化、交代のイメージ（一例）"
+    },
+    {
+        "word": "shipping",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】配送、海運",
+        "src": "assets/word-illustrations/shipping-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】配送、海運のイメージ（一例）"
+    },
+    {
+        "word": "shipwreck",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】難破船、難破",
+        "src": "assets/word-illustrations/shipwreck-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】難破船、難破のイメージ（一例）"
+    },
+    {
+        "word": "shooting",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】射撃、撮影",
+        "src": "assets/word-illustrations/shooting-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】射撃、撮影のイメージ（一例）"
+    },
+    {
+        "word": "shopkeeper",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】店主",
+        "src": "assets/word-illustrations/shopkeeper-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】店主のイメージ（一例）"
+    },
+    {
+        "word": "shoplifter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】万引き犯",
+        "src": "assets/word-illustrations/shoplifter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】万引き犯のイメージ（一例）"
+    },
+    {
+        "word": "shoplifting",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】万引き",
+        "src": "assets/word-illustrations/shoplifting-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】万引きのイメージ（一例）"
+    },
+    {
+        "word": "shortness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不足、短さ",
+        "src": "assets/word-illustrations/shortness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不足、短さのイメージ（一例）"
+    },
+    {
+        "word": "showbiz",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】芸能界",
+        "src": "assets/word-illustrations/showbiz-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】芸能界のイメージ（一例）"
+    },
+    {
+        "word": "showcase",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】陳列棚、披露の場",
+        "src": "assets/word-illustrations/showcase-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】陳列棚、披露の場のイメージ（一例）"
+    },
+    {
+        "word": "shrink",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】精神科医（俗語）",
+        "src": "assets/word-illustrations/shrink-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】精神科医（俗語）のイメージ（一例）"
+    },
+    {
+        "word": "silverware",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】銀食器",
+        "src": "assets/word-illustrations/silverware-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】銀食器のイメージ（一例）"
+    },
+    {
+        "word": "simplification",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】単純化",
+        "src": "assets/word-illustrations/simplification-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】単純化のイメージ（一例）"
+    },
+    {
+        "word": "sincerity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】誠実",
+        "src": "assets/word-illustrations/sincerity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】誠実のイメージ（一例）"
+    },
+    {
+        "word": "sister-in-law",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】義理の姉（妹）",
+        "src": "assets/word-illustrations/sister-in-law-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】義理の姉（妹）のイメージ（一例）"
+    },
+    {
+        "word": "skateboard",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スケートボード",
+        "src": "assets/word-illustrations/skateboard-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スケートボードのイメージ（一例）"
+    },
+    {
+        "word": "skateboarder",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スケートボーダー",
+        "src": "assets/word-illustrations/skateboarder-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スケートボーダーのイメージ（一例）"
+    },
+    {
+        "word": "skylark",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ヒバリ",
+        "src": "assets/word-illustrations/skylark-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ヒバリのイメージ（一例）"
+    },
+    {
+        "word": "slang",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】俗語",
+        "src": "assets/word-illustrations/slang-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】俗語のイメージ（一例）"
+    },
+    {
+        "word": "slap",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】平手打ち",
+        "src": "assets/word-illustrations/slap-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】平手打ちのイメージ（一例）"
+    },
+    {
+        "word": "slash",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】切り傷、斜線",
+        "src": "assets/word-illustrations/slash-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】切り傷、斜線のイメージ（一例）"
+    },
+    {
+        "word": "slaughter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】屠殺、虐殺",
+        "src": "assets/word-illustrations/slaughter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】屠殺、虐殺のイメージ（一例）"
+    },
+    {
+        "word": "sliver",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】裂片",
+        "src": "assets/word-illustrations/sliver-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】裂片のイメージ（一例）"
+    },
+    {
+        "word": "smokestack",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】煙突",
+        "src": "assets/word-illustrations/smokestack-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】煙突のイメージ（一例）"
+    },
+    {
+        "word": "sneer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】冷笑",
+        "src": "assets/word-illustrations/sneer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】冷笑のイメージ（一例）"
+    },
+    {
+        "word": "snore",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】いびき",
+        "src": "assets/word-illustrations/snore-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】いびきのイメージ（一例）"
+    },
+    {
+        "word": "snowball",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】雪玉",
+        "src": "assets/word-illustrations/snowball-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】雪玉のイメージ（一例）"
+    },
+    {
+        "word": "soak",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】浸すこと",
+        "src": "assets/word-illustrations/soak-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】浸すことのイメージ（一例）"
+    },
+    {
+        "word": "softness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】柔らかさ",
+        "src": "assets/word-illustrations/softness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】柔らかさのイメージ（一例）"
+    },
+    {
+        "word": "soil",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】土壌",
+        "src": "assets/word-illustrations/soil-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】土壌のイメージ（一例）"
+    },
+    {
+        "word": "solidity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】堅固さ",
+        "src": "assets/word-illustrations/solidity-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】堅固さのイメージ（一例）"
+    },
+    {
+        "word": "soliloquy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】独り言",
+        "src": "assets/word-illustrations/soliloquy-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】独り言のイメージ（一例）"
+    },
+    {
+        "word": "solo",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ソロ",
+        "src": "assets/word-illustrations/solo-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ソロのイメージ（一例）"
+    },
+    {
+        "word": "solvent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】溶剤",
+        "src": "assets/word-illustrations/solvent-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】溶剤のイメージ（一例）"
+    },
+    {
+        "word": "son-in-law",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】義理の息子",
+        "src": "assets/word-illustrations/son-in-law-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】義理の息子のイメージ（一例）"
+    },
+    {
+        "word": "sonnet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ソネット",
+        "src": "assets/word-illustrations/sonnet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ソネットのイメージ（一例）"
+    },
+    {
+        "word": "soundtrack",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サウンドトラック",
+        "src": "assets/word-illustrations/soundtrack-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】サウンドトラックのイメージ（一例）"
+    },
+    {
+        "word": "Soviet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ソビエト人（連邦）",
+        "src": "assets/word-illustrations/soviet-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ソビエト人（連邦）のイメージ（一例）"
+    },
+    {
+        "word": "soybean",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】大豆",
+        "src": "assets/word-illustrations/soybean-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】大豆のイメージ（一例）"
+    },
+    {
+        "word": "spa",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】温泉、スパ",
+        "src": "assets/word-illustrations/spa-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】温泉、スパのイメージ（一例）"
+    },
+    {
+        "word": "sparerib",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スペアリブ",
+        "src": "assets/word-illustrations/sparerib-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スペアリブのイメージ（一例）"
+    },
+    {
+        "word": "spark",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】火花",
+        "src": "assets/word-illustrations/spark-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】火花のイメージ（一例）"
+    },
+    {
+        "word": "sparrow",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スズメ",
+        "src": "assets/word-illustrations/sparrow-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スズメのイメージ（一例）"
+    },
+    {
+        "word": "specialty",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】専門、名物",
+        "src": "assets/word-illustrations/specialty-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】専門、名物のイメージ（一例）"
+    },
+    {
+        "word": "species",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】種",
+        "src": "assets/word-illustrations/species-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】種のイメージ（一例）"
+    },
+    {
+        "word": "spectacle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】壮観、見世物",
+        "src": "assets/word-illustrations/spectacle-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】壮観、見世物のイメージ（一例）"
+    },
+    {
+        "word": "speeder",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スピード違反者",
+        "src": "assets/word-illustrations/speeder-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スピード違反者のイメージ（一例）"
+    },
+    {
+        "word": "spite",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】悪意",
+        "src": "assets/word-illustrations/spite-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】悪意のイメージ（一例）"
+    },
+    {
+        "word": "splash",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】水しぶき",
+        "src": "assets/word-illustrations/splash-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】水しぶきのイメージ（一例）"
+    },
+    {
+        "word": "splatter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】跳ね返り",
+        "src": "assets/word-illustrations/splatter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】跳ね返りのイメージ（一例）"
+    },
+    {
+        "word": "spokesman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スポークスマン",
+        "src": "assets/word-illustrations/spokesman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スポークスマンのイメージ（一例）"
+    },
+    {
+        "word": "spokeswoman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】女性スポークスマン",
+        "src": "assets/word-illustrations/spokeswoman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】女性スポークスマンのイメージ（一例）"
+    },
+    {
+        "word": "spray",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】しぶき、スプレー",
+        "src": "assets/word-illustrations/spray-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】しぶき、スプレーのイメージ（一例）"
+    },
+    {
+        "word": "spreadsheet",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スプレッドシート",
+        "src": "assets/word-illustrations/spreadsheet-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スプレッドシートのイメージ（一例）"
+    },
+    {
+        "word": "sprint",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】全力疾走",
+        "src": "assets/word-illustrations/sprint-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】全力疾走のイメージ（一例）"
+    },
+    {
+        "word": "spur",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】拍車",
+        "src": "assets/word-illustrations/spur-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】拍車のイメージ（一例）"
+    },
+    {
+        "word": "squad",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】班、分隊",
+        "src": "assets/word-illustrations/squad-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】班、分隊のイメージ（一例）"
+    },
+    {
+        "word": "squash",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スカッシュ、果汁",
+        "src": "assets/word-illustrations/squash-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スカッシュ、果汁のイメージ（一例）"
+    },
+    {
+        "word": "stability",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】安定",
+        "src": "assets/word-illustrations/stability-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】安定のイメージ（一例）"
+    },
+    {
+        "word": "stack",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】積み重ね",
+        "src": "assets/word-illustrations/stack-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】積み重ねのイメージ（一例）"
+    },
+    {
+        "word": "stagger",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】よろめき (verb mostly)",
+        "src": "assets/word-illustrations/stagger-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】よろめき (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "stain",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】しみ",
+        "src": "assets/word-illustrations/stain-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】しみのイメージ（一例）"
+    },
+    {
+        "word": "stake",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】利害関係、杭",
+        "src": "assets/word-illustrations/stake-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】利害関係、杭のイメージ（一例）"
+    },
+    {
+        "word": "standstill",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】停止",
+        "src": "assets/word-illustrations/standstill-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】停止のイメージ（一例）"
+    },
+    {
+        "word": "stanza",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】連（詩の）",
+        "src": "assets/word-illustrations/stanza-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】連（詩の）のイメージ（一例）"
+    },
+    {
+        "word": "starvation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】飢餓",
+        "src": "assets/word-illustrations/starvation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】飢餓のイメージ（一例）"
+    },
+    {
+        "word": "statesman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】政治家",
+        "src": "assets/word-illustrations/statesman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】政治家のイメージ（一例）"
+    },
+    {
+        "word": "statistics",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】統計",
+        "src": "assets/word-illustrations/statistics-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】統計のイメージ（一例）"
+    },
+    {
+        "word": "steering wheel",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ハンドル",
+        "src": "assets/word-illustrations/steering-wheel-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ハンドルのイメージ（一例）"
+    },
+    {
+        "word": "stepfather",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】継父",
+        "src": "assets/word-illustrations/stepfather-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】継父のイメージ（一例）"
+    },
+    {
+        "word": "stepmother",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】継母",
+        "src": "assets/word-illustrations/stepmother-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】継母のイメージ（一例）"
+    },
+    {
+        "word": "stereotype",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】固定観念",
+        "src": "assets/word-illustrations/stereotype-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】固定観念のイメージ（一例）"
+    },
+    {
+        "word": "stew",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】シチュー",
+        "src": "assets/word-illustrations/stew-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】シチューのイメージ（一例）"
+    },
+    {
+        "word": "stick",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】棒",
+        "src": "assets/word-illustrations/stick-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】棒のイメージ（一例）"
+    },
+    {
+        "word": "stimulant",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】興奮剤",
+        "src": "assets/word-illustrations/stimulant-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】興奮剤のイメージ（一例）"
+    },
+    {
+        "word": "stimulation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】刺激",
+        "src": "assets/word-illustrations/stimulation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】刺激のイメージ（一例）"
+    },
+    {
+        "word": "stitch",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】一縫い、編み目",
+        "src": "assets/word-illustrations/stitch-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】一縫い、編み目のイメージ（一例）"
+    },
+    {
+        "word": "stock",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】在庫、株",
+        "src": "assets/word-illustrations/stock-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】在庫、株のイメージ（一例）"
+    },
+    {
+        "word": "stock market",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】株式市場",
+        "src": "assets/word-illustrations/stock-market-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】株式市場のイメージ（一例）"
+    },
+    {
+        "word": "stockpile",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】備蓄",
+        "src": "assets/word-illustrations/stockpile-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】備蓄のイメージ（一例）"
+    },
+    {
+        "word": "stonework",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】石造物",
+        "src": "assets/word-illustrations/stonework-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】石造物のイメージ（一例）"
+    },
+    {
+        "word": "stool",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】（背のない）椅子",
+        "src": "assets/word-illustrations/stool-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】（背のない）椅子のイメージ（一例）"
+    },
+    {
+        "word": "stopover",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】一時滞在",
+        "src": "assets/word-illustrations/stopover-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】一時滞在のイメージ（一例）"
+    },
+    {
+        "word": "stopwatch",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ストップウォッチ",
+        "src": "assets/word-illustrations/stopwatch-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ストップウォッチのイメージ（一例）"
+    },
+    {
+        "word": "strait",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】海峡",
+        "src": "assets/word-illustrations/strait-exam1-pictogram-natural-v5.webp",
+        "alt": "【名】海峡のイメージ（一例）"
+    },
+    {
+        "word": "strand",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】（髪などの）房、要素",
+        "src": "assets/word-illustrations/strand-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】（髪などの）房、要素のイメージ（一例）"
+    },
+    {
+        "word": "stroke",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】一撃、脳卒中",
+        "src": "assets/word-illustrations/stroke-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】一撃、脳卒中のイメージ（一例）"
+    },
+    {
+        "word": "stylist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スタイリスト",
+        "src": "assets/word-illustrations/stylist-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】スタイリストのイメージ（一例）"
+    },
+    {
+        "word": "subcontinent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】亜大陸",
+        "src": "assets/word-illustrations/subcontinent-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】亜大陸のイメージ（一例）"
+    },
+    {
+        "word": "subculture",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サブカルチャー",
+        "src": "assets/word-illustrations/subculture-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】サブカルチャーのイメージ（一例）"
+    },
+    {
+        "word": "subdivision",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】細分、分譲地",
+        "src": "assets/word-illustrations/subdivision-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】細分、分譲地のイメージ（一例）"
+    },
+    {
+        "word": "subjunctive",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】仮定法",
+        "src": "assets/word-illustrations/subjunctive-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】仮定法のイメージ（一例）"
+    },
+    {
+        "word": "subplot",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】サブプロット",
+        "src": "assets/word-illustrations/subplot-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】サブプロットのイメージ（一例）"
+    },
+    {
+        "word": "substance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】物質、実質",
+        "src": "assets/word-illustrations/substance-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】物質、実質のイメージ（一例）"
+    },
+    {
+        "word": "subtitle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】字幕",
+        "src": "assets/word-illustrations/subtitle-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】字幕のイメージ（一例）"
+    },
+    {
+        "word": "suburb",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】郊外",
+        "src": "assets/word-illustrations/suburb-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】郊外のイメージ（一例）"
+    },
+    {
+        "word": "suffering",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】苦しみ",
+        "src": "assets/word-illustrations/suffering-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】苦しみのイメージ（一例）"
+    },
+    {
+        "word": "sulfur",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】硫黄",
+        "src": "assets/word-illustrations/sulfur-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】硫黄のイメージ（一例）"
+    },
+    {
+        "word": "sulphur",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】硫黄（英）",
+        "src": "assets/word-illustrations/sulfur-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】硫黄（英）のイメージ（一例）"
+    },
+    {
+        "word": "sunbeam",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】太陽光線",
+        "src": "assets/word-illustrations/sunbeam-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】太陽光線のイメージ（一例）"
+    },
+    {
+        "word": "superintendent",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】監督者",
+        "src": "assets/word-illustrations/superintendent-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】監督者のイメージ（一例）"
+    },
+    {
+        "word": "supervision",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】監督",
+        "src": "assets/word-illustrations/supervision-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】監督のイメージ（一例）"
+    },
+    {
+        "word": "supervisor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】監督者",
+        "src": "assets/word-illustrations/supervisor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】監督者のイメージ（一例）"
+    },
+    {
+        "word": "supplement",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】補足、付録",
+        "src": "assets/word-illustrations/supplement-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】補足、付録のイメージ（一例）"
+    },
+    {
+        "word": "supplier",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】供給者",
+        "src": "assets/word-illustrations/supplier-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】供給者のイメージ（一例）"
+    },
+    {
+        "word": "surge",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】急増、うねり",
+        "src": "assets/word-illustrations/surge-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】急増、うねりのイメージ（一例）"
+    },
+    {
+        "word": "surroundings",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】環境",
+        "src": "assets/word-illustrations/surroundings-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】環境のイメージ（一例）"
+    },
+    {
+        "word": "surveillance",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】監視",
+        "src": "assets/word-illustrations/surveillance-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】監視のイメージ（一例）"
+    },
+    {
+        "word": "swan",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】白鳥",
+        "src": "assets/word-illustrations/swan-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】白鳥のイメージ（一例）"
+    },
+    {
+        "word": "swing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ブランコ、揺れ",
+        "src": "assets/word-illustrations/swing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ブランコ、揺れのイメージ（一例）"
+    },
+    {
+        "word": "syllable",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】音節",
+        "src": "assets/word-illustrations/syllable-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】音節のイメージ（一例）"
+    },
+    {
+        "word": "synonym",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】同義語",
+        "src": "assets/word-illustrations/synonym-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】同義語のイメージ（一例）"
+    },
+    {
+        "word": "tablecloth",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】テーブルクロス",
+        "src": "assets/word-illustrations/tablecloth-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】テーブルクロスのイメージ（一例）"
+    },
+    {
+        "word": "tabloid",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】タブロイド紙",
+        "src": "assets/word-illustrations/tabloid-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】タブロイド紙のイメージ（一例）"
+    },
+    {
+        "word": "tag",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】札、鬼ごっこ",
+        "src": "assets/word-illustrations/tag-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】札、鬼ごっこのイメージ（一例）"
+    },
+    {
+        "word": "tail",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】尻尾",
+        "src": "assets/word-illustrations/tail-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】尻尾のイメージ（一例）"
+    },
+    {
+        "word": "tan",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】日焼け",
+        "src": "assets/word-illustrations/tan-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】日焼けのイメージ（一例）"
+    },
+    {
+        "word": "tatter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ぼろきれ",
+        "src": "assets/word-illustrations/tatter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ぼろきれのイメージ（一例）"
+    },
+    {
+        "word": "tattoo",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】タトゥー",
+        "src": "assets/word-illustrations/tattoo-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】タトゥーのイメージ（一例）"
+    },
+    {
+        "word": "taunt",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】あざけり",
+        "src": "assets/word-illustrations/taunt-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】あざけりのイメージ（一例）"
+    },
+    {
+        "word": "teaspoon",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小さじ",
+        "src": "assets/word-illustrations/teaspoon-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小さじのイメージ（一例）"
+    },
+    {
+        "word": "telescope",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】望遠鏡",
+        "src": "assets/word-illustrations/telescope-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】望遠鏡のイメージ（一例）"
+    },
+    {
+        "word": "temptation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】誘惑",
+        "src": "assets/word-illustrations/temptation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】誘惑のイメージ（一例）"
+    },
+    {
+        "word": "tenderness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】優しさ",
+        "src": "assets/word-illustrations/tenderness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】優しさのイメージ（一例）"
+    },
+    {
+        "word": "terrace",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】テラス",
+        "src": "assets/word-illustrations/terrace-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】テラスのイメージ（一例）"
+    },
+    {
+        "word": "territory",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】領土",
+        "src": "assets/word-illustrations/territory-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】領土のイメージ（一例）"
+    },
+    {
+        "word": "testimony",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】証言",
+        "src": "assets/word-illustrations/testimony-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】証言のイメージ（一例）"
+    },
+    {
+        "word": "theme",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】主題",
+        "src": "assets/word-illustrations/theme-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】主題のイメージ（一例）"
+    },
+    {
+        "word": "theorist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】理論家",
+        "src": "assets/word-illustrations/theorist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】理論家のイメージ（一例）"
+    },
+    {
+        "word": "therapist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】療法士",
+        "src": "assets/word-illustrations/therapist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】療法士のイメージ（一例）"
+    },
+    {
+        "word": "therapy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】療法",
+        "src": "assets/word-illustrations/therapy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】療法のイメージ（一例）"
+    },
+    {
+        "word": "thermometer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】温度計",
+        "src": "assets/word-illustrations/thermometer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】温度計のイメージ（一例）"
+    },
+    {
+        "word": "thesis",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】論文、命題",
+        "src": "assets/word-illustrations/thesis-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】論文、命題のイメージ（一例）"
+    },
+    {
+        "word": "thickness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】厚さ",
+        "src": "assets/word-illustrations/thickness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】厚さのイメージ（一例）"
+    },
+    {
+        "word": "thigh",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】太もも",
+        "src": "assets/word-illustrations/thigh-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】太もものイメージ（一例）"
+    },
+    {
+        "word": "thinker",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】思想家",
+        "src": "assets/word-illustrations/thinker-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】思想家のイメージ（一例）"
+    },
+    {
+        "word": "third person",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】三人称",
+        "src": "assets/word-illustrations/third-person-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】三人称のイメージ（一例）"
+    },
+    {
+        "word": "thirst",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】渇き",
+        "src": "assets/word-illustrations/thirst-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】渇きのイメージ（一例）"
+    },
+    {
+        "word": "thread",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】糸",
+        "src": "assets/word-illustrations/thread-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】糸のイメージ（一例）"
+    },
+    {
+        "word": "thrill",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スリル",
+        "src": "assets/word-illustrations/thrill-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スリルのイメージ（一例）"
+    },
+    {
+        "word": "throat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】喉",
+        "src": "assets/word-illustrations/throat-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】喉のイメージ（一例）"
+    },
+    {
+        "word": "tightrope",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】綱渡りの綱",
+        "src": "assets/word-illustrations/tightrope-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】綱渡りの綱のイメージ（一例）"
+    },
+    {
+        "word": "timeliness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】タイムリーさ",
+        "src": "assets/word-illustrations/timeliness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】タイムリーさのイメージ（一例）"
+    },
+    {
+        "word": "timing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】タイミング",
+        "src": "assets/word-illustrations/timing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】タイミングのイメージ（一例）"
+    },
+    {
+        "word": "tiredness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】疲労",
+        "src": "assets/word-illustrations/tiredness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】疲労のイメージ（一例）"
+    },
+    {
+        "word": "toenail",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】足の爪",
+        "src": "assets/word-illustrations/toenail-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】足の爪のイメージ（一例）"
+    },
+    {
+        "word": "toll",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】通行料、犠牲",
+        "src": "assets/word-illustrations/toll-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】通行料、犠牲のイメージ（一例）"
+    },
+    {
+        "word": "tomb",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】墓",
+        "src": "assets/word-illustrations/tomb-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】墓のイメージ（一例）"
+    },
+    {
+        "word": "ton",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】トン",
+        "src": "assets/word-illustrations/ton-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】トンのイメージ（一例）"
+    },
+    {
+        "word": "tonne",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】トン（英）",
+        "src": "assets/word-illustrations/tonne-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】トン（英）のイメージ（一例）"
+    },
+    {
+        "word": "torch",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】たいまつ、懐中電灯（英）",
+        "src": "assets/word-illustrations/torch-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】たいまつ、懐中電灯（英）のイメージ（一例）"
+    },
+    {
+        "word": "tortoiseshell",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】べっ甲",
+        "src": "assets/word-illustrations/tortoiseshell-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】べっ甲のイメージ（一例）"
+    },
+    {
+        "word": "trader",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】商人",
+        "src": "assets/word-illustrations/trader-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】商人のイメージ（一例）"
+    },
+    {
+        "word": "trailer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】予告編、トレーラー",
+        "src": "assets/word-illustrations/trailer-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】予告編、トレーラーのイメージ（一例）"
+    },
+    {
+        "word": "trainee",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】研修生",
+        "src": "assets/word-illustrations/trainee-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】研修生のイメージ（一例）"
+    },
+    {
+        "word": "trainer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】トレーナー",
+        "src": "assets/word-illustrations/trainer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】トレーナーのイメージ（一例）"
+    },
+    {
+        "word": "trait",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】特徴",
+        "src": "assets/word-illustrations/trait-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】特徴のイメージ（一例）"
+    },
+    {
+        "word": "traitor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】裏切り者",
+        "src": "assets/word-illustrations/traitor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】裏切り者のイメージ（一例）"
+    },
+    {
+        "word": "tramp",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】放浪者",
+        "src": "assets/word-illustrations/tramp-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】放浪者のイメージ（一例）"
+    },
+    {
+        "word": "trample",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】踏みつける音 (verb mostly)",
+        "src": "assets/word-illustrations/trample-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】踏みつける音 (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "transcript",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】謄本、成績証明書",
+        "src": "assets/word-illustrations/transcript-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】謄本、成績証明書のイメージ（一例）"
+    },
+    {
+        "word": "transfer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】移動、転送",
+        "src": "assets/word-illustrations/transfer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】移動、転送のイメージ（一例）"
+    },
+    {
+        "word": "transfusion",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】輸血",
+        "src": "assets/word-illustrations/transfusion-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】輸血のイメージ（一例）"
+    },
+    {
+        "word": "transistor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】トランジスタ",
+        "src": "assets/word-illustrations/transistor-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】トランジスタのイメージ（一例）"
+    },
+    {
+        "word": "transition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】移行",
+        "src": "assets/word-illustrations/transition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】移行のイメージ（一例）"
+    },
+    {
+        "word": "translation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】翻訳",
+        "src": "assets/word-illustrations/translation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】翻訳のイメージ（一例）"
+    },
+    {
+        "word": "translator",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】翻訳家",
+        "src": "assets/word-illustrations/translator-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】翻訳家のイメージ（一例）"
+    },
+    {
+        "word": "transmission",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】伝達、送信",
+        "src": "assets/word-illustrations/transmission-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】伝達、送信のイメージ（一例）"
+    },
+    {
+        "word": "traverse",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】横断 (verb mostly)",
+        "src": "assets/word-illustrations/traverse-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】横断 (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "tray",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】盆",
+        "src": "assets/word-illustrations/tray-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】盆のイメージ（一例）"
+    },
+    {
+        "word": "treaty",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】条約",
+        "src": "assets/word-illustrations/treaty-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】条約のイメージ（一例）"
+    },
+    {
+        "word": "trek",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】長い旅",
+        "src": "assets/word-illustrations/trek-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】長い旅のイメージ（一例）"
+    },
+    {
+        "word": "tremor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】震え",
+        "src": "assets/word-illustrations/tremor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】震えのイメージ（一例）"
+    },
+    {
+        "word": "trial",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】裁判、試み",
+        "src": "assets/word-illustrations/trial-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】裁判、試みのイメージ（一例）"
+    },
+    {
+        "word": "triangle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】三角形",
+        "src": "assets/word-illustrations/triangle-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】三角形のイメージ（一例）"
+    },
+    {
+        "word": "tribe",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】部族",
+        "src": "assets/word-illustrations/tribe-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】部族のイメージ（一例）"
+    },
+    {
+        "word": "trio",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】三人組",
+        "src": "assets/word-illustrations/trio-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】三人組のイメージ（一例）"
+    },
+    {
+        "word": "trolley",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】手押し車",
+        "src": "assets/word-illustrations/trolley-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】手押し車のイメージ（一例）"
+    },
+    {
+        "word": "troop",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】軍隊、群れ",
+        "src": "assets/word-illustrations/troop-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】軍隊、群れのイメージ（一例）"
+    },
+    {
+        "word": "trophy",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】トロフィー",
+        "src": "assets/word-illustrations/trophy-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】トロフィーのイメージ（一例）"
+    },
+    {
+        "word": "trunk",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】幹、トランク",
+        "src": "assets/word-illustrations/trunk-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】幹、トランクのイメージ（一例）"
+    },
+    {
+        "word": "trust",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】信頼",
+        "src": "assets/word-illustrations/trust-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】信頼のイメージ（一例）"
+    },
+    {
+        "word": "truthfulness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】正直さ",
+        "src": "assets/word-illustrations/truthfulness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】正直さのイメージ（一例）"
+    },
+    {
+        "word": "tub",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】桶",
+        "src": "assets/word-illustrations/tub-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】桶のイメージ（一例）"
+    },
+    {
+        "word": "tuberculosis",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】結核",
+        "src": "assets/word-illustrations/tuberculosis-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】結核のイメージ（一例）"
+    },
+    {
+        "word": "tug",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】強い引き (verb mostly)",
+        "src": "assets/word-illustrations/tug-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】強い引き (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "tuition",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】授業料",
+        "src": "assets/word-illustrations/tuition-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】授業料のイメージ（一例）"
+    },
+    {
+        "word": "tulip",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】チューリップ",
+        "src": "assets/word-illustrations/tulip-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】チューリップのイメージ（一例）"
+    },
+    {
+        "word": "tumor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】腫瘍",
+        "src": "assets/word-illustrations/tumor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】腫瘍のイメージ（一例）"
+    },
+    {
+        "word": "tumour",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】腫瘍（英）",
+        "src": "assets/word-illustrations/tumor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】腫瘍（英）のイメージ（一例）"
+    },
+    {
+        "word": "tunnel",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】トンネル",
+        "src": "assets/word-illustrations/tunnel-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】トンネルのイメージ（一例）"
+    },
+    {
+        "word": "tutor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】家庭教師",
+        "src": "assets/word-illustrations/tutor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】家庭教師のイメージ（一例）"
+    },
+    {
+        "word": "twinkle",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】きらめき (verb mostly)",
+        "src": "assets/word-illustrations/twinkle-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】きらめき (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "typhoid",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】腸チフス",
+        "src": "assets/word-illustrations/typhoid-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】腸チフスのイメージ（一例）"
+    },
+    {
+        "word": "tyranny",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】圧政",
+        "src": "assets/word-illustrations/tyranny-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】圧政のイメージ（一例）"
+    },
+    {
+        "word": "tyrant",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】暴君",
+        "src": "assets/word-illustrations/tyrant-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】暴君のイメージ（一例）"
+    },
+    {
+        "word": "undergraduate",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】学部学生",
+        "src": "assets/word-illustrations/undergraduate-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】学部学生のイメージ（一例）"
+    },
+    {
+        "word": "understanding",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】理解",
+        "src": "assets/word-illustrations/understanding-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】理解のイメージ（一例）"
+    },
+    {
+        "word": "underwear",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】下着",
+        "src": "assets/word-illustrations/underwear-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】下着のイメージ（一例）"
+    },
+    {
+        "word": "unease",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不安",
+        "src": "assets/word-illustrations/unease-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不安のイメージ（一例）"
+    },
+    {
+        "word": "unhappiness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不幸",
+        "src": "assets/word-illustrations/unhappiness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不幸のイメージ（一例）"
+    },
+    {
+        "word": "unrest",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不安、動揺",
+        "src": "assets/word-illustrations/unrest-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不安、動揺のイメージ（一例）"
+    },
+    {
+        "word": "unusualness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】珍しさ",
+        "src": "assets/word-illustrations/unusualness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】珍しさのイメージ（一例）"
+    },
+    {
+        "word": "upbringing",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】養育、しつけ",
+        "src": "assets/word-illustrations/upbringing-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】養育、しつけのイメージ（一例）"
+    },
+    {
+        "word": "update",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】更新",
+        "src": "assets/word-illustrations/update-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】更新のイメージ（一例）"
+    },
+    {
+        "word": "upgrade",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】格上げ、改良",
+        "src": "assets/word-illustrations/upgrade-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】格上げ、改良のイメージ（一例）"
+    },
+    {
+        "word": "user",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】使用者",
+        "src": "assets/word-illustrations/user-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】使用者のイメージ（一例）"
+    },
+    {
+        "word": "utility",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】有用性、公益事業",
+        "src": "assets/word-illustrations/utility-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】有用性、公益事業のイメージ（一例）"
+    },
+    {
+        "word": "vaccine",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ワクチン",
+        "src": "assets/word-illustrations/vaccine-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ワクチンのイメージ（一例）"
+    },
+    {
+        "word": "valentine",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】バレンタイン",
+        "src": "assets/word-illustrations/valentine-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】バレンタインのイメージ（一例）"
+    },
+    {
+        "word": "vanity",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】虚栄心",
+        "src": "assets/word-illustrations/vanity-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】虚栄心のイメージ（一例）"
+    },
+    {
+        "word": "variation",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】変化、変異",
+        "src": "assets/word-illustrations/variation-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】変化、変異のイメージ（一例）"
+    },
+    {
+        "word": "venture",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】冒険的事業",
+        "src": "assets/word-illustrations/venture-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】冒険的事業のイメージ（一例）"
+    },
+    {
+        "word": "venue",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】開催地",
+        "src": "assets/word-illustrations/venue-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】開催地のイメージ（一例）"
+    },
+    {
+        "word": "verse",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】韻文、詩節",
+        "src": "assets/word-illustrations/verse-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】韻文、詩節のイメージ（一例）"
+    },
+    {
+        "word": "version",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】版",
+        "src": "assets/word-illustrations/version-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】版のイメージ（一例）"
+    },
+    {
+        "word": "veteran",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ベテラン、退役軍人",
+        "src": "assets/word-illustrations/veteran-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ベテラン、退役軍人のイメージ（一例）"
+    },
+    {
+        "word": "vibration",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】振動",
+        "src": "assets/word-illustrations/vibration-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】振動のイメージ（一例）"
+    },
+    {
+        "word": "viewer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】視聴者",
+        "src": "assets/word-illustrations/viewer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】視聴者のイメージ（一例）"
+    },
+    {
+        "word": "vigor",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】活力",
+        "src": "assets/word-illustrations/vigor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】活力のイメージ（一例）"
+    },
+    {
+        "word": "vigour",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】活力（英）",
+        "src": "assets/word-illustrations/vigor-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】活力（英）のイメージ（一例）"
+    },
+    {
+        "word": "villa",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】別荘",
+        "src": "assets/word-illustrations/villa-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】別荘のイメージ（一例）"
+    },
+    {
+        "word": "villager",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】村人",
+        "src": "assets/word-illustrations/villager-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】村人のイメージ（一例）"
+    },
+    {
+        "word": "vinegar",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】酢",
+        "src": "assets/word-illustrations/vinegar-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】酢のイメージ（一例）"
+    },
+    {
+        "word": "virtual reality",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】仮想現実",
+        "src": "assets/word-illustrations/virtual-reality-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】仮想現実のイメージ（一例）"
+    },
+    {
+        "word": "virtue",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】美徳",
+        "src": "assets/word-illustrations/virtue-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】美徳のイメージ（一例）"
+    },
+    {
+        "word": "vitamin",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ビタミン",
+        "src": "assets/word-illustrations/vitamin-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ビタミンのイメージ（一例）"
+    },
+    {
+        "word": "vocalist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ボーカリスト",
+        "src": "assets/word-illustrations/vocalist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ボーカリストのイメージ（一例）"
+    },
+    {
+        "word": "volunteer",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ボランティア",
+        "src": "assets/word-illustrations/volunteer-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ボランティアのイメージ（一例）"
+    },
+    {
+        "word": "vomit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】嘔吐物",
+        "src": "assets/word-illustrations/vomit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】嘔吐物のイメージ（一例）"
+    },
+    {
+        "word": "voter",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】有権者",
+        "src": "assets/word-illustrations/voter-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】有権者のイメージ（一例）"
+    },
+    {
+        "word": "vow",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】誓い",
+        "src": "assets/word-illustrations/vow-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】誓いのイメージ（一例）"
+    },
+    {
+        "word": "wage",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】賃金",
+        "src": "assets/word-illustrations/wage-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】賃金のイメージ（一例）"
+    },
+    {
+        "word": "waist",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】腰",
+        "src": "assets/word-illustrations/waist-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】腰のイメージ（一例）"
+    },
+    {
+        "word": "waistcoat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】チョッキ（英）",
+        "src": "assets/word-illustrations/waistcoat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】チョッキ（英）のイメージ（一例）"
+    },
+    {
+        "word": "wait",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】待つこと",
+        "src": "assets/word-illustrations/wait-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】待つことのイメージ（一例）"
+    },
+    {
+        "word": "walkabout",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】徒歩旅行、散策",
+        "src": "assets/word-illustrations/walkabout-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】徒歩旅行、散策のイメージ（一例）"
+    },
+    {
+        "word": "walker",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歩行者",
+        "src": "assets/word-illustrations/walker-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歩行者のイメージ（一例）"
+    },
+    {
+        "word": "wallboard",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】壁板",
+        "src": "assets/word-illustrations/wallboard-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】壁板のイメージ（一例）"
+    },
+    {
+        "word": "walnut",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】クルミ",
+        "src": "assets/word-illustrations/walnut-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】クルミのイメージ（一例）"
+    },
+    {
+        "word": "want",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】不足、必要",
+        "src": "assets/word-illustrations/want-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】不足、必要のイメージ（一例）"
+    },
+    {
+        "word": "warship",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】軍艦",
+        "src": "assets/word-illustrations/warship-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】軍艦のイメージ（一例）"
+    },
+    {
+        "word": "wartime",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】戦時",
+        "src": "assets/word-illustrations/wartime-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】戦時のイメージ（一例）"
+    },
+    {
+        "word": "wasp",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】スズメバチ",
+        "src": "assets/word-illustrations/wasp-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】スズメバチのイメージ（一例）"
+    },
+    {
+        "word": "weave",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】織り方 (verb mostly)",
+        "src": "assets/word-illustrations/weave-exam1-pictogram-natural-v3.webp",
+        "alt": "【名】織り方 (verb mostly)のイメージ（一例）"
+    },
+    {
+        "word": "weed",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】雑草",
+        "src": "assets/word-illustrations/weed-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】雑草のイメージ（一例）"
+    },
+    {
+        "word": "welcome",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】歓迎",
+        "src": "assets/word-illustrations/welcome-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】歓迎のイメージ（一例）"
+    },
+    {
+        "word": "welfare",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】福祉",
+        "src": "assets/word-illustrations/welfare-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】福祉のイメージ（一例）"
+    },
+    {
+        "word": "wheat",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】小麦",
+        "src": "assets/word-illustrations/wheat-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】小麦のイメージ（一例）"
+    },
+    {
+        "word": "whiskey",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ウイスキー",
+        "src": "assets/word-illustrations/whiskey-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ウイスキーのイメージ（一例）"
+    },
+    {
+        "word": "whisky",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ウイスキー（英）",
+        "src": "assets/word-illustrations/whiskey-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ウイスキー（英）のイメージ（一例）"
+    },
+    {
+        "word": "widow",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】未亡人",
+        "src": "assets/word-illustrations/widow-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】未亡人のイメージ（一例）"
+    },
+    {
+        "word": "width",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】幅",
+        "src": "assets/word-illustrations/width-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】幅のイメージ（一例）"
+    },
+    {
+        "word": "wilderness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】荒野",
+        "src": "assets/word-illustrations/wilderness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】荒野のイメージ（一例）"
+    },
+    {
+        "word": "will",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】意志、遺言",
+        "src": "assets/word-illustrations/will-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】意志、遺言のイメージ（一例）"
+    },
+    {
+        "word": "win",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】勝利",
+        "src": "assets/word-illustrations/win-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】勝利のイメージ（一例）"
+    },
+    {
+        "word": "windshield",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】フロントガラス",
+        "src": "assets/word-illustrations/windshield-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】フロントガラスのイメージ（一例）"
+    },
+    {
+        "word": "wink",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ウインク",
+        "src": "assets/word-illustrations/wink-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ウインクのイメージ（一例）"
+    },
+    {
+        "word": "wit",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】機転、知力",
+        "src": "assets/word-illustrations/wit-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】機転、知力のイメージ（一例）"
+    },
+    {
+        "word": "withdrawal",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】撤退、引き出し",
+        "src": "assets/word-illustrations/withdrawal-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】撤退、引き出しのイメージ（一例）"
+    },
+    {
+        "word": "witness",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】目撃者、証人",
+        "src": "assets/word-illustrations/witness-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】目撃者、証人のイメージ（一例）"
+    },
+    {
+        "word": "wolf",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】オオカミ",
+        "src": "assets/word-illustrations/wolf-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】オオカミのイメージ（一例）"
+    },
+    {
+        "word": "woodcarving",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】木彫り",
+        "src": "assets/word-illustrations/woodcarving-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】木彫りのイメージ（一例）"
+    },
+    {
+        "word": "workbench",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】作業台",
+        "src": "assets/word-illustrations/workbench-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】作業台のイメージ（一例）"
+    },
+    {
+        "word": "workman",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】労働者",
+        "src": "assets/word-illustrations/workman-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】労働者のイメージ（一例）"
+    },
+    {
+        "word": "worktable",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】作業テーブル",
+        "src": "assets/word-illustrations/worktable-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】作業テーブルのイメージ（一例）"
+    },
+    {
+        "word": "worldview",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】世界観",
+        "src": "assets/word-illustrations/worldview-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】世界観のイメージ（一例）"
+    },
+    {
+        "word": "worm",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】虫",
+        "src": "assets/word-illustrations/worm-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】虫のイメージ（一例）"
+    },
+    {
+        "word": "worse",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】より悪いこと",
+        "src": "assets/word-illustrations/worse-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】より悪いことのイメージ（一例）"
+    },
+    {
+        "word": "worship",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】崇拝",
+        "src": "assets/word-illustrations/worship-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】崇拝のイメージ（一例）"
+    },
+    {
+        "word": "wreck",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】難破、残骸",
+        "src": "assets/word-illustrations/wreck-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】難破、残骸のイメージ（一例）"
+    },
+    {
+        "word": "X-ray",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】X線",
+        "src": "assets/word-illustrations/x-ray-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】X線のイメージ（一例）"
+    },
+    {
+        "word": "yacht",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ヨット",
+        "src": "assets/word-illustrations/yacht-exam1-pictogram-natural-v2.webp",
+        "alt": "【名】ヨットのイメージ（一例）"
+    },
+    {
+        "word": "yawn",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】あくび",
+        "src": "assets/word-illustrations/yawn-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】あくびのイメージ（一例）"
+    },
+    {
+        "word": "zebra",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】シマウマ",
+        "src": "assets/word-illustrations/zebra-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】シマウマのイメージ（一例）"
+    },
+    {
+        "word": "zip",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】ファスナー（英）",
+        "src": "assets/word-illustrations/zip-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】ファスナー（英）のイメージ（一例）"
+    },
+    {
+        "word": "zoom",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "【名】急上昇、ズーム",
+        "src": "assets/word-illustrations/zoom-exam1-pictogram-natural-v1.webp",
+        "alt": "【名】急上昇、ズームのイメージ（一例）"
+    },
+    {
+        "word": "fireplace",
+        "level": "exam1",
+        "pos": "名",
+        "meaning": "暖炉",
+        "src": "assets/word-illustrations/fireplace-exam1-pictogram-natural-v1.webp",
+        "alt": "暖炉のイメージ（一例）"
+    },
+    {
+        "word": "objection",
+        "level": "exam2",
+        "pos": "名",
+        "meaning": "異議",
+        "src": "assets/word-illustrations/objection-exam2-pictogram-natural-v1.webp",
+        "alt": "異議のイメージ（一例）"
+    },
+    {
+        "word": "sacrifice",
+        "level": "exam2",
+        "pos": "名",
+        "meaning": "犠牲",
+        "src": "assets/word-illustrations/sacrifice-exam2-pictogram-natural-v1.webp",
+        "alt": "犠牲のイメージ（一例）"
+    },
+    {
+        "word": "welfare",
+        "level": "exam2",
+        "pos": "名",
+        "meaning": "福祉",
+        "src": "assets/word-illustrations/welfare-exam2-pictogram-natural-v1.webp",
+        "alt": "福祉のイメージ（一例）"
+    },
+    {
+        "word": "capability",
+        "level": "exam2",
+        "pos": "名",
+        "meaning": "能力、将来性",
+        "src": "assets/word-illustrations/capability-exam2-pictogram-natural-v1.webp",
+        "alt": "能力、将来性のイメージ（一例）"
+    },
+    {
+        "word": "technology",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "科学技術",
+        "src": "assets/word-illustrations/technology-selection1400-pictogram-natural-v1.webp",
+        "alt": "科学技術のイメージ（一例）"
+    },
+    {
+        "word": "topic",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "論題、話題",
+        "src": "assets/word-illustrations/topic-selection1400-pictogram-natural-v1.webp",
+        "alt": "論題、話題のイメージ（一例）"
+    },
+    {
+        "word": "site",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "場所、用地",
+        "src": "assets/word-illustrations/site-selection1400-pictogram-natural-v1.webp",
+        "alt": "場所、用地のイメージ（一例）"
+    },
+    {
+        "word": "survey",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "（アンケートによる意識などの）調査",
+        "src": "assets/word-illustrations/survey-selection1400-pictogram-natural-v1.webp",
+        "alt": "（アンケートによる意識などの）調査のイメージ（一例）"
+    },
+    {
+        "word": "wheel",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "（自動車の）ハンドル",
+        "src": "assets/word-illustrations/wheel-selection1400-pictogram-natural-v2.webp",
+        "alt": "（自動車の）ハンドルのイメージ（一例）"
+    },
+    {
+        "word": "sight",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "見えること",
+        "src": "assets/word-illustrations/sight-selection1400-pictogram-natural-v1.webp",
+        "alt": "見えることのイメージ（一例）"
+    },
+    {
+        "word": "diversity",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "多様性",
+        "src": "assets/word-illustrations/diversity-selection1400-pictogram-natural-v1.webp",
+        "alt": "多様性のイメージ（一例）"
+    },
+    {
+        "word": "mammal",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "哺乳類、哺乳動物",
+        "src": "assets/word-illustrations/mammal-selection1400-pictogram-natural-v1.webp",
+        "alt": "哺乳類、哺乳動物のイメージ（一例）"
+    },
+    {
+        "word": "fossil",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "化石",
+        "src": "assets/word-illustrations/fossil-selection1400-pictogram-natural-v1.webp",
+        "alt": "化石のイメージ（一例）"
+    },
+    {
+        "word": "dialect",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "方言",
+        "src": "assets/word-illustrations/dialect-selection1400-pictogram-natural-v1.webp",
+        "alt": "方言のイメージ（一例）"
+    },
+    {
+        "word": "colony",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "植民（地）",
+        "src": "assets/word-illustrations/colony-selection1400-pictogram-natural-v1.webp",
+        "alt": "植民（地）のイメージ（一例）"
+    },
+    {
+        "word": "obesity",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "肥満",
+        "src": "assets/word-illustrations/obesity-selection1400-pictogram-natural-v1.webp",
+        "alt": "肥満のイメージ（一例）"
+    },
+    {
+        "word": "hypothesis",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "仮説",
+        "src": "assets/word-illustrations/hypothesis-selection1400-pictogram-natural-v1.webp",
+        "alt": "仮説のイメージ（一例）"
+    },
+    {
+        "word": "sum",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "金額",
+        "src": "assets/word-illustrations/sum-selection1400-pictogram-natural-v1.webp",
+        "alt": "金額のイメージ（一例）"
+    },
+    {
+        "word": "boundary",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "境界（線）",
+        "src": "assets/word-illustrations/boundary-selection1400-pictogram-natural-v2.webp",
+        "alt": "境界（線）のイメージ（一例）"
+    },
+    {
+        "word": "mechanism",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "仕組み",
+        "src": "assets/word-illustrations/mechanism-selection1400-pictogram-natural-v1.webp",
+        "alt": "仕組みのイメージ（一例）"
+    },
+    {
+        "word": "literacy",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "読み書きの能力",
+        "src": "assets/word-illustrations/literacy-selection1400-pictogram-natural-v1.webp",
+        "alt": "読み書きの能力のイメージ（一例）"
+    },
+    {
+        "word": "protein",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "タンパク質",
+        "src": "assets/word-illustrations/protein-selection1400-pictogram-natural-v1.webp",
+        "alt": "タンパク質のイメージ（一例）"
+    },
+    {
+        "word": "glacier",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "氷河",
+        "src": "assets/word-illustrations/glacier-selection1400-pictogram-natural-v1.webp",
+        "alt": "氷河のイメージ（一例）"
+    },
+    {
+        "word": "pioneer",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "先駆者",
+        "src": "assets/word-illustrations/pioneer-selection1400-pictogram-natural-v1.webp",
+        "alt": "先駆者のイメージ（一例）"
+    },
+    {
+        "word": "galaxy",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "銀河",
+        "src": "assets/word-illustrations/galaxy-selection1400-pictogram-natural-v1.webp",
+        "alt": "銀河のイメージ（一例）"
+    },
+    {
+        "word": "illusion",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "錯覚",
+        "src": "assets/word-illustrations/illusion-selection1400-pictogram-natural-v1.webp",
+        "alt": "錯覚のイメージ（一例）"
+    },
+    {
+        "word": "peasant",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "小作農",
+        "src": "assets/word-illustrations/peasant-selection1400-pictogram-natural-v1.webp",
+        "alt": "小作農のイメージ（一例）"
+    },
+    {
+        "word": "livestock",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "家畜",
+        "src": "assets/word-illustrations/livestock-selection1400-pictogram-natural-v1.webp",
+        "alt": "家畜のイメージ（一例）"
+    },
+    {
+        "word": "famine",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "飢饉",
+        "src": "assets/word-illustrations/famine-selection1400-pictogram-natural-v1.webp",
+        "alt": "飢饉のイメージ（一例）"
+    },
+    {
+        "word": "fatigue",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "疲労",
+        "src": "assets/word-illustrations/fatigue-selection1400-pictogram-natural-v1.webp",
+        "alt": "疲労のイメージ（一例）"
+    },
+    {
+        "word": "criterion",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "基準",
+        "src": "assets/word-illustrations/criterion-selection1400-pictogram-natural-v1.webp",
+        "alt": "基準のイメージ（一例）"
+    },
+    {
+        "word": "circulation",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "血行、発行部数",
+        "src": "assets/word-illustrations/circulation-selection1400-pictogram-natural-v1.webp",
+        "alt": "血行、発行部数のイメージ（一例）"
+    },
+    {
+        "word": "merit",
+        "level": "selection1400",
+        "pos": "名",
+        "meaning": "優秀さ、長所",
+        "src": "assets/word-illustrations/merit-selection1400-pictogram-natural-v1.webp",
+        "alt": "優秀さ、長所のイメージ（一例）"
+    },
+    {
+        "word": "accord",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "一致；合意，協定",
+        "src": "assets/word-illustrations/accord-selection1900-pictogram-natural-v1.webp",
+        "alt": "一致；合意，協定のイメージ（一例）"
+    },
+    {
+        "word": "technology",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "科学技術；応用技術",
+        "src": "assets/word-illustrations/technology-selection1900-pictogram-natural-v1.webp",
+        "alt": "科学技術；応用技術のイメージ（一例）"
+    },
+    {
+        "word": "site",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "用地，場所；跡地；（ウェブ）サイト",
+        "src": "assets/word-illustrations/site-selection1900-pictogram-natural-v1.webp",
+        "alt": "用地，場所；跡地；（ウェブ）サイトのイメージ（一例）"
+    },
+    {
+        "word": "topic",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "話題，トピック；主題",
+        "src": "assets/word-illustrations/topic-selection1900-pictogram-natural-v1.webp",
+        "alt": "話題，トピック；主題のイメージ（一例）"
+    },
+    {
+        "word": "sight",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "光景；〔the ～s〕名所；見（え）ること；視野；視力",
+        "src": "assets/word-illustrations/sight-selection1900-pictogram-natural-v1.webp",
+        "alt": "光景；〔the ～s〕名所；見（え）ること；視野；視力のイメージ（一例）"
+    },
+    {
+        "word": "fossil",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "化石；時代遅れの人［物］",
+        "src": "assets/word-illustrations/fossil-selection1900-pictogram-natural-v1.webp",
+        "alt": "化石；時代遅れの人［物］のイメージ（一例）"
+    },
+    {
+        "word": "diversity",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "多様性；相違点",
+        "src": "assets/word-illustrations/diversity-selection1900-pictogram-natural-v1.webp",
+        "alt": "多様性；相違点のイメージ（一例）"
+    },
+    {
+        "word": "dialect",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "方言",
+        "src": "assets/word-illustrations/dialect-selection1900-pictogram-natural-v2.webp",
+        "alt": "方言のイメージ（一例）"
+    },
+    {
+        "word": "mammal",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "哺乳動物",
+        "src": "assets/word-illustrations/mammal-selection1900-pictogram-natural-v1.webp",
+        "alt": "哺乳動物のイメージ（一例）"
+    },
+    {
+        "word": "norm",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "規範；標準",
+        "src": "assets/word-illustrations/norm-selection1900-pictogram-natural-v1.webp",
+        "alt": "規範；標準のイメージ（一例）"
+    },
+    {
+        "word": "hypothesis",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "仮説；憶測",
+        "src": "assets/word-illustrations/hypothesis-selection1900-pictogram-natural-v1.webp",
+        "alt": "仮説；憶測のイメージ（一例）"
+    },
+    {
+        "word": "colony",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "植民地；集団居住地；（動植物の）コロニー",
+        "src": "assets/word-illustrations/colony-selection1900-pictogram-natural-v1.webp",
+        "alt": "植民地；集団居住地；（動植物の）コロニーのイメージ（一例）"
+    },
+    {
+        "word": "sum",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（金）額；合計；要点",
+        "src": "assets/word-illustrations/sum-selection1900-pictogram-natural-v1.webp",
+        "alt": "（金）額；合計；要点のイメージ（一例）"
+    },
+    {
+        "word": "boundary",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "境界（線）；〔通例～ries〕限界",
+        "src": "assets/word-illustrations/boundary-selection1900-pictogram-natural-v2.webp",
+        "alt": "境界（線）；〔通例～ries〕限界のイメージ（一例）"
+    },
+    {
+        "word": "predator",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "捕食動物；略奪者",
+        "src": "assets/word-illustrations/predator-selection1900-pictogram-natural-v1.webp",
+        "alt": "捕食動物；略奪者のイメージ（一例）"
+    },
+    {
+        "word": "bias",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "偏見；傾向",
+        "src": "assets/word-illustrations/bias-selection1900-pictogram-natural-v1.webp",
+        "alt": "偏見；傾向のイメージ（一例）"
+    },
+    {
+        "word": "patent",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "特許（権）；特許品",
+        "src": "assets/word-illustrations/patent-selection1900-pictogram-natural-v1.webp",
+        "alt": "特許（権）；特許品のイメージ（一例）"
+    },
+    {
+        "word": "literacy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "読み書きの能力；（特定分野の）知識",
+        "src": "assets/word-illustrations/literacy-selection1900-pictogram-natural-v1.webp",
+        "alt": "読み書きの能力；（特定分野の）知識のイメージ（一例）"
+    },
+    {
+        "word": "protein",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "たんぱく質",
+        "src": "assets/word-illustrations/protein-selection1900-pictogram-natural-v1.webp",
+        "alt": "たんぱく質のイメージ（一例）"
+    },
+    {
+        "word": "inequality",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "不平等；不公平な事柄",
+        "src": "assets/word-illustrations/inequality-selection1900-pictogram-natural-v1.webp",
+        "alt": "不平等；不公平な事柄のイメージ（一例）"
+    },
+    {
+        "word": "glacier",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "氷河",
+        "src": "assets/word-illustrations/glacier-selection1900-pictogram-natural-v1.webp",
+        "alt": "氷河のイメージ（一例）"
+    },
+    {
+        "word": "primate",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "霊長目の動物",
+        "src": "assets/word-illustrations/primate-selection1900-pictogram-natural-v1.webp",
+        "alt": "霊長目の動物のイメージ（一例）"
+    },
+    {
+        "word": "correlation",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "相互関係，相関（関係）",
+        "src": "assets/word-illustrations/correlation-selection1900-pictogram-natural-v2.webp",
+        "alt": "相互関係，相関（関係）のイメージ（一例）"
+    },
+    {
+        "word": "mode",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "方式；気分；形態；流行",
+        "src": "assets/word-illustrations/mode-selection1900-pictogram-natural-v1.webp",
+        "alt": "方式；気分；形態；流行のイメージ（一例）"
+    },
+    {
+        "word": "gravity",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "重力，引力；重量；重大さ",
+        "src": "assets/word-illustrations/gravity-selection1900-pictogram-natural-v1.webp",
+        "alt": "重力，引力；重量；重大さのイメージ（一例）"
+    },
+    {
+        "word": "asteroid",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "小惑星（≒ minor planet）；ヒトデ（＝ starfish）",
+        "src": "assets/word-illustrations/asteroid-selection1900-pictogram-natural-v1.webp",
+        "alt": "小惑星（≒ minor planet）；ヒトデ（＝ starfish）のイメージ（一例）"
+    },
+    {
+        "word": "grocery",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "〔～ies〕食料雑貨；食料雑貨店",
+        "src": "assets/word-illustrations/grocery-selection1900-pictogram-natural-v1.webp",
+        "alt": "〔～ies〕食料雑貨；食料雑貨店のイメージ（一例）"
+    },
+    {
+        "word": "illusion",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "錯覚，思い違い；幻想",
+        "src": "assets/word-illustrations/illusion-selection1900-pictogram-natural-v1.webp",
+        "alt": "錯覚，思い違い；幻想のイメージ（一例）"
+    },
+    {
+        "word": "prefecture",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（日本の）県，府；（フランスなどの）県",
+        "src": "assets/word-illustrations/prefecture-selection1900-pictogram-natural-v2.webp",
+        "alt": "（日本の）県，府；（フランスなどの）県のイメージ（一例）"
+    },
+    {
+        "word": "neuron",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "ニューロン，神経単位",
+        "src": "assets/word-illustrations/neuron-selection1900-pictogram-natural-v1.webp",
+        "alt": "ニューロン，神経単位のイメージ（一例）"
+    },
+    {
+        "word": "workforce",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "労働人口，総労働力；全従業員（数）",
+        "src": "assets/word-illustrations/workforce-selection1900-pictogram-natural-v1.webp",
+        "alt": "労働人口，総労働力；全従業員（数）のイメージ（一例）"
+    },
+    {
+        "word": "scenario",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（予想される）筋書き，事態；脚本",
+        "src": "assets/word-illustrations/scenario-selection1900-pictogram-natural-v1.webp",
+        "alt": "（予想される）筋書き，事態；脚本のイメージ（一例）"
+    },
+    {
+        "word": "allergy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "アレルギー",
+        "src": "assets/word-illustrations/allergy-selection1900-pictogram-natural-v1.webp",
+        "alt": "アレルギーのイメージ（一例）"
+    },
+    {
+        "word": "antibiotic",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "〔通例～s〕抗生物質",
+        "src": "assets/word-illustrations/antibiotic-selection1900-pictogram-natural-v1.webp",
+        "alt": "〔通例～s〕抗生物質のイメージ（一例）"
+    },
+    {
+        "word": "galaxy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "銀河；〔the Galaxy〕銀河系",
+        "src": "assets/word-illustrations/galaxy-selection1900-pictogram-natural-v1.webp",
+        "alt": "銀河；〔the Galaxy〕銀河系のイメージ（一例）"
+    },
+    {
+        "word": "counterpart",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "相当する物［人］",
+        "src": "assets/word-illustrations/counterpart-selection1900-pictogram-natural-v1.webp",
+        "alt": "相当する物［人］のイメージ（一例）"
+    },
+    {
+        "word": "sibling",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "きょうだい（の1人）",
+        "src": "assets/word-illustrations/sibling-selection1900-pictogram-natural-v1.webp",
+        "alt": "きょうだい（の1人）のイメージ（一例）"
+    },
+    {
+        "word": "ratio",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "比率",
+        "src": "assets/word-illustrations/ratio-selection1900-pictogram-natural-v2.webp",
+        "alt": "比率のイメージ（一例）"
+    },
+    {
+        "word": "premise",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "前提；〔～s〕（建物を含めた）構内、敷地",
+        "src": "assets/word-illustrations/premise-selection1900-pictogram-natural-v1.webp",
+        "alt": "前提；〔～s〕（建物を含めた）構内、敷地のイメージ（一例）"
+    },
+    {
+        "word": "merit",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "利点（⇔demerit 欠点）；功績；真価",
+        "src": "assets/word-illustrations/merit-selection1900-pictogram-natural-v1.webp",
+        "alt": "利点（⇔demerit 欠点）；功績；真価のイメージ（一例）"
+    },
+    {
+        "word": "infrastructure",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "インフラ、基本的施設；（経済）基盤",
+        "src": "assets/word-illustrations/infrastructure-selection1900-pictogram-natural-v1.webp",
+        "alt": "インフラ、基本的施設；（経済）基盤のイメージ（一例）"
+    },
+    {
+        "word": "distress",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "苦悩；苦痛；困窮",
+        "src": "assets/word-illustrations/distress-selection1900-pictogram-natural-v1.webp",
+        "alt": "苦悩；苦痛；困窮のイメージ（一例）"
+    },
+    {
+        "word": "adolescent",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "青年、思春期の若者",
+        "src": "assets/word-illustrations/adolescent-selection1900-pictogram-natural-v1.webp",
+        "alt": "青年、思春期の若者のイメージ（一例）"
+    },
+    {
+        "word": "poll",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "世論調査；投票（数）",
+        "src": "assets/word-illustrations/poll-selection1900-pictogram-natural-v1.webp",
+        "alt": "世論調査；投票（数）のイメージ（一例）"
+    },
+    {
+        "word": "dementia",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "認知症",
+        "src": "assets/word-illustrations/dementia-selection1900-pictogram-natural-v1.webp",
+        "alt": "認知症のイメージ（一例）"
+    },
+    {
+        "word": "fatigue",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "疲労（≒exhaustion）",
+        "src": "assets/word-illustrations/fatigue-selection1900-pictogram-natural-v1.webp",
+        "alt": "疲労（≒exhaustion）のイメージ（一例）"
+    },
+    {
+        "word": "fingerprint",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "指紋",
+        "src": "assets/word-illustrations/fingerprint-selection1900-pictogram-natural-v1.webp",
+        "alt": "指紋のイメージ（一例）"
+    },
+    {
+        "word": "pesticide",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "農薬（殺虫剤・除草剤など）",
+        "src": "assets/word-illustrations/pesticide-selection1900-pictogram-natural-v1.webp",
+        "alt": "農薬（殺虫剤・除草剤など）のイメージ（一例）"
+    },
+    {
+        "word": "empathy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "感情移入，共感",
+        "src": "assets/word-illustrations/empathy-selection1900-pictogram-natural-v1.webp",
+        "alt": "感情移入，共感のイメージ（一例）"
+    },
+    {
+        "word": "cue",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "合図；手がかり；（次の演技の）キュー",
+        "src": "assets/word-illustrations/cue-selection1900-pictogram-natural-v2.webp",
+        "alt": "合図；手がかり；（次の演技の）キューのイメージ（一例）"
+    },
+    {
+        "word": "congress",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（米国などの）議会；会議",
+        "src": "assets/word-illustrations/congress-selection1900-pictogram-natural-v1.webp",
+        "alt": "（米国などの）議会；会議のイメージ（一例）"
+    },
+    {
+        "word": "millennium",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "千年間，千年紀",
+        "src": "assets/word-illustrations/millennium-selection1900-pictogram-natural-v2.webp",
+        "alt": "千年間，千年紀のイメージ（一例）"
+    },
+    {
+        "word": "Muslim",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "イスラム教徒",
+        "src": "assets/word-illustrations/muslim-selection1900-pictogram-natural-v1.webp",
+        "alt": "イスラム教徒のイメージ（一例）"
+    },
+    {
+        "word": "landmine",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "地雷",
+        "src": "assets/word-illustrations/landmine-selection1900-pictogram-natural-v1.webp",
+        "alt": "地雷のイメージ（一例）"
+    },
+    {
+        "word": "beverage",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "飲み物、飲料",
+        "src": "assets/word-illustrations/beverage-selection1900-pictogram-natural-v1.webp",
+        "alt": "飲み物、飲料のイメージ（一例）"
+    },
+    {
+        "word": "diabetes",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "糖尿病",
+        "src": "assets/word-illustrations/diabetes-selection1900-pictogram-natural-v1.webp",
+        "alt": "糖尿病のイメージ（一例）"
+    },
+    {
+        "word": "prey",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "獲物；犠牲者",
+        "src": "assets/word-illustrations/prey-selection1900-pictogram-natural-v1.webp",
+        "alt": "獲物；犠牲者のイメージ（一例）"
+    },
+    {
+        "word": "cortex",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "皮質；樹皮",
+        "src": "assets/word-illustrations/cortex-selection1900-pictogram-natural-v3.webp",
+        "alt": "皮質；樹皮のイメージ（一例）"
+    },
+    {
+        "word": "chamber",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（特定の目的の）部屋；議場；〔the ～〕議院",
+        "src": "assets/word-illustrations/chamber-selection1900-pictogram-natural-v1.webp",
+        "alt": "（特定の目的の）部屋；議場；〔the ～〕議院のイメージ（一例）"
+    },
+    {
+        "word": "offspring",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "子孫，子；成果",
+        "src": "assets/word-illustrations/offspring-selection1900-pictogram-natural-v1.webp",
+        "alt": "子孫，子；成果のイメージ（一例）"
+    },
+    {
+        "word": "famine",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "飢饉；（食糧・物資の）ひどい不足",
+        "src": "assets/word-illustrations/famine-selection1900-pictogram-natural-v1.webp",
+        "alt": "飢饉；（食糧・物資の）ひどい不足のイメージ（一例）"
+    },
+    {
+        "word": "commodity",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "商品；有用なもの",
+        "src": "assets/word-illustrations/commodity-selection1900-pictogram-natural-v1.webp",
+        "alt": "商品；有用なもののイメージ（一例）"
+    },
+    {
+        "word": "recipient",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "受け取る人；（臓器などの）被提供者",
+        "src": "assets/word-illustrations/recipient-selection1900-pictogram-natural-v1.webp",
+        "alt": "受け取る人；（臓器などの）被提供者のイメージ（一例）"
+    },
+    {
+        "word": "inability",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "無能，無力",
+        "src": "assets/word-illustrations/inability-selection1900-pictogram-natural-v1.webp",
+        "alt": "無能，無力のイメージ（一例）"
+    },
+    {
+        "word": "combat",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "戦闘；対立",
+        "src": "assets/word-illustrations/combat-selection1900-pictogram-natural-v1.webp",
+        "alt": "戦闘；対立のイメージ（一例）"
+    },
+    {
+        "word": "fraction",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "わずか（≒ bit），一部；分数",
+        "src": "assets/word-illustrations/fraction-selection1900-pictogram-natural-v2.webp",
+        "alt": "わずか（≒ bit），一部；分数のイメージ（一例）"
+    },
+    {
+        "word": "intuition",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "直観（力），直感",
+        "src": "assets/word-illustrations/intuition-selection1900-pictogram-natural-v1.webp",
+        "alt": "直観（力），直感のイメージ（一例）"
+    },
+    {
+        "word": "hierarchy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（社会の）階層制；〔the ～〕支配層",
+        "src": "assets/word-illustrations/hierarchy-selection1900-pictogram-natural-v1.webp",
+        "alt": "（社会の）階層制；〔the ～〕支配層のイメージ（一例）"
+    },
+    {
+        "word": "asset",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "〔通例～s〕資産；価値のあるもの；利点",
+        "src": "assets/word-illustrations/asset-selection1900-pictogram-natural-v1.webp",
+        "alt": "〔通例～s〕資産；価値のあるもの；利点のイメージ（一例）"
+    },
+    {
+        "word": "quest",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "探究",
+        "src": "assets/word-illustrations/quest-selection1900-pictogram-natural-v1.webp",
+        "alt": "探究のイメージ（一例）"
+    },
+    {
+        "word": "criterion",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（判断・評価の）基準",
+        "src": "assets/word-illustrations/criterion-selection1900-pictogram-natural-v3.webp",
+        "alt": "（判断・評価の）基準のイメージ（一例）"
+    },
+    {
+        "word": "mainstream",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（活動・思潮などの）主流；大勢",
+        "src": "assets/word-illustrations/mainstream-selection1900-pictogram-natural-v1.webp",
+        "alt": "（活動・思潮などの）主流；大勢のイメージ（一例）"
+    },
+    {
+        "word": "epidemic",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "流行（病）；蔓延",
+        "src": "assets/word-illustrations/epidemic-selection1900-pictogram-natural-v1.webp",
+        "alt": "流行（病）；蔓延のイメージ（一例）"
+    },
+    {
+        "word": "cluster",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "集団；（植物の）房，束",
+        "src": "assets/word-illustrations/cluster-selection1900-pictogram-natural-v1.webp",
+        "alt": "集団；（植物の）房，束のイメージ（一例）"
+    },
+    {
+        "word": "pollen",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "花粉",
+        "src": "assets/word-illustrations/pollen-selection1900-pictogram-natural-v1.webp",
+        "alt": "花粉のイメージ（一例）"
+    },
+    {
+        "word": "hive",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "ミツバチの巣（箱）；人の集まる所",
+        "src": "assets/word-illustrations/hive-selection1900-pictogram-natural-v1.webp",
+        "alt": "ミツバチの巣（箱）；人の集まる所のイメージ（一例）"
+    },
+    {
+        "word": "irrigation",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "灌漑",
+        "src": "assets/word-illustrations/irrigation-selection1900-pictogram-natural-v1.webp",
+        "alt": "灌漑のイメージ（一例）"
+    },
+    {
+        "word": "cuisine",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（独特の）料理，料理法",
+        "src": "assets/word-illustrations/cuisine-selection1900-pictogram-natural-v1.webp",
+        "alt": "（独特の）料理，料理法のイメージ（一例）"
+    },
+    {
+        "word": "intake",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "摂取量；受け入れ数；取り入れること",
+        "src": "assets/word-illustrations/intake-selection1900-pictogram-natural-v1.webp",
+        "alt": "摂取量；受け入れ数；取り入れることのイメージ（一例）"
+    },
+    {
+        "word": "spectrum",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "スペクトル；（波動・変動の）範囲",
+        "src": "assets/word-illustrations/spectrum-selection1900-pictogram-natural-v1.webp",
+        "alt": "スペクトル；（波動・変動の）範囲のイメージ（一例）"
+    },
+    {
+        "word": "kidney",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "腎臓",
+        "src": "assets/word-illustrations/kidney-selection1900-pictogram-natural-v2.webp",
+        "alt": "腎臓のイメージ（一例）"
+    },
+    {
+        "word": "skull",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "頭骨，頭蓋骨；頭脳",
+        "src": "assets/word-illustrations/skull-selection1900-pictogram-natural-v1.webp",
+        "alt": "頭骨，頭蓋骨；頭脳のイメージ（一例）"
+    },
+    {
+        "word": "internship",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "【米】 実務［医学］研修；研修期間",
+        "src": "assets/word-illustrations/internship-selection1900-pictogram-natural-v1.webp",
+        "alt": "【米】 実務［医学］研修；研修期間のイメージ（一例）"
+    },
+    {
+        "word": "transaction",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（商）取引；（人と人との）交流",
+        "src": "assets/word-illustrations/transaction-selection1900-pictogram-natural-v2.webp",
+        "alt": "（商）取引；（人と人との）交流のイメージ（一例）"
+    },
+    {
+        "word": "mutation",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "突然変異（体）；変化",
+        "src": "assets/word-illustrations/mutation-selection1900-pictogram-natural-v1.webp",
+        "alt": "突然変異（体）；変化のイメージ（一例）"
+    },
+    {
+        "word": "dairy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "〔集合的に〕乳製品；乳製品加工所［販売者］",
+        "src": "assets/word-illustrations/dairy-selection1900-pictogram-natural-v1.webp",
+        "alt": "〔集合的に〕乳製品；乳製品加工所［販売者］のイメージ（一例）"
+    },
+    {
+        "word": "posture",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "姿勢；心構え",
+        "src": "assets/word-illustrations/posture-selection1900-pictogram-natural-v1.webp",
+        "alt": "姿勢；心構えのイメージ（一例）"
+    },
+    {
+        "word": "census",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "国勢調査；交通調査",
+        "src": "assets/word-illustrations/census-selection1900-pictogram-natural-v1.webp",
+        "alt": "国勢調査；交通調査のイメージ（一例）"
+    },
+    {
+        "word": "maze",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "迷路（≒ labyrinth）；複雑に込み入ったもの",
+        "src": "assets/word-illustrations/maze-selection1900-pictogram-natural-v3.webp",
+        "alt": "迷路（≒ labyrinth）；複雑に込み入ったもののイメージ（一例）"
+    },
+    {
+        "word": "circulation",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "循環；流通；（新聞・雑誌の）発行部数",
+        "src": "assets/word-illustrations/circulation-selection1900-pictogram-natural-v1.webp",
+        "alt": "循環；流通；（新聞・雑誌の）発行部数のイメージ（一例）"
+    },
+    {
+        "word": "vacuum",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "真空；空虚",
+        "src": "assets/word-illustrations/vacuum-selection1900-pictogram-natural-v1.webp",
+        "alt": "真空；空虚のイメージ（一例）"
+    },
+    {
+        "word": "collision",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "衝突；対立",
+        "src": "assets/word-illustrations/collision-selection1900-pictogram-natural-v1.webp",
+        "alt": "衝突；対立のイメージ（一例）"
+    },
+    {
+        "word": "landmark",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（ある場所の）目印；画期的な出来事",
+        "src": "assets/word-illustrations/landmark-selection1900-pictogram-natural-v1.webp",
+        "alt": "（ある場所の）目印；画期的な出来事のイメージ（一例）"
+    },
+    {
+        "word": "surplus",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "余剰（⇔ shortage 不足），過剰；黒字",
+        "src": "assets/word-illustrations/surplus-selection1900-pictogram-natural-v1.webp",
+        "alt": "余剰（⇔ shortage 不足），過剰；黒字のイメージ（一例）"
+    },
+    {
+        "word": "sweatshop",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "搾取工場",
+        "src": "assets/word-illustrations/sweatshop-selection1900-pictogram-natural-v1.webp",
+        "alt": "搾取工場のイメージ（一例）"
+    },
+    {
+        "word": "clash",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "衝突；対立；かち合うこと；ガチャンという音",
+        "src": "assets/word-illustrations/clash-selection1900-pictogram-natural-v1.webp",
+        "alt": "衝突；対立；かち合うこと；ガチャンという音のイメージ（一例）"
+    },
+    {
+        "word": "sociology",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "社会学",
+        "src": "assets/word-illustrations/sociology-selection1900-pictogram-natural-v1.webp",
+        "alt": "社会学のイメージ（一例）"
+    },
+    {
+        "word": "realm",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "領域；領土",
+        "src": "assets/word-illustrations/realm-selection1900-pictogram-natural-v1.webp",
+        "alt": "領域；領土のイメージ（一例）"
+    },
+    {
+        "word": "domain",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "分野；領域；ドメイン（＝ domain name）",
+        "src": "assets/word-illustrations/domain-selection1900-pictogram-natural-v1.webp",
+        "alt": "分野；領域；ドメイン（＝ domain name）のイメージ（一例）"
+    },
+    {
+        "word": "algorithm",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "アルゴリズム；問題解決の手順",
+        "src": "assets/word-illustrations/algorithm-selection1900-pictogram-natural-v2.webp",
+        "alt": "アルゴリズム；問題解決の手順のイメージ（一例）"
+    },
+    {
+        "word": "prairie",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "大草原",
+        "src": "assets/word-illustrations/prairie-selection1900-pictogram-natural-v1.webp",
+        "alt": "大草原のイメージ（一例）"
+    },
+    {
+        "word": "placebo",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "偽薬，プラシーボ；気休め",
+        "src": "assets/word-illustrations/placebo-selection1900-pictogram-natural-v2.webp",
+        "alt": "偽薬，プラシーボ；気休めのイメージ（一例）"
+    },
+    {
+        "word": "spouse",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "配偶者",
+        "src": "assets/word-illustrations/spouse-selection1900-pictogram-natural-v1.webp",
+        "alt": "配偶者のイメージ（一例）"
+    },
+    {
+        "word": "makeup",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "化粧；化粧品；構成；性質",
+        "src": "assets/word-illustrations/makeup-selection1900-pictogram-natural-v1.webp",
+        "alt": "化粧；化粧品；構成；性質のイメージ（一例）"
+    },
+    {
+        "word": "mummy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "ミイラ；【英】ママ，お母さん（＝ 【米】mommy）",
+        "src": "assets/word-illustrations/mummy-selection1900-pictogram-natural-v1.webp",
+        "alt": "ミイラ；【英】ママ，お母さん（＝ 【米】mommy）のイメージ（一例）"
+    },
+    {
+        "word": "odor",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "におい；気配",
+        "src": "assets/word-illustrations/odor-selection1900-pictogram-natural-v1.webp",
+        "alt": "におい；気配のイメージ（一例）"
+    },
+    {
+        "word": "intellect",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "知性；〔the ～（s）〕知識人",
+        "src": "assets/word-illustrations/intellect-selection1900-pictogram-natural-v1.webp",
+        "alt": "知性；〔the ～（s）〕知識人のイメージ（一例）"
+    },
+    {
+        "word": "manuscript",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（手書きの）原稿；写本",
+        "src": "assets/word-illustrations/manuscript-selection1900-pictogram-natural-v1.webp",
+        "alt": "（手書きの）原稿；写本のイメージ（一例）"
+    },
+    {
+        "word": "paradigm",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "理論的枠組み，パラダイム；模範",
+        "src": "assets/word-illustrations/paradigm-selection1900-pictogram-natural-v2.webp",
+        "alt": "理論的枠組み，パラダイム；模範のイメージ（一例）"
+    },
+    {
+        "word": "enlightenment",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "啓蒙，啓発",
+        "src": "assets/word-illustrations/enlightenment-selection1900-pictogram-natural-v1.webp",
+        "alt": "啓蒙，啓発のイメージ（一例）"
+    },
+    {
+        "word": "timber",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "【英】 木材（≒ 【米】lumber）；樹木",
+        "src": "assets/word-illustrations/timber-selection1900-pictogram-natural-v1.webp",
+        "alt": "【英】 木材（≒ 【米】lumber）；樹木のイメージ（一例）"
+    },
+    {
+        "word": "autonomy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（個人の）自律；自治（権）；自治体",
+        "src": "assets/word-illustrations/autonomy-selection1900-pictogram-natural-v2.webp",
+        "alt": "（個人の）自律；自治（権）；自治体のイメージ（一例）"
+    },
+    {
+        "word": "discourse",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "話し合い，会話；講演；論説",
+        "src": "assets/word-illustrations/discourse-selection1900-pictogram-natural-v1.webp",
+        "alt": "話し合い，会話；講演；論説のイメージ（一例）"
+    },
+    {
+        "word": "glossary",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "用語小辞典；用語集",
+        "src": "assets/word-illustrations/glossary-selection1900-pictogram-natural-v1.webp",
+        "alt": "用語小辞典；用語集のイメージ（一例）"
+    },
+    {
+        "word": "archive",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "〔しばしば～s〕記録文書，公文書；公文書保管所；（コンピューターの）アーカイブ",
+        "src": "assets/word-illustrations/archive-selection1900-pictogram-natural-v1.webp",
+        "alt": "〔しばしば～s〕記録文書，公文書；公文書保管所；（コンピューターの）アーカイブのイメージ（一例）"
+    },
+    {
+        "word": "legacy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "遺産",
+        "src": "assets/word-illustrations/legacy-selection1900-pictogram-natural-v1.webp",
+        "alt": "遺産のイメージ（一例）"
+    },
+    {
+        "word": "anthropology",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "人類学",
+        "src": "assets/word-illustrations/anthropology-selection1900-pictogram-natural-v1.webp",
+        "alt": "人類学のイメージ（一例）"
+    },
+    {
+        "word": "psychiatrist",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "精神科医",
+        "src": "assets/word-illustrations/psychiatrist-selection1900-pictogram-natural-v1.webp",
+        "alt": "精神科医のイメージ（一例）"
+    },
+    {
+        "word": "irony",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "皮肉",
+        "src": "assets/word-illustrations/irony-selection1900-pictogram-natural-v2.webp",
+        "alt": "皮肉のイメージ（一例）"
+    },
+    {
+        "word": "defect",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "欠陥；不足",
+        "src": "assets/word-illustrations/defect-selection1900-pictogram-natural-v1.webp",
+        "alt": "欠陥；不足のイメージ（一例）"
+    },
+    {
+        "word": "longevity",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "長寿；寿命；長年勤続",
+        "src": "assets/word-illustrations/longevity-selection1900-pictogram-natural-v1.webp",
+        "alt": "長寿；寿命；長年勤続のイメージ（一例）"
+    },
+    {
+        "word": "sentiment",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "感情；感想；感傷",
+        "src": "assets/word-illustrations/sentiment-selection1900-pictogram-natural-v1.webp",
+        "alt": "感情；感想；感傷のイメージ（一例）"
+    },
+    {
+        "word": "tactics",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "作戦，方策；戦術，戦法",
+        "src": "assets/word-illustrations/tactics-selection1900-pictogram-natural-v3.webp",
+        "alt": "作戦，方策；戦術，戦法のイメージ（一例）"
+    },
+    {
+        "word": "textile",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "織物；繊維（産業）",
+        "src": "assets/word-illustrations/textile-selection1900-pictogram-natural-v1.webp",
+        "alt": "織物；繊維（産業）のイメージ（一例）"
+    },
+    {
+        "word": "metabolism",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（新陳）代謝，代謝作用",
+        "src": "assets/word-illustrations/metabolism-selection1900-pictogram-natural-v1.webp",
+        "alt": "（新陳）代謝，代謝作用のイメージ（一例）"
+    },
+    {
+        "word": "grid",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（電気などの）供給網；格子（模様）；碁盤目",
+        "src": "assets/word-illustrations/grid-selection1900-pictogram-natural-v1.webp",
+        "alt": "（電気などの）供給網；格子（模様）；碁盤目のイメージ（一例）"
+    },
+    {
+        "word": "friction",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "不和；摩擦",
+        "src": "assets/word-illustrations/friction-selection1900-pictogram-natural-v1.webp",
+        "alt": "不和；摩擦のイメージ（一例）"
+    },
+    {
+        "word": "monopoly",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "独占（権）",
+        "src": "assets/word-illustrations/monopoly-selection1900-pictogram-natural-v1.webp",
+        "alt": "独占（権）のイメージ（一例）"
+    },
+    {
+        "word": "staple",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "必需食品；主要産物",
+        "src": "assets/word-illustrations/staple-selection1900-pictogram-natural-v1.webp",
+        "alt": "必需食品；主要産物のイメージ（一例）"
+    },
+    {
+        "word": "vendor",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "物売り，行商人；自動販売機",
+        "src": "assets/word-illustrations/vendor-selection1900-pictogram-natural-v1.webp",
+        "alt": "物売り，行商人；自動販売機のイメージ（一例）"
+    },
+    {
+        "word": "predecessor",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "前任者（⇔ successor 後継者）；前のもの",
+        "src": "assets/word-illustrations/predecessor-selection1900-pictogram-natural-v1.webp",
+        "alt": "前任者（⇔ successor 後継者）；前のもののイメージ（一例）"
+    },
+    {
+        "word": "duration",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（時間の）継続，持続（時間）",
+        "src": "assets/word-illustrations/duration-selection1900-pictogram-natural-v2.webp",
+        "alt": "（時間の）継続，持続（時間）のイメージ（一例）"
+    },
+    {
+        "word": "geometry",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "幾何学",
+        "src": "assets/word-illustrations/geometry-selection1900-pictogram-natural-v1.webp",
+        "alt": "幾何学のイメージ（一例）"
+    },
+    {
+        "word": "symmetry",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（左右）対称（⇔ asymmetry 非対称）；調和",
+        "src": "assets/word-illustrations/symmetry-selection1900-pictogram-natural-v1.webp",
+        "alt": "（左右）対称（⇔ asymmetry 非対称）；調和のイメージ（一例）"
+    },
+    {
+        "word": "premium",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "保険料；プレミア；景品",
+        "src": "assets/word-illustrations/premium-selection1900-pictogram-natural-v1.webp",
+        "alt": "保険料；プレミア；景品のイメージ（一例）"
+    },
+    {
+        "word": "protocol",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（条約）議定書；外交儀礼；プロトコル",
+        "src": "assets/word-illustrations/protocol-selection1900-pictogram-natural-v1.webp",
+        "alt": "（条約）議定書；外交儀礼；プロトコルのイメージ（一例）"
+    },
+    {
+        "word": "specimen",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "標本；実例",
+        "src": "assets/word-illustrations/specimen-selection1900-pictogram-natural-v1.webp",
+        "alt": "標本；実例のイメージ（一例）"
+    },
+    {
+        "word": "reign",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "治世；統治",
+        "src": "assets/word-illustrations/reign-selection1900-pictogram-natural-v1.webp",
+        "alt": "治世；統治のイメージ（一例）"
+    },
+    {
+        "word": "diplomacy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "外交（的手腕）",
+        "src": "assets/word-illustrations/diplomacy-selection1900-pictogram-natural-v1.webp",
+        "alt": "外交（的手腕）のイメージ（一例）"
+    },
+    {
+        "word": "plight",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "窮状（＝ predicament）；（悪い）状態",
+        "src": "assets/word-illustrations/plight-selection1900-pictogram-natural-v1.webp",
+        "alt": "窮状（＝ predicament）；（悪い）状態のイメージ（一例）"
+    },
+    {
+        "word": "solitude",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "ひとりでいること；孤独",
+        "src": "assets/word-illustrations/solitude-selection1900-pictogram-natural-v1.webp",
+        "alt": "ひとりでいること；孤独のイメージ（一例）"
+    },
+    {
+        "word": "fallacy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "誤った考え，誤信；錯誤",
+        "src": "assets/word-illustrations/fallacy-selection1900-pictogram-natural-v1.webp",
+        "alt": "誤った考え，誤信；錯誤のイメージ（一例）"
+    },
+    {
+        "word": "latitude",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "緯度；（行動・思想などの）許容範囲",
+        "src": "assets/word-illustrations/latitude-selection1900-pictogram-natural-v1.webp",
+        "alt": "緯度；（行動・思想などの）許容範囲のイメージ（一例）"
+    },
+    {
+        "word": "eclipse",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（日食・月食などの）食；（名声などの）失墜",
+        "src": "assets/word-illustrations/eclipse-selection1900-pictogram-natural-v2.webp",
+        "alt": "（日食・月食などの）食；（名声などの）失墜のイメージ（一例）"
+    },
+    {
+        "word": "erosion",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "浸食；衰退",
+        "src": "assets/word-illustrations/erosion-selection1900-pictogram-natural-v2.webp",
+        "alt": "浸食；衰退のイメージ（一例）"
+    },
+    {
+        "word": "archaeology",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "考古学",
+        "src": "assets/word-illustrations/archaeology-selection1900-pictogram-natural-v1.webp",
+        "alt": "考古学のイメージ（一例）"
+    },
+    {
+        "word": "errand",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "（人の）使い，使い走り；用件",
+        "src": "assets/word-illustrations/errand-selection1900-pictogram-natural-v1.webp",
+        "alt": "（人の）使い，使い走り；用件のイメージ（一例）"
+    },
+    {
+        "word": "rhetoric",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "修辞（法）；美辞麗句",
+        "src": "assets/word-illustrations/rhetoric-selection1900-pictogram-natural-v1.webp",
+        "alt": "修辞（法）；美辞麗句のイメージ（一例）"
+    },
+    {
+        "word": "congestion",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "混雑",
+        "src": "assets/word-illustrations/congestion-selection1900-pictogram-natural-v1.webp",
+        "alt": "混雑のイメージ（一例）"
+    },
+    {
+        "word": "sewage",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "下水",
+        "src": "assets/word-illustrations/sewage-selection1900-pictogram-natural-v1.webp",
+        "alt": "下水のイメージ（一例）"
+    },
+    {
+        "word": "subsidy",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "補助金；報奨金",
+        "src": "assets/word-illustrations/subsidy-selection1900-pictogram-natural-v1.webp",
+        "alt": "補助金；報奨金のイメージ（一例）"
+    },
+    {
+        "word": "attorney",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "【米】 弁護士；代理人",
+        "src": "assets/word-illustrations/attorney-selection1900-pictogram-natural-v1.webp",
+        "alt": "【米】 弁護士；代理人のイメージ（一例）"
+    },
+    {
+        "word": "bulk",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "〔the ～〕（～の）大半（of）；大きさ；大量",
+        "src": "assets/word-illustrations/bulk-selection1900-pictogram-natural-v1.webp",
+        "alt": "〔the ～〕（～の）大半（of）；大きさ；大量のイメージ（一例）"
+    },
+    {
+        "word": "synthesis",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "合成；総合（⇔ analysis ⇒ 363）",
+        "src": "assets/word-illustrations/synthesis-selection1900-pictogram-natural-v1.webp",
+        "alt": "合成；総合（⇔ analysis ⇒ 363）のイメージ（一例）"
+    },
+    {
+        "word": "greed",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "強欲",
+        "src": "assets/word-illustrations/greed-selection1900-pictogram-natural-v1.webp",
+        "alt": "強欲のイメージ（一例）"
+    },
+    {
+        "word": "bribe",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "賄賂",
+        "src": "assets/word-illustrations/bribe-selection1900-pictogram-natural-v1.webp",
+        "alt": "賄賂のイメージ（一例）"
+    },
+    {
+        "word": "texture",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "感触，手触り；本質；質感",
+        "src": "assets/word-illustrations/texture-selection1900-pictogram-natural-v1.webp",
+        "alt": "感触，手触り；本質；質感のイメージ（一例）"
+    },
+    {
+        "word": "harassment",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "嫌がらせ，ハラスメント",
+        "src": "assets/word-illustrations/harassment-selection1900-pictogram-natural-v1.webp",
+        "alt": "嫌がらせ，ハラスメントのイメージ（一例）"
+    },
+    {
+        "word": "doctrine",
+        "level": "selection1900",
+        "pos": "名",
+        "meaning": "教義；【米】（政策上の）主義",
+        "src": "assets/word-illustrations/doctrine-selection1900-pictogram-natural-v1.webp",
+        "alt": "教義；【米】（政策上の）主義のイメージ（一例）"
+    },
+    {
+        "word": "wheel",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "車輪、ハンドル",
+        "src": "assets/word-illustrations/wheel-sys_2000-pictogram-natural-v2.webp",
+        "alt": "車輪、ハンドルのイメージ（一例）"
+    },
+    {
+        "word": "sight",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "見ること、光景、視力",
+        "src": "assets/word-illustrations/sight-sys_2000-pictogram-natural-v1.webp",
+        "alt": "見ること、光景、視力のイメージ（一例）"
+    },
+    {
+        "word": "site",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "用地",
+        "src": "assets/word-illustrations/site-sys_2000-pictogram-natural-v1.webp",
+        "alt": "用地のイメージ（一例）"
+    },
+    {
+        "word": "survey",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "調査",
+        "src": "assets/word-illustrations/survey-sys_2000-pictogram-natural-v1.webp",
+        "alt": "調査のイメージ（一例）"
+    },
+    {
+        "word": "yard",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "庭",
+        "src": "assets/word-illustrations/yard-sys_2000-pictogram-natural-v3.webp",
+        "alt": "庭のイメージ（一例）"
+    },
+    {
+        "word": "sum",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "金額、合計、要約",
+        "src": "assets/word-illustrations/sum-sys_2000-pictogram-natural-v1.webp",
+        "alt": "金額、合計、要約のイメージ（一例）"
+    },
+    {
+        "word": "prey",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "獲物、えじき",
+        "src": "assets/word-illustrations/prey-sys_2000-pictogram-natural-v1.webp",
+        "alt": "獲物、えじきのイメージ（一例）"
+    },
+    {
+        "word": "distress",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "苦しみ、悲嘆、苦難",
+        "src": "assets/word-illustrations/distress-sys_2000-pictogram-natural-v1.webp",
+        "alt": "苦しみ、悲嘆、苦難のイメージ（一例）"
+    },
+    {
+        "word": "circulation",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "循環、流通、発行部数",
+        "src": "assets/word-illustrations/circulation-sys_2000-pictogram-natural-v2.webp",
+        "alt": "循環、流通、発行部数のイメージ（一例）"
+    },
+    {
+        "word": "lord",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "神",
+        "src": "assets/word-illustrations/lord-sys_2000-pictogram-natural-v1.webp",
+        "alt": "神のイメージ（一例）"
+    },
+    {
+        "word": "gravity",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "重力",
+        "src": "assets/word-illustrations/gravity-sys_2000-pictogram-natural-v1.webp",
+        "alt": "重力のイメージ（一例）"
+    },
+    {
+        "word": "alien",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "外国の、異質な",
+        "src": "assets/word-illustrations/alien-sys_2000-pictogram-natural-v1.webp",
+        "alt": "外国の、異質なのイメージ（一例）"
+    },
+    {
+        "word": "screaming",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "悲鳴をあげる",
+        "src": "assets/word-illustrations/screaming-sys_2000-pictogram-natural-v1.webp",
+        "alt": "悲鳴をあげるのイメージ（一例）"
+    },
+    {
+        "word": "colony",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "植民地",
+        "src": "assets/word-illustrations/colony-sys_2000-pictogram-natural-v1.webp",
+        "alt": "植民地のイメージ（一例）"
+    },
+    {
+        "word": "merit",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "長所",
+        "src": "assets/word-illustrations/merit-sys_2000-pictogram-natural-v1.webp",
+        "alt": "長所のイメージ（一例）"
+    },
+    {
+        "word": "circumstances",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "状況",
+        "src": "assets/word-illustrations/circumstances-sys_2000-pictogram-natural-v1.webp",
+        "alt": "状況のイメージ（一例）"
+    },
+    {
+        "word": "boundary",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "境界",
+        "src": "assets/word-illustrations/boundary-sys_2000-pictogram-natural-v1.webp",
+        "alt": "境界のイメージ（一例）"
+    },
+    {
+        "word": "fossil",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "化石",
+        "src": "assets/word-illustrations/fossil-sys_2000-pictogram-natural-v1.webp",
+        "alt": "化石のイメージ（一例）"
+    },
+    {
+        "word": "hypothesis",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "仮説",
+        "src": "assets/word-illustrations/hypothesis-sys_2000-pictogram-natural-v1.webp",
+        "alt": "仮説のイメージ（一例）"
+    },
+    {
+        "word": "hemisphere",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "半球",
+        "src": "assets/word-illustrations/hemisphere-sys_2000-pictogram-natural-v1.webp",
+        "alt": "半球のイメージ（一例）"
+    },
+    {
+        "word": "mechanism",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "仕組み",
+        "src": "assets/word-illustrations/mechanism-sys_2000-pictogram-natural-v1.webp",
+        "alt": "仕組みのイメージ（一例）"
+    },
+    {
+        "word": "anthropologist",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "人類学者",
+        "src": "assets/word-illustrations/anthropologist-sys_2000-pictogram-natural-v1.webp",
+        "alt": "人類学者のイメージ（一例）"
+    },
+    {
+        "word": "antibiotic",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "抗生物質",
+        "src": "assets/word-illustrations/antibiotic-sys_2000-pictogram-natural-v1.webp",
+        "alt": "抗生物質のイメージ（一例）"
+    },
+    {
+        "word": "famine",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "飢饉",
+        "src": "assets/word-illustrations/famine-sys_2000-pictogram-natural-v1.webp",
+        "alt": "飢饉のイメージ（一例）"
+    },
+    {
+        "word": "congress",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "議会",
+        "src": "assets/word-illustrations/congress-sys_2000-pictogram-natural-v1.webp",
+        "alt": "議会のイメージ（一例）"
+    },
+    {
+        "word": "diversity",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "多様性",
+        "src": "assets/word-illustrations/diversity-sys_2000-pictogram-natural-v1.webp",
+        "alt": "多様性のイメージ（一例）"
+    },
+    {
+        "word": "pioneer",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "先駆者",
+        "src": "assets/word-illustrations/pioneer-sys_2000-pictogram-natural-v1.webp",
+        "alt": "先駆者のイメージ（一例）"
+    },
+    {
+        "word": "grocery",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "食料品",
+        "src": "assets/word-illustrations/grocery-sys_2000-pictogram-natural-v1.webp",
+        "alt": "食料品のイメージ（一例）"
+    },
+    {
+        "word": "dialect",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "方言",
+        "src": "assets/word-illustrations/dialect-sys_2000-pictogram-natural-v1.webp",
+        "alt": "方言のイメージ（一例）"
+    },
+    {
+        "word": "youngster",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "子供",
+        "src": "assets/word-illustrations/youngster-sys_2000-pictogram-natural-v1.webp",
+        "alt": "子供のイメージ（一例）"
+    },
+    {
+        "word": "mammal",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "哺乳類",
+        "src": "assets/word-illustrations/mammal-sys_2000-pictogram-natural-v1.webp",
+        "alt": "哺乳類のイメージ（一例）"
+    },
+    {
+        "word": "nursing",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "看護",
+        "src": "assets/word-illustrations/nursing-sys_2000-pictogram-natural-v1.webp",
+        "alt": "看護のイメージ（一例）"
+    },
+    {
+        "word": "bullying",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "いじめ",
+        "src": "assets/word-illustrations/bullying-sys_2000-pictogram-natural-v1.webp",
+        "alt": "いじめのイメージ（一例）"
+    },
+    {
+        "word": "protein",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "タンパク質",
+        "src": "assets/word-illustrations/protein-sys_2000-pictogram-natural-v1.webp",
+        "alt": "タンパク質のイメージ（一例）"
+    },
+    {
+        "word": "emission",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "排出",
+        "src": "assets/word-illustrations/emission-sys_2000-pictogram-natural-v1.webp",
+        "alt": "排出のイメージ（一例）"
+    },
+    {
+        "word": "transplant",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "移植",
+        "src": "assets/word-illustrations/transplant-sys_2000-pictogram-natural-v2.webp",
+        "alt": "移植のイメージ（一例）"
+    },
+    {
+        "word": "density",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "密度",
+        "src": "assets/word-illustrations/density-sys_2000-pictogram-natural-v1.webp",
+        "alt": "密度のイメージ（一例）"
+    },
+    {
+        "word": "adolescent",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "思春期の",
+        "src": "assets/word-illustrations/adolescent-sys_2000-pictogram-natural-v1.webp",
+        "alt": "思春期ののイメージ（一例）"
+    },
+    {
+        "word": "advocate",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "主張する",
+        "src": "assets/word-illustrations/advocate-sys_2000-pictogram-natural-v1.webp",
+        "alt": "主張するのイメージ（一例）"
+    },
+    {
+        "word": "poll",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "世論調査、投票",
+        "src": "assets/word-illustrations/poll-sys_2000-pictogram-natural-v1.webp",
+        "alt": "世論調査、投票のイメージ（一例）"
+    },
+    {
+        "word": "norm",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "規範",
+        "src": "assets/word-illustrations/norm-sys_2000-pictogram-natural-v1.webp",
+        "alt": "規範のイメージ（一例）"
+    },
+    {
+        "word": "disgust",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "嫌悪",
+        "src": "assets/word-illustrations/disgust-sys_2000-pictogram-natural-v2.webp",
+        "alt": "嫌悪のイメージ（一例）"
+    },
+    {
+        "word": "premise",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "前提",
+        "src": "assets/word-illustrations/premise-sys_2000-pictogram-natural-v1.webp",
+        "alt": "前提のイメージ（一例）"
+    },
+    {
+        "word": "asset",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "財産",
+        "src": "assets/word-illustrations/asset-sys_2000-pictogram-natural-v1.webp",
+        "alt": "財産のイメージ（一例）"
+    },
+    {
+        "word": "lag",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "遅れ",
+        "src": "assets/word-illustrations/lag-sys_2000-pictogram-natural-v1.webp",
+        "alt": "遅れのイメージ（一例）"
+    },
+    {
+        "word": "counterpart",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "相当するもの",
+        "src": "assets/word-illustrations/counterpart-sys_2000-pictogram-natural-v1.webp",
+        "alt": "相当するもののイメージ（一例）"
+    },
+    {
+        "word": "spectrum",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "変動範囲、領域",
+        "src": "assets/word-illustrations/spectrum-sys_2000-pictogram-natural-v2.webp",
+        "alt": "変動範囲、領域のイメージ（一例）"
+    },
+    {
+        "word": "Muslim",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "イスラム教の",
+        "src": "assets/word-illustrations/muslim-sys_2000-pictogram-natural-v1.webp",
+        "alt": "イスラム教ののイメージ（一例）"
+    },
+    {
+        "word": "fatigue",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "疲労",
+        "src": "assets/word-illustrations/fatigue-sys_2000-pictogram-natural-v1.webp",
+        "alt": "疲労のイメージ（一例）"
+    },
+    {
+        "word": "illusion",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "幻想、錯覚",
+        "src": "assets/word-illustrations/illusion-sys_2000-pictogram-natural-v2.webp",
+        "alt": "幻想、錯覚のイメージ（一例）"
+    },
+    {
+        "word": "intake",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "摂取量",
+        "src": "assets/word-illustrations/intake-sys_2000-pictogram-natural-v1.webp",
+        "alt": "摂取量のイメージ（一例）"
+    },
+    {
+        "word": "offspring",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "子孫",
+        "src": "assets/word-illustrations/offspring-sys_2000-pictogram-natural-v1.webp",
+        "alt": "子孫のイメージ（一例）"
+    },
+    {
+        "word": "self-esteem",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "自尊心",
+        "src": "assets/word-illustrations/self-esteem-sys_2000-pictogram-natural-v1.webp",
+        "alt": "自尊心のイメージ（一例）"
+    },
+    {
+        "word": "odds",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "可能性",
+        "src": "assets/word-illustrations/odds-sys_2000-pictogram-natural-v1.webp",
+        "alt": "可能性のイメージ（一例）"
+    },
+    {
+        "word": "ratio",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "比率",
+        "src": "assets/word-illustrations/ratio-sys_2000-pictogram-natural-v1.webp",
+        "alt": "比率のイメージ（一例）"
+    },
+    {
+        "word": "sentiment",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "感情",
+        "src": "assets/word-illustrations/sentiment-sys_2000-pictogram-natural-v1.webp",
+        "alt": "感情のイメージ（一例）"
+    },
+    {
+        "word": "chore",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "雑用",
+        "src": "assets/word-illustrations/chore-sys_2000-pictogram-natural-v1.webp",
+        "alt": "雑用のイメージ（一例）"
+    },
+    {
+        "word": "bias",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "偏見",
+        "src": "assets/word-illustrations/bias-sys_2000-pictogram-natural-v1.webp",
+        "alt": "偏見のイメージ（一例）"
+    },
+    {
+        "word": "domain",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "領域",
+        "src": "assets/word-illustrations/domain-sys_2000-pictogram-natural-v1.webp",
+        "alt": "領域のイメージ（一例）"
+    },
+    {
+        "word": "galaxy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "星雲",
+        "src": "assets/word-illustrations/galaxy-sys_2000-pictogram-natural-v1.webp",
+        "alt": "星雲のイメージ（一例）"
+    },
+    {
+        "word": "criteria",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "基準",
+        "src": "assets/word-illustrations/criteria-sys_2000-pictogram-natural-v1.webp",
+        "alt": "基準のイメージ（一例）"
+    },
+    {
+        "word": "surplus",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "余剰",
+        "src": "assets/word-illustrations/surplus-sys_2000-pictogram-natural-v1.webp",
+        "alt": "余剰のイメージ（一例）"
+    },
+    {
+        "word": "primate",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "霊長類",
+        "src": "assets/word-illustrations/primate-sys_2000-pictogram-natural-v1.webp",
+        "alt": "霊長類のイメージ（一例）"
+    },
+    {
+        "word": "diagnosis",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "診断",
+        "src": "assets/word-illustrations/diagnosis-sys_2000-pictogram-natural-v1.webp",
+        "alt": "診断のイメージ（一例）"
+    },
+    {
+        "word": "antiquity",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "古代、古物",
+        "src": "assets/word-illustrations/antiquity-sys_2000-pictogram-natural-v1.webp",
+        "alt": "古代、古物のイメージ（一例）"
+    },
+    {
+        "word": "fraction",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "ほんの一部",
+        "src": "assets/word-illustrations/fraction-sys_2000-pictogram-natural-v1.webp",
+        "alt": "ほんの一部のイメージ（一例）"
+    },
+    {
+        "word": "irony",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "皮肉",
+        "src": "assets/word-illustrations/irony-sys_2000-pictogram-natural-v1.webp",
+        "alt": "皮肉のイメージ（一例）"
+    },
+    {
+        "word": "defect",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "欠陥",
+        "src": "assets/word-illustrations/defect-sys_2000-pictogram-natural-v1.webp",
+        "alt": "欠陥のイメージ（一例）"
+    },
+    {
+        "word": "erosion",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "浸食",
+        "src": "assets/word-illustrations/erosion-sys_2000-pictogram-natural-v1.webp",
+        "alt": "浸食のイメージ（一例）"
+    },
+    {
+        "word": "landmark",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "名所",
+        "src": "assets/word-illustrations/landmark-sys_2000-pictogram-natural-v2.webp",
+        "alt": "名所のイメージ（一例）"
+    },
+    {
+        "word": "dementia",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "認知症",
+        "src": "assets/word-illustrations/dementia-sys_2000-pictogram-natural-v1.webp",
+        "alt": "認知症のイメージ（一例）"
+    },
+    {
+        "word": "collision",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "衝突、対立",
+        "src": "assets/word-illustrations/collision-sys_2000-pictogram-natural-v1.webp",
+        "alt": "衝突、対立のイメージ（一例）"
+    },
+    {
+        "word": "cue",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "合図",
+        "src": "assets/word-illustrations/cue-sys_2000-pictogram-natural-v2.webp",
+        "alt": "合図のイメージ（一例）"
+    },
+    {
+        "word": "commodity",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "商品",
+        "src": "assets/word-illustrations/commodity-sys_2000-pictogram-natural-v1.webp",
+        "alt": "商品のイメージ（一例）"
+    },
+    {
+        "word": "saint",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "聖",
+        "src": "assets/word-illustrations/saint-sys_2000-pictogram-natural-v1.webp",
+        "alt": "聖のイメージ（一例）"
+    },
+    {
+        "word": "predator",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "捕食動物",
+        "src": "assets/word-illustrations/predator-sys_2000-pictogram-natural-v1.webp",
+        "alt": "捕食動物のイメージ（一例）"
+    },
+    {
+        "word": "intervention",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "介入",
+        "src": "assets/word-illustrations/intervention-sys_2000-pictogram-natural-v1.webp",
+        "alt": "介入のイメージ（一例）"
+    },
+    {
+        "word": "pesticide",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "殺虫剤",
+        "src": "assets/word-illustrations/pesticide-sys_2000-pictogram-natural-v1.webp",
+        "alt": "殺虫剤のイメージ（一例）"
+    },
+    {
+        "word": "kindergarten",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "幼稚園",
+        "src": "assets/word-illustrations/kindergarten-sys_2000-pictogram-natural-v1.webp",
+        "alt": "幼稚園のイメージ（一例）"
+    },
+    {
+        "word": "diabetes",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "糖尿病",
+        "src": "assets/word-illustrations/diabetes-sys_2000-pictogram-natural-v1.webp",
+        "alt": "糖尿病のイメージ（一例）"
+    },
+    {
+        "word": "obesity",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "肥満",
+        "src": "assets/word-illustrations/obesity-sys_2000-pictogram-natural-v1.webp",
+        "alt": "肥満のイメージ（一例）"
+    },
+    {
+        "word": "patent",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "特許",
+        "src": "assets/word-illustrations/patent-sys_2000-pictogram-natural-v1.webp",
+        "alt": "特許のイメージ（一例）"
+    },
+    {
+        "word": "spouse",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "配偶者",
+        "src": "assets/word-illustrations/spouse-sys_2000-pictogram-natural-v1.webp",
+        "alt": "配偶者のイメージ（一例）"
+    },
+    {
+        "word": "epidemic",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "流行",
+        "src": "assets/word-illustrations/epidemic-sys_2000-pictogram-natural-v1.webp",
+        "alt": "流行のイメージ（一例）"
+    },
+    {
+        "word": "mortality",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "死亡",
+        "src": "assets/word-illustrations/mortality-sys_2000-pictogram-natural-v1.webp",
+        "alt": "死亡のイメージ（一例）"
+    },
+    {
+        "word": "beverage",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "飲み物",
+        "src": "assets/word-illustrations/beverage-sys_2000-pictogram-natural-v1.webp",
+        "alt": "飲み物のイメージ（一例）"
+    },
+    {
+        "word": "metabolism",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "新陳代謝",
+        "src": "assets/word-illustrations/metabolism-sys_2000-pictogram-natural-v1.webp",
+        "alt": "新陳代謝のイメージ（一例）"
+    },
+    {
+        "word": "per capita",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "一人当たりの",
+        "src": "assets/word-illustrations/per-capita-sys_2000-pictogram-natural-v1.webp",
+        "alt": "一人当たりののイメージ（一例）"
+    },
+    {
+        "word": "textile",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "織物",
+        "src": "assets/word-illustrations/textile-sys_2000-pictogram-natural-v1.webp",
+        "alt": "織物のイメージ（一例）"
+    },
+    {
+        "word": "timber",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "材木",
+        "src": "assets/word-illustrations/timber-sys_2000-pictogram-natural-v1.webp",
+        "alt": "材木のイメージ（一例）"
+    },
+    {
+        "word": "riot",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "暴動",
+        "src": "assets/word-illustrations/riot-sys_2000-pictogram-natural-v1.webp",
+        "alt": "暴動のイメージ（一例）"
+    },
+    {
+        "word": "apparatus",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "装置",
+        "src": "assets/word-illustrations/apparatus-sys_2000-pictogram-natural-v1.webp",
+        "alt": "装置のイメージ（一例）"
+    },
+    {
+        "word": "heir",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "相続人",
+        "src": "assets/word-illustrations/heir-sys_2000-pictogram-natural-v1.webp",
+        "alt": "相続人のイメージ（一例）"
+    },
+    {
+        "word": "equator",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "赤道",
+        "src": "assets/word-illustrations/equator-sys_2000-pictogram-natural-v1.webp",
+        "alt": "赤道のイメージ（一例）"
+    },
+    {
+        "word": "petroleum",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "石油",
+        "src": "assets/word-illustrations/petroleum-sys_2000-pictogram-natural-v2.webp",
+        "alt": "石油のイメージ（一例）"
+    },
+    {
+        "word": "witch",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "魔女",
+        "src": "assets/word-illustrations/witch-sys_2000-pictogram-natural-v1.webp",
+        "alt": "魔女のイメージ（一例）"
+    },
+    {
+        "word": "vapor",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "蒸気",
+        "src": "assets/word-illustrations/vapor-sys_2000-pictogram-natural-v1.webp",
+        "alt": "蒸気のイメージ（一例）"
+    },
+    {
+        "word": "expertise",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "専門知識",
+        "src": "assets/word-illustrations/expertise-sys_2000-pictogram-natural-v3.webp",
+        "alt": "専門知識のイメージ（一例）"
+    },
+    {
+        "word": "scorn",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "軽蔑",
+        "src": "assets/word-illustrations/scorn-sys_2000-pictogram-natural-v1.webp",
+        "alt": "軽蔑のイメージ（一例）"
+    },
+    {
+        "word": "prophet",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "預言者",
+        "src": "assets/word-illustrations/prophet-sys_2000-pictogram-natural-v1.webp",
+        "alt": "預言者のイメージ（一例）"
+    },
+    {
+        "word": "sin",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "罪",
+        "src": "assets/word-illustrations/sin-sys_2000-pictogram-natural-v1.webp",
+        "alt": "罪のイメージ（一例）"
+    },
+    {
+        "word": "cluster",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "集団",
+        "src": "assets/word-illustrations/cluster-sys_2000-pictogram-natural-v1.webp",
+        "alt": "集団のイメージ（一例）"
+    },
+    {
+        "word": "lump",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "こぶ",
+        "src": "assets/word-illustrations/lump-sys_2000-pictogram-natural-v2.webp",
+        "alt": "こぶのイメージ（一例）"
+    },
+    {
+        "word": "meadow",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "牧草地",
+        "src": "assets/word-illustrations/meadow-sys_2000-pictogram-natural-v1.webp",
+        "alt": "牧草地のイメージ（一例）"
+    },
+    {
+        "word": "temperament",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "気質",
+        "src": "assets/word-illustrations/temperament-sys_2000-pictogram-natural-v1.webp",
+        "alt": "気質のイメージ（一例）"
+    },
+    {
+        "word": "chill",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "寒気",
+        "src": "assets/word-illustrations/chill-sys_2000-pictogram-natural-v1.webp",
+        "alt": "寒気のイメージ（一例）"
+    },
+    {
+        "word": "appliance",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "器具",
+        "src": "assets/word-illustrations/appliance-sys_2000-pictogram-natural-v1.webp",
+        "alt": "器具のイメージ（一例）"
+    },
+    {
+        "word": "predecessor",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "前任者",
+        "src": "assets/word-illustrations/predecessor-sys_2000-pictogram-natural-v2.webp",
+        "alt": "前任者のイメージ（一例）"
+    },
+    {
+        "word": "entity",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "存在",
+        "src": "assets/word-illustrations/entity-sys_2000-pictogram-natural-v1.webp",
+        "alt": "存在のイメージ（一例）"
+    },
+    {
+        "word": "monarch",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "君主、皇帝",
+        "src": "assets/word-illustrations/monarch-sys_2000-pictogram-natural-v1.webp",
+        "alt": "君主、皇帝のイメージ（一例）"
+    },
+    {
+        "word": "constraint",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "制約",
+        "src": "assets/word-illustrations/constraint-sys_2000-pictogram-natural-v1.webp",
+        "alt": "制約のイメージ（一例）"
+    },
+    {
+        "word": "amendment",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "改正、修正",
+        "src": "assets/word-illustrations/amendment-sys_2000-pictogram-natural-v1.webp",
+        "alt": "改正、修正のイメージ（一例）"
+    },
+    {
+        "word": "cosmos",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "宇宙",
+        "src": "assets/word-illustrations/cosmos-sys_2000-pictogram-natural-v1.webp",
+        "alt": "宇宙のイメージ（一例）"
+    },
+    {
+        "word": "hierarchy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "階級制度",
+        "src": "assets/word-illustrations/hierarchy-sys_2000-pictogram-natural-v1.webp",
+        "alt": "階級制度のイメージ（一例）"
+    },
+    {
+        "word": "transaction",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "取引",
+        "src": "assets/word-illustrations/transaction-sys_2000-pictogram-natural-v3.webp",
+        "alt": "取引のイメージ（一例）"
+    },
+    {
+        "word": "parasite",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "寄生生物",
+        "src": "assets/word-illustrations/parasite-sys_2000-pictogram-natural-v2.webp",
+        "alt": "寄生生物のイメージ（一例）"
+    },
+    {
+        "word": "intuition",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "直感",
+        "src": "assets/word-illustrations/intuition-sys_2000-pictogram-natural-v1.webp",
+        "alt": "直感のイメージ（一例）"
+    },
+    {
+        "word": "communist",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "共産主義の",
+        "src": "assets/word-illustrations/communist-sys_2000-pictogram-natural-v1.webp",
+        "alt": "共産主義ののイメージ（一例）"
+    },
+    {
+        "word": "legacy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "遺産",
+        "src": "assets/word-illustrations/legacy-sys_2000-pictogram-natural-v1.webp",
+        "alt": "遺産のイメージ（一例）"
+    },
+    {
+        "word": "discourse",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "論説",
+        "src": "assets/word-illustrations/discourse-sys_2000-pictogram-natural-v1.webp",
+        "alt": "論説のイメージ（一例）"
+    },
+    {
+        "word": "dairy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "乳製品、酪農",
+        "src": "assets/word-illustrations/dairy-sys_2000-pictogram-natural-v1.webp",
+        "alt": "乳製品、酪農のイメージ（一例）"
+    },
+    {
+        "word": "artifact",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "工芸品",
+        "src": "assets/word-illustrations/artifact-sys_2000-pictogram-natural-v1.webp",
+        "alt": "工芸品のイメージ（一例）"
+    },
+    {
+        "word": "apprehension",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "不安",
+        "src": "assets/word-illustrations/apprehension-sys_2000-pictogram-natural-v1.webp",
+        "alt": "不安のイメージ（一例）"
+    },
+    {
+        "word": "melancholy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "憂うつ",
+        "src": "assets/word-illustrations/melancholy-sys_2000-pictogram-natural-v1.webp",
+        "alt": "憂うつのイメージ（一例）"
+    },
+    {
+        "word": "specimen",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "標本",
+        "src": "assets/word-illustrations/specimen-sys_2000-pictogram-natural-v1.webp",
+        "alt": "標本のイメージ（一例）"
+    },
+    {
+        "word": "tactics",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "戦術",
+        "src": "assets/word-illustrations/tactics-sys_2000-pictogram-natural-v1.webp",
+        "alt": "戦術のイメージ（一例）"
+    },
+    {
+        "word": "monopoly",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "独占",
+        "src": "assets/word-illustrations/monopoly-sys_2000-pictogram-natural-v1.webp",
+        "alt": "独占のイメージ（一例）"
+    },
+    {
+        "word": "token",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "印",
+        "src": "assets/word-illustrations/token-sys_2000-pictogram-natural-v2.webp",
+        "alt": "印のイメージ（一例）"
+    },
+    {
+        "word": "activist",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "活動家",
+        "src": "assets/word-illustrations/activist-sys_2000-pictogram-natural-v1.webp",
+        "alt": "活動家のイメージ（一例）"
+    },
+    {
+        "word": "rhetoric",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "美辞麗句",
+        "src": "assets/word-illustrations/rhetoric-sys_2000-pictogram-natural-v2.webp",
+        "alt": "美辞麗句のイメージ（一例）"
+    },
+    {
+        "word": "census",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "国勢調査",
+        "src": "assets/word-illustrations/census-sys_2000-pictogram-natural-v1.webp",
+        "alt": "国勢調査のイメージ（一例）"
+    },
+    {
+        "word": "verge",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "瀬戸際",
+        "src": "assets/word-illustrations/verge-sys_2000-pictogram-natural-v1.webp",
+        "alt": "瀬戸際のイメージ（一例）"
+    },
+    {
+        "word": "irrigation",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "灌漑",
+        "src": "assets/word-illustrations/irrigation-sys_2000-pictogram-natural-v1.webp",
+        "alt": "灌漑のイメージ（一例）"
+    },
+    {
+        "word": "coverage",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "報道",
+        "src": "assets/word-illustrations/coverage-sys_2000-pictogram-natural-v2.webp",
+        "alt": "報道のイメージ（一例）"
+    },
+    {
+        "word": "cuisine",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "料理",
+        "src": "assets/word-illustrations/cuisine-sys_2000-pictogram-natural-v1.webp",
+        "alt": "料理のイメージ（一例）"
+    },
+    {
+        "word": "menace",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "脅威",
+        "src": "assets/word-illustrations/menace-sys_2000-pictogram-natural-v1.webp",
+        "alt": "脅威のイメージ（一例）"
+    },
+    {
+        "word": "peril",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "危険",
+        "src": "assets/word-illustrations/peril-sys_2000-pictogram-natural-v1.webp",
+        "alt": "危険のイメージ（一例）"
+    },
+    {
+        "word": "autonomy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "自主性",
+        "src": "assets/word-illustrations/autonomy-sys_2000-pictogram-natural-v1.webp",
+        "alt": "自主性のイメージ（一例）"
+    },
+    {
+        "word": "subsidy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "補助金",
+        "src": "assets/word-illustrations/subsidy-sys_2000-pictogram-natural-v1.webp",
+        "alt": "補助金のイメージ（一例）"
+    },
+    {
+        "word": "empathy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "共感",
+        "src": "assets/word-illustrations/empathy-sys_2000-pictogram-natural-v1.webp",
+        "alt": "共感のイメージ（一例）"
+    },
+    {
+        "word": "posture",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "姿勢",
+        "src": "assets/word-illustrations/posture-sys_2000-pictogram-natural-v1.webp",
+        "alt": "姿勢のイメージ（一例）"
+    },
+    {
+        "word": "duration",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "期間",
+        "src": "assets/word-illustrations/duration-sys_2000-pictogram-natural-v2.webp",
+        "alt": "期間のイメージ（一例）"
+    },
+    {
+        "word": "precaution",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "用心",
+        "src": "assets/word-illustrations/precaution-sys_2000-pictogram-natural-v1.webp",
+        "alt": "用心のイメージ（一例）"
+    },
+    {
+        "word": "shortcoming",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "欠点",
+        "src": "assets/word-illustrations/shortcoming-sys_2000-pictogram-natural-v2.webp",
+        "alt": "欠点のイメージ（一例）"
+    },
+    {
+        "word": "psychiatrist",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "精神科医",
+        "src": "assets/word-illustrations/psychiatrist-sys_2000-pictogram-natural-v1.webp",
+        "alt": "精神科医のイメージ（一例）"
+    },
+    {
+        "word": "subordinate",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "部下",
+        "src": "assets/word-illustrations/subordinate-sys_2000-pictogram-natural-v2.webp",
+        "alt": "部下のイメージ（一例）"
+    },
+    {
+        "word": "vacuum",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "空白",
+        "src": "assets/word-illustrations/vacuum-sys_2000-pictogram-natural-v1.webp",
+        "alt": "空白のイメージ（一例）"
+    },
+    {
+        "word": "quest",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "探究",
+        "src": "assets/word-illustrations/quest-sys_2000-pictogram-natural-v1.webp",
+        "alt": "探究のイメージ（一例）"
+    },
+    {
+        "word": "subscriber",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "加入者",
+        "src": "assets/word-illustrations/subscriber-sys_2000-pictogram-natural-v1.webp",
+        "alt": "加入者のイメージ（一例）"
+    },
+    {
+        "word": "rust",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "さび",
+        "src": "assets/word-illustrations/rust-sys_2000-pictogram-natural-v1.webp",
+        "alt": "さびのイメージ（一例）"
+    },
+    {
+        "word": "proficiency",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "検定",
+        "src": "assets/word-illustrations/proficiency-sys_2000-pictogram-natural-v1.webp",
+        "alt": "検定のイメージ（一例）"
+    },
+    {
+        "word": "latitude",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "緯",
+        "src": "assets/word-illustrations/latitude-sys_2000-pictogram-natural-v1.webp",
+        "alt": "緯のイメージ（一例）"
+    },
+    {
+        "word": "friction",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "摩擦",
+        "src": "assets/word-illustrations/friction-sys_2000-pictogram-natural-v1.webp",
+        "alt": "摩擦のイメージ（一例）"
+    },
+    {
+        "word": "botanist",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "植物学者",
+        "src": "assets/word-illustrations/botanist-sys_2000-pictogram-natural-v1.webp",
+        "alt": "植物学者のイメージ（一例）"
+    },
+    {
+        "word": "heredity",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "遺伝",
+        "src": "assets/word-illustrations/heredity-sys_2000-pictogram-natural-v1.webp",
+        "alt": "遺伝のイメージ（一例）"
+    },
+    {
+        "word": "anatomy",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "構造",
+        "src": "assets/word-illustrations/anatomy-sys_2000-pictogram-natural-v2.webp",
+        "alt": "構造のイメージ（一例）"
+    },
+    {
+        "word": "integrity",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "誠実",
+        "src": "assets/word-illustrations/integrity-sys_2000-pictogram-natural-v1.webp",
+        "alt": "誠実のイメージ（一例）"
+    },
+    {
+        "word": "cargo",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "貨物",
+        "src": "assets/word-illustrations/cargo-sys_2000-pictogram-natural-v1.webp",
+        "alt": "貨物のイメージ（一例）"
+    },
+    {
+        "word": "bribe",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "わいろ",
+        "src": "assets/word-illustrations/bribe-sys_2000-pictogram-natural-v2.webp",
+        "alt": "わいろのイメージ（一例）"
+    },
+    {
+        "word": "bulk",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "大部分",
+        "src": "assets/word-illustrations/bulk-sys_2000-pictogram-natural-v1.webp",
+        "alt": "大部分のイメージ（一例）"
+    },
+    {
+        "word": "realm",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "領域",
+        "src": "assets/word-illustrations/realm-sys_2000-pictogram-natural-v1.webp",
+        "alt": "領域のイメージ（一例）"
+    },
+    {
+        "word": "plantation",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "農園",
+        "src": "assets/word-illustrations/plantation-sys_2000-pictogram-natural-v1.webp",
+        "alt": "農園のイメージ（一例）"
+    },
+    {
+        "word": "plow",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "すき",
+        "src": "assets/word-illustrations/plow-sys_2000-pictogram-natural-v1.webp",
+        "alt": "すきのイメージ（一例）"
+    },
+    {
+        "word": "vending",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "販売",
+        "src": "assets/word-illustrations/vending-sys_2000-pictogram-natural-v1.webp",
+        "alt": "販売のイメージ（一例）"
+    },
+    {
+        "word": "neuron",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "神経細胞",
+        "src": "assets/word-illustrations/neuron-sys_2000-pictogram-natural-v1.webp",
+        "alt": "神経細胞のイメージ（一例）"
+    },
+    {
+        "word": "vegetation",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "植生",
+        "src": "assets/word-illustrations/vegetation-sys_2000-pictogram-natural-v1.webp",
+        "alt": "植生のイメージ（一例）"
+    },
+    {
+        "word": "mutation",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "突然変異",
+        "src": "assets/word-illustrations/mutation-sys_2000-pictogram-natural-v1.webp",
+        "alt": "突然変異のイメージ（一例）"
+    },
+    {
+        "word": "sewage",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "下水",
+        "src": "assets/word-illustrations/sewage-sys_2000-pictogram-natural-v1.webp",
+        "alt": "下水のイメージ（一例）"
+    },
+    {
+        "word": "paradigm",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "理論的枠組",
+        "src": "assets/word-illustrations/paradigm-sys_2000-pictogram-natural-v1.webp",
+        "alt": "理論的枠組のイメージ（一例）"
+    },
+    {
+        "word": "protocol",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "議定書",
+        "src": "assets/word-illustrations/protocol-sys_2000-pictogram-natural-v1.webp",
+        "alt": "議定書のイメージ（一例）"
+    },
+    {
+        "word": "accord",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "一致",
+        "src": "assets/word-illustrations/accord-sys_2000-pictogram-natural-v1.webp",
+        "alt": "一致のイメージ（一例）"
+    },
+    {
+        "word": "bureaucrat",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "官僚",
+        "src": "assets/word-illustrations/bureaucrat-sys_2000-pictogram-natural-v1.webp",
+        "alt": "官僚のイメージ（一例）"
+    },
+    {
+        "word": "array",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "多彩",
+        "src": "assets/word-illustrations/array-sys_2000-pictogram-natural-v1.webp",
+        "alt": "多彩のイメージ（一例）"
+    },
+    {
+        "word": "clash",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "衝突",
+        "src": "assets/word-illustrations/clash-sys_2000-pictogram-natural-v1.webp",
+        "alt": "衝突のイメージ（一例）"
+    },
+    {
+        "word": "reign",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "統治",
+        "src": "assets/word-illustrations/reign-sys_2000-pictogram-natural-v1.webp",
+        "alt": "統治のイメージ（一例）"
+    },
+    {
+        "word": "digit",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "桁",
+        "src": "assets/word-illustrations/digit-sys_2000-pictogram-natural-v1.webp",
+        "alt": "桁のイメージ（一例）"
+    },
+    {
+        "word": "onset",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "発症",
+        "src": "assets/word-illustrations/onset-sys_2000-pictogram-natural-v1.webp",
+        "alt": "発症のイメージ（一例）"
+    },
+    {
+        "word": "peasant",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "小作農",
+        "src": "assets/word-illustrations/peasant-sys_2000-pictogram-natural-v1.webp",
+        "alt": "小作農のイメージ（一例）"
+    },
+    {
+        "word": "ultraviolet",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "紫外",
+        "src": "assets/word-illustrations/ultraviolet-sys_2000-pictogram-natural-v1.webp",
+        "alt": "紫外のイメージ（一例）"
+    },
+    {
+        "word": "staple",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "主要な",
+        "src": "assets/word-illustrations/staple-sys_2000-pictogram-natural-v1.webp",
+        "alt": "主要なのイメージ（一例）"
+    },
+    {
+        "word": "demographic",
+        "level": "sys_2000",
+        "pos": "名",
+        "meaning": "人口統計の",
+        "src": "assets/word-illustrations/demographic-sys_2000-pictogram-natural-v1.webp",
+        "alt": "人口統計ののイメージ（一例）"
     }
 ].map(Object.freeze));

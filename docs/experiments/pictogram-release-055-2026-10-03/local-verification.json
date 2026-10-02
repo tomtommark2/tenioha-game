@@ -1,0 +1,162 @@
+{
+  "live": false,
+  "version": "2026.1003.0218",
+  "newAssetHashesChecked": 2326,
+  "checkedFiles": [
+    "index.html",
+    "vocab_clicker_game.html",
+    "js/version.js",
+    "data/word-illustrations.js",
+    "assets/word-illustrations/apple-pictogram-v1.webp",
+    "assets/word-illustrations/ice-skating-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/ecstasy-daily-pictogram-natural-v1.webp",
+    "assets/word-illustrations/aubergine-exam1-pictogram-natural-v1.webp",
+    "assets/word-illustrations/millimeter-exam1-pictogram-natural-v1.webp",
+    "assets/word-illustrations/whiskey-exam1-pictogram-natural-v1.webp",
+    "assets/word-illustrations/predator-sys_2000-pictogram-natural-v1.webp",
+    "assets/word-illustrations/anatomy-sys_2000-pictogram-natural-v2.webp",
+    "assets/word-illustrations/ratio-sys_2000-pictogram-natural-v1.webp",
+    "assets/word-illustrations/fraction-sys_2000-pictogram-natural-v1.webp",
+    "assets/word-illustrations/parasite-sys_2000-pictogram-natural-v2.webp",
+    "assets/word-illustrations/ultraviolet-sys_2000-pictogram-natural-v1.webp",
+    "assets/word-illustrations/demographic-sys_2000-pictogram-natural-v1.webp"
+  ],
+  "viewports": [
+    {
+      "width": 320,
+      "dpr": 3,
+      "version": "2026.1003.0218",
+      "rows": 4577,
+      "collection": 4155,
+      "free": 100,
+      "limit": 480,
+      "premium": 4155,
+      "expired": 100,
+      "checked": [
+        {
+          "level": "daily",
+          "word": "ice skating",
+          "sourceLevel": "daily",
+          "src": "assets/word-illustrations/ice-skating-daily-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "exam1",
+          "word": "whisky",
+          "sourceLevel": "exam1",
+          "src": "assets/word-illustrations/whiskey-exam1-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "anatomy",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/anatomy-sys_2000-pictogram-natural-v2.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "demographic",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/demographic-sys_2000-pictogram-natural-v1.webp"
+        }
+      ],
+      "enlarge": true,
+      "recordsUnchanged": true,
+      "fits": true,
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "dpr": 3,
+      "version": "2026.1003.0218",
+      "rows": 4577,
+      "collection": 4155,
+      "free": 100,
+      "limit": 480,
+      "premium": 4155,
+      "expired": 100,
+      "checked": [
+        {
+          "level": "junior",
+          "word": "apple",
+          "sourceLevel": "junior",
+          "src": "assets/word-illustrations/apple-pictogram-v1.webp"
+        },
+        {
+          "level": "daily",
+          "word": "ice skating",
+          "sourceLevel": "daily",
+          "src": "assets/word-illustrations/ice-skating-daily-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "daily",
+          "word": "ecstasy",
+          "sourceLevel": "daily",
+          "src": "assets/word-illustrations/ecstasy-daily-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "exam1",
+          "word": "aubergine",
+          "sourceLevel": "exam1",
+          "src": "assets/word-illustrations/aubergine-exam1-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "exam1",
+          "word": "millimeter",
+          "sourceLevel": "exam1",
+          "src": "assets/word-illustrations/millimeter-exam1-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "exam1",
+          "word": "whisky",
+          "sourceLevel": "exam1",
+          "src": "assets/word-illustrations/whiskey-exam1-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "predator",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/predator-sys_2000-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "anatomy",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/anatomy-sys_2000-pictogram-natural-v2.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "ratio",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/ratio-sys_2000-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "fraction",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/fraction-sys_2000-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "parasite",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/parasite-sys_2000-pictogram-natural-v2.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "ultraviolet",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/ultraviolet-sys_2000-pictogram-natural-v1.webp"
+        },
+        {
+          "level": "sys_2000",
+          "word": "demographic",
+          "sourceLevel": "sys_2000",
+          "src": "assets/word-illustrations/demographic-sys_2000-pictogram-natural-v1.webp"
+        }
+      ],
+      "enlarge": true,
+      "recordsUnchanged": true,
+      "fits": true,
+      "errors": []
+    }
+  ]
+}
