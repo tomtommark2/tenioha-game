@@ -26,7 +26,8 @@ test('採用した修正版とdish旧版を学習画面で読み込める', asyn
       expect(await img.evaluate(i=>{
         const c=document.createElement('canvas');c.width=i.naturalWidth;c.height=i.naturalHeight;
         const ctx=c.getContext('2d');ctx.drawImage(i,0,0);
-        const d=ctx.getImageData(271,748,118,254).data;let min=255;
+        const scale=i.naturalWidth/1254;
+        const d=ctx.getImageData(Math.ceil(271*scale),Math.ceil(748*scale),Math.floor(118*scale),Math.floor(254*scale)).data;let min=255;
         for(let j=3;j<d.length;j+=4)min=Math.min(min,d[j]);return min;
       })).toBeGreaterThanOrEqual(250);
     }

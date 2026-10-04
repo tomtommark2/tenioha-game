@@ -19,6 +19,8 @@ test('復習タイミングは即時保存し予定済みの日時を変えな�
     gameState.srsData[window.timingTestKey] = { dueAt: 123, reviewStep: 2, scheduledIntervalDays: 3, successCount: 1 };
     openStudyModeModal();
   });
+  await page.getByRole('tab', { name: '復習', exact: true }).click();
+  await page.locator('#masterySettings > summary').click();
   await page.getByText('判定のしくみ', { exact: true }).click();
   await page.getByRole('button', { name: '復習タイミングを確認・変更' }).click();
   await expect(page.locator('#reviewTimingSettings')).toHaveAttribute('open', '');

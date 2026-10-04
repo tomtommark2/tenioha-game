@@ -68,6 +68,7 @@ const DISMISSIBLE_MODAL_IDS = Object.freeze([
     'offlineAlertModal',
     'announcementModal',
     'wordbookModal',
+    'myWordbookModal',
     'previousIllustrationModal',
     'illustratedWordbookModal',
     'leaderboardModal',
@@ -228,6 +229,10 @@ function reconcileDismissibleModals() {
     } else if (previousHadModal && !hasModal) {
         document.body.classList.remove('dismissible-modal-open');
         const opener = dismissibleModalState.opener;
+        const illustrationModeFallback = opener?.id === 'illustrationModeButton' && !opener.getClientRects().length
+            ? document.getElementById('otherMenuBtn') : null;
+        const myWordbookFallback = dismissibleModalState.visibleModalIds.includes('myWordbookModal')
+            ? document.getElementById('levelCurrentBtn') : null;
         dismissibleModalState.opener = null;
         if (dismissibleModalState.closingFromHistory) {
             dismissibleModalState.closingFromHistory = false;
@@ -236,7 +241,11 @@ function reconcileDismissibleModals() {
             window.history.back();
         }
         window.requestAnimationFrame(() => {
-            if (opener?.isConnected) focusWithoutScrolling(opener);
+            // Safari taps can leave body as the opener; it is not a focus return target.
+            if (illustrationModeFallback) focusWithoutScrolling(illustrationModeFallback);
+            else if (opener?.isConnected && (!myWordbookFallback || (opener !== document.body && opener.getClientRects().length))) focusWithoutScrolling(opener);
+            else if (myWordbookFallback) focusWithoutScrolling(myWordbookFallback);
+            window.maybeOpenReviewRecommendation?.();
         });
     } else if (hasModal) {
         document.body.classList.add('dismissible-modal-open');
@@ -700,6 +709,7 @@ window.openProfileModal = function () {
 // Robust Wordbook Selector (Called via inline onclick)
 window.selectWordbook = function (level) {
     if (!level) return;
+    if (!window.WordIllustrations.requireLevel(level)) return;
     if (typeof gameState === 'undefined') {
         alert("ゲームデータの読み込みが完了していません。少々お待ちください。");
         return;
@@ -1085,6 +1095,37 @@ window.toggleOtherMenu = function () {
             document.removeEventListener('click', closeOtherMenuOutside);
         }
     }
+};
+
+// Category navigation changes only the settings view, never learning state.
+window.selectStudySettingsTab = function (category, moveFocus = true) {
+    const modal = document.getElementById('studyModeModal');
+    const tabs = Array.from(modal.querySelectorAll('[data-study-settings-tab]'));
+    const selected = tabs.find(tab => tab.dataset.studySettingsTab === category);
+    if (!selected) return;
+    tabs.forEach(tab => {
+        const active = tab === selected;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        document.getElementById(tab.getAttribute('aria-controls')).hidden = !active;
+    });
+    modal.querySelector('.study-mode-modal-content').scrollTop = 0;
+    if (moveFocus) focusWithoutScrolling(selected);
+};
+
+window.handleStudySettingsTabKey = function (event) {
+    const current = event.target.closest('[data-study-settings-tab]');
+    if (!current) return;
+    const tabs = Array.from(current.parentElement.querySelectorAll('[data-study-settings-tab]'));
+    const index = tabs.indexOf(current);
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+    else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = tabs.length - 1;
+    else return;
+    event.preventDefault();
+    window.selectStudySettingsTab(tabs[next].dataset.studySettingsTab);
 };
 
 function closeOtherMenuOutside(e) {

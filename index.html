@@ -14,10 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.1003.0218">
-    <link rel="preload" href="data/vocabulary.js?v=2026.1003.0218" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.1003.0218" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.1003.0218" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.1004.1146">
+    <link rel="preload" href="data/vocabulary.js?v=2026.1004.1146" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.1004.1146" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.1004.1146" as="script">
 </head>
 
 <body>
@@ -331,6 +331,13 @@
             </div>
         </div>
 
+        <div id="myWordbookStudyBar" class="my-wordbook-study-bar" hidden>
+            <strong id="myWordbookStudyName"></strong>
+            <button id="myWordbookAllBtn" type="button" onclick="MyWordbooks.practiceAll()" aria-pressed="false">全語を練習</button>
+            <button type="button" onclick="MyWordbooks.open(gameState.activeMyWordbookId)">編集</button>
+            <button type="button" onclick="switchLevel('basic')">通常の学習へ</button>
+        </div>
+
         <!-- Word List Modal -->
         <div id="wordListModal" class="modal-overlay word-list-modal" style="display: none;">
             <div class="modal-content word-list-modal-content" onclick="event.stopPropagation()">
@@ -398,6 +405,14 @@
                         <span>ランダム</span>
                     </button>
                 </div>
+                <div id="reviewRecommendation" class="review-recommendation-popover review-recommendation-content"
+                    role="region" aria-labelledby="reviewRecommendationText" style="display:none;" aria-hidden="true">
+                    <h2 id="reviewRecommendationText" role="status" aria-live="polite" aria-atomic="true"><span>復習が</span><span>溜まっています</span></h2>
+                    <div class="review-recommendation-actions">
+                        <button type="button" class="review-recommendation-later" onclick="dismissReviewRecommendation(true)">あとで</button>
+                        <button type="button" class="review-recommendation-action" onclick="acceptReviewRecommendation()">復習する</button>
+                    </div>
+                </div>
             </div>
             <span id="reviewShuffleStatus" class="review-shuffle-status" role="status" aria-live="polite"></span>
             <div id="reviewQueuePreview" style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px; position:relative; min-height:28px;"></div>
@@ -411,35 +426,134 @@
                 <div class="study-mode-hero">
                     <div class="study-mode-heading">
                         <h2 id="studyModeTitle" class="study-mode-title">出題・復習設定</h2>
-                        <p class="study-mode-subtitle">出題バランス・完璧の基準・復習タイミング</p>
                     </div>
                     <button type="button" class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()" aria-label="出題・復習設定を閉じる">×</button>
+                    <div class="study-settings-tabs" role="tablist" aria-label="学習設定のカテゴリ" onkeydown="handleStudySettingsTabKey(event)">
+                        <button type="button" id="studySettingsQuestionsTab" role="tab" aria-selected="true" aria-controls="studySettingsQuestions" data-study-settings-tab="questions" onclick="selectStudySettingsTab('questions')">出題</button>
+                        <button type="button" id="studySettingsReviewTab" role="tab" aria-selected="false" aria-controls="studySettingsReview" tabindex="-1" data-study-settings-tab="review" onclick="selectStudySettingsTab('review')">復習</button>
+                        <button type="button" id="studySettingsDisplayTab" role="tab" aria-selected="false" aria-controls="studySettingsDisplay" tabindex="-1" data-study-settings-tab="display" onclick="selectStudySettingsTab('display')">表示</button>
+                    </div>
                 </div>
-                <div class="study-mode-card study-review-card">
-                    <div class="study-mode-card-header">
-                        <div>
-                            <div class="study-mode-card-eyebrow">1</div>
-                            <div class="study-mode-card-title">出題バランス</div>
-                            <div class="study-mode-card-desc">今日の問題に復習をどう組み合わせるか選びます。</div>
+                <section id="studySettingsQuestions" class="study-settings-panel" role="tabpanel" aria-labelledby="studySettingsQuestionsTab">
+                    <div class="study-mode-card study-review-card">
+                        <div class="study-mode-card-header">
+                            <div>
+                                <div class="study-mode-card-eyebrow">1</div>
+                                <div class="study-mode-card-title">出題バランス</div>
+                                <div class="study-mode-card-desc">今日の問題に復習をどう組み合わせるか選びます。</div>
+                            </div>
+                            <span id="dueOnlyModeLabelModal" class="study-mode-status-pill">新規＋復習</span>
                         </div>
-                        <span id="dueOnlyModeLabelModal" class="study-mode-status-pill">新規＋復習</span>
-                    </div>
 
-                    <div class="study-review-mode-options" role="group" aria-label="復習の出し方">
-                        <button type="button" data-review-mode-option="off" onclick="setReviewMode('off')">
-                            <strong>新規だけ</strong>
-                            <small>新しい単語に集中</small>
-                        </button>
-                        <button type="button" data-review-mode-option="random" onclick="setReviewMode('random')">
-                            <strong>新規＋復習</strong>
-                            <small>おすすめ</small>
-                        </button>
-                        <button type="button" data-review-mode-option="on" onclick="setReviewMode('on')">
-                            <strong>復習だけ</strong>
-                            <small>苦手を集中して解く</small>
-                        </button>
+                        <div class="study-review-mode-options" role="group" aria-label="復習の出し方">
+                            <button type="button" data-review-mode-option="off" onclick="setReviewMode('off')">
+                                <strong>新規だけ</strong>
+                            </button>
+                            <button type="button" data-review-mode-option="random" onclick="setReviewMode('random')">
+                                <strong>新規＋復習</strong>
+                                <small>おすすめ</small>
+                            </button>
+                            <button type="button" data-review-mode-option="on" onclick="setReviewMode('on')">
+                                <strong>復習だけ</strong>
+                            </button>
+                        </div>
+                        <p id="reviewModeDescription" class="study-review-mode-description" hidden></p>
                     </div>
-                    <p id="reviewModeDescription" class="study-review-mode-description">復習を優先し、新しい単語もまぜて出題します。</p>
+                    <details class="study-mode-card study-scope-card">
+                        <summary>出題範囲 <span>復習レベル・品詞</span></summary>
+                        <div class="study-mode-card-header">
+                            <div>
+                                <div class="study-mode-card-eyebrow">2</div>
+                                <div class="study-mode-card-title">出題範囲</div>
+                                <div class="study-mode-card-desc">復習するレベルと、出題に含める品詞を選びます。</div>
+                            </div>
+                        </div>
+                        <div class="study-scope-grid">
+                            <section class="study-review-level-block" aria-labelledby="reviewLevelHeading">
+                                <div id="reviewLevelHeading" class="study-mode-mini-title"><span class="inline-picto app-picto icon-target" aria-hidden="true"></span>復習レベル</div>
+                                <div id="reviewLevelCheckboxes" class="study-review-level-grid"></div>
+                                <p id="myWordbookReviewScopeNote" class="my-wordbook-note" hidden>マイ単語帳の中だけを復習します。このレベル設定は通常の学習に戻ると適用されます。</p>
+                            </section>
+                            <section class="study-pos-block" aria-labelledby="posFilterHeading">
+                                <div id="posFilterHeading" class="study-mode-mini-title">品詞</div>
+                                <div class="pos-filter-container study-pos-filter-container">
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="名" checked> 名詞</label>
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="動" checked> 動詞</label>
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詞</label>
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="副" checked> 副詞</label>
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="助" checked> 助動詞</label>
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="前" checked> 前置詞</label>
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="接" checked> 接続詞</label>
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="代" checked> 代名詞</label>
+                                    <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="other" checked> その他</label>
+                                </div>
+                            </section>
+                        </div>
+                    </details>
+                </section>
+
+                <section id="studySettingsReview" class="study-settings-panel" role="tabpanel" aria-labelledby="studySettingsReviewTab" hidden>
+                    <details id="reviewTimingSettings" class="study-mode-card study-scope-card review-timing-settings">
+                        <summary>復習タイミング <span id="reviewTimingLabel">標準</span></summary>
+                        <div class="review-timing-options" role="group" aria-label="復習間隔">
+                            <button type="button" data-review-timing="short" aria-pressed="false" onclick="selectReviewTiming('short')">短め</button>
+                            <button type="button" data-review-timing="standard" aria-pressed="true" onclick="selectReviewTiming('standard')">標準</button>
+                            <button type="button" data-review-timing="long" aria-pressed="false" onclick="selectReviewTiming('long')">長め</button>
+                        </div>
+                        <p id="reviewTimingExample"></p>
+                        <p>正解後の間隔（目安）</p>
+                        <p id="reviewTimingIntervals" class="review-timing-intervals"></p>
+                        <p>次の回答から適用。予定済みの復習日時は変わりません。</p>
+                        <p>不正解は5分後に再学習。「完璧」は通常の復習対象から外れます。</p>
+                        <p id="reviewTimingStatus" role="status" aria-live="polite"></p>
+                    </details>
+                    <details id="masterySettings" class="study-mode-card study-scope-card">
+                        <summary>完璧の判定基準 <span id="masterySettingsSummary">直近5回・80%</span></summary>
+                        <section class="mastery-hero" aria-labelledby="masteryHeading">
+                            <h3 id="masteryHeading" hidden>完璧の判定基準</h3>
+                            <div id="masteryThresholdValue" class="mastery-value" hidden>4 / 5回</div>
+                            <p id="masteryThresholdExplanation" class="mastery-explanation">直近5回で4回以上正解（80%）</p>
+                            <p>「完璧」になると通常の復習から外れます。</p>
+                            <p class="mastery-control-label">判定に使う回答</p>
+                            <div class="mastery-window-options" role="group" aria-label="判定に使う回答">
+                                <button type="button" data-review-window="5" aria-pressed="true" onclick="selectReviewWindow(5)">直近5回</button>
+                                <button type="button" data-review-window="10" aria-pressed="false" onclick="selectReviewWindow(10)">直近10回</button>
+                            </div>
+                            <p class="mastery-control-label">必要な正解数</p>
+                            <div class="mastery-options" role="group" aria-label="必要な正解数">
+                                <button type="button" data-mastery-threshold="80" aria-pressed="true" onclick="selectMasteryThreshold(80)"><span>以上正解</span><strong>4回</strong><small>80%</small></button>
+                                <button type="button" data-mastery-threshold="90" aria-pressed="false" hidden onclick="selectMasteryThreshold(90)"><span>以上正解</span><strong>9回</strong><small>90%</small></button>
+                                <button type="button" data-mastery-threshold="100" aria-pressed="false" onclick="selectMasteryThreshold(100)"><span>すべて正解</span><strong>5回</strong><small>100%</small></button>
+                            </div>
+                        </section>
+                        <section class="mastery-preview" aria-label="現在の復習対象" aria-live="polite">
+                            <h3>現在の復習対象</h3>
+                            <p id="masteryChangePreview"></p>
+                            <div class="mastery-preview-counts">
+                                <div>復習対象<strong id="masteryTargetPreview"></strong></div>
+                                <div>今すぐ復習<strong id="masteryDuePreview"></strong></div>
+                            </div>
+                            <small>選択中の範囲。期限前の単語は復習日に出題。</small>
+                        </section>
+                        <p id="masteryPendingNotice" class="mastery-pending"></p>
+                        <details class="study-mode-details">
+                            <summary>判定のしくみ</summary>
+                            <button type="button" class="review-timing-link" onclick="openReviewTimingSettings()">復習タイミングを確認・変更</button>
+                            <p>実際の回答数で判定します。1回中1回の正解も100%です。</p>
+                            <p>不正解は「苦手」に戻り、5分後に再学習。正解後にもう一度判定します。</p>
+                            <p>回数を切り替えても直近10回の履歴は保持します。90%から5回設定へ変えると100%になります。</p>
+                            <p>「完璧」の単語も一覧から解き直せます。基準を変えると「戻る」はリセットされます。</p>
+                        </details>
+                    </details>
+                    <section class="review-recommendation-settings" aria-labelledby="reviewRecommendationHeading">
+                        <label class="card-status-toggle" for="reviewRecommendationEnabled">
+                            <span id="reviewRecommendationHeading">復習のおすすめを表示</span>
+                            <input type="checkbox" id="reviewRecommendationEnabled" role="switch" checked
+                                aria-describedby="reviewRecommendationDescription" onchange="setReviewRecommendationEnabled(this.checked)">
+                        </label>
+                        <p id="reviewRecommendationDescription">今すぐ復習できる単語が100語を超えたら案内します。</p>
+                        <p id="reviewRecommendationSettingsStatus" role="status" aria-live="polite"></p>
+                    </section>
                     <div class="study-review-shuffle-row">
                         <div class="study-review-shuffle-copy">
                             <strong>復習の順番</strong>
@@ -452,101 +566,27 @@
                         </button>
                     </div>
                     <span id="studyModeShuffleStatus" class="study-review-shuffle-status" role="status" aria-live="polite"></span>
-                </div>
-
-                <section class="mastery-hero" aria-labelledby="masteryHeading">
-                    <h3 id="masteryHeading">完璧の判定基準</h3>
-                    <div id="masteryThresholdValue" class="mastery-value">4 / 5回</div>
-                    <p id="masteryThresholdExplanation" class="mastery-explanation">直近5回で4回以上正解（80%）</p>
-                    <p>基準を満たすと「完璧」になり、<br>通常の復習対象から外れます。<br><small>不正解の直後は、再学習を優先します。</small></p>
-                    <p class="mastery-control-label">判定に使う回答</p>
-                    <div class="mastery-window-options" role="group" aria-label="判定に使う回答">
-                        <button type="button" data-review-window="5" aria-pressed="true" onclick="selectReviewWindow(5)">直近5回<small>最近の変化を早く反映</small></button>
-                        <button type="button" data-review-window="10" aria-pressed="false" onclick="selectReviewWindow(10)">直近10回<small>一度の正誤に左右されにくい</small></button>
-                    </div>
-                    <p class="mastery-control-label">そのうち何回以上正解で完璧にするか</p>
-                    <div class="mastery-options" role="group" aria-label="必要な正解数">
-                        <button type="button" data-mastery-threshold="80" aria-pressed="true" onclick="selectMasteryThreshold(80)"><span>以上正解</span><strong>4回</strong><small>80%</small></button>
-                        <button type="button" data-mastery-threshold="90" aria-pressed="false" hidden onclick="selectMasteryThreshold(90)"><span>以上正解</span><strong>9回</strong><small>90%</small></button>
-                        <button type="button" data-mastery-threshold="100" aria-pressed="false" onclick="selectMasteryThreshold(100)"><span>すべて正解</span><strong>5回</strong><small>100%</small></button>
-                    </div>
                 </section>
-                <section class="mastery-preview" aria-label="現在の復習対象" aria-live="polite">
-                    <h3>現在の復習対象</h3>
-                    <p id="masteryChangePreview"></p>
-                    <div class="mastery-preview-counts">
-                        <div>復習対象<strong id="masteryTargetPreview"></strong></div>
-                        <div>今すぐ復習<strong id="masteryDuePreview"></strong></div>
-                    </div>
-                    <small>復習件数は選択中の範囲。期限前の語は復習日に出題されます。</small>
-                </section>
-                <p id="masteryPendingNotice" class="mastery-pending"></p>
 
-                <details id="reviewTimingSettings" class="study-mode-card study-scope-card review-timing-settings">
-                    <summary>復習タイミング <span id="reviewTimingLabel">標準</span></summary>
-                    <div class="review-timing-options" role="group" aria-label="復習間隔">
-                        <button type="button" data-review-timing="short" aria-pressed="false" onclick="selectReviewTiming('short')">短め<small>こまめに復習</small></button>
-                        <button type="button" data-review-timing="standard" aria-pressed="true" onclick="selectReviewTiming('standard')">標準<small>今までどおり</small></button>
-                        <button type="button" data-review-timing="long" aria-pressed="false" onclick="selectReviewTiming('long')">長め<small>間隔を空ける</small></button>
-                    </div>
-                    <p id="reviewTimingExample"></p>
-                    <p>正解が続いたときの間隔の目安</p>
-                    <p id="reviewTimingIntervals" class="review-timing-intervals"></p>
-                    <p>苦手な単語でも、次の間隔は過去の進み具合で変わります。不正解では段階を1つ戻し、どの設定でも5分後に再学習します。</p>
-                    <p>復習の集中を避けるため、正解後の日時は目安から±20%ずれます。「完璧」になった語は通常の復習対象から外れます。</p>
-                    <p>予定済みの日時や、完璧の判定基準は変わりません。標準を選ぶと元の間隔に戻せます。復習スコアは間隔の長短によらず、学習の段階に応じた同じ配点です。</p>
-                    <p id="reviewTimingStatus" role="status" aria-live="polite"></p>
-                </details>
-
-                <details class="study-mode-card study-scope-card">
-                    <summary>出題範囲 <span>復習レベル・品詞を選ぶ</span></summary>
-                    <div class="study-mode-card-header">
-                        <div>
-                            <div class="study-mode-card-eyebrow">2</div>
-                            <div class="study-mode-card-title">出題範囲</div>
-                            <div class="study-mode-card-desc">復習するレベルと、出題に含める品詞を選びます。</div>
-                        </div>
-                    </div>
-                    <div class="study-scope-grid">
-                        <section class="study-review-level-block" aria-labelledby="reviewLevelHeading">
-                            <div id="reviewLevelHeading" class="study-mode-mini-title"><span class="inline-picto app-picto icon-target" aria-hidden="true"></span>復習レベル</div>
-                            <div id="reviewLevelCheckboxes" class="study-review-level-grid"></div>
-                        </section>
-                        <section class="study-pos-block" aria-labelledby="posFilterHeading">
-                            <div id="posFilterHeading" class="study-mode-mini-title">品詞</div>
-                            <div class="pos-filter-container study-pos-filter-container">
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="名" checked> 名詞</label>
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="動" checked> 動詞</label>
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="形" checked> 形容詞</label>
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="副" checked> 副詞</label>
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="助" checked> 助動詞</label>
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="前" checked> 前置詞</label>
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="接" checked> 接続詞</label>
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="代" checked> 代名詞</label>
-                                <label class="pos-checkbox-item"><input type="checkbox" class="pos-filter" data-pos="other" checked> その他</label>
-                            </div>
-                        </section>
-                    </div>
-                </details>
-
-                <details class="study-mode-details">
-                    <summary>判定のしくみ</summary>
-                    <p>「完璧の判定基準」は復習を卒業する条件、「復習タイミング」は次に出題する間隔です。</p>
-                    <button type="button" class="review-timing-link" onclick="openReviewTimingSettings()">復習タイミングを確認・変更</button>
-                    <p>直近5回または10回で判定します。履歴は常に最新10回分を保持するので、切り替えても消えません。累積の正解・不正解数も保持します。</p>
-                    <p>設定回数は上限です。10回設定でも回答が3回なら2/3、5回なら4/5のように、実際の回答回数で判定します。1/1も100%として完璧になります。回答0回では正答率を計算せず、記録のない旧データは次の回答まで分類を維持します。</p>
-                    <p>不正解の場合は「苦手」に戻り、5分後に再学習します。再学習に正解すると再判定します。履歴不足では完璧にせず、直近の正解が半分以上なら得意、それ未満なら苦手です（旧分類の引継ぎ中を除く）。</p>
-                    <p>設定は選ぶとすぐ反映・保存されます。5回では正答率が20%刻みになるため、90%から切り替えると「5回すべて正解」に設定します。</p>
-                    <p>完璧になった語も「完璧」一覧から解き直せます。基準を変更すると、直前の回答を戻す操作をリセットします。</p>
-                </details>
-                <section class="study-mode-card card-status-settings" aria-labelledby="cardStatusHeading">
-                    <label class="card-status-toggle" for="cardStatusVisible">
-                        <span id="cardStatusHeading">カードの学習状況を表示</span>
-                        <input type="checkbox" id="cardStatusVisible" role="switch" checked
-                            aria-describedby="cardStatusDescription" onchange="setCardStatusVisible(this.checked)">
-                    </label>
-                    <p id="cardStatusDescription">正答率（％）と「苦手の復習」「得意の定着チェック」などの表示を切り替えます。オフにしても学習記録・復習の判定は変わりません。</p>
-                    <p id="cardStatusSettingsStatus" role="status" aria-live="polite">このブラウザに保存されます。</p>
+                <section id="studySettingsDisplay" class="study-settings-panel" role="tabpanel" aria-labelledby="studySettingsDisplayTab" hidden>
+                    <section class="study-mode-card illustration-display-settings" aria-labelledby="illustrationVisibilityHeading">
+                        <label class="card-status-toggle" for="illustrationAlwaysVisible">
+                            <span id="illustrationVisibilityHeading">イラストを常時表示</span>
+                            <input type="checkbox" id="illustrationAlwaysVisible" role="switch"
+                                onchange="WordIllustrations.setAlwaysVisible(this.checked)">
+                        </label>
+                        <p id="illustrationVisibilityDescription" hidden></p>
+                        <p id="illustrationVisibilityStatus" role="status" aria-live="polite"></p>
+                    </section>
+                    <section class="study-mode-card card-status-settings" aria-labelledby="cardStatusHeading">
+                        <label class="card-status-toggle" for="cardStatusVisible">
+                            <span id="cardStatusHeading">正答率・出題理由を表示</span>
+                            <input type="checkbox" id="cardStatusVisible" role="switch" checked
+                                onchange="setCardStatusVisible(this.checked)">
+                        </label>
+                        <p id="cardStatusDescription" hidden></p>
+                        <p id="cardStatusSettingsStatus" role="status" aria-live="polite"></p>
+                    </section>
                 </section>
             </div>
         </div>
@@ -567,6 +607,9 @@
 
                     <div class="card meaning-card" id="meaningCard" aria-disabled="true">
                         <div class="card-label">意味カード</div>
+                        <button type="button" class="illustration-mode-btn" id="illustrationModeButton"
+                            onclick="WordIllustrations.openVisibilitySettings(event)" aria-disabled="false"
+                            aria-label="常時表示中：イラストの表示設定を開く" aria-haspopup="dialog" aria-controls="studyModeModal" hidden>常時表示中</button>
                         <button type="button" class="current-illustration-btn" id="currentIllustrationBtn" onclick="event.stopPropagation(); WordIllustrations.openCurrent()" hidden>イラスト</button>
                         <div class="card-front">
                             <div class="card-content">?</div>
@@ -593,8 +636,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.1003.0218"></script>
-<script src="data/ipa_overrides.js?v=2026.1003.0218"></script>
+    <script src="data/vocabulary.js?v=2026.1004.1146"></script>
+<script src="data/ipa_overrides.js?v=2026.1004.1146"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -793,10 +836,15 @@
             <div class="wordbook-hero">
                 <div class="wordbook-kicker">Wordbooks</div>
                 <h2 class="wordbook-title"><span class="title-picto app-picto icon-book" aria-hidden="true"></span>単語帳を選択</h2>
-                <p class="wordbook-subtitle">メイン4レベルとは別に、目的別の単語帳で出題します。</p>
+                <p class="wordbook-subtitle">復習の順番や収録語を、目的に合わせて切り替えられます。</p>
             </div>
 
             <div class="wordbook-list">
+                <button id="myWordbookOpener" type="button" class="wordbook-card" onclick="MyWordbooks.open()">
+                    <span class="wordbook-icon app-picto icon-book" aria-hidden="true"></span>
+                    <span class="wordbook-copy"><strong>マイ単語帳</strong><small>テスト範囲や苦手な語を、自分の一冊に</small></span>
+                    <span id="myWordbookPremiumBadge" class="wordbook-badge">プレミアム</span>
+                </button>
                 <button class="wordbook-item-btn wordbook-card" data-level="illustrated" onclick="WordIllustrations.openWordbook()">
                     <span class="wordbook-icon" aria-hidden="true">🖼️</span>
                     <span class="wordbook-copy"><strong>イラスト単語帳</strong><small id="illustrationTrialLabel">固定100語を無料で学習</small></span>
@@ -834,6 +882,77 @@
                 中学・基礎・標準・受験は上部のレベルボタンから選択できます。
             </div>
         </div>
+    </div>
+
+    <div id="myWordbookModal" class="modal-overlay wordbook-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="myWordbookTitle">
+        <section class="modal-content my-wordbook-panel">
+            <header class="my-wordbook-heading">
+                <div><small>MY WORDBOOKS</small><h2 id="myWordbookTitle">マイ単語帳</h2></div>
+                <button type="button" class="modal-close-btn" onclick="document.getElementById('myWordbookModal').style.display='none'" aria-label="マイ単語帳を閉じる">×</button>
+            </header>
+            <p class="my-wordbook-note">プレミアム機能。テスト範囲も、苦手な語も。収録語と自分で登録した語から一冊を作れます。</p>
+            <div id="myWordbookLibrary">
+                <form id="myWordbookCreateForm" class="my-wordbook-name-form">
+                    <label for="myWordbookNewName">新しい単語帳の名前</label>
+                    <div><input id="myWordbookNewName" maxlength="60" required placeholder="例：英語・中間テスト" autocomplete="off"><button type="submit" class="my-wordbook-primary">作成</button></div>
+                </form>
+                <p id="myWordbookLibraryEmpty" class="my-wordbook-empty">まだ単語帳がありません。まず名前を付けて作成しましょう。</p>
+                <div id="myWordbookLibraryList" class="wordbook-list"></div>
+            </div>
+            <div id="myWordbookEditor" hidden>
+                <button type="button" class="my-wordbook-back" onclick="MyWordbooks.showLibrary()">‹ 単語帳一覧</button>
+                <div class="my-wordbook-editor-heading"><h3 id="myWordbookEditorHeading" tabindex="-1"></h3><button id="myWordbookStart" type="button" class="my-wordbook-primary" onclick="MyWordbooks.startStudy()">この単語帳を学習</button></div>
+                <details class="my-wordbook-options"><summary>名前の変更・単語帳の削除</summary>
+                    <form id="myWordbookRenameForm" class="my-wordbook-name-form"><label for="myWordbookName">単語帳の名前</label><div><input id="myWordbookName" maxlength="60" required><button type="submit">名前を保存</button></div></form>
+                    <button type="button" class="my-wordbook-delete" onclick="MyWordbooks.removeBook()">単語帳を削除</button>
+                </details>
+                <div class="my-wordbook-tabs" aria-label="単語の追加方法">
+                    <button type="button" data-my-wordbook-tab="members" onclick="MyWordbooks.changeTab('members')">登録した単語</button>
+                    <button type="button" data-my-wordbook-tab="input" onclick="MyWordbooks.changeTab('input')">入力して追加</button>
+                    <button type="button" data-my-wordbook-tab="history" onclick="MyWordbooks.changeTab('history')">学習状況から追加</button>
+                </div>
+                <div id="myWordbookInputPanel" hidden>
+                    <label for="myWordbookSuggest">英単語を探す（前方一致）</label>
+                    <input id="myWordbookSuggest" type="search" placeholder="例：ap → apple、apron…" autocomplete="off" spellcheck="false" aria-describedby="myWordbookSuggestSummary">
+                    <p id="myWordbookSuggestSummary" class="my-wordbook-note" role="status"></p>
+                    <div id="myWordbookSuggestions" class="my-wordbook-suggestions"></div>
+                    <button type="button" class="my-wordbook-custom-open" onclick="MyWordbooks.openCustom()">未収録の語を自分で登録</button>
+                    <label for="myWordbookInput">追加したい英単語・熟語</label>
+                    <textarea id="myWordbookInput" rows="4" maxlength="50000" placeholder="apple&#10;school&#10;high school" spellcheck="false"></textarea>
+                    <p class="my-wordbook-note">改行・カンマ・タブでまとめて照合できます。熟語は1行に1つ。大小文字は区別しません。同じ綴りは品詞・意味を確認してください。統合カードは全用法をまとめて登録します。</p>
+                    <button type="button" class="my-wordbook-primary" onclick="MyWordbooks.previewInput()">照合する</button>
+                </div>
+                <div id="myWordbookFilterPanel" class="my-wordbook-filters">
+                    <label id="myWordbookSourceLabel" for="myWordbookSource">選ぶ範囲<select id="myWordbookSource"><option value="due">復習キュー</option><option value="weak">苦手</option><option value="learned">得意</option><option value="perfect">完璧</option></select></label>
+                    <label for="myWordbookSearch">絞り込み<input id="myWordbookSearch" type="search" placeholder="英単語の先頭・日本語の意味" autocomplete="off"></label>
+                </div>
+                <p id="myWordbookResults" class="my-wordbook-note" aria-live="polite"></p>
+                <div id="myWordbookMissing" class="my-wordbook-missing" hidden></div>
+                <form id="myWordbookCustomForm" class="my-wordbook-custom-form" hidden>
+                    <h4 id="myWordbookCustomTitle">未収録の語を登録</h4>
+                    <label for="myWordbookCustomWord">英単語・熟語<input id="myWordbookCustomWord" maxlength="120" required autocomplete="off" spellcheck="false"></label>
+                    <label for="myWordbookCustomPos">品詞<select id="myWordbookCustomPos"><option value="名">名詞</option><option value="動">動詞</option><option value="形">形容詞</option><option value="副">副詞</option><option value="助">助動詞</option><option value="前">前置詞</option><option value="接">接続詞</option><option value="代">代名詞</option><option value="other">その他</option></select></label>
+                    <label for="myWordbookCustomMeaning">自分で入力した意味<textarea id="myWordbookCustomMeaning" rows="2" maxlength="500" required></textarea></label>
+                    <p id="myWordbookCustomHelp" class="my-wordbook-note">自分の単語帳にだけ保存します。復習・学習履歴は使えますが、復習スコア・ランキング加点は対象外です。</p>
+                    <div><button id="myWordbookCustomSave" type="submit" class="my-wordbook-primary">意味を保存して追加</button><button type="button" onclick="MyWordbooks.cancelWordEdit()">キャンセル</button></div>
+                </form>
+                <form id="myWordbookNoteForm" class="my-wordbook-custom-form" hidden>
+                    <h4 id="myWordbookNoteTitle"></h4>
+                    <p class="my-wordbook-note">元の意味</p>
+                    <p id="myWordbookNoteOriginal" class="my-wordbook-original-meaning"></p>
+                    <label for="myWordbookNoteMeaning">自分の訳（任意）<textarea id="myWordbookNoteMeaning" rows="2" maxlength="500" placeholder="例：授業では「〜を気にかける」"></textarea></label>
+                    <label for="myWordbookNoteMemo">覚え方・メモ（任意）<textarea id="myWordbookNoteMemo" rows="3" maxlength="500" placeholder="例：教科書の例文、覚え方など"></textarea></label>
+                    <p class="my-wordbook-note">この単語帳だけに保存し、意味カードにも表示します。元の意味・学習履歴は変更しません。両方を空欄で保存するとメモを消せます。</p>
+                    <div><button type="submit" class="my-wordbook-primary">メモを保存</button><button type="button" onclick="MyWordbooks.cancelWordEdit()">キャンセル</button></div>
+                </form>
+                <div class="my-wordbook-selection-tools"><button id="myWordbookSelectShown" type="button" onclick="MyWordbooks.selectShown()">表示中の語を選択</button><button type="button" onclick="MyWordbooks.clearSelection()">選択解除</button></div>
+                <div id="myWordbookRows" class="my-wordbook-rows"></div>
+                <div id="myWordbookPaging" class="my-wordbook-paging" hidden><button id="myWordbookPrev" type="button" onclick="MyWordbooks.page(-1)">前へ</button><span id="myWordbookPageInfo"></span><button id="myWordbookNext" type="button" onclick="MyWordbooks.page(1)">次へ</button></div>
+                <div class="my-wordbook-apply"><span id="myWordbookSelectionCount">0語選択</span><button id="myWordbookApply" type="button" class="my-wordbook-primary" onclick="MyWordbooks.applySelection()" disabled>選択した語を追加</button></div>
+                <p class="my-wordbook-note">収録語の履歴は元の語と共通。自分で登録した語は独立した履歴です。外しても履歴は消えません。通常の復習はこの単語帳の中だけ。「全語を練習」なら得意・完璧も解き直せます。</p>
+            </div>
+            <p id="myWordbookStatus" class="my-wordbook-status" role="status" aria-live="polite"></p>
+        </section>
     </div>
 
     <div id="previousIllustrationModal" class="modal-overlay wordbook-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="previousIllustrationTitle">
@@ -977,7 +1096,7 @@
             <div class="purchase-hero">
                 <div class="purchase-kicker">Premium</div>
                 <h2 class="purchase-title"><span class="title-picto app-picto icon-diamond" aria-hidden="true"></span>プレミアムプラン</h2>
-                <p class="purchase-lead">無料版は1日8分、イラスト単語帳は100語まで。プレミアムなら時間制限なしで全収録語を学習できます。通常学習のイラストは無料版でもすべて表示されます。</p>
+                <p class="purchase-lead">無料版は1日8分、イラスト単語帳は100語まで。プレミアムなら時間制限なしで全収録語を学習でき、マイ単語帳も作れます。通常学習のイラストは無料版でもすべて表示されます。</p>
             </div>
 
             <div class="purchase-legal-row">
@@ -1106,7 +1225,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.1003.0218">
+    <link rel="stylesheet" href="feedback.css?v=2026.1004.1146">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1148,19 +1267,20 @@
             <p id="speechSettingsStatus" class="speech-settings-note" role="status"></p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.1003.0218"></script>
-    <script src="js/update_manager.js?v=2026.1003.0218"></script>
-    <script src="js/config.js?v=2026.1003.0218"></script>
-    <script src="data/announcements.js?v=2026.1003.0218"></script>
-    <script src="js/utils.js?v=2026.1003.0218"></script>
-    <script src="data/word-illustrations.js?v=2026.1003.0218"></script>
-    <script src="js/word_illustrations.js?v=2026.1003.0218"></script>
+    <script src="js/version.js?v=2026.1004.1146"></script>
+    <script src="js/update_manager.js?v=2026.1004.1146"></script>
+    <script src="js/config.js?v=2026.1004.1146"></script>
+    <script src="data/announcements.js?v=2026.1004.1146"></script>
+    <script src="js/utils.js?v=2026.1004.1146"></script>
+    <script src="data/word-illustrations.js?v=2026.1004.1146"></script>
+    <script src="js/word_illustrations.js?v=2026.1004.1146"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.1003.0218"></script>
-    <script src="js/game_logic.js?v=2026.1003.0218"></script>
-    <script src="js/ui_manager.js?v=2026.1003.0218"></script>
-    <script src="js/feedback.js?v=2026.1003.0218"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.1003.0218"></script>
+    <script src="js/word_grouping.js?v=2026.1004.1146"></script>
+    <script src="js/my_wordbooks.js?v=2026.1004.1146"></script>
+    <script src="js/game_logic.js?v=2026.1004.1146"></script>
+    <script src="js/ui_manager.js?v=2026.1004.1146"></script>
+    <script src="js/feedback.js?v=2026.1004.1146"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.1004.1146"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

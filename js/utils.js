@@ -82,6 +82,12 @@ function getLegacyWordKeys(word, level, vocabularyDatabase) {
 
 function hasMeaningfulLocalLearningData(saveData) {
     if (!saveData || typeof saveData !== 'object') return false;
+    // A user-created book is real local work, even before the first answer.
+    if (Array.isArray(saveData.myWordbooks) && saveData.myWordbooks.some(book =>
+        book && typeof book.id === 'string' && typeof book.name === 'string' && book.name.trim())) return true;
+    if (Array.isArray(saveData.myCustomWords) && saveData.myCustomWords.some(word =>
+        word && typeof word.id === 'string' && typeof word.word === 'string' && word.word.trim()
+        && typeof word.meaning === 'string' && word.meaning.trim())) return true;
 
     const hasPositiveNumber = value => Number.isFinite(Number(value)) && Number(value) > 0;
     if ([

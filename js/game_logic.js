@@ -55,7 +55,10 @@ var gameState = window.gameState || {
     reviewQueueShuffleOrder: [],
     reviewQueueWasShuffled: false,
     mixCycleCounter: 0,
-    wordKeySchemaVersion: 0
+    wordKeySchemaVersion: 0,
+    myWordbooks: [],
+    myCustomWords: [],
+    activeMyWordbookId: null
 };
 window.gameState = gameState; // Expose for fallback scripts
 
@@ -97,6 +100,7 @@ const wordGrouping = window.WordGrouping.build(vocabularyDatabase, window.GameUt
 vocabularyDatabase = wordGrouping.database;
 vocabularyDatabase.illustrated = window.WordIllustrations.buildCollection(vocabularyDatabase);
 window.vocabularyDatabase = vocabularyDatabase;
+vocabularyDatabase.my = [];
 
 // Merge Junior data if loaded via temp variable
 
@@ -167,7 +171,7 @@ function renderVocabWordMarkup(word) {
         : pronunciations.map(ipa => `<span class="word-ipa-variant">${escapeHtml([...new Set(senses.filter(sense => formatIpaForDisplay(sense.ipa) === ipa).map(sense => sense.pos))].join('・'))} ${escapeHtml(ipa)}</span>`).join('');
 
     return `
-                <div class="vocab-word-stack" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-4%);">
+                <div class="vocab-word-stack${word.__customWord ? ' my-custom-word-stack' : ''}" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-4%);">
                     <div class="word-pos-label" style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 9px;">${escapeHtml(fullPos)}</div>
                     <div class="word-text-main" style="font-size: 42px; font-weight: bold; line-height: 1.2; text-align: center;">${escapeHtml(word.word)}</div>
                     ${ipaDisplay ? `<div class="word-ipa">${ipaDisplay}</div>` : ''}
@@ -176,6 +180,13 @@ function renderVocabWordMarkup(word) {
 }
 
 function renderMeaningMarkup(word) {
+    const original = renderBaseMeaningMarkup(word);
+    const note = window.MyWordbooks.studyNoteMarkup(word);
+    return note ? `<div class="my-noted-meaning"><div class="my-original-meaning"><small>元の意味</small>${original}</div>${note}</div>` : original;
+}
+
+function renderBaseMeaningMarkup(word) {
+    if (word?.__customWord) return `<div class="my-custom-meaning">${escapeHtml(word.meaning || '')}</div>`;
     if (word?.senses?.length > 1) {
         return `<div class="merged-meanings">${word.senses.map(sense => `
             <section class="merged-sense">
@@ -189,9 +200,9 @@ function renderMeaningMarkup(word) {
 
     return `
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <div style="font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">${escapeHtml(meaning)}</div>
+                    <div class="word-meaning-main" style="font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">${escapeHtml(meaning)}</div>
                     ${phrase ? `
-                        <div style="text-align: center; background: #f8f9fa; padding: 10px 20px; border-radius: 12px; border: 1px solid #eef0f5;">
+                        <div class="word-meaning-phrase" style="text-align: center; background: #f8f9fa; padding: 10px 20px; border-radius: 12px; border: 1px solid #eef0f5;">
                             ${phraseLabel}
                             <div style="font-size: 18px; color: #444; font-weight: 500;">${escapeHtml(phrase)}</div>
                         </div>
@@ -226,6 +237,7 @@ function renderWordExample(word) {
     }
     sentence.textContent = (senses[0] || word)?.example || '';
     document.getElementById('cardsArea')?.classList.toggle('has-merged-word', senses.length > 1);
+    document.getElementById('cardsArea')?.classList.toggle('has-custom-word', !!word?.__customWord);
 }
 
 function selectWordExample(index) {
@@ -281,7 +293,7 @@ function renderCardStatusSettings(message = '') {
     const input = document.getElementById('cardStatusVisible');
     if (input) input.checked = cardStatusVisible;
     const status = document.getElementById('cardStatusSettingsStatus');
-    if (status) status.textContent = message || 'このブラウザに保存されます。';
+    if (status) status.textContent = message;
 }
 
 function setCardStatusVisible(visible) {
@@ -296,6 +308,115 @@ function setCardStatusVisible(visible) {
     updateQuestionReasonUI();
     renderCardStatusSettings('このブラウザに保存しました。');
 }
+
+// Browser preferences are separate from learning saves, cloud sync and Undo.
+const REVIEW_RECOMMENDATION_KEY = 'vocabGame_reviewRecommendationEnabled';
+const REVIEW_RECOMMENDATION_THRESHOLD = 100;
+var reviewRecommendationEnabled = true;
+var reviewRecommendationDismissed = false;
+var reviewRecommendationPending = false;
+var reviewRecommendationFrame = null;
+try {
+    reviewRecommendationEnabled = localStorage.getItem(REVIEW_RECOMMENDATION_KEY) !== 'false';
+} catch { /* Show the optional recommendation by default. */ }
+
+function renderReviewRecommendationSettings(message = '') {
+    const input = document.getElementById('reviewRecommendationEnabled');
+    if (input) input.checked = reviewRecommendationEnabled;
+    const status = document.getElementById('reviewRecommendationSettingsStatus');
+    if (status) status.textContent = message;
+}
+
+function setReviewRecommendationVisible(visible) {
+    const notice = document.getElementById('reviewRecommendation');
+    if (!notice) return;
+    notice.style.display = visible ? 'flex' : 'none';
+    notice.setAttribute('aria-hidden', String(!visible));
+    notice.closest('#reviewProgressWrap')?.classList.toggle('has-review-recommendation', visible);
+}
+
+function renderReviewRecommendation(snapshot) {
+    const notice = document.getElementById('reviewRecommendation');
+    if (!notice) return;
+    const total = snapshot.dueWords.length;
+    if (total <= REVIEW_RECOMMENDATION_THRESHOLD) reviewRecommendationDismissed = false;
+    const eligible = reviewRecommendationEnabled && !reviewRecommendationDismissed
+        && total > REVIEW_RECOMMENDATION_THRESHOLD && gameState.reviewMode !== 'on';
+    reviewRecommendationPending = eligible;
+    if (!eligible) {
+        setReviewRecommendationVisible(false);
+        return;
+    }
+    // Wait for this question/answer render to finish; never interrupt a meaning reveal.
+    if (reviewRecommendationFrame === null) {
+        reviewRecommendationFrame = requestAnimationFrame(() => {
+            reviewRecommendationFrame = null;
+            maybeOpenReviewRecommendation();
+        });
+    }
+}
+
+function maybeOpenReviewRecommendation() {
+    const notice = document.getElementById('reviewRecommendation');
+    if (!notice || !reviewRecommendationPending || !reviewRecommendationEnabled
+        || reviewRecommendationDismissed || gameState.reviewMode === 'on'
+        || !learningSessionStarted || gameState.meaningCardFlipped) return;
+    if (notice.style.display === 'flex') return;
+    // Defer behind settings, tutorials, purchase prompts and intentional limits.
+    if (getVisibleDismissibleModals().some(modal => modal !== notice)) return;
+    if (Array.from(document.querySelectorAll('[aria-modal="true"], #trialOverlay, #forceUpdateModal'))
+        .some(dialog => !notice.contains(dialog) && !dialog.hidden && dialog.getClientRects().length > 0)) return;
+    reviewRecommendationPending = false;
+    // This is a small, non-modal hint: don't move focus, lock scrolling or add history.
+    setReviewRecommendationVisible(true);
+}
+
+function setReviewRecommendationEnabled(enabled) {
+    if (typeof enabled !== 'boolean') return;
+    try {
+        localStorage.setItem(REVIEW_RECOMMENDATION_KEY, String(enabled));
+    } catch {
+        renderReviewRecommendationSettings('保存できなかったため、変更前の設定に戻しました。');
+        return;
+    }
+    reviewRecommendationEnabled = enabled;
+    renderReviewRecommendation(buildReviewQueueSnapshot());
+    renderReviewRecommendationSettings('このブラウザに保存しました。');
+}
+
+window.dismissReviewRecommendation = function (restoreFocus = null) {
+    reviewRecommendationDismissed = true;
+    reviewRecommendationPending = false;
+    const notice = document.getElementById('reviewRecommendation');
+    const hadFocus = notice?.contains(document.activeElement);
+    setReviewRecommendationVisible(false);
+    // Safari can blur a tapped button before onclick; the explicit "later" choice still returns to study.
+    if (restoreFocus === true || (restoreFocus !== false && hadFocus)) {
+        focusWithoutScrolling(document.getElementById('vocabCard'));
+    }
+};
+
+window.acceptReviewRecommendation = function () {
+    // Only this explicit action changes the existing manual review mode.
+    window.dismissReviewRecommendation();
+    window.setReviewMode('on');
+    focusWithoutScrolling(document.getElementById('vocabCard'));
+};
+
+document.addEventListener('click', event => {
+    const notice = document.getElementById('reviewRecommendation');
+    if (notice?.style.display === 'flex' && !notice.contains(event.target)
+        && !getVisibleDismissibleModals().length) {
+        // Let the same click operate the card/menu/control underneath, without stealing focus.
+        window.dismissReviewRecommendation(false);
+    }
+}, { capture: true });
+
+document.addEventListener('keydown', event => {
+    const notice = document.getElementById('reviewRecommendation');
+    if (event.key === 'Escape' && notice?.style.display === 'flex'
+        && !getVisibleDismissibleModals().length) window.dismissReviewRecommendation();
+});
 
 var reviewShuffleStatusTimer = null;
 var gameStateHistory = []; // Stack to store previous states
@@ -475,7 +596,7 @@ function updateUndoButton() {
 
 // --- Trial System Config ---
 var TRIAL_CONFIG = (typeof TRIAL_CONFIG !== 'undefined') ? TRIAL_CONFIG : {
-    LIMIT_SECONDS: 480, // 8 minutes; preserve today's elapsed time.
+    LIMIT_SECONDS: 480, // 8 minutes; retain today's elapsed time.
 
     STORAGE_KEY: "vocabGame_trialState_v2" // Changed key to force reset/migration if needed, or just keep same
 };
@@ -669,24 +790,27 @@ function refreshPlanAccess() {
     lastPlanPremium = premium;
     window.WordIllustrations.refreshAccessUI();
     if (!changed) return false;
-    const gallery = document.getElementById('illustratedWordbookModal');
-    if (gallery?.style.display === 'flex') window.WordIllustrations.openWordbook();
-    if (gameState.currentLevel !== 'illustrated') return false;
     window.WordIllustrations.clear();
     window.WordIllustrations.resetPrevious();
+    const gallery = document.getElementById('illustratedWordbookModal');
+    if (gallery?.style.display === 'flex') window.WordIllustrations.openWordbook();
     gameState.decks = null;
     loadVocabularyForLevel();
     invalidateLearningProgressSnapshot();
     updateWordbookSelectionUI();
     updateLevelCurrentButton();
     if (document.getElementById('wordListModal')?.style.display === 'flex') renderWordList();
-    if (learningSessionStarted) showNextWord();
+    showNextWord();
     return true;
 }
 
 function ensureTrialAccess() {
     if (checkTrialLimit()) return false;
     if (refreshPlanAccess()) return false;
+    if (!window.WordIllustrations.canUseLevel(gameState.currentLevel)) {
+        switchLevel('basic');
+        return false;
+    }
     if (gameState.currentLevel === 'illustrated' && gameState.currentWord &&
         !window.WordIllustrations.canUseWord(gameState.currentWord, 'illustrated', vocabularyDatabase)) {
         gameState.currentWord = null;
@@ -702,11 +826,17 @@ function ensureTrialAccess() {
 
 function init() {
     loadGame();
+    window.MyWordbooks.restore();
     restoreLastLevelPreference();
+    if (gameState.currentMode === 'all' && gameState.currentLevel !== 'my') gameState.currentMode = 'unlearned';
 
     // Ensure compatibility with old saves if level names changed
-    if (!vocabularyDatabase[gameState.currentLevel]) {
+    if (!vocabularyDatabase[gameState.currentLevel] || !window.WordIllustrations.canUseLevel(gameState.currentLevel)
+        || (gameState.currentLevel === 'my' && !window.MyWordbooks.getBook())) {
         gameState.currentLevel = 'basic';
+        if (gameState.currentMode === 'all') gameState.currentMode = 'unlearned';
+        gameState.currentWord = null;
+        gameState.decks = null;
         persistLastLevel(gameState.currentLevel);
     }
 
@@ -1038,8 +1168,15 @@ function parseCSV(text) {
 }
 
 function switchLevel(level) {
+    if (level === 'my' && !window.MyWordbooks.getBook()) return;
+    if (!window.WordIllustrations.requireLevel(level)) return;
+    if (level === 'my' || gameState.currentLevel === 'my') {
+        gameStateHistory = [];
+        updateUndoButton();
+    }
     window.WordIllustrations.resetPrevious();
     gameState.currentLevel = level;
+    if (level !== 'my' && gameState.currentMode === 'all') gameState.currentMode = 'unlearned';
     invalidateLearningProgressSnapshot();
     // Keep the last-opened learning zone independent from cloud save timing.
     persistLastLevel(level);
@@ -1069,7 +1206,7 @@ function switchLevel(level) {
 }
 
 function isWordbookLevel(level) {
-    return level === 'selection1400' || level === 'selection1900' || level === 'sys_2000' || level === 'illustrated';
+    return level === 'selection1400' || level === 'selection1900' || level === 'sys_2000' || level === 'illustrated' || level === 'my';
 }
 
 function updateWordbookSelectionUI() {
@@ -1095,7 +1232,8 @@ const LEVEL_DISPLAY_LABELS = {
 function updateLevelCurrentButton() {
     const label = document.getElementById('levelCurrentLabel');
     if (!label) return;
-    label.textContent = LEVEL_DISPLAY_LABELS[gameState.currentLevel] || '基礎';
+    label.textContent = gameState.currentLevel === 'my' ? 'マイ単語帳' : (LEVEL_DISPLAY_LABELS[gameState.currentLevel] || '基礎');
+    window.MyWordbooks.refreshStudyUI();
 }
 
 function toggleLevelSelector(event) {
@@ -1150,6 +1288,14 @@ function resolveReferencedVocabularyWord(word, level) {
 }
 
 function loadVocabularyForLevel() {
+    if (gameState.currentLevel === 'my') window.MyWordbooks.refreshCollection();
+    if (!window.WordIllustrations.canUseLevel(gameState.currentLevel)) {
+        gameState.currentLevel = 'basic';
+        if (gameState.currentMode === 'all') gameState.currentMode = 'unlearned';
+        gameState.decks = null;
+        gameState.currentWord = null;
+        persistLastLevel('basic');
+    }
     if (gameState.currentLevel.startsWith('selection') || gameState.currentLevel === 'sys_2000') {
         const rawWords = vocabularyDatabase[gameState.currentLevel] || [];
         vocabulary = rawWords.map(v => resolveReferencedVocabularyWord(v, gameState.currentLevel)).filter(v => {
@@ -1236,9 +1382,9 @@ function renderReviewTiming(message = '') {
     });
     const format = days => days < 1 ? `${days * 24}時間` : `${days}日`;
     const intervals = REVIEW_INTERVAL_DAYS.map(days => format(days * getReviewTimingMultiplier()));
-    document.getElementById('reviewTimingExample').textContent = `最初の段階の例：苦手な単語に正解 → 約${intervals[0]}後`;
+    document.getElementById('reviewTimingExample').textContent = `最初の段階：約${intervals[0]}後`;
     document.getElementById('reviewTimingIntervals').textContent = intervals.join(' → ');
-    document.getElementById('reviewTimingStatus').textContent = message || '選ぶと自動保存。次の回答から適用します。';
+    document.getElementById('reviewTimingStatus').textContent = message;
 }
 
 window.selectReviewTiming = function (value) {
@@ -1255,6 +1401,7 @@ window.selectReviewTiming = function (value) {
 };
 
 window.openReviewTimingSettings = function () {
+    window.selectStudySettingsTab('review', false);
     const panel = document.getElementById('reviewTimingSettings');
     panel.open = true;
     panel.querySelector('summary').focus();
@@ -1326,7 +1473,7 @@ function pruneReviewScoreHistory(history, keepDays = 90) {
 }
 
 function awardReviewScore(key, isCorrect, previousIntervalDays) {
-    if (!isScheduledReviewQuestion()) return 0;
+    if (!isScheduledReviewQuestion() || window.MyWordbooks.isCustomKey(key)) return 0;
 
     const today = getLocalDateKey();
     const s = ensureSrsEntry(key);
@@ -1417,6 +1564,7 @@ function updateSrsForWord(key, isCorrect, currentState = null) {
 }
 
 function isReviewLevelEnabledForWord(word, level) {
+    if (gameState.currentLevel === 'my') return vocabularyDatabase.my.some(item => getWordKey(item, 'my') === getWordKey(word, level));
     const active = gameState.activeReviewLevels || [];
     return active.includes(getWordSourceLevel(word, level));
 }
@@ -1436,11 +1584,14 @@ function renderReviewLevelCheckboxes() {
     ];
 
     host.innerHTML = '';
+    const myScope = gameState.currentLevel === 'my';
+    const myScopeNote = document.getElementById('myWordbookReviewScopeNote');
+    if (myScopeNote) myScopeNote.hidden = !myScope;
     defs.forEach(([key, label]) => {
         const checked = (gameState.activeReviewLevels || []).includes(key);
         const wrap = document.createElement('label');
         wrap.className = 'study-review-level-chip';
-        wrap.innerHTML = `<input type="checkbox" data-review-level="${key}" ${checked ? 'checked' : ''}> <span>${label}</span>`;
+        wrap.innerHTML = `<input type="checkbox" data-review-level="${key}" ${checked ? 'checked' : ''} ${myScope ? 'disabled' : ''}> <span>${label}</span>`;
         host.appendChild(wrap);
     });
 
@@ -1465,9 +1616,17 @@ window.openStudyModeModal = function () {
         renderReviewTiming();
         renderReviewLevelCheckboxes();
         renderCardStatusSettings();
+        renderReviewRecommendationSettings();
+        window.WordIllustrations.renderVisibilitySettings();
         updateReviewProgressUI();
         const content = m.querySelector('.study-mode-modal-content');
         if (content) content.scrollTop = 0;
+        window.selectStudySettingsTab('questions', false);
+        // Menu items disappear on open; return focus to their visible trigger on close.
+        const opener = document.activeElement;
+        if (opener === document.body || opener?.closest('#otherMenuDropdown')) {
+            focusWithoutScrolling(document.getElementById('otherMenuBtn'));
+        }
         m.style.display = 'flex';
     }
 };
@@ -1484,8 +1643,9 @@ window.toggleDueOnlyMode = function (event) {
     window.setReviewMode(order[(order.indexOf(cur) + 1) % order.length]);
 };
 
-window.setReviewMode = function (mode) {
+window.setReviewMode = function (mode, preserveAll = false) {
     if (!['off', 'random', 'on'].includes(mode)) return;
+    if (gameState.currentMode === 'all' && !preserveAll) gameState.currentMode = 'unlearned';
     gameState.reviewMode = mode;
     updateModeButtons();
     const reviewSnapshot = buildReviewQueueSnapshot();
@@ -1593,6 +1753,8 @@ function renderMasterySettings(message = '') {
     const number = document.getElementById('masteryThresholdValue');
     if (!number) return;
     number.textContent = `${size * value / 100} / ${size}回`;
+    const summary = document.getElementById('masterySettingsSummary');
+    if (summary) summary.textContent = `直近${size}回・${value}%`;
     document.getElementById('masteryThresholdExplanation').textContent = `直近${size}回で${size * value / 100}回以上正解（${value}%）`;
     document.querySelectorAll('[data-review-window]').forEach(button => {
         button.setAttribute('aria-pressed', String(Number(button.dataset.reviewWindow) === size));
@@ -1610,14 +1772,17 @@ function renderMasterySettings(message = '') {
     const now = Date.now();
     Object.entries(gameState.wordStates || {}).forEach(([key, state]) => {
         if (state === 'unlearned' || isRetiredWordByKey(key)) return;
-        if (!(candidates.get(key) || []).some(item => (gameState.activeReviewLevels || []).includes(item.level)
-            && isWordAllowedByPOS(item.word))) return;
+        const inScope = gameState.currentLevel === 'my'
+            ? vocabularyDatabase.my.some(word => getWordKey(word, 'my') === key && isWordAllowedByPOS(word))
+            : (candidates.get(key) || []).some(item => (gameState.activeReviewLevels || []).includes(item.level)
+                && isWordAllowedByPOS(item.word));
+        if (!inScope) return;
         if (!['weak', 'learned'].includes(state)) return;
         total++;
         if (gameState.srsData[key]?.dueAt <= now) due++;
     });
-    document.getElementById('masteryChangePreview').textContent = message || '変更すると自動で反映・保存されます';
-    document.getElementById('masteryPendingNotice').textContent = `${size}回未満なら、回答済みの回数で判定します。例：1/1は100%、4/5は80%。回答記録のない旧データは分類を維持します。`;
+    document.getElementById('masteryChangePreview').textContent = message;
+    document.getElementById('masteryPendingNotice').textContent = `回答が${size}回未満なら、回答済みの回数で判定します。`;
     document.getElementById('masteryPendingNotice').hidden = false;
     document.getElementById('masteryTargetPreview').textContent = `${total}語`;
     document.getElementById('masteryDuePreview').textContent = `${due}語`;
@@ -1775,6 +1940,7 @@ var wordListState = {
 };
 
 function normalizeWordListLevel(level) {
+    if (level === 'my' && window.MyWordbooks.getBook() && window.WordIllustrations.canUseLevel('my')) return level;
     return WORD_LIST_LEVELS.some(([key]) => key === level) ? level : 'basic';
 }
 
@@ -1784,7 +1950,8 @@ function getWordListStateForKey(key) {
 
 function renderWordListControls() {
     const level = normalizeWordListLevel(wordListState.level);
-    const levelInfo = WORD_LIST_LEVELS.find(([key]) => key === level) || WORD_LIST_LEVELS[1];
+    const levels = window.MyWordbooks.getBook() && window.WordIllustrations.canUseLevel('my') ? [...WORD_LIST_LEVELS, ['my', 'マイ単語帳', '']] : WORD_LIST_LEVELS;
+    const levelInfo = levels.find(([key]) => key === level) || WORD_LIST_LEVELS[1];
     const levelWords = window.WordIllustrations.accessibleWords(level, vocabularyDatabase);
     const filterCounts = levelWords.reduce((counts, word) => {
         const state = getWordListStateForKey(getWordKey(word, level));
@@ -1795,7 +1962,7 @@ function renderWordListControls() {
 
     const levelHost = document.getElementById('wordListLevelTabs');
     if (levelHost) {
-        levelHost.innerHTML = WORD_LIST_LEVELS.map(([key, label, cefr]) => `
+        levelHost.innerHTML = levels.map(([key, label, cefr]) => `
             <button type="button" class="word-list-level-btn ${wordListState.level === key ? 'active' : ''}"
                 onclick="setWordListLevel('${key}')">
                 ${escapeHtml(label)} <span>${escapeHtml(cefr)}</span>
@@ -2059,7 +2226,12 @@ window.openWordFromList = function (level, key) {
     activateLearningSessionUI();
 
     if (gameState.currentLevel !== safeLevel) {
+        if (safeLevel === 'my' || gameState.currentLevel === 'my') {
+            gameStateHistory = [];
+            updateUndoButton();
+        }
         gameState.currentLevel = safeLevel;
+        if (safeLevel !== 'my' && gameState.currentMode === 'all') gameState.currentMode = 'unlearned';
         invalidateLearningProgressSnapshot();
         persistLastLevel(safeLevel);
         gameState.decks = null;
@@ -2133,6 +2305,14 @@ function isWordAllowedByPOS(word, activeFilters = null) {
 }
 
 function getReviewQueueCandidatesAcrossLevels() {
+    if (gameState.currentLevel === 'my') {
+        return vocabularyDatabase.my.flatMap((word, wordOrder) => {
+            const key = getWordKey(word, 'my');
+            const state = gameState.wordStates[key];
+            return ['weak', 'learned'].includes(state) && !isRetiredWordByKey(key) && isWordAllowedByPOS(word)
+                ? [{ word, key, state, queueOrder: 0, wordOrder }] : [];
+        });
+    }
     const levels = gameState.activeReviewLevels || [];
     const activeRank = new Map(levels.map((level, index) => [level, index]));
     const activeFilters = new Set(gameState.posFilters || []);
@@ -2397,6 +2577,7 @@ function updateReviewProgressUI(snapshot = null) {
     const dueWords = reviewSnapshot.dueWords;
     const stats = reviewSnapshot.stats;
     const total = dueWords.length;
+    renderReviewRecommendation(reviewSnapshot);
     const prevCount = (typeof gameState.lastReviewQueueCount === 'number') ? gameState.lastReviewQueueCount : total;
 
     const newHeadKey = total > 0
@@ -2409,7 +2590,9 @@ function updateReviewProgressUI(snapshot = null) {
         random: { text: '新規＋復習', description: '復習を優先し、新しい単語もまぜて出題します。', color: '#a16207', bg: '#fffbeb', border: '#fde68a' },
         off: { text: '新規だけ', description: '未学習では新しい単語だけを出題します。', color: '#475467', bg: '#f3f4f6', border: '#d1d5db' }
     };
-    const m = modeMap[gameState.reviewMode] || modeMap.random;
+    const isMyAll = gameState.currentLevel === 'my' && gameState.currentMode === 'all' && gameState.reviewMode !== 'on';
+    const m = isMyAll ? { ...modeMap.off, text: '単語帳の全語', description: 'このマイ単語帳の全語を、得意・完璧も含めて練習します。出題バランスを選ぶと通常の出題へ戻ります。' }
+        : (modeMap[gameState.reviewMode] || modeMap.random);
     const modeText = m.text;
     const modeColor = m.color;
     if (mode) {
@@ -2424,7 +2607,7 @@ function updateReviewProgressUI(snapshot = null) {
     }
     if (modeDescription) modeDescription.textContent = m.description;
     document.querySelectorAll('[data-review-mode-option]').forEach(button => {
-        const active = button.dataset.reviewModeOption === gameState.reviewMode;
+        const active = !isMyAll && button.dataset.reviewModeOption === gameState.reviewMode;
         button.classList.toggle('active', active);
         button.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
@@ -2683,6 +2866,9 @@ function buildLocalSaveData() {
         globalQuestionCount: gameState.globalQuestionCount,
         currentLevel: gameState.currentLevel,
         currentMode: gameState.currentMode,
+        myWordbooks: window.MyWordbooks.normalizeBooks(gameState.myWordbooks),
+        myCustomWords: window.MyWordbooks.normalizeCustomWords(gameState.myCustomWords),
+        activeMyWordbookId: gameState.activeMyWordbookId,
         vocabLevel: gameState.vocabLevel,
         wordsLearned: gameState.wordsLearned, // Ensure wordsLearned is saved
         dailyStats: gameState.dailyStats, // Fix: Persist Daily Stats
@@ -2896,6 +3082,7 @@ function updateVocabLevelDisplay() {
 }
 
 function getWordsByMode(mode) {
+    if (mode === 'all' && gameState.currentLevel === 'my') return filterWordsByPOS(vocabulary);
     const modeWords = vocabulary.filter(v => {
         const key = getWordKey(v, gameState.currentLevel);
         return (gameState.wordStates[key] || 'unlearned') === mode;
@@ -3180,6 +3367,15 @@ function showNextWord(reviewSnapshot = null) {
                 words = [];
             }
             gameState.isReviewWord = shouldShowReview;
+        } else if (mode === 'all' && gameState.currentLevel === 'my') {
+            const word = getWordFromDeck('all', getWordsByMode('all'));
+            words = word ? [word] : [];
+            if (word) {
+                const key = getWordKey(word, 'my');
+                const state = gameState.wordStates[key] || 'unlearned';
+                gameState.currentQuestionReason = getReviewQuestionReasonForWord(key, state, state === 'unlearned' ? null : `manual-${state}`);
+                shouldShowReview = ['due-weak', 'due-learned'].includes(gameState.currentQuestionReason);
+            }
         } else if (mode === 'perfect') {
             // Perfect is not part of routine review queue; manual mode only
             words = getWordsByMode(mode);
@@ -3345,6 +3541,7 @@ function showNextWord(reviewSnapshot = null) {
 
 // NEW: Function to show a SPECIFIC word (for Undo/Restore)
 function showWord(word) {
+    word = window.MyWordbooks.resolveWord(word);
     if (word && !window.WordIllustrations.canUseWord(word, gameState.currentLevel, vocabularyDatabase)) {
         gameState.currentWord = null;
         gameState.decks = null;
@@ -3355,6 +3552,7 @@ function showWord(word) {
     window.WordIllustrations?.clear();
     window.WordIllustrations.refreshPrevious(word, getWordSourceLevel(word, gameState.currentLevel), vocabularyDatabase);
     if (!word) return;
+    gameState.currentWord = word;
 
     // Reset Card State
     gameState.meaningCardFlipped = false;
@@ -3402,6 +3600,9 @@ function hideNoWordsMessage() {
                     </div>
                     <div class="card meaning-card" id="meaningCard">
                         <div class="card-label">意味カード</div>
+                        <button type="button" class="illustration-mode-btn" id="illustrationModeButton"
+                            onclick="WordIllustrations.openVisibilitySettings(event)" aria-disabled="false"
+                            aria-label="常時表示中：イラストの表示設定を開く" aria-haspopup="dialog" aria-controls="studyModeModal" hidden>常時表示中</button>
                         <button type="button" class="current-illustration-btn" id="currentIllustrationBtn" onclick="event.stopPropagation(); WordIllustrations.openCurrent()" hidden>イラスト</button>
                         <div class="card-front">
                             <div class="card-content">?</div>
@@ -3637,6 +3838,7 @@ function updateDisplay(reviewSnapshot = null) {
     updateReviewQueueBadge(snapshot);
     updateReviewProgressUI(snapshot);
     renderWordList();
+    window.MyWordbooks.refreshStudyUI();
     return snapshot;
 }
 

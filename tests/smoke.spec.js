@@ -76,7 +76,7 @@ test('学習ログを廃止し、語彙力推定と復習ランキングを残�
   await expect(page.locator('#vocabDiagnosisContainer .vocab-diagnosis-card')).toBeVisible();
 });
 
-test('無料版は8分到達後に回答できず再読み込み後もロックされる', async ({ page }) => {
+test('無料版は8分到達後に回答できず再読み込み後もロックされる', async ({ page, baseURL }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -97,7 +97,7 @@ test('無料版は8分到達後に回答できず再読み込み後もロック�
     }
   });
 
-  await page.goto('http://localhost.:8000/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.goto(`http://localhost.:${new URL(baseURL).port}/vocab_clicker_game.html`, { waitUntil: 'domcontentloaded' });
   await expect.poll(() => page.evaluate(() => window.gameState?.currentWord?.word || null)).not.toBeNull();
 
   const before = await page.evaluate(() => ({
@@ -132,7 +132,7 @@ test('無料版は8分到達後に回答できず再読み込み後もロック�
   await expect.poll(() => page.evaluate(() => window.gameState?.currentWord || null)).toBeNull();
 });
 
-test('期限切れのローカル解放状態では8分制限を解除しない', async ({ page }) => {
+test('期限切れのローカル解放状態では8分制限を解除しない', async ({ page, baseURL }) => {
   await page.addInitScript(() => {
     const today = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Asia/Tokyo',
@@ -151,13 +151,13 @@ test('期限切れのローカル解放状態では8分制限を解除しない'
     }));
   });
 
-  await page.goto('http://localhost.:8000/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.goto(`http://localhost.:${new URL(baseURL).port}/vocab_clicker_game.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#trialOverlay')).toBeVisible();
   await expect.poll(() => page.evaluate(() => localStorage.getItem('vocabGame_isUnlocked'))).toBe('false');
   await expect.poll(() => page.evaluate(() => window.trialState.unlocked)).toBe(false);
 });
 
-test('有効期限内のプレミアム利用者は8分を超えてもロックしない', async ({ page }) => {
+test('有効期限内のプレミアム利用者は8分を超えてもロックしない', async ({ page, baseURL }) => {
   await page.addInitScript(() => {
     const today = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Asia/Tokyo',
@@ -176,7 +176,7 @@ test('有効期限内のプレミアム利用者は8分を超えてもロック�
     }));
   });
 
-  await page.goto('http://localhost.:8000/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+  await page.goto(`http://localhost.:${new URL(baseURL).port}/vocab_clicker_game.html`, { waitUntil: 'domcontentloaded' });
   await expect.poll(() => page.evaluate(() => window.gameState?.currentWord?.word || null)).not.toBeNull();
   await expect(page.locator('#trialOverlay')).toBeHidden();
   await expect(page.locator('#trialTimerDisplay')).toBeHidden();
@@ -848,7 +848,8 @@ test('大規模学習データでも回答ホットパスを全状態コピー�
         index++;
       });
     });
-    gs.activeReviewLevels = Object.keys(window.vocabularyDatabase);
+    // Only levels exposed by the review-range controls are valid queue scopes.
+    gs.activeReviewLevels = ['junior', 'basic', 'daily', 'exam1', 'selection1400', 'selection1900', 'sys_2000'];
     gs.posFilters = ['名', '動', '形', '副', '助', '前', '接', '代', 'other'];
     window.invalidateReviewWordIndex();
     window.invalidateLearningProgressSnapshot();
@@ -1211,6 +1212,7 @@ test('復習キューのランダムボタンは現在の問題を保って残�
   const shuffleButton = page.locator('#reviewQueueShuffleButton');
   await page.evaluate(() => window.openStudyModeModal());
   const modalShuffleButton = page.locator('#studyModeShuffleButton');
+  await page.getByRole('tab', { name: '復習', exact: true }).click();
   await expect(shuffleButton).toBeEnabled();
   await expect(modalShuffleButton).toBeEnabled();
   await modalShuffleButton.click();
@@ -1252,8 +1254,10 @@ test('出題モードは小さい画面でも主要設定を読みやすく表�
   await expect(modal.locator('.study-mode-flow')).toHaveCount(0);
   await expect(modal.getByText('出題バランス', { exact: true })).toBeVisible();
   await expect(modal.locator('.study-scope-card > summary').filter({ hasText: '出題範囲' })).toBeVisible();
+  await page.getByRole('tab', { name: '復習', exact: true }).click();
   await expect(modal.locator('#reviewTimingSettings > summary')).toBeVisible();
   await expect(modal.getByRole('button', { name: '復習キューの残り順をランダムに並べ替える' })).toBeVisible();
+  await modal.locator('#masterySettings > summary').click();
   await expect(modal.getByText('判定のしくみ', { exact: true })).toBeVisible();
 
   const bounds = await modal.evaluate(el => {

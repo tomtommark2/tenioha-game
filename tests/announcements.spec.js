@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
-test.beforeEach(async ({ page }) => {
-  await page.route(/https?:\/\/(?!localhost:8000)/, route => route.abort());
+test.beforeEach(async ({ page, baseURL }) => {
+  await page.route(url => /^https?:$/.test(url.protocol) && url.origin !== new URL(baseURL).origin, route => route.abort());
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');

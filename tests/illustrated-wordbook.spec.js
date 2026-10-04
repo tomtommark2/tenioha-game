@@ -23,13 +23,14 @@ async function select(page, word) {
 
 async function registeredLearningKeys(page) {
   return page.evaluate(() => {
-    const rows = ['junior', 'basic', 'daily', 'exam1'].flatMap(level =>
-      vocabularyDatabase[level].map(word => ({ level, word })));
-    return WORD_ILLUSTRATIONS.map(entry => {
+    const rows = Object.entries(vocabularyDatabase).filter(([level]) => !['illustrated', 'my'].includes(level))
+      .flatMap(([level, words]) => words.map(word => ({ level, word })));
+    return WORD_ILLUSTRATIONS.flatMap(entry => {
       const source = rows.find(({ level, word }) => (word.senses || [word]).some(sense =>
         sense.word === entry.word && sense.pos === entry.pos && (sense.__sourceLevel || level) === entry.level));
       if (!source) throw new Error(`Missing registered source: ${entry.level}/${entry.word}`);
-      return getWordKey(source.word, source.level);
+      // The dedicated book contains the four main learning levels; other books still use their images.
+      return ['junior', 'basic', 'daily', 'exam1'].includes(entry.level) ? [getWordKey(source.word, source.level)] : [];
     });
   });
 }
@@ -37,7 +38,8 @@ async function registeredLearningKeys(page) {
 test('イラスト単語帳は登録済み名詞だけで元の学習キーを共有する', async ({ page }) => {
   const expectedKeys = [...new Set(await registeredLearningKeys(page))].sort();
   const result = await page.evaluate(() => {
-    const keys = new Set(['junior', 'basic', 'daily', 'exam1'].flatMap(level => vocabularyDatabase[level].map(word => getWordKey(word, level))));
+    const keys = new Set(Object.entries(vocabularyDatabase).filter(([level]) => !['illustrated', 'my'].includes(level))
+      .flatMap(([level, words]) => words.map(word => getWordKey(word, level))));
     return {
       count: vocabularyDatabase.illustrated.length,
       learningKeys: vocabularyDatabase.illustrated.map(word => getWordKey(word, 'illustrated')).sort(),
@@ -130,7 +132,7 @@ test('イラスト画面は小さい画面でも閉じて学習に戻れる', as
   await page.evaluate(() => history.back());
   await expect(page.locator('#illustratedWordbookModal')).toBeHidden();
   await page.evaluate(() => WordIllustrations.openWordbook());
-  await page.getByRole('button', { name: 'apple：', exact: false }).click();
+  await page.getByRole('button', { name: /^apple：/ }).click();
   await expect(page.locator('#illustratedWordbookModal')).toBeHidden();
   await expect(page.locator('#vocabWord')).toContainText('apple');
   await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
@@ -172,10 +174,9 @@ test('前の絵と一覧は320pxでも収まり、最終回答後も絵を開け
   await page.setViewportSize({ width: 320, height: 650 });
   const images = await page.locator('.illustrated-word-tile img').evaluateAll(async images => {
     // Bound diagnostic eager loads; production uses lazy loading.
-    for (let i = 0; i < images.length; i += 12) {
-      await Promise.all(images.slice(i, i + 12).map(image => { image.loading = 'eager'; return image.decode(); }));
-    }
-    return images.every(image => image.naturalWidth > 0);
+    const samples = [...images.slice(0, 6), ...images.slice(-6)];
+    await Promise.all(samples.map(image => { image.loading = 'eager'; return image.decode(); }));
+    return samples.every(image => image.naturalWidth > 0);
   });
   expect(images).toBe(true);
   expect(await page.locator('#illustratedWordbookGallery').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);

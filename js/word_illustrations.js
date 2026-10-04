@@ -4,6 +4,50 @@
     let previous = null;
     let current = null;
     let displayed = null;
+    const ALWAYS_VISIBLE_KEY = 'vocabGame_illustrationAlwaysVisible';
+    let alwaysVisible = false;
+    try {
+        alwaysVisible = localStorage.getItem(ALWAYS_VISIBLE_KEY) === 'true';
+    } catch { /* Keep the existing opt-in illustration behavior. */ }
+
+    function renderAlwaysVisibleIndicator() {
+        const button = document.getElementById('illustrationModeButton');
+        if (button) button.hidden = !alwaysVisible;
+    }
+
+    function renderVisibilitySettings(message = '') {
+        renderAlwaysVisibleIndicator();
+        const input = document.getElementById('illustrationAlwaysVisible');
+        if (input) input.checked = alwaysVisible;
+        const status = document.getElementById('illustrationVisibilityStatus');
+        if (status) status.textContent = message;
+    }
+
+    function openVisibilitySettings(event) {
+        event?.stopPropagation();
+        // Safari taps may not focus buttons; preserve this shortcut as the opener.
+        document.getElementById('illustrationModeButton')?.focus({ preventScroll: true });
+        window.openStudyModeModal();
+        window.selectStudySettingsTab('display', false);
+    }
+
+    function setAlwaysVisible(visible) {
+        if (typeof visible !== 'boolean') return;
+        try {
+            localStorage.setItem(ALWAYS_VISIBLE_KEY, String(visible));
+        } catch {
+            renderVisibilitySettings('保存できなかったため、変更前の設定に戻しました。');
+            return;
+        }
+        alwaysVisible = visible;
+        const state = window.gameState;
+        if (state?.currentWord && (alwaysVisible || state.meaningCardFlipped)) {
+            show(state.currentWord, state.currentWord.__sourceLevel || state.currentLevel, window.vocabularyDatabase);
+        } else {
+            clear();
+        }
+        renderVisibilitySettings('このブラウザに保存しました。');
+    }
     // Fixed trial set: expanding the catalogue never rotates free access.
     const freeWords = new Set([
         'action', 'activity', 'actor', 'address', 'aeroplane', 'afternoon', 'age', 'airplane', 'airport', 'album',
@@ -17,12 +61,14 @@
         'camp', 'candy', 'cap', 'car', 'card', 'care', 'cartoon', 'case', 'cat', 'catch',
         'celebration', 'chair', 'change', 'character', 'check', 'cheese', 'chicken', 'child', 'chocolate', 'clock'
     ]);
+    const paidLevels = new Set(['my']);
     const premium = () => !!window.GameUtils.checkPremiumStatus();
     const canUseBookEntry = entry => !!entry && (premium() || (entry.level === 'junior' && freeWords.has(entry.word)));
     // Images are free in the main levels; only the dedicated book is a trial.
     const canUseEntry = entry => !!entry && (window.gameState?.currentLevel !== 'illustrated' || canUseBookEntry(entry));
+    const canUseLevel = level => !paidLevels.has(level) || premium();
     function canUseWord(word, level, database) {
-        return level !== 'illustrated' || canUseBookEntry(find(word, level, database));
+        return canUseLevel(level) && (level !== 'illustrated' || canUseBookEntry(find(word, level, database)));
     }
     function accessibleWords(level, database) {
         return (database[level] || []).filter(word => canUseWord(word, level, database));
@@ -30,6 +76,11 @@
     function explainUpgrade() {
         // The existing purchase flow handles login and remains dismissible.
         window.openPurchaseModal();
+    }
+    function requireLevel(level) {
+        if (canUseLevel(level)) return true;
+        explainUpgrade();
+        return false;
     }
     function refreshAccessUI() {
         const trial = document.getElementById('illustrationTrialLabel');
@@ -53,12 +104,14 @@
     }
 
     function refreshPrevious(word, level, database) {
+        renderAlwaysVisibleIndicator();
         current = find(word, level, database);
         const currentButton = document.getElementById('currentIllustrationBtn');
         if (currentButton) currentButton.hidden = !canUseEntry(current);
         const button = document.getElementById('previousIllustrationBtn');
         const currentKey = word && window.GameUtils.getWordKey(word, level, database);
         if (button) button.hidden = !previous || !canUseEntry(previous.entry) || previous.key === currentKey;
+        if (alwaysVisible) showEntry(current);
     }
 
     function rememberAnswer(word, level, database) {
@@ -196,6 +249,8 @@
     }
 
     window.WordIllustrations = Object.freeze({ find, show, clear, buildCollection,
-        premium, canUseEntry, canUseWord, accessibleWords, explainUpgrade, refreshAccessUI,
+        renderVisibilitySettings, setAlwaysVisible, openVisibilitySettings,
+        premium, canUseEntry, canUseLevel, canUseWord, accessibleWords, requireLevel, explainUpgrade, refreshAccessUI,
         rememberAnswer, refreshPrevious, resetPrevious, openPrevious, openCurrent, enlarge, openWordbook, startWordbook, close });
+    renderAlwaysVisibleIndicator();
 })();

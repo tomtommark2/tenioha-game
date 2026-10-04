@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
-test.beforeEach(async ({ page }) => {
-    await page.route(/https?:\/\/(?!localhost:8000)/, route => route.abort());
+test.beforeEach(async ({ page, baseURL }) => {
+    await page.route(url => /^https?:$/.test(url.protocol) && url.origin !== new URL(baseURL).origin, route => route.abort());
     await page.addInitScript(() => {
         localStorage.setItem('vocabGame_skipWelcome', 'true');
         localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -63,7 +63,7 @@ test('読み上げ設定：待機中の音声もオフで中止', async ({ page 
     expect(result).toBe(0);
 });
 
-test('読み上げ設定：横向き・背景クリック・戻る・フォーカス循環', async ({ page }) => {
+test('読み上げ設定：横向き・背景クリック・戻る・フォーカス循環', async ({ page, baseURL }) => {
     await page.setViewportSize({ width: 568, height: 320 });
     await page.locator('#speechSettingsBtn').click();
     await expect(page.locator('#speechSettingsModal')).toBeVisible();
@@ -82,7 +82,7 @@ test('読み上げ設定：横向き・背景クリック・戻る・フォー�
 
 for (const width of [320, 360, 375, 390, 768, 1280]) {
     for (const paid of [false, true]) {
-        test(`読み上げ設定：枠内 ${width}px ${paid ? '有料' : '無料'}`, async ({ page }) => {
+        test(`読み上げ設定：枠内 ${width}px ${paid ? '有料' : '無料'}`, async ({ page, baseURL }) => {
             await page.setViewportSize({ width, height: 720 });
             await page.evaluate(paid => {
                 hasValidPremiumAccess = () => paid;

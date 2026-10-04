@@ -3,9 +3,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 const phase = process.env.PHRASE_LAYOUT_PHASE || 'after';
 
-test('画像・意味カード・例文切替の幅別表示と選択動作を確認する', async ({ page, browserName }) => {
+test('画像・意味カード・例文切替の幅別表示と選択動作を確認する', async ({ page, browserName, baseURL }) => {
   test.setTimeout(120000);
-  await page.route(/https?:\/\/(?!localhost:8000)/, route => {
+  await page.route(url => /^https?:$/.test(url.protocol) && url.origin !== new URL(baseURL).origin, route => {
     const host = new URL(route.request().url()).hostname;
     return ['fonts.googleapis.com', 'fonts.gstatic.com'].includes(host) ? route.continue() : route.abort();
   });

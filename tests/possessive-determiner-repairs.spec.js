@@ -4,9 +4,9 @@ const path = require('node:path');
 const batch = require('../docs/vocabulary-changes/2026-09-09-phrase-pos-batch-04.json');
 const words = [...new Set(batch.changes.map(c => c.after.word))];
 
-test('第4回の全22語は修正内容・例文・履歴・幅別表示を保持する', async ({ page, browserName }) => {
+test('第4回の全22語は修正内容・例文・履歴・幅別表示を保持する', async ({ page, browserName, baseURL }) => {
   test.setTimeout(180000);
-  await page.route(/https?:\/\/(?!localhost:8000)/, route => ['fonts.googleapis.com', 'fonts.gstatic.com'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
+  await page.route(url => /^https?:$/.test(url.protocol) && url.origin !== new URL(baseURL).origin, route => ['fonts.googleapis.com', 'fonts.gstatic.com'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');

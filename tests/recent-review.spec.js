@@ -67,6 +67,8 @@ test('判定回数と正解数を即時保存し、履歴と現在の問題を�
     openStudyModeModal();
   });
   const wordBefore = await page.locator('#vocabWord').textContent();
+  await page.getByRole('tab', { name: '復習', exact: true }).click();
+  await page.locator('#masterySettings > summary').click();
   await page.locator('[data-mastery-threshold="90"]').click();
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('vocabClickerSave')).masteryThreshold)).toBe(90);
   await expect(page.locator('#masteryChangePreview')).toContainText('復習対象へ 1語');
@@ -92,6 +94,8 @@ test('判定回数と正解数を即時保存し、履歴と現在の問題を�
   await page.reload();
   expect(await page.evaluate(() => [gameState.reviewWindowSize, gameState.masteryThreshold])).toEqual([5, 80]);
   await page.evaluate(() => openStudyModeModal());
+  await page.getByRole('tab', { name: '復習', exact: true }).click();
+  await page.locator('#masterySettings > summary').click();
   await page.locator('[data-review-window="10"]').click();
   await expect(page.locator('#masteryThresholdExplanation')).toHaveText('直近10回で8回以上正解（80%）');
 });

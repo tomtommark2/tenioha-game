@@ -1,0 +1,97 @@
+{
+  "base": "http://127.0.0.1:8045/",
+  "version": "2026.1004.1146",
+  "checkedFiles": [
+    "index.html",
+    "vocab_clicker_game.html",
+    "js/version.js",
+    "style.css",
+    "js/game_logic.js",
+    "js/ui_manager.js",
+    "js/utils.js",
+    "js/word_illustrations.js",
+    "js/my_wordbooks.js",
+    "service_worker.js",
+    "data/vocabulary.js",
+    "data/word-illustrations.js",
+    "data/announcements.js"
+  ],
+  "contexts": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "initial": {
+        "version": "2026.1004.1146",
+        "free": 100,
+        "rows": 4577,
+        "book": 4155,
+        "trial": 480,
+        "my": false,
+        "existing": true
+      },
+      "modeShortcut": true,
+      "reload": true,
+      "personalBook": true,
+      "reviewHint": true,
+      "noForcedMode": true,
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 1280,
+      "initial": {
+        "version": "2026.1004.1146",
+        "free": 100,
+        "rows": 4577,
+        "book": 4155,
+        "trial": 480,
+        "my": false,
+        "existing": true
+      },
+      "modeShortcut": true,
+      "reload": true,
+      "personalBook": true,
+      "reviewHint": true,
+      "noForcedMode": true,
+      "pageErrors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "initial": {
+        "version": "2026.1004.1146",
+        "free": 100,
+        "rows": 4577,
+        "book": 4155,
+        "trial": 480,
+        "my": false,
+        "existing": true
+      },
+      "modeShortcut": true,
+      "reload": true,
+      "personalBook": true,
+      "reviewHint": true,
+      "noForcedMode": true,
+      "pageErrors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1280,
+      "initial": {
+        "version": "2026.1004.1146",
+        "free": 100,
+        "rows": 4577,
+        "book": 4155,
+        "trial": 480,
+        "my": false,
+        "existing": true
+      },
+      "modeShortcut": true,
+      "reload": true,
+      "personalBook": true,
+      "reviewHint": true,
+      "noForcedMode": true,
+      "pageErrors": []
+    }
+  ]
+}

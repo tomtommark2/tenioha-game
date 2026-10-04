@@ -12,6 +12,7 @@ const ASSETS = [
     './style.css',
     './js/game_logic.js',
     './js/word_grouping.js',
+    './js/my_wordbooks.js',
     './js/config.js',
     './js/utils.js',
     './js/update_manager.js',

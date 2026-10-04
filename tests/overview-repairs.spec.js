@@ -3,9 +3,9 @@ const batch = require('../docs/vocabulary-changes/2026-09-09-overview-batch-01.j
 
 test.use({ screenshot: 'off', video: 'off', trace: 'off' });
 
-test('全体点検修復の参照先・用法切替・新語の回答と既存履歴を検証する', async ({ page }) => {
+test('全体点検修復の参照先・用法切替・新語の回答と既存履歴を検証する', async ({ page, baseURL }) => {
   test.setTimeout(240000);
-  await page.route(/https?:\/\/(?!localhost:8000)/, route => ['fonts.googleapis.com', 'fonts.gstatic.com'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
+  await page.route(url => /^https?:$/.test(url.protocol) && url.origin !== new URL(baseURL).origin, route => ['fonts.googleapis.com', 'fonts.gstatic.com'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');

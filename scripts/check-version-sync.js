@@ -30,6 +30,7 @@ const targets = [
   'js/config.js',
   'js/utils.js',
   'js/word_grouping.js',
+  'js/my_wordbooks.js',
   'js/word_illustrations.js',
   'js/game_logic.js',
   'js/ui_manager.js',

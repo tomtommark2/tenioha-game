@@ -31,15 +31,16 @@ async function openSettings(page) {
     await page.getByRole('button', { name: 'その他メニュー', exact: true }).click();
     await page.getByRole('button', { name: '出題・復習設定', exact: true }).click();
     await expect(page.locator('#studyModeModal')).toBeVisible();
+    await page.getByRole('tab', { name: '表示', exact: true }).click();
 }
 
-test('カード学習状況：320pxで最下部から切替でき、学習記録は変えない', async ({ page }, testInfo) => {
+test('カード学習状況：320pxで表示タブから切替でき、学習記録は変えない', async ({ page }, testInfo) => {
     await page.setViewportSize({ width: 320, height: 720 });
     await seedReview(page);
     await expect(page.locator('.card-accuracy')).toHaveText('67%');
     await expect(page.locator('#questionReasonLabel')).toHaveText('得意の定着チェック');
     await openSettings(page);
-    const toggle = page.getByRole('switch', { name: 'カードの学習状況を表示', exact: true });
+    const toggle = page.getByRole('switch', { name: '正答率・出題理由を表示', exact: true });
     await expect(toggle).toBeChecked();
     const before = await page.evaluate(() => ({
         states: JSON.stringify(gameState.wordStates), srs: JSON.stringify(gameState.srsData),
@@ -78,7 +79,7 @@ test('カード学習状況：320pxで最下部から切替でき、学習記録
 test('カード学習状況：再読込・次のカード・カード再生成でも非表示を維持', async ({ page }) => {
     await seedReview(page);
     await openSettings(page);
-    await page.getByRole('switch', { name: 'カードの学習状況を表示', exact: true }).uncheck();
+    await page.getByRole('switch', { name: '正答率・出題理由を表示', exact: true }).uncheck();
     expect(await page.evaluate(key => localStorage.getItem(key), STORAGE_KEY)).toBe('false');
     await page.reload();
     await seedReview(page);
@@ -94,7 +95,7 @@ test('カード学習状況：再読込・次のカード・カード再生成�
     await expect(page.locator('.card-accuracy')).toHaveCount(0);
     await expect(page.locator('#questionReasonLabel')).toBeHidden();
     await openSettings(page);
-    await expect(page.getByRole('switch', { name: 'カードの学習状況を表示', exact: true })).not.toBeChecked();
+    await expect(page.getByRole('switch', { name: '正答率・出題理由を表示', exact: true })).not.toBeChecked();
 });
 
 test('カード学習状況：非表示中も回答を記録し、Undoは表示設定を戻さない', async ({ page }) => {

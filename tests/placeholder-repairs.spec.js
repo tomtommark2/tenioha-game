@@ -13,9 +13,9 @@ const batches = [
 ];
 
 for (const { id, batch } of batches) {
-test(`仮例文第${id}回${batch.changes.length}行の実表示・読み上げ・保存復元・Undoを検証する`, async ({ page }) => {
+test(`仮例文第${id}回${batch.changes.length}行の実表示・読み上げ・保存復元・Undoを検証する`, async ({ page, baseURL }) => {
   test.setTimeout(180000);
-  await page.route(/https?:\/\/(?!localhost:8000)/, route => ['fonts.googleapis.com', 'fonts.gstatic.com'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
+  await page.route(url => /^https?:$/.test(url.protocol) && url.origin !== new URL(baseURL).origin, route => ['fonts.googleapis.com', 'fonts.gstatic.com'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');

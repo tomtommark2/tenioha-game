@@ -57,7 +57,7 @@ test('登録画像の全パスと収録名詞の対応が存在し、対応キ�
     keys.add(key);
     expect(database[entry.level].some(word => word.word === entry.word && word.pos === entry.pos)).toBe(true);
     expect(entry.pos).toBe('名');
-    expect(entry.src).toMatch(/^assets\/word-illustrations\/[a-z0-9-]+\.webp$/);
+    expect(entry.src).toMatch(/^assets\/word-illustrations\/[a-z0-9_-]+\.webp$/);
     expect(fs.statSync(path.resolve(__dirname, '..', entry.src)).size).toBeGreaterThan(0);
     expect(entry.alt).toBeTruthy();
   }
