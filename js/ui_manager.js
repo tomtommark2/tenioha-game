@@ -178,6 +178,7 @@ function requestDismissibleModalClose(modal) {
         wordListModal: 'closeWordListModal',
         studyModeModal: 'closeStudyModeModal',
         speechSettingsModal: 'closeSpeechSettings',
+        feedbackModal: 'closeFeedback',
         announcementModal: 'closeAnnouncementModal',
         wordbookModal: 'closeWordbookModal',
         leaderboardModal: 'closeLeaderboard',
@@ -459,7 +460,11 @@ function getReadAnnouncementIds() {
         try { legacyId = localStorage.getItem(ANNOUNCEMENT_READ_KEY); } catch { /* Storage may be unavailable. */ }
         const index = items.findIndex(item => item.id === legacyId);
         // The old list marked this item and all older items read when opened.
-        announcementReadIds = new Set(index < 0 ? [] : items.slice(index).map(item => item.id));
+        const retired = Array.isArray(window.APP_RETIRED_ANNOUNCEMENTS) ? window.APP_RETIRED_ANNOUNCEMENTS : [];
+        const retiredDate = retired.find(item => item.id === legacyId)?.date;
+        const readItems = index >= 0 ? items.slice(index)
+            : retiredDate ? items.filter(item => item.date <= retiredDate) : [];
+        announcementReadIds = new Set(readItems.map(item => item.id));
     }
     saveReadAnnouncementIds();
     return announcementReadIds;
@@ -541,18 +546,19 @@ function renderAnnouncements({ featuredOnly = false } = {}) {
     list.innerHTML = announcements.map(item => {
         const selectedBody = featuredOnly && item.featuredBody ? item.featuredBody : item.body;
         const body = Array.isArray(selectedBody) ? selectedBody : [selectedBody || ''];
-        const bodyHtml = body.map(line => `<div>${escapeAnnouncementText(line)}</div>`).join('');
+        const summaryHtml = `<summary class="announcement-summary">
+            <span class="announcement-summary-copy">
+                <span class="announcement-meta">${escapeAnnouncementText(item.date)} / ${escapeAnnouncementText(item.version)} <span class="announcement-read-label">${getReadAnnouncementIds().has(item.id) ? '既読' : '未読'}</span></span>
+                <span class="announcement-title">${escapeAnnouncementText(item.title || 'お知らせ')}</span>
+            </span>
+            <span class="announcement-chevron" aria-hidden="true">›</span>
+        </summary>`;
         if (!featuredOnly) {
             const unread = !getReadAnnouncementIds().has(item.id);
             const section = (heading, lines) => Array.isArray(lines) && lines.length
                 ? `<section class="announcement-detail-section"><h3>${heading}</h3>${lines.map(line => `<div>${escapeAnnouncementText(line)}</div>`).join('')}</section>` : '';
             return `<details class="announcement-card ${unread ? 'is-unread' : ''}" data-announcement-id="${escapeAnnouncementText(item.id)}">
-                <summary class="announcement-summary">
-                    <span class="announcement-meta">${escapeAnnouncementText(item.version)} / ${escapeAnnouncementText(item.date)} <span class="announcement-read-label">${unread ? '未読' : '既読'}</span></span>
-                    <span class="announcement-title">${escapeAnnouncementText(item.title || 'お知らせ')}</span>
-                    <span class="announcement-excerpt">${escapeAnnouncementText(item.summary || body[0] || '')}</span>
-                    <span class="announcement-disclosure"><span class="when-closed">詳細を見る</span><span class="when-open">詳細を閉じる</span></span>
-                </summary>
+                ${summaryHtml}
                 <div class="announcement-body announcement-detail">
                     ${section('変更点', body)}${section('学習履歴への影響', item.impact)}${section('使い方・確認方法', item.usage)}
                 </div>
@@ -564,14 +570,13 @@ function renderAnnouncements({ featuredOnly = false } = {}) {
             ? `<img class="announcement-feature-visual" src="${escapeAnnouncementText(item.image)}" alt="${escapeAnnouncementText(item.imageAlt || '')}">`
             : '';
         return `
-            <div class="announcement-card ${item.featured ? 'is-featured' : ''} ${featuredOnly ? 'is-popup-featured' : ''}">
-                ${visualHtml}
-                <div class="announcement-card-copy">
-                    <div class="announcement-meta">${escapeAnnouncementText(item.version)} / ${escapeAnnouncementText(item.date)}</div>
-                    <div class="announcement-title">${escapeAnnouncementText(item.title || 'お知らせ')}</div>
-                    <div class="announcement-body">${bodyHtml}</div>
+            <details class="announcement-card is-popup-featured ${getReadAnnouncementIds().has(item.id) ? '' : 'is-unread'}" data-announcement-id="${escapeAnnouncementText(item.id)}">
+                ${summaryHtml}
+                <div class="announcement-body announcement-detail">
+                    ${visualHtml}
+                    ${body.map(line => `<div>${escapeAnnouncementText(line)}</div>`).join('')}
                 </div>
-            </div>
+            </details>
         `;
     }).join('');
 }

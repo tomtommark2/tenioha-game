@@ -16,6 +16,7 @@
     let checking = false;
     let lastCheck = 0;
     let feedRevision = 0;
+    let returnToAnnouncements = false;
     try {
         const saved = JSON.parse(localStorage.getItem(SEEN_KEY) || '{}');
         if (saved && typeof saved === 'object' && !Array.isArray(saved)) seen = saved;
@@ -34,6 +35,8 @@
         const unread = latestItems.some(post => seen[post.id] !== signature(post));
         document.getElementById('feedbackUnreadDot').hidden = !unread;
         document.getElementById('feedbackMenuDot').hidden = !unread;
+        document.getElementById('announcementFeedbackDot').hidden = !unread;
+        document.getElementById('announcementFeedbackBtn').setAttribute('aria-label', unread ? 'ひとこと送る：新しい投稿・返信があります' : 'ひとこと送る');
         document.getElementById('feedbackOpenBtn').setAttribute('aria-label', unread ? 'ひとこと送る：新しい投稿・返信があります' : 'ひとこと送る');
         document.getElementById('topActionMenuBtn').setAttribute('aria-label', unread ? '管理メニュー：ひとことに新着があります' : '管理メニュー');
     }
@@ -186,11 +189,29 @@
             if (showStatus) message.textContent = '';
         } catch (error) { if (generation === loading) message.textContent = error.message; }
     }
-    window.openFeedback = () => {
+    window.openFeedback = (fromAnnouncements = false) => {
+        returnToAnnouncements = fromAnnouncements === true;
+        if (returnToAnnouncements) window.closeAnnouncementModal();
+        const closeButton = document.getElementById('feedbackClose');
+        closeButton.textContent = returnToAnnouncements ? 'お知らせに戻る' : '×';
+        closeButton.setAttribute('aria-label', returnToAnnouncements ? 'お知らせに戻る' : '閉じる');
         document.getElementById('helpModal').style.display = 'none';
         modal.style.display = 'flex'; refresh();
     };
-    document.getElementById('feedbackClose').onclick = () => { modal.style.display = 'none'; };
+    window.closeFeedback = () => {
+        modal.style.display = 'none';
+        if (returnToAnnouncements && !dismissibleModalState.closingFromHistory) {
+            document.getElementById('announcementModal').style.display = 'flex';
+            // Let the shared initial-focus step finish, then return to this entry.
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                if (document.getElementById('announcementModal').style.display === 'flex') {
+                    document.getElementById('announcementFeedbackBtn').focus({ preventScroll: true });
+                }
+            }));
+        }
+        returnToAnnouncements = false;
+    };
+    document.getElementById('feedbackClose').onclick = window.closeFeedback;
     document.getElementById('feedbackRefresh').onclick = () => refresh();
     document.getElementById('feedbackLogin').onclick = async () => {
         if (!window.loginWithGoogle) { message.textContent = 'ログイン機能を読み込めませんでした。再読み込みしてください。'; return; }
@@ -210,6 +231,7 @@
         if (await mutate('create', { text: text.value, nickname: nickname.value.trim() || '学習者' })) text.value = '';
     });
     document.getElementById('topActionMenuBtn').addEventListener('click', checkUnread);
+    document.getElementById('announcementBtn').addEventListener('click', checkUnread);
     document.addEventListener('visibilitychange', checkUnread);
     window.addEventListener('focus', checkUnread);
     window.addEventListener('storage', event => {

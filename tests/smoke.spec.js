@@ -1510,11 +1510,13 @@ test('大型アップデートは初回だけ自動表示し、あとで閉じ�
   await page.goto('/vocab_clicker_game.html?announcementPreview=1', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#announcementModal')).toBeVisible();
   await expect(page.locator('#announcementModal')).toHaveClass(/is-featured-mode/);
-  await expect(page.locator('#announcementHeading')).toHaveText('新しい単語帳');
-  await expect(page.locator('#announcementList')).toContainText('イラスト単語帳ができました！');
+  await expect(page.locator('#announcementHeading')).toHaveText('イラスト完成');
+  await expect(page.locator('#announcementList')).toContainText('すべての収録名詞にイラストがつきました！');
+  await expect(page.locator('.announcement-illustration-preview')).toBeHidden();
+  await page.locator('#announcementList summary').click();
   await expect(page.locator('.announcement-illustration-preview')).toBeVisible();
   await expect(page.locator('.announcement-illustration-preview img')).toHaveCount(3);
-  await expect(page.locator('#announcementList')).toContainText('学習記録は元の単語と共通');
+  await expect(page.locator('#announcementList')).toContainText('固定100語');
   await expect(page.locator('#announcementPrimaryAction')).toHaveText('イラスト単語帳を開く');
   expect(await page.evaluate(() => localStorage.getItem('vocabGame_lastAutoShownAnnouncementId'))).toBeNull();
 
@@ -1522,7 +1524,7 @@ test('大型アップデートは初回だけ自動表示し、あとで閉じ�
   await expect(page.locator('#announcementModal')).toBeHidden();
   await expect(page.locator('#announcementUnreadDot')).toBeVisible();
   expect(await page.evaluate(() => localStorage.getItem('vocabGame_lastAutoShownAnnouncementId')))
-    .toBe('2026-09-11-illustrated-wordbook');
+    .toBe('2026-10-04-noun-illustrations-complete');
 
   await page.locator('#announcementBtn').click();
   await expect(page.locator('#announcementHeading')).toHaveText('お知らせ');
@@ -1542,6 +1544,7 @@ test('大型アップデート画像はiPhone SE幅でも操作可能な範囲�
 
   await page.goto('/vocab_clicker_game.html?announcementPreview=1', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#announcementModal')).toBeVisible();
+  await page.locator('#announcementList summary').click();
   await expect(page.locator('.announcement-illustration-preview')).toBeVisible();
   await expect(page.locator('#announcementPrimaryAction')).toBeVisible();
   await expect(page.locator('.announcement-secondary-action')).toBeVisible();

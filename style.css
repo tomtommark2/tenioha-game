@@ -2332,10 +2332,18 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 }
 
 .announcement-read-tools button:disabled { color: #667085; cursor: default; }
-.announcement-summary { display: block; padding: 14px; cursor: pointer; list-style: none; }
+.announcement-summary { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 11px 12px; cursor: pointer; list-style: none; }
 .announcement-summary::-webkit-details-marker { display: none; }
+.announcement-summary-copy { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .announcement-summary .announcement-meta,
 .announcement-summary .announcement-title { display: block; }
+.announcement-summary .announcement-meta { margin-bottom: 3px; }
+.announcement-summary .announcement-title { margin: 0; font-size: 14px; line-height: 1.5; }
+.announcement-chevron { flex-shrink: 0; font-size: 24px; color: #667085; line-height: 1; }
+.announcement-card[open] > .announcement-summary .announcement-chevron { transform: rotate(90deg); }
+.announcement-feedback-entry { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; min-height: 44px; margin: 0 0 12px; padding: 11px 12px; border: 1px solid #dfe7ff; border-radius: 10px; background: #f0edff; color: #4937a3; font: inherit; font-size: 14px; font-weight: 700; text-align: left; cursor: pointer; }
+.announcement-feedback-entry > span:first-child { display: flex; align-items: center; gap: 8px; }
+.announcement-feedback-entry .feedback-unread-dot { position: static; flex-shrink: 0; }
 .announcement-read-label { margin-left: 6px; color: #667085; white-space: nowrap; }
 .is-unread .announcement-read-label { color: #4937a3; font-weight: 700; }
 .announcement-excerpt {
@@ -2357,6 +2365,7 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 .announcement-detail-section h3 { margin: 0 0 8px; font-size: 13px; color: #344054; }
 .announcement-detail-section > div + div { margin-top: 8px; }
 .announcement-summary:focus-visible,
+.announcement-feedback-entry:focus-visible,
 .announcement-read-tools button:focus-visible { outline: 3px solid #6751cf; outline-offset: -3px; }
 
 .announcement-modal {
@@ -2488,8 +2497,14 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 .announcement-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
+
+.announcement-modal .is-popup-featured > .announcement-summary { text-align: left; }
+.announcement-modal .is-popup-featured > .announcement-summary .announcement-meta { margin-bottom: 3px; font-size: 11px; }
+.announcement-modal .is-popup-featured > .announcement-summary .announcement-title { margin: 0; font-size: 14px; line-height: 1.5; }
+.announcement-modal .is-popup-featured > .announcement-detail { font-size: 13px; line-height: 1.65; }
+.announcement-modal .is-popup-featured > .announcement-detail > div + div { margin-top: 7px; }
 
 .announcement-featured-actions {
     display: flex;
