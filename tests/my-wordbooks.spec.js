@@ -15,7 +15,7 @@ test.beforeEach(async ({ page, baseURL }) => {
         localStorage.setItem('vocabGame_skipWelcome', 'true');
         localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
         localStorage.setItem('vocabGame_installGuideDismissed', 'true');
-        localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-09-11-illustrated-wordbook');
+        localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-10-04-noun-illustrations-complete');
     });
     await page.goto('/index.html');
     await expect(page.locator('#vocabWord')).toHaveText('クリックしてスタート');
@@ -48,11 +48,11 @@ function checkbox(page, word) {
 }
 
 async function addCustom(page, word, pos, meaning) {
-    await page.getByRole('button', { name: '未収録の語を自分で登録', exact: true }).click();
+    await page.getByRole('button', { name: '単語・意味を入力して追加', exact: true }).click();
     await page.locator('#myWordbookCustomWord').fill(word);
-    await page.locator('#myWordbookCustomPos').selectOption(pos);
+    if (await page.locator('#myWordbookCustomPos').isEnabled()) await page.locator('#myWordbookCustomPos').selectOption(pos);
     await page.locator('#myWordbookCustomMeaning').fill(meaning);
-    await page.getByRole('button', { name: '意味を保存して追加', exact: true }).click();
+    await page.locator('#myWordbookCustomSave').click();
 }
 
 test('マイ単語帳：作成・貼付け・未知語・重複を確認し再読込で復元', async ({ page }) => {
@@ -365,6 +365,9 @@ test('マイ単語帳：統合カードは品詞ごとの意味を表示し元�
     for (const sense of item.senses) await expect(candidate).toContainText(sense.meaning.replace(/^【[名動形副助接前代冠数間限定]】\s*/, ''));
     await candidate.click();
     expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([item.key]);
+    await addCustom(page, item.word, item.senses[0].pos, '授業で使う訳');
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([item.key]);
+    expect(await page.evaluate(key => gameState.myWordbooks[0].wordNotes[key]?.meaning, item.key)).toBe('授業で使う訳');
     await page.locator('#myWordbookStart').click();
     expect(await page.evaluate(() => getWordKeySafe(gameState.currentWord))).toBe(item.key);
     expect(await page.evaluate(() => gameState.currentWord.senses.length)).toBe(item.senses.length);
@@ -444,18 +447,151 @@ test('マイ単語帳：自作語の重複は増やさず複数冊で共有し�
     expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([key]);
 });
 
-test('マイ単語帳：自作語保存の失敗を戻し収録語の意味を上書きしない', async ({ page }) => {
+test('マイ単語帳：収録語の訳と追加を一括保存し失敗時は入力・履歴・元の意味を保つ', async ({ page }) => {
     await create(page);
-    await addCustom(page, 'apple', '名', '収録語を上書きしない');
-    await expect(page.locator('#myWordbookStatus')).toContainText('収録済みの語です');
+    await page.locator('#myWordbookInput').fill('apple\nschool');
+    await page.getByRole('button', { name: '照合する', exact: true }).click();
+    await expect(page.locator('#myWordbookSelectionCount')).toHaveText('2語選択');
+    const before = await page.evaluate(() => JSON.stringify({ books: gameState.myWordbooks, words: gameState.myCustomWords,
+        history: gameState.srsData, score: gameState.reviewScore, database: vocabularyDatabase.junior }));
+    await page.evaluate(() => { window.savedMyBookSave = window.saveGame; window.saveGame = () => false; });
+    await addCustom(page, 'apple', '名', 'おりんご');
+    await expect(page.locator('#myWordbookStatus')).toContainText('保存できませんでした');
+    await expect(page.locator('#myWordbookCustomMeaning')).toHaveValue('おりんご');
+    await expect(page.locator('#myWordbookEditorContent')).toBeHidden();
+    expect(await page.evaluate(() => JSON.stringify({ books: gameState.myWordbooks, words: gameState.myCustomWords,
+        history: gameState.srsData, score: gameState.reviewScore, database: vocabularyDatabase.junior }))).toBe(before);
+    await page.evaluate(() => { window.saveGame = window.savedMyBookSave; });
+    await page.locator('#myWordbookCustomSave').click();
+    await expect(page.locator('#myWordbookStatus')).toContainText('自分の訳付きで追加');
+    await expect(page.locator('#myWordbookSelectionCount')).toHaveText('1語選択');
+    await expect(checkbox(page, 'apple')).toBeDisabled();
+    await expect(checkbox(page, 'school')).toBeChecked();
     expect(await page.evaluate(() => gameState.myCustomWords.length)).toBe(0);
-    await page.getByRole('button', { name: 'キャンセル', exact: true }).click();
+    const books = await page.evaluate(() => gameState.myWordbooks);
     await page.evaluate(() => { window.savedMyBookSave = window.saveGame; window.saveGame = () => false; });
     await addCustom(page, 'quux-study', '名', '保存失敗のテスト');
     await expect(page.locator('#myWordbookStatus')).toContainText('保存できませんでした');
     expect(await page.evaluate(() => gameState.myCustomWords.length)).toBe(0);
-    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([]);
+    expect(await page.evaluate(() => gameState.myWordbooks)).toEqual(books);
     await page.evaluate(() => { window.saveGame = window.savedMyBookSave; });
+});
+
+test('マイ単語帳：登録は専用画面へ切り替え320pxでも入力を見せ戻る・キャンセルを保持', async ({ page }, testInfo) => {
+    await page.setViewportSize({ width: 320, height: 740 });
+    await create(page);
+    await page.locator('#myWordbookInput').fill('apple\nquux-study');
+    await page.getByRole('button', { name: '照合する', exact: true }).click();
+    await expect(page.locator('#myWordbookSelectionCount')).toHaveText('1語選択');
+    const opener = page.getByRole('button', { name: '単語・意味を入力して追加', exact: true });
+    await opener.click();
+    await expect(page.locator('#myWordbookWordEditor')).toBeVisible();
+    await expect(page.locator('#myWordbookEditorContent')).toBeHidden();
+    await expect(page.locator('#myWordbookCustomWord')).toBeFocused();
+    for (const id of ['myWordbookCustomWord', 'myWordbookCustomMeaning']) {
+        expect(await page.locator(`#${id}`).evaluate(el => {
+            const box = el.getBoundingClientRect();
+            return box.top >= 0 && box.bottom <= innerHeight && box.left >= 0 && box.right <= innerWidth;
+        })).toBe(true);
+    }
+    await page.locator('#myWordbookCustomWord').fill('quux-study');
+    await page.locator('#myWordbookCustomMeaning').fill('未保存の意味');
+    await page.screenshot({ path: `screenshots/my-wordbook-registration-custom-${testInfo.project.name}.png` });
+    await page.getByRole('button', { name: '‹ 戻る', exact: true }).click();
+    await expect(opener).toBeFocused();
+    await expect(page.locator('#myWordbookCustomForm')).toBeHidden();
+    await expect(page.locator('#myWordbookInput')).toHaveValue('apple\nquux-study');
+    await expect(page.locator('#myWordbookSelectionCount')).toHaveText('1語選択');
+    expect(await page.evaluate(() => gameState.myCustomWords)).toEqual([]);
+    await page.getByRole('button', { name: 'quux-study の意味を入力', exact: true }).click();
+    await expect(page.locator('#myWordbookCustomMeaning')).toBeFocused();
+    await expect(page.locator('#myWordbookCustomWord')).toHaveValue('quux-study');
+    await page.getByRole('button', { name: 'キャンセル', exact: true }).click();
+    await expect(page.locator('#myWordbookEditorHeading')).toBeFocused();
+    await opener.click();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('#myWordbookModal')).toBeHidden();
+    await open(page);
+    await page.locator('#myWordbookLibraryList button').click();
+    await expect(page.locator('#myWordbookWordEditor')).toBeHidden();
+});
+
+test('マイ単語帳：収録済み語を自分の訳で登録し原本・同じキー・復習・Undo・復元を維持', async ({ page }, testInfo) => {
+    test.setTimeout(60000);
+    await create(page, '教材A');
+    const original = await page.evaluate(() => {
+        const item = MyWordbooks.getRegistrationMatches('apple')[0];
+        gameState.wordStates[item.key] = 'weak';
+        Object.assign(ensureSrsEntry(item.key), { recentAnswers: [false], everWrong: true, firstTryPerfect: false, dueAt: Date.now() - 1000 });
+        return { key: item.key, database: JSON.stringify(vocabularyDatabase.junior), history: JSON.stringify(gameState.srsData),
+            score: JSON.stringify(gameState.reviewScore), count: gameState.globalQuestionCount };
+    });
+    await addCustom(page, 'ＡＰＰＬＥ', '名', 'おりんご');
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([original.key]);
+    expect(await page.evaluate(() => gameState.myCustomWords)).toEqual([]);
+    expect(await page.evaluate(() => JSON.stringify(gameState.srsData))).toBe(original.history);
+    expect(await page.evaluate(() => JSON.stringify(gameState.reviewScore))).toBe(original.score);
+    expect(await page.evaluate(() => gameState.globalQuestionCount)).toBe(original.count);
+    await page.getByRole('button', { name: '登録した単語', exact: true }).click();
+    await saveNote(page, 'apple', 'おりんご', '残す覚え方');
+    await page.locator('#myWordbookStart').click();
+    expect(await page.evaluate(() => getWordKeySafe(gameState.currentWord))).toBe(original.key);
+    await page.locator('#meaningCard').click();
+    await expect(page.locator('.my-original-meaning')).toContainText('リンゴ');
+    await expect(page.locator('.my-study-note')).toContainText('おりんご');
+    const answered = await page.evaluate(() => JSON.stringify({ srs: gameState.srsData, score: gameState.reviewScore,
+        count: gameState.globalQuestionCount, word: getWordKeySafe(gameState.currentWord), undo: gameStateHistory }));
+    await page.locator('#myWordbookStudyBar').getByRole('button', { name: '編集', exact: true }).click();
+    await page.getByRole('button', { name: '入力して追加', exact: true }).click();
+    await page.getByRole('button', { name: '単語・意味を入力して追加', exact: true }).click();
+    await page.locator('#myWordbookCustomWord').fill('APPLE');
+    await expect(page.locator('#myWordbookCustomPosLabel')).toBeHidden();
+    await expect(page.locator('#myWordbookRegistrationCandidates input')).toBeChecked();
+    await expect(page.locator('#myWordbookCustomSave')).toHaveText('自分の訳を保存');
+    await page.locator('#myWordbookCustomMeaning').fill('おりんご');
+    await page.screenshot({ path: `screenshots/my-wordbook-registration-known-${testInfo.project.name}.png` });
+    await page.locator('#myWordbookCustomMeaning').fill('<b>教材Aの訳</b>');
+    await page.locator('#myWordbookCustomSave').click();
+    expect(await page.evaluate(() => JSON.stringify({ srs: gameState.srsData, score: gameState.reviewScore,
+        count: gameState.globalQuestionCount, word: getWordKeySafe(gameState.currentWord), undo: gameStateHistory }))).toBe(answered);
+    expect(await page.evaluate(key => gameState.myWordbooks[0].wordNotes[key], original.key)).toEqual({ meaning: '<b>教材Aの訳</b>', memo: '残す覚え方' });
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([original.key]);
+    await page.getByRole('button', { name: 'マイ単語帳を閉じる', exact: true }).click();
+    await page.locator('#undoBtn').click();
+    await expect(page.locator('.my-study-note')).toContainText('<b>教材Aの訳</b>');
+    await expect(page.locator('.my-study-note b')).toHaveCount(0);
+    expect(await page.evaluate(() => JSON.stringify(vocabularyDatabase.junior))).toBe(original.database);
+    await page.locator('#myWordbookStudyBar').getByRole('button', { name: '編集', exact: true }).click();
+    await page.getByRole('button', { name: '‹ 単語帳一覧', exact: true }).click();
+    await page.locator('#myWordbookNewName').fill('教材B');
+    await page.locator('#myWordbookCreateForm button').click();
+    await addCustom(page, 'apple', '名', '教材Bの訳');
+    await page.reload();
+    expect(await page.evaluate(key => gameState.myWordbooks.map(book => ({ keys: book.wordKeys, meaning: book.wordNotes[key]?.meaning })), original.key))
+        .toEqual([{ keys: [original.key], meaning: '<b>教材Aの訳</b>' }, { keys: [original.key], meaning: '教材Bの訳' }]);
+    expect(await page.evaluate(() => gameState.myCustomWords)).toEqual([]);
+});
+
+test('マイ単語帳：収録済みの同綴り別カードは未選択で示し品詞・意味を確認して一語だけ登録', async ({ page }) => {
+    await create(page);
+    const keys = await page.evaluate(() => {
+        const word = 'quux-homograph';
+        window.vocabularyDatabase = { ...window.vocabularyDatabase, junior: [
+            ...vocabularyDatabase.junior, { word, pos: '名', meaning: '物の名前', set: 1 }, { word, pos: '動', meaning: '動作する', set: 1 },
+        ] };
+        return MyWordbooks.getRegistrationMatches(word).map(item => item.key);
+    });
+    await addCustom(page, 'quux-homograph', '名', '自分の意味');
+    await expect(page.locator('#myWordbookRegistrationCandidates input:checked')).toHaveCount(0);
+    await expect(page.locator('#myWordbookRegistrationCandidates')).toContainText('名詞：物の名前');
+    await expect(page.locator('#myWordbookRegistrationCandidates')).toContainText('動詞：動作する');
+    await expect(page.locator('#myWordbookStatus')).toContainText('元のカードを選んで');
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([]);
+    await page.locator('#myWordbookRegistrationCandidates input').nth(1).check();
+    await page.locator('#myWordbookCustomSave').click();
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([keys[1]]);
+    expect(await page.evaluate(key => gameState.myWordbooks[0].wordNotes[key]?.meaning, keys[1])).toBe('自分の意味');
+    expect(await page.evaluate(() => gameState.myCustomWords)).toEqual([]);
 });
 
 test('マイ単語帳：無料・期限切れの作成編集学習を止めデータは保持し再開できる', async ({ page }) => {
@@ -496,6 +632,48 @@ test('マイ単語帳：無料・期限切れの作成編集学習を止めデ�
     await expect(page.locator('#vocabWord')).toContainText('quux-study');
 });
 
+test('マイ単語帳：自作語の文字サイズ・配置を収録語と揃え、Undoでも保持', async ({ page }, testInfo) => {
+    await create(page);
+    await addCustom(page, 'quux', '名', '本人の訳');
+    await page.locator('#myWordbookStart').click();
+    for (const width of [320, testInfo.project.use.viewport?.width || 1280]) {
+        await page.setViewportSize({ width, height: 844 });
+        const styles = await page.evaluate(() => {
+            const custom = gameState.currentWord;
+            const typography = () => Object.fromEntries(['.word-pos-label', '.word-text-main', '.word-meaning-main'].map(selector => {
+                const style = getComputedStyle(document.querySelector(selector));
+                return [selector, Object.fromEntries(['fontSize', 'fontWeight', 'color', 'textAlign', 'lineHeight', 'marginBottom'].map(property => [property, style[property]]))];
+            }));
+            showWord(MyWordbooks.getRegistrationMatches('apple')[0].word);
+            const reference = typography();
+            showWord(custom);
+            return { reference, custom: typography() };
+        });
+        expect(styles.custom).toEqual(styles.reference);
+        expect(styles.custom['.word-text-main'].fontSize).toBe('42px');
+        expect(styles.custom['.word-meaning-main'].fontSize).toBe('32px');
+        expect(await page.locator('.my-custom-meaning').evaluate(element => {
+            const bounds = element.getBoundingClientRect(), card = element.closest('.card').getBoundingClientRect();
+            return Math.abs((bounds.left + bounds.right) / 2 - (card.left + card.right) / 2) < 1;
+        })).toBe(true);
+    }
+    await page.locator('#meaningCard').click();
+    await page.screenshot({ path: `screenshots/my-wordbook-custom-aligned-${testInfo.project.name}.png` });
+    await page.locator('#undoBtn').click();
+    await expect(page.locator('.word-text-main')).toHaveCSS('font-size', '42px');
+    await expect(page.locator('.my-custom-meaning')).toHaveCSS('font-size', '32px');
+    await page.locator('#myWordbookStudyBar').getByRole('button', { name: '編集', exact: true }).click();
+    await page.getByRole('button', { name: '登録した単語', exact: true }).click();
+    await saveNote(page, 'quux', 'この教材の訳');
+    await page.getByRole('button', { name: 'マイ単語帳を閉じる', exact: true }).click();
+    await expect(page.locator('.my-original-meaning .word-meaning-main')).toHaveCSS('font-size', '22px');
+    await expect(page.locator('.my-original-meaning .word-meaning-main')).toHaveCSS('text-align', 'center');
+    await expect(page.locator('.my-study-note')).toContainText('この教材の訳');
+    await page.locator('#myWordbookStudyBar').getByRole('button', { name: '通常の学習へ', exact: true }).click();
+    await expect(page.locator('#cardsArea')).not.toHaveClass(/has-custom-word/);
+    await expect(page.locator('.my-custom-meaning')).toHaveCount(0);
+});
+
 test('マイ単語帳：長い自作語・意味も320pxで読め、通常のカードには影響しない', async ({ page }, testInfo) => {
     await page.setViewportSize({ width: 320, height: 740 });
     await create(page);
@@ -508,9 +686,17 @@ test('マイ単語帳：長い自作語・意味も320pxで読め、通常のカ
         const bounds = element.getBoundingClientRect(), card = element.closest('.card').getBoundingClientRect();
         return bounds.left >= card.left && bounds.right <= card.right;
     })).toBe(true);
+    await expect(page.locator('.word-text-main')).toHaveCSS('font-size', '42px');
+    expect(await page.locator('.word-text-main').evaluate(element => element.scrollHeight > element.clientHeight && element.clientHeight <= 180)).toBe(true);
+    await page.locator('.word-text-main').evaluate(element => { element.scrollTop = element.scrollHeight; });
+    expect(await page.locator('.word-text-main').evaluate(element => element.scrollTop > 0)).toBe(true);
     await page.locator('#meaningCard').click();
     await expect(page.locator('.my-custom-meaning')).toHaveText(meaning);
     await expect(page.locator('.my-custom-meaning')).toHaveCSS('overflow-y', 'auto');
+    await expect(page.locator('.my-custom-meaning')).toHaveCSS('font-size', '32px');
+    expect(await page.locator('.my-custom-meaning').evaluate(element => element.scrollHeight > element.clientHeight && element.clientHeight <= 220)).toBe(true);
+    await page.locator('.my-custom-meaning').evaluate(element => { element.scrollTop = element.scrollHeight; });
+    expect(await page.locator('.my-custom-meaning').evaluate(element => element.scrollTop > 0)).toBe(true);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.screenshot({ path: `screenshots/my-wordbook-custom-long-${testInfo.project.name}.png` });
     await page.locator('#myWordbookStudyBar').getByRole('button', { name: '通常の学習へ', exact: true }).click();
@@ -589,6 +775,7 @@ test('マイ単語帳：収録語の自分用メモは元の意味・採点を�
     await page.locator('#myWordbookStart').click();
     await page.locator('#meaningCard').click();
     await expect(page.locator('.my-original-meaning')).toContainText('リンゴ');
+    await expect(page.locator('.my-original-meaning .word-meaning-main')).toHaveCSS('font-size', '22px');
     await expect(page.locator('.my-study-note')).toContainText('授業での訳');
     await expect(page.locator('.my-study-note')).toContainText('<img src=x onerror=alert(1)>');
     await expect(page.locator('.my-study-note img')).toHaveCount(0);

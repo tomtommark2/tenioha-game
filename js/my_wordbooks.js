@@ -9,6 +9,7 @@
     let catalogDatabase = null, catalogCustomWords = null, catalog = null;
     let editingId = null, tab = 'members', pageIndex = 0;
     let customEditingId = null, noteEditingKey = null;
+    let registrationKey = null, wordEditorOpen = false, wordEditReturnFocus = null, editorScrollTop = 0;
     let importResult = null, selection = new Set();
     const element = id => document.getElementById(id);
     const escape = value => window.GameUtils.escapeHtml(String(value));
@@ -107,6 +108,10 @@
             .filter(item => normalizeText(item.word.word).startsWith(prefix))
             .sort((a, b) => Number(normalizeText(b.word.word) === prefix) - Number(normalizeText(a.word.word) === prefix)
                 || rank(a) - rank(b) || a.word.word.localeCompare(b.word.word, 'en') || posLabel(a.word).localeCompare(posLabel(b.word))) : [];
+    }
+
+    function getRegistrationMatches(text, database = window.vocabularyDatabase) {
+        return (getCatalog(database).byText.get(normalizeText(text)) || []).filter(item => item.level !== 'my-custom');
     }
 
     function getBook(id = window.gameState.activeMyWordbookId) {
@@ -367,27 +372,94 @@
         });
     }
 
-    function openCustom(word = element('myWordbookSuggest').value) {
+    function showWordEditor(formId, focusId, opener = document.activeElement) {
+        wordEditReturnFocus = opener;
+        const panel = element('myWordbookModal').querySelector('.my-wordbook-panel');
+        editorScrollTop = panel.scrollTop;
+        wordEditorOpen = true;
+        element('myWordbookEditorContent').hidden = true;
+        element('myWordbookIntro').hidden = true;
+        element('myWordbookWordEditor').hidden = false;
+        element(formId).hidden = false;
+        element('myWordbookModal').setAttribute('aria-labelledby', formId === 'myWordbookCustomForm' ? 'myWordbookCustomTitle' : 'myWordbookNoteTitle');
+        panel.scrollTop = 0;
+        element(focusId).focus({ preventScroll: true });
+    }
+
+    function updateRegistrationSaveLabel() {
+        const book = getBook(editingId);
+        element('myWordbookCustomSave').textContent = registrationKey && book?.wordKeys.includes(registrationKey)
+            ? '自分の訳を保存' : '意味を保存して追加';
+    }
+
+    function renderRegistrationMatches() {
+        if (customEditingId) return;
+        const matches = getRegistrationMatches(element('myWordbookCustomWord').value);
+        if (!matches.some(item => item.key === registrationKey)) registrationKey = matches.length === 1 ? matches[0].key : null;
+        element('myWordbookRegistrationMatches').hidden = !matches.length;
+        element('myWordbookCustomPosLabel').hidden = !!matches.length;
+        element('myWordbookCustomPos').disabled = !!matches.length;
+        element('myWordbookCustomHelp').textContent = matches.length
+            ? '入力した訳はこの単語帳だけに保存します。元の意味・学習履歴はそのままです。'
+            : '未収録の語は独立した履歴になります。ランキング加点は対象外です。';
+        const host = element('myWordbookRegistrationCandidates');
+        host.replaceChildren();
+        matches.forEach(item => {
+            const label = document.createElement('label');
+            label.className = 'my-wordbook-registration-candidate';
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'myWordbookRegistrationKey';
+            radio.value = item.key;
+            radio.checked = item.key === registrationKey;
+            const copy = document.createElement('span'), title = document.createElement('strong'), meaning = document.createElement('small');
+            title.textContent = `${item.word.word}（${posLabel(item.word)}）・${LABELS[item.level]}`;
+            meaning.textContent = meaningLabel(item.word);
+            copy.append(title, meaning);
+            label.append(radio, copy);
+            radio.addEventListener('change', () => {
+                registrationKey = item.key;
+                updateRegistrationSaveLabel();
+                status('');
+            });
+            host.append(label);
+        });
+        updateRegistrationSaveLabel();
+    }
+
+    function openCustom(word = element('myWordbookSuggest').value, opener = document.activeElement) {
         if (!requireAccess() || !getBook(editingId)) return;
         cancelWordEdit(false);
         element('myWordbookCustomForm').reset();
-        element('myWordbookCustomTitle').textContent = '未収録の語を登録';
-        element('myWordbookCustomSave').textContent = '意味を保存して追加';
-        element('myWordbookCustomHelp').textContent = '自分の単語帳にだけ保存します。復習・学習履歴は使えますが、復習スコア・ランキング加点は対象外です。';
+        element('myWordbookCustomTitle').textContent = '単語と意味を登録';
         element('myWordbookCustomWord').readOnly = false;
         element('myWordbookCustomPos').disabled = false;
         element('myWordbookCustomWord').value = word.trim().slice(0, 120);
-        element('myWordbookCustomForm').hidden = false;
-        element('myWordbookCustomMeaning').focus({ preventScroll: true });
-        status('未収録の語を、自分の意味・品詞で登録します。');
+        renderRegistrationMatches();
+        status('');
+        showWordEditor('myWordbookCustomForm', word.trim() ? 'myWordbookCustomMeaning' : 'myWordbookCustomWord', opener);
     }
 
     function cancelWordEdit(restoreFocus = true) {
         customEditingId = null;
         noteEditingKey = null;
+        registrationKey = null;
+        wordEditorOpen = false;
         element('myWordbookCustomForm').hidden = true;
         element('myWordbookNoteForm').hidden = true;
-        if (restoreFocus && getBook(editingId)) element('myWordbookEditorHeading').focus({ preventScroll: true });
+        element('myWordbookWordEditor').hidden = true;
+        element('myWordbookEditorContent').hidden = false;
+        element('myWordbookIntro').hidden = false;
+        element('myWordbookModal').setAttribute('aria-labelledby', 'myWordbookTitle');
+        if (restoreFocus && getBook(editingId)) {
+            status('');
+            render();
+            element('myWordbookModal').querySelector('.my-wordbook-panel').scrollTop = editorScrollTop;
+            const target = wordEditReturnFocus?.isConnected && element('myWordbookEditorContent').contains(wordEditReturnFocus)
+                && wordEditReturnFocus.getClientRects().length
+                ? wordEditReturnFocus : element('myWordbookEditorHeading');
+            target.focus({ preventScroll: target === wordEditReturnFocus });
+        }
     }
 
     function editCustom(key) {
@@ -401,12 +473,13 @@
         element('myWordbookCustomWord').readOnly = true;
         element('myWordbookCustomPos').value = word.pos;
         element('myWordbookCustomPos').disabled = true;
+        element('myWordbookCustomPosLabel').hidden = false;
+        element('myWordbookRegistrationMatches').hidden = true;
         element('myWordbookCustomMeaning').value = word.meaning;
         element('myWordbookCustomSave').textContent = '変更を保存';
         element('myWordbookCustomHelp').textContent = 'この語を使うすべてのマイ単語帳に反映します。綴り・品詞と学習履歴はそのままです。';
-        element('myWordbookCustomForm').hidden = false;
-        element('myWordbookCustomMeaning').focus();
-        status('意味を修正できます。学習履歴・復習予定は変わりません。');
+        status('');
+        showWordEditor('myWordbookCustomForm', 'myWordbookCustomMeaning');
     }
 
     function editNote(key) {
@@ -419,9 +492,8 @@
         element('myWordbookNoteOriginal').textContent = meaningLabel(item.word);
         element('myWordbookNoteMeaning').value = note?.meaning || '';
         element('myWordbookNoteMemo').value = note?.memo || '';
-        element('myWordbookNoteForm').hidden = false;
-        element('myWordbookNoteMeaning').focus();
-        status('この単語帳だけの訳・覚え方です。元の意味は変更しません。');
+        status('');
+        showWordEditor('myWordbookNoteForm', 'myWordbookNoteMeaning');
     }
 
     function saveNote(event) {
@@ -435,7 +507,6 @@
         if (meaning || memo) wordNotes[key] = { meaning, memo }; else delete wordNotes[key];
         if (!commit(window.gameState.myWordbooks.map(item => item.id === book.id ? { ...item, wordNotes } : item))) return;
         cancelWordEdit();
-        render();
         status(meaning || memo ? '自分用メモを保存しました。元の意味・学習履歴はそのままです。' : '自分用メモを消しました。元の意味・学習履歴はそのままです。');
     }
 
@@ -451,7 +522,6 @@
             if (!commit(window.gameState.myWordbooks, window.gameState.activeMyWordbookId,
                 window.gameState.myCustomWords.map(item => item.id === original.id ? { ...item, meaning } : item))) return;
             cancelWordEdit();
-            render();
             status('自作語の意味を保存しました。ほかの単語帳にも反映し、学習履歴はそのままです。');
             return;
         }
@@ -461,11 +531,25 @@
         if (!word || word.length > 120 || !meaning || meaning.length > 500 || !Object.hasOwn(POS_LABELS, pos)) {
             status('単語・品詞・意味を入力してください（単語120字、意味500字まで）。', true); return;
         }
-        const matches = getCatalog().byText.get(normalizeText(word)) || [];
-        if (matches.some(item => item.level !== 'my-custom')) {
-            element('myWordbookSuggest').value = word;
-            renderSuggestions();
-            status('収録済みの語です。候補の品詞・意味を確認して追加してください。', true); return;
+        const matches = getRegistrationMatches(word);
+        if (matches.length) {
+            const item = matches.find(item => item.key === registrationKey) || (matches.length === 1 ? matches[0] : null);
+            if (!item) {
+                renderRegistrationMatches();
+                status('品詞・意味を確認して、元のカードを選んでください。', true);
+                element('myWordbookRegistrationCandidates').querySelector('input')?.focus();
+                return;
+            }
+            const registered = book.wordKeys.includes(item.key);
+            const wordNotes = { ...book.wordNotes, [item.key]: { ...book.wordNotes?.[item.key], meaning } };
+            if (!commit(window.gameState.myWordbooks.map(current => current.id === book.id ? { ...current,
+                wordKeys: registered ? current.wordKeys : [...current.wordKeys, item.key], wordNotes } : current))) return;
+            if (tab !== 'members') selection.delete(item.key);
+            if (importResult) importResult = matchInput(element('myWordbookInput').value);
+            cancelWordEdit();
+            status(registered ? 'この単語帳の訳を保存しました。元の意味・学習履歴はそのままです。'
+                : `${item.word.word}を自分の訳付きで追加しました。元の意味・学習履歴はそのままです。`);
+            return;
         }
         const existing = (window.gameState.myCustomWords || []).find(item => normalizeText(item.word) === normalizeText(word) && item.pos === pos);
         const custom = existing || { id: newId('custom-'), word, pos, meaning };
@@ -474,9 +558,8 @@
         const words = existing ? window.gameState.myCustomWords : [...(window.gameState.myCustomWords || []), custom];
         if (!commit(window.gameState.myWordbooks.map(item => item.id === book.id
             ? { ...item, wordKeys: [...item.wordKeys, key] } : item), window.gameState.activeMyWordbookId, words)) return;
-        element('myWordbookCustomForm').hidden = true;
         if (importResult) importResult = matchInput(element('myWordbookInput').value);
-        render();
+        cancelWordEdit();
         status(existing ? '登録済みの同じ単語・品詞を追加しました。保存済みの意味と学習履歴を使います。' : `${word}（${POS_LABELS[pos]}）を自分の意味で登録しました。`);
     }
 
@@ -567,7 +650,7 @@
                 const button = document.createElement('button');
                 button.type = 'button';
                 button.textContent = `${word} の意味を入力`;
-                button.addEventListener('click', () => openCustom(word));
+                button.addEventListener('click', () => openCustom(word, button));
                 missingHost.append(button);
             });
         }
@@ -607,6 +690,9 @@
         const book = getBook(editingId);
         element('myWordbookLibrary').hidden = !!book;
         element('myWordbookEditor').hidden = !book;
+        element('myWordbookEditorContent').hidden = wordEditorOpen;
+        element('myWordbookWordEditor').hidden = !wordEditorOpen;
+        element('myWordbookIntro').hidden = wordEditorOpen;
         if (!book) {
             const host = element('myWordbookLibraryList');
             host.replaceChildren();
@@ -667,6 +753,7 @@
         element('myWordbookCreateForm').addEventListener('submit', create);
         element('myWordbookRenameForm').addEventListener('submit', rename);
         element('myWordbookCustomForm').addEventListener('submit', addCustom);
+        element('myWordbookCustomWord').addEventListener('input', () => { renderRegistrationMatches(); status(''); });
         element('myWordbookNoteForm').addEventListener('submit', saveNote);
         element('myWordbookSuggest').addEventListener('input', renderSuggestions);
         element('myWordbookSearch').addEventListener('input', () => { pageIndex = 0; renderRows(); });
@@ -677,7 +764,7 @@
     });
 
     window.MyWordbooks = Object.freeze({
-        normalizeBooks, normalizeNotes, normalizeCustomWords, customKey, isCustomKey, matchInput, getSuggestions, getCatalog, getBook, getNote, resolveWord, studyNoteMarkup, restore, refreshCollection, refreshStudyUI,
+        normalizeBooks, normalizeNotes, normalizeCustomWords, customKey, isCustomKey, matchInput, getSuggestions, getRegistrationMatches, getCatalog, getBook, getNote, resolveWord, studyNoteMarkup, restore, refreshCollection, refreshStudyUI,
         openCustom, addCustom, editCustom, editNote, saveNote, cancelWordEdit,
         open, openEditor, create, rename, removeBook, changeTab, previewInput, applySelection, startStudy, practiceAll,
         showLibrary() { cancelWordEdit(false); editingId = null; selection.clear(); status(''); render(); element('myWordbookNewName').focus({ preventScroll: true }); },

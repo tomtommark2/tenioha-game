@@ -8579,7 +8579,7 @@ body.dismissible-modal-open {
 }
 .my-wordbook-panel button.my-wordbook-primary:not(.modal-close-btn) { background: #5367d4; border-color: #5367d4; color: #fff; font-weight: 700; }
 .my-wordbook-panel button:disabled { opacity: .48; cursor: default; }
-.my-wordbook-panel input:not([type=checkbox]), .my-wordbook-panel textarea, .my-wordbook-panel select {
+.my-wordbook-panel input:not([type=checkbox]):not([type=radio]), .my-wordbook-panel textarea, .my-wordbook-panel select {
     box-sizing: border-box; min-width: 0; width: 100%; border: 1px solid #ccd6e8; border-radius: 8px; padding: 10px; font: inherit; font-size: 16px; background: white; color: #27324a;
 }
 .my-wordbook-panel textarea { resize: vertical; margin-top: 6px; }
@@ -8635,6 +8635,17 @@ body.dismissible-modal-open {
 .my-wordbook-note-preview { display: block; margin: 0 12px 10px 42px; padding: 8px; background: #f2f5ff; color: #526482; font-size: 12px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 110px; overflow-y: auto; }
 .my-wordbook-original-meaning { font-size: 13px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
 .my-wordbook-custom-form h4 { overflow-wrap: anywhere; }
+#myWordbookWordEditor .my-wordbook-custom-form { padding: 0; border: 0; background: none; }
+#myWordbookWordEditor h4 { font-size: 18px; margin: 12px 0 16px; }
+.my-wordbook-form-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.my-wordbook-registration-matches { min-width: 0; margin: 12px 0; padding: 0; border: 0; }
+.my-wordbook-registration-matches legend { font-size: 12px; color: #5d6c82; margin-bottom: 4px; }
+#myWordbookRegistrationCandidates { max-height: 190px; overflow-y: auto; overscroll-behavior: contain; }
+.my-wordbook-custom-form label.my-wordbook-registration-candidate { display: grid; grid-template-columns: 18px minmax(0, 1fr); align-items: start; gap: 10px; padding: 10px; border: 1px solid #dce3f0; border-radius: 9px; background: #fff; cursor: pointer; }
+.my-wordbook-registration-candidate:has(input:checked) { border-color: #7787d9 !important; background: #edf2ff !important; }
+.my-wordbook-custom-form .my-wordbook-registration-candidate input { width: 18px; height: 18px; margin: 2px 0; accent-color: #5367d4; }
+.my-wordbook-registration-candidate strong, .my-wordbook-registration-candidate small { display: block; overflow-wrap: anywhere; }
+.my-wordbook-registration-candidate small { margin-top: 4px; color: #61718a; line-height: 1.5; white-space: pre-line; }
 .my-noted-meaning { width: 100%; min-width: 0; max-height: 220px; overflow-y: auto; overscroll-behavior: contain; overflow-wrap: anywhere; }
 .my-original-meaning > small { display: block; font-size: 11px; font-weight: normal; color: #68748b; margin-bottom: 6px; }
 .my-original-meaning .word-meaning-main { font-size: 22px !important; margin-bottom: 8px !important; line-height: 1.4; }
@@ -8648,8 +8659,8 @@ body.dismissible-modal-open {
 .has-custom-word .card { min-width: 0; }
 .has-custom-word .card-content, .has-custom-word .card-back { width: 100%; min-width: 0; overflow-wrap: anywhere; }
 .my-custom-word-stack { width: 100%; }
-.my-custom-word-stack .word-text-main { max-width: 100%; overflow-wrap: anywhere; font-size: clamp(20px, 3vw, 32px) !important; }
-.my-custom-meaning { max-height: 220px; overflow-y: auto; overscroll-behavior: contain; white-space: pre-wrap; overflow-wrap: anywhere; text-align: left; font-size: 20px; line-height: 1.5; }
+.my-custom-word-stack .word-text-main { max-width: 100%; max-height: 180px; overflow-y: auto; overscroll-behavior: contain; overflow-wrap: anywhere; }
+.my-custom-meaning { max-width: 100%; max-height: 220px; overflow-y: auto; overscroll-behavior: contain; white-space: pre-wrap; overflow-wrap: anywhere; }
 @media (max-width: 480px) {
     .my-wordbook-panel { padding: 16px !important; }
     .my-wordbook-tabs button { padding: 8px 3px !important; font-size: 11px; }

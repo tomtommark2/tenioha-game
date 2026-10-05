@@ -33,6 +33,21 @@ test('マイ単語帳：保存を検証し重複を除き未解決の正規キ�
     expect(ctx.MyWordbooks.normalizeBooks(undefined)).toEqual([]);
 });
 
+test('マイ単語帳：意味付き登録の原本候補は完全一致・正規化・独立品詞を保ち自作語を混ぜない', () => {
+    const ctx = runtime();
+    ctx.gameState = { myCustomWords: [{ id: 'custom-a', word: 'apple', pos: '動', meaning: '独自の意味' }] };
+    expect(ctx.MyWordbooks.getRegistrationMatches(' ＡＰＰＬＥ ').map(item => item.word.word)).toEqual(['apple']);
+    expect(ctx.MyWordbooks.getRegistrationMatches('ap')).toEqual([]);
+    expect(ctx.MyWordbooks.getRegistrationMatches('unknown')).toEqual([]);
+    const separate = ctx.MyWordbooks.getRegistrationMatches('attribute');
+    expect(separate.map(item => item.word.pos)).toEqual(['名', '動']);
+    expect(new Set(separate.map(item => item.key)).size).toBe(2);
+    const merged = { word: 'attribute', pos: '名', __groupKey: 'word-v2:basic:attribute:merged',
+        senses: [{ pos: '名', meaning: '属性' }, { pos: '動', meaning: '〜に帰する' }] };
+    const database = { junior: [], basic: [merged], daily: [], exam1: [] };
+    expect(ctx.MyWordbooks.getRegistrationMatches('attribute', database).map(item => item.key)).toEqual([merged.__groupKey]);
+});
+
 test('マイ単語帳：未回答の作成も新規端末の実データ扱い', () => {
     const ctx = runtime();
     expect(ctx.GameUtils.getLoginCloudSyncDecision({ hadExistingSaveAtBoot: false,

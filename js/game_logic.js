@@ -186,7 +186,6 @@ function renderMeaningMarkup(word) {
 }
 
 function renderBaseMeaningMarkup(word) {
-    if (word?.__customWord) return `<div class="my-custom-meaning">${escapeHtml(word.meaning || '')}</div>`;
     if (word?.senses?.length > 1) {
         return `<div class="merged-meanings">${word.senses.map(sense => `
             <section class="merged-sense">
@@ -194,13 +193,13 @@ function renderBaseMeaningMarkup(word) {
                 ${sense.phrase ? `<div class="merged-phrase"><span>PHRASE</span>${escapeHtml(sense.phrase)}</div>` : ''}
             </section>`).join('')}</div>`;
     }
-    const meaning = cleanMeaningForDisplay(word?.meaning);
+    const meaning = word?.__customWord ? String(word.meaning || '') : cleanMeaningForDisplay(word?.meaning);
     const phrase = String(word?.phrase ?? '').trim();
     const phraseLabel = `<span style="font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 4px;">PHRASE</span>`;
 
     return `
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <div class="word-meaning-main" style="font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">${escapeHtml(meaning)}</div>
+                    <div class="word-meaning-main${word?.__customWord ? ' my-custom-meaning' : ''}" style="font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">${escapeHtml(meaning)}</div>
                     ${phrase ? `
                         <div class="word-meaning-phrase" style="text-align: center; background: #f8f9fa; padding: 10px 20px; border-radius: 12px; border: 1px solid #eef0f5;">
                             ${phraseLabel}
