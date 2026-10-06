@@ -229,14 +229,14 @@ test('マイ単語帳：表の品詞を照合し曖昧候補・統合キー・�
     const combined = api.matchImportRows([{ word: 'attribute', meaning: '属性の訳', pos: '名', posText: '名詞' },
         { word: 'attribute', meaning: '帰するの訳', pos: '動', posText: '動詞' }], database);
     expect(combined.keys).toEqual([merged.__groupKey]);
-    expect(api.importedMeaning(combined, merged.__groupKey)).toBe('名詞：属性の訳\n動詞：帰するの訳');
+    expect(api.importedMeaning(combined, merged.__groupKey)).toBe('');
     const tooLong = api.matchImportRows([{ word: 'attribute', meaning: 'あ'.repeat(300), pos: '名' },
         { word: 'attribute', meaning: 'い'.repeat(300), pos: '動' }], database);
-    expect(() => api.importedMeaning(tooLong, merged.__groupKey)).toThrow('合計500字');
+    expect(api.importedMeaning(tooLong, merged.__groupKey)).toBe('');
     ctx.gameState = { myCustomWords: [{ id: 'custom-a', word: 'quux', meaning: '名詞', pos: '名' }] };
     expect(api.matchImportRows([{ word: 'quux', meaning: '動詞', pos: '動', posText: '動詞' }]).pendingRows).toHaveLength(1);
     const conflict = api.matchImportRows([{ word: 'apple', meaning: '訳1' }, { word: 'apple', meaning: '訳2' }]);
-    expect(() => api.importedMeaning(conflict, conflict.keys[0])).toThrow('異なる訳');
+    expect(api.importedMeaning(conflict, conflict.keys[0])).toBe('');
 });
 
 test('マイ単語帳：一括保存案は重複を除き別品詞を分け、共有定義・メモ・元データを変更しない', () => {
@@ -252,7 +252,9 @@ test('マイ単語帳：一括保存案は重複を除き別品詞を分け、�
     const plan = api.planBulkImport(book, records);
     expect(plan.count).toBe(2); expect(plan.customWords).toHaveLength(2);
     expect(plan.book.wordKeys).toHaveLength(2);
-    expect(plan.book.wordNotes[key]).toEqual({ meaning: '新しい本人の訳', memo: '既存メモ' });
+    expect(plan.book.wordNotes[key]).toEqual({ meaning: '旧訳', memo: '既存メモ' });
+    expect(plan.customWords[1].meaning).toBe('動作');
+    expect(plan.book.wordNotes[api.customKey(plan.customWords[1].id)]).toBeUndefined();
     expect(plan.customWords[0].meaning).toBe('元の訳');
     expect(JSON.stringify([book, ctx.gameState.myCustomWords])).toBe(before);
     expect(() => api.planBulkImport(book, [...records, { word: 'missing', meaning: '', pos: '名', selected: true }])).toThrow('意味');

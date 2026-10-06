@@ -949,7 +949,10 @@ test('マイ単語帳：一括表入力は収録語を先に追加し残りを�
     });
     await importTable(page, 'word,meaning,pos\napple,授業のりんご,名詞\nquux-import,"独自の訳,果物",noun\nschool,授業の学校,n.\nflorp-import,独自の動作,動詞');
     await expect(page.locator('#myWordbookImportHeader')).toBeChecked();
-    await expect(page.locator('#myWordbookRows')).toContainText('自分の訳：授業のりんご');
+    await expect(page.locator('#myWordbookRows')).toContainText('リンゴ');
+    await expect(page.locator('#myWordbookRows')).not.toContainText('授業のりんご');
+    await expect(page.locator('.my-wordbook-import-meaning')).toHaveCount(0);
+    await expect(page.locator('#myWordbookApply')).toHaveText('選択した語を追加');
     await page.locator('#myWordbookApply').click();
     expect(await page.evaluate(() => gameState.myCustomWords)).toEqual([]);
     await expect(page.locator('#myWordbookBulkOpen')).toHaveText('未収録の2語をまとめて登録');
@@ -964,11 +967,65 @@ test('マイ単語帳：一括表入力は収録語を先に追加し残りを�
     await expect(page.locator('#myWordbookStatus')).toContainText('2語をまとめて登録');
     const saved = await page.evaluate(() => ({ books: gameState.myWordbooks, custom: gameState.myCustomWords }));
     expect(saved.books[0].wordKeys).toHaveLength(4);
-    expect(saved.books[0].wordNotes[original.key].meaning).toBe('授業のりんご');
+    expect(saved.books[0].wordNotes).toEqual({});
     expect(await page.evaluate(key => ({ meaning: MyWordbooks.getCatalog().byKey.get(key).word.meaning,
         srs: JSON.stringify(gameState.srsData), score: JSON.stringify(gameState.reviewScore) }), original.key)).toEqual({ meaning: original.meaning, srs: original.srs, score: original.score });
     await page.reload();
     expect(await page.evaluate(() => ({ books: gameState.myWordbooks, custom: gameState.myCustomWords }))).toEqual(saved);
+});
+
+test('マイ単語帳：一括入力の収録語は表記違い・別の訳でも辞書の意味だけを追加', async ({ page }, testInfo) => {
+    await create(page);
+    await importTable(page, 'apple,りんご\nAPPLE,おりんご');
+    await expect(page.locator('#myWordbookSelectionCount')).toHaveText('1語選択');
+    await expect(page.locator('#myWordbookInputHelp')).toContainText('入力した意味は未収録語にだけ使います');
+    await expect(page.locator('#myWordbookRows')).toContainText('リンゴ');
+    await expect(page.locator('#myWordbookRows')).not.toContainText('おりんご');
+    await page.evaluate(() => { window.originalImportSave = saveGame; window.saveGame = () => false; });
+    await page.locator('#myWordbookApply').click();
+    await expect(page.locator('#myWordbookStatus')).toContainText('保存できません');
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toEqual([]);
+    await expect(checkbox(page, 'apple')).toBeChecked();
+    await page.evaluate(() => { window.saveGame = window.originalImportSave; });
+    await page.locator('#myWordbookApply').click();
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toHaveLength(1);
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordNotes)).toEqual({});
+    await page.locator('#myWordbookStart').click();
+    await page.locator('#meaningCard').click();
+    await expect(page.locator('#meaningText')).toContainText('リンゴ');
+    await expect(page.locator('#meaningText')).not.toContainText('りんご');
+    await expect(page.locator('.my-study-note')).toHaveCount(0);
+    await expect(page.locator('.my-original-meaning')).toHaveCount(0);
+    await page.screenshot({ path: testInfo.outputPath('import-dictionary-meaning.png') });
+});
+
+test('マイ単語帳：一括再取り込みは登録済みの収録語・自作語の訳とメモを上書きしない', async ({ page }) => {
+    await create(page);
+    await addCustom(page, 'apple', '名', '個別に登録した訳');
+    await addCustom(page, 'quux-existing-import', '名', '自作語の元の意味');
+    await page.getByRole('button', { name: '登録した単語', exact: true }).click();
+    await saveNote(page, 'apple', '編集した自分の訳', '覚え方を残す');
+    await saveNote(page, 'quux-existing-import', '自作語の自分の訳', '自作語のメモ');
+    const before = await page.evaluate(() => ({ books: gameState.myWordbooks, custom: gameState.myCustomWords,
+        srs: gameState.srsData, score: gameState.reviewScore }));
+    await page.getByRole('button', { name: '入力して追加', exact: true }).click();
+    await importTable(page, 'apple,取り込んだ別の訳\nquux-existing-import,取り込んだ自作語の訳');
+    await expect(checkbox(page, 'apple')).toBeDisabled();
+    await expect(checkbox(page, 'quux-existing-import')).toBeDisabled();
+    await expect(page.locator('#myWordbookApply')).toBeDisabled();
+    expect(await page.evaluate(() => ({ books: gameState.myWordbooks, custom: gameState.myCustomWords,
+        srs: gameState.srsData, score: gameState.reviewScore }))).toEqual(before);
+    await importTable(page, 'apple,別の訳\nquux-existing-import,別の意味\nschool,別の学校');
+    await expect(page.locator('#myWordbookSelectionCount')).toHaveText('1語選択');
+    await page.locator('#myWordbookApply').click();
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordNotes)).toEqual(before.books[0].wordNotes);
+    expect(await page.evaluate(() => gameState.myCustomWords)).toEqual(before.custom);
+    expect(await page.evaluate(() => ({ srs: gameState.srsData, score: gameState.reviewScore })))
+        .toEqual({ srs: before.srs, score: before.score });
+    await page.reload();
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordNotes)).toEqual(before.books[0].wordNotes);
+    expect(await page.evaluate(() => gameState.myCustomWords)).toEqual(before.custom);
+    expect(await page.evaluate(() => gameState.reviewScore)).toEqual(before.score);
 });
 
 test('マイ単語帳：一括TSVの列を確認しタグを品詞にせず未指定分だけまとめて補う', async ({ page }) => {
@@ -1036,6 +1093,7 @@ test('マイ単語帳：一括入力の同綴り候補・自作語別品詞と�
     await candidates.first().check();
     await page.locator('#myWordbookApply').click();
     expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toHaveLength(1);
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordNotes)).toEqual({});
     await page.locator('#myWordbookBulkOpen').click();
     await page.getByRole('combobox', { name: '1行目の品詞', exact: true }).selectOption('名');
     await page.getByRole('combobox', { name: '2行目の品詞', exact: true }).selectOption('名');

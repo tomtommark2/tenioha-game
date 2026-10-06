@@ -224,15 +224,9 @@
     }
 
     function importedMeaning(result, key) {
-        const rows = (result?.sourceRows || []).filter(row => row.matches.includes(key) && row.meaning);
-        const meanings = [...new Set(rows.map(row => row.meaning))];
-        if (meanings.length < 2) return meanings[0] || '';
-        if (rows.every(row => row.pos) && new Set(rows.map(row => row.pos)).size === rows.length) {
-            const meaning = rows.map(row => `${POS_LABELS[row.pos]}：${row.meaning}`).join('\n');
-            if (meaning.length > 500) throw new Error('同じカードの訳は合計500字までです。入力を短くしてください。');
-            return meaning;
-        }
-        throw new Error('同じカードに異なる訳があります。入力を一つにまとめてください。');
+        // Retain the public helper; matched cards now use their existing meanings.
+        // Pasted meanings are only used by pending (unregistered) import rows.
+        return '';
     }
 
     // Prepare everything without touching saved objects. One failed row/save cancels the whole batch.
@@ -258,9 +252,7 @@
             let custom = customWords.find(item => normalizeText(item.word) === normalizeText(word) && item.pos === pos);
             if (!custom) { custom = { id: newId('custom-'), word, pos, meaning }; customWords.push(custom); }
             const key = customKey(custom.id);
-            // Reusing a shared custom word never overwrites its definition in another book.
-            if (custom.meaning !== meaning || wordNotes[key]?.meaning)
-                wordNotes[key] = { ...wordNotes[key], meaning };
+            // Reusing a shared custom word also preserves existing book-local notes.
             wordKeys.add(key); changed.add(key);
         });
         return { book: { ...book, wordKeys: [...wordKeys], wordNotes }, customWords, count: changed.size };
@@ -317,7 +309,7 @@
         element('myWordbookTableOptions').hidden = !table;
         element('myWordbookInput').placeholder = table ? 'apple,りんご,名詞\nlook after,世話をする,動詞' : 'apple\nschool\nhigh school';
         element('myWordbookInputHelp').textContent = table
-            ? '1行に1語。単語・意味・品詞の列を確認してください（500行まで）。収録語の訳はこの単語帳だけに保存します。'
+            ? '1行に1語・500行まで。収録済みの語は登録済みの意味を使い、入力した意味は未収録語にだけ使います。'
             : '改行・カンマ・タブでまとめて照合できます。熟語は1行に1つ。大小文字は区別しません。同じ綴りは品詞・意味を確認してください。統合カードは全用法をまとめて登録します。';
         refreshTableOptions();
     }
@@ -649,13 +641,7 @@
     }
 
     function canSelectInput(key, members = new Set(getBook(editingId).wordKeys)) {
-        if (!members.has(key)) return true;
-        try {
-            const meaning = importedMeaning(importResult, key), item = getCatalog().byKey.get(key);
-            const current = getNote(key, getBook(editingId))?.meaning || (item?.level === 'my-custom' ? item.word.meaning : '');
-            return !!meaning && meaning !== current;
-        }
-        catch { return true; }
+        return !members.has(key);
     }
 
     function getRows() {
@@ -932,16 +918,10 @@
             const meaning = document.createElement('small');
             meaning.textContent = meaningLabel(item.word);
             copy.append(title, meaning);
-            if (tab === 'input' && importResult?.sourceRows) {
-                const personal = document.createElement('small'); personal.className = 'my-wordbook-import-meaning';
-                try { const value = importedMeaning(importResult, item.key); personal.textContent = value ? `自分の訳：${value}` : ''; }
-                catch (error) { personal.textContent = error.message; }
-                copy.append(personal);
-            }
             const state = window.gameState.wordStates[item.key] || 'unlearned';
             const meta = document.createElement('span');
             meta.className = 'my-wordbook-row-meta';
-            meta.textContent = registered ? (checkbox.disabled ? '追加済み' : '登録済み・訳を保存') : `${LABELS[item.level]}・${STATES[state] || '未学習'}`;
+            meta.textContent = registered ? '追加済み' : `${LABELS[item.level]}・${STATES[state] || '未学習'}`;
             label.append(checkbox, copy, meta);
             const entry = document.createElement('div');
             entry.className = 'my-wordbook-entry';
@@ -1019,31 +999,24 @@
         element('myWordbookSelectionCount').textContent = `${count}語選択`;
         const action = element('myWordbookApply');
         action.disabled = count === 0;
-        action.textContent = tab === 'members' ? '選択した語を外す' : tab === 'input' && importResult?.sourceRows ? '選択した語を追加・訳を保存' : '選択した語を追加';
+        action.textContent = tab === 'members' ? '選択した語を外す' : '選択した語を追加';
     }
 
     function applySelection() {
         const book = getBook(editingId);
         if (!book || !selection.size) return;
         const members = new Set(book.wordKeys);
-        const wordNotes = { ...book.wordNotes };
-        let count = 0, notes = 0;
-        try {
-            if (tab === 'input') selection.forEach(key => {
-                const meaning = importedMeaning(importResult, key);
-                if (meaning && wordNotes[key]?.meaning !== meaning) { wordNotes[key] = { ...wordNotes[key], meaning }; notes++; }
-            });
-        } catch (error) { status(error.message, true); return; }
+        let count = 0;
         selection.forEach(key => {
             if (tab === 'members') { if (members.delete(key)) count++; }
             else if (getCatalog().byKey.has(key) && !members.has(key)) { members.add(key); count++; }
         });
         if (tab === 'members' && !confirm(`選択した${count}語を単語帳から外しますか？\n学習履歴・復習予定は消えません。`)) return;
-        if (!commit(window.gameState.myWordbooks.map(item => item.id === book.id ? { ...item, wordKeys: [...members], wordNotes } : item))) return;
+        if (!commit(window.gameState.myWordbooks.map(item => item.id === book.id ? { ...item, wordKeys: [...members] } : item))) return;
         selection.clear();
         render();
         status(tab === 'members' ? `${count}語を外しました。学習履歴はそのままです。`
-            : `${count}語を追加しました。${notes ? `${notes}語の自分の訳を保存しました。` : ''}`);
+            : `${count}語を追加しました。`);
     }
 
     function render() {
