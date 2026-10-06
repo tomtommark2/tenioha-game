@@ -8646,6 +8646,24 @@ body.dismissible-modal-open {
 .my-wordbook-custom-form .my-wordbook-registration-candidate input { width: 18px; height: 18px; margin: 2px 0; accent-color: #5367d4; }
 .my-wordbook-registration-candidate strong, .my-wordbook-registration-candidate small { display: block; overflow-wrap: anywhere; }
 .my-wordbook-registration-candidate small { margin-top: 4px; color: #61718a; line-height: 1.5; white-space: pre-line; }
+.my-wordbook-import-format { display: block; margin-bottom: 12px; }
+.my-wordbook-import-format select { margin-top: 4px; }
+.my-wordbook-import-settings, .my-wordbook-import-columns, .my-wordbook-bulk-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0; }
+.my-wordbook-import-settings > label, .my-wordbook-import-columns > label { flex: 1; min-width: 100px; }
+.my-wordbook-import-columns select { margin-top: 4px; }
+.my-wordbook-header-check { display: flex; align-items: center; gap: 6px; }
+.my-wordbook-table-preview { font-size: 12px; color: #526482; overflow-wrap: anywhere; }
+.my-wordbook-table-preview > div { display: grid; grid-template-columns: 1fr 1.5fr .7fr; gap: 8px; padding: 7px; border-bottom: 1px solid #e0e6f0; white-space: pre-wrap; }
+.my-wordbook-bulk-tools > label { flex: 1; min-width: 120px; }
+.my-wordbook-bulk-rows { max-height: 430px; overflow-y: auto; overscroll-behavior: contain; }
+.my-wordbook-bulk-row { padding: 12px; margin: 8px 0; border: 1px solid #dce3f0; border-radius: 10px; background: #fff; }
+.my-wordbook-bulk-row > label { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+.my-wordbook-bulk-row > label input { accent-color: #5367d4; }
+.my-wordbook-bulk-fields { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 8px; margin-top: 10px; }
+.my-wordbook-bulk-fields > label:last-child { grid-column: 1 / -1; }
+.my-wordbook-bulk-fields input, .my-wordbook-bulk-fields select { margin-top: 4px; }
+.my-wordbook-bulk-error { color: #ad3a48; font-size: 12px; margin: 6px 0 0; overflow-wrap: anywhere; }
+.my-wordbook-import-meaning { color: #3f55a6 !important; }
 .my-noted-meaning { width: 100%; min-width: 0; max-height: 220px; overflow-y: auto; overscroll-behavior: contain; overflow-wrap: anywhere; }
 .my-original-meaning > small { display: block; font-size: 11px; font-weight: normal; color: #68748b; margin-bottom: 6px; }
 .my-original-meaning .word-meaning-main { font-size: 22px !important; margin-bottom: 8px !important; line-height: 1.4; }

@@ -13,6 +13,28 @@ function runtime() {
     return ctx;
 }
 
+test('マイ単語帳：未購入・期限切れでも語と学習範囲を使え、購入権限は変更しない', () => {
+    const ctx = runtime();
+    let purchased = false, checks = 0;
+    ctx.GameUtils = { ...ctx.GameUtils, checkPremiumStatus: () => { checks++; return purchased; } };
+    ctx.document.getElementById = () => null;
+    vm.runInContext(fs.readFileSync(path.join(__dirname, '../js/word_illustrations.js'), 'utf8'), ctx);
+    const api = ctx.WordIllustrations;
+    const custom = { word: 'quux-study', pos: '名', __customWord: true, __groupKey: ctx.MyWordbooks.customKey('custom-a') };
+    ctx.vocabularyDatabase.my = [ctx.vocabularyDatabase.junior[0], custom];
+    expect(api.canUseLevel('my')).toBe(true);
+    expect(api.canUseWord(custom, 'my-custom', ctx.vocabularyDatabase)).toBe(true);
+    expect(api.accessibleWords('my', ctx.vocabularyDatabase).length).toBe(2);
+    expect(checks).toBe(0);
+    expect(api.premium()).toBe(false);
+    purchased = true;
+    expect(api.canUseLevel('my')).toBe(true);
+    expect(api.premium()).toBe(true);
+    purchased = false;
+    expect(api.canUseLevel('my')).toBe(true);
+    expect(api.premium()).toBe(false);
+});
+
 test('マイ単語帳：照合は大小文字・重複・熟語・品詞を扱い未収録語を明示', () => {
     const ctx = runtime();
     const result = ctx.MyWordbooks.matchInput('APPLE, apple\nlook   after\tattribute；unknown-word');
@@ -160,4 +182,82 @@ test('マイ単語帳：前方一致・別品詞候補・自作語検証と固�
     vm.runInContext(code.slice(code.indexOf('function awardReviewScore('), code.indexOf('function updateSrsForWord(')), ctx);
     ctx.isScheduledReviewQuestion = () => true;
     expect(ctx.awardReviewScore(matches.keys[0], true, 1)).toBe(0);
+});
+
+test('マイ単語帳：CSV・TSVは引用符・カンマ・改行・熟語・ヘッダー・列割当てを保持', () => {
+    const api = runtime().MyWordbooks;
+    const source = api.parseImportTable('\uFEFFword,meaning,pos\r\napple,"りんご,果物",n.\r\nlook after,"世話をする\r\n気にかける",verb\r\nquux,"""本人の訳""",その他');
+    expect(source).toMatchObject({ separator: 'comma', header: true, mapping: { word: 0, meaning: 1, pos: 2 } });
+    expect(api.mappedImportRows(source, source.mapping)).toEqual([
+        { word: 'apple', meaning: 'りんご,果物', pos: '名', posText: 'n.' },
+        { word: 'look after', meaning: '世話をする\n気にかける', pos: '動', posText: 'verb' },
+        { word: 'quux', meaning: '"本人の訳"', pos: 'other', posText: 'その他' },
+    ]);
+    const reordered = api.parseImportTable('意味\t品詞\t単語\tタグ\n本人の訳\t名詞\tquux\ttag');
+    expect(reordered.mapping).toEqual({ word: 2, meaning: 0, pos: 1 });
+    expect(api.mappedImportRows(reordered, reordered.mapping)[0]).toMatchObject({ word: 'quux', meaning: '本人の訳', pos: '名' });
+    const anki = api.parseImportTable('#separator:Tab\n#columns:Front\tBack\tTags\nquux\t独自の訳\tmy-tag');
+    expect(anki).toMatchObject({ separator: 'tab', header: false, mapping: { word: 0, meaning: 1, pos: -1 } });
+    expect(api.mappedImportRows(anki, anki.mapping)[0]).toMatchObject({ word: 'quux', meaning: '独自の訳', pos: '' });
+    expect(api.parseImportTable('quux;独自の訳;名').separator).toBe('semicolon');
+});
+
+test('マイ単語帳：表の破損・列重複・長さ・行上限は切捨てず拒否し完全重複だけをまとめる', () => {
+    const api = runtime().MyWordbooks;
+    expect(() => api.parseImportTable('quux,"未閉じ')).toThrow('引用符');
+    expect(() => api.parseImportTable('quux,"訳"extra')).toThrow('引用符');
+    expect(() => api.parseImportTable('quux 意味')).toThrow('区切って');
+    const source = api.parseImportTable('quux,本人の訳\nQUUX,本人の訳');
+    expect(api.mappedImportRows(source, source.mapping)).toHaveLength(1);
+    expect(() => api.mappedImportRows(source, { word: 0, meaning: 0, pos: -1 })).toThrow('別々の列');
+    const long = api.parseImportTable(`quux,${'訳'.repeat(501)}`);
+    expect(() => api.mappedImportRows(long, long.mapping)).toThrow('500字');
+    const rows = api.parseImportTable(Array.from({ length: 501 }, (_, i) => `word-${i},訳`).join('\n'));
+    expect(() => api.mappedImportRows(rows, rows.mapping)).toThrow('500行');
+});
+
+test('マイ単語帳：表の品詞を照合し曖昧候補・統合キー・自作語の別品詞を維持', () => {
+    const ctx = runtime(), api = ctx.MyWordbooks;
+    const result = api.matchImportRows([{ word: 'attribute', meaning: '自分の訳', pos: '', posText: '' }]);
+    expect(result.keys).toHaveLength(2);
+    expect(result.ambiguousKeys).toEqual(result.keys);
+    const one = api.matchImportRows([{ word: 'attribute', meaning: '自分の訳', pos: '動', posText: '動詞' }]);
+    expect(one.keys).toHaveLength(1); expect(one.ambiguousKeys).toEqual([]);
+    const merged = { word: 'attribute', pos: '名', __groupKey: 'word-v2:basic:attribute:merged',
+        senses: [{ pos: '名', meaning: '属性' }, { pos: '動', meaning: '〜に帰する' }] };
+    const database = { junior: [], basic: [merged], daily: [], exam1: [] };
+    const combined = api.matchImportRows([{ word: 'attribute', meaning: '属性の訳', pos: '名', posText: '名詞' },
+        { word: 'attribute', meaning: '帰するの訳', pos: '動', posText: '動詞' }], database);
+    expect(combined.keys).toEqual([merged.__groupKey]);
+    expect(api.importedMeaning(combined, merged.__groupKey)).toBe('名詞：属性の訳\n動詞：帰するの訳');
+    const tooLong = api.matchImportRows([{ word: 'attribute', meaning: 'あ'.repeat(300), pos: '名' },
+        { word: 'attribute', meaning: 'い'.repeat(300), pos: '動' }], database);
+    expect(() => api.importedMeaning(tooLong, merged.__groupKey)).toThrow('合計500字');
+    ctx.gameState = { myCustomWords: [{ id: 'custom-a', word: 'quux', meaning: '名詞', pos: '名' }] };
+    expect(api.matchImportRows([{ word: 'quux', meaning: '動詞', pos: '動', posText: '動詞' }]).pendingRows).toHaveLength(1);
+    const conflict = api.matchImportRows([{ word: 'apple', meaning: '訳1' }, { word: 'apple', meaning: '訳2' }]);
+    expect(() => api.importedMeaning(conflict, conflict.keys[0])).toThrow('異なる訳');
+});
+
+test('マイ単語帳：一括保存案は重複を除き別品詞を分け、共有定義・メモ・元データを変更しない', () => {
+    const ctx = runtime(), api = ctx.MyWordbooks;
+    ctx.gameState = { myCustomWords: [{ id: 'custom-a', word: 'quux', meaning: '元の訳', pos: '名' }] };
+    const key = api.customKey('custom-a');
+    const book = { id: 'a', name: 'A', wordKeys: [key], wordNotes: { [key]: { memo: '既存メモ', meaning: '旧訳' } } };
+    const before = JSON.stringify([book, ctx.gameState.myCustomWords]);
+    const records = [{ word: 'quux', meaning: '新しい本人の訳', pos: '名', selected: true },
+        { word: 'QUUX', meaning: '新しい本人の訳', pos: '名', selected: true },
+        { word: 'quux', meaning: '動作', pos: '動', selected: true },
+        { word: '', meaning: '', pos: '', selected: false }];
+    const plan = api.planBulkImport(book, records);
+    expect(plan.count).toBe(2); expect(plan.customWords).toHaveLength(2);
+    expect(plan.book.wordKeys).toHaveLength(2);
+    expect(plan.book.wordNotes[key]).toEqual({ meaning: '新しい本人の訳', memo: '既存メモ' });
+    expect(plan.customWords[0].meaning).toBe('元の訳');
+    expect(JSON.stringify([book, ctx.gameState.myCustomWords])).toBe(before);
+    expect(() => api.planBulkImport(book, [...records, { word: 'missing', meaning: '', pos: '名', selected: true }])).toThrow('意味');
+    expect(() => api.planBulkImport(book, [{ word: 'apple', meaning: '自作', pos: '名', selected: true }])).toThrow('元のカード');
+    expect(() => api.planBulkImport(book, [records[0], { ...records[0], meaning: '別の訳' }])).toThrow('異なる意味');
+    expect(() => api.planBulkImport(book, Array.from({ length: 501 }, () => records[0]))).toThrow('500語');
+    expect(JSON.stringify([book, ctx.gameState.myCustomWords])).toBe(before);
 });

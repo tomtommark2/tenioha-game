@@ -201,7 +201,7 @@ test('お知らせはひとことへの移動と戻る・Escape・背景・ブ�
   await expect(page.locator('#announcementModal')).toBeHidden();
 });
 
-test('お知らせはマイ単語帳のプレミアム条件と使い方を案内し、過去の既読を保つ', async ({ page }, testInfo) => {
+test('お知らせはマイ単語帳の無料利用と使い方を案内し、過去の既読を保つ', async ({ page }, testInfo) => {
   await page.addInitScript(() => {
     if (!localStorage.getItem('announcementLatestSeeded')) {
       localStorage.setItem('vocabGame_lastReadAnnouncementId', '2026-09-11-illustrated-wordbook');
@@ -214,7 +214,8 @@ test('お知らせはマイ単語帳のプレミアム条件と使い方を案�
   await expect(page.locator('#announcementReadStatus')).toHaveText('未読 3件');
   const first = page.locator('#announcementList details').first();
   await expect(first).toHaveAttribute('data-announcement-id', '2026-10-04-my-wordbooks');
-  await expect(first).toContainText('プレミアム機能');
+  await expect(first).toContainText('無料機能');
+  await expect(first).not.toContainText('プレミアム機能');
   await first.locator('summary').click();
   await expect(first).toContainText('未収録の語は、自分で意味を登録');
   await expect(first).toContainText('復習キュー・苦手・得意・完璧');

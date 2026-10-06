@@ -61,7 +61,7 @@
         'camp', 'candy', 'cap', 'car', 'card', 'care', 'cartoon', 'case', 'cat', 'catch',
         'celebration', 'chair', 'change', 'character', 'check', 'cheese', 'chicken', 'child', 'chocolate', 'clock'
     ]);
-    const paidLevels = new Set(['my']);
+    const paidLevels = new Set([]);
     const premium = () => !!window.GameUtils.checkPremiumStatus();
     const canUseBookEntry = entry => !!entry && (premium() || (entry.level === 'junior' && freeWords.has(entry.word)));
     // Images are free in the main levels; only the dedicated book is a trial.

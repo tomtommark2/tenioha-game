@@ -6,11 +6,13 @@
     const EMPTY_CUSTOM_WORDS = [];
     const STATES = { unlearned: '未学習', weak: '苦手', learned: '得意', perfect: '完璧' };
     const PAGE_SIZE = 60;
+    const MAX_IMPORT_ROWS = 500;
     let catalogDatabase = null, catalogCustomWords = null, catalog = null;
     let editingId = null, tab = 'members', pageIndex = 0;
     let customEditingId = null, noteEditingKey = null;
     let registrationKey = null, wordEditorOpen = false, wordEditReturnFocus = null, editorScrollTop = 0;
     let importResult = null, selection = new Set();
+    let tableSource = null, bulkPage = 0;
     const element = id => document.getElementById(id);
     const escape = value => window.GameUtils.escapeHtml(String(value));
     const normalizeText = value => String(value || '').normalize('NFKC').trim()
@@ -101,6 +103,313 @@
         return { keys: [...keys], missing, ambiguousKeys, inputCount: inputs.length };
     }
 
+    function importPos(value) {
+        const text = normalizeText(value).replace(/[.。]/g, '');
+        const aliases = { n: '名', noun: '名', v: '動', verb: '動', adj: '形', adjective: '形',
+            adv: '副', adverb: '副', aux: '助', auxiliary: '助', prep: '前', preposition: '前',
+            conj: '接', conjunction: '接', pron: '代', pronoun: '代', other: 'other', その他: 'other' };
+        return Object.hasOwn(POS_LABELS, text) ? text : aliases[text]
+            || Object.keys(POS_LABELS).find(key => POS_LABELS[key] === text) || '';
+    }
+
+    // Keep fields intact: commas, tabs and quoted newlines inside a meaning are not words.
+    function parseImportTable(value, separator = 'auto') {
+        let text = String(value || '').replace(/^\uFEFF/, '');
+        if (text.length > 50000) throw new Error('一度に入力できるのは50,000文字までです。');
+        const metadata = {};
+        while (/^#[^\r\n]*(?:\r?\n|$)/.test(text)) {
+            const line = text.match(/^#[^\r\n]*(?:\r?\n|$)/)[0];
+            const match = line.trim().match(/^#(separator|columns):\s*(.*)$/i);
+            if (match) metadata[match[1].toLowerCase()] = match[2];
+            text = text.slice(line.length);
+        }
+        const delimiters = { tab: '\t', comma: ',', semicolon: ';' };
+        const parse = delimiter => {
+            const rows = [];
+            let row = [], field = '', quoted = false, closed = false;
+            const finishField = () => { row.push(field); field = ''; closed = false; };
+            const finishRow = () => { finishField(); if (row.some(cell => cell.trim())) rows.push(row); row = []; };
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                if (quoted) {
+                    if (char === '"') {
+                        if (text[i + 1] === '"') { field += '"'; i++; }
+                        else { quoted = false; closed = true; }
+                    } else if (char === '\r' && text[i + 1] === '\n') { field += '\n'; i++; }
+                    else field += char;
+                } else if (char === delimiter) finishField();
+                else if (char === '\n' || char === '\r') {
+                    finishRow(); if (char === '\r' && text[i + 1] === '\n') i++;
+                } else if (char === '"' && !field.trim() && !closed) { field = ''; quoted = true; }
+                else if (closed && !/\s/.test(char)) throw new Error('引用符の後は区切りか改行にしてください。');
+                else if (!closed) field += char;
+            }
+            if (quoted) throw new Error('引用符が閉じていません。入力をご確認ください。');
+            finishRow();
+            return rows;
+        };
+        if (separator === 'auto' && metadata.separator) {
+            separator = Object.keys(delimiters).find(key => key === metadata.separator.toLowerCase()
+                || delimiters[key] === metadata.separator) || 'auto';
+        }
+        let rows;
+        if (separator === 'auto') {
+            const errors = [];
+            const candidates = Object.entries(delimiters).map(([name, delimiter]) => {
+                try { return { name, rows: parse(delimiter) }; } catch (error) { errors.push(error); return null; }
+            }).filter(candidate => candidate?.rows[0]?.length > 1);
+            if (!candidates.length) throw errors[0] || new Error('単語と意味をカンマかタブで区切ってください。');
+            // Tabs are the least ambiguous for spreadsheet/Anki text. Otherwise use the first record.
+            const candidate = candidates.find(candidate => candidate.name === 'tab')
+                || candidates.sort((a, b) => b.rows[0].length - a.rows[0].length)[0];
+            separator = candidate.name; rows = candidate.rows;
+        } else {
+            if (!Object.hasOwn(delimiters, separator)) throw new Error('区切りを選んでください。');
+            rows = parse(delimiters[separator]);
+        }
+        if (!rows.length) throw new Error('単語と意味を入力してください。');
+        if (rows.length > MAX_IMPORT_ROWS + 1) throw new Error('一度に取り込めるのは500行までです。');
+        const columnCount = Math.max(...rows.map(row => row.length));
+        if (columnCount < 2 || columnCount > 32) throw new Error('表は2〜32列で入力してください。');
+        const names = { word: ['単語', '英単語', '英単語・熟語', 'word', 'term', 'front', 'expression'],
+            meaning: ['意味', '訳', '自分の訳', 'meaning', 'definition', 'translation', 'back'],
+            pos: ['品詞', 'pos', 'part of speech'] };
+        const first = rows[0].map(normalizeText);
+        const index = (kind, cells) => cells.findIndex(cell => names[kind].includes(normalizeText(cell)));
+        const header = index('word', first) >= 0 && index('meaning', first) >= 0;
+        const headers = metadata.columns ? metadata.columns.split(delimiters[separator]) : header ? rows[0] : [];
+        const data = header ? rows.slice(1) : rows;
+        const word = index('word', headers), meaning = index('meaning', headers), pos = index('pos', headers);
+        return { rows, separator, columnCount, header, headers,
+            mapping: { word: word < 0 ? 0 : word, meaning: meaning < 0 ? 1 : meaning,
+                pos: pos >= 0 ? pos : columnCount === 3 && data.some(row => row[2]?.trim())
+                    && data.every(row => !row[2]?.trim() || importPos(row[2])) ? 2 : -1 } };
+    }
+
+    function mappedImportRows(source, mapping, skipHeader = source.header) {
+        const columns = [mapping.word, mapping.meaning, mapping.pos].filter(column => column >= 0);
+        if (mapping.word < 0 || mapping.meaning < 0 || new Set(columns).size !== columns.length)
+            throw new Error('単語・意味・品詞には別々の列を指定してください。');
+        const records = skipHeader ? source.rows.slice(1) : source.rows;
+        if (records.length > MAX_IMPORT_ROWS) throw new Error('一度に取り込めるのは500行までです。');
+        const unique = new Set();
+        return records.flatMap((cells, i) => {
+            const word = (cells[mapping.word] || '').trim().replace(/\s+/g, ' ');
+            const meaning = (cells[mapping.meaning] || '').trim();
+            const posText = mapping.pos < 0 ? '' : (cells[mapping.pos] || '').trim();
+            if (!word || word.length > 120 || meaning.length > 500)
+                throw new Error(`${i + 1}行目：単語は1〜120字、意味は500字までです。`);
+            const identity = JSON.stringify([normalizeText(word), meaning, normalizeText(posText)]);
+            if (unique.has(identity)) return [];
+            unique.add(identity);
+            return [{ word, meaning, pos: importPos(posText), posText }];
+        });
+    }
+
+    function matchImportRows(records, database = window.vocabularyDatabase) {
+        const lookup = getCatalog(database);
+        const keys = new Set(), ambiguous = new Set();
+        const sourceRows = records.map(record => {
+            const all = lookup.byText.get(normalizeText(record.word)) || [];
+            const filtered = record.pos ? all.filter(item => (item.word.senses || [item.word]).some(sense => sense.pos === record.pos)) : all;
+            // A different/unknown POS must not silently create a second copy of a database word.
+            const matches = filtered.length || !all.some(item => item.level !== 'my-custom') ? filtered : all;
+            const needsChoice = matches.length > 1 || (!!record.posText && !record.pos) || (all.length > 0 && !filtered.length);
+            matches.forEach(item => { keys.add(item.key); if (needsChoice) ambiguous.add(item.key); });
+            return { ...record, matches: matches.map(item => item.key) };
+        });
+        const pendingRows = sourceRows.filter(row => !row.matches.length).map(row => ({ ...row, originalWord: row.word, selected: true, saved: false }));
+        return { keys: [...keys], missing: pendingRows.map(row => row.word), ambiguousKeys: [...ambiguous],
+            inputCount: records.length, sourceRows, pendingRows };
+    }
+
+    function importedMeaning(result, key) {
+        const rows = (result?.sourceRows || []).filter(row => row.matches.includes(key) && row.meaning);
+        const meanings = [...new Set(rows.map(row => row.meaning))];
+        if (meanings.length < 2) return meanings[0] || '';
+        if (rows.every(row => row.pos) && new Set(rows.map(row => row.pos)).size === rows.length) {
+            const meaning = rows.map(row => `${POS_LABELS[row.pos]}：${row.meaning}`).join('\n');
+            if (meaning.length > 500) throw new Error('同じカードの訳は合計500字までです。入力を短くしてください。');
+            return meaning;
+        }
+        throw new Error('同じカードに異なる訳があります。入力を一つにまとめてください。');
+    }
+
+    // Prepare everything without touching saved objects. One failed row/save cancels the whole batch.
+    function planBulkImport(book, records, database = window.vocabularyDatabase) {
+        if (records.filter(row => row.selected && !row.saved).length > MAX_IMPORT_ROWS)
+            throw new Error('一度に登録できるのは500語までです。選択数を減らしてください。');
+        const customWords = [...(window.gameState?.myCustomWords || [])];
+        const wordKeys = new Set(book.wordKeys), wordNotes = { ...book.wordNotes };
+        const seen = new Map(), changed = new Set();
+        const lookup = getCatalog(database);
+        records.filter(row => row.selected && !row.saved).forEach((row, index) => {
+            const word = row.word.trim().replace(/\s+/g, ' '), meaning = row.meaning.trim(), pos = row.pos;
+            const fail = message => { throw Object.assign(new Error(`${index + 1}件目：${message}`), { row }); };
+            if (!word || word.length > 120) fail('単語は1〜120字で入力してください。');
+            if (!meaning || meaning.length > 500) fail('意味は1〜500字で入力してください。');
+            if (!Object.hasOwn(POS_LABELS, pos)) fail('品詞を選んでください。');
+            if ((lookup.byText.get(normalizeText(word)) || []).some(item => item.level !== 'my-custom'))
+                fail('収録済みの語です。戻って照合し、元のカードを選んでください。');
+            const identity = JSON.stringify([normalizeText(word), pos]);
+            if (seen.has(identity) && seen.get(identity) !== meaning) fail('同じ単語・品詞に異なる意味があります。片方を選択解除するか、意味をまとめてください。');
+            if (seen.has(identity)) return;
+            seen.set(identity, meaning);
+            let custom = customWords.find(item => normalizeText(item.word) === normalizeText(word) && item.pos === pos);
+            if (!custom) { custom = { id: newId('custom-'), word, pos, meaning }; customWords.push(custom); }
+            const key = customKey(custom.id);
+            // Reusing a shared custom word never overwrites its definition in another book.
+            if (custom.meaning !== meaning || wordNotes[key]?.meaning)
+                wordNotes[key] = { ...wordNotes[key], meaning };
+            wordKeys.add(key); changed.add(key);
+        });
+        return { book: { ...book, wordKeys: [...wordKeys], wordNotes }, customWords, count: changed.size };
+    }
+
+    function tableMapping() {
+        return Object.fromEntries(['word', 'meaning', 'pos'].map(kind => [kind,
+            Number(element(`myWordbookImport${kind[0].toUpperCase() + kind.slice(1)}Column`).value)]));
+    }
+
+    function renderTablePreview() {
+        const host = element('myWordbookTablePreview');
+        host.replaceChildren();
+        if (!tableSource) return;
+        try {
+            const rows = mappedImportRows(tableSource, tableMapping(), element('myWordbookImportHeader').checked);
+            const title = document.createElement('p'); title.textContent = `${rows.length}行・先頭3行を確認`;
+            host.append(title);
+            rows.slice(0, 3).forEach(row => {
+                const line = document.createElement('div');
+                [row.word, row.meaning || '（意味なし）', row.posText || '（品詞なし）'].forEach(value => {
+                    const cell = document.createElement('span'); cell.textContent = value; line.append(cell);
+                });
+                host.append(line);
+            });
+        } catch (error) { host.textContent = error.message; }
+    }
+
+    function refreshTableOptions() {
+        if (element('myWordbookImportFormat').value !== 'table') return;
+        const host = element('myWordbookTablePreview');
+        try {
+            const source = parseImportTable(element('myWordbookInput').value, element('myWordbookImportSeparator').value);
+            const preserve = tableSource?.columnCount === source.columnCount
+                && JSON.stringify(tableSource.headers) === JSON.stringify(source.headers);
+            const mapping = preserve ? tableMapping() : source.mapping;
+            if (!preserve) element('myWordbookImportHeader').checked = source.header;
+            tableSource = source;
+            ['word', 'meaning', 'pos'].forEach(kind => {
+                const select = element(`myWordbookImport${kind[0].toUpperCase() + kind.slice(1)}Column`);
+                select.replaceChildren();
+                const option = (value, label) => { const el = document.createElement('option'); el.value = value; el.textContent = label; select.append(el); };
+                if (kind === 'pos') option(-1, '使用しない');
+                for (let i = 0; i < source.columnCount; i++)
+                    option(i, `${i + 1}列目：${(source.headers[i] || source.rows[0][i] || '').slice(0, 32)}`);
+                select.value = String(mapping[kind]);
+            });
+            renderTablePreview();
+        } catch (error) { tableSource = null; host.textContent = element('myWordbookInput').value ? error.message : ''; }
+    }
+
+    function refreshImportMode() {
+        const table = element('myWordbookImportFormat').value === 'table';
+        element('myWordbookTableOptions').hidden = !table;
+        element('myWordbookInput').placeholder = table ? 'apple,りんご,名詞\nlook after,世話をする,動詞' : 'apple\nschool\nhigh school';
+        element('myWordbookInputHelp').textContent = table
+            ? '1行に1語。単語・意味・品詞の列を確認してください（500行まで）。収録語の訳はこの単語帳だけに保存します。'
+            : '改行・カンマ・タブでまとめて照合できます。熟語は1行に1つ。大小文字は区別しません。同じ綴りは品詞・意味を確認してください。統合カードは全用法をまとめて登録します。';
+        refreshTableOptions();
+    }
+
+    function clearImportPreview() {
+        importResult = null; selection.clear(); pageIndex = 0;
+        refreshImportMode(); renderRows(); status('');
+    }
+
+    function refreshImportResult() {
+        if (!importResult) return;
+        const pendingRows = importResult.pendingRows;
+        importResult = importResult.sourceRows ? matchImportRows(importResult.sourceRows) : matchInput(element('myWordbookInput').value);
+        importResult.pendingRows = pendingRows;
+    }
+
+    function pendingImportRows() {
+        const book = getBook(editingId), lookup = getCatalog();
+        return (importResult?.pendingRows || []).filter(row => !row.saved && !(lookup.byText.get(normalizeText(row.originalWord || row.word)) || [])
+            .some(item => book?.wordKeys.includes(item.key) && (!row.pos || (item.word.senses || [item.word]).some(sense => sense.pos === row.pos))));
+    }
+
+    function openBulk(opener = document.activeElement) {
+        if (!requireAccess() || !getBook(editingId) || !pendingImportRows().length) return;
+        cancelWordEdit(false);
+        bulkPage = 0; renderBulkRows(); status('');
+        showWordEditor('myWordbookBulkForm', 'myWordbookBulkTitle', opener);
+    }
+
+    function renderBulkCount() {
+        const count = pendingImportRows().filter(row => row.selected).length;
+        element('myWordbookBulkCount').textContent = `${count}語選択`;
+        element('myWordbookBulkSave').disabled = count === 0;
+    }
+
+    function renderBulkRows() {
+        const rows = pendingImportRows();
+        bulkPage = Math.min(bulkPage, Math.max(0, Math.ceil(rows.length / PAGE_SIZE) - 1));
+        const host = element('myWordbookBulkRows'); host.replaceChildren();
+        rows.slice(bulkPage * PAGE_SIZE, (bulkPage + 1) * PAGE_SIZE).forEach((row, i) => {
+            const index = bulkPage * PAGE_SIZE + i;
+            const entry = document.createElement('article'); entry.className = 'my-wordbook-bulk-row';
+            const heading = document.createElement('label'), check = document.createElement('input');
+            check.type = 'checkbox'; check.checked = row.selected; check.setAttribute('aria-label', `${index + 1}行目を登録`);
+            check.addEventListener('change', () => { row.selected = check.checked; renderBulkCount(); });
+            heading.append(check, document.createTextNode(`${index + 1}行目`)); entry.append(heading);
+            const fields = document.createElement('div'); fields.className = 'my-wordbook-bulk-fields';
+            const field = (key, label, tag) => {
+                const control = document.createElement(tag), el = document.createElement('label');
+                control.setAttribute('aria-label', `${index + 1}行目の${label}`);
+                if (key === 'pos') {
+                    [['', '選んでください'], ...Object.entries(POS_LABELS)].forEach(([value, name]) => {
+                        const option = document.createElement('option'); option.value = value; option.textContent = name; control.append(option);
+                    });
+                } else { control.maxLength = key === 'word' ? 120 : 500; if (tag === 'textarea') control.rows = 2; }
+                control.value = row[key];
+                control.addEventListener(key === 'pos' ? 'change' : 'input', () => { row[key] = control.value; row.error = ''; error.textContent = ''; });
+                el.append(document.createTextNode(label), control); fields.append(el);
+            };
+            const error = document.createElement('p'); error.className = 'my-wordbook-bulk-error'; error.setAttribute('role', 'status');
+            error.textContent = row.error || (row.posText && !row.pos ? `入力された品詞「${row.posText}」を確認してください。` : '');
+            field('word', '単語', 'input'); field('pos', '品詞', 'select'); field('meaning', '意味', 'textarea');
+            entry.append(fields, error); host.append(entry);
+        });
+        element('myWordbookBulkPaging').hidden = rows.length <= PAGE_SIZE;
+        element('myWordbookBulkPageInfo').textContent = `${bulkPage + 1} / ${Math.max(1, Math.ceil(rows.length / PAGE_SIZE))}`;
+        element('myWordbookBulkPrev').disabled = bulkPage === 0;
+        element('myWordbookBulkNext').disabled = (bulkPage + 1) * PAGE_SIZE >= rows.length;
+        renderBulkCount();
+    }
+
+    function saveBulk(event) {
+        event.preventDefault();
+        const book = getBook(editingId), rows = pendingImportRows();
+        if (!book || !rows.some(row => row.selected) || !requireAccess()) return;
+        let plan;
+        try { plan = planBulkImport(book, rows); }
+        catch (error) {
+            if (error.row) {
+                error.row.error = error.message;
+                bulkPage = Math.floor(rows.indexOf(error.row) / PAGE_SIZE); renderBulkRows();
+                element('myWordbookBulkRows').querySelectorAll('article')[rows.indexOf(error.row) % PAGE_SIZE]?.querySelector('input:not([type=checkbox])')?.focus();
+            }
+            status(error.message, true); return;
+        }
+        if (!commit(window.gameState.myWordbooks.map(item => item.id === book.id ? plan.book : item),
+            window.gameState.activeMyWordbookId, plan.customWords)) return;
+        rows.filter(row => row.selected).forEach(row => { row.saved = true; });
+        refreshImportResult(); cancelWordEdit();
+        status(`${plan.count}語をまとめて登録しました。`);
+    }
+
     function getSuggestions(query, database = window.vocabularyDatabase) {
         const prefix = normalizeText(query);
         const rank = item => item.level === 'my-custom' ? LEVELS.length : LEVELS.indexOf(item.level);
@@ -181,7 +490,7 @@
         element('myWordbookAllBtn').classList.toggle('active', state.currentMode === 'all');
         element('myWordbookAllBtn').setAttribute('aria-pressed', String(state.currentMode === 'all'));
         const available = window.WordIllustrations.canUseLevel('my');
-        element('myWordbookPremiumBadge').textContent = available ? '利用可能' : 'プレミアム';
+        element('myWordbookPremiumBadge').textContent = '無料';
         if (!available && element('myWordbookModal').style.display !== 'none') element('myWordbookModal').style.display = 'none';
     }
 
@@ -239,6 +548,10 @@
         importResult = null;
         selection.clear();
         element('myWordbookInput').value = '';
+        tableSource = null;
+        element('myWordbookImportFormat').value = 'words';
+        element('myWordbookImportSeparator').value = 'auto';
+        refreshImportMode();
         element('myWordbookSearch').value = '';
         element('myWordbookSuggest').value = '';
         cancelWordEdit(false);
@@ -257,6 +570,10 @@
         importResult = null;
         selection.clear();
         element('myWordbookInput').value = '';
+        tableSource = null;
+        element('myWordbookImportFormat').value = 'words';
+        element('myWordbookImportSeparator').value = 'auto';
+        refreshImportMode();
         element('myWordbookSearch').value = '';
         element('myWordbookSuggest').value = '';
         cancelWordEdit(false);
@@ -308,17 +625,37 @@
     }
 
     function previewInput() {
-        importResult = matchInput(element('myWordbookInput').value);
+        try {
+            if (element('myWordbookImportFormat').value === 'table') {
+                refreshTableOptions();
+                if (!tableSource) throw new Error(element('myWordbookTablePreview').textContent || '単語と意味を入力してください。');
+                importResult = matchImportRows(mappedImportRows(tableSource, tableMapping(), element('myWordbookImportHeader').checked));
+            } else {
+                importResult = matchInput(element('myWordbookInput').value);
+                importResult.pendingRows = importResult.missing.map(word => ({ word, originalWord: word, meaning: '', pos: '', selected: true, saved: false }));
+            }
+        } catch (error) { importResult = null; selection.clear(); renderRows(); status(error.message, true); return; }
         const members = new Set(getBook(editingId).wordKeys);
-        selection = new Set(importResult.keys.filter(key => !members.has(key) && !importResult.ambiguousKeys.includes(key)));
+        selection = new Set(importResult.keys.filter(key => canSelectInput(key, members) && !importResult.ambiguousKeys.includes(key)));
         pageIndex = 0;
         renderRows();
         const message = !importResult.inputCount ? '英単語を入力してください。'
+            : !importResult.keys.length && importResult.missing.length ? '未収録の語は、意味・品詞を確認してまとめて登録できます。'
             : !importResult.keys.length ? '一致する語がありません。綴りや区切りをご確認ください。'
             : importResult.ambiguousKeys.length ? '同じ綴りの別カードがあります。品詞と意味を確認して選んでください。'
             : !selection.size ? '一致した語はすべて追加済みです。'
             : '追加する語を確認し、「選択した語を追加」を押してください。';
-        status(message, !importResult.keys.length);
+        status(message, !importResult.keys.length && !importResult.missing.length);
+    }
+
+    function canSelectInput(key, members = new Set(getBook(editingId).wordKeys)) {
+        if (!members.has(key)) return true;
+        try {
+            const meaning = importedMeaning(importResult, key), item = getCatalog().byKey.get(key);
+            const current = getNote(key, getBook(editingId))?.meaning || (item?.level === 'my-custom' ? item.word.meaning : '');
+            return !!meaning && meaning !== current;
+        }
+        catch { return true; }
     }
 
     function getRows() {
@@ -381,7 +718,8 @@
         element('myWordbookIntro').hidden = true;
         element('myWordbookWordEditor').hidden = false;
         element(formId).hidden = false;
-        element('myWordbookModal').setAttribute('aria-labelledby', formId === 'myWordbookCustomForm' ? 'myWordbookCustomTitle' : 'myWordbookNoteTitle');
+        element('myWordbookModal').setAttribute('aria-labelledby', formId === 'myWordbookCustomForm' ? 'myWordbookCustomTitle'
+            : formId === 'myWordbookBulkForm' ? 'myWordbookBulkTitle' : 'myWordbookNoteTitle');
         panel.scrollTop = 0;
         element(focusId).focus({ preventScroll: true });
     }
@@ -447,6 +785,7 @@
         wordEditorOpen = false;
         element('myWordbookCustomForm').hidden = true;
         element('myWordbookNoteForm').hidden = true;
+        element('myWordbookBulkForm').hidden = true;
         element('myWordbookWordEditor').hidden = true;
         element('myWordbookEditorContent').hidden = false;
         element('myWordbookIntro').hidden = false;
@@ -455,9 +794,10 @@
             status('');
             render();
             element('myWordbookModal').querySelector('.my-wordbook-panel').scrollTop = editorScrollTop;
-            const target = wordEditReturnFocus?.isConnected && element('myWordbookEditorContent').contains(wordEditReturnFocus)
+            const bulkOpener = wordEditReturnFocus?.id === 'myWordbookBulkOpen' && element('myWordbookBulkOpen');
+            const target = bulkOpener || (wordEditReturnFocus?.isConnected && element('myWordbookEditorContent').contains(wordEditReturnFocus)
                 && wordEditReturnFocus.getClientRects().length
-                ? wordEditReturnFocus : element('myWordbookEditorHeading');
+                ? wordEditReturnFocus : element('myWordbookEditorHeading'));
             target.focus({ preventScroll: target === wordEditReturnFocus });
         }
     }
@@ -545,7 +885,7 @@
             if (!commit(window.gameState.myWordbooks.map(current => current.id === book.id ? { ...current,
                 wordKeys: registered ? current.wordKeys : [...current.wordKeys, item.key], wordNotes } : current))) return;
             if (tab !== 'members') selection.delete(item.key);
-            if (importResult) importResult = matchInput(element('myWordbookInput').value);
+            refreshImportResult();
             cancelWordEdit();
             status(registered ? 'この単語帳の訳を保存しました。元の意味・学習履歴はそのままです。'
                 : `${item.word.word}を自分の訳付きで追加しました。元の意味・学習履歴はそのままです。`);
@@ -558,7 +898,7 @@
         const words = existing ? window.gameState.myCustomWords : [...(window.gameState.myCustomWords || []), custom];
         if (!commit(window.gameState.myWordbooks.map(item => item.id === book.id
             ? { ...item, wordKeys: [...item.wordKeys, key] } : item), window.gameState.activeMyWordbookId, words)) return;
-        if (importResult) importResult = matchInput(element('myWordbookInput').value);
+        refreshImportResult();
         cancelWordEdit();
         status(existing ? '登録済みの同じ単語・品詞を追加しました。保存済みの意味と学習履歴を使います。' : `${word}（${POS_LABELS[pos]}）を自分の意味で登録しました。`);
     }
@@ -580,7 +920,7 @@
             checkbox.type = 'checkbox';
             checkbox.value = item.key;
             checkbox.checked = selection.has(item.key);
-            checkbox.disabled = registered;
+            checkbox.disabled = registered && !(tab === 'input' && canSelectInput(item.key, members));
             checkbox.setAttribute('aria-label', `${item.word.word}（${posLabel(item.word)}）を選択`);
             checkbox.addEventListener('change', () => {
                 if (checkbox.checked) selection.add(item.key); else selection.delete(item.key);
@@ -592,10 +932,16 @@
             const meaning = document.createElement('small');
             meaning.textContent = meaningLabel(item.word);
             copy.append(title, meaning);
+            if (tab === 'input' && importResult?.sourceRows) {
+                const personal = document.createElement('small'); personal.className = 'my-wordbook-import-meaning';
+                try { const value = importedMeaning(importResult, item.key); personal.textContent = value ? `自分の訳：${value}` : ''; }
+                catch (error) { personal.textContent = error.message; }
+                copy.append(personal);
+            }
             const state = window.gameState.wordStates[item.key] || 'unlearned';
             const meta = document.createElement('span');
             meta.className = 'my-wordbook-row-meta';
-            meta.textContent = registered ? '追加済み' : `${LABELS[item.level]}・${STATES[state] || '未学習'}`;
+            meta.textContent = registered ? (checkbox.disabled ? '追加済み' : '登録済み・訳を保存') : `${LABELS[item.level]}・${STATES[state] || '未学習'}`;
             label.append(checkbox, copy, meta);
             const entry = document.createElement('div');
             entry.className = 'my-wordbook-entry';
@@ -639,14 +985,20 @@
         element('myWordbookResults').textContent = tab === 'input' && importResult
             ? `${importResult.inputCount}件を照合：${rows.length}語一致（追加済み ${rows.filter(item => members.has(item.key)).length}語）`
             : `${rows.length}語${tab === 'members' && unavailable ? `・現在のデータにない語 ${unavailable}件（保存は保持）` : ''}`;
-        element('myWordbookMissing').hidden = tab !== 'input' || !importResult?.missing.length;
+        const pending = pendingImportRows();
+        element('myWordbookMissing').hidden = tab !== 'input' || !pending.length;
         const missingHost = element('myWordbookMissing');
         missingHost.replaceChildren();
-        if (importResult?.missing.length) {
+        if (pending.length) {
             const title = document.createElement('p');
             title.textContent = '未収録の語：意味を入力して登録できます。';
             missingHost.append(title);
-            importResult.missing.forEach(word => {
+            const bulk = document.createElement('button'); bulk.id = 'myWordbookBulkOpen'; bulk.type = 'button';
+            bulk.textContent = `未収録の${pending.length}語をまとめて登録`;
+            bulk.addEventListener('click', () => openBulk(bulk)); missingHost.append(bulk);
+            // Keep the familiar one-word entry for word-only input, without a huge button list.
+            if (!importResult.sourceRows) pending.slice(0, 12).forEach(row => {
+                const word = row.word;
                 const button = document.createElement('button');
                 button.type = 'button';
                 button.textContent = `${word} の意味を入力`;
@@ -658,7 +1010,7 @@
         element('myWordbookPageInfo').textContent = `${pageIndex + 1} / ${Math.max(1, Math.ceil(rows.length / PAGE_SIZE))}`;
         element('myWordbookPrev').disabled = pageIndex === 0;
         element('myWordbookNext').disabled = (pageIndex + 1) * PAGE_SIZE >= rows.length;
-        element('myWordbookSelectShown').disabled = !shown.some(item => tab === 'members' || !members.has(item.key));
+        element('myWordbookSelectShown').disabled = !shown.some(item => tab === 'members' || (tab === 'input' ? canSelectInput(item.key, members) : !members.has(item.key)));
         renderSelection();
     }
 
@@ -667,23 +1019,31 @@
         element('myWordbookSelectionCount').textContent = `${count}語選択`;
         const action = element('myWordbookApply');
         action.disabled = count === 0;
-        action.textContent = tab === 'members' ? '選択した語を外す' : '選択した語を追加';
+        action.textContent = tab === 'members' ? '選択した語を外す' : tab === 'input' && importResult?.sourceRows ? '選択した語を追加・訳を保存' : '選択した語を追加';
     }
 
     function applySelection() {
         const book = getBook(editingId);
         if (!book || !selection.size) return;
         const members = new Set(book.wordKeys);
-        let count = 0;
+        const wordNotes = { ...book.wordNotes };
+        let count = 0, notes = 0;
+        try {
+            if (tab === 'input') selection.forEach(key => {
+                const meaning = importedMeaning(importResult, key);
+                if (meaning && wordNotes[key]?.meaning !== meaning) { wordNotes[key] = { ...wordNotes[key], meaning }; notes++; }
+            });
+        } catch (error) { status(error.message, true); return; }
         selection.forEach(key => {
             if (tab === 'members') { if (members.delete(key)) count++; }
             else if (getCatalog().byKey.has(key) && !members.has(key)) { members.add(key); count++; }
         });
         if (tab === 'members' && !confirm(`選択した${count}語を単語帳から外しますか？\n学習履歴・復習予定は消えません。`)) return;
-        if (!commit(window.gameState.myWordbooks.map(item => item.id === book.id ? { ...item, wordKeys: [...members] } : item))) return;
+        if (!commit(window.gameState.myWordbooks.map(item => item.id === book.id ? { ...item, wordKeys: [...members], wordNotes } : item))) return;
         selection.clear();
         render();
-        status(tab === 'members' ? `${count}語を外しました。学習履歴はそのままです。` : `${count}語を追加しました。`);
+        status(tab === 'members' ? `${count}語を外しました。学習履歴はそのままです。`
+            : `${count}語を追加しました。${notes ? `${notes}語の自分の訳を保存しました。` : ''}`);
     }
 
     function render() {
@@ -755,22 +1115,34 @@
         element('myWordbookCustomForm').addEventListener('submit', addCustom);
         element('myWordbookCustomWord').addEventListener('input', () => { renderRegistrationMatches(); status(''); });
         element('myWordbookNoteForm').addEventListener('submit', saveNote);
+        element('myWordbookBulkForm').addEventListener('submit', saveBulk);
+        element('myWordbookImportFormat').addEventListener('change', () => { tableSource = null; clearImportPreview(); });
+        element('myWordbookImportSeparator').addEventListener('change', () => { tableSource = null; clearImportPreview(); });
+        ['Word', 'Meaning', 'Pos'].forEach(kind => element(`myWordbookImport${kind}Column`).addEventListener('change', clearImportPreview));
+        element('myWordbookImportHeader').addEventListener('change', clearImportPreview);
+        element('myWordbookBulkPos').addEventListener('change', () => {
+            const pos = element('myWordbookBulkPos').value;
+            if (pos) pendingImportRows().filter(row => row.selected && !row.pos).forEach(row => { row.pos = pos; row.error = ''; });
+            element('myWordbookBulkPos').value = ''; renderBulkRows();
+        });
         element('myWordbookSuggest').addEventListener('input', renderSuggestions);
         element('myWordbookSearch').addEventListener('input', () => { pageIndex = 0; renderRows(); });
         element('myWordbookSource').addEventListener('change', () => { selection.clear(); pageIndex = 0; renderRows(); });
-        element('myWordbookInput').addEventListener('input', () => {
-            importResult = null; selection.clear(); pageIndex = 0; renderRows(); status('');
-        });
+        element('myWordbookInput').addEventListener('input', clearImportPreview);
     });
 
     window.MyWordbooks = Object.freeze({
         normalizeBooks, normalizeNotes, normalizeCustomWords, customKey, isCustomKey, matchInput, getSuggestions, getRegistrationMatches, getCatalog, getBook, getNote, resolveWord, studyNoteMarkup, restore, refreshCollection, refreshStudyUI,
+        importPos, parseImportTable, mappedImportRows, matchImportRows, importedMeaning, planBulkImport,
+        openBulk, saveBulk,
+        selectBulk(selected) { pendingImportRows().forEach(row => { row.selected = selected; }); renderBulkRows(); },
+        pageBulk(delta) { bulkPage = Math.max(0, bulkPage + delta); renderBulkRows(); },
         openCustom, addCustom, editCustom, editNote, saveNote, cancelWordEdit,
         open, openEditor, create, rename, removeBook, changeTab, previewInput, applySelection, startStudy, practiceAll,
         showLibrary() { cancelWordEdit(false); editingId = null; selection.clear(); status(''); render(); element('myWordbookNewName').focus({ preventScroll: true }); },
         page(delta) { pageIndex = Math.max(0, pageIndex + delta); renderRows(); },
         selectShown() { getRows().slice(pageIndex * PAGE_SIZE, (pageIndex + 1) * PAGE_SIZE).forEach(item => {
-            if (tab === 'members' || !getBook(editingId).wordKeys.includes(item.key)) selection.add(item.key);
+            if (tab === 'members' || (tab === 'input' ? canSelectInput(item.key) : !getBook(editingId).wordKeys.includes(item.key))) selection.add(item.key);
         }); renderRows(); },
         clearSelection() { selection.clear(); renderRows(); }
     });

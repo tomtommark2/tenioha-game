@@ -7,11 +7,6 @@ test.beforeEach(async ({ page, baseURL }) => {
     const origin = new URL(baseURL).origin;
     await page.route('**/*', route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
     await page.addInitScript(() => {
-        if (!localStorage.getItem('myWordbookTestPremiumInitialized')) {
-            localStorage.setItem('vocabGame_isUnlocked', 'true');
-            localStorage.setItem('vocabGame_expiry', String(Date.now() + 86400000));
-            localStorage.setItem('myWordbookTestPremiumInitialized', 'true');
-        }
         localStorage.setItem('vocabGame_skipWelcome', 'true');
         localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
         localStorage.setItem('vocabGame_installGuideDismissed', 'true');
@@ -53,6 +48,14 @@ async function addCustom(page, word, pos, meaning) {
     if (await page.locator('#myWordbookCustomPos').isEnabled()) await page.locator('#myWordbookCustomPos').selectOption(pos);
     await page.locator('#myWordbookCustomMeaning').fill(meaning);
     await page.locator('#myWordbookCustomSave').click();
+}
+
+async function enablePremium(page) {
+    await page.evaluate(() => {
+        localStorage.setItem('vocabGame_isUnlocked', 'true');
+        localStorage.setItem('vocabGame_expiry', String(Date.now() + 86400000));
+        updateTrialTimer();
+    });
 }
 
 test('マイ単語帳：作成・貼付け・未知語・重複を確認し再読込で復元', async ({ page }) => {
@@ -297,7 +300,8 @@ test('マイ単語帳：複数冊の切替・単語一覧・復習設定と最�
     expect(await page.evaluate(() => ({ level: gameState.currentLevel, mode: gameState.currentMode }))).toEqual({ level: 'daily', mode: 'unlearned' });
 });
 
-test('マイ単語帳：品詞・キュー範囲を維持し登録でSRSを増やさず期限切れで通常へ戻る', async ({ page }) => {
+test('マイ単語帳：品詞・キュー範囲を維持し登録でSRSを増やさず期限切れでも継続', async ({ page }) => {
+    await enablePremium(page);
     await create(page);
     await add(page, 'apple, school');
     expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys.every(key => !(key in gameState.srsData)))).toBe(true);
@@ -323,11 +327,12 @@ test('マイ単語帳：品詞・キュー範囲を維持し登録でSRSを増�
         localStorage.setItem('vocabGame_expiry', String(Date.now() - 1000));
         updateTrialTimer();
     });
-    expect(await page.evaluate(() => gameState.currentLevel)).toBe('basic');
-    expect(await page.evaluate(() => gameState.currentMode)).toBe('unlearned');
+    expect(await page.evaluate(() => gameState.currentLevel)).toBe('my');
+    expect(await page.evaluate(() => gameState.currentMode)).toBe('all');
+    expect(await page.evaluate(() => buildReviewQueueSnapshot().stats.dueNow)).toBe(2);
     const before = await page.evaluate(() => gameState.globalQuestionCount);
     await page.evaluate(() => MyWordbooks.practiceAll());
-    expect(await page.evaluate(() => gameState.globalQuestionCount)).toBe(before);
+    expect(await page.evaluate(() => gameState.globalQuestionCount)).toBeGreaterThan(before);
     expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys.length)).toBe(2);
 });
 
@@ -594,42 +599,62 @@ test('マイ単語帳：収録済みの同綴り別カードは未選択で示�
     expect(await page.evaluate(() => gameState.myCustomWords)).toEqual([]);
 });
 
-test('マイ単語帳：無料・期限切れの作成編集学習を止めデータは保持し再開できる', async ({ page }) => {
+test('マイ単語帳：無料で作成でき、期限切れ後も編集・学習・復元を継続', async ({ page }) => {
+    expect(await page.evaluate(() => GameUtils.checkPremiumStatus())).toBe(false);
     await create(page);
+    await expect(page.locator('#myWordbookPremiumBadge')).toHaveText('無料');
+    await expect(page.locator('#myWordbookIntro')).not.toContainText('プレミアム');
+    await expect(page.locator('#profileModal')).toBeHidden();
     await addCustom(page, 'quux-study', '名', '期限切れでも保持');
+    await enablePremium(page);
     await page.locator('#myWordbookStart').click();
     const saved = await page.evaluate(() => ({ books: gameState.myWordbooks, words: gameState.myCustomWords }));
-    await page.evaluate(() => localStorage.setItem('vocabGame_expiry', String(Date.now() - 1000)));
-    await page.reload();
-    expect(await page.evaluate(() => ({ books: gameState.myWordbooks, words: gameState.myCustomWords }))).toEqual(saved);
-    expect(await page.evaluate(() => gameState.currentLevel)).toBe('basic');
-    expect(await page.evaluate(() => gameState.currentMode)).toBe('unlearned');
-    await page.locator('#levelCurrentBtn').click();
-    await page.locator('#wordbookBtn').click();
-    await expect(page.locator('#myWordbookPremiumBadge')).toHaveText('プレミアム');
-    await page.locator('#myWordbookOpener').click();
-    await expect(page.locator('#profileModal')).toBeVisible();
-    await expect(page.locator('#myWordbookModal')).toBeHidden();
-    const before = await page.evaluate(() => JSON.stringify(gameState.myWordbooks));
     await page.evaluate(() => {
-        MyWordbooks.openEditor(gameState.myWordbooks[0].id);
-        MyWordbooks.startStudy();
-        MyWordbooks.applySelection();
-        switchLevel('my');
-        MyWordbooks.practiceAll();
-    });
-    expect(await page.evaluate(() => JSON.stringify(gameState.myWordbooks))).toBe(before);
-    expect(await page.evaluate(() => gameState.currentLevel)).toBe('basic');
-    await page.reload();
-    await page.evaluate(() => {
-        localStorage.setItem('vocabGame_isUnlocked', 'true');
-        localStorage.setItem('vocabGame_expiry', String(Date.now() + 86400000));
+        localStorage.setItem('vocabGame_expiry', String(Date.now() - 1000));
         updateTrialTimer();
     });
+    expect(await page.evaluate(() => gameState.currentLevel)).toBe('my');
+    expect(await page.evaluate(() => gameState.currentMode)).toBe('all');
+    await page.reload();
+    expect(await page.evaluate(() => ({ books: gameState.myWordbooks, words: gameState.myCustomWords }))).toEqual(saved);
+    expect(await page.evaluate(() => gameState.currentLevel)).toBe('my');
+    expect(await page.evaluate(() => gameState.currentMode)).toBe('all');
+    expect(await page.evaluate(() => GameUtils.checkPremiumStatus())).toBe(false);
     await open(page);
     await page.locator('#myWordbookLibraryList button').click();
+    await page.getByRole('button', { name: 'quux-study（名詞）の意味を編集', exact: true }).click();
+    await page.locator('#myWordbookCustomMeaning').fill('無料でも修正できる');
+    await page.locator('#myWordbookCustomSave').click();
     await page.locator('#myWordbookStart').click();
     await expect(page.locator('#vocabWord')).toContainText('quux-study');
+    await expect(page.locator('#meaningText')).toContainText('無料でも修正できる');
+    await expect(page.locator('#profileModal')).toBeHidden();
+    await expect(page.locator('#purchaseModal')).toBeHidden();
+});
+
+test('マイ単語帳：無料でも利用権を付与せず1日8分・イラスト100語を維持', async ({ page }) => {
+    await create(page);
+    await addCustom(page, 'quux-study', '名', '無料で登録');
+    await page.locator('#myWordbookStart').click();
+    const result = await page.evaluate(() => {
+        window.isTrialLimitDisabledForLocalDevelopment = () => false;
+        trialState.playTimeSeconds = TRIAL_CONFIG.LIMIT_SECONDS;
+        trialState.lastPlayDate = getTrialDateKey();
+        const before = JSON.stringify([gameState.srsData, gameState.reviewScore, gameState.globalQuestionCount]);
+        const allowed = ensureTrialAccess();
+        MyWordbooks.practiceAll();
+        return { allowed, before, after: JSON.stringify([gameState.srsData, gameState.reviewScore, gameState.globalQuestionCount]),
+            premium: GameUtils.checkPremiumStatus(), unlocked: trialState.unlocked, limit: TRIAL_CONFIG.LIMIT_SECONDS,
+            illustrated: WordIllustrations.accessibleWords('illustrated', vocabularyDatabase).length };
+    });
+    expect(result).toMatchObject({ allowed: false, premium: false, unlocked: false, limit: 480, illustrated: 100 });
+    expect(result.after).toBe(result.before);
+    await expect(page.locator('#trialOverlay')).toBeVisible();
+    expect(await page.evaluate(() => {
+        trialState.lastPlayDate = '2020-01-01';
+        resetTrialDayIfNeeded();
+        return { seconds: trialState.playTimeSeconds, allowed: ensureTrialAccess(), level: gameState.currentLevel };
+    })).toEqual({ seconds: 0, allowed: true, level: 'my' });
 });
 
 test('マイ単語帳：自作語の文字サイズ・配置を収録語と揃え、Undoでも保持', async ({ page }, testInfo) => {
@@ -881,24 +906,187 @@ test('マイ単語帳：統合カードへの長いメモも320pxで入力・保
     await page.screenshot({ path: `screenshots/my-wordbook-note-long-${testInfo.project.name}.png` });
 });
 
-test('マイ単語帳：期限切れは開いていた意味編集・メモ保存も止め内容を保持', async ({ page }) => {
+test('マイ単語帳：期限切れでも開いていた意味編集・メモ保存を続け履歴を保持', async ({ page }) => {
+    await enablePremium(page);
     await create(page);
     await addCustom(page, 'quux-study', '名', '期限切れでも元の意味');
     await page.getByRole('button', { name: '登録した単語', exact: true }).click();
     await saveNote(page, 'quux-study', '期限切れでも自分の訳');
-    const before = await page.evaluate(() => JSON.stringify({ books: gameState.myWordbooks, words: gameState.myCustomWords }));
-    const key = await page.evaluate(() => gameState.myWordbooks[0].wordKeys[0]);
+    const before = await page.evaluate(() => JSON.stringify({ keys: gameState.myWordbooks[0].wordKeys,
+        srs: gameState.srsData, score: gameState.reviewScore, count: gameState.globalQuestionCount }));
     await noteButton(page, 'quux-study').click();
-    await page.locator('#myWordbookNoteMeaning').fill('保存しない訳');
-    await page.evaluate(key => {
+    await page.locator('#myWordbookNoteMeaning').fill('期限切れ後の訳');
+    await page.evaluate(() => {
         localStorage.setItem('vocabGame_expiry', String(Date.now() - 1000));
-        MyWordbooks.saveNote({ preventDefault() {} });
-        MyWordbooks.editCustom(key);
-        MyWordbooks.addCustom({ preventDefault() {} });
         updateTrialTimer();
-    }, key);
-    expect(await page.evaluate(() => JSON.stringify({ books: gameState.myWordbooks, words: gameState.myCustomWords }))).toBe(before);
-    await expect(page.locator('#myWordbookModal')).toBeHidden();
+    });
+    await expect(page.locator('#myWordbookNoteForm')).toBeVisible();
+    await page.getByRole('button', { name: 'メモを保存', exact: true }).click();
+    await page.getByRole('button', { name: 'quux-study（名詞）の意味を編集', exact: true }).click();
+    await page.locator('#myWordbookCustomMeaning').fill('期限切れ後の意味');
+    await page.locator('#myWordbookCustomSave').click();
+    await expect(page.locator('#myWordbookModal')).toBeVisible();
+    expect(await page.evaluate(() => JSON.stringify({ keys: gameState.myWordbooks[0].wordKeys,
+        srs: gameState.srsData, score: gameState.reviewScore, count: gameState.globalQuestionCount }))).toBe(before);
     await page.reload();
-    expect(await page.evaluate(() => JSON.stringify({ books: gameState.myWordbooks, words: gameState.myCustomWords }))).toBe(before);
+    expect(await page.evaluate(() => gameState.myCustomWords[0].meaning)).toBe('期限切れ後の意味');
+    expect(await page.evaluate(() => Object.values(gameState.myWordbooks[0].wordNotes)[0].meaning)).toBe('期限切れ後の訳');
+    expect(await page.evaluate(() => GameUtils.checkPremiumStatus())).toBe(false);
+});
+
+async function importTable(page, text) {
+    await page.locator('#myWordbookImportFormat').selectOption('table');
+    await page.locator('#myWordbookInput').fill(text);
+    await page.getByRole('button', { name: '照合する', exact: true }).click();
+}
+
+test('マイ単語帳：一括表入力は収録語を先に追加し残りを訳・品詞付きで登録して復元', async ({ page }, testInfo) => {
+    await create(page);
+    const original = await page.evaluate(() => {
+        const word = MyWordbooks.getRegistrationMatches('apple')[0];
+        gameState.srsData[word.key] = { recentAnswers: [false], everWrong: true, dueAt: 123, reviewStep: 1 };
+        return { key: word.key, meaning: word.word.meaning, srs: JSON.stringify(gameState.srsData), score: JSON.stringify(gameState.reviewScore) };
+    });
+    await importTable(page, 'word,meaning,pos\napple,授業のりんご,名詞\nquux-import,"独自の訳,果物",noun\nschool,授業の学校,n.\nflorp-import,独自の動作,動詞');
+    await expect(page.locator('#myWordbookImportHeader')).toBeChecked();
+    await expect(page.locator('#myWordbookRows')).toContainText('自分の訳：授業のりんご');
+    await page.locator('#myWordbookApply').click();
+    expect(await page.evaluate(() => gameState.myCustomWords)).toEqual([]);
+    await expect(page.locator('#myWordbookBulkOpen')).toHaveText('未収録の2語をまとめて登録');
+    await page.locator('#myWordbookBulkOpen').click();
+    await expect(page.locator('#myWordbookBulkTitle')).toBeFocused();
+    await expect(page.locator('#myWordbookEditorContent')).toBeHidden();
+    await expect(page.getByRole('textbox', { name: '1行目の意味', exact: true })).toHaveValue('独自の訳,果物');
+    await expect(page.getByRole('combobox', { name: '2行目の品詞', exact: true })).toHaveValue('動');
+    await page.screenshot({ path: testInfo.outputPath('bulk-import-confirmation.png') });
+    await page.locator('#myWordbookBulkSave').click();
+    await expect(page.locator('#myWordbookBulkForm')).toBeHidden();
+    await expect(page.locator('#myWordbookStatus')).toContainText('2語をまとめて登録');
+    const saved = await page.evaluate(() => ({ books: gameState.myWordbooks, custom: gameState.myCustomWords }));
+    expect(saved.books[0].wordKeys).toHaveLength(4);
+    expect(saved.books[0].wordNotes[original.key].meaning).toBe('授業のりんご');
+    expect(await page.evaluate(key => ({ meaning: MyWordbooks.getCatalog().byKey.get(key).word.meaning,
+        srs: JSON.stringify(gameState.srsData), score: JSON.stringify(gameState.reviewScore) }), original.key)).toEqual({ meaning: original.meaning, srs: original.srs, score: original.score });
+    await page.reload();
+    expect(await page.evaluate(() => ({ books: gameState.myWordbooks, custom: gameState.myCustomWords }))).toEqual(saved);
+});
+
+test('マイ単語帳：一括TSVの列を確認しタグを品詞にせず未指定分だけまとめて補う', async ({ page }) => {
+    await create(page);
+    await importTable(page, '意味\t単語\tタグ\n独自の訳\tquux-columns\tmy-tag\n"<img src=x onerror=window.bulkInjected=1>\n複数行の訳"\tflorp-columns\tmy-tag');
+    await expect(page.locator('#myWordbookImportWordColumn')).toHaveValue('1');
+    await expect(page.locator('#myWordbookImportMeaningColumn')).toHaveValue('0');
+    await expect(page.locator('#myWordbookImportPosColumn')).toHaveValue('-1');
+    await page.locator('#myWordbookInput').fill('単語\t意味\tタグ\nquux-columns\t独自の訳\tmy-tag');
+    await expect(page.locator('#myWordbookImportWordColumn')).toHaveValue('0');
+    await expect(page.locator('#myWordbookImportMeaningColumn')).toHaveValue('1');
+    await page.locator('#myWordbookInput').fill('意味\t単語\tタグ\n独自の訳\tquux-columns\tmy-tag\n"<img src=x onerror=window.bulkInjected=1>\n複数行の訳"\tflorp-columns\tmy-tag');
+    await page.locator('#myWordbookImportWordColumn').selectOption('0');
+    await expect(page.locator('#myWordbookTablePreview')).toContainText('別々の列');
+    await page.locator('#myWordbookImportWordColumn').selectOption('1');
+    await page.getByRole('button', { name: '照合する', exact: true }).click();
+    await page.locator('#myWordbookBulkOpen').click();
+    await expect(page.getByRole('combobox', { name: '1行目の品詞', exact: true })).toHaveValue('');
+    await page.getByRole('combobox', { name: '2行目の品詞', exact: true }).selectOption('動');
+    await page.locator('#myWordbookBulkPos').selectOption('名');
+    await expect(page.getByRole('combobox', { name: '1行目の品詞', exact: true })).toHaveValue('名');
+    await expect(page.getByRole('combobox', { name: '2行目の品詞', exact: true })).toHaveValue('動');
+    await expect(page.locator('#myWordbookBulkRows img')).toHaveCount(0);
+    expect(await page.evaluate(() => window.bulkInjected)).toBeUndefined();
+    await page.locator('#myWordbookBulkSave').click();
+    expect(await page.evaluate(() => gameState.myCustomWords.map(word => word.pos))).toEqual(['名', '動']);
+    expect(await page.evaluate(() => gameState.myCustomWords[1].meaning)).toBe('<img src=x onerror=window.bulkInjected=1>\n複数行の訳');
+});
+
+test('マイ単語帳：一括登録の不足・保存失敗では全件を戻し入力を残して再試行', async ({ page }) => {
+    await create(page);
+    await importTable(page, 'quux-atomic,本人の訳,名詞\nflorp-atomic,,動詞');
+    await page.locator('#myWordbookBulkOpen').click();
+    const before = await page.evaluate(() => JSON.stringify([gameState.myWordbooks, gameState.myCustomWords, gameState.srsData, gameState.reviewScore]));
+    await page.locator('#myWordbookBulkSave').click();
+    await expect(page.locator('#myWordbookStatus')).toContainText('意味は1〜500字');
+    expect(await page.evaluate(() => JSON.stringify([gameState.myWordbooks, gameState.myCustomWords, gameState.srsData, gameState.reviewScore]))).toBe(before);
+    await page.getByRole('textbox', { name: '2行目の意味', exact: true }).fill('補った訳');
+    await page.getByRole('textbox', { name: '1行目の単語', exact: true }).fill('apple');
+    await page.locator('#myWordbookBulkSave').click();
+    await expect(page.locator('#myWordbookStatus')).toContainText('元のカード');
+    expect(await page.evaluate(() => JSON.stringify([gameState.myWordbooks, gameState.myCustomWords, gameState.srsData, gameState.reviewScore]))).toBe(before);
+    await page.getByRole('textbox', { name: '1行目の単語', exact: true }).fill('quux-atomic');
+    await page.evaluate(() => { window.bulkOriginalSave = saveGame; window.saveGame = () => false; });
+    await page.locator('#myWordbookBulkSave').click();
+    await expect(page.locator('#myWordbookBulkForm')).toBeVisible();
+    await expect(page.locator('#myWordbookStatus')).toContainText('保存できません');
+    await expect(page.getByRole('textbox', { name: '2行目の意味', exact: true })).toHaveValue('補った訳');
+    expect(await page.evaluate(() => JSON.stringify([gameState.myWordbooks, gameState.myCustomWords, gameState.srsData, gameState.reviewScore]))).toBe(before);
+    await page.evaluate(() => { window.saveGame = window.bulkOriginalSave; });
+    await page.locator('#myWordbookBulkSave').click();
+    expect(await page.evaluate(() => gameState.myCustomWords)).toHaveLength(2);
+    await page.getByRole('button', { name: '照合する', exact: true }).click();
+    await expect(page.locator('#myWordbookBulkOpen')).toHaveCount(0);
+    await expect(page.locator('#myWordbookApply')).toBeDisabled();
+});
+
+test('マイ単語帳：一括入力の同綴り候補・自作語別品詞と矛盾した訳を確認して保存', async ({ page }) => {
+    await create(page);
+    const word = await page.evaluate(() => [...MyWordbooks.getCatalog().byText.values()]
+        .find(items => items.length > 1 && items.every(item => item.level !== 'my-custom'))[0].word.word);
+    await importTable(page, `${word},本人の訳\nquux-pos,名詞の訳\nquux-pos,動詞の訳`);
+    expect(await page.locator('#myWordbookRows input:checked').count()).toBe(0);
+    const candidates = page.locator('#myWordbookRows input');
+    await candidates.first().check();
+    await page.locator('#myWordbookApply').click();
+    expect(await page.evaluate(() => gameState.myWordbooks[0].wordKeys)).toHaveLength(1);
+    await page.locator('#myWordbookBulkOpen').click();
+    await page.getByRole('combobox', { name: '1行目の品詞', exact: true }).selectOption('名');
+    await page.getByRole('combobox', { name: '2行目の品詞', exact: true }).selectOption('名');
+    await page.locator('#myWordbookBulkSave').click();
+    await expect(page.locator('#myWordbookStatus')).toContainText('異なる意味');
+    expect(await page.evaluate(() => gameState.myCustomWords)).toEqual([]);
+    await page.getByRole('combobox', { name: '2行目の品詞', exact: true }).selectOption('動');
+    await page.locator('#myWordbookBulkSave').click();
+    const result = await page.evaluate(() => gameState.myCustomWords);
+    expect(result.map(word => word.pos)).toEqual(['名', '動']);
+    expect(new Set(result.map(word => word.id)).size).toBe(2);
+});
+
+test('マイ単語帳：一括登録は単語だけの未収録語でも使えキャンセル・戻る・320pxを保持', async ({ page }, testInfo) => {
+    await page.setViewportSize({ width: 320, height: 780 });
+    await create(page);
+    await page.locator('#myWordbookInput').fill('apple\nquux-cancel\nflorp-cancel');
+    await page.getByRole('button', { name: '照合する', exact: true }).click();
+    await page.locator('#myWordbookBulkOpen').click();
+    await page.getByRole('textbox', { name: '1行目の意味', exact: true }).fill('途中の訳');
+    await page.getByRole('combobox', { name: '1行目の品詞', exact: true }).selectOption('名');
+    const before = await page.evaluate(() => JSON.stringify([gameState.myWordbooks, gameState.myCustomWords, gameState.srsData]));
+    await page.screenshot({ path: testInfo.outputPath('bulk-import-320.png') });
+    expect(await page.locator('.my-wordbook-panel').evaluate(panel => panel.scrollWidth <= panel.clientWidth + 1)).toBe(true);
+    await page.getByRole('button', { name: 'キャンセル', exact: true }).click();
+    await expect(page.locator('#myWordbookBulkOpen')).toBeFocused();
+    await expect(page.locator('#myWordbookInput')).toHaveValue('apple\nquux-cancel\nflorp-cancel');
+    await expect(checkbox(page, 'apple')).toBeChecked();
+    expect(await page.evaluate(() => JSON.stringify([gameState.myWordbooks, gameState.myCustomWords, gameState.srsData]))).toBe(before);
+    await page.locator('#myWordbookBulkOpen').click();
+    await expect(page.getByRole('textbox', { name: '1行目の意味', exact: true })).toHaveValue('途中の訳');
+    await page.keyboard.press('Escape');
+    await expect(page.locator('#myWordbookModal')).toBeHidden();
+});
+
+test('マイ単語帳：一括登録の61語でもページ間の編集・選択を保持し一度で保存', async ({ page }) => {
+    await create(page);
+    await importTable(page, Array.from({ length: 61 }, (_, i) => `quux-page-${i},訳${i},名詞`).join('\n'));
+    await page.locator('#myWordbookBulkOpen').click();
+    await page.getByRole('textbox', { name: '1行目の意味', exact: true }).fill('ページをまたぐ編集');
+    await page.getByRole('checkbox', { name: '2行目を登録', exact: true }).uncheck();
+    await page.locator('#myWordbookBulkNext').click();
+    await expect(page.getByRole('textbox', { name: '61行目の意味', exact: true })).toHaveValue('訳60');
+    await page.locator('#myWordbookBulkPrev').click();
+    await expect(page.getByRole('textbox', { name: '1行目の意味', exact: true })).toHaveValue('ページをまたぐ編集');
+    await expect(page.getByRole('checkbox', { name: '2行目を登録', exact: true })).not.toBeChecked();
+    await page.locator('#myWordbookBulkSave').click();
+    const words = await page.evaluate(() => gameState.myCustomWords);
+    expect(words).toHaveLength(60);
+    expect(words[0].meaning).toBe('ページをまたぐ編集');
+    expect(words.some(word => word.word === 'quux-page-1')).toBe(false);
+    expect(words.some(word => word.word === 'quux-page-60')).toBe(true);
+    await expect(page.locator('#myWordbookBulkOpen')).toHaveText('未収録の1語をまとめて登録');
 });
