@@ -11,6 +11,7 @@ function renderSpeechSettings() {
     const button = document.getElementById('speechSettingsBtn');
     if (!autoRead || !volume || !button) return;
     autoRead.checked = speechSettings.autoRead;
+    document.getElementById('speechShowWordButton').checked = speechSettings.showWordButton;
     volume.value = String(Math.round(speechSettings.volume * 100));
     document.getElementById('speechVolumeValue').textContent = `${volume.value}%`;
     button.classList.toggle('speech-auto-off', !speechSettings.autoRead);
@@ -39,6 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSpeechSettings();
     document.getElementById('speechAutoRead')?.addEventListener('change', event => {
         updateSpeechSettings({ autoRead: event.target.checked });
+        renderSpeechSettings();
+    });
+    document.getElementById('speechShowWordButton')?.addEventListener('change', event => {
+        updateSpeechSettings({ showWordButton: event.target.checked });
         renderSpeechSettings();
     });
     document.getElementById('speechVolume')?.addEventListener('input', event => {

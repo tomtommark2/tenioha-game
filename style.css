@@ -8442,6 +8442,32 @@ body.dismissible-modal-open {
 }
 
 /* Speech settings: compact entry; the timer remains a removable flex item. */
+.vocab-card { min-width: 0; }
+.vocab-card .card-content, .vocab-word-stack, .vocab-word-stack > * { max-width: 100%; overflow-wrap: anywhere; }
+.vocab-card:has(> .word-speech-btn:not([hidden])) { padding-top: 52px; padding-bottom: 28px; }
+.word-speech-btn {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: #71628e;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.word-speech-btn[hidden] { display: none; }
+.word-speech-btn .speaker-icon { width: 20px; height: 20px; }
+.word-speech-btn:hover { background: #f3f0fb; }
+.word-speech-btn:active { background: #eae4f7; }
+.word-speech-btn:focus-visible { outline: 2px solid #7c5cff; outline-offset: 1px; }
+.word-speech-btn:disabled { opacity: 0.4; cursor: default; }
 .header-controls .speech-settings-button { color: #6948e8; background: #fff; border-color: #ded5fb; }
 .speech-settings-button .speaker-icon { filter: none; color: inherit; }
 .speech-settings-button .speaker-icon::before,
@@ -8489,18 +8515,18 @@ body.dismissible-modal-open {
     cursor: pointer;
 }
 .speech-settings-row { min-height: 44px; font-size: 16px; font-weight: 700; }
-#speechAutoRead {
+#speechAutoRead, #speechShowWordButton {
     appearance: none; -webkit-appearance: none;
     position: relative; width: 48px; height: 28px; margin: 0;
     flex-shrink: 0; border: 2px solid #777184; border-radius: 16px;
     background: #777184; cursor: pointer;
 }
-#speechAutoRead::before {
+#speechAutoRead::before, #speechShowWordButton::before {
     content: ''; position: absolute; top: 2px; left: 2px;
     width: 20px; height: 20px; border-radius: 50%; background: #fff;
 }
-#speechAutoRead:checked { background: #7046ef; border-color: #7046ef; }
-#speechAutoRead:checked::before { transform: translateX(20px); }
+#speechAutoRead:checked, #speechShowWordButton:checked { background: #7046ef; border-color: #7046ef; }
+#speechAutoRead:checked::before, #speechShowWordButton:checked::before { transform: translateX(20px); }
 .speech-settings-note { color: #666278; font-size: 14px; line-height: 1.6; margin: 6px 0 12px; }
 .speech-settings-volume { border-top: 1px solid #e9e3f3; padding-top: 12px; margin-top: 16px; }
 #speechVolume { display: block; width: 100%; height: 44px; margin: 0; accent-color: #7046ef; cursor: pointer; }

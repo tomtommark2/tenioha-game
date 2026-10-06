@@ -258,7 +258,7 @@ var wordSpeechTimer = null;
 var speechRequestToken = 0;
 var preferredEnglishVoiceId = null;
 const SPEECH_SETTINGS_KEY = 'vocabGame_speechSettings';
-var speechSettings = { autoRead: true, volume: 1 };
+var speechSettings = { autoRead: true, volume: 1, showWordButton: true };
 try {
     const savedSpeechSettings = JSON.parse(localStorage.getItem(SPEECH_SETTINGS_KEY));
     if (savedSpeechSettings && typeof savedSpeechSettings.autoRead === 'boolean') {
@@ -267,10 +267,14 @@ try {
     if (savedSpeechSettings && typeof savedSpeechSettings.volume === 'number' && Number.isFinite(savedSpeechSettings.volume)) {
         speechSettings.volume = Math.max(0, Math.min(1, savedSpeechSettings.volume));
     }
+    if (savedSpeechSettings && typeof savedSpeechSettings.showWordButton === 'boolean') {
+        speechSettings.showWordButton = savedSpeechSettings.showWordButton;
+    }
 } catch { /* Storage may be unavailable; keep the existing defaults. */ }
 
 function updateSpeechSettings(changes) {
     if (typeof changes.autoRead === 'boolean') speechSettings.autoRead = changes.autoRead;
+    if (typeof changes.showWordButton === 'boolean') speechSettings.showWordButton = changes.showWordButton;
     if (typeof changes.volume === 'number' && Number.isFinite(changes.volume)) {
         speechSettings.volume = Math.max(0, Math.min(1, changes.volume));
     }
@@ -280,6 +284,14 @@ function updateSpeechSettings(changes) {
     speechRequestToken++;
     window.speechSynthesis?.cancel();
     try { localStorage.setItem(SPEECH_SETTINGS_KEY, JSON.stringify(speechSettings)); } catch { /* Session-only settings. */ }
+    renderWordSpeechButton();
+}
+
+function renderWordSpeechButton() {
+    const button = document.getElementById('wordSpeechBtn');
+    if (!button) return;
+    button.hidden = !speechSettings.showWordButton || !gameState.currentWord;
+    button.disabled = !window.speechSynthesis || !window.SpeechSynthesisUtterance || speechSettings.volume === 0;
 }
 // A display-only preference: keep it outside learning saves, cloud sync and Undo.
 const CARD_STATUS_VISIBLE_KEY = 'vocabGame_cardStatusVisible';
@@ -459,6 +471,7 @@ function showLearningStartPrompt() {
     meaningCard?.setAttribute('aria-disabled', 'true');
     if (meaningText) meaningText.textContent = '意味';
     if (exampleSentence) exampleSentence.textContent = '開始すると例文が表示されます';
+    renderWordSpeechButton();
     markLearningContentReady();
     updateQuestionReasonUI();
 }
@@ -3262,6 +3275,13 @@ function speakText(text) {
     speakEnglishText(text);
 }
 
+function speakCurrentWord() {
+    if (!gameState.currentWord) return;
+    if (wordSpeechTimer) clearTimeout(wordSpeechTimer);
+    wordSpeechTimer = null;
+    speakWord(gameState.currentWord.word);
+}
+
 function speakCurrentExample() {
     if (!gameState.currentWord) return;
     if (wordSpeechTimer) {
@@ -3516,6 +3536,7 @@ function showNextWord(reviewSnapshot = null) {
     document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
     renderWordExample(word);
+    renderWordSpeechButton();
     markLearningContentReady();
     document.getElementById('meaningCard').classList.remove('flipped');
 
@@ -3562,6 +3583,7 @@ function showWord(word) {
     document.getElementById('meaningText').innerHTML = renderMeaningMarkup(word);
 
     renderWordExample(word);
+    renderWordSpeechButton();
     markLearningContentReady();
     updateQuestionReasonUI();
 }
@@ -3594,6 +3616,8 @@ function hideNoWordsMessage() {
                     <div class="card vocab-card" id="vocabCard" role="button" tabindex="0"
                         aria-label="英単語を正解として回答">
                         <div class="card-label">英単語カード</div>
+                        <button type="button" class="word-speech-btn" id="wordSpeechBtn"
+                            aria-label="英単語を再生" title="英単語を再生" hidden><span class="speaker-icon" aria-hidden="true"></span></button>
                         <div class="card-content" id="vocabWord" aria-busy="true"></div>
                         <div class="question-reason-label" id="questionReasonLabel" style="display:none;"></div>
                     </div>
@@ -3626,10 +3650,16 @@ function setupCardListeners() {
         vocabCard.parentNode.replaceChild(newVocab, vocabCard);
         newVocab.addEventListener('click', handleVocabCardClick);
         newVocab.addEventListener('keydown', (event) => {
+            if (event.target !== newVocab) return;
             if (event.key !== 'Enter' && event.key !== ' ') return;
             event.preventDefault();
             handleVocabCardClick();
         });
+        newVocab.querySelector('#wordSpeechBtn')?.addEventListener('click', (event) => {
+            event.stopPropagation();
+            speakCurrentWord();
+        });
+        renderWordSpeechButton();
     }
 
     if (meaningCard) {
@@ -3639,7 +3669,9 @@ function setupCardListeners() {
     }
 }
 
-function handleVocabCardClick() {
+function handleVocabCardClick(event) {
+    // Keep native button activation (including Enter/Space) separate from answers.
+    if (event?.target?.closest('#wordSpeechBtn')) return;
     if (!ensureTrialAccess()) return;
     if (!learningSessionStarted || !gameState.currentWord) {
         startLearningSession();
