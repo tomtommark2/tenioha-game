@@ -697,11 +697,13 @@
 
     function showWordEditor(formId, focusId, opener = document.activeElement) {
         wordEditReturnFocus = opener;
-        const panel = element('myWordbookModal').querySelector('.my-wordbook-panel');
+        const panel = element('myWordbookScroll');
         editorScrollTop = panel.scrollTop;
         wordEditorOpen = true;
         element('myWordbookEditorContent').hidden = true;
         element('myWordbookIntro').hidden = true;
+        element('myWordbookFooter').hidden = true;
+        element('myWordbookBack').hidden = true;
         element('myWordbookWordEditor').hidden = false;
         element(formId).hidden = false;
         element('myWordbookModal').setAttribute('aria-labelledby', formId === 'myWordbookCustomForm' ? 'myWordbookCustomTitle'
@@ -779,7 +781,7 @@
         if (restoreFocus && getBook(editingId)) {
             status('');
             render();
-            element('myWordbookModal').querySelector('.my-wordbook-panel').scrollTop = editorScrollTop;
+            element('myWordbookScroll').scrollTop = editorScrollTop;
             const bulkOpener = wordEditReturnFocus?.id === 'myWordbookBulkOpen' && element('myWordbookBulkOpen');
             const target = bulkOpener || (wordEditReturnFocus?.isConnected && element('myWordbookEditorContent').contains(wordEditReturnFocus)
                 && wordEditReturnFocus.getClientRects().length
@@ -938,7 +940,8 @@
                 actions.className = 'my-wordbook-entry-actions';
                 const noteButton = document.createElement('button');
                 noteButton.type = 'button';
-                noteButton.textContent = note ? 'メモを編集' : '自分用メモ';
+                noteButton.innerHTML = '<span class="wb-icon wb-icon-note" aria-hidden="true"></span>';
+                noteButton.title = note ? 'メモを編集' : '自分用メモ';
                 noteButton.setAttribute('aria-label', `${item.word.word}（${posLabel(item.word)}）の自分用メモを編集`);
                 noteButton.addEventListener('click', () => editNote(item.key));
                 actions.append(noteButton);
@@ -1017,15 +1020,28 @@
         render();
         status(tab === 'members' ? `${count}語を外しました。学習履歴はそのままです。`
             : `${count}語を追加しました。`);
+        document.querySelector(`[data-my-wordbook-tab="${tab}"]`)?.focus({ preventScroll: true });
+    }
+
+    function bookStatesMarkup(book) {
+        const counts = { unlearned: 0, weak: 0, learned: 0, perfect: 0 };
+        book.wordKeys.forEach(key => { const state = window.gameState.wordStates[key] || 'unlearned'; if (state in counts) counts[state]++; });
+        return Object.entries(counts).map(([state, count]) => `<span class="${state}">${STATES[state]}<b>${count}</b></span>`).join('');
     }
 
     function render() {
         const book = getBook(editingId);
+        element('myWordbookModal').querySelector('.my-wordbook-panel').dataset.view = book ? 'editor' : 'library';
+        element('myWordbookTitle').hidden = !!book;
+        element('myWordbookEditorHeading').hidden = !book;
+        element('myWordbookBack').hidden = wordEditorOpen || !book;
+        if (!wordEditorOpen) element('myWordbookModal').setAttribute('aria-labelledby', book ? 'myWordbookEditorHeading' : 'myWordbookTitle');
         element('myWordbookLibrary').hidden = !!book;
         element('myWordbookEditor').hidden = !book;
         element('myWordbookEditorContent').hidden = wordEditorOpen;
         element('myWordbookWordEditor').hidden = !wordEditorOpen;
-        element('myWordbookIntro').hidden = wordEditorOpen;
+        element('myWordbookIntro').hidden = wordEditorOpen || !!book;
+        element('myWordbookFooter').hidden = wordEditorOpen || !book;
         if (!book) {
             const host = element('myWordbookLibraryList');
             host.replaceChildren();
@@ -1033,9 +1049,8 @@
                 const button = document.createElement('button');
                 button.type = 'button';
                 button.className = 'wordbook-card my-wordbook-card';
-                const counts = { unlearned: 0, weak: 0, learned: 0, perfect: 0 };
-                item.wordKeys.forEach(key => { const state = window.gameState.wordStates[key] || 'unlearned'; if (state in counts) counts[state]++; });
-                button.innerHTML = `<span class="wordbook-copy"><strong>${escape(item.name)}</strong><small>${item.wordKeys.length}語 ・ ${Object.entries(counts).map(([state, count]) => `${STATES[state]} ${count}`).join(' / ')}</small></span><span aria-hidden="true">›</span>`;
+                button.setAttribute('aria-label', `${item.name}を開く`);
+                button.innerHTML = `<span class="wb-book-top"><span class="wb-book-icon wb-icon wb-icon-book" aria-hidden="true"></span><span>${item.wordKeys.length}語</span></span><strong>${escape(item.name)}</strong><span class="wb-book-states">${bookStatesMarkup(item)}</span><span class="wb-book-bottom">開く<span class="wb-icon wb-icon-forward" aria-hidden="true"></span></span>`;
                 button.addEventListener('click', () => openEditor(item.id));
                 host.append(button);
             });
@@ -1043,6 +1058,7 @@
             return;
         }
         element('myWordbookEditorHeading').textContent = book.name;
+        element('myWordbookEditorStats').innerHTML = bookStatesMarkup(book);
         element('myWordbookName').value = book.name;
         element('myWordbookStart').disabled = !book.wordKeys.some(key => getCatalog().byKey.has(key));
         element('myWordbookInputPanel').hidden = tab !== 'input';

@@ -14,10 +14,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.1006.1320">
-    <link rel="preload" href="data/vocabulary.js?v=2026.1006.1320" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.1006.1320" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.1006.1320" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.1007.0913">
+    <link rel="stylesheet" href="wordbooks-m3e.css?v=2026.1007.0913">
+    <link rel="preload" href="data/vocabulary.js?v=2026.1007.0913" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.1007.0913" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.1007.0913" as="script">
 </head>
 
 <body>
@@ -638,8 +639,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.1006.1320"></script>
-<script src="data/ipa_overrides.js?v=2026.1006.1320"></script>
+    <script src="data/vocabulary.js?v=2026.1007.0913"></script>
+<script src="data/ipa_overrides.js?v=2026.1007.0913"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -834,58 +835,63 @@
         </div>
     </div>
 
-    <div id="wordbookModal" class="modal-overlay wordbook-modal" style="display: none;">
+    <div id="wordbookModal" class="modal-overlay wordbook-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="wordbookPickerTitle">
         <div class="modal-content wordbook-modal-content">
             <button id="closeWordbookModal" type="button" class="modal-close-btn wordbook-close-btn"
-                onclick="closeWordbookModal()" aria-label="単語帳を閉じる">×</button>
+                onclick="closeWordbookModal()" aria-label="単語帳を閉じる"><span class="wb-icon wb-icon-close" aria-hidden="true"></span></button>
 
             <div class="wordbook-hero">
-                <div class="wordbook-kicker">Wordbooks</div>
-                <h2 class="wordbook-title"><span class="title-picto app-picto icon-book" aria-hidden="true"></span>単語帳を選択</h2>
-                <p class="wordbook-subtitle">復習の順番や収録語を、目的に合わせて切り替えられます。</p>
+                <h2 id="wordbookPickerTitle" class="wordbook-title">単語帳を選択</h2>
             </div>
 
             <div class="wordbook-list">
+                <h3 class="wb-section-label">自分の単語帳</h3>
                 <button id="myWordbookOpener" type="button" class="wordbook-card" onclick="MyWordbooks.open()">
-                    <span class="wordbook-icon app-picto icon-book" aria-hidden="true"></span>
-                    <span class="wordbook-copy"><strong>マイ単語帳</strong><small>テスト範囲や苦手な語を、自分の一冊に</small></span>
+                    <span class="wordbook-icon wb-icon wb-icon-stories" aria-hidden="true"></span>
+                    <span class="wordbook-copy"><strong>マイ単語帳</strong><small>テスト範囲や苦手な語を、一冊に。</small></span>
                     <span id="myWordbookPremiumBadge" class="wordbook-badge">無料</span>
+                    <span class="wb-icon wb-icon-chevron" aria-hidden="true"></span>
                 </button>
+                <h3 class="wb-section-label wb-section-collected">収録済みの単語帳</h3>
                 <button class="wordbook-item-btn wordbook-card" data-level="illustrated" onclick="WordIllustrations.openWordbook()">
-                    <span class="wordbook-icon" aria-hidden="true">🖼️</span>
-                    <span class="wordbook-copy"><strong>イラスト単語帳</strong><small id="illustrationTrialLabel">固定100語を無料で学習</small></span>
+                    <span class="wordbook-icon wb-illustration-icon" aria-hidden="true"><img src="assets/word-illustrations/apple-pictogram-v1.webp" alt=""></span>
+                    <span class="wordbook-copy"><strong>イラスト単語帳</strong><small>絵といっしょに覚える</small><small id="illustrationTrialLabel">固定100語を無料で学習</small></span>
+                    <span class="wb-icon wb-icon-chevron" aria-hidden="true"></span>
                 </button>
                 <button class="wordbook-item-btn wordbook-card" data-level="selection1900"
                     onclick="if(window.selectWordbook){selectWordbook('selection1900')}else{alert('システム読み込み中です。少々お待ち下さい。')}">
-                    <span class="wordbook-icon">🦖</span>
+                    <span class="wordbook-icon wb-icon wb-icon-school" aria-hidden="true"></span>
                     <span class="wordbook-copy">
                         <strong>厳選 1900+</strong>
-                        <small>標準から受験寄りまで広く確認</small>
+                        <small>標準から受験まで</small>
                     </span>
                     <span class="wordbook-badge">1900</span>
+                    <span class="wb-icon wb-icon-chevron" aria-hidden="true"></span>
                 </button>
                 <button class="wordbook-item-btn wordbook-card" data-level="selection1400"
                     onclick="if(window.selectWordbook){selectWordbook('selection1400')}else{alert('システム読み込み中です。少々お待ち下さい。')}">
-                    <span class="wordbook-icon">🐕</span>
+                    <span class="wordbook-icon wb-icon wb-icon-bookmark" aria-hidden="true"></span>
                     <span class="wordbook-copy">
                         <strong>厳選 1400+</strong>
-                        <small>頻出語をコンパクトに確認</small>
+                        <small>頻出語をコンパクトに</small>
                     </span>
                     <span class="wordbook-badge">1400</span>
+                    <span class="wb-icon wb-icon-chevron" aria-hidden="true"></span>
                 </button>
                 <button class="wordbook-item-btn wordbook-card" data-level="sys_2000"
                     onclick="if(window.selectWordbook){selectWordbook('sys_2000')}else{alert('システム読み込み中です。少々お待ち下さい。')}">
-                    <span class="wordbook-icon">💻</span>
+                    <span class="wordbook-icon wb-icon wb-icon-library" aria-hidden="true"></span>
                     <span class="wordbook-copy">
                         <strong>システムWORDS</strong>
-                        <small>2077語の単語帳データ</small>
+                        <small>2077語を収録</small>
                     </span>
                     <span class="wordbook-badge">2077</span>
+                    <span class="wb-icon wb-icon-chevron" aria-hidden="true"></span>
                 </button>
             </div>
 
             <div class="wordbook-note">
-                中学・基礎・標準・受験は上部のレベルボタンから選択できます。
+                中学・基礎・標準・受験は、ホームのレベルから。<br>基本学習は無料で1日8分。マイ単語帳も無料で使えます。
             </div>
         </div>
     </div>
@@ -893,30 +899,31 @@
     <div id="myWordbookModal" class="modal-overlay wordbook-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="myWordbookTitle">
         <section class="modal-content my-wordbook-panel">
             <header class="my-wordbook-heading">
-                <div><small>MY WORDBOOKS</small><h2 id="myWordbookTitle">マイ単語帳</h2></div>
-                <button type="button" class="modal-close-btn" onclick="document.getElementById('myWordbookModal').style.display='none'" aria-label="マイ単語帳を閉じる">×</button>
+                <button id="myWordbookBack" type="button" class="my-wordbook-back" onclick="MyWordbooks.showLibrary()" aria-label="‹ 単語帳一覧" hidden><span class="wb-icon wb-icon-back" aria-hidden="true"></span></button>
+                <div class="my-wordbook-title-wrap"><h2 id="myWordbookTitle">マイ単語帳</h2><h3 id="myWordbookEditorHeading" tabindex="-1" hidden></h3></div>
+                <button type="button" class="modal-close-btn" onclick="document.getElementById('myWordbookModal').style.display='none'" aria-label="マイ単語帳を閉じる"><span class="wb-icon wb-icon-close" aria-hidden="true"></span></button>
             </header>
-            <p id="myWordbookIntro" class="my-wordbook-note">テスト範囲も、苦手な語も。収録語と自分で登録した語から一冊を作れます。</p>
+            <div id="myWordbookScroll" class="my-wordbook-scroll">
+            <p id="myWordbookIntro" class="my-wordbook-note">自分のペースで、一冊ずつ。</p>
             <div id="myWordbookLibrary">
                 <form id="myWordbookCreateForm" class="my-wordbook-name-form">
                     <label for="myWordbookNewName">新しい単語帳の名前</label>
-                    <div><input id="myWordbookNewName" maxlength="60" required placeholder="例：英語・中間テスト" autocomplete="off"><button type="submit" class="my-wordbook-primary">作成</button></div>
+                    <div><input id="myWordbookNewName" maxlength="60" required placeholder="例：英語・中間テスト" autocomplete="off"><button type="submit" class="my-wordbook-primary"><span class="wb-icon wb-icon-add" aria-hidden="true"></span>作成</button></div>
                 </form>
                 <p id="myWordbookLibraryEmpty" class="my-wordbook-empty">まだ単語帳がありません。まず名前を付けて作成しましょう。</p>
                 <div id="myWordbookLibraryList" class="wordbook-list"></div>
             </div>
             <div id="myWordbookEditor" hidden>
                 <div id="myWordbookEditorContent">
-                <button type="button" class="my-wordbook-back" onclick="MyWordbooks.showLibrary()">‹ 単語帳一覧</button>
-                <div class="my-wordbook-editor-heading"><h3 id="myWordbookEditorHeading" tabindex="-1"></h3><button id="myWordbookStart" type="button" class="my-wordbook-primary" onclick="MyWordbooks.startStudy()">この単語帳を学習</button></div>
+                <div class="my-wordbook-editor-heading"><div id="myWordbookEditorStats" class="wb-book-states" aria-label="単語帳の学習状況"></div><button id="myWordbookStart" type="button" class="my-wordbook-primary" onclick="MyWordbooks.startStudy()"><span class="wb-icon wb-icon-play" aria-hidden="true"></span>この単語帳を学習</button></div>
                 <details class="my-wordbook-options"><summary>名前の変更・単語帳の削除</summary>
                     <form id="myWordbookRenameForm" class="my-wordbook-name-form"><label for="myWordbookName">単語帳の名前</label><div><input id="myWordbookName" maxlength="60" required><button type="submit">名前を保存</button></div></form>
                     <button type="button" class="my-wordbook-delete" onclick="MyWordbooks.removeBook()">単語帳を削除</button>
                 </details>
                 <div class="my-wordbook-tabs" aria-label="単語の追加方法">
-                    <button type="button" data-my-wordbook-tab="members" onclick="MyWordbooks.changeTab('members')">登録した単語</button>
-                    <button type="button" data-my-wordbook-tab="input" onclick="MyWordbooks.changeTab('input')">入力して追加</button>
-                    <button type="button" data-my-wordbook-tab="history" onclick="MyWordbooks.changeTab('history')">学習状況から追加</button>
+                    <button type="button" data-my-wordbook-tab="members" aria-label="登録した単語" onclick="MyWordbooks.changeTab('members')"><span class="wb-tab-long">登録した単語</span><span class="wb-tab-short" aria-hidden="true">登録語</span></button>
+                    <button type="button" data-my-wordbook-tab="input" aria-label="入力して追加" onclick="MyWordbooks.changeTab('input')"><span class="wb-tab-long">入力して追加</span><span class="wb-tab-short" aria-hidden="true">追加</span></button>
+                    <button type="button" data-my-wordbook-tab="history" aria-label="学習状況から追加" onclick="MyWordbooks.changeTab('history')"><span class="wb-tab-long">学習状況から追加</span><span class="wb-tab-short" aria-hidden="true">学習状況</span></button>
                 </div>
                 <div id="myWordbookInputPanel" hidden>
                     <label for="myWordbookSuggest">英単語を探す（前方一致）</label>
@@ -939,13 +946,11 @@
                     <label id="myWordbookSourceLabel" for="myWordbookSource">選ぶ範囲<select id="myWordbookSource"><option value="due">復習キュー</option><option value="weak">苦手</option><option value="learned">得意</option><option value="perfect">完璧</option></select></label>
                     <label for="myWordbookSearch">絞り込み<input id="myWordbookSearch" type="search" placeholder="英単語の先頭・日本語の意味" autocomplete="off"></label>
                 </div>
-                <p id="myWordbookResults" class="my-wordbook-note" aria-live="polite"></p>
+                <div class="wb-results-toolbar"><p id="myWordbookResults" class="my-wordbook-note" aria-live="polite"></p><div class="my-wordbook-selection-tools"><button id="myWordbookSelectShown" type="button" onclick="MyWordbooks.selectShown()">表示中の語を選択</button><button type="button" onclick="MyWordbooks.clearSelection()">選択解除</button></div></div>
                 <div id="myWordbookMissing" class="my-wordbook-missing" hidden></div>
-                <div class="my-wordbook-selection-tools"><button id="myWordbookSelectShown" type="button" onclick="MyWordbooks.selectShown()">表示中の語を選択</button><button type="button" onclick="MyWordbooks.clearSelection()">選択解除</button></div>
                 <div id="myWordbookRows" class="my-wordbook-rows"></div>
                 <div id="myWordbookPaging" class="my-wordbook-paging" hidden><button id="myWordbookPrev" type="button" onclick="MyWordbooks.page(-1)">前へ</button><span id="myWordbookPageInfo"></span><button id="myWordbookNext" type="button" onclick="MyWordbooks.page(1)">次へ</button></div>
-                <div class="my-wordbook-apply"><span id="myWordbookSelectionCount">0語選択</span><button id="myWordbookApply" type="button" class="my-wordbook-primary" onclick="MyWordbooks.applySelection()" disabled>選択した語を追加</button></div>
-                <p class="my-wordbook-note">収録語の履歴は元の語と共通。自分で登録した語は独立した履歴です。外しても履歴は消えません。通常の復習はこの単語帳の中だけ。「全語を練習」なら得意・完璧も解き直せます。</p>
+                <details class="wb-learning-help"><summary>学習・履歴について</summary><p class="my-wordbook-note">収録語の履歴は元の語と共通。自分で登録した語は独立した履歴です。外しても履歴は消えません。通常の復習はこの単語帳の中だけ。「全語を練習」なら得意・完璧も解き直せます。</p></details>
                 </div>
                 <div id="myWordbookWordEditor" hidden>
                 <button type="button" class="my-wordbook-back" onclick="MyWordbooks.cancelWordEdit()">‹ 戻る</button>
@@ -978,6 +983,8 @@
                 </form>
                 </div>
             </div>
+            </div>
+            <div id="myWordbookFooter" class="my-wordbook-apply" hidden><span id="myWordbookSelectionCount">0語選択</span><button id="myWordbookApply" type="button" class="my-wordbook-primary" onclick="MyWordbooks.applySelection()" disabled>選択した語を追加</button></div>
             <p id="myWordbookStatus" class="my-wordbook-status" role="status" aria-live="polite"></p>
         </section>
     </div>
@@ -1252,7 +1259,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.1006.1320">
+    <link rel="stylesheet" href="feedback.css?v=2026.1007.0913">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1298,20 +1305,20 @@
             <p id="speechSettingsStatus" class="speech-settings-note" role="status"></p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.1006.1320"></script>
-    <script src="js/update_manager.js?v=2026.1006.1320"></script>
-    <script src="js/config.js?v=2026.1006.1320"></script>
-    <script src="data/announcements.js?v=2026.1006.1320"></script>
-    <script src="js/utils.js?v=2026.1006.1320"></script>
-    <script src="data/word-illustrations.js?v=2026.1006.1320"></script>
-    <script src="js/word_illustrations.js?v=2026.1006.1320"></script>
+    <script src="js/version.js?v=2026.1007.0913"></script>
+    <script src="js/update_manager.js?v=2026.1007.0913"></script>
+    <script src="js/config.js?v=2026.1007.0913"></script>
+    <script src="data/announcements.js?v=2026.1007.0913"></script>
+    <script src="js/utils.js?v=2026.1007.0913"></script>
+    <script src="data/word-illustrations.js?v=2026.1007.0913"></script>
+    <script src="js/word_illustrations.js?v=2026.1007.0913"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.1006.1320"></script>
-    <script src="js/my_wordbooks.js?v=2026.1006.1320"></script>
-    <script src="js/game_logic.js?v=2026.1006.1320"></script>
-    <script src="js/ui_manager.js?v=2026.1006.1320"></script>
-    <script src="js/feedback.js?v=2026.1006.1320"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.1006.1320"></script>
+    <script src="js/word_grouping.js?v=2026.1007.0913"></script>
+    <script src="js/my_wordbooks.js?v=2026.1007.0913"></script>
+    <script src="js/game_logic.js?v=2026.1007.0913"></script>
+    <script src="js/ui_manager.js?v=2026.1007.0913"></script>
+    <script src="js/feedback.js?v=2026.1007.0913"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.1007.0913"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

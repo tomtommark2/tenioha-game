@@ -7,6 +7,7 @@ const indexFile = path.join(root, 'index.html');
 
 const VERSIONED_ASSETS = [
   'style.css',
+  'wordbooks-m3e.css',
   'feedback.css',
   'js/feedback.js',
   'data/vocabulary.js',

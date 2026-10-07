@@ -1,0 +1,197 @@
+/* Selected M3E mock adapted to the existing static app. No global theme reset. */
+@font-face {
+    font-family: 'Wordbook Roboto Flex';
+    src: url('assets/ui/roboto-flex-latin.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 100 1000;
+    font-display: swap;
+}
+
+#wordbookModal, #myWordbookModal {
+    --wb-primary: #67548c;
+    --wb-on-primary: #ffffff;
+    --wb-container: #eaddff;
+    --wb-surface: #f8f2fc;
+    --wb-surface-low: #fdf7ff;
+    --wb-surface-high: #f0eaf4;
+    --wb-ink: #1d1b20;
+    --wb-muted: #49454f;
+    --wb-outline: #cac4d0;
+    font-family: 'Wordbook Roboto Flex', 'Noto Sans JP', sans-serif;
+    color: var(--wb-ink);
+    padding: 24px;
+    background: rgba(29, 27, 32, .36);
+    backdrop-filter: none;
+}
+#wordbookModal *, #myWordbookModal * { box-sizing: border-box; }
+#wordbookModal button, #myWordbookModal button { font-family: inherit; -webkit-tap-highlight-color: transparent; }
+#wordbookModal button:focus-visible, #myWordbookModal :is(button, input, textarea, select, summary):focus-visible { outline: 3px solid var(--wb-primary); outline-offset: 3px; }
+#wordbookModal .wordbook-modal-content, #myWordbookModal .my-wordbook-panel {
+    width: min(720px, 100%);
+    max-width: 720px;
+    max-height: calc(100dvh - 48px);
+    border: none !important;
+    border-radius: 28px !important;
+    background: var(--wb-surface) !important;
+    color: var(--wb-ink);
+    box-shadow: 0 3px 8px rgba(29, 27, 32, .23) !important;
+    scrollbar-width: thin;
+}
+#wordbookModal .wordbook-modal-content { padding: 24px 32px 16px !important; }
+#wordbookModal .wordbook-hero { margin: 0 48px 20px 0; padding: 0; border: 0; background: none; border-radius: 0; }
+#wordbookModal .wordbook-title { display: block; margin: 0; font-size: 25px; font-weight: 700; letter-spacing: 0; color: var(--wb-ink); }
+#wordbookModal .wordbook-list { gap: 10px; }
+.wb-section-label { margin: 0; font-size: 13px; font-weight: 500; color: var(--wb-muted); }
+.wb-section-collected { margin-top: 10px; }
+#wordbookModal .wordbook-card {
+    grid-template-columns: 52px minmax(0, 1fr) auto 24px;
+    gap: 16px;
+    padding: 18px 20px;
+    min-height: 92px;
+    border: 1px solid var(--wb-outline);
+    border-radius: 12px;
+    background: var(--wb-surface-low);
+    color: var(--wb-ink);
+    box-shadow: none;
+    font-weight: 400;
+    transition: background .15s, border-radius .15s;
+}
+#wordbookModal #myWordbookOpener { border-color: transparent; background: var(--wb-container); }
+#wordbookModal .wordbook-card:hover { transform: none; background: #ede3f8; box-shadow: none; }
+#wordbookModal .wordbook-card.active { outline: 2px solid var(--wb-primary); outline-offset: 1px; }
+#wordbookModal .wordbook-copy { gap: 5px; }
+#wordbookModal .wordbook-copy strong { font-size: 17px; font-weight: 700; color: var(--wb-ink); }
+#wordbookModal .wordbook-copy small { font-size: 13px; font-weight: 400; line-height: 1.6; color: var(--wb-muted); }
+#wordbookModal .wordbook-badge { background: var(--wb-surface-low); border: 0; color: var(--wb-primary); font-size: 11px; padding: 5px 9px; }
+#wordbookModal .wordbook-icon { width: 44px; height: 44px; min-width: 0; border: 0; box-shadow: none; background-color: var(--wb-primary); }
+#wordbookModal .wb-illustration-icon { background: none; height: 44px; }
+.wb-illustration-icon img { display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: auto; }
+#wordbookModal [data-level=illustrated] { grid-template-columns: 52px minmax(0, 1fr) 24px; padding-block: 8px; }
+#wordbookModal [data-level=illustrated] .wordbook-copy { gap: 3px; }
+#wordbookModal [data-level=illustrated] small:last-child { color: var(--wb-primary); font-size: 12px; }
+#wordbookModal [data-level=selection1900], #wordbookModal [data-level=selection1400], #wordbookModal [data-level=sys_2000] { min-height: 68px; padding: 12px 18px; background: var(--wb-surface-high); border-color: transparent; grid-template-columns: 36px minmax(0, 1fr) auto 20px; }
+#wordbookModal [data-level=selection1900] { margin-bottom: -10px; border-radius: 20px 20px 4px 4px; }
+#wordbookModal [data-level=selection1400] { margin-bottom: -10px; border-radius: 4px; }
+#wordbookModal [data-level=sys_2000] { border-radius: 4px 4px 20px 20px; }
+#wordbookModal [data-level]:not([data-level=illustrated]) .wordbook-icon { width: 24px; height: 24px; }
+#wordbookModal [data-level]:not([data-level=illustrated]) .wordbook-copy strong { font-size: 15px; }
+#wordbookModal .wordbook-note { padding: 0; margin: 18px 0 0; border: 0; background: none; font-size: 12px; font-weight: 400; text-align: left; line-height: 1.8; color: var(--wb-muted); }
+#wordbookModal .modal-close-btn, #myWordbookModal .modal-close-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; color: var(--wb-primary); background: transparent; border: 0; border-radius: 50%; box-shadow: none; }
+#wordbookModal .modal-close-btn { top: 18px; right: 20px; }
+#wordbookModal .modal-close-btn:hover, #myWordbookModal .modal-close-btn:hover { background: var(--wb-container); }
+.wb-icon { display: inline-block; width: 24px; height: 24px; flex-shrink: 0; vertical-align: middle; background-color: currentColor; mask: var(--wb-icon) center / contain no-repeat; -webkit-mask: var(--wb-icon) center / contain no-repeat; }
+.wb-icon-stories { --wb-icon: url('assets/ui/auto-stories-rounded.svg'); }
+.wb-icon-book { --wb-icon: url('assets/ui/menu-book-outline-rounded.svg'); }
+.wb-icon-school { --wb-icon: url('assets/ui/school-outline-rounded.svg'); }
+.wb-icon-bookmark { --wb-icon: url('assets/ui/bookmark-outline-rounded.svg'); }
+.wb-icon-library { --wb-icon: url('assets/ui/library-books-outline-rounded.svg'); }
+.wb-icon-chevron { --wb-icon: url('assets/ui/chevron-right-rounded.svg'); }
+.wb-icon-forward { --wb-icon: url('assets/ui/arrow-forward-rounded.svg'); }
+.wb-icon-back { --wb-icon: url('assets/ui/arrow-back-rounded.svg'); }
+.wb-icon-close { --wb-icon: url('assets/ui/close-rounded.svg'); }
+.wb-icon-add { --wb-icon: url('assets/ui/add-rounded.svg'); }
+.wb-icon-play { --wb-icon: url('assets/ui/play-arrow-rounded.svg'); }
+.wb-icon-note { --wb-icon: url('assets/ui/edit-note-rounded.svg'); }
+
+#myWordbookModal .my-wordbook-panel { display: flex; flex-direction: column; padding: 0 !important; overflow: hidden; text-align: left; }
+#myWordbookModal .my-wordbook-heading { flex-shrink: 0; padding: 20px 24px 12px; gap: 12px; }
+#myWordbookModal .my-wordbook-heading h2 { margin: 0; font-size: 25px; color: var(--wb-ink); }
+#myWordbookModal .my-wordbook-heading h3 { margin: 0; font-size: 25px; color: var(--wb-ink); line-height: 1.5; overflow-wrap: anywhere; }
+#myWordbookModal .my-wordbook-title-wrap { min-width: 0; flex: 1; }
+#myWordbookModal #myWordbookBack { width: 44px; height: 44px; padding: 0; flex-shrink: 0; }
+#myWordbookModal .my-wordbook-scroll { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 0 32px 24px; min-height: 0; }
+#myWordbookModal .my-wordbook-note { color: var(--wb-muted); }
+#myWordbookModal #myWordbookIntro { margin: 4px 0 18px; font-size: 14px; }
+#myWordbookModal #myWordbookCreateForm { margin: 0 0 24px; }
+#myWordbookModal .my-wordbook-name-form > div { align-items: center; gap: 12px; }
+#myWordbookModal :where(.my-wordbook-panel button:not(.wordbook-card):not(.modal-close-btn)) { min-height: 40px; padding: 8px 16px; border: 1px solid var(--wb-outline); border-radius: 100px; background: var(--wb-surface-low); color: var(--wb-primary); font-size: 13px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+#myWordbookModal .my-wordbook-panel button.my-wordbook-primary:not(.modal-close-btn) { background: var(--wb-primary); border-color: var(--wb-primary); color: var(--wb-on-primary); font-weight: 700; }
+#myWordbookModal .my-wordbook-panel button:disabled { opacity: .4; }
+#myWordbookModal .my-wordbook-panel input:not([type=checkbox]):not([type=radio]), #myWordbookModal .my-wordbook-panel textarea, #myWordbookModal .my-wordbook-panel select { border: 1px solid #79747e; border-radius: 4px; padding: 13px 14px; background: transparent; color: var(--wb-ink); font-family: inherit; font-size: 16px; }
+#myWordbookModal .my-wordbook-panel :is(input[type=checkbox], input[type=radio]) { accent-color: var(--wb-primary); }
+#myWordbookModal #myWordbookLibraryList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+#myWordbookModal .my-wordbook-card { display: flex; flex-direction: column; align-items: stretch; padding: 14px 20px; gap: 0; border: 1px solid var(--wb-outline); border-radius: 12px; background: var(--wb-surface-low); text-align: left; color: var(--wb-ink); box-shadow: none; }
+#myWordbookModal .my-wordbook-card:hover { transform: none; background: #eee6f5; box-shadow: none; }
+#myWordbookModal .my-wordbook-card > strong { font-size: 17px; margin: 12px 0 10px; line-height: 1.5; overflow-wrap: anywhere; }
+.wb-book-top, .wb-book-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--wb-muted); }
+.wb-book-icon { width: 32px; height: 32px; color: var(--wb-primary); }
+.wb-book-states { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; font-size: 11px; color: var(--wb-muted); }
+.wb-book-states > span { display: flex; flex-direction: column; gap: 6px; }
+.wb-book-states b { font-size: 19px; font-weight: 600; color: var(--wb-ink); }
+.wb-book-states .weak b { color: #8d493a; }
+.wb-book-states .learned b { color: #42664f; }
+.wb-book-states .perfect b { color: #786425; }
+#myWordbookModal .my-wordbook-card .wb-book-bottom { margin-top: 14px; color: var(--wb-primary); }
+#myWordbookModal .my-wordbook-editor-heading { margin: 6px 0 12px; }
+#myWordbookModal .my-wordbook-editor-heading h3 { font-size: 22px; margin: 0; line-height: 1.5; }
+#myWordbookModal #myWordbookEditorStats { width: 280px; max-width: 100%; margin: 0; }
+#myWordbookModal .my-wordbook-back { border: none; background: transparent; padding-left: 0; font-size: 13px; }
+#myWordbookModal .my-wordbook-options { margin: 0 0 18px; }
+#myWordbookModal .my-wordbook-options summary, #myWordbookModal .wb-learning-help summary { min-height: 40px; display: flex; align-items: center; cursor: pointer; font-size: 12px; color: var(--wb-primary); }
+#myWordbookModal .my-wordbook-options summary::after, #myWordbookModal .wb-learning-help summary::after { content: ''; display: inline-block; width: 18px; height: 18px; margin-left: 8px; background: currentColor; mask: url('assets/ui/chevron-right-rounded.svg') center / contain no-repeat; -webkit-mask: url('assets/ui/chevron-right-rounded.svg') center / contain no-repeat; }
+#myWordbookModal details[open] > summary::after { transform: rotate(90deg); }
+#myWordbookModal .my-wordbook-tabs { padding: 4px; gap: 4px; border-radius: 100px; background: var(--wb-surface-high); margin: 10px 0 24px; }
+#myWordbookModal .my-wordbook-tabs button { background: transparent; border: none; font-size: 13px; padding: 10px 6px; font-weight: 500; color: var(--wb-muted); }
+#myWordbookModal .my-wordbook-tabs button.active { background: var(--wb-container) !important; border-color: transparent !important; color: #4f3875 !important; box-shadow: none; }
+.wb-tab-short { display: none; }
+#myWordbookModal .my-wordbook-filters { margin: 0 0 20px; gap: 16px; }
+#myWordbookModal .wb-results-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; margin: 0 0 12px; }
+#myWordbookModal #myWordbookResults { margin: 0; font-size: 12px; }
+#myWordbookModal .my-wordbook-selection-tools { justify-content: flex-end; margin: 0; }
+#myWordbookModal .my-wordbook-selection-tools button { background: transparent; border: none; padding: 6px 10px; }
+#myWordbookModal .my-wordbook-rows { max-height: none; overflow: visible; border: none; border-radius: 16px; background: var(--wb-surface-low); }
+#myWordbookModal .my-wordbook-entry { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 8px; padding: 0 16px; border-color: var(--wb-outline); }
+#myWordbookModal .my-wordbook-row { min-width: 0; grid-column: 1; grid-row: 1; padding: 16px 0; gap: 12px; border: none; grid-template-columns: 20px minmax(0, 1fr) auto; }
+#myWordbookModal .my-wordbook-row strong { font-size: 16px; color: var(--wb-ink); }
+#myWordbookModal .my-wordbook-row small { color: var(--wb-muted); font-size: 13px; margin-top: 4px; }
+#myWordbookModal .my-wordbook-row-meta { font-size: 11px; max-width: 90px; overflow-wrap: anywhere; color: var(--wb-muted); }
+#myWordbookModal .my-wordbook-entry-actions { grid-column: 2; grid-row: 1; max-width: 100px; padding: 0; justify-content: flex-end; }
+#myWordbookModal .my-wordbook-entry-actions button { min-height: 36px; border: none; background: transparent; font-size: 12px; padding: 6px 12px; }
+#myWordbookModal .my-wordbook-entry-actions button:has(.wb-icon) { width: 40px; height: 40px; padding: 8px; }
+#myWordbookModal .my-wordbook-suggestions { margin: 12px 0; max-height: 260px; border-radius: 12px; }
+#myWordbookModal .my-wordbook-panel button.my-wordbook-suggestion { border-radius: 12px; width: 100%; justify-content: flex-start; display: flex; flex-direction: column; align-items: flex-start; padding: 14px; margin: 6px 0; background: var(--wb-surface-low); border-color: var(--wb-outline); color: var(--wb-ink); }
+#myWordbookModal .my-wordbook-suggestion small { color: var(--wb-muted); font-size: 13px; }
+#myWordbookModal .my-wordbook-custom-open { margin-bottom: 24px; }
+#myWordbookModal .my-wordbook-import-format { padding-top: 18px; border-top: 1px solid var(--wb-outline); }
+#myWordbookModal .my-wordbook-missing { margin: 12px 0; background: #f7ebdb; color: #6b542e; border-radius: 12px; }
+#myWordbookModal .my-wordbook-panel button.my-wordbook-delete { color: #a43838; border-color: #a43838; }
+#myWordbookModal .my-wordbook-note-preview { grid-column: 1 / -1; grid-row: 2; border-radius: 8px; background: var(--wb-surface-high); color: var(--wb-muted); }
+#myWordbookModal .my-wordbook-bulk-row, #myWordbookModal .my-wordbook-registration-candidate { background: var(--wb-surface-low); border-color: var(--wb-outline); border-radius: 12px; }
+#myWordbookModal .my-wordbook-registration-candidate:has(input:checked) { background: var(--wb-container) !important; border-color: var(--wb-primary) !important; }
+#myWordbookModal .wb-learning-help { margin: 14px 0 0; }
+#myWordbookModal #myWordbookFooter { flex-shrink: 0; min-height: 72px; padding: 14px 32px; margin: 0; border-top: 1px solid var(--wb-outline); background: var(--wb-surface-high); }
+#myWordbookModal .my-wordbook-status { flex-shrink: 0; padding: 10px 24px; margin: 0; background: #e2efdf; color: #28562f; max-height: 96px; overflow-y: auto; }
+#myWordbookModal .my-wordbook-status:empty { display: none; }
+#myWordbookModal .my-wordbook-status.is-error { background: #f9dedb; color: #8d2927; }
+
+@media (max-width: 600px) {
+    #wordbookModal, #myWordbookModal { padding: 12px 10px; }
+    #wordbookModal .wordbook-modal-content, #myWordbookModal .my-wordbook-panel { max-height: calc(100dvh - 24px); }
+    #wordbookModal .wordbook-modal-content { padding: 24px 18px !important; }
+    #wordbookModal .wordbook-title, #myWordbookModal .my-wordbook-heading :is(h2, h3) { font-size: 21px; }
+    #wordbookModal .wordbook-card { padding: 18px 14px; gap: 12px; grid-template-columns: 32px minmax(0, 1fr) auto 18px; }
+    #wordbookModal .wordbook-icon { width: 32px; height: 36px; }
+    #wordbookModal .wordbook-copy strong { font-size: 16px; }
+    #wordbookModal .wordbook-copy small { font-size: 12px; }
+    #wordbookModal [data-level=illustrated] { grid-template-columns: 44px minmax(0, 1fr) 18px; padding-block: 18px; }
+    #wordbookModal .wb-illustration-icon { height: 44px; width: 44px; }
+    #wordbookModal [data-level]:not([data-level=illustrated]) { grid-template-columns: 26px minmax(0, 1fr) auto 18px; padding-inline: 14px; gap: 8px; }
+    #myWordbookModal .my-wordbook-heading { padding: 14px 18px 12px; }
+    #myWordbookModal .my-wordbook-scroll { padding: 0 18px 20px; }
+    #myWordbookModal #myWordbookLibraryList { grid-template-columns: minmax(0, 1fr); }
+    #myWordbookModal .my-wordbook-editor-heading { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px; }
+    #myWordbookModal .my-wordbook-editor-heading h3 { font-size: 20px; }
+    #myWordbookModal #myWordbookEditorStats { width: 100%; max-width: none; }
+    #myWordbookModal #myWordbookStart { margin-left: auto; }
+    #myWordbookModal .my-wordbook-tabs button { min-width: 0; font-size: 13px; }
+    .wb-tab-long { display: none; }
+    .wb-tab-short { display: inline; }
+    #myWordbookModal .my-wordbook-filters { flex-direction: column; gap: 12px; }
+    #myWordbookModal #myWordbookFooter { padding: 12px 18px; min-height: 68px; }
+    #myWordbookModal #myWordbookFooter button { padding-inline: 12px; font-size: 12px; }
+    #myWordbookModal .my-wordbook-row { grid-template-columns: 20px minmax(0, 1fr); }
+    #myWordbookModal .my-wordbook-row-meta { grid-column: 2; max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #wordbookModal *, #myWordbookModal * { transition: none !important; animation: none !important; }
+}
