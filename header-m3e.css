@@ -126,6 +126,34 @@
 .learning-header .mode-icon-check { --picto-url: url('assets/ui/check-circle-rounded.svg'); }
 .learning-header .mode-icon-sparkles { --picto-url: url('assets/ui/auto-awesome-rounded.svg'); }
 
+@media (min-width: 769px) {
+    /* Retain the selector's position while restoring the score beside the character. */
+    .learning-header .right-controls-container { padding-top: 28px !important; }
+    .learning-header .review-score-summary {
+        position: absolute;
+        top: calc(50% - 29px);
+        left: 134px;
+        display: grid;
+        justify-content: stretch;
+        width: 112px;
+        gap: 4px;
+        color: #403768;
+    }
+    .learning-header .review-score-summary-row {
+        display: grid;
+        grid-template-columns: 32px minmax(0, 1fr);
+        min-height: 26px;
+        padding: 4px 8px;
+        border: 1px solid #d9d3ec;
+        background: #f7f5ff;
+        line-height: 1;
+    }
+    .learning-header .review-score-summary-row strong { font-size: 14px; font-weight: 900; }
+    .learning-header .review-rank-button { width: 100%; min-height: 32px; background: #eee9ff; }
+    .learning-header .review-rank-button:focus-visible { outline: 3px solid #6046ce; outline-offset: 2px; }
+    .learning-header .review-rank-caret { display: block; }
+}
+
 @media (max-width: 768px) {
     .learning-header { margin-top: 6px; }
     /* Keep the drawn feet and selector above the existing 170px canvas boundary. */

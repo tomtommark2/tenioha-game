@@ -41,6 +41,7 @@ async function inspectLayout(page) {
             boundary: document.querySelector('.app-shell').getBoundingClientRect().top
                 + parseFloat(getComputedStyle(document.querySelector('.app-shell'), '::after').top),
             hero: rect(document.getElementById('heroCharacter')),
+            characterArea: rect(document.querySelector('.learning-header .rpg-inline')),
             illustration: rect(document.getElementById('wordIllustrationSlot')),
             panel: rect(document.querySelector('.learning-header .mode-buttons')),
             score: rect(document.querySelector('.learning-header .review-score-summary')),
@@ -67,11 +68,28 @@ function assertLayout(layout, width, illustrated = false) {
     expect(layout.pageFits, `${width}px page`).toBe(true);
     expect(layout.panel.left, `${width}px right of character`).toBeGreaterThanOrEqual(
         (illustrated ? layout.illustration.right : layout.hero.right) - 1);
-    expect(layout.score.bottom, `${width}px score above panel`).toBeLessThanOrEqual(layout.panel.top + 1);
+    if (width <= 768) {
+        expect(layout.score.bottom, `${width}px score above panel`).toBeLessThanOrEqual(layout.panel.top + 1);
+    } else {
+        expect(layout.score.left, `${width}px legacy score beside character`).toBeCloseTo(layout.characterArea.left + 94, 1);
+        expect(layout.score.top, `${width}px legacy score height`).toBeCloseTo(layout.characterArea.top - 32, 1);
+        expect(layout.score.left).toBeGreaterThanOrEqual((illustrated ? layout.illustration.right : layout.hero.right) - 1);
+        expect(layout.score.right).toBeLessThanOrEqual(layout.panel.left);
+        expect(layout.score.bottom).toBeLessThanOrEqual(layout.card.top);
+        expect(layout.score.width).toBe(112);
+        for (const row of layout.scoreRows) {
+            expect(row.bounds.left, `${width}px score row starts at legacy position`).toBeCloseTo(layout.score.left, 1);
+            expect(row.bounds.width, `${width}px score row fills legacy width`).toBeCloseTo(layout.score.width, 1);
+        }
+        for (let index = 1; index < layout.scoreRows.length; index++) {
+            expect(layout.scoreRows[index].bounds.top).toBeGreaterThanOrEqual(layout.scoreRows[index - 1].bounds.bottom + 4);
+        }
+    }
     expect(layout.panel.bottom, `${width}px before word card`).toBeLessThanOrEqual(layout.card.top + 1);
     for (const row of layout.scoreRows) {
-        expect(row.bounds.left).toBeGreaterThanOrEqual(layout.panel.left - 1);
-        expect(row.bounds.right).toBeLessThanOrEqual(layout.panel.right + 1);
+        const scoreArea = width <= 768 ? layout.panel : layout.score;
+        expect(row.bounds.left).toBeGreaterThanOrEqual(scoreArea.left - 1);
+        expect(row.bounds.right).toBeLessThanOrEqual(scoreArea.right + 1);
         for (const text of row.texts) {
             expect(text.left).toBeGreaterThanOrEqual(row.bounds.left - 1);
             expect(text.right).toBeLessThanOrEqual(row.bounds.right + 1);
@@ -137,6 +155,7 @@ test('学習分類：320〜1280pxでキャラ右側に一列で収め、4桁の�
     fs.mkdirSync('screenshots/header-m3e-20261010', { recursive: true });
     for (const width of [320, 390, 1280]) {
         await page.setViewportSize({ width, height: 844 });
+        assertLayout(await inspectLayout(page), width);
         await page.screenshot({ path: `screenshots/header-m3e-20261010/sample-${width}-${testInfo.project.name}.png` });
         if (width === 320) await page.screenshot({
             path: `screenshots/header-m3e-20261010/header-320-${testInfo.project.name}.png`,
