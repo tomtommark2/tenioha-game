@@ -1308,6 +1308,7 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 
 .cards-section {
     flex: 1;
+    min-width: 0;
 }
 
 .cards-area {
@@ -8444,6 +8445,10 @@ body.dismissible-modal-open {
 /* Speech settings: compact entry; the timer remains a removable flex item. */
 .vocab-card { min-width: 0; }
 .vocab-card .card-content, .vocab-word-stack, .vocab-word-stack > * { max-width: 100%; overflow-wrap: anywhere; }
+.vocab-card .card-content, .vocab-word-stack { width: 100%; min-width: 0; }
+.vocab-word-stack .word-text-main { width: 100%; min-width: 0; max-height: 180px; overflow: auto; overscroll-behavior: contain; overflow-wrap: normal; word-break: normal; hyphens: none; }
+.word-text-token { display: inline-block; white-space: nowrap; vertical-align: top; }
+.word-text-main.word-text-overflow { text-align: left !important; }
 .vocab-card:has(> .word-speech-btn:not([hidden])) { padding-top: 52px; padding-bottom: 28px; }
 .word-speech-btn {
     position: absolute;
@@ -8703,7 +8708,7 @@ body.dismissible-modal-open {
 .has-custom-word .card { min-width: 0; }
 .has-custom-word .card-content, .has-custom-word .card-back { width: 100%; min-width: 0; overflow-wrap: anywhere; }
 .my-custom-word-stack { width: 100%; }
-.my-custom-word-stack .word-text-main { max-width: 100%; max-height: 180px; overflow-y: auto; overscroll-behavior: contain; overflow-wrap: anywhere; }
+.my-custom-word-stack .word-text-main { max-width: 100%; }
 .my-custom-meaning { max-width: 100%; max-height: 220px; overflow-y: auto; overscroll-behavior: contain; white-space: pre-wrap; overflow-wrap: anywhere; }
 @media (max-width: 480px) {
     .my-wordbook-panel { padding: 16px !important; }

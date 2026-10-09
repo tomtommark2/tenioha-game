@@ -1,0 +1,179 @@
+{
+  "base": "http://127.0.0.1:8056/",
+  "phase": "local",
+  "version": "2026.1010.0320",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "26621ce6287ecd2e20accb5d958358f791112ee280a981fc02bb78794defcb5f"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "26621ce6287ecd2e20accb5d958358f791112ee280a981fc02bb78794defcb5f"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "3992087bddeb86fc3cf00f88a851c8b755ccb268a79f1713b51959176ff8740e"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "ac17fa9807cb71dd944ef3727f440fe09c4852345159c9dbf4f1f80f8d596e2a"
+    },
+    {
+      "file": "style.css",
+      "sha256": "2de2e71835a76771663f0ef90ce5027762e5569a8d43bad76c161f22986036e6"
+    },
+    {
+      "file": "header-m3e.css",
+      "sha256": "aef05e6ec8d8457f4c0123e7256024023abe90515e456c5f3042ea88814c811f"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "775b2bbc72893766a3155979bf0cd516e89730f073f8c87e25d490d071efea0c"
+    },
+    {
+      "file": "js/my_wordbooks.js",
+      "sha256": "454ce41f650b52c21d6b572a81c1895ecc3c0b419a1bcd9dd197e5b991246b8a"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "ae84d7a7985ecd4b72664b07f0871d709f70abc28d69ab5e827f1493b6825c46"
+    },
+    {
+      "file": "js/word_illustrations.js",
+      "sha256": "29bf55e6547803d444f6f5a4c2bbbc612170c92697f2177aee5a92a93043cef0"
+    },
+    {
+      "file": "data/vocabulary.js",
+      "sha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b"
+    },
+    {
+      "file": "data/word-illustrations.js",
+      "sha256": "44e74a34d1959442a894376e08a945fc55cc623f93eee66cfed82de648abdc4c"
+    },
+    {
+      "file": "assets/char_sprite.png",
+      "sha256": "70e680224dff955822bd55277b9ec8e84bd701149c0a6e9d74e0f5bd9999e603"
+    },
+    {
+      "file": "assets/ui/menu-book-outline-rounded.svg",
+      "sha256": "ffbb41a8e374f40db43f9da094eca6c24f6c325d2b2eff6b355d97c3244cc12e"
+    },
+    {
+      "file": "assets/ui/refresh-rounded.svg",
+      "sha256": "2c7a46e3176718cdbf370883ed7d7ea732d82e77fb2d6450a7173f8524cc6249"
+    },
+    {
+      "file": "assets/ui/check-circle-rounded.svg",
+      "sha256": "9d67ffc0601691e0de469afb4ee7fca8f4af68f717866af00e88c2b99f765b96"
+    },
+    {
+      "file": "assets/ui/auto-awesome-rounded.svg",
+      "sha256": "bfe4a8f6d8a0e7554f25dd9c97b9c548fa253e224c668861678beedad5edb09e"
+    }
+  ],
+  "cases": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "layout": {
+        "panelBottom": 168,
+        "boundary": 170,
+        "pageFits": true,
+        "count": "復習キュー 101件"
+      },
+      "word": {
+        "size": 30.6,
+        "oneLine": true,
+        "fits": true,
+        "text": "businesswoman"
+      },
+      "recommendationShift": false
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "layout": {
+        "panelBottom": 168,
+        "boundary": 170,
+        "pageFits": true,
+        "count": "復習キュー 101件"
+      },
+      "word": {
+        "size": 38.8,
+        "oneLine": true,
+        "fits": true,
+        "text": "businesswoman"
+      },
+      "recommendationShift": false
+    },
+    {
+      "engine": "chromium",
+      "width": 1280,
+      "layout": {
+        "panelBottom": 256.5,
+        "boundary": null,
+        "pageFits": true,
+        "count": "復習キュー 101件"
+      },
+      "word": {
+        "size": 42,
+        "oneLine": true,
+        "fits": true,
+        "text": "businesswoman"
+      },
+      "recommendationShift": false
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "layout": {
+        "panelBottom": 168,
+        "boundary": 170,
+        "pageFits": true,
+        "count": "復習キュー 101件"
+      },
+      "word": {
+        "size": 30.6,
+        "oneLine": true,
+        "fits": true,
+        "text": "businesswoman"
+      },
+      "recommendationShift": false
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "layout": {
+        "panelBottom": 168,
+        "boundary": 170,
+        "pageFits": true,
+        "count": "復習キュー 101件"
+      },
+      "word": {
+        "size": 38.799999,
+        "oneLine": true,
+        "fits": true,
+        "text": "businesswoman"
+      },
+      "recommendationShift": false
+    },
+    {
+      "engine": "webkit",
+      "width": 1280,
+      "layout": {
+        "panelBottom": 256.484375,
+        "boundary": null,
+        "pageFits": true,
+        "count": "復習キュー 101件"
+      },
+      "word": {
+        "size": 42,
+        "oneLine": true,
+        "fits": true,
+        "text": "businesswoman"
+      },
+      "recommendationShift": false
+    }
+  ]
+}

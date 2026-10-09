@@ -22,9 +22,16 @@ test('マイ単語帳：Service Workerの新版キャッシュにUI素材を登�
         const cached = await page.evaluate(async () => {
             const cacheName = 'vocab-game-' + GAME_VERSION;
             const cache = await caches.open(cacheName);
-            return { cacheName, paths: (await cache.keys()).map(request => new URL(request.url).pathname) };
+            const header = await cache.match('./header-m3e.css?v=' + GAME_VERSION);
+            return { cacheName, paths: (await cache.keys()).map(request => new URL(request.url).pathname),
+                headerCss: header ? await header.text() : '' };
         });
-        expect(cached.paths).toHaveLength(32);
+        expect(cached.paths).toHaveLength(37);
+        expect(cached.paths).toContain('/header-m3e.css');
+        expect(cached.headerCss).toContain('translateY(-2px)');
+        expect(cached.paths).toContain('/assets/ui/refresh-rounded.svg');
+        expect(cached.paths).toContain('/assets/ui/check-circle-rounded.svg');
+        expect(cached.paths).toContain('/assets/ui/auto-awesome-rounded.svg');
         expect(cached.paths).toContain('/wordbooks-m3e.css');
         expect(cached.paths).toContain('/assets/ui/roboto-flex-latin.woff2');
         expect(cached.paths).toContain('/assets/ui/menu-book-outline-rounded.svg');

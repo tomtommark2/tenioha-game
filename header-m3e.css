@@ -1,0 +1,156 @@
+/* Selected joined selector: retain the character and all existing learning controls. */
+.learning-header {
+    --learning-primary: #67548c;
+    --learning-ink: #1d1b20;
+    --learning-icon: #625873;
+    --learning-surface: #f4efff;
+}
+
+.learning-header .header-controls-wrapper {
+    width: min(360px, calc(100% - 150px));
+    min-width: 0;
+}
+
+.learning-header .right-controls-container {
+    width: 100% !important;
+    max-width: none !important;
+    align-self: stretch !important;
+    gap: 4px;
+}
+
+.learning-header .review-score-summary {
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    min-width: 0;
+    gap: 12px;
+    color: #49454f;
+    text-shadow: none;
+}
+
+.learning-header .review-score-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+    min-height: 24px;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.learning-header .review-score-summary-row strong {
+    min-width: 0;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.learning-header .review-rank-button { width: auto; color: inherit; }
+.learning-header .review-rank-button:hover { background: rgba(103, 84, 140, .12); }
+.learning-header .review-rank-button:focus-visible { outline: 2px solid var(--learning-primary); outline-offset: 1px; }
+.learning-header .review-rank-caret { display: none; }
+
+.learning-header .mode-buttons-shell {
+    width: 100%;
+    max-width: 100%;
+    transform: none;
+}
+
+.learning-header .mode-buttons {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    width: 100% !important;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 6px 4px;
+    border-radius: 16px;
+    background: var(--learning-surface);
+    box-sizing: border-box;
+}
+
+.learning-header .mode-btn {
+    display: grid;
+    grid-template-rows: 28px 16px 22px;
+    place-items: center;
+    gap: 2px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 70px !important;
+    min-height: 70px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--learning-ink);
+    box-shadow: none !important;
+    transform: none !important;
+    overflow: visible;
+    font-family: 'Wordbook Roboto Flex', 'Noto Sans JP', sans-serif;
+    transition: background .15s;
+}
+
+.learning-header .mode-btn::before { content: none; }
+.learning-header .mode-btn:hover:not(:disabled) { background: #e9e1f5; }
+.learning-header .mode-btn:focus-visible { outline: 2px solid var(--learning-primary); outline-offset: -1px; }
+.learning-header .mode-btn.active { color: var(--learning-primary); }
+.learning-header .mode-btn.active::before {
+    content: '';
+    inset: auto;
+    top: 0;
+    left: 50%;
+    width: 40px;
+    height: 28px;
+    border-radius: 100px;
+    background: var(--learning-primary);
+    transform: translateX(-50%);
+}
+
+.learning-header .mode-picto { width: 24px !important; height: 24px !important; margin: 0; color: var(--learning-icon); }
+.learning-header .mode-btn.active .mode-picto { color: #fff; }
+.learning-header .mode-btn span:not(.mode-picto):not(.mode-count) { font-size: 14px !important; font-weight: 700; line-height: 16px !important; letter-spacing: 0; }
+.learning-header .mode-btn .mode-count { margin: 0; font-size: 20px !important; font-weight: 750; line-height: 22px; opacity: 1; font-variant-numeric: tabular-nums; }
+.learning-header .weak .mode-count { color: #ad4357; }
+.learning-header .learned .mode-count { color: #267847; }
+.learning-header .perfect .mode-count { color: #92670b; }
+.learning-header .mode-btn.active .mode-count { color: var(--learning-primary); }
+
+.learning-header .mode-icon-book { --picto-url: url('assets/ui/menu-book-outline-rounded.svg'); }
+.learning-header .mode-icon-retry { --picto-url: url('assets/ui/refresh-rounded.svg'); }
+.learning-header .mode-icon-check { --picto-url: url('assets/ui/check-circle-rounded.svg'); }
+.learning-header .mode-icon-sparkles { --picto-url: url('assets/ui/auto-awesome-rounded.svg'); }
+
+@media (max-width: 768px) {
+    .learning-header { margin-top: 6px; }
+    /* Keep the drawn feet and selector above the existing 170px canvas boundary. */
+    .learning-header .rpg-inline { left: 18px !important; bottom: -12px; }
+    .learning-header #heroCharacter.anim-attack { translate: 0 -18px; }
+    .learning-header #heroCharacter.anim-cheer { translate: 0 -12px; }
+    .learning-header #wordIllustrationSlot { top: -38px; }
+    .learning-header .header-controls-wrapper { width: calc(100% - 88px) !important; margin-left: auto !important; transform: translateY(-14px); }
+    .learning-header .mode-buttons-shell { transform: translateY(-2px); }
+    .learning-header .review-score-summary { gap: 12px; color: #fff; }
+    .learning-header .review-score-summary-row { min-height: 20px; gap: 3px; font-size: 10px; }
+    .learning-header .review-score-summary-row strong { font-size: 11px; }
+    .learning-header .review-rank-button:hover { background: rgba(255, 255, 255, .14); }
+    .learning-header .review-rank-button:focus-visible { outline-color: #fff; }
+    .learning-header .mode-btn { grid-template-rows: 28px 14px 20px; gap: 1px !important; height: 64px !important; min-height: 64px !important; }
+    .learning-header .mode-btn span:not(.mode-picto):not(.mode-count) { font-size: 12.5px !important; line-height: 14px !important; }
+    .learning-header .mode-btn .mode-count { font-size: 18px !important; line-height: 20px; }
+}
+
+@media (max-width: 380px) {
+    .app-shell.container:has(.learning-header) { padding-top: calc(78px + env(safe-area-inset-top)); }
+    /* Reserve the level selector's widest label; long scores retain their existing ellipsis. */
+    .learning-header .review-score-summary { align-self: flex-end; max-width: calc(100% - 78px); gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .learning-header .mode-btn { transition: none; }
+}

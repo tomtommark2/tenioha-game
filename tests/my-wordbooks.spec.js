@@ -711,10 +711,10 @@ test('マイ単語帳：長い自作語・意味も320pxで読め、通常のカ
         const bounds = element.getBoundingClientRect(), card = element.closest('.card').getBoundingClientRect();
         return bounds.left >= card.left && bounds.right <= card.right;
     })).toBe(true);
-    await expect(page.locator('.word-text-main')).toHaveCSS('font-size', '42px');
-    expect(await page.locator('.word-text-main').evaluate(element => element.scrollHeight > element.clientHeight && element.clientHeight <= 180)).toBe(true);
-    await page.locator('.word-text-main').evaluate(element => { element.scrollTop = element.scrollHeight; });
-    expect(await page.locator('.word-text-main').evaluate(element => element.scrollTop > 0)).toBe(true);
+    await expect(page.locator('.word-text-main')).toHaveCSS('font-size', '24px');
+    expect(await page.locator('.word-text-main').evaluate(element => element.scrollWidth > element.clientWidth)).toBe(true);
+    await page.locator('.word-text-main').evaluate(element => { element.scrollLeft = element.scrollWidth; });
+    expect(await page.locator('.word-text-main').evaluate(element => element.scrollLeft > 0)).toBe(true);
     await page.locator('#meaningCard').click();
     await expect(page.locator('.my-custom-meaning')).toHaveText(meaning);
     await expect(page.locator('.my-custom-meaning')).toHaveCSS('overflow-y', 'auto');

@@ -20,6 +20,7 @@ const expected = m[1];
 const targets = [
   'style.css',
   'wordbooks-m3e.css',
+  'header-m3e.css',
   'feedback.css',
   'js/feedback.js',
   'data/vocabulary.js',

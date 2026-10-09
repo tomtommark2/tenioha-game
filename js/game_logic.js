@@ -173,11 +173,64 @@ function renderVocabWordMarkup(word) {
     return `
                 <div class="vocab-word-stack${word.__customWord ? ' my-custom-word-stack' : ''}" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-4%);">
                     <div class="word-pos-label" style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 9px;">${escapeHtml(fullPos)}</div>
-                    <div class="word-text-main" style="font-size: 42px; font-weight: bold; line-height: 1.2; text-align: center;">${escapeHtml(word.word)}</div>
+                    <div class="word-text-main" style="font-size: 42px; font-weight: bold; line-height: 1.2; text-align: center;">${String(word.word ?? '').split(/(\s+)/).map(part => /^\s*$/.test(part) ? escapeHtml(part) : `<span class="word-text-token">${escapeHtml(part)}</span>`).join('')}</div>
                     ${ipaDisplay ? `<div class="word-ipa">${ipaDisplay}</div>` : ''}
                 </div>
             `;
 }
+
+// Display-only fitting: never modify the word, learning key or saved state.
+var vocabWordLayoutFrame = null;
+var vocabWordLayoutObserver = null;
+var observedVocabWord = null;
+var observedVocabWordWidth = 0;
+
+function scheduleVocabWordFit() {
+    if (vocabWordLayoutFrame !== null) return;
+    vocabWordLayoutFrame = requestAnimationFrame(() => {
+        vocabWordLayoutFrame = null;
+        fitVocabWordText();
+    });
+}
+
+function fitVocabWordText() {
+    const content = document.getElementById('vocabWord');
+    const text = content?.querySelector('.word-text-main');
+    if (!text) return;
+    if (observedVocabWord !== content) {
+        vocabWordLayoutObserver?.disconnect();
+        observedVocabWord = content;
+        observedVocabWordWidth = content.getBoundingClientRect().width;
+        if (window.ResizeObserver) {
+            vocabWordLayoutObserver = new ResizeObserver(entries => {
+                const entry = entries.find(item => item.target === observedVocabWord);
+                // Ignore height-only changes caused by fitting or phrase wrapping.
+                if (entry && Math.abs(entry.contentRect.width - observedVocabWordWidth) > 0.5) {
+                    observedVocabWordWidth = entry.contentRect.width;
+                    scheduleVocabWordFit();
+                }
+            });
+            vocabWordLayoutObserver.observe(content);
+        }
+    }
+    const availableWidth = text.clientWidth;
+    if (!availableWidth) return; // A hidden card will be fitted when it becomes visible.
+    text.style.fontSize = '42px';
+    const tokens = Array.from(text.querySelectorAll('.word-text-token'));
+    const widestToken = Math.max(0, ...tokens.map(token => token.getBoundingClientRect().width));
+    const fontSize = widestToken > availableWidth
+        ? Math.max(24, Math.floor(42 * (availableWidth - 1) / widestToken * 10) / 10) : 42;
+    text.style.fontSize = `${fontSize}px`;
+    // Only extreme custom input needs horizontal scrolling; keep its first letter reachable.
+    const overflowing = tokens.some(token => token.getBoundingClientRect().width > availableWidth);
+    text.classList.toggle('word-text-overflow', overflowing);
+    if (overflowing) text.tabIndex = 0;
+    else text.removeAttribute('tabindex');
+}
+
+window.addEventListener('resize', scheduleVocabWordFit);
+document.fonts?.ready.then(scheduleVocabWordFit);
+document.fonts?.addEventListener('loadingdone', scheduleVocabWordFit);
 
 function renderMeaningMarkup(word) {
     const original = renderBaseMeaningMarkup(word);
@@ -3546,6 +3599,8 @@ function showNextWord(reviewSnapshot = null) {
 
     updateQuestionReasonUI();
 
+    fitVocabWordText();
+
     // DOM更新後、少し待ってから音声再生
     wordSpeechTimer = setTimeout(() => {
         wordSpeechTimer = null;
@@ -3586,6 +3641,7 @@ function showWord(word) {
     renderWordSpeechButton();
     markLearningContentReady();
     updateQuestionReasonUI();
+    fitVocabWordText();
 }
 
 function showNoWordsMessage() {
@@ -3667,6 +3723,7 @@ function setupCardListeners() {
         meaningCard.parentNode.replaceChild(newMeaning, meaningCard);
         newMeaning.addEventListener('click', handleMeaningCardClick);
     }
+    fitVocabWordText();
 }
 
 function handleVocabCardClick(event) {

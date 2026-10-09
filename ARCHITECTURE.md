@@ -31,6 +31,13 @@ This is a static web app with Firebase-backed features.
 - `service_worker.js` caches both HTML entry points and core assets.
 - `docs/review-system.md` defines the SRS cadence and review-score invariants.
 
+## 学習カード・分類ヘッダー（2026-10-10）
+
+- 分類は元のキャラの右側に一体型の面で配置。今日・週・順位は上で右寄せ。768px以下では描画された足元を紫／白の170px境目に揃え、分類下端は168pxとして紫の2pxを残す。分類・復習ロック・ランキング・イラスト差替えのDOM IDと操作は維持する。
+- 限定CSSは `header-m3e.css`。本・やり直し・チェック円・キラキラは公式Material Symbols Rounded。版番号管理とService WorkerにCSS／素材を登録。キャラクター原画・アニメーション設定は変更しない。
+- 英単語は空白以外の塊を途中改行しないspanへ分け、表示幅に合わせ42〜24pxへ縮小。熟語は空白で折り返し、24pxでも入らない長い自作入力は先頭から横スクロール可能。出題・Undo・カード再作成、幅変更とフォント読込後に再計算し、学習キー・保存・配点・音声設定は変更しない。
+- 確認は `tests/header-m3e.spec.js`・`tests/word-text-layout.spec.js`、既存の復習案内・音声・自作語試験。公開対象の記録は `docs/experiments/header-layout-release-2026-10-10/review-notes.md`。
+
 ## Firebase Surface
 
 - `functions/index.js`: Stripe webhook and premium activation logic
