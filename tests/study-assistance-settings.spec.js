@@ -11,7 +11,7 @@ test.beforeEach(async ({ page, baseURL }) => {
         localStorage.setItem('vocabGame_skipWelcome', 'true');
         localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
         localStorage.setItem('vocabGame_installGuideDismissed', 'true');
-        localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-09-11-illustrated-wordbook');
+        localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-10-04-noun-illustrations-complete');
     });
     await page.goto('/index.html');
     await page.waitForFunction(() => !!window.WordIllustrations && typeof renderReviewRecommendation === 'function');
@@ -23,7 +23,7 @@ test.afterEach(async ({ page }) => {
 
 async function openSettings(page, category = '復習') {
     await page.getByRole('button', { name: 'その他メニュー', exact: true }).click();
-    await page.getByRole('button', { name: '出題・復習設定', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定', exact: true }).click();
     await expect(page.locator('#studyModeModal')).toBeVisible();
     await page.getByRole('tab', { name: category, exact: true }).click();
 }
@@ -114,7 +114,7 @@ test('復習案内：設定で非表示にでき再読込でも維持し、保�
     await expect(page.locator('#reviewRecommendationEnabled')).not.toBeChecked();
     await page.locator('#reviewRecommendationEnabled').check();
     await expect(page.locator('#reviewRecommendation')).toBeHidden();
-    await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
     await expect(page.locator('#reviewRecommendation')).toBeVisible();
     expect(await page.evaluate(() => gameState.reviewMode)).toBe('off');
 });
@@ -176,6 +176,32 @@ test('復習案内：本人がボタンを押したときだけ復習専用へ�
         enabled: reviewRecommendationEnabled }))).toEqual({ count: 101, mode: 'on', score: before, key, enabled: false });
     await page.evaluate(() => setReviewRecommendationEnabled(true));
     expect(await page.evaluate(() => gameState.reviewMode)).toBe('on');
+});
+
+test('復習案内：表示・非表示で余白やカードの縦位置を変えない', async ({ page }) => {
+    await page.evaluate(() => setReviewRecommendationEnabled(false));
+    await seedDue(page, 101, 'off');
+    const measure = () => page.evaluate(() => ({
+        scrollY,
+        scrollHeight: document.documentElement.scrollHeight,
+        elements: ['.container', '#reviewProgressWrap', '.review-progress-header', '#reviewQueuePreview', '#cardsArea', '#exampleArea']
+            .map(selector => {
+                const element = document.querySelector(selector);
+                const rect = element.getBoundingClientRect();
+                return { selector, top: rect.top, height: rect.height, paddingTop: getComputedStyle(element).paddingTop };
+            })
+    }));
+    for (const viewport of [{ width: 320, height: 740 }, { width: 390, height: 844 }, { width: 1280, height: 900 }]) {
+        await page.setViewportSize(viewport);
+        const before = await measure();
+        await page.evaluate(() => setReviewRecommendationEnabled(true));
+        await expect(page.locator('#reviewRecommendation')).toBeVisible();
+        const after = await measure();
+        expect(after).toEqual(before);
+        await page.evaluate(() => setReviewRecommendationEnabled(false));
+        await expect(page.locator('#reviewRecommendation')).toBeHidden();
+        expect(await measure()).toEqual(before);
+    }
 });
 
 test('復習案内：期限前・対象外を数えず、一覧からの学習を妨げない', async ({ page }) => {
@@ -265,7 +291,7 @@ test('復習案内：外側のカード・メニュー・出題切替は一度�
     await openSettings(page);
     await expect(page.locator('#studyModeModal')).toBeVisible();
     await expect(page.locator('#reviewRecommendation')).toBeHidden();
-    await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
     await expect(page.locator('#reviewRecommendation')).toBeHidden();
 });
 
@@ -285,7 +311,7 @@ test('復習案内：学習開始を待ち、設定画面・意味の確認中�
     await seedDue(page, 101);
     await expect(page.locator('#reviewRecommendation')).toBeHidden();
     await expect(page.locator('#studyModeModal')).toBeVisible();
-    await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
     await expect(page.locator('#reviewRecommendation')).toBeVisible();
     await page.getByRole('button', { name: 'あとで', exact: true }).click();
     await seedDue(page, 100);
@@ -314,14 +340,14 @@ test('復習案内：利用制限の画面より先に出ず、閉じる操作�
 });
 
 test('イラスト常時：状態表示から設定へ直行し、学習を開始せずキーボードと戻るも使える', async ({ page }) => {
-    const badge = page.getByRole('button', { name: '常時表示中：イラストの表示設定を開く', exact: true });
+    const badge = page.getByRole('button', { name: 'イラスト常時表示中：表示設定を開く', exact: true });
     await expect(page.locator('#illustrationModeButton')).toBeHidden();
     await openSettings(page, '表示');
     await page.locator('#illustrationAlwaysVisible').check();
-    await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
     await expect(badge).toBeVisible();
     await expect(badge).toBeEnabled();
-    await expect(badge).toHaveText('常時表示中');
+    await expect(badge).toHaveText('イラスト常時表示中');
     const before = await records(page);
     expect(await page.evaluate(() => learningSessionStarted)).toBe(false);
     for (const action of ['click', 'Enter', 'Space']) {
@@ -339,7 +365,7 @@ test('イラスト常時：状態表示から設定へ直行し、学習を開�
     }
     await badge.click();
     await page.locator('#illustrationAlwaysVisible').uncheck();
-    await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
     await expect(page.locator('#illustrationModeButton')).toBeHidden();
     await expect(page.locator('#otherMenuBtn')).toBeFocused();
     expect(await records(page)).toBe(before);
@@ -380,9 +406,11 @@ test('イラスト常時：状態表示は320〜1280pxで見出し・イラス�
         const layout = await page.locator('#illustrationModeButton').evaluate(button => {
             const rect = button.getBoundingClientRect();
             const card = button.closest('.meaning-card').getBoundingClientRect();
-            const targets = ['.card-label', '#currentIllustrationBtn', '.card-front'];
+    const targets = ['.card-label', '#currentIllustrationBtn:not([hidden])', '.card-front'];
             const overlaps = targets.some(selector => {
-                const other = button.parentElement.querySelector(selector).getBoundingClientRect();
+                const target = button.parentElement.querySelector(selector);
+                if (!target) return false;
+                const other = target.getBoundingClientRect();
                 return rect.left < other.right && other.left < rect.right && rect.top < other.bottom && other.top < rect.bottom;
             });
             return { fits: rect.left >= card.left && rect.right <= card.right && rect.top >= card.top && rect.bottom <= card.bottom,
@@ -411,6 +439,36 @@ test('イラスト常時：初期オフ、設定で回答前から表示し、�
     await expect(page.locator('#illustrationModeButton')).toBeHidden();
     await expect(page.locator('#wordIllustrationSlot')).toBeHidden();
     expect(await records(page)).toBe(before);
+});
+
+test('イラスト常時：イラストと同じ場所に一つだけ表示し、設定を変えても回答しない', async ({ page }) => {
+    await selectWord(page, 'apple');
+    const manual = page.locator('#currentIllustrationBtn');
+    const mode = page.locator('#illustrationModeButton');
+    await expect(manual).toBeVisible();
+    await expect(mode).toBeHidden();
+    const right = (await manual.boundingBox()).x + (await manual.boundingBox()).width;
+    const before = await records(page);
+    await manual.click();
+    await expect(page.locator('#wordIllustrationSlot')).toBeVisible();
+    expect(await records(page)).toBe(before);
+    await page.evaluate(() => WordIllustrations.setAlwaysVisible(true));
+    await expect(manual).toBeHidden();
+    await expect(mode).toBeVisible();
+    expect((await mode.boundingBox()).x + (await mode.boundingBox()).width).toBe(right);
+    await expect(page.locator('#meaningCard button:not([hidden])')).toHaveCount(1);
+    await mode.click();
+    await expect(page.getByRole('tab', { name: '表示', exact: true })).toHaveAttribute('aria-selected', 'true');
+    expect(await records(page)).toBe(before);
+    await page.locator('#illustrationAlwaysVisible').uncheck();
+    await page.keyboard.press('Escape');
+    await expect(manual).toBeVisible();
+    await expect(mode).toBeHidden();
+    expect(await records(page)).toBe(before);
+    await selectWord(page, 'quickly');
+    await page.evaluate(() => WordIllustrations.setAlwaysVisible(true));
+    await expect(mode).toBeVisible();
+    await expect(manual).toBeHidden();
 });
 
 test('イラスト常時：次問・再読込・Undoでも表示し、画像なしでは通常表示', async ({ page }) => {
@@ -540,7 +598,7 @@ test('イラスト常時：320px設定の操作・拡大・閉じる・フォー
     await page.keyboard.press('Space');
     await expect(page.locator('#illustrationAlwaysVisible')).toBeChecked();
     await page.screenshot({ path: `screenshots/study-assistance-settings-${testInfo.project.name}.png` });
-    await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
     await expect(page.locator('#otherMenuBtn')).toBeFocused();
     await expect(page.locator('#wordIllustration')).toBeVisible();
     await page.locator('#wordIllustrationSlot').click();

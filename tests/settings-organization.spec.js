@@ -14,7 +14,7 @@ test.beforeEach(async ({ page, baseURL }) => {
 
 async function openSettings(page) {
   await page.getByRole('button', { name: 'その他メニュー', exact: true }).click();
-  await page.getByRole('button', { name: '出題・復習設定', exact: true }).click();
+  await page.getByRole('button', { name: '出題・復習・表示設定', exact: true }).click();
   await expect(page.locator('#studyModeModal')).toBeVisible();
 }
 
@@ -49,7 +49,7 @@ test('学習設定：3分類は表示だけを切り替え、再度開くと出�
   await page.locator('[data-mastery-threshold="90"]').click();
   await expect(page.locator('#masterySettingsSummary')).toHaveText('直近10回・90%');
   await page.getByRole('tab', { name: '表示', exact: true }).click();
-  await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+  await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
   await openSettings(page);
   await expect(page.getByRole('tab', { name: '出題', exact: true })).toHaveAttribute('aria-selected', 'true');
   await page.reload();
@@ -100,7 +100,7 @@ test('学習設定：説明は必要な補足だけに絞り、保存結果は�
 
 test('学習設定：矢印キー・Tab・Escape・ブラウザ戻るで迷わず操作できる', async ({ page }) => {
   await openSettings(page);
-  await expect(page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true })).toBeFocused();
+  await expect(page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true })).toBeFocused();
   await page.keyboard.press('Tab');
   await expect(page.locator('#studySettingsQuestionsTab')).toBeFocused();
   await page.keyboard.press('ArrowRight');
@@ -152,7 +152,7 @@ test('学習設定：320〜1280pxで3分類と詳細が収まりスクロール�
         if (await details.getAttribute('open') === null) await details.locator('summary').first().click();
         await modal.evaluate(el => { el.scrollTop = el.scrollHeight; });
         await expect(page.getByRole('tablist')).toBeInViewport();
-        await expect(page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true })).toBeInViewport();
+        await expect(page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true })).toBeInViewport();
         expect(await modal.evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
         await details.locator('summary').first().click();
       }

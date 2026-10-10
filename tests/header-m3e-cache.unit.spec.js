@@ -11,7 +11,8 @@ test('学習分類のCSSと公式アイコンをキャッシュ・版番号管�
         importScripts() {}, GAME_VERSION: version, self: { addEventListener() {} }
     });
     for (const file of ['header-m3e.css', 'assets/ui/menu-book-outline-rounded.svg',
-        'assets/ui/refresh-rounded.svg', 'assets/ui/check-circle-rounded.svg', 'assets/ui/auto-awesome-rounded.svg']) {
+        'assets/ui/refresh-rounded.svg', 'assets/ui/check-circle-rounded.svg', 'assets/ui/auto-awesome-rounded.svg',
+        'assets/ui/question-mark-rounded.svg']) {
         expect(assets).toContain(`./${file}`);
         expect(fs.existsSync(path.join(root, file))).toBe(true);
     }

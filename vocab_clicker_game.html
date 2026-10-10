@@ -14,12 +14,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.1010.0351">
-    <link rel="stylesheet" href="wordbooks-m3e.css?v=2026.1010.0351">
-    <link rel="stylesheet" href="header-m3e.css?v=2026.1010.0351">
-    <link rel="preload" href="data/vocabulary.js?v=2026.1010.0351" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.1010.0351" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.1010.0351" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.1010.1630">
+    <link rel="stylesheet" href="wordbooks-m3e.css?v=2026.1010.1630">
+    <link rel="stylesheet" href="header-m3e.css?v=2026.1010.1630">
+    <link rel="preload" href="data/vocabulary.js?v=2026.1010.1630" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.1010.1630" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.1010.1630" as="script">
 </head>
 
 <body>
@@ -60,16 +60,6 @@
         </div>
     </div>
     <!-- TRIAL_END -->
-
-    <!-- LIVE TUTORIAL START (Card Bubble) -->
-    <div id="liveTutorialHint" style="display:none; position:fixed; z-index:3200; max-width:320px; background:#ffffff; border:1px solid #dfe5f5; box-shadow:0 10px 24px rgba(25,35,58,.2); border-radius:12px; padding:10px 12px;">
-        <button type="button" aria-label="チュートリアルを閉じる" onclick="skipLiveTutorial()" style="position:absolute; top:6px; right:8px; border:none; background:transparent; color:#94a0b8; cursor:pointer; font-size:14px;">✕</button>
-        <div id="liveTutorialHintText" style="font-size:13px; color:#2d3748; line-height:1.5; padding-right:18px;"></div>
-        <div style="display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-top:8px;">
-            <button id="liveTutorialActionBtn" type="button" onclick="liveTutorialAction()" style="display:none; padding:5px 10px; border:1px solid #d9dff2; border-radius:8px; background:#f7f9ff; color:#3f4b66; font-size:11px; cursor:pointer;">次へ</button>
-        </div>
-    </div>
-    <!-- LIVE TUTORIAL END -->
 
     <!-- PWA INSTALL GUIDE START -->
     <aside id="installGuideNotice" class="install-guide-notice" role="status" aria-live="polite" hidden>
@@ -191,7 +181,7 @@
 
             <button type="button" class="other-menu-item" onclick="openStudyModeModal(); toggleOtherMenu();">
                 <span class="other-menu-icon app-picto icon-menu-tune" aria-hidden="true"></span>
-                <span class="other-menu-label">出題・復習設定</span>
+                <span class="other-menu-label">出題・復習・表示設定</span>
             </button>
 
             <div class="other-menu-section-title">記録</div>
@@ -234,7 +224,6 @@
                 aria-haspopup="dialog" aria-controls="helpModal"
                 onclick="document.getElementById('helpModal').style.display='flex'">
                 <span class="vertical-dots-icon" aria-hidden="true"></span>
-                <span id="feedbackMenuDot" class="feedback-unread-dot feedback-menu-dot" aria-hidden="true" hidden></span>
             </button>
         </div>
 
@@ -423,9 +412,9 @@
             <div class="modal-content study-mode-modal-content mastery-settings" role="dialog" aria-modal="true" aria-labelledby="studyModeTitle" onclick="event.stopPropagation()">
                 <div class="study-mode-hero">
                     <div class="study-mode-heading">
-                        <h2 id="studyModeTitle" class="study-mode-title">出題・復習設定</h2>
+                        <h2 id="studyModeTitle" class="study-mode-title">出題・復習・表示設定</h2>
                     </div>
-                    <button type="button" class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()" aria-label="出題・復習設定を閉じる">×</button>
+                    <button type="button" class="modal-close-btn study-mode-close-btn" onclick="closeStudyModeModal()" aria-label="出題・復習・表示設定を閉じる">×</button>
                     <div class="study-settings-tabs" role="tablist" aria-label="学習設定のカテゴリ" onkeydown="handleStudySettingsTabKey(event)">
                         <button type="button" id="studySettingsQuestionsTab" role="tab" aria-selected="true" aria-controls="studySettingsQuestions" data-study-settings-tab="questions" onclick="selectStudySettingsTab('questions')">出題</button>
                         <button type="button" id="studySettingsReviewTab" role="tab" aria-selected="false" aria-controls="studySettingsReview" tabindex="-1" data-study-settings-tab="review" onclick="selectStudySettingsTab('review')">復習</button>
@@ -595,10 +584,13 @@
 
         <div class="main-content">
             <div class="cards-section">
+                <div id="liveTutorialHint" style="display:none;" hidden aria-hidden="true">
+                    <span id="liveTutorialHintText"></span>
+                    <button id="liveTutorialActionBtn" type="button" onclick="liveTutorialAction()" hidden>閉じる</button>
+                </div>
                 <div class="cards-area" id="cardsArea">
                     <div class="card vocab-card learning-start-ready" id="vocabCard" role="button" tabindex="0"
                         aria-label="クリックして学習を開始">
-                        <div class="card-label">英単語カード</div>
                         <button type="button" class="word-speech-btn" id="wordSpeechBtn"
                             aria-label="英単語を再生" title="英単語を再生" hidden><span class="speaker-icon" aria-hidden="true"></span></button>
                         <div class="card-content learning-start-prompt" id="vocabWord" data-learning-start="true">クリックしてスタート</div>
@@ -609,10 +601,10 @@
                         <div class="card-label">意味カード</div>
                         <button type="button" class="illustration-mode-btn" id="illustrationModeButton"
                             onclick="WordIllustrations.openVisibilitySettings(event)" aria-disabled="false"
-                            aria-label="常時表示中：イラストの表示設定を開く" aria-haspopup="dialog" aria-controls="studyModeModal" hidden>常時表示中</button>
+                            aria-label="イラスト常時表示中：表示設定を開く" aria-haspopup="dialog" aria-controls="studyModeModal" hidden><span>イラスト</span><span class="illustration-mode-status">常時表示中</span></button>
                         <button type="button" class="current-illustration-btn" id="currentIllustrationBtn" onclick="event.stopPropagation(); WordIllustrations.openCurrent()" hidden>イラスト</button>
                         <div class="card-front">
-                            <div class="card-content">?</div>
+                            <div class="card-content" role="img" aria-label="意味を見る">?</div>
                         </div>
                         <div class="card-back">
                             <div class="card-content" id="meaningText">意味</div>
@@ -636,8 +628,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.1010.0351"></script>
-<script src="data/ipa_overrides.js?v=2026.1010.0351"></script>
+    <script src="data/vocabulary.js?v=2026.1010.1630"></script>
+<script src="data/ipa_overrides.js?v=2026.1010.1630"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -722,11 +714,6 @@
                     </span>
                 </button>
 
-                <button type="button" id="feedbackOpenBtn" class="help-list-item help-command-item" onclick="openFeedback()">
-                    <span class="help-list-icon app-picto icon-mail" aria-hidden="true"></span>
-                    <span class="help-list-copy"><span class="help-list-title">ひとこと送る</span><span class="help-list-desc">みんなの改善案と運営の返信を見る</span></span>
-                    <span id="feedbackUnreadDot" class="feedback-unread-dot" aria-hidden="true" hidden></span>
-                </button>
                 <button type="button" class="help-list-item help-command-item" onclick="location.href='mailto:tenioha.eng@gmail.com'">
                     <span class="help-list-icon app-picto icon-mail" aria-hidden="true"></span>
                     <span class="help-list-copy">
@@ -1256,7 +1243,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.1010.0351">
+    <link rel="stylesheet" href="feedback.css?v=2026.1010.1630">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1302,20 +1289,20 @@
             <p id="speechSettingsStatus" class="speech-settings-note" role="status"></p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.1010.0351"></script>
-    <script src="js/update_manager.js?v=2026.1010.0351"></script>
-    <script src="js/config.js?v=2026.1010.0351"></script>
-    <script src="data/announcements.js?v=2026.1010.0351"></script>
-    <script src="js/utils.js?v=2026.1010.0351"></script>
-    <script src="data/word-illustrations.js?v=2026.1010.0351"></script>
-    <script src="js/word_illustrations.js?v=2026.1010.0351"></script>
+    <script src="js/version.js?v=2026.1010.1630"></script>
+    <script src="js/update_manager.js?v=2026.1010.1630"></script>
+    <script src="js/config.js?v=2026.1010.1630"></script>
+    <script src="data/announcements.js?v=2026.1010.1630"></script>
+    <script src="js/utils.js?v=2026.1010.1630"></script>
+    <script src="data/word-illustrations.js?v=2026.1010.1630"></script>
+    <script src="js/word_illustrations.js?v=2026.1010.1630"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.1010.0351"></script>
-    <script src="js/my_wordbooks.js?v=2026.1010.0351"></script>
-    <script src="js/game_logic.js?v=2026.1010.0351"></script>
-    <script src="js/ui_manager.js?v=2026.1010.0351"></script>
-    <script src="js/feedback.js?v=2026.1010.0351"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.1010.0351"></script>
+    <script src="js/word_grouping.js?v=2026.1010.1630"></script>
+    <script src="js/my_wordbooks.js?v=2026.1010.1630"></script>
+    <script src="js/game_logic.js?v=2026.1010.1630"></script>
+    <script src="js/ui_manager.js?v=2026.1010.1630"></script>
+    <script src="js/feedback.js?v=2026.1010.1630"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.1010.1630"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

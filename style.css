@@ -1317,6 +1317,69 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     margin-bottom: 15px;
 }
 
+.card-tutorial-close {
+    display: inline-flex;
+    pointer-events: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-height: 44px;
+    padding: 4px 6px;
+    border: none;
+    border-radius: 10px;
+    background: #f3f0fb;
+    color: #67548c;
+    font: inherit;
+    font-size: 11px;
+    line-height: 1.4;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.card-tutorial-close-icon { font-size: 18px; line-height: 1; }
+
+.card-tutorial-close:focus-visible {
+    outline: 2px solid #67548c;
+    outline-offset: 2px;
+}
+
+.card.has-card-tutorial {
+    min-height: 260px;
+    padding-top: 14px;
+    padding-bottom: 96px;
+}
+
+.meaning-card.has-card-tutorial {
+    padding-top: 48px;
+}
+
+.card-tutorial-note {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 14px;
+    left: 20px;
+    right: 20px;
+    padding-top: 8px;
+    border-top: 1px solid #ede6f5;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #625873;
+}
+
+.card-tutorial-note ul {
+    margin: 0;
+    padding-left: 16px;
+}
+
+.card-tutorial-note li:first-child {
+    font-weight: 600;
+    color: #40364f;
+}
+
 .card {
     flex: 1;
     background:
@@ -1444,7 +1507,8 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 
 #reviewProgressWrap {
     position: relative;
-    margin: 6px 0 10px;
+    /* The floating recommendation clears the card even without a tutorial heading. */
+    margin: 6px 0 16px;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.95)) !important;
     border: 1px solid rgba(210, 218, 237, 0.92) !important;
@@ -1881,39 +1945,47 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 
 .question-reason-label {
     position: absolute;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 14px;
+    left: 14px;
     align-items: center;
     justify-content: center;
-    min-height: 25px;
-    padding: 4px 10px;
-    border: 1px solid #d7def0;
-    border-radius: 999px;
-    background: #f7f9ff;
-    color: #59657a;
+    min-height: 20px;
+    padding: 3px 8px;
+    gap: 4px;
+    border: 0;
+    border-radius: 8px;
+    background: #f3f0fa;
+    color: #67548c;
     font-size: 10px;
-    font-weight: 800;
+    font-weight: 600;
     line-height: 1;
     white-space: nowrap;
+    max-width: calc(50% - 40px);
 }
 
 .question-reason-label[data-tone="weak"] {
-    border-color: #f6c6c2;
-    background: #fff4f3;
-    color: #b93b32;
+    background: #fcebea;
+    color: #94514e;
+}
+
+.question-reason-label[data-tone="weak"]::before {
+    content: "";
+    flex: 0 0 12px;
+    width: 12px;
+    height: 12px;
+    background: currentColor;
+    -webkit-mask: url("assets/ui/refresh-rounded.svg") center / contain no-repeat;
+    mask: url("assets/ui/refresh-rounded.svg") center / contain no-repeat;
 }
 
 .question-reason-label[data-tone="learned"] {
-    border-color: #bfe7cf;
-    background: #f1fbf5;
-    color: #23804a;
+    background: #edf5ee;
+    color: #46694f;
 }
 
 .question-reason-label[data-tone="perfect"] {
-    border-color: #efd99b;
-    background: #fff9e7;
-    color: #9a6a00;
+    background: #faf1db;
+    color: #79621c;
 }
 
 .word-ipa {
@@ -5284,7 +5356,7 @@ body.dismissible-modal-open {
 .illustration-mode-btn {
     position: absolute;
     top: 2px;
-    left: 8px;
+    right: 8px;
     z-index: 2;
     min-height: 44px;
     padding: 4px 8px;
@@ -5297,7 +5369,13 @@ body.dismissible-modal-open {
     font-weight: 600;
     cursor: pointer;
     pointer-events: auto;
+    display: grid;
+    gap: 1px;
+    min-width: 76px;
+    line-height: 15px;
 }
+.illustration-mode-status { font-size: 10px; color: #796696; }
+.illustration-mode-status::before { content: ''; display: inline-block; width: 5px; height: 5px; margin-right: 4px; border-radius: 50%; background: #67548c; vertical-align: 1px; }
 .illustration-mode-btn[hidden] { display: none; }
 .illustration-mode-btn:hover { background: #eae4f7; }
 .illustration-mode-btn:focus-visible { outline: 2px solid #7c5cff; outline-offset: 2px; }
@@ -7104,35 +7182,33 @@ body.dismissible-modal-open {
     position: relative;
     display: grid;
     place-items: center;
+    align-content: center;
+    gap: 0;
     width: 58px;
     height: 58px;
-    background: transparent;
-    border-radius: 0;
+    background: #f3f0fb;
+    border-radius: 20px;
     box-shadow: none;
     text-shadow: none;
     font-size: 0 !important;
-    color: transparent;
+    line-height: 0;
+    color: #67548c;
 }
 
 .meaning-card .card-front .card-content::before {
     content: "";
     display: block;
-    width: 46px;
-    height: 46px;
-    background: #7C5CFF;
-    -webkit-mask: url("assets/icons/circle-help.svg") center / contain no-repeat;
-    mask: url("assets/icons/circle-help.svg") center / contain no-repeat;
+    width: 40px;
+    height: 40px;
+    background: currentColor;
+    -webkit-mask: url("assets/ui/question-mark-rounded.svg") center / contain no-repeat;
+    mask: url("assets/ui/question-mark-rounded.svg") center / contain no-repeat;
 }
 
 @media (max-width: 768px) {
     .meaning-card .card-front .card-content {
         width: 58px !important;
         height: 58px !important;
-    }
-
-    .meaning-card .card-front .card-content::before {
-        width: 46px;
-        height: 46px;
     }
 }
 
@@ -8443,13 +8519,24 @@ body.dismissible-modal-open {
 }
 
 /* Speech settings: compact entry; the timer remains a removable flex item. */
-.vocab-card { min-width: 0; }
+.vocab-card { min-width: 0; padding-top: 14px; padding-bottom: 14px; }
+.vocab-card:has(> .word-speech-btn:not([hidden])) > .card-accuracy { right: 60px; }
 .vocab-card .card-content, .vocab-word-stack, .vocab-word-stack > * { max-width: 100%; overflow-wrap: anywhere; }
 .vocab-card .card-content, .vocab-word-stack { width: 100%; min-width: 0; }
-.vocab-word-stack .word-text-main { width: 100%; min-width: 0; max-height: 180px; overflow: auto; overscroll-behavior: contain; overflow-wrap: normal; word-break: normal; hyphens: none; }
+.vocab-card > .card-content:has(> .vocab-word-stack) { flex: 1; display: grid; }
+.vocab-word-stack { display: grid; grid-template-rows: minmax(var(--vocab-side-height, 32px), 1fr) auto minmax(var(--vocab-side-height, 32px), 1fr); min-height: calc(2 * var(--vocab-side-height, 32px) + var(--vocab-word-height, 51px)); align-items: start; justify-items: center; }
+.vocab-word-stack > .word-pos-label { grid-row: 1; max-width: calc(100% - 220px); font-size: 14px; line-height: 20px; color: #667eea; font-weight: normal; text-align: center; }
+.vocab-word-stack > .word-text-main { grid-row: 2; }
+.vocab-word-stack > .word-ipa { grid-row: 3; }
+@media (max-width: 768px) {
+    .vocab-card { min-height: 200px; }
+}
+.vocab-word-stack .word-text-main { width: 100%; min-width: 0; overflow: visible; overflow-wrap: normal; word-break: normal; hyphens: none; }
+.vocab-word-stack .word-text-main.word-text-overflow { overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; overscroll-behavior: contain; }
+.vocab-word-stack .word-text-main.word-text-tall { max-height: 180px; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; }
+.vocab-word-stack .word-text-main.word-text-overflow.word-text-tall { overflow-x: auto; }
 .word-text-token { display: inline-block; white-space: nowrap; vertical-align: top; }
 .word-text-main.word-text-overflow { text-align: left !important; }
-.vocab-card:has(> .word-speech-btn:not([hidden])) { padding-top: 52px; padding-bottom: 28px; }
 .word-speech-btn {
     position: absolute;
     top: 4px;

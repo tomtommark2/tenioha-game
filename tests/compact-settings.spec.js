@@ -13,7 +13,7 @@ test('省スペース設定入口は目印を一度消すと再表示しない',
   await expect(page.locator('#settingsMenuHint')).toBeVisible();
   await page.getByRole('button', { name: 'その他メニュー' }).click();
   await expect(page.locator('#settingsMenuHint')).toBeHidden();
-  await expect(page.getByRole('button', { name: '出題・復習設定', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '出題・復習・表示設定', exact: true })).toBeVisible();
   await page.reload();
   await expect(page.locator('#settingsMenuHint')).toBeHidden();
 });
@@ -64,8 +64,8 @@ test('省スペース設定入口はその他とドットだけを表示し、�
   }
   const before = await page.evaluate(() => gameState.reviewMode);
   await page.getByRole('button', { name: 'その他メニュー' }).click();
-  await page.getByRole('button', { name: '出題・復習設定', exact: true }).click();
+  await page.getByRole('button', { name: '出題・復習・表示設定', exact: true }).click();
   await expect(page.locator('#studyModeModal')).toBeVisible();
-  await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+  await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
   expect(await page.evaluate(() => gameState.reviewMode)).toBe(before);
 });

@@ -13,6 +13,8 @@
     function renderAlwaysVisibleIndicator() {
         const button = document.getElementById('illustrationModeButton');
         if (button) button.hidden = !alwaysVisible;
+        const currentButton = document.getElementById('currentIllustrationBtn');
+        if (currentButton) currentButton.hidden = alwaysVisible || !canUseEntry(current);
     }
 
     function renderVisibilitySettings(message = '') {
@@ -104,10 +106,8 @@
     }
 
     function refreshPrevious(word, level, database) {
-        renderAlwaysVisibleIndicator();
         current = find(word, level, database);
-        const currentButton = document.getElementById('currentIllustrationBtn');
-        if (currentButton) currentButton.hidden = !canUseEntry(current);
+        renderAlwaysVisibleIndicator();
         const button = document.getElementById('previousIllustrationBtn');
         const currentKey = word && window.GameUtils.getWordKey(word, level, database);
         if (button) button.hidden = !previous || !canUseEntry(previous.entry) || previous.key === currentKey;

@@ -451,6 +451,12 @@ const ANNOUNCEMENT_READ_KEY = 'vocabGame_lastReadAnnouncementId';
 const ANNOUNCEMENT_AUTO_SHOWN_KEY = 'vocabGame_lastAutoShownAnnouncementId';
 const ANNOUNCEMENT_READ_IDS_KEY = 'vocabGame_readAnnouncementIds_v1';
 let announcementReadIds = null;
+let announcementFeedbackUnread = false;
+
+window.setAnnouncementFeedbackUnread = function (unread) {
+    announcementFeedbackUnread = unread === true;
+    updateAnnouncementBadge();
+};
 
 function getReadAnnouncementIds() {
     if (announcementReadIds) return announcementReadIds;
@@ -522,8 +528,10 @@ function updateAnnouncementBadge() {
     const readIds = getReadAnnouncementIds();
     const unreadCount = getAnnouncements().filter(item => !readIds.has(item.id)).length;
     const hasUnread = unreadCount > 0;
-    dot.style.display = hasUnread ? 'block' : 'none';
-    btn.setAttribute('aria-label', hasUnread ? '未読のお知らせがあります' : 'お知らせ');
+    dot.style.display = hasUnread || announcementFeedbackUnread ? 'block' : 'none';
+    btn.setAttribute('aria-label', hasUnread
+        ? (announcementFeedbackUnread ? '未読のお知らせとひとことの新着があります' : '未読のお知らせがあります')
+        : (announcementFeedbackUnread ? 'ひとことに新着があります' : 'お知らせ'));
     const status = document.getElementById('announcementReadStatus');
     if (status) status.textContent = hasUnread ? `未読 ${unreadCount}件` : 'すべて既読です';
     const markAll = document.getElementById('announcementMarkAllRead');
@@ -1561,7 +1569,7 @@ function renderInstallGuideModal() {
 
 function isInstallGuideBlockedByImportantUi() {
     const selectors = [
-        '#liveTutorialHint',
+        '.card-tutorial-note',
         '#trialOverlay',
         '#forceUpdateModal',
         '#updatePromptModal',
@@ -1709,6 +1717,8 @@ window.addEventListener('appinstalled', () => {
 });
 
 const LIVE_TUTORIAL_KEY = 'vocabGame_skipLiveTutorial';
+const CARD_TUTORIAL_SEEN_KEY = 'vocabGame_cardTutorialSeen';
+const CARD_TUTORIAL_DISMISSED_KEY = 'vocabGame_cardTutorialDismissed';
 const ONBOARDING_VERSION_KEY = 'vocabGame_onboardingVersion';
 const CURRENT_ONBOARDING_VERSION = '2';
 window.liveTutorialState = { active: false, step: 0 };
@@ -1730,56 +1740,52 @@ function isTutorialPreviewRequested() {
 
 window.renderLiveTutorial = function () {
     const box = document.getElementById('liveTutorialHint');
-    const text = document.getElementById('liveTutorialHintText');
-    const actionBtn = document.getElementById('liveTutorialActionBtn');
-    if (!box || !text || !actionBtn) return;
-
-    const step = window.liveTutorialState.step;
-    const steps = [
-        { text: '意味が分かるなら、英単語カードをタップします。', anchor: '#vocabCard', waitAction: false },
-        { text: '分からない場合は、意味カードを開きます（不正解として記録）。', anchor: '#meaningCard', waitAction: false },
-        { text: '回答履歴から「未学習・苦手・得意・完璧」へ自動分類されます。', anchor: '.mode-buttons', waitAction: true },
-        { text: '苦手な単語は復習キューへ戻ります。設定は「その他」→「出題モード」から変更できます。', anchor: '#reviewQueuePreview', waitAction: true },
+    if (!box) return;
+    const active = window.liveTutorialState?.active === true;
+    // Keep the legacy anchor, but explanations live only inside each card.
+    box.hidden = true;
+    box.style.display = 'none';
+    const notes = [
+        { cardId: 'vocabCard', id: 'vocabCardTutorialHint', items: ['わかったらタップ', '意味は表示されません', '初回は「完璧」に分類'] },
+        { cardId: 'meaningCard', id: 'meaningCardTutorialHint', items: ['わからなかったらタップ', '意味を表示', '「苦手」に分類'] },
     ];
-
-    const current = steps[Math.min(step, steps.length - 1)];
-    text.textContent = current.text;
-
-    actionBtn.style.display = current.waitAction ? 'inline-block' : 'none';
-    actionBtn.textContent = (step >= steps.length - 1) ? '完了' : '次へ';
-
-    let anchor = document.querySelector(current.anchor);
-    let usedFallbackAnchor = false;
-    if (anchor) {
-      const candidateRect = anchor.getBoundingClientRect();
-      if (candidateRect.width === 0 || candidateRect.height === 0) {
-        anchor = document.querySelector('#otherMenuBtn');
-        usedFallbackAnchor = true;
-      }
-    }
-    if (anchor) {
-      if (usedFallbackAnchor && window.scrollY > 0) {
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      }
-      const anchorRect = anchor.getBoundingClientRect();
-      const boxRect = box.getBoundingClientRect();
-      const gap = 10;
-      const horizontalMargin = 10;
-      const centeredLeft = anchorRect.left + (anchorRect.width / 2) - (boxRect.width / 2);
-      const maxLeft = Math.max(horizontalMargin, window.innerWidth - boxRect.width - horizontalMargin);
-      const left = Math.max(horizontalMargin, Math.min(maxLeft, centeredLeft));
-      const fitsAbove = anchorRect.top >= boxRect.height + gap + horizontalMargin;
-      const preferredTop = fitsAbove
-        ? anchorRect.top - boxRect.height - gap
-        : anchorRect.bottom + gap;
-      const maxTop = Math.max(horizontalMargin, window.innerHeight - boxRect.height - horizontalMargin);
-      const top = Math.max(horizontalMargin, Math.min(maxTop, preferredTop));
-      box.style.left = `${left}px`;
-      box.style.top = `${top}px`;
-    } else {
-      box.style.left = '12px';
-      box.style.top = '12px';
-    }
+    notes.forEach(({ cardId, id, items }) => {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+        const show = active && !window.liveTutorialState.dismissedCards?.includes(cardId);
+        card.classList.toggle('has-card-tutorial', show);
+        const existing = document.getElementById(id);
+        if (!show) {
+            existing?.remove();
+            if (card.getAttribute('aria-describedby') === `${id}Text`) card.removeAttribute('aria-describedby');
+            return;
+        }
+        card.setAttribute('aria-describedby', `${id}Text`);
+        if (existing) {
+            existing.querySelector('.card-tutorial-close').onclick = event => window.dismissCardTutorial(cardId, event);
+            return;
+        }
+        const note = document.createElement('div');
+        note.id = id;
+        note.className = 'card-tutorial-note';
+        const list = document.createElement('ul');
+        list.id = `${id}Text`;
+        items.forEach((item) => {
+            const line = document.createElement('li');
+            line.textContent = item;
+            list.appendChild(line);
+        });
+        note.appendChild(list);
+        const close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'card-tutorial-close';
+        close.setAttribute('aria-disabled', 'false');
+        close.setAttribute('aria-label', `${cardId === 'vocabCard' ? '単語' : '意味'}カードの説明を閉じる`);
+        close.innerHTML = '<span>説明を閉じる</span><span class="card-tutorial-close-icon" aria-hidden="true">&times;</span>';
+        close.onclick = event => window.dismissCardTutorial(cardId, event);
+        note.appendChild(close);
+        card.appendChild(note);
+    });
 }
 
 window.startLiveTutorial = function () {
@@ -1789,29 +1795,45 @@ window.startLiveTutorial = function () {
     if (!isTutorialPreview && localStorage.getItem(LIVE_TUTORIAL_KEY) === 'true') return;
     const box = document.getElementById('liveTutorialHint');
     if (!box) return;
-    window.liveTutorialState = { active: true, step: 0 };
-    box.style.display = 'block';
+    let dismissedCards = [];
+    if (!isTutorialPreview) {
+        try {
+            const stored = JSON.parse(localStorage.getItem(CARD_TUTORIAL_DISMISSED_KEY));
+            if (Array.isArray(stored)) dismissedCards = stored.filter(id => ['vocabCard', 'meaningCard'].includes(id));
+        } catch { /* Ignore invalid display preferences. */ }
+    }
+    window.liveTutorialState = { active: true, step: 0, dismissedCards };
+    localStorage.setItem(CARD_TUTORIAL_SEEN_KEY, 'true');
     window.renderLiveTutorial();
 }
 
 window.completeLiveTutorial = function () {
-    const box = document.getElementById('liveTutorialHint');
+    const restoreFocus = document.activeElement?.closest('#liveTutorialHint, .card-tutorial-close');
     localStorage.setItem(LIVE_TUTORIAL_KEY, 'true');
     localStorage.setItem(ONBOARDING_VERSION_KEY, CURRENT_ONBOARDING_VERSION);
-    if (box) box.style.display = 'none';
     window.liveTutorialState = { active: false, step: 0 };
+    window.renderLiveTutorial();
+    if (restoreFocus) focusWithoutScrolling(document.getElementById('vocabCard'));
+}
+
+window.dismissCardTutorial = function (cardId, event) {
+    event?.stopPropagation();
+    if (!window.liveTutorialState?.active || !['vocabCard', 'meaningCard'].includes(cardId)) return;
+    const dismissedCards = [...new Set([...(window.liveTutorialState.dismissedCards || []), cardId])];
+    localStorage.setItem(CARD_TUTORIAL_DISMISSED_KEY, JSON.stringify(dismissedCards));
+    window.liveTutorialState.dismissedCards = dismissedCards;
+    if (dismissedCards.length === 2) {
+        window.completeLiveTutorial();
+    } else {
+        window.renderLiveTutorial();
+        focusWithoutScrolling(document.querySelector('.card-tutorial-close'));
+    }
 }
 
 window.skipLiveTutorial = function () { window.completeLiveTutorial(); }
 window.liveTutorialAction = function () {
     if (!window.liveTutorialState || !window.liveTutorialState.active) return;
-    const maxStep = 3;
-    if (window.liveTutorialState.step >= maxStep) {
-        window.completeLiveTutorial();
-        return;
-    }
-    window.liveTutorialState.step += 1;
-    window.renderLiveTutorial();
+    window.completeLiveTutorial();
 }
 window.addEventListener('resize', () => {
     if (window.liveTutorialState && window.liveTutorialState.active) {
@@ -1819,15 +1841,9 @@ window.addEventListener('resize', () => {
     }
 });
 
-window.liveTutorialEvent = function (eventName) {
+window.liveTutorialEvent = function () {
     if (!window.liveTutorialState || !window.liveTutorialState.active) return;
-    if (window.liveTutorialState.step === 0 && eventName === 'vocab_correct') {
-        window.liveTutorialState.step = 1;
-        window.renderLiveTutorial();
-    } else if (window.liveTutorialState.step === 1 && eventName === 'meaning_open') {
-        window.liveTutorialState.step = 2;
-        window.renderLiveTutorial();
-    }
+    window.renderLiveTutorial();
 }
 
 function initWelcomeSequence() {
@@ -1840,9 +1856,10 @@ function initWelcomeSequence() {
     const legacyWelcomeSeen = localStorage.getItem('vocabGame_skipWelcome') === 'true';
     const legacyTutorialComplete = localStorage.getItem(LIVE_TUTORIAL_KEY) === 'true';
     const hasExistingSave = window.__hadExistingVocabSaveAtBoot === true;
+    const cardTutorialSeen = localStorage.getItem(CARD_TUTORIAL_SEEN_KEY) === 'true';
 
     // Users who already used the previous flow are migrated without seeing onboarding again.
-    if (!onboardingComplete && (legacyWelcomeSeen || legacyTutorialComplete || hasExistingSave)) {
+    if (!onboardingComplete && (legacyWelcomeSeen || legacyTutorialComplete || (hasExistingSave && !cardTutorialSeen))) {
         localStorage.setItem(LIVE_TUTORIAL_KEY, 'true');
         localStorage.setItem(ONBOARDING_VERSION_KEY, CURRENT_ONBOARDING_VERSION);
         return;

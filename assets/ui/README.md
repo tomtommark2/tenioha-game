@@ -9,3 +9,5 @@ Copyright Google LLC. Apache License 2.0の全文は `Material-Symbols-LICENSE.t
 ヘッダーの `refresh-rounded.svg`・`check-circle-rounded.svg`・`auto-awesome-rounded.svg` は [Googleの公式リポジトリ](https://github.com/google/material-design-icons/tree/master/symbols/web) のMaterial Symbols Rounded（24px、weight 400、grade 0）から無改変で収録。キラキラだけfill 1、ほかはfill 0。分類ボタンの本は既存の `menu-book-outline-rounded.svg` を再利用する。
 
 Roboto Flex（ラテン文字）は承認済みモックのFontsourceパッケージから使用。SIL Open Font License 1.1は `Roboto-Flex-LICENSE.txt`。日本語は既存アプリのNoto Sans JPを維持。
+
+意味カードの `question-mark-rounded.svg` は [Google公式のquestion_mark](https://github.com/google/material-design-icons/blob/master/symbols/web/question_mark/materialsymbolsrounded/question_mark_24px.svg)（Material Symbols Rounded、24px）を無改変で収録。ほかのMaterialアイコンと同じApache-2.0ライセンス。

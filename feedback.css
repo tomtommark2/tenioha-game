@@ -13,7 +13,3 @@
 .feedback-status-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.feedback-status-tools select{font:16px system-ui;min-height:44px;border:1px solid #d8d5ec;border-radius:8px;background:white;padding:6px;color:#51469e}
 .feedback-unread-dot{display:inline-block;width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#f04457;box-shadow:0 0 0 2px #fff;margin-left:auto}
 .feedback-unread-dot[hidden]{display:none!important}
-.feedback-menu-dot{position:absolute;top:7px;right:7px}
-#topActionMenuBtn{position:relative}
-#feedbackOpenBtn{position:relative}
-#feedbackUnreadDot{position:absolute;top:14px;right:14px}

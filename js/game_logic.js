@@ -171,8 +171,8 @@ function renderVocabWordMarkup(word) {
         : pronunciations.map(ipa => `<span class="word-ipa-variant">${escapeHtml([...new Set(senses.filter(sense => formatIpaForDisplay(sense.ipa) === ipa).map(sense => sense.pos))].join('・'))} ${escapeHtml(ipa)}</span>`).join('');
 
     return `
-                <div class="vocab-word-stack${word.__customWord ? ' my-custom-word-stack' : ''}" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-4%);">
-                    <div class="word-pos-label" style="font-size: 18px; color: #667eea; font-weight: normal; margin-bottom: 9px;">${escapeHtml(fullPos)}</div>
+                <div class="vocab-word-stack${word.__customWord ? ' my-custom-word-stack' : ''}">
+                    <div class="word-pos-label">${escapeHtml(fullPos)}</div>
                     <div class="word-text-main" style="font-size: 42px; font-weight: bold; line-height: 1.2; text-align: center;">${String(word.word ?? '').split(/(\s+)/).map(part => /^\s*$/.test(part) ? escapeHtml(part) : `<span class="word-text-token">${escapeHtml(part)}</span>`).join('')}</div>
                     ${ipaDisplay ? `<div class="word-ipa">${ipaDisplay}</div>` : ''}
                 </div>
@@ -215,6 +215,7 @@ function fitVocabWordText() {
     }
     const availableWidth = text.clientWidth;
     if (!availableWidth) return; // A hidden card will be fitted when it becomes visible.
+    text.classList.remove('word-text-overflow', 'word-text-tall');
     text.style.fontSize = '42px';
     const tokens = Array.from(text.querySelectorAll('.word-text-token'));
     const widestToken = Math.max(0, ...tokens.map(token => token.getBoundingClientRect().width));
@@ -223,9 +224,19 @@ function fitVocabWordText() {
     text.style.fontSize = `${fontSize}px`;
     // Only extreme custom input needs horizontal scrolling; keep its first letter reachable.
     const overflowing = tokens.some(token => token.getBoundingClientRect().width > availableWidth);
+    const tall = text.getBoundingClientRect().height > 180;
     text.classList.toggle('word-text-overflow', overflowing);
-    if (overflowing) text.tabIndex = 0;
+    text.classList.toggle('word-text-tall', tall);
+    if (overflowing || tall) text.tabIndex = 0;
     else text.removeAttribute('tabindex');
+    // Equal space above and below keeps the word itself at the card's center.
+    const stack = text.closest('.vocab-word-stack');
+    const pos = stack?.querySelector('.word-pos-label');
+    const ipa = stack?.querySelector('.word-ipa');
+    const sideHeight = Math.max(pos ? pos.getBoundingClientRect().height + 12 : 0,
+        ipa ? ipa.getBoundingClientRect().height + parseFloat(getComputedStyle(ipa).marginTop) : 0);
+    stack?.style.setProperty('--vocab-side-height', `${sideHeight}px`);
+    stack?.style.setProperty('--vocab-word-height', `${text.getBoundingClientRect().height}px`);
 }
 
 window.addEventListener('resize', scheduleVocabWordFit);
@@ -3671,7 +3682,6 @@ function hideNoWordsMessage() {
         cardsArea.innerHTML = `
                     <div class="card vocab-card" id="vocabCard" role="button" tabindex="0"
                         aria-label="英単語を正解として回答">
-                        <div class="card-label">英単語カード</div>
                         <button type="button" class="word-speech-btn" id="wordSpeechBtn"
                             aria-label="英単語を再生" title="英単語を再生" hidden><span class="speaker-icon" aria-hidden="true"></span></button>
                         <div class="card-content" id="vocabWord" aria-busy="true"></div>
@@ -3681,10 +3691,10 @@ function hideNoWordsMessage() {
                         <div class="card-label">意味カード</div>
                         <button type="button" class="illustration-mode-btn" id="illustrationModeButton"
                             onclick="WordIllustrations.openVisibilitySettings(event)" aria-disabled="false"
-                            aria-label="常時表示中：イラストの表示設定を開く" aria-haspopup="dialog" aria-controls="studyModeModal" hidden>常時表示中</button>
+                            aria-label="イラスト常時表示中：表示設定を開く" aria-haspopup="dialog" aria-controls="studyModeModal" hidden><span>イラスト</span><span class="illustration-mode-status">常時表示中</span></button>
                         <button type="button" class="current-illustration-btn" id="currentIllustrationBtn" onclick="event.stopPropagation(); WordIllustrations.openCurrent()" hidden>イラスト</button>
                         <div class="card-front">
-                            <div class="card-content">?</div>
+                            <div class="card-content" role="img" aria-label="意味を見る">?</div>
                         </div>
                         <div class="card-back">
                             <div class="card-content" id="meaningText">意味</div>
@@ -3723,6 +3733,7 @@ function setupCardListeners() {
         meaningCard.parentNode.replaceChild(newMeaning, meaningCard);
         newMeaning.addEventListener('click', handleMeaningCardClick);
     }
+    if (typeof window.renderLiveTutorial === 'function') window.renderLiveTutorial();
     fitVocabWordText();
 }
 

@@ -194,10 +194,11 @@ test('お知らせはひとことへの移動と戻る・Escape・背景・ブ�
   await expect(page.locator('#announcementModal')).toBeHidden();
   await expect(page.locator('#announcementBtn')).toBeFocused();
   await page.locator('#topActionMenuBtn').click();
-  await page.locator('#feedbackOpenBtn').click();
-  await expect(page.locator('#feedbackClose')).toHaveText('×');
-  await page.locator('#feedbackClose').click();
-  await expect(page.locator('#feedbackModal')).toBeHidden();
+  await expect(page.locator('#helpModal')).toBeVisible();
+  await expect(page.locator('#helpModal').getByRole('button', { name: /ひとこと送る/ })).toHaveCount(0);
+  await expect(page.locator('#feedbackOpenBtn')).toHaveCount(0);
+  await page.getByRole('button', { name: '管理メニューを閉じる', exact: true }).click();
+  await expect(page.locator('#helpModal')).toBeHidden();
   await expect(page.locator('#announcementModal')).toBeHidden();
 });
 

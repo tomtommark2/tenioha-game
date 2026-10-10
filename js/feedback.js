@@ -33,12 +33,9 @@
             try { localStorage.setItem(SEEN_KEY, JSON.stringify(seen)); } catch { /* Session-only fallback. */ }
         }
         const unread = latestItems.some(post => seen[post.id] !== signature(post));
-        document.getElementById('feedbackUnreadDot').hidden = !unread;
-        document.getElementById('feedbackMenuDot').hidden = !unread;
         document.getElementById('announcementFeedbackDot').hidden = !unread;
         document.getElementById('announcementFeedbackBtn').setAttribute('aria-label', unread ? 'ひとこと送る：新しい投稿・返信があります' : 'ひとこと送る');
-        document.getElementById('feedbackOpenBtn').setAttribute('aria-label', unread ? 'ひとこと送る：新しい投稿・返信があります' : 'ひとこと送る');
-        document.getElementById('topActionMenuBtn').setAttribute('aria-label', unread ? '管理メニュー：ひとことに新着があります' : '管理メニュー');
+        window.setAnnouncementFeedbackUnread(unread);
     }
     async function checkUnread() {
         if (checking || visible() || document.visibilityState !== 'visible' || Date.now() - lastCheck < 60000) return;
@@ -230,7 +227,6 @@
         if (!text.value.trim()) { message.textContent = 'ひとこと入力してください。'; text.focus(); return; }
         if (await mutate('create', { text: text.value, nickname: nickname.value.trim() || '学習者' })) text.value = '';
     });
-    document.getElementById('topActionMenuBtn').addEventListener('click', checkUnread);
     document.getElementById('announcementBtn').addEventListener('click', checkUnread);
     document.addEventListener('visibilitychange', checkUnread);
     window.addEventListener('focus', checkUnread);

@@ -33,9 +33,11 @@ This is a static web app with Firebase-backed features.
 
 ## 学習カード・分類ヘッダー（2026-10-10）
 
-- 分類は元のキャラの右側に一体型の面で配置。今日・週・順位は上で右寄せ。768px以下では描画された足元を紫／白の170px境目に揃え、分類下端は168pxとして紫の2pxを残す。分類・復習ロック・ランキング・イラスト差替えのDOM IDと操作は維持する。
+- 分類は元のキャラの右側に一体型の面で配置。今日・週・順位はスマホで上の右寄せ、PC（769px以上）は従来のキャラ横の縦3段。768px以下では描画された足元を紫／白の170px境目に揃え、分類下端は168pxとして紫の2pxを残す。分類・復習ロック・ランキング・イラスト差替えのDOM IDと操作は維持する。
 - 限定CSSは `header-m3e.css`。本・やり直し・チェック円・キラキラは公式Material Symbols Rounded。版番号管理とService WorkerにCSS／素材を登録。キャラクター原画・アニメーション設定は変更しない。
 - 英単語は空白以外の塊を途中改行しないspanへ分け、表示幅に合わせ42〜24pxへ縮小。熟語は空白で折り返し、24pxでも入らない長い自作入力は先頭から横スクロール可能。出題・Undo・カード再作成、幅変更とフォント読込後に再計算し、学習キー・保存・配点・音声設定は変更しない。
+- カードの品詞は上段中央、単語はカード中央、IPAはその下、復習理由は左上。復習理由の有無で位置を変えない。「英単語カード」の見出しは省略し、意味カードのハテナは公式Material Symbols Roundedを使う。短い語ではスクロールを出さず、実測180px超の長い複数語だけ縦スクロールにする。
+- 初回案内は各カード下部の3項目と「説明を閉じる ×」だけ。上の共通見出しは置かず、旧DOM ID・公開関数を非表示で維持する。カード別の非表示は `vocabGame_cardTutorialDismissed`、表示済みは `vocabGame_cardTutorialSeen` に保存し、両方を閉じると従来の `vocabGame_skipLiveTutorial` と導入版 `2` も保存。既存利用者には再案内しない。`?tutorialPreview=1` は強制表示。学習・クラウド保存とは分離し、説明を閉じても回答しない。表示中はインストール通知を抑制する。
 - 確認は `tests/header-m3e.spec.js`・`tests/word-text-layout.spec.js`、既存の復習案内・音声・自作語試験。公開対象の記録は `docs/experiments/header-layout-release-2026-10-10/review-notes.md`。
 
 ## Firebase Surface

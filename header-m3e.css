@@ -156,6 +156,8 @@
 
 @media (max-width: 768px) {
     .learning-header { margin-top: 6px; }
+    /* Reduce transform-only header whitespace; leave 12px below the drawn feet. */
+    .app-shell #reviewProgressWrap { margin-top: -6px; }
     /* Keep the drawn feet and selector above the existing 170px canvas boundary. */
     .learning-header .rpg-inline { left: 18px !important; bottom: -12px; }
     .learning-header #heroCharacter.anim-attack { translate: 0 -18px; }
