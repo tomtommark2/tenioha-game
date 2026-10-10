@@ -1,5 +1,13 @@
 # 出題モード・直近正答率 UI 検証（2026-09-05）
 
+## 分類のカテゴリー色を選択中も残す（2026-10-10、公開用2026.1010.1827）
+
+- 選択中にラベル・件数が一律の紫になる指定を、各カテゴリーの既存色へ変更。紫の選択背景と40×28pxの寸法は維持し、内部アイコンだけ白／明るいコーラル／緑／黄色へ。非選択の苦手・得意・完璧のアイコンも既存の件数色に合わせる。ホバー時の背景は分類別の淡い色にする。配置・文字サイズ・素材・学習処理・保存・Firebaseは未変更。
+- `tests/header-m3e.spec.js` はPC Chromium 6件、モバイルChromium／WebKit 12件、合計18件通過。320〜1280px、4桁件数、4分類の選択色、ホバーによる選択なし、位置不変、クリック／Enter／Space・フォーカス、ランキング入口、復習ロック、101語の復習球と通知の位置不変を確認。ページ例外0件。
+- 撮影は公開用checkoutの `screenshots/header-category-colors-20261010/{unlearned,weak,learned,perfect}-{320,390,1280}-{chromium,mobile-chromium,mobile-webkit}.png`、PCホバー状態は同名の `-hover-` 入り。390pxの完璧／ホバー、320pxの苦手、WebKitの320px完璧・390px得意を目視確認。
+- 実アプリのIABプレビューは公開済み版のcheckoutを `http://127.0.0.1:8060/index.html` で配信。ルートの別の未公開変更を混ぜない。`screenshots/header-category-colors-20261010/preview-perfect-iab.png` を保存・確認、IABの警告／エラー0件。実ユーザーの本番データ・認証・投稿・購入は操作しない。
+- CSS・試験は編集元と公開用checkoutで一致。公開用checkoutだけ `npm run release:version` で2026.1010.1827へ更新し、HTML・版番号同期とキャッシュ登録単体1件が通過。公開前にPC6件・スマホ12件を再確認して通過。公開後の結果は[公開記録](docs/experiments/category-color-release-2026-10-10/review-notes.md)。実機Safari・完全オフライン起動・全E2Eは今回対象外。
+
 ## カードの学習状況表示切り替え（2026-09-24）
 
 - 「出題・復習設定」最下部で正答率と出題理由ラベルをまとめて非表示にできる。既定は表示。ブラウザ単位の表示設定で、学習記録・分類・復習キュー・スコア・Undoは維持する。

@@ -76,6 +76,9 @@
 }
 
 .learning-header .mode-btn {
+    --mode-accent: var(--learning-primary);
+    --mode-selected-icon: #fff;
+    --mode-hover: #e9e1f5;
     display: grid;
     grid-template-rows: 28px 16px 22px;
     place-items: center;
@@ -97,9 +100,12 @@
 }
 
 .learning-header .mode-btn::before { content: none; }
-.learning-header .mode-btn:hover:not(:disabled) { background: #e9e1f5; }
+.learning-header .mode-btn.weak { --mode-accent: #ad4357; --mode-selected-icon: #ffb2bf; --mode-hover: #f8e9ed; }
+.learning-header .mode-btn.learned { --mode-accent: #267847; --mode-selected-icon: #99dfb1; --mode-hover: #e8f3eb; }
+.learning-header .mode-btn.perfect { --mode-accent: #92670b; --mode-selected-icon: #ffdf87; --mode-hover: #fcf3db; }
+.learning-header .mode-btn:hover:not(:disabled) { background: var(--mode-hover); }
 .learning-header .mode-btn:focus-visible { outline: 2px solid var(--learning-primary); outline-offset: -1px; }
-.learning-header .mode-btn.active { color: var(--learning-primary); }
+.learning-header .mode-btn.active { color: var(--mode-accent); }
 .learning-header .mode-btn.active::before {
     content: '';
     inset: auto;
@@ -113,13 +119,16 @@
 }
 
 .learning-header .mode-picto { width: 24px !important; height: 24px !important; margin: 0; color: var(--learning-icon); }
-.learning-header .mode-btn.active .mode-picto { color: #fff; }
+.learning-header .weak .mode-picto,
+.learning-header .learned .mode-picto,
+.learning-header .perfect .mode-picto { color: var(--mode-accent); }
+.learning-header .mode-btn.active .mode-picto { color: var(--mode-selected-icon); }
 .learning-header .mode-btn span:not(.mode-picto):not(.mode-count) { font-size: 14px !important; font-weight: 700; line-height: 16px !important; letter-spacing: 0; }
 .learning-header .mode-btn .mode-count { margin: 0; font-size: 20px !important; font-weight: 750; line-height: 22px; opacity: 1; font-variant-numeric: tabular-nums; }
-.learning-header .weak .mode-count { color: #ad4357; }
-.learning-header .learned .mode-count { color: #267847; }
-.learning-header .perfect .mode-count { color: #92670b; }
-.learning-header .mode-btn.active .mode-count { color: var(--learning-primary); }
+.learning-header .weak .mode-count,
+.learning-header .learned .mode-count,
+.learning-header .perfect .mode-count,
+.learning-header .mode-btn.active .mode-count { color: var(--mode-accent); }
 
 .learning-header .mode-icon-book { --picto-url: url('assets/ui/menu-book-outline-rounded.svg'); }
 .learning-header .mode-icon-retry { --picto-url: url('assets/ui/refresh-rounded.svg'); }

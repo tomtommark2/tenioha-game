@@ -188,6 +188,68 @@ test('学習分類：クリック・Enter・Spaceで選択し、学習記録と�
     await expect(page.locator('#reviewRankButton')).toBeFocused();
 });
 
+test('学習分類：選択中もカテゴリー色を保ち、ホバー背景を色分けする', async ({ page }, testInfo) => {
+    const themes = [
+        { mode: 'unlearned', accent: 'rgb(103, 84, 140)', icon: 'rgb(98, 88, 115)', selectedIcon: 'rgb(255, 255, 255)', hover: 'rgb(233, 225, 245)' },
+        { mode: 'weak', accent: 'rgb(173, 67, 87)', icon: 'rgb(173, 67, 87)', selectedIcon: 'rgb(255, 178, 191)', hover: 'rgb(248, 233, 237)' },
+        { mode: 'learned', accent: 'rgb(38, 120, 71)', icon: 'rgb(38, 120, 71)', selectedIcon: 'rgb(153, 223, 177)', hover: 'rgb(232, 243, 235)' },
+        { mode: 'perfect', accent: 'rgb(146, 103, 11)', icon: 'rgb(146, 103, 11)', selectedIcon: 'rgb(255, 223, 135)', hover: 'rgb(252, 243, 219)' }
+    ];
+    const records = () => page.evaluate(() => JSON.stringify({ states: gameState.wordStates,
+        srs: gameState.srsData, score: gameState.reviewScore, counts: gameState.actionCounts }));
+    const beforeRecords = await records();
+    const positions = async () => {
+        const layout = await inspectLayout(page);
+        return { hero: layout.hero, panel: layout.panel, score: layout.score, card: layout.card,
+            buttons: layout.buttons.map(button => ({ bounds: button.bounds, icon: button.icon })) };
+    };
+    fs.mkdirSync('screenshots/header-category-colors-20261010', { recursive: true });
+    for (const width of [320, 390, 1280]) {
+        await page.setViewportSize({ width, height: 844 });
+        const beforePositions = await positions();
+        for (const theme of themes) {
+            const button = page.locator(`.learning-header .mode-btn[data-mode="${theme.mode}"]`);
+            await button.click();
+            await expect(button).toHaveAttribute('aria-pressed', 'true');
+            await expect(page.locator('.learning-header .mode-btn.active')).toHaveCount(1);
+            await expect(button).toHaveCSS('color', theme.accent);
+            await expect(button.locator('.mode-count')).toHaveCSS('color', theme.accent);
+            await expect(button.locator('.mode-picto')).toHaveCSS('color', theme.selectedIcon);
+            expect(await button.evaluate(element => {
+                const selected = getComputedStyle(element, '::before');
+                return { background: selected.backgroundColor, width: selected.width, height: selected.height };
+            })).toEqual({ background: 'rgb(103, 84, 140)', width: '40px', height: '28px' });
+            for (const other of themes.filter(other => other.mode !== theme.mode)) {
+                const inactive = page.locator(`.learning-header .mode-btn[data-mode="${other.mode}"]`);
+                await expect(inactive.locator('.mode-picto')).toHaveCSS('color', other.icon);
+                await expect(inactive).toHaveCSS('color', 'rgb(29, 27, 32)');
+                if (other.mode !== 'unlearned') await expect(inactive.locator('.mode-count')).toHaveCSS('color', other.accent);
+            }
+            expect(await positions()).toEqual(beforePositions);
+            await page.mouse.move(0, 0);
+            await page.screenshot({ path: `screenshots/header-category-colors-20261010/${theme.mode}-${width}-${testInfo.project.name}.png`,
+                clip: { x: 0, y: 0, width, height: width <= 768 ? 190 : 250 }, scale: 'css' });
+            if (await page.evaluate(() => matchMedia('(hover: hover)').matches)) {
+                await button.hover();
+                await expect(button).toHaveCSS('background-color', theme.hover);
+                expect(await positions()).toEqual(beforePositions);
+                await page.screenshot({ path: `screenshots/header-category-colors-20261010/${theme.mode}-hover-${width}-${testInfo.project.name}.png`,
+                    clip: { x: 0, y: 0, width, height: width <= 768 ? 190 : 250 }, scale: 'css' });
+                // Hover alone must not select another category.
+                const inactiveTheme = themes[(themes.indexOf(theme) + 1) % themes.length];
+                const inactive = page.locator(`.learning-header .mode-btn[data-mode="${inactiveTheme.mode}"]`);
+                await inactive.hover();
+                await expect(inactive).toHaveCSS('background-color', inactiveTheme.hover);
+                await expect(inactive).toHaveAttribute('aria-pressed', 'false');
+                await expect(button).toHaveAttribute('aria-pressed', 'true');
+                await page.mouse.move(0, 0);
+                await expect(inactive).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+            }
+        }
+    }
+    expect(await records()).toBe(beforeRecords);
+});
+
 test('学習分類：復習ロックとイラスト常時表示でも分類の配置と操作を保つ', async ({ page }, testInfo) => {
     await page.setViewportSize({ width: 320, height: 844 });
     await page.evaluate(() => { gameState.reviewMode = 'on'; updateModeButtons(); });
