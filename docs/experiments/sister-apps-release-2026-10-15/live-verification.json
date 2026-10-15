@@ -1,0 +1,120 @@
+{
+  "base": "https://tomtommark2.github.io/tenioha-game/",
+  "version": "2026.1015.1449",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "6b4ecbfbae7e3f982091a272e3ed3a679d0a5e04b6553736b1710b04b6167ecd"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "6b4ecbfbae7e3f982091a272e3ed3a679d0a5e04b6553736b1710b04b6167ecd"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "c9cce3531abd04e3ee73ff5cf0548adc874eadfd5c169c1ca74c53c21e91816e"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "df679ed760e52ca97e48dc5d4e8704d41a57521cb4dc2433c9df8b69b581ac1c"
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "838f617f84cb658aef46026966c47553d33e12b6b93dd80fa762aa65a5bc4839"
+    },
+    {
+      "file": "js/sister_apps.js",
+      "sha256": "909113b71bc8e7d03385ce5fec9852e19bd8cfc5d375bdf86af2d575c3209542"
+    },
+    {
+      "file": "sister-apps.css",
+      "sha256": "012d085c9c4ff038dc1b47e0e90a04b3edecb2253adccee262774c9ee592088a"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "5dc2ccca5a964c1006cfb661bd8a0922de2ff22b84725caa3c5c129089b6d09e"
+    },
+    {
+      "file": "assets/ui/grid-view-rounded.svg",
+      "sha256": "33cfc11674943b54c10ba4f9920aad41f8c51223bae712900f2b16f37aec0366"
+    },
+    {
+      "file": "assets/ui/open-in-new-rounded.svg",
+      "sha256": "b9e4132c228b26d047c9ac0e8400fb17899802b39ea850ca5a74d39611673657"
+    },
+    {
+      "file": "assets/sister-apps/dictionary-icon.png",
+      "sha256": "ee5ee76425a23220529212ecb369be6ec7e363ad2b96aa6040a5ce7e30809333"
+    },
+    {
+      "file": "assets/sister-apps/sentence-icon.png",
+      "sha256": "e79c6a41be8a16a6061d7fd7edd99cf3acda50b65ea5511a9726b22c11f73f5f"
+    },
+    {
+      "file": "assets/sister-apps/dictionary-promo-v3.mp4",
+      "sha256": "2d1f79cda8bf73edc316dddd3ad1a8c1cdb1898e39ad23d80b3706e4f6c88fb0"
+    },
+    {
+      "file": "assets/sister-apps/sentence-promo-v1.mp4",
+      "sha256": "0b71fe834febd9fe48382c3aff42e2afd8311d7f93d79c18522c09543fbb7b92"
+    },
+    {
+      "file": "assets/sister-apps/dictionary-promo-poster-v3.jpg",
+      "sha256": "f25e74ad4742d82eda27e7f957957e213c1063b6b5f0e8d1195a211762849e81"
+    },
+    {
+      "file": "assets/sister-apps/sentence-promo-poster-v1.jpg",
+      "sha256": "bb094209fa79560f1fa31426e4a0e925440bccfa612dcbc54d2d72b4e45c6064"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 320,
+      "up": "44f769d4facac9c20cc73e9cdb54b3880cfdbaea5eee2841ca1e0203e4eccf4f",
+      "even": "ef80da1262ca22325b38306b1117a2391627e2ed977a91e39d4bb8e0cfebd4aa",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "up": "007500b630d9ec30397ffdbd99087830121f89a0a9cf95f9147a54219ffbeb56",
+      "even": "ffd2dd72ba7db1a58e0ef4b6c642725fbd146e347af24210ed973490f27ece20",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "up": "bd9033fb1dfa9aab82dc0fd75c406473d16c5f9407df5a23b76c70859e97e7a7",
+      "even": "0e6d58169349293d2680951bedeaf25559dd365cc6ceffba0757b8aa8c48acbd",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "up": "24d99d961b562334ffe23477d2d966adb118abf791a43244c7d38e0cca078e6e",
+      "even": "f6015fcaae874813bd1f43a3e5b05c2520c00e8478c02deb6b06f3f16a2ce419",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "up": "af48d63d82d550898c46267b3ada75f727ab82c5e11262db92853a3a21d4f62f",
+      "even": "74439df073b452ec25d2334d449ac49475c5c34f657e7db6d6bab884e5e22aa6",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "up": "e1f8a100091c425c5b9232bf384050ba6d40d8b4d02fd83c490ef2299a8149bf",
+      "even": "9798fa592d5faf8a84b7ac56219c4eb1e32532a660d96df9ffecd2d2b64d1f98",
+      "pageErrors": [],
+      "learningUnchanged": true
+    }
+  ]
+}

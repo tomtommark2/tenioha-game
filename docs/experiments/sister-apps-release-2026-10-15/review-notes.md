@@ -19,5 +19,7 @@
 
 ## 公開・復帰
 
+- `ec07e642` をmainへ反映し、[GitHub Pages公開処理](https://github.com/tomtommark2/tenioha-game/actions/runs/38690662947)成功。本番16ファイルがローカルとバイト一致し、Chromium／WebKit各320・390・1280pxの全6ケース成功。図の実画像変化・動画再生・閉じると入口への復帰・学習状態不変・横はみ出しなし・page error 0件を確認。結果は `live-verification.json`。
+- 最初の本番確認では、localhostでは開かない既存の初回お知らせが検査操作を遮った。検証スクリプトで「あとで」を通常操作してから紹介を確認するよう補正し、上記6ケースを再実行した。アプリ本体は変更していない。確認記録とこの補正は公開後の記録コミットに含める。
 - GitHub Pagesのmainへ通常のfast-forward pushを行い、公開処理の成功と配信バイト・画面を確認して完了とする。Firebase HostingやFunctionsの更新はしない。
 - 復帰時は公開コミットの対象差分をrevertし、正規の版更新・HTML同期を行って再公開する。既存のユーザー編集やmainをhard resetしない。

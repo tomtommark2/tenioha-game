@@ -60,6 +60,13 @@ async function visiblePixels(page, video) {
                 page.on('pageerror', error => errors.push(error.message));
                 await page.goto(base + '?appVersion=' + version);
                 await expect(page.locator('#vocabWord')).toHaveText('クリックしてスタート');
+                // Production shows the existing one-time announcement; localhost skips it.
+                // Dismiss through its normal UI before checking the unrelated showcase.
+                if (await page.evaluate(() => shouldAutoOpenFeaturedAnnouncement(getFeaturedAnnouncement()))) {
+                    await expect(page.locator('#announcementModal')).toBeVisible();
+                    await page.locator('#announcementModal').getByRole('button', { name: 'あとで', exact: true }).click();
+                    await expect(page.locator('#announcementModal')).toBeHidden();
+                }
                 await page.evaluate(() => document.fonts.ready);
                 const records = () => page.evaluate(() => JSON.stringify({ save: localStorage.getItem('vocabClickerSave'),
                     states: gameState.wordStates, score: gameState.reviewScore, questions: gameState.globalQuestionCount }));
