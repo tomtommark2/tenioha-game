@@ -14,12 +14,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.1010.1827">
-    <link rel="stylesheet" href="wordbooks-m3e.css?v=2026.1010.1827">
-    <link rel="stylesheet" href="header-m3e.css?v=2026.1010.1827">
-    <link rel="preload" href="data/vocabulary.js?v=2026.1010.1827" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.1010.1827" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.1010.1827" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.1015.1449">
+    <link rel="stylesheet" href="wordbooks-m3e.css?v=2026.1015.1449">
+    <link rel="stylesheet" href="header-m3e.css?v=2026.1015.1449">
+    <link rel="stylesheet" href="sister-apps.css?v=2026.1015.1449">
+    <link rel="preload" href="data/vocabulary.js?v=2026.1015.1449" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.1015.1449" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.1015.1449" as="script">
 </head>
 
 <body>
@@ -219,6 +220,11 @@
                 </svg>
                 <span id="announcementUnreadDot" class="announcement-dot"></span>
             </button>
+            <button type="button" class="icon-btn top-icon-btn sister-apps-btn" id="sisterAppsBtn"
+                title="ほかの学習アプリ" aria-label="ほかの学習アプリ" aria-haspopup="dialog"
+                aria-controls="sisterAppsModal" aria-expanded="false" onclick="openSisterApps()">
+                <span class="sister-apps-picto sister-apps-grid" aria-hidden="true"></span>
+            </button>
             <button class="icon-btn top-icon-btn top-action-menu-btn" id="topActionMenuBtn" title="管理メニュー"
                 aria-label="管理メニュー"
                 aria-haspopup="dialog" aria-controls="helpModal"
@@ -386,10 +392,10 @@
                 <div class="review-progress-actions">
                     <button id="reviewModeInlineLabel" type="button" onclick="toggleDueOnlyMode(event)" title="出題モードを切り替え">新規＋復習</button>
                     <button id="reviewQueueShuffleButton" class="review-queue-shuffle-btn" type="button"
-                        onclick="shuffleReviewQueue(event)" aria-label="復習キューの残り順をランダムに並べ替える"
-                        title="復習キューの残り順をランダムに並べ替える">
+                        onclick="shuffleReviewQueue(event)" aria-label="復習キューの残り順をシャッフルして、この端末に保存する"
+                        title="復習キューの残り順をシャッフルして、この端末に保存する">
                         <span class="app-picto icon-refresh" aria-hidden="true"></span>
-                        <span>ランダム</span>
+                        <span>シャッフル</span>
                     </button>
                 </div>
                 <div id="reviewRecommendation" class="review-recommendation-popover review-recommendation-content"
@@ -544,12 +550,12 @@
                     <div class="study-review-shuffle-row">
                         <div class="study-review-shuffle-copy">
                             <strong>復習の順番</strong>
-                            <span>現在の問題はそのまま、残りのキューをランダムにします。</span>
+                            <span>現在の問題はそのまま。順番はこの端末に保存します。</span>
                         </div>
                         <button id="studyModeShuffleButton" class="study-review-shuffle-btn" type="button"
-                            onclick="shuffleReviewQueue(event)" aria-label="復習キューの残り順をランダムに並べ替える">
+                            onclick="shuffleReviewQueue(event)" aria-label="復習キューの残り順をシャッフルして、この端末に保存する">
                             <span class="app-picto icon-refresh" aria-hidden="true"></span>
-                            <span>ランダム</span>
+                            <span>シャッフル</span>
                         </button>
                     </div>
                     <span id="studyModeShuffleStatus" class="study-review-shuffle-status" role="status" aria-live="polite"></span>
@@ -628,8 +634,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.1010.1827"></script>
-<script src="data/ipa_overrides.js?v=2026.1010.1827"></script>
+    <script src="data/vocabulary.js?v=2026.1015.1449"></script>
+<script src="data/ipa_overrides.js?v=2026.1015.1449"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -647,6 +653,23 @@
                 <span class="inline-picto app-picto icon-refresh" aria-hidden="true"></span>今すぐアップデート
             </button>
         </div>
+    </div>
+
+    <div id="sisterAppsModal" class="modal-overlay sister-apps-modal" style="display: none;" aria-hidden="true">
+        <section class="sister-apps-panel" role="dialog" aria-modal="true" aria-labelledby="sisterAppsTitle">
+            <header class="sister-apps-heading">
+                <div class="sister-apps-intro">
+                    <h2 id="sisterAppsTitle">ほかの学習アプリ</h2>
+                    <p>単語のイメージも、英文のしくみも。</p>
+                </div>
+                <button type="button" class="sister-apps-close" aria-label="紹介を閉じる" onclick="closeSisterApps()">
+                    <span class="sister-apps-picto sister-apps-close-picto" aria-hidden="true"></span>
+                </button>
+            </header>
+            <div class="sister-apps-body">
+                <div id="sisterAppsLinks"></div>
+            </div>
+        </section>
     </div>
 
     <!-- Management Menu Modal -->
@@ -1243,7 +1266,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.1010.1827">
+    <link rel="stylesheet" href="feedback.css?v=2026.1015.1449">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1289,20 +1312,21 @@
             <p id="speechSettingsStatus" class="speech-settings-note" role="status"></p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.1010.1827"></script>
-    <script src="js/update_manager.js?v=2026.1010.1827"></script>
-    <script src="js/config.js?v=2026.1010.1827"></script>
-    <script src="data/announcements.js?v=2026.1010.1827"></script>
-    <script src="js/utils.js?v=2026.1010.1827"></script>
-    <script src="data/word-illustrations.js?v=2026.1010.1827"></script>
-    <script src="js/word_illustrations.js?v=2026.1010.1827"></script>
+    <script src="js/version.js?v=2026.1015.1449"></script>
+    <script src="js/update_manager.js?v=2026.1015.1449"></script>
+    <script src="js/config.js?v=2026.1015.1449"></script>
+    <script src="data/announcements.js?v=2026.1015.1449"></script>
+    <script src="js/utils.js?v=2026.1015.1449"></script>
+    <script src="data/word-illustrations.js?v=2026.1015.1449"></script>
+    <script src="js/word_illustrations.js?v=2026.1015.1449"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.1010.1827"></script>
-    <script src="js/my_wordbooks.js?v=2026.1010.1827"></script>
-    <script src="js/game_logic.js?v=2026.1010.1827"></script>
-    <script src="js/ui_manager.js?v=2026.1010.1827"></script>
-    <script src="js/feedback.js?v=2026.1010.1827"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.1010.1827"></script>
+    <script src="js/word_grouping.js?v=2026.1015.1449"></script>
+    <script src="js/my_wordbooks.js?v=2026.1015.1449"></script>
+    <script src="js/game_logic.js?v=2026.1015.1449"></script>
+    <script src="js/ui_manager.js?v=2026.1015.1449"></script>
+    <script src="js/sister_apps.js?v=2026.1015.1449"></script>
+    <script src="js/feedback.js?v=2026.1015.1449"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.1015.1449"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

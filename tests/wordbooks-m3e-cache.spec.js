@@ -1,4 +1,6 @@
 const { test, expect } = require('@playwright/test');
+const fs = require('node:fs');
+const vm = require('node:vm');
 
 test('マイ単語帳：Service Workerの新版キャッシュにUI素材を登録できる', async ({ browser, baseURL }) => {
     const context = await browser.newContext({ serviceWorkers: 'allow' });
@@ -26,7 +28,12 @@ test('マイ単語帳：Service Workerの新版キャッシュにUI素材を登�
             return { cacheName, paths: (await cache.keys()).map(request => new URL(request.url).pathname),
                 headerCss: header ? await header.text() : '' };
         });
-        expect(cached.paths).toHaveLength(37);
+        const precache = vm.runInNewContext(fs.readFileSync('service_worker.js', 'utf8') + '; ASSETS', {
+            GAME_VERSION: 'test', importScripts() {}, self: { addEventListener() {} }
+        });
+        // Navigation responses may add cache entries; check every declared asset instead of a stale total.
+        expect(cached.paths).toEqual(expect.arrayContaining([...new Set(precache.map(file => new URL(file, baseURL).pathname))]));
+        expect(cached.paths.some(file => file.endsWith('.mp4'))).toBe(false);
         expect(cached.paths).toContain('/header-m3e.css');
         expect(cached.headerCss).toContain('translateY(-2px)');
         expect(cached.paths).toContain('/assets/ui/refresh-rounded.svg');

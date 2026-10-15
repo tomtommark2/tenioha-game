@@ -1,0 +1,120 @@
+{
+  "base": "http://localhost:8063/",
+  "version": "2026.1015.1449",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "6b4ecbfbae7e3f982091a272e3ed3a679d0a5e04b6553736b1710b04b6167ecd"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "6b4ecbfbae7e3f982091a272e3ed3a679d0a5e04b6553736b1710b04b6167ecd"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "c9cce3531abd04e3ee73ff5cf0548adc874eadfd5c169c1ca74c53c21e91816e"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "df679ed760e52ca97e48dc5d4e8704d41a57521cb4dc2433c9df8b69b581ac1c"
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "838f617f84cb658aef46026966c47553d33e12b6b93dd80fa762aa65a5bc4839"
+    },
+    {
+      "file": "js/sister_apps.js",
+      "sha256": "909113b71bc8e7d03385ce5fec9852e19bd8cfc5d375bdf86af2d575c3209542"
+    },
+    {
+      "file": "sister-apps.css",
+      "sha256": "012d085c9c4ff038dc1b47e0e90a04b3edecb2253adccee262774c9ee592088a"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "5dc2ccca5a964c1006cfb661bd8a0922de2ff22b84725caa3c5c129089b6d09e"
+    },
+    {
+      "file": "assets/ui/grid-view-rounded.svg",
+      "sha256": "33cfc11674943b54c10ba4f9920aad41f8c51223bae712900f2b16f37aec0366"
+    },
+    {
+      "file": "assets/ui/open-in-new-rounded.svg",
+      "sha256": "b9e4132c228b26d047c9ac0e8400fb17899802b39ea850ca5a74d39611673657"
+    },
+    {
+      "file": "assets/sister-apps/dictionary-icon.png",
+      "sha256": "ee5ee76425a23220529212ecb369be6ec7e363ad2b96aa6040a5ce7e30809333"
+    },
+    {
+      "file": "assets/sister-apps/sentence-icon.png",
+      "sha256": "e79c6a41be8a16a6061d7fd7edd99cf3acda50b65ea5511a9726b22c11f73f5f"
+    },
+    {
+      "file": "assets/sister-apps/dictionary-promo-v3.mp4",
+      "sha256": "2d1f79cda8bf73edc316dddd3ad1a8c1cdb1898e39ad23d80b3706e4f6c88fb0"
+    },
+    {
+      "file": "assets/sister-apps/sentence-promo-v1.mp4",
+      "sha256": "0b71fe834febd9fe48382c3aff42e2afd8311d7f93d79c18522c09543fbb7b92"
+    },
+    {
+      "file": "assets/sister-apps/dictionary-promo-poster-v3.jpg",
+      "sha256": "f25e74ad4742d82eda27e7f957957e213c1063b6b5f0e8d1195a211762849e81"
+    },
+    {
+      "file": "assets/sister-apps/sentence-promo-poster-v1.jpg",
+      "sha256": "bb094209fa79560f1fa31426e4a0e925440bccfa612dcbc54d2d72b4e45c6064"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 320,
+      "up": "2767560e71b20ec323d8770d4d438901253e2b213b5c57ef3c1cdee11cc66952",
+      "even": "72e5089f0b4186427b268a75885a07f1e91c5e94d11d1d45b26e69172c62d9d9",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "up": "20b2a901c4a9e6bb6fa634ca8c775deb8a42da7dafca74e7d65e292dbd7d0ed7",
+      "even": "b669a39ab904ff16aee0817e7310cb4cc33d9620ba385bbd0bbbfdf42f364bbd",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "up": "160c2796c42b1db8440cf2858b772b7ebc164433e0cc0833c9e2dc0e3b0d7bcb",
+      "even": "a67d1e03619ae3a3b1edc219adf973db495bc25b72063dd91707c38cb91d6d5d",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "up": "fbe1e2af47df9e9a09c6a87fd8ae04c747a9fbba1d997d96233c65c79f8c4eac",
+      "even": "58741fd25a577aa9d07260de342c5998396a8b7af57b41372a752c906066475a",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "up": "135a5d4d9d44e73f12010f63f92eb53fdb0533966be279d218f0cf9763cc4306",
+      "even": "00359314021deacd5e23197dd9bf84987b7ba89c964be35f7af736bd16460af4",
+      "pageErrors": [],
+      "learningUnchanged": true
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "up": "f5404d5c2caaea0af0b0a18ff60362224789e927d5d67be2d31b906862b3a781",
+      "even": "fc8a649d2e78426ad7fd34060c999c23b2440265d516fb29083dae5b629c8d49",
+      "pageErrors": [],
+      "learningUnchanged": true
+    }
+  ]
+}

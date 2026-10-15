@@ -67,6 +67,7 @@ const DISMISSIBLE_MODAL_IDS = Object.freeze([
     'wordListModal',
     'studyModeModal',
     'speechSettingsModal',
+    'sisterAppsModal',
     'helpModal',
     'feedbackModal',
     'updatePromptModal',
@@ -183,6 +184,7 @@ function requestDismissibleModalClose(modal) {
         wordListModal: 'closeWordListModal',
         studyModeModal: 'closeStudyModeModal',
         speechSettingsModal: 'closeSpeechSettings',
+        sisterAppsModal: 'closeSisterApps',
         feedbackModal: 'closeFeedback',
         announcementModal: 'closeAnnouncementModal',
         wordbookModal: 'closeWordbookModal',
@@ -221,6 +223,7 @@ function reconcileDismissibleModals() {
         const modal = document.getElementById(id);
         if (modal) modal.setAttribute('aria-hidden', visibleIds.includes(id) ? 'false' : 'true');
     });
+    document.getElementById('sisterAppsBtn')?.setAttribute('aria-expanded', String(visibleIds.includes('sisterAppsModal')));
 
     if (!previousHadModal && hasModal) {
         const activeElement = document.activeElement;

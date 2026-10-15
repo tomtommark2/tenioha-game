@@ -21,6 +21,8 @@ const targets = [
   'style.css',
   'wordbooks-m3e.css',
   'header-m3e.css',
+  'sister-apps.css',
+  'js/sister_apps.js',
   'feedback.css',
   'js/feedback.js',
   'data/vocabulary.js',

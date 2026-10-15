@@ -205,7 +205,7 @@ for (const width of [320, 1280]) {
                 return { x: r.x, y: r.y, right: r.right, bottom: r.bottom, width: r.width, height: r.height };
             };
             return { button: rect(document.getElementById('wordSpeechBtn')), card: rect(document.getElementById('vocabCard')),
-                label: rect(document.querySelector('#vocabCard > .card-label')), word: rect(document.getElementById('vocabWord')) };
+                label: rect(document.querySelector('#vocabCard .word-pos-label')), word: rect(document.querySelector('#vocabWord .word-text-main')) };
         });
         expect(boxes.button.width).toBeGreaterThanOrEqual(44);
         expect(boxes.button.height).toBeGreaterThanOrEqual(44);

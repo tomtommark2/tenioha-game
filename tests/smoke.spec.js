@@ -482,9 +482,9 @@ test('管理メニューはダイアログとしてキーボード操作でき�
   await expect(dialog).toBeVisible();
 
   const items = dialog.locator('.help-list-item');
-  await expect(items).toHaveCount(7);
-  await expect(dialog.locator('.help-command-item')).toHaveCount(5);
-  await expect(dialog.getByRole('button', { name: /ひとこと送る/ })).toBeVisible();
+  await expect(items).toHaveCount(6);
+  await expect(dialog.locator('.help-command-item')).toHaveCount(4);
+  await expect(dialog.getByRole('button', { name: /ひとこと送る/ })).toHaveCount(0);
   await expect(dialog.locator('.help-footer')).toHaveCount(0);
   await expect(dialog.getByRole('link', { name: /使い方を確認/ })).toHaveAttribute('href', /note\.com/);
   await expect.poll(() => items.evaluateAll((elements) => elements.every((element) => ['BUTTON', 'A'].includes(element.tagName)))).toBe(true);
@@ -1223,7 +1223,7 @@ test('復習キューのランダムボタンは現在の問題を保って残�
   await expect(shuffleButton).toBeEnabled();
   await expect(modalShuffleButton).toBeEnabled();
   await modalShuffleButton.click();
-  await expect(page.locator('#studyModeShuffleStatus')).toContainText('復習の順番をランダムにしました');
+  await expect(page.locator('#studyModeShuffleStatus')).toContainText('シャッフルして保存しました');
   await page.evaluate(() => window.closeStudyModeModal());
 
   const shuffledOrder = await page.locator('#reviewQueuePreview .review-queue-chip').allTextContents();
@@ -1239,7 +1239,7 @@ test('復習キューのランダムボタンは現在の問題を保って残�
   });
 
   await shuffleButton.click();
-  await expect(page.locator('#reviewShuffleStatus')).toContainText('次の復習以降をランダムにしました');
+  await expect(page.locator('#reviewShuffleStatus')).toContainText('次の復習以降をシャッフルして保存しました');
   await expect.poll(() => page.evaluate(() => window.gameState.currentWord.word)).toBe(currentWord);
   const reshuffledOrder = await page.locator('#reviewQueuePreview .review-queue-chip').allTextContents();
   expect(reshuffledOrder[0]).toBe(currentWord);
@@ -1263,7 +1263,7 @@ test('出題モードは小さい画面でも主要設定を読みやすく表�
   await expect(modal.locator('.study-scope-card > summary').filter({ hasText: '出題範囲' })).toBeVisible();
   await modal.getByRole('tab', { name: '復習', exact: true }).click();
   await expect(modal.locator('#reviewTimingSettings > summary')).toBeVisible();
-  await expect(modal.getByRole('button', { name: '復習キューの残り順をランダムに並べ替える' })).toBeVisible();
+  await expect(modal.getByRole('button', { name: '復習キューの残り順をシャッフルして、この端末に保存する' })).toBeVisible();
   await modal.locator('#masterySettings > summary').click();
   await expect(modal.getByText('判定のしくみ', { exact: true })).toBeVisible();
 
@@ -1509,6 +1509,10 @@ test('SRSの揺らぎを正規間隔へ丸めて復習スコアを記録する',
 });
 
 test('大型アップデートは初回だけ自動表示し、あとで閉じても未読を維持する', async ({ page }) => {
+  await page.route(url => url.hostname === 'us-central1-tenioha-game.cloudfunctions.net' && url.pathname === '/feedback', route => route.fulfill({
+    contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': '*' },
+    body: JSON.stringify({ items: [], isAdmin: false })
+  }));
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');

@@ -39,7 +39,7 @@ test('お知らせは古い重複4件を外し、常時表示の設定方法を�
   await card.locator('summary').click();
   await expect(card.locator('.announcement-detail')).toBeVisible();
   await expect(card).toContainText('初期設定はオフ');
-  await expect(card).toContainText('「その他」→「出題・復習設定」→「表示」');
+  await expect(card).toContainText('「その他」→「出題・復習・表示設定」→「表示」');
   await expect(card).toContainText('「イラストを常時表示」をオン');
   await expect(card).toContainText('「常時表示中」');
   await expect(card).toContainText('押すと表示設定を開けます');

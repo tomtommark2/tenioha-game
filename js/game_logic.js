@@ -609,6 +609,7 @@ function saveState() {
         actionCounts: { ...gameState.actionCounts },
         reviewScore: cloneUndoValue(gameState.reviewScore),
         dailyStats: cloneUndoValue(gameState.dailyStats),
+        reviewQueueOrder: gameState.reviewQueueWasShuffled ? [...gameState.reviewQueueShuffleOrder] : null,
         decks: cloneDecksForUndo(gameState.decks)
     };
     gameStateHistory.push(stateSnapshot);
@@ -650,10 +651,18 @@ function undoLastAction() {
             delete gameState.learnedWordIntervals[lastKey];
         }
     }
+    if (snapshot.reviewQueueOrder?.length) {
+        const order = gameState.reviewQueueWasShuffled ? gameState.reviewQueueShuffleOrder : snapshot.reviewQueueOrder;
+        gameState.reviewQueueShuffleOrder = snapshot.reviewQueueOrder.includes(snapshot.key)
+            ? [snapshot.key, ...order.filter(key => key !== snapshot.key)] : [...order];
+        gameState.reviewQueueWasShuffled = true;
+        persistReviewQueueShuffleOrder();
+    }
     window.gameState = gameState;
     invalidateLearningProgressSnapshot();
 
     // Restore UI
+    hideNoWordsMessage();
     showWord(gameState.currentWord);
     updateDisplay();
     updateUndoButton();
@@ -915,6 +924,8 @@ function init() {
         gameState.decks = null;
         persistLastLevel(gameState.currentLevel);
     }
+
+    restoreReviewQueueShuffleOrder();
 
     document.addEventListener('click', () => {
         // Initialize audio context on first interaction
@@ -2478,9 +2489,56 @@ function buildReviewQueueSnapshot() {
     };
 }
 
+const REVIEW_QUEUE_SHUFFLE_STORAGE_KEY = 'vocabGame_reviewQueueShuffle_v1';
+var reviewQueueShuffleStoredValue = null;
+var reviewQueueShuffleScope = null;
+
+function getReviewQueueShuffleScope() {
+    const level = gameState.currentLevel;
+    const scope = level === 'my' ? ['my', gameState.activeMyWordbookId]
+        : level === 'illustrated' ? ['illustrated'] : ['review', gameState.activeReviewLevels || []];
+    return JSON.stringify([scope, [...(gameState.posFilters || [])].sort()]);
+}
+
+function restoreReviewQueueShuffleOrder() {
+    gameState.reviewQueueShuffleOrder = [];
+    gameState.reviewQueueWasShuffled = false;
+    reviewQueueShuffleStoredValue = null;
+    reviewQueueShuffleScope = null;
+    try {
+        const raw = localStorage.getItem(REVIEW_QUEUE_SHUFFLE_STORAGE_KEY);
+        reviewQueueShuffleStoredValue = raw;
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        if (!saved || saved.scope !== getReviewQueueShuffleScope() || !Array.isArray(saved.order)) return;
+        gameState.reviewQueueShuffleOrder = [...new Set(saved.order.filter(key => typeof key === 'string' && key))];
+        gameState.reviewQueueWasShuffled = gameState.reviewQueueShuffleOrder.length > 0;
+        reviewQueueShuffleScope = saved.scope;
+    } catch (error) {
+        console.warn('Review shuffle order could not be restored.');
+    }
+}
+
+function persistReviewQueueShuffleOrder() {
+    const order = gameState.reviewQueueShuffleOrder;
+    const value = order.length ? JSON.stringify({ scope: getReviewQueueShuffleScope(), order }) : null;
+    if (value === reviewQueueShuffleStoredValue) return true;
+    try {
+        if (value) localStorage.setItem(REVIEW_QUEUE_SHUFFLE_STORAGE_KEY, value);
+        else localStorage.removeItem(REVIEW_QUEUE_SHUFFLE_STORAGE_KEY);
+        reviewQueueShuffleStoredValue = value;
+        reviewQueueShuffleScope = order.length ? getReviewQueueShuffleScope() : null;
+        return true;
+    } catch (error) {
+        console.warn('Review shuffle order could not be saved.');
+        return false;
+    }
+}
+
 function resetReviewQueueShuffleOrder() {
     gameState.reviewQueueShuffleOrder = [];
     gameState.reviewQueueWasShuffled = false;
+    persistReviewQueueShuffleOrder();
 }
 
 function applyReviewQueueShuffleOrder(items) {
@@ -2488,6 +2546,10 @@ function applyReviewQueueShuffleOrder(items) {
         ? gameState.reviewQueueShuffleOrder
         : [];
     if (savedOrder.length === 0) return items;
+    if (reviewQueueShuffleScope !== getReviewQueueShuffleScope()) {
+        resetReviewQueueShuffleOrder();
+        return items;
+    }
     if (items.length === 0) {
         resetReviewQueueShuffleOrder();
         return items;
@@ -2510,6 +2572,7 @@ function applyReviewQueueShuffleOrder(items) {
     });
 
     gameState.reviewQueueShuffleOrder = ordered.map(item => item.key);
+    persistReviewQueueShuffleOrder();
     return ordered;
 }
 
@@ -2541,7 +2604,7 @@ window.shuffleReviewQueue = function (event) {
         : [...dueWords];
 
     if (movableWords.length < 2) {
-        showReviewShuffleStatus('ランダムにできる復習がまだありません');
+        showReviewShuffleStatus('シャッフルする復習がまだありません');
         return;
     }
 
@@ -2552,12 +2615,20 @@ window.shuffleReviewQueue = function (event) {
         [shuffledKeys[0], shuffledKeys[1]] = [shuffledKeys[1], shuffledKeys[0]];
     }
 
+    const previousOrder = gameState.reviewQueueShuffleOrder;
+    const previouslyShuffled = gameState.reviewQueueWasShuffled;
     gameState.reviewQueueShuffleOrder = pinnedWord ? [currentKey, ...shuffledKeys] : shuffledKeys;
     gameState.reviewQueueWasShuffled = true;
+    if (!persistReviewQueueShuffleOrder()) {
+        gameState.reviewQueueShuffleOrder = previousOrder;
+        gameState.reviewQueueWasShuffled = previouslyShuffled;
+        showReviewShuffleStatus('並び順を保存できませんでした');
+        return;
+    }
     const shuffledSnapshot = buildReviewQueueSnapshot();
     updateReviewQueueBadge(shuffledSnapshot);
     updateReviewProgressUI(shuffledSnapshot);
-    showReviewShuffleStatus(pinnedWord ? '次の復習以降をランダムにしました' : '復習の順番をランダムにしました');
+    showReviewShuffleStatus(pinnedWord ? '次の復習以降をシャッフルして保存しました' : 'シャッフルして保存しました');
 };
 
 function getCurrentReviewStats(snapshot = null) {
@@ -2702,8 +2773,8 @@ function updateReviewProgressUI(snapshot = null) {
             shuffleButton.disabled = movableCount < 2;
             shuffleButton.classList.toggle('is-active', gameState.reviewQueueWasShuffled && total > 0);
             shuffleButton.title = shuffleButton.disabled
-                ? 'ランダムにするには、残りの復習が2件以上必要です'
-                : '復習キューの残り順をランダムに並べ替える';
+                ? 'シャッフルするには、残りの復習が2件以上必要です'
+                : '復習キューの残り順をシャッフルして、この端末に保存する';
         });
     }
     updateReviewScoreSummary();
@@ -3082,6 +3153,7 @@ function loadGame() {
 window.resetGameData = function () {
     console.log("Hard Resetting Game Data...");
     localStorage.removeItem('vocabClickerSave');
+    resetReviewQueueShuffleOrder();
     localStorage.removeItem(LAST_LEVEL_STORAGE_KEY);
     localStorage.removeItem('vocabGame_userId');
     localStorage.removeItem('vocabGame_playerName');

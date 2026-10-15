@@ -29,7 +29,7 @@ async function seedReview(page) {
 
 async function openSettings(page) {
     await page.getByRole('button', { name: 'その他メニュー', exact: true }).click();
-    await page.getByRole('button', { name: '出題・復習設定', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定', exact: true }).click();
     await expect(page.locator('#studyModeModal')).toBeVisible();
     await page.getByRole('tab', { name: '表示', exact: true }).click();
 }
@@ -71,7 +71,7 @@ test('カード学習状況：320pxで表示タブから切替でき、学習記
     await expect(toggle).toBeChecked();
     await expect(page.locator('.card-accuracy')).toHaveText('67%');
     await expect(page.locator('#questionReasonLabel')).toHaveText('得意の定着チェック');
-    await page.getByRole('button', { name: '出題・復習設定を閉じる', exact: true }).click();
+    await page.getByRole('button', { name: '出題・復習・表示設定を閉じる', exact: true }).click();
     await expect(page.locator('#studyModeModal')).toBeHidden();
     await expect(page.locator('#learnedBtn')).toBeVisible();
 });
