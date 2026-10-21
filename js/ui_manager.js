@@ -1288,7 +1288,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- LEADERBOARD MODAL ---
+let leaderboardOpenSequence = 0;
 window.openLeaderboard = async function () {
+    const sequence = ++leaderboardOpenSequence;
     const modal = document.getElementById('leaderboardModal');
     if (modal) modal.style.display = 'flex';
     const content = document.getElementById('leaderboardContent');
@@ -1310,23 +1312,31 @@ window.openLeaderboard = async function () {
     }
     if (window.showReviewRankingPreview && window.showReviewRankingPreview()) return;
 
-    const updateCheckPromise = window.checkForceUpdate
-        ? Promise.resolve(window.checkForceUpdate()).catch(() => true)
-        : Promise.resolve(true);
+    // This is a read-only public list. Keep the version restriction, but do not
+    // make list retrieval depend on Firestore or anonymous sign-in completing.
+    if (window.checkForceUpdate) {
+        Promise.resolve().then(() => window.checkForceUpdate()).then(canProceed => {
+            if (canProceed === false && sequence === leaderboardOpenSequence) window.closeLeaderboard();
+        }).catch(error => console.warn('Ranking update check deferred:', error.message));
+    }
     const currentUser = window.firebaseAuth?.currentUser || null;
-    const identityPromise = !currentUser && window.ensureRankingIdentity
-        ? window.ensureRankingIdentity()
-        : Promise.resolve(currentUser);
-    const [canProceed, rankingUser] = await Promise.all([updateCheckPromise, identityPromise]);
-    if (!canProceed) return;
-
-    if (!rankingUser) {
+    if (!currentUser) {
         const msg = document.getElementById('loginRequiredMessage');
 
-        if (msg) msg.style.display = 'block';
+        if (msg) msg.style.display = window.ensureRankingIdentity ? 'none' : 'block';
         if (content) content.style.display = 'block';
         if (nameInput) nameInput.style.display = 'none';
         if (typeof loadRankingData === 'function') loadRankingData('top');
+        if (window.ensureRankingIdentity) {
+            Promise.resolve().then(() => window.ensureRankingIdentity()).then(user => {
+                if (sequence !== leaderboardOpenSequence || modal?.style.display !== 'flex') return;
+                if (user && typeof checkNameRegistration === 'function') checkNameRegistration();
+                else if (msg) msg.style.display = 'block';
+            }).catch(error => {
+                if (msg && sequence === leaderboardOpenSequence && modal?.style.display === 'flex') msg.style.display = 'block';
+                console.warn('Ranking identity deferred:', error.message);
+            });
+        }
     } else {
         const msg = document.getElementById('loginRequiredMessage');
         if (msg) msg.style.display = 'none';
@@ -1341,6 +1351,8 @@ window.openLeaderboard = async function () {
 };
 
 window.closeLeaderboard = function () {
+    leaderboardOpenSequence++;
+    if (typeof cancelReviewLeaderboardLoad === 'function') cancelReviewLeaderboardLoad();
     const modal = document.getElementById('leaderboardModal');
     if (modal) modal.style.display = 'none';
 };

@@ -6371,6 +6371,32 @@ body.dismissible-modal-open {
     font-weight: 800;
 }
 
+.leaderboard-refresh-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 44px;
+    margin-top: 8px;
+}
+
+#reviewRankingStatus {
+    min-width: 0;
+    color: #7d879a;
+    font-size: 12px;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+#reviewRankingRetry {
+    position: static;
+    inset: auto;
+    flex: 0 0 auto;
+    min-width: 64px;
+    min-height: 44px;
+    box-shadow: none;
+}
+
 .leaderboard-name-input {
     width: min(260px, 100%);
     margin-top: 4px;

@@ -4396,7 +4396,7 @@ function updateReviewRankingSummary(serverData = null) {
 
     if (avatar) avatar.src = getReviewAvatarPath(myEntry?.avatarId || getReviewAvatarId());
     if (name) name.textContent = myEntry?.name || (isGuest ? ensureGuestPlayerName(rankingUser.uid) : playerName) || 'あなた';
-    if (weekPoints) weekPoints.textContent = `${myEntry?.score ?? getReviewWeekPoints()}pt`;
+    if (weekPoints) weekPoints.textContent = `${serverData?.useLocalScore ? getReviewWeekPoints() : myEntry?.score ?? getReviewWeekPoints()}pt`;
     if (todayPoints) todayPoints.textContent = `今日 ${getReviewTodayPoints()}pt`;
     if (rank) rank.textContent = myEntry?.rank ? `${myEntry.rank}位` : '--位';
     if (guestNotice) guestNotice.style.display = isGuest ? 'flex' : 'none';
@@ -4487,6 +4487,22 @@ if (!window.restoreSaveData) {
 }
 
 let currentLeaderboardTab = 'top';
+var reviewRankingLoadSequence = 0;
+
+function cancelReviewLeaderboardLoad() {
+    reviewRankingLoadSequence++;
+}
+
+window.refreshReviewLeaderboard = function () {
+    if (document.getElementById('leaderboardModal')?.style.display !== 'flex'
+        || document.getElementById('nameInputParams')?.style.display !== 'none') return;
+    if (window.firebaseAuth?.currentUser) {
+        const loginMessage = document.getElementById('loginRequiredMessage');
+        if (loginMessage) loginMessage.style.display = 'none';
+    }
+    updateReviewRankingSummary();
+    loadRankingData('top', true);
+};
 
 function switchTab(tab) {
     currentLeaderboardTab = tab;
@@ -4498,25 +4514,59 @@ async function loadRankingData(type, force = false) {
     const loading = document.getElementById('lb-loading');
     const pinned = document.getElementById('reviewRankingPinned');
     const pinnedRow = document.getElementById('reviewRankingPinnedRow');
-    if (!container) return;
-
-    if (loading) loading.style.display = 'block';
+    const status = document.getElementById('reviewRankingStatus');
+    const retry = document.getElementById('reviewRankingRetry');
+    if (!container || document.getElementById('forceUpdateModal')?.style.display === 'flex') return;
+    const sequence = ++reviewRankingLoadSequence;
+    const userId = window.firebaseAuth?.currentUser?.uid || null;
+    const weekKey = getReviewWeekKey();
+    const isCurrent = () => sequence === reviewRankingLoadSequence
+        && userId === (window.firebaseAuth?.currentUser?.uid || null) && weekKey === getReviewWeekKey()
+        && document.getElementById('leaderboardModal')?.style.display === 'flex'
+        && document.getElementById('forceUpdateModal')?.style.display !== 'flex';
+    const cached = window.getCachedReviewLeaderboard?.();
+    if (loading) loading.style.display = cached ? 'none' : 'block';
+    if (status) status.textContent = cached ? reviewRankingCacheLabel(cached) + '・更新中' : '';
+    if (retry) { retry.disabled = true; retry.textContent = '更新'; }
     if (pinned) pinned.style.display = 'none';
-    container.innerHTML = '<div class="leaderboard-empty">ランキングを読み込んでいます</div>';
-
-    if (!window.fetchReviewLeaderboard) {
-        container.innerHTML = '<div class="leaderboard-empty">現在はランキングに接続できません</div>';
-        if (loading) loading.style.display = 'none';
-        return;
+    if (cached) renderReviewLeaderboardData(cached, container, pinned, pinnedRow);
+    else container.innerHTML = '<div class="leaderboard-empty">ランキングを読み込んでいます</div>';
+    let timer;
+    try {
+        if (!window.fetchReviewLeaderboard) throw new Error('現在はランキングに接続できません。');
+        const data = await Promise.race([
+            window.fetchReviewLeaderboard(force),
+            new Promise((resolve, reject) => {
+                timer = setTimeout(() => reject(new Error('接続に時間がかかっています。')), 14000);
+            })
+        ]);
+        if (!isCurrent()) return;
+        if (!data || (data.error && !data.stale)) throw new Error(data?.error || 'ランキングを取得できませんでした。');
+        renderReviewLeaderboardData(data, container, pinned, pinnedRow);
+        if (status) status.textContent = data.stale ? reviewRankingCacheLabel(data) : '';
+        if (retry) retry.textContent = data.error ? '再試行' : '更新';
+    } catch (error) {
+        if (!isCurrent()) return;
+        const fallback = window.getCachedReviewLeaderboard?.();
+        if (fallback) renderReviewLeaderboardData(fallback, container, pinned, pinnedRow);
+        else container.innerHTML = '<div class="leaderboard-empty">ランキングを取得できませんでした</div>';
+        if (status) status.textContent = fallback ? reviewRankingCacheLabel(fallback) : error.message;
+        if (retry) retry.textContent = '再試行';
+    } finally {
+        clearTimeout(timer);
+        if (isCurrent()) {
+            if (loading) loading.style.display = 'none';
+            if (retry) retry.disabled = false;
+        }
     }
+}
 
-    const data = await window.fetchReviewLeaderboard(force);
-    if (loading) loading.style.display = 'none';
+function reviewRankingCacheLabel(data) {
+    const time = new Date(data.cachedAt).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+    return `前回の表示（${time}）`;
+}
 
-    if (data.error) {
-        container.innerHTML = `<div class="leaderboard-empty">${window.GameUtils.escapeHtml(data.error)}</div>`;
-        return;
-    }
+function renderReviewLeaderboardData(data, container, pinned, pinnedRow) {
 
     const results = Array.isArray(data.results) ? data.results : [];
     if (results.length === 0) {
@@ -4526,9 +4576,12 @@ async function loadRankingData(type, force = false) {
     }
 
     if (data.me && data.me.rank) {
-        window.latestReviewRank = data.me.rank;
-        localStorage.setItem(`vocabGame_reviewRank_${getReviewWeekKey()}`, String(data.me.rank));
-        updateReviewScoreSummary();
+        if (!data.stale) {
+            window.latestReviewRank = data.me.rank;
+            try { localStorage.setItem(`vocabGame_reviewRank_${getReviewWeekKey()}`, String(data.me.rank)); }
+            catch (error) { console.warn('Ranking position could not be saved.'); }
+            updateReviewScoreSummary();
+        }
         updateReviewRankingSummary(data);
 
         const includedInTop = results.some(item => item.isMe);

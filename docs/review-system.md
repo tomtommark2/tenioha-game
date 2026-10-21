@@ -158,3 +158,11 @@ The standard `npm run test:e2e:safe` preflight fails when the generated allowlis
 - Google linking is stopped while local score events remain unsent, preventing the same pending event from being credited under both identities.
 - Purchase, promo-code redemption, cloud save, and direct client access to `users/{uid}` remain available only to non-anonymous accounts.
 - Ranking points and scoring rules are identical for guests, free registered users, and premium users.
+
+### ランキング読込の改善（2026.1021.1850）
+
+- 一覧は更新確認・認証・未送信ポイントの同期を待たず取得する。強制更新の制限は維持し、認証取得が失敗した場合は公開上位20件へ切り替える。本人の得点は公開一覧の0点で上書きしない。
+- 一覧はトークン・本文読取を含め1回6秒、公開一覧への切替を含め最大2回。画面の待機上限は14秒。「更新／再試行」は44px以上とし、失敗時は同じ起動中・同じ週・同じ利用者の前回一覧を時刻付きで残す。通常キャッシュは2分で、一覧・名前の端末保存は追加しない。
+- ポイント送信は裏で続け、再送可能な送信だけ12秒で中断する。時間切れ・不正応答ではeventIdと未送信分を保持する。同期前の遅い一覧が得点を巻き戻さないよう保護し、同期完了・認証変更・通信機能の遅い読込後は開いている一覧を更新する。
+- 取得中の週・利用者変更や閉じる／再表示の競合を保護する。保存形式・配点・SRS・アカウント統合の通信仕様・Functionsは変更しない。
+- 公開前確認は単体72件（専用15件を含む）、Functions18件、関連ブラウザー40件成功。公開用コードと320／390／1280pxの独立検証は [公開記録](experiments/review-leaderboard-release-2026-10-21/review-notes.md) を参照。

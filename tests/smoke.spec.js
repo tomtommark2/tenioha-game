@@ -2075,7 +2075,7 @@ test('ランキングプロフィールで犬と猫を含む8種類の実画像�
   await expect(page.locator('.review-avatar-option[data-avatar-id="dog"]')).toHaveClass(/active/);
 });
 
-test('ランキングは更新確認や匿名認証を待たずにモーダルを表示する', async ({ page }) => {
+test('ランキングは更新確認や匿名認証を待たずに一覧を表示する', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -2091,8 +2091,8 @@ test('ランキングは更新確認や匿名認証を待たずにモーダル�
   });
 
   await expect(page.locator('#leaderboardModal')).toBeVisible();
-  await expect(page.locator('#lb-loading')).toBeVisible();
-  await expect(page.locator('#lb-list-top')).toContainText('ランキングを読み込んでいます');
+  await expect(page.locator('#lb-loading')).toBeHidden();
+  await expect(page.locator('#lb-list-top')).toContainText('まだ参加者がいません');
 });
 
 test('未登録ユーザーは固定ゲスト名でランキングに参加しGoogle連携を案内する', async ({ page }) => {

@@ -1,0 +1,127 @@
+{
+  "base": "http://localhost:8000/",
+  "version": "2026.1021.1850",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "fc9ac6dbf73848a25131f7bd10561b349d078f989a4b196df6e56a8a2cbf427d"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "fc9ac6dbf73848a25131f7bd10561b349d078f989a4b196df6e56a8a2cbf427d"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "5a072a643c22f540eacfe24c97fa7a28c35f35438e04b6bf53f6be8bb109a0b2"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "a5ad5659034cda1b5752586807ce3687335b03e5adb25bd75a521e12badf9195"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "9eaa6bd44dd039301794aa71d7ea3a06a37c0c42490cc6b90a7c36be4d853750"
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "d2b5e8ae7baa1dcd547cc22cd92d1c5819139a85262e59e20ef8347ef4ac201d"
+    },
+    {
+      "file": "style.css",
+      "sha256": "feb8371ed2eccf04abea629440b439bb853fb428de67a8191486c77028ce7809"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 320,
+      "entry": "vocab_clicker_game.html",
+      "nonBlockingList": true,
+      "staleFallback": true,
+      "retryRecovery": true,
+      "uiDeadline": true,
+      "learningUnchanged": true,
+      "retryBounds": {
+        "height": 44,
+        "inside": true
+      },
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "entry": "index.html",
+      "nonBlockingList": true,
+      "staleFallback": true,
+      "retryRecovery": true,
+      "uiDeadline": true,
+      "learningUnchanged": true,
+      "retryBounds": {
+        "height": 44,
+        "inside": true
+      },
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "entry": "index.html",
+      "nonBlockingList": true,
+      "staleFallback": true,
+      "retryRecovery": true,
+      "uiDeadline": true,
+      "learningUnchanged": true,
+      "retryBounds": {
+        "height": 44,
+        "inside": true
+      },
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "entry": "vocab_clicker_game.html",
+      "nonBlockingList": true,
+      "staleFallback": true,
+      "retryRecovery": true,
+      "uiDeadline": true,
+      "learningUnchanged": true,
+      "retryBounds": {
+        "height": 44,
+        "inside": true
+      },
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "entry": "index.html",
+      "nonBlockingList": true,
+      "staleFallback": true,
+      "retryRecovery": true,
+      "uiDeadline": true,
+      "learningUnchanged": true,
+      "retryBounds": {
+        "height": 44,
+        "inside": true
+      },
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "entry": "index.html",
+      "nonBlockingList": true,
+      "staleFallback": true,
+      "retryRecovery": true,
+      "uiDeadline": true,
+      "learningUnchanged": true,
+      "retryBounds": {
+        "height": 44,
+        "inside": true
+      },
+      "pageErrors": []
+    }
+  ],
+  "uiNetwork": "isolated fixtures using actual ranking API code"
+}

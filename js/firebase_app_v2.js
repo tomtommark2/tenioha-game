@@ -67,6 +67,10 @@ try {
 const REVIEW_FUNCTION_BASE = 'https://us-central1-tenioha-game.cloudfunctions.net';
 const REVIEW_LEADERBOARD_CACHE_MS = 2 * 60 * 1000;
 let reviewLeaderboardCache = { data: null, timestamp: 0 };
+const REVIEW_REQUEST_TIMEOUT_MS = 12000;
+const REVIEW_LEADERBOARD_TIMEOUT_MS = 6000;
+let reviewLeaderboardRequest = null;
+let reviewLeaderboardRevision = 0;
 let reviewScoreSyncPromise = null;
 let anonymousSignInPromise = null;
 
@@ -101,24 +105,70 @@ window.ensureRankingIdentity = async function () {
     return anonymousSignInPromise;
 };
 
-async function postReviewFunction(functionName, payload, requireAuth = true) {
-    const currentUser = auth && auth.currentUser;
-    if (requireAuth && !currentUser) throw new Error('ログインが必要です。');
-    const headers = { 'Content-Type': 'application/json' };
-    if (currentUser) headers.Authorization = `Bearer ${await currentUser.getIdToken()}`;
-
-    const response = await fetch(`${REVIEW_FUNCTION_BASE}/${functionName}`, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(payload || {})
-    });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) {
-        const error = new Error(data.error || `通信に失敗しました (${response.status})`);
-        error.status = response.status;
-        throw error;
+async function withReviewRequestTimeout(operation, timeoutMs) {
+    const controller = new AbortController();
+    let timer;
+    try {
+        return await Promise.race([
+            Promise.resolve().then(() => operation(controller.signal)),
+            new Promise((resolve, reject) => {
+                timer = setTimeout(() => {
+                    const error = new Error('接続に時間がかかっています。');
+                    error.name = 'TimeoutError';
+                    reject(error);
+                    controller.abort();
+                }, timeoutMs);
+            })
+        ]);
+    } finally {
+        clearTimeout(timer);
     }
-    return data;
+}
+
+async function postReviewFunction(functionName, payload, requireAuth = true, options = {}) {
+    const currentUser = options.user === undefined ? auth?.currentUser : options.user;
+    if (requireAuth && !currentUser) throw new Error('ログインが必要です。');
+    const send = async signal => {
+        const headers = { 'Content-Type': 'application/json' };
+        if (currentUser) headers.Authorization = `Bearer ${await currentUser.getIdToken()}`;
+        // A late token must not start a request after its deadline.
+        if (signal?.aborted) throw new Error('接続に時間がかかっています。');
+        const response = await fetch(`${REVIEW_FUNCTION_BASE}/${functionName}`, {
+            method: 'POST', headers, body: JSON.stringify(payload || {}), signal
+        });
+        const data = await response.json().catch(() => null);
+        if (!response.ok) {
+            const error = new Error(data?.error || `通信に失敗しました (${response.status})`);
+            error.status = response.status;
+            throw error;
+        }
+        if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('応答を読み取れませんでした。');
+        return data;
+    };
+    // Score retries are idempotent by eventId. Do not change account merging or
+    // profile writes as part of this read-reliability fix.
+    const timeoutMs = options.timeoutMs || (functionName === 'submitReviewScore' ? REVIEW_REQUEST_TIMEOUT_MS : 0);
+    return timeoutMs ? withReviewRequestTimeout(send, timeoutMs) : send();
+}
+
+function getReviewLeaderboardScope() {
+    return JSON.stringify([auth?.currentUser?.uid || null, getReviewWeekKey()]);
+}
+
+window.getCachedReviewLeaderboard = function () {
+    if (!reviewLeaderboardCache.data || reviewLeaderboardCache.scope !== getReviewLeaderboardScope()) return null;
+    return { ...reviewLeaderboardCache.data, useLocalScore: true,
+        stale: true, cachedAt: reviewLeaderboardCache.timestamp };
+};
+
+function refreshVisibleReviewLeaderboard() {
+    if (typeof window.refreshReviewLeaderboard === 'function') window.refreshReviewLeaderboard();
+}
+
+function requestReviewLeaderboard(user) {
+    return postReviewFunction('getReviewLeaderboard', {}, false, {
+        user, timeoutMs: REVIEW_LEADERBOARD_TIMEOUT_MS
+    });
 }
 
 window.syncPendingReviewScores = function () {
@@ -126,35 +176,46 @@ window.syncPendingReviewScores = function () {
     if (!auth?.currentUser || typeof gameState === 'undefined') return Promise.resolve();
     const pending = gameState.reviewScore?.pendingEvents;
     if (!Array.isArray(pending) || pending.length === 0) return Promise.resolve();
+    const syncUser = auth.currentUser;
+    const scoreState = gameState.reviewScore;
 
     reviewScoreSyncPromise = (async () => {
         let changed = false;
-        while (gameState.reviewScore.pendingEvents.length > 0) {
-            const event = gameState.reviewScore.pendingEvents[0];
+        while (auth?.currentUser?.uid === syncUser.uid && gameState.reviewScore === scoreState
+            && scoreState.pendingEvents.length > 0) {
+            const event = scoreState.pendingEvents[0];
             try {
                 const result = await postReviewFunction('submitReviewScore', {
                     ...event,
-                    name: auth.currentUser.isAnonymous
-                        ? guestRankingName(auth.currentUser.uid)
-                        : localStorage.getItem('vocabGame_playerName') || auth.currentUser.displayName || '学習者',
+                    name: syncUser.isAnonymous
+                        ? guestRankingName(syncUser.uid)
+                        : localStorage.getItem('vocabGame_playerName') || syncUser.displayName || '学習者',
                     avatarId: localStorage.getItem('vocabGame_reviewAvatarId') || 'hero'
-                });
-                gameState.reviewScore.pendingEvents.shift();
+                }, true, { user: syncUser });
+                if (auth?.currentUser?.uid !== syncUser.uid || gameState.reviewScore !== scoreState) break;
+                if (typeof result.todayKey !== 'string' || typeof result.weekKey !== 'string'
+                    || !Number.isFinite(result.todayPoints) || result.todayPoints < 0
+                    || !Number.isFinite(result.weekPoints) || result.weekPoints < 0) {
+                    throw new Error('復習スコアの応答を確認できませんでした。');
+                }
+                scoreState.pendingEvents.shift();
+                reviewLeaderboardRevision++;
                 if (window.applyServerReviewScore) {
                     window.applyServerReviewScore({
                         todayKey: result.todayKey,
                         todayPoints: result.todayPoints,
                         weekKey: result.weekKey,
                         weekPoints: result.weekPoints,
-                        userId: auth.currentUser.uid
+                        userId: syncUser.uid
                     });
                 }
                 changed = true;
                 reviewLeaderboardCache = { data: null, timestamp: 0 };
             } catch (error) {
+                if (auth?.currentUser?.uid !== syncUser.uid || gameState.reviewScore !== scoreState) break;
                 if (error.status >= 400 && error.status < 500 && error.status !== 401) {
                     console.warn('Discarding invalid review score event:', error.message);
-                    gameState.reviewScore.pendingEvents.shift();
+                    scoreState.pendingEvents.shift();
                     changed = true;
                     continue;
                 }
@@ -162,7 +223,10 @@ window.syncPendingReviewScores = function () {
                 break;
             }
         }
-        if (changed && typeof saveGame === 'function') saveGame();
+        if (changed && auth?.currentUser?.uid === syncUser.uid && gameState.reviewScore === scoreState) {
+            if (typeof saveGame === 'function') saveGame();
+            if (scoreState.pendingEvents.length === 0) refreshVisibleReviewLeaderboard();
+        }
     })().finally(() => {
         reviewScoreSyncPromise = null;
     });
@@ -171,35 +235,66 @@ window.syncPendingReviewScores = function () {
 };
 
 window.fetchReviewLeaderboard = async function (force = false) {
-    if (auth?.currentUser && gameState.reviewScore?.pendingEvents?.length) {
-        await window.syncPendingReviewScores();
+    const requestUser = auth?.currentUser || null;
+    const scope = getReviewLeaderboardScope();
+    const revision = reviewLeaderboardRevision;
+    const pendingAtStart = Boolean(gameState.reviewScore?.pendingEvents?.length);
+    if (requestUser && pendingAtStart) {
+        // Viewing the list never waits for score writes (or their token refresh).
+        window.syncPendingReviewScores().catch(error => console.warn('Review score sync deferred:', error.message));
     }
     const now = Date.now();
-    if (!force && reviewLeaderboardCache.data && now - reviewLeaderboardCache.timestamp < REVIEW_LEADERBOARD_CACHE_MS) {
-        return reviewLeaderboardCache.data;
+    if (!force && reviewLeaderboardCache.scope === scope && reviewLeaderboardCache.data
+        && now - reviewLeaderboardCache.timestamp < REVIEW_LEADERBOARD_CACHE_MS) {
+        return { ...reviewLeaderboardCache.data,
+            useLocalScore: reviewLeaderboardCache.data.useLocalScore || pendingAtStart || Boolean(reviewScoreSyncPromise) };
     }
-
-    try {
-        const data = await postReviewFunction('getReviewLeaderboard', {}, false);
-        if (auth?.currentUser && !data.error && window.applyServerReviewScore) {
-            window.applyServerReviewScore({
-                todayKey: data.todayKey,
-                todayPoints: data.todayPoints,
-                weekKey: data.weekKey,
-                weekPoints: data.me?.score ?? 0,
-                userId: auth.currentUser.uid
-            });
+    if (reviewLeaderboardRequest?.scope === scope && reviewLeaderboardRequest.revision === revision) {
+        return reviewLeaderboardRequest.promise;
+    }
+    const request = { scope, revision, promise: null };
+    request.promise = (async () => {
+        try {
+            let data;
+            try {
+                data = await requestReviewLeaderboard(requestUser);
+            } catch (error) {
+                if (!requestUser || scope !== getReviewLeaderboardScope()) throw error;
+                // The top 20 are public; a failed authentication must not hide them.
+                data = { ...await requestReviewLeaderboard(null), publicOnly: true };
+            }
+            if (scope !== getReviewLeaderboardScope()) return { error: '接続状態が変わりました。', results: [] };
+            if (!data || !Array.isArray(data.results) || data.results.some(item => !item || typeof item !== 'object')
+                || data.error) throw new Error(data?.error || 'ランキングを取得できませんでした。');
+            const useLocalScore = pendingAtStart || Boolean(reviewScoreSyncPromise)
+                || Boolean(gameState.reviewScore?.pendingEvents?.length) || revision !== reviewLeaderboardRevision;
+            data = { ...data, useLocalScore };
+            if (requestUser && !data.publicOnly && !useLocalScore && window.applyServerReviewScore) {
+                window.applyServerReviewScore({ todayKey: data.todayKey, todayPoints: data.todayPoints,
+                    weekKey: data.weekKey, weekPoints: data.me?.score ?? 0, userId: requestUser.uid });
+            }
+            if (revision === reviewLeaderboardRevision && data.weekKey === getReviewWeekKey()) {
+                reviewLeaderboardCache = { data, timestamp: Date.now(), scope };
+            }
+            return data;
+        } catch (error) {
+            const cached = scope === getReviewLeaderboardScope() ? window.getCachedReviewLeaderboard() : null;
+            return cached ? { ...cached, error: error.message } : { error: error.message, results: [] };
+        } finally {
+            if (reviewLeaderboardRequest === request) reviewLeaderboardRequest = null;
         }
-        reviewLeaderboardCache = { data, timestamp: now };
-        return data;
-    } catch (error) {
-        return { error: error.message, results: [] };
-    }
+    })();
+    reviewLeaderboardRequest = request;
+    return request.promise;
 };
+
+// Recover an already-open list if the module arrived after the UI timeout.
+refreshVisibleReviewLeaderboard();
 
 window.updateReviewRankingProfile = async function (name, avatarId) {
     try {
         const result = await postReviewFunction('updateReviewProfile', { name, avatarId });
+        reviewLeaderboardRevision++;
         reviewLeaderboardCache = { data: null, timestamp: 0 };
         return result;
     } catch (error) {
@@ -457,6 +552,7 @@ async function checkAutoRedeem(user) {
 if (auth) {
     onAuthStateChanged(auth, async (user) => {
         window.dispatchEvent(new Event('feedback-auth-changed'));
+        refreshVisibleReviewLeaderboard();
         // Call Auto Redeem logic (Always check, even if guest)
         checkAutoRedeem(user);
         // setupUIElements(); // Handled by init() in game_logic.js
