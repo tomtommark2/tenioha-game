@@ -27,7 +27,7 @@ function validateText(value, max, fallback = '') {
 
 function createFeedbackHandler({ db, verifyUser, rejectNonPost, notify = async () => {}, notificationFailed = logNotificationFailure }) {
     return async (req, res) => {
-        if (rejectNonPost(req, res)) return;
+        if (await rejectNonPost(req, res)) return;
         res.set('Cache-Control', 'no-store');
         try {
             const body = req.body || {};
@@ -35,7 +35,10 @@ function createFeedbackHandler({ db, verifyUser, rejectNonPost, notify = async (
             let user = null;
             if (req.headers.authorization) {
                 try { user = await verifyUser(req); }
-                catch { throw Object.assign(new Error('ログインをやり直してください。'), { status: 401 }); }
+                catch (error) {
+                    if (error.status === 403 || error.status === 503) throw error;
+                    throw Object.assign(new Error('ログインをやり直してください。'), { status: 401 });
+                }
             }
             const isAdmin = user?.feedbackAdmin === true;
             const posts = db.collection('feedback_posts');

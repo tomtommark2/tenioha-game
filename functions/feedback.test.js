@@ -31,6 +31,23 @@ function fixture(user = null, options = {}) {
     return { data, call, setUser: value => { user = value; } };
 }
 const member = { uid: 'member', firebase: { sign_in_provider: 'google.com' } };
+
+test('停止中・管理文書確認不可の投稿は401へ変換せず、書き込まない', async () => {
+    for (const status of [403, 503]) {
+        const f = fixture(member, { verifyUser: async () => { throw Object.assign(new Error('利用できません。'), { status }); } });
+        assert.equal((await f.call({ action: 'create', text: 'test' })).code, status);
+        assert.equal(f.data.size, 0);
+    }
+});
+
+test('App Checkの非同期事前チェックで拒否された投稿を処理しない', async () => {
+    const f = fixture(member, { rejectNonPost: async (req, res) => {
+        res.status(403).json({ code: 'app-check/invalid', retryable: true });
+        return true;
+    } });
+    assert.equal((await f.call({ action: 'create', text: 'test' })).code, 403);
+    assert.equal(f.data.size, 0);
+});
 test('保存済み新規投稿・本人コメントだけ通知し、通知失敗で投稿を失敗扱いにしない', async () => {
     const sent = [];
     const f = fixture(member, { notify: async message => {

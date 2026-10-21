@@ -217,3 +217,26 @@ test('ランキング通信：プロフィール更新前の遅い一覧で新�
     await first;
     expect(env.context.window.getCachedReviewLeaderboard().me.name).toBe('新しい名前');
 });
+
+test('ランキング通信：App Check・権限・回数制限で送信待ちの加点を捨てない', async () => {
+    for (const status of [401, 403, 429, 503]) {
+        const env = load(async () => ({ ok: false, status, json: async () => ({ error: 'retry later', retryable: true }) }));
+        env.state.reviewScore.pendingEvents.push({ eventId: 'keep' });
+        await env.context.window.syncPendingReviewScores();
+        expect(env.state.reviewScore.pendingEvents[0].eventId).toBe('keep');
+        expect(env.applied).toEqual([]);
+        expect(env.saved).toEqual([]);
+    }
+    const invalid = load(async () => ({ ok: false, status: 400, json: async () => ({ error: 'invalid data' }) }));
+    invalid.state.reviewScore.pendingEvents.push({ eventId: 'invalid' });
+    await invalid.context.window.syncPendingReviewScores();
+    expect(invalid.state.reviewScore.pendingEvents).toEqual([]);
+});
+
+test('ランキング通信：App Checkヘッダーは認証ヘッダーと独立して送る', async () => {
+    const env = load(async () => response(list()));
+    env.context.window.teniohaAppCheckClient = { headers: async () => ({ 'X-Firebase-AppCheck': 'fixture' }) };
+    await env.context.window.fetchReviewLeaderboard();
+    expect(env.requests[0].headers['X-Firebase-AppCheck']).toBe('fixture');
+    expect(env.requests[0].headers.Authorization).toBe('Bearer token-A');
+});

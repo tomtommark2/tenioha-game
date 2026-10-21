@@ -5,6 +5,11 @@ firebase-debug.*.log
 
 # Local/secret files
 functions/.env
+.env
+.env.*
+!.env.example
+*firebase-adminsdk*.json
+serviceAccountKey.json
 *.local
 *.bak
 

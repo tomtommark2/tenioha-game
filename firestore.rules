@@ -2,18 +2,17 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // --- 🚫 BAN LIST CONFIGURATION 🚫 ---
-    // Blocked User IDs (Cheaters)
-    // Add the specific UID to this list to strictly block all writes
+    // Seed and verify this private document BEFORE deploying these rules.
+    // Missing or malformed configuration fails closed, never unblocks everyone.
     function isBanned() {
-      // Blocked User IDs (Cheaters) & Emails
-      return request.auth.uid in ['Z6gybt3F4Fcq0XrQs64AAHWdxCL2'] ||
-             request.auth.token.email in [
-                 'shanbenkensuke@gmail.com',
-                 'shanbenhassaku839@gmail.com'
-             ];
+      let path = /databases/$(database)/documents/security_private/blocklist;
+      let config = exists(path) ? get(path).data : {};
+      return !(config.keys().hasAll(['schemaVersion', 'blockedUids', 'blockedEmails'])
+               && config.schemaVersion == 1
+               && config.blockedUids is list && config.blockedEmails is list)
+             || request.auth.uid in config.blockedUids
+             || ('email' in request.auth.token && request.auth.token.email in config.blockedEmails);
     }
-    // ------------------------------------
 
     // --- Helper Functions ---
     function isSignedIn() {
@@ -51,6 +50,10 @@ service cloud.firestore {
     }
 
     // --- Collection Rules ---
+
+    match /security_private/{document=**} {
+      allow read, write: if false;
+    }
 
     // 1. Users Collection
     // Clients can manage learning data, but only Admin SDK code may change billing state.

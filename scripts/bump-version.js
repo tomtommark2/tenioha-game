@@ -20,6 +20,7 @@ const VERSIONED_ASSETS = [
   'js/version.js',
   'js/update_manager.js',
   'js/config.js',
+  'js/app_check_client.js',
   'js/utils.js',
   'js/word_grouping.js',
   'js/my_wordbooks.js',

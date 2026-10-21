@@ -50,6 +50,8 @@ let auth = null;
 let analytics = null;
 try {
     const app = initializeApp(firebaseConfig);
+    // Initialize before Firebase services; the optional SDK has a bounded wait.
+    await window.teniohaAppCheckClient?.initialize(app);
     db = getFirestore(app);
     auth = getAuth(app);
     if (!isLocalDevelopment) {
@@ -129,7 +131,7 @@ async function postReviewFunction(functionName, payload, requireAuth = true, opt
     const currentUser = options.user === undefined ? auth?.currentUser : options.user;
     if (requireAuth && !currentUser) throw new Error('ログインが必要です。');
     const send = async signal => {
-        const headers = { 'Content-Type': 'application/json' };
+        const headers = { 'Content-Type': 'application/json', ...(await window.teniohaAppCheckClient?.headers()) };
         if (currentUser) headers.Authorization = `Bearer ${await currentUser.getIdToken()}`;
         // A late token must not start a request after its deadline.
         if (signal?.aborted) throw new Error('接続に時間がかかっています。');
@@ -140,6 +142,7 @@ async function postReviewFunction(functionName, payload, requireAuth = true, opt
         if (!response.ok) {
             const error = new Error(data?.error || `通信に失敗しました (${response.status})`);
             error.status = response.status;
+            error.retryable = data?.retryable === true;
             throw error;
         }
         if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('応答を読み取れませんでした。');
@@ -213,7 +216,7 @@ window.syncPendingReviewScores = function () {
                 reviewLeaderboardCache = { data: null, timestamp: 0 };
             } catch (error) {
                 if (auth?.currentUser?.uid !== syncUser.uid || gameState.reviewScore !== scoreState) break;
-                if (error.status >= 400 && error.status < 500 && error.status !== 401) {
+                if ([400, 422].includes(error.status) && !error.retryable) {
                     console.warn('Discarding invalid review score event:', error.message);
                     scoreState.pendingEvents.shift();
                     changed = true;
@@ -391,6 +394,7 @@ window.redeemPromoCode = async function (inputId = 'promoCodeInput') {
             headers: {
                 'Authorization': `Bearer ${idToken}`,
                 'Content-Type': 'application/json',
+                ...(await window.teniohaAppCheckClient?.headers()),
             },
             body: JSON.stringify({ code }),
         });

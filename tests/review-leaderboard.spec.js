@@ -47,6 +47,16 @@ const open = page => page.evaluate(() => openLeaderboard());
 const saved = page => page.evaluate(() => JSON.stringify({ save: localStorage.getItem('vocabClickerSave'),
     states: gameState.wordStates, score: gameState.reviewScore, srs: gameState.srsData }));
 
+test('ランキング読込：App Checkヘッダーを添え、学習記録は変更しない', async ({ page }) => {
+    await ready(page);
+    const before = await saved(page);
+    await page.evaluate(() => { window.teniohaAppCheckClient = { headers: async () => ({ 'X-Firebase-AppCheck': 'fixture-token' }) }; });
+    await open(page);
+    await expect(page.locator('#lb-list-top')).toContainText('テスト参加者');
+    expect(await page.evaluate(() => rankingTestCalls[0].options.headers['X-Firebase-AppCheck'])).toBe('fixture-token');
+    expect(await saved(page)).toBe(before);
+});
+
 for (const entry of ['index.html', 'vocab_clicker_game.html']) {
     test(`ランキング読込：${entry}は認証と更新確認が止まっても一覧を表示する`, async ({ page }) => {
         await ready(page, entry);

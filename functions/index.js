@@ -2,6 +2,10 @@ const { setGlobalOptions } = require("firebase-functions");
 const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 const admin = require("firebase-admin");
+const { getAppCheck } = require('firebase-admin/app-check');
+const { createAccountGuard } = require('./account-security');
+const { createAppCheckGuard } = require('./app-check-security');
+const { enforceSensitiveActionLimit, respondToSensitiveActionLimit } = require('./request-security');
 const {
     REVIEW_SCORE_INTERVALS,
     REVIEW_SCORE_OUTCOMES,
@@ -17,6 +21,12 @@ const REVIEW_WORD_KEY_HASHES = new Set(require("./review_word_hashes.json"));
 // Initialize Firebase Admin
 admin.initializeApp();
 const db = admin.firestore();
+const assertAccountAllowed = createAccountGuard({ db });
+const validateAppCheck = createAppCheckGuard({
+    verifyToken: token => getAppCheck().verifyToken(token),
+    mode: () => process.env.TENIOHA_APP_CHECK_MODE || 'observe',
+    report: data => logger.info('App Check observation (sampled).', data),
+});
 
 exports.feedback = require('./feedback').buildFeedbackFunction({ db, verifyUser: verifyRequestUser, rejectNonPost });
 
@@ -70,7 +80,7 @@ function setCheckoutCorsHeaders(req, res) {
         res.set("Vary", "Origin");
     }
     res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    res.set("Access-Control-Allow-Headers", "Authorization, Content-Type");
+    res.set("Access-Control-Allow-Headers", "Authorization, Content-Type, X-Firebase-AppCheck");
 }
 
 function requestBody(req) {
@@ -113,10 +123,10 @@ async function verifyRequestUser(req) {
     const authHeader = req.headers.authorization || "";
     const idToken = authHeader.startsWith("Bearer ") ? authHeader.slice("Bearer ".length) : "";
     if (!idToken) throw Object.assign(new Error("ログインが必要です。"), { status: 401 });
-    return admin.auth().verifyIdToken(idToken);
+    return assertAccountAllowed(await admin.auth().verifyIdToken(idToken));
 }
 
-function rejectNonPost(req, res) {
+async function rejectNonPost(req, res) {
     setCheckoutCorsHeaders(req, res);
     if (req.method === "OPTIONS") {
         res.status(204).send("");
@@ -126,7 +136,7 @@ function rejectNonPost(req, res) {
         res.status(405).json({ error: "Method not allowed" });
         return true;
     }
-    return false;
+    return !(await validateAppCheck(req, res));
 }
 
 class PromoCodeError extends Error {
@@ -310,17 +320,7 @@ async function activatePremiumFromCheckoutSession(session, eventType) {
 }
 
 exports.createStripeCheckoutSession = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
-    setCheckoutCorsHeaders(req, res);
-
-    if (req.method === "OPTIONS") {
-        res.status(204).send("");
-        return;
-    }
-
-    if (req.method !== "POST") {
-        res.status(405).json({ error: "Method Not Allowed" });
-        return;
-    }
+    if (await rejectNonPost(req, res)) return;
 
     const stripe = getStripeClient();
     if (!stripe) {
@@ -338,11 +338,12 @@ exports.createStripeCheckoutSession = onRequest({ region: CHECKOUT_FUNCTION_REGI
             return;
         }
 
-        const decodedToken = await admin.auth().verifyIdToken(idToken);
+        const decodedToken = await assertAccountAllowed(await admin.auth().verifyIdToken(idToken));
         if (isAnonymousFirebaseUser(decodedToken)) {
             res.status(403).json({ error: "購入にはGoogleログインが必要です。" });
             return;
         }
+        await enforceSensitiveActionLimit(db, 'checkout', decodedToken.uid);
         const userRecord = await admin.auth().getUser(decodedToken.uid);
         const customerId = await stripeCustomerForUser(stripe, userRecord);
         const returnUrl = normalizedCheckoutReturnUrl(body.returnUrl);
@@ -385,23 +386,18 @@ exports.createStripeCheckoutSession = onRequest({ region: CHECKOUT_FUNCTION_REGI
 
         res.json({ url: session.url });
     } catch (error) {
+        if (respondToSensitiveActionLimit(error, res)) return;
+        if (error.status === 403 || error.status === 503) {
+            res.status(error.status).json({ error: error.message });
+            return;
+        }
         logger.error("Failed to create tenioha Stripe Checkout Session.", error);
         res.status(500).json({ error: "Failed to create checkout session." });
     }
 });
 
 exports.redeemTeniohaPromoCode = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
-    setCheckoutCorsHeaders(req, res);
-
-    if (req.method === "OPTIONS") {
-        res.status(204).send("");
-        return;
-    }
-
-    if (req.method !== "POST") {
-        res.status(405).json({ error: "Method Not Allowed" });
-        return;
-    }
+    if (await rejectNonPost(req, res)) return;
 
     try {
         const body = requestBody(req);
@@ -412,14 +408,14 @@ exports.redeemTeniohaPromoCode = onRequest({ region: CHECKOUT_FUNCTION_REGION },
             return;
         }
 
-        const code = typeof body.code === "string" ? body.code.trim() : "";
-        if (!code || code.length > PROMO_CODE_MAX_LENGTH) {
-            throw new PromoCodeError("コードが無効か、期限切れです。");
-        }
-
-        const decodedToken = await admin.auth().verifyIdToken(idToken);
+        const decodedToken = await assertAccountAllowed(await admin.auth().verifyIdToken(idToken));
         if (isAnonymousFirebaseUser(decodedToken)) {
             throw new PromoCodeError("コードの適用にはGoogleログインが必要です。", 403);
+        }
+        await enforceSensitiveActionLimit(db, 'promo', decodedToken.uid);
+        const code = typeof body.code === "string" ? body.code.trim() : "";
+        if (!code || code.length > PROMO_CODE_MAX_LENGTH || code.includes('/') || code === '.' || code === '..') {
+            throw new PromoCodeError("コードが無効か、期限切れです。");
         }
         const userRef = db.collection("users").doc(decodedToken.uid);
         const codeRef = db.collection("promocodes").doc(code);
@@ -478,6 +474,11 @@ exports.redeemTeniohaPromoCode = onRequest({ region: CHECKOUT_FUNCTION_REGION },
         });
         res.json(result);
     } catch (error) {
+        if (respondToSensitiveActionLimit(error, res)) return;
+        if (error.status === 403 || error.status === 503) {
+            res.status(error.status).json({ error: error.message });
+            return;
+        }
         if (error instanceof PromoCodeError) {
             res.status(error.status).json({ error: error.message });
             return;
@@ -492,7 +493,7 @@ exports.redeemTeniohaPromoCode = onRequest({ region: CHECKOUT_FUNCTION_REGION },
 });
 
 exports.submitReviewScore = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
-    if (rejectNonPost(req, res)) return;
+    if (await rejectNonPost(req, res)) return;
 
     try {
         const user = await verifyRequestUser(req);
@@ -606,7 +607,7 @@ exports.submitReviewScore = onRequest({ region: CHECKOUT_FUNCTION_REGION }, asyn
 });
 
 exports.updateReviewProfile = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
-    if (rejectNonPost(req, res)) return;
+    if (await rejectNonPost(req, res)) return;
 
     try {
         const user = await verifyRequestUser(req);
@@ -645,7 +646,7 @@ exports.updateReviewProfile = onRequest({ region: CHECKOUT_FUNCTION_REGION }, as
 });
 
 exports.mergeGuestReviewScore = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
-    if (rejectNonPost(req, res)) return;
+    if (await rejectNonPost(req, res)) return;
 
     try {
         const registeredUser = await verifyRequestUser(req);
@@ -661,7 +662,7 @@ exports.mergeGuestReviewScore = onRequest({ region: CHECKOUT_FUNCTION_REGION }, 
             return;
         }
 
-        const guestUser = await admin.auth().verifyIdToken(guestIdToken);
+        const guestUser = await assertAccountAllowed(await admin.auth().verifyIdToken(guestIdToken));
         if (!isAnonymousFirebaseUser(guestUser) || guestUser.uid === registeredUser.uid) {
             res.status(400).json({ error: "ゲスト情報が不正です。" });
             return;
@@ -755,13 +756,13 @@ exports.mergeGuestReviewScore = onRequest({ region: CHECKOUT_FUNCTION_REGION }, 
 });
 
 exports.getReviewLeaderboard = onRequest({ region: CHECKOUT_FUNCTION_REGION }, async (req, res) => {
-    if (rejectNonPost(req, res)) return;
+    if (await rejectNonPost(req, res)) return;
 
     try {
         let user = null;
         const authHeader = req.headers.authorization || "";
         if (authHeader.startsWith("Bearer ")) {
-            user = await admin.auth().verifyIdToken(authHeader.slice("Bearer ".length));
+            user = await verifyRequestUser(req);
         }
 
         const todayKey = jstDateKey();
@@ -804,7 +805,7 @@ exports.getReviewLeaderboard = onRequest({ region: CHECKOUT_FUNCTION_REGION }, a
 
         res.json({ todayKey, todayPoints, weekKey, results, me });
     } catch (error) {
-        const status = String(error.code || "").startsWith("auth/") ? 401 : 500;
+        const status = error.status || (String(error.code || "").startsWith("auth/") ? 401 : 500);
         logger.error("Review leaderboard fetch failed.", { error: error.message, status });
         res.status(status).json({ error: status === 500 ? "ランキングの取得に失敗しました。" : "ログイン情報を確認できませんでした。" });
     }

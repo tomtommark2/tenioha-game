@@ -58,7 +58,7 @@
     }
     async function api(action, data = {}, authenticated = true) {
         const user = window.firebaseAuth?.currentUser;
-        const headers = { 'Content-Type': 'application/json' };
+        const headers = { 'Content-Type': 'application/json', ...(await window.teniohaAppCheckClient?.headers()) };
         if (authenticated && user && !user.isAnonymous) headers.Authorization = `Bearer ${await user.getIdToken()}`;
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), 15000);

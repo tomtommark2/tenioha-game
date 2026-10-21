@@ -1188,6 +1188,7 @@ async function createStripeCheckoutSession(user) {
     const response = await fetch(STRIPE_CHECKOUT_SESSION_ENDPOINT, {
         method: "POST",
         headers: {
+            ...(await window.teniohaAppCheckClient?.headers()),
             "Authorization": `Bearer ${idToken}`,
             "Content-Type": "application/json"
         },
@@ -1198,8 +1199,10 @@ async function createStripeCheckoutSession(user) {
         })
     });
     if (!response.ok) {
-        const message = await response.text();
-        throw new Error(`Checkout session failed: ${response.status} ${message}`);
+        const result = await response.json().catch(() => ({}));
+        const error = new Error(result.error || '購入画面を開けませんでした。時間をおいてお試しください。');
+        error.status = response.status;
+        throw error;
     }
     const data = await response.json();
     if (!data.url) throw new Error("Checkout session response did not include url.");
@@ -1278,6 +1281,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const checkoutUrl = await createStripeCheckoutSession(user);
             window.location.href = checkoutUrl;
         } catch (error) {
+            if ([401, 403, 429, 503].includes(error.status)) {
+                alert(error.message);
+                return;
+            }
             console.warn("Stripe Checkout Session failed. Falling back to Payment Link.", error);
             window.location.href = fallbackUrl;
         } finally {

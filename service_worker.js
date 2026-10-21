@@ -44,6 +44,7 @@ const ASSETS = [
     './js/word_grouping.js',
     './js/my_wordbooks.js',
     './js/config.js',
+    './js/app_check_client.js',
     './js/utils.js',
     './js/update_manager.js',
     './js/ui_manager.js',

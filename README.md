@@ -29,6 +29,7 @@ Firebase is used for backend services such as Auth, Firestore, and Functions. Do
 - `SETUP.md`
 - `ARCHITECTURE.md`
 - `docs/operations.md`
+- `docs/security.md`: セキュリティ点検・対策・公開前の確認事項
 - `docs/data-workflow.md`
 - `docs/product-design-competition.md`
 - `docs/repo-inventory.md`
