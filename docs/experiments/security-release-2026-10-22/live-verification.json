@@ -1,0 +1,81 @@
+{
+  "version": "2026.1022.0248",
+  "base": "https://tomtommark2.github.io/tenioha-game/",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "b50c2f8e6e69229188fbf3d7cfb79ea9dd50981b3bbd1b153b4db5fcca9f7a52"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "b50c2f8e6e69229188fbf3d7cfb79ea9dd50981b3bbd1b153b4db5fcca9f7a52"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "63ed9ae519a56e58f5efa530a5b3f415e5f4359d3b00db655da1ac0b03ab9e5f"
+    },
+    {
+      "file": "js/app_check_client.js",
+      "sha256": "7057e68ad2dce96db9cc8e90c10af3137a3947f33ac010996e09d177bcf1cda1"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "62f63307fbbc3adaec5ce2e79631798d6a67f04cd71716334e7db572090702ee"
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "da3f9a6069cbdbd75b56e738e063358d587ad80e60c52effeccd3303a56c8f16"
+    },
+    {
+      "file": "js/feedback.js",
+      "sha256": "5787e921142995b8911c91ebdf2812953a48baca9b248b9a945e916101051aad"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "6a41e81f881d10266f394222b22ed8e76566fe1c16f74c63167ab774e617e728"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 320,
+      "entry": "vocab_clicker_game.html",
+      "ranking": true,
+      "checkoutDenialNoFallback": true,
+      "providerRequests": 0,
+      "learningUnchanged": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "entry": "index.html",
+      "ranking": true,
+      "checkoutDenialNoFallback": true,
+      "providerRequests": 0,
+      "learningUnchanged": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "entry": "vocab_clicker_game.html",
+      "ranking": true,
+      "checkoutDenialNoFallback": true,
+      "providerRequests": 0,
+      "learningUnchanged": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "entry": "index.html",
+      "ranking": true,
+      "checkoutDenialNoFallback": true,
+      "providerRequests": 0,
+      "learningUnchanged": true,
+      "pageErrors": []
+    }
+  ],
+  "uiNetwork": "isolated API fixtures; no production identity, purchase, posting, or learning writes"
+}
