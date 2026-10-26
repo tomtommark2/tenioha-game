@@ -1,0 +1,105 @@
+{
+  "version": "2026.1027.0015",
+  "commit": "2521d214ad752caa26a17f2ef68c346ddc73c226",
+  "verifiedAt": "2026-10-26T16:47:56.439Z",
+  "sourceMatches": true,
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "664722f60d2701ccebaaf1b6706be11a7fa8d9dc884fcd0ccc5eb0d38b239ec5"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "664722f60d2701ccebaaf1b6706be11a7fa8d9dc884fcd0ccc5eb0d38b239ec5"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "411442e6a73f2f24b8847a2cf7ca0036788423cd989ef5a4556e172c32de93ae"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "5d13260b56bd7fa789507240c39a820b39546ede29e24a6ee6bbba686adb93a3"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "bb4304b229da9bcf299c29f62c3c25a0cb322e0c7f1a8f79aebc2e974fc82bf3"
+    },
+    {
+      "file": "js/update_manager.js",
+      "sha256": "e9e1ab566e290b873f08ffed1da798e2141cf7b873c919a49031e72873958f9b"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "019db57012c8050d6d93399770e7260f1e8a53a24aee3cf631e70cadc81ff81f"
+    }
+  ],
+  "pagesRun": "https://github.com/tomtommark2/tenioha-game/actions/runs/40362003445",
+  "verificationNetwork": "Public static app fetched from GitHub Pages. Auth/Firestore SDK and HTTP backends are isolated fixtures; no real identity, learning, purchase or feedback writes.",
+  "browserCases": [
+    {
+      "name": "クラウド保護：再起動済みの空端末へ古い時刻のクラウド履歴を実際に復元",
+      "browser": "live-chromium",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：大幅に減った端末では自動保存を停止し本体と退避を書き換えない",
+      "browser": "live-chromium",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：新しいクラウドの復元を断っても古い端末で自動上書きしない",
+      "browser": "live-chromium",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：欠損した分割保存の初回読込失敗後は自動アップロードしない",
+      "browser": "live-chromium",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：手動のクラウド復元は端末の未同期保存を残してから切り替える",
+      "browser": "live-chromium",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：再起動済みの空端末へ古い時刻のクラウド履歴を実際に復元",
+      "browser": "live-webkit-mobile",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：大幅に減った端末では自動保存を停止し本体と退避を書き換えない",
+      "browser": "live-webkit-mobile",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：新しいクラウドの復元を断っても古い端末で自動上書きしない",
+      "browser": "live-webkit-mobile",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：欠損した分割保存の初回読込失敗後は自動アップロードしない",
+      "browser": "live-webkit-mobile",
+      "status": "passed"
+    },
+    {
+      "name": "クラウド保護：手動のクラウド復元は端末の未同期保存を残してから切り替える",
+      "browser": "live-webkit-mobile",
+      "status": "passed"
+    }
+  ],
+  "undoFollowup": {
+    "cases": 2,
+    "passed": 2,
+    "browsers": [
+      "live-chromium",
+      "live-webkit-mobile"
+    ],
+    "scenario": "Answer uploaded, then Undo is tracked and safely uploaded without losing other cloud history.",
+    "reportedAt": "2026-10-26T16:50:19.433Z"
+  },
+  "publicBackendWrites": 0
+}
