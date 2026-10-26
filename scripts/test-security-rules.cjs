@@ -63,6 +63,21 @@ const { spawn } = require('node:child_process');
         await check('PATCH', 'users/other', other, { premiumExpiresAt: { timestampValue: '2125-01-01T00:00:00Z' } }, 403);
         await check('PATCH', 'users/member/save_chunks/fixture', member, { data: { stringValue: 'fixture' } }, 200);
         await check('GET', 'users/member/save_chunks/fixture', other, null, 403);
+        await check('PATCH', 'users/member', admin, { saveStorage: { stringValue: 'chunked' }, saveChunkPrefix: { stringValue: 'active-generation' } }, 200);
+        await check('PATCH', 'users/member/save_backups/daily', member, { saveStorage: { stringValue: 'chunked' }, saveChunkPrefix: { stringValue: 'daily-generation' } }, 200);
+        await check('PATCH', 'users/member/save_backups/before-replace', member, { saveStorage: { stringValue: 'chunked' }, saveChunkPrefix: { stringValue: 'manual-generation' } }, 200);
+        for (const prefix of ['active-generation', 'daily-generation', 'manual-generation', 'orphan-generation']) {
+            await check('PATCH', `users/member/save_chunks/${prefix}_0`, member, { data: { stringValue: 'fixture' } }, 200);
+        }
+        for (const prefix of ['active-generation', 'daily-generation', 'manual-generation']) {
+            await check('DELETE', `users/member/save_chunks/${prefix}_0`, member, null, 403);
+        }
+        await check('DELETE', 'users/member/save_chunks/orphan-generation_0', other, null, 403);
+        await check('DELETE', 'users/member/save_chunks/orphan-generation_0', member, null, 200);
+        await check('PATCH', 'users/member', admin, { saveStorage: { stringValue: 'chunked' }, saveChunkPrefix: { stringValue: 'unsafe.*prefix' } }, 200);
+        await check('DELETE', 'users/member/save_chunks/fixture', member, null, 403);
+        await check('PATCH', 'users/member', admin, { saveStorage: { stringValue: 'inline' } }, 200);
+        await check('DELETE', 'users/member/save_chunks/fixture', member, null, 200);
         await check('PATCH', 'users/guest', guest, { points: { integerValue: '1' } }, 403);
         for (const token of [null, member, other, guest]) {
             await check('GET', 'security_private/blocklist', token, null, 403);

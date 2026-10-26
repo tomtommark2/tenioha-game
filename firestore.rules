@@ -49,6 +49,23 @@ service cloud.firestore {
       ];
     }
 
+    function referencesSaveChunk(data, chunkId) {
+      return data.get('saveStorage', '') == 'chunked'
+             && (!(data.get('saveChunkPrefix', '') is string)
+                 || !data.get('saveChunkPrefix', '').matches('^[A-Za-z0-9_-]+$')
+                 || chunkId.matches(data.saveChunkPrefix + '_[0-9]+'));
+    }
+
+    function canDeleteSaveChunk(userId, chunkId) {
+      let parent = /databases/$(database)/documents/users/$(userId);
+      let daily = /databases/$(database)/documents/users/$(userId)/save_backups/daily;
+      let replacement = /databases/$(database)/documents/users/$(userId)/save_backups/before-replace;
+      return exists(parent)
+             && !referencesSaveChunk(get(parent).data, chunkId)
+             && (!exists(daily) || !referencesSaveChunk(get(daily).data, chunkId))
+             && (!exists(replacement) || !referencesSaveChunk(get(replacement).data, chunkId));
+    }
+
     // --- Collection Rules ---
 
     match /security_private/{document=**} {
@@ -72,7 +89,11 @@ service cloud.firestore {
       // Require at least one subcollection segment so this cannot also match
       // the parent /users/{userId} document under rules_version = '2'.
       match /{collectionId}/{document=**} {
-        allow read, write: if isRegistered() && isOwner(userId) && !isBanned();
+        allow read, create, update: if isRegistered() && isOwner(userId) && !isBanned();
+        allow delete: if isRegistered() && isOwner(userId) && !isBanned() && collectionId != 'save_chunks';
+      }
+      match /save_chunks/{chunkId} {
+        allow delete: if isRegistered() && isOwner(userId) && !isBanned() && canDeleteSaveChunk(userId, chunkId);
       }
     }
 

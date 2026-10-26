@@ -168,15 +168,14 @@ Change these carefully because they affect installability, caching, backend serv
 
 - Use `node scripts/inventory_firestore_storage.js --limit-docs 50000` to estimate current Firestore document volume by collection.
 - Use `node scripts/compact_firestore_saves.js --limit 1000` as a dry-run before any cloud save compaction.
-- Add `--execute` only after reviewing the dry-run output.
-- `--delete-all-save-chunks` is only safe after the script confirms there are no users still using chunked cloud saves.
+- 旧整理スクリプトの `--execute` は退避・現行manifestを保護しないため停止。dry-runのみ利用し、`--cleanup-chunks`／`--delete-all-save-chunks` での削除は行わない。
 
 ## Cloud Save Consistency
 
 - `users/{uid}.saveRevision` is the optimistic-lock revision for cloud saves. Existing documents without it start at revision `0`.
 - Automatic saves stop when another device advances the revision; they never silently overwrite that device's data.
-- A manual save shows an overwrite confirmation when the revision changed or the cloud score is higher.
-- Chunked saves write a new immutable generation first, then atomically switch the parent manifest. A generation that loses the revision race is deleted, and successful saves delete only the previous manifest's generation.
-- Orphan chunks older than 24 hours are cleaned at most once per user per day, with a bounded five-page loop; the active generation is always excluded.
-- 保存データのない端末でGoogleログインした場合は、初期化時に作られた空のローカル保存の時刻を無視し、既存のクラウド保存を自動復元する。ログイン前に実際の学習履歴が作られた場合は自動上書きしない。
+- 手動保存は別端末の更新・クラウドの新しい保存日時・履歴の大幅減少を警告し、確認した場合のみ保存前の記録を退避して上書きする。
+- 分割保存は新しい不変世代を書いてから親manifestを切り替える。エラー時はcommitの成否が不明なため、新世代を削除しない。成功時の旧世代整理と24時間超の孤立片整理では、現行manifestと退避2枠をトランザクションで再確認する。整理は1日1回・最大5ページ。
+- 起動前から空の保存があっても、有意なクラウド履歴を時刻だけで上書きしない。新規開始・履歴全消去・10語以上かつ半分未満への大幅減少では自動保存を止める。クラウド復元を断った場合もアップロードの同意とは扱わない。本人のUndo対象だけは端末内の未同期操作として区別する。
+- `users/{uid}/save_backups/daily` は1日1回の保存前退避、`before-replace` は警告を確認した手動置換前の退避。固定2枠で、通常は1日1回の追加書込。Firestoreも現行・退避が参照する保存片の削除を拒否する。端末への復元前は `vocabGame_beforeCloudRestore_v1` へ現在の有意な保存を退避し、退避失敗なら置換しない。ログアウト時の端末リセットではこの退避も消す。
 - 初回のクラウド読取に失敗した場合は自動保存を開始せず、空または古いローカルデータによるクラウド上書きを防ぐ。

@@ -135,14 +135,41 @@ function getLoginCloudSyncDecision({
     const localTime = Number(localData && localData.lastSaveTime) || 0;
     const cloudTime = Number(cloudData && cloudData.lastSaveTime) || 0;
 
-    // Initialization creates a timestamped empty save before Firebase auth resolves.
-    // On a truly clean device, that timestamp must never outrank an existing cloud save.
-    if (cloudData && hadExistingSaveAtBoot !== true && !hasMeaningfulLocalLearningData(localData)) {
+    // Initialization or an interrupted login can leave a timestamped empty save.
+    // Its existence and timestamp must never outrank meaningful cloud progress.
+    if (cloudData && hasMeaningfulLocalLearningData(cloudData) && !hasMeaningfulLocalLearningData(localData)) {
         return 'restore-clean-device';
     }
+    if (cloudData && getCloudSaveLossReason(localData, cloudData)) return 'protect-cloud';
     if (cloudTime > localTime) return 'prompt-restore-cloud';
     if (localTime > cloudTime) return 'keep-local';
     return 'same';
+}
+
+function getLearningSaveSummary(data) {
+    if (data?.learningSummaryVersion === 1 && data.keys instanceof Set) return data;
+    const keys = new Set(Object.entries(data?.wordStates || {})
+        .filter(([, state]) => ['weak', 'learned', 'perfect'].includes(state)).map(([key]) => key));
+    Object.entries(data?.srsData || {}).forEach(([key, entry]) => {
+        if (entry && ((entry.successCount || 0) > 0 || (entry.failCount || 0) > 0
+            || entry.everWrong || entry.firstTryPerfect || entry.lastReviewedAt
+            || (Array.isArray(entry.recentAnswers) && entry.recentAnswers.length))) keys.add(key);
+    });
+    return { learningSummaryVersion: 1, keys, meaningful: hasMeaningfulLocalLearningData(data),
+        firstPlayedAt: Number(data?.firstPlayedAt) || 0 };
+}
+
+function getCloudSaveLossReason(localData, cloudData, undoKeys = null) {
+    const local = getLearningSaveSummary(localData), cloud = getLearningSaveSummary(cloudData);
+    const protectedKeys = [...cloud.keys].filter(key => !undoKeys?.has(key));
+    if (!cloud.meaningful) return null;
+    if (cloud.keys.size > 0 && protectedKeys.length === 0) return null;
+    if (!local.meaningful) return 'empty-local';
+    if (protectedKeys.length > 0 && local.keys.size === 0) return 'learning-cleared';
+    const missing = protectedKeys.filter(key => !local.keys.has(key)).length;
+    if (missing >= 10 && local.keys.size < cloud.keys.size / 2) return 'major-progress-loss';
+    if (cloud.firstPlayedAt > 0 && local.firstPlayedAt > cloud.firstPlayedAt + 60000) return 'new-start';
+    return null;
 }
 
 window.GameUtils = {
@@ -152,6 +179,8 @@ window.GameUtils = {
     getLegacyWordKeys,
     hasMeaningfulLocalLearningData,
     getLoginCloudSyncDecision,
+    getLearningSaveSummary,
+    getCloudSaveLossReason,
 
     // --- SECURITY / FORMATTING ---
     escapeHtml: function (str) {

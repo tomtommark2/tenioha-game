@@ -48,9 +48,9 @@ Usage:
 Options:
   --project <id>              Firebase project ID. Default: tenioha-game
   --limit <n>                 Max user documents to scan. Default: 20
-  --execute                   Apply writes. Without this, dry-run only.
-  --cleanup-chunks            Delete stale save_chunks after successful rewrite.
-  --delete-all-save-chunks    Delete every save_chunks doc after verifying no user is chunked.
+  --execute                   Disabled: live saves and recovery backups must be protected.
+  --cleanup-chunks            Legacy option; destructive execution is disabled.
+  --delete-all-save-chunks    Legacy option; destructive execution is disabled.
   --chunk-delete-limit <n>    Max stale chunks to delete per user. Default: 200
 `);
 }
@@ -376,6 +376,11 @@ function formatBytes(bytes) {
 
 async function main() {
   const args = parseArgs(process.argv);
+  // This older maintenance path does not protect live manifests or recovery backups.
+  // Keep diagnosis available, but never let it bypass the current save safeguards.
+  if (args.execute) {
+    throw new Error("Cloud save compaction writes are disabled. Dry-run remains available; do not delete recovery data.");
+  }
   const token = getFirebaseAccessToken();
 
   console.log(`Project: ${args.project}`);
@@ -388,7 +393,7 @@ async function main() {
     if (!args.execute) {
       const chunkedUsers = users.filter((user) => user.data.saveStorage === "chunked" && user.data.saveChunkCount > 0);
       console.log(`Chunked users: ${chunkedUsers.length}`);
-      console.log("Dry-run only. Add --execute to delete all save_chunks.");
+      console.log("Dry-run only. Destructive cleanup is disabled.");
       return;
     }
     const deleted = await deleteAllSaveChunks(args.project, token, users, args.chunkDeleteLimit);
@@ -477,7 +482,7 @@ async function main() {
   console.log(`  deletedChunks: ${totals.deletedChunks}`);
 
   if (!args.execute) {
-    console.log("\nDry-run only. Add --execute to apply changes.");
+    console.log("\nDry-run only. Cloud save writes are disabled.");
   }
 }
 

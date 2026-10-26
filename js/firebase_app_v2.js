@@ -36,6 +36,7 @@ let db = null;
 let userId = localStorage.getItem('vocabGame_userId');
 let knownCloudSaveRevision = null;
 let knownCloudSaveUserId = null;
+let knownCloudSaveBaseline = null;
 let cloudSaveUploadPromise = null;
 let autoSaveLifecycleListenersBound = false;
 window.cloudSaveConflict = false;
@@ -605,6 +606,8 @@ if (auth) {
                     : guestRankingName(user.uid);
                 knownCloudSaveRevision = null;
                 knownCloudSaveUserId = null;
+                knownCloudSaveBaseline = null;
+                window.cloudSaveUndoKeys = new Set();
                 window.cloudSaveConflict = false;
                 if (headerImage) headerImage.style.display = 'none';
                 if (headerInitials) { headerInitials.textContent = 'G'; headerInitials.style.display = 'block'; }
@@ -629,6 +632,8 @@ if (auth) {
                 const userDoc = await getDoc(doc(db, "users", authSyncUserId));
                 if (!auth.currentUser || auth.currentUser.uid !== authSyncUserId) return;
                 setKnownCloudSaveRevision(authSyncUserId, userDoc.exists() ? userDoc.data() : null);
+                knownCloudSaveBaseline = null;
+                window.cloudSaveUndoKeys = new Set();
                 window.cloudSaveConflict = false;
 
                 // 1. Premium Status Sync (Subscription Model)
@@ -686,9 +691,11 @@ if (auth) {
 
                 // 2. Data Sync
                 if (userDoc.exists() && hasCloudSaveData(userDoc.data())) {
-                    const cloudRaw = await fetchCloudSaveData(doc(db, "users", userId), userDoc.data());
+                    const cloudRaw = await fetchCloudSaveData(doc(db, "users", authSyncUserId), userDoc.data());
+                    if (!auth.currentUser || auth.currentUser.uid !== authSyncUserId) return;
                     if (!cloudRaw) throw new Error('Cloud saveData missing');
                     const cloudData = JSON.parse(cloudRaw);
+                    knownCloudSaveBaseline = window.GameUtils.getLearningSaveSummary(cloudData);
                     const cloudTime = cloudData.lastSaveTime || 0;
 
                     if (lastSync) lastSync.textContent = new Date(cloudTime).toLocaleString();
@@ -705,7 +712,7 @@ if (auth) {
                     console.log(`Sync Check: ${syncDecision} Cloud(${new Date(cloudTime).toLocaleString()}) vs Local(${new Date(localTime).toLocaleString()})`);
 
                     if (syncDecision === 'restore-clean-device') {
-                        localStorage.setItem('vocabClickerSave', cloudRaw);
+                        installRestoredCloudSave(cloudRaw);
                         window.isDirty = false;
                         console.log('Cloud data restored automatically on a clean device.');
                         alert("Googleアカウントの学習データを復元しました。\nリロードします。");
@@ -714,24 +721,33 @@ if (auth) {
                     } else if (syncDecision === 'prompt-restore-cloud') {
                         const msg = `クラウドにこの端末より新しい学習データがあります。\n(クラウド: ${new Date(cloudTime).toLocaleString()})\n(この端末: ${localTime ? new Date(localTime).toLocaleString() : '保存なし'})\n\n復元しますか？`;
                         if (confirm(msg)) {
-                            localStorage.setItem('vocabClickerSave', cloudRaw);
+                            installRestoredCloudSave(cloudRaw);
                             window.isDirty = false;
                             alert("復元しました。リロードします。");
                             location.reload();
                             return;
                         } else {
-                            window.isDirty = true;
+                            // Declining a download is not consent to overwrite newer cloud progress.
+                            markCloudSaveConflict();
                         }
+                    } else if (syncDecision === 'protect-cloud') {
+                        markCloudSaveProtection();
+                        alert('端末の学習記録が少なくなっているため、自動保存を止めました。\n「復元する」からクラウドの記録を確認してください。');
                     } else if (syncDecision === 'keep-local') {
                         window.isDirty = true;
                     }
                 } else {
+                    knownCloudSaveBaseline = window.GameUtils.getLearningSaveSummary(null);
                     console.log("No cloud data. Uploading local data...");
                     uploadSaveData(true);
                 }
                 cloudSyncReadyForAutoSave = true;
                 } catch (e) {
+                    if (!auth.currentUser || auth.currentUser.uid !== user.uid) return;
+                    knownCloudSaveBaseline = null;
                     markCloudSaveConflict();
+                    if (lastSync) lastSync.textContent = 'クラウド読込失敗・自動保存停止';
+                    alert('クラウドの学習記録を読み込めませんでした。\n自動保存を止めています。端末のデータを消さず、お問い合わせください。');
                     console.error("Sync Check Failed; automatic cloud save is paused:", e);
                 }
             }
@@ -746,7 +762,7 @@ if (auth) {
             }
 
             // Never upload local data after a failed initial cloud read.
-            if (cloudSyncReadyForAutoSave) {
+            if (cloudSyncReadyForAutoSave && !window.cloudSaveConflict) {
                 startAutoSaveLoop();
             }
 
@@ -755,6 +771,8 @@ if (auth) {
             console.log("Auth: Signed out");
             knownCloudSaveRevision = null;
             knownCloudSaveUserId = null;
+            knownCloudSaveBaseline = null;
+            window.cloudSaveUndoKeys = new Set();
             cloudSaveUploadPromise = null;
             window.cloudSaveConflict = false;
 
@@ -900,20 +918,31 @@ window.forceBackup = async function () {
     await uploadSaveData(false, true);
 };
 
+function installRestoredCloudSave(cloudRaw) {
+    const localRaw = localStorage.getItem('vocabClickerSave');
+    if (localRaw && localRaw !== cloudRaw && window.GameUtils.hasMeaningfulLocalLearningData(JSON.parse(localRaw))) {
+        // If preservation fails (for example quota exhaustion), leave the current save untouched.
+        localStorage.setItem('vocabGame_beforeCloudRestore_v1', localRaw);
+    }
+    localStorage.setItem('vocabClickerSave', cloudRaw);
+}
+
 window.forceRestore = async function () {
     if (!db || !isRegisteredFirebaseUser()) {
         alert("クラウド復元にはGoogleログインが必要です。");
         return;
     }
+    const restoreUserId = auth.currentUser.uid;
     // First check if local is un-synced
     // But restore implies "I want Cloud Data".
 
     try {
-        const userDocRef = doc(db, "users", auth.currentUser.uid);
+        const userDocRef = doc(db, "users", restoreUserId);
         const userDoc = await getDoc(userDocRef);
         if (!userDoc.exists() || !hasCloudSaveData(userDoc.data())) { alert("クラウドにデータがありません"); return; }
 
         const cloudRaw = await fetchCloudSaveData(userDocRef, userDoc.data());
+        if (!auth.currentUser || auth.currentUser.uid !== restoreUserId) return;
         if (!cloudRaw) { alert("クラウドデータの読み込みに失敗しました"); return; }
         const cloudData = JSON.parse(cloudRaw);
         const localRaw = localStorage.getItem('vocabClickerSave');
@@ -932,12 +961,18 @@ window.forceRestore = async function () {
         if (!confirm(msg)) return;
 
         // Restore Logic
-        setKnownCloudSaveRevision(auth.currentUser.uid, userDoc.data());
+        if (!auth.currentUser || auth.currentUser.uid !== restoreUserId) return;
+        setKnownCloudSaveRevision(restoreUserId, userDoc.data());
+        installRestoredCloudSave(cloudRaw);
         window.cloudSaveConflict = false;
-        localStorage.setItem('vocabClickerSave', cloudRaw);
         alert("復元しました。リロードします。");
         location.reload();
-    } catch (e) { alert("エラー: " + e.message); }
+    } catch (e) {
+        if (auth?.currentUser?.uid === restoreUserId) {
+            markCloudSaveConflict();
+            alert("エラー: " + e.message);
+        }
+    }
 };
 
 // --- Large cloud save helpers (avoid Firestore 1MiB doc limit) ---
@@ -953,6 +988,13 @@ class CloudSaveConflictError extends Error {
         this.name = 'CloudSaveConflictError';
         this.code = 'cloud-save-conflict';
         this.currentRevision = currentRevision;
+    }
+}
+
+class CloudSaveProtectionError extends Error {
+    constructor() {
+        super('学習記録の減少を検出したため保存を止めました。');
+        this.code = 'cloud-save-protection';
     }
 }
 
@@ -984,6 +1026,13 @@ function markCloudSaveConflict() {
     window.isDirty = true;
     const lastSync = document.getElementById('profileLastSync');
     if (lastSync) lastSync.textContent = '別端末の更新を検出';
+}
+
+function markCloudSaveProtection() {
+    window.cloudSaveConflict = true;
+    window.isDirty = true;
+    const lastSync = document.getElementById('profileLastSync');
+    if (lastSync) lastSync.textContent = '履歴の減少を検出・自動保存停止';
 }
 
 function getByteSize(str) {
@@ -1091,14 +1140,24 @@ async function fetchCloudSaveData(userDocRef, userData) {
 
 async function deleteSaveChunkGeneration(userDocRef, prefix, count) {
     if (!prefix || !Number.isSafeInteger(count) || count <= 0) return;
-    const deletions = [];
-    for (let i = 0; i < count; i++) {
-        deletions.push(deleteDoc(doc(db, 'users', userDocRef.id, 'save_chunks', `${prefix}_${i}`)));
-    }
-    await Promise.allSettled(deletions);
+    return runTransaction(db, async transaction => {
+        const protectedPrefixes = await getProtectedSaveChunkPrefixes(transaction, userDocRef);
+        if (protectedPrefixes.has(prefix)) return false;
+        for (let i = 0; i < count; i++) transaction.delete(doc(db, 'users', userDocRef.id, 'save_chunks', `${prefix}_${i}`));
+        return true;
+    });
 }
 
-async function maybeCleanupStaleSaveChunks(userDocRef, activePrefix = null) {
+async function getProtectedSaveChunkPrefixes(transaction, userDocRef) {
+    const snapshots = await Promise.all([transaction.get(userDocRef),
+        transaction.get(doc(db, 'users', userDocRef.id, 'save_backups', 'daily')),
+        transaction.get(doc(db, 'users', userDocRef.id, 'save_backups', 'before-replace'))]);
+    if (!snapshots[0].exists()) throw new Error('Cloud save manifest unavailable; retain chunks');
+    return new Set(snapshots.filter(snapshot => snapshot.exists()).map(snapshot => snapshot.data())
+        .filter(data => data.saveStorage === 'chunked' && data.saveChunkPrefix).map(data => data.saveChunkPrefix));
+}
+
+async function maybeCleanupStaleSaveChunks(userDocRef) {
     const cleanupKey = `vocabGame_chunkCleanup_${userDocRef.id}`;
     const lastCleanup = Number(localStorage.getItem(cleanupKey) || 0);
     if (Date.now() - lastCleanup < CLOUD_SAVE_STALE_CHUNK_AGE_MS) return;
@@ -1119,16 +1178,18 @@ async function maybeCleanupStaleSaveChunks(userDocRef, activePrefix = null) {
             const snapshot = await getDocs(staleQuery);
             if (snapshot.empty) break;
 
-            const deletions = [];
-            snapshot.forEach(chunkDoc => {
-                if (!activePrefix || !chunkDoc.id.startsWith(`${activePrefix}_`)) {
-                    deletions.push(deleteDoc(chunkDoc.ref));
-                }
+            const deleted = await runTransaction(db, async transaction => {
+                const protectedPrefixes = await getProtectedSaveChunkPrefixes(transaction, userDocRef);
+                let count = 0;
+                snapshot.forEach(chunkDoc => {
+                    if (![...protectedPrefixes].some(prefix => chunkDoc.id.startsWith(`${prefix}_`))) {
+                        transaction.delete(chunkDoc.ref); count++;
+                    }
+                });
+                return count;
             });
-            if (deletions.length === 0) break;
-
-            await Promise.allSettled(deletions);
-            totalDeleted += deletions.length;
+            if (deleted === 0) break;
+            totalDeleted += deleted;
             if (snapshot.size < CLOUD_SAVE_CLEANUP_BATCH_SIZE) break;
         }
 
@@ -1141,7 +1202,7 @@ async function maybeCleanupStaleSaveChunks(userDocRef, activePrefix = null) {
     }
 }
 
-async function commitCloudSave(userDocRef, saveFields, expectedRevision) {
+async function commitCloudSave(userDocRef, saveFields, expectedRevision, options = {}) {
     return runTransaction(db, async transaction => {
         const currentSnap = await transaction.get(userDocRef);
         const currentData = currentSnap.exists() ? currentSnap.data() : {};
@@ -1151,10 +1212,33 @@ async function commitCloudSave(userDocRef, saveFields, expectedRevision) {
             throw new CloudSaveConflictError(currentRevision);
         }
 
+        const previousSummary = typeof currentData.saveData === 'string'
+            ? window.GameUtils.getLearningSaveSummary(JSON.parse(currentData.saveData)) : options.baseline;
+        const incomingSummary = options.summary || (typeof saveFields.saveData === 'string'
+            ? window.GameUtils.getLearningSaveSummary(JSON.parse(saveFields.saveData)) : null);
+        if (hasCloudSaveData(currentData) && (!previousSummary || !incomingSummary)) throw new CloudSaveProtectionError();
+        if (!options.allowProgressLoss && previousSummary && window.GameUtils.getCloudSaveLossReason(incomingSummary, previousSummary, options.undoKeys)) {
+            throw new CloudSaveProtectionError();
+        }
+        const backup = reason => {
+            const fields = { backupReason: reason, recordedAt: serverTimestamp() };
+            for (const name of ['saveData', 'saveStorage', 'saveChunkPrefix', 'saveChunkCount', 'saveRevision']) {
+                if (currentData[name] !== undefined) fields[name] = currentData[name];
+            }
+            return fields;
+        };
+        const backupDay = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+        if (previousSummary?.meaningful && currentData.saveBackupDay !== backupDay) {
+            transaction.set(doc(db, 'users', userDocRef.id, 'save_backups', 'daily'), backup('daily'));
+        }
+        if (options.keepBeforeReplace && hasCloudSaveData(currentData)) {
+            transaction.set(doc(db, 'users', userDocRef.id, 'save_backups', 'before-replace'), backup('manual-replace'));
+        }
         const nextRevision = currentRevision + 1;
         transaction.set(userDocRef, {
             ...saveFields,
             saveRevision: nextRevision,
+            ...(previousSummary?.meaningful ? { saveBackupDay: backupDay } : {}),
             updatedAt: serverTimestamp()
         }, { merge: true });
 
@@ -1167,42 +1251,38 @@ async function commitCloudSave(userDocRef, saveFields, expectedRevision) {
     });
 }
 
-async function writeChunkedSaveData(userDocRef, rawSaveData, pwaVer, expectedRevision, userProfile) {
+async function writeChunkedSaveData(userDocRef, rawSaveData, pwaVer, expectedRevision, userProfile, options = {}) {
     const chunks = splitStringByBytes(rawSaveData, CLOUD_SAVE_CHUNK_BYTES);
     const prefix = makeSaveChunkPrefix();
 
-    let commitResult;
-    try {
-        for (let i = 0; i < chunks.length; i++) {
-            const chunkRef = doc(db, 'users', userDocRef.id, 'save_chunks', `${prefix}_${i}`);
-            await setDoc(chunkRef, {
-                idx: i,
-                data: chunks[i],
-                updatedAt: serverTimestamp()
-            }, { merge: true });
-        }
-
-        commitResult = await commitCloudSave(userDocRef, {
-            saveData: deleteField(),
-            saveStorage: 'chunked',
-            saveChunkPrefix: prefix,
-            saveChunkCount: chunks.length,
-            name: userProfile.displayName,
-            email: userProfile.email,
-            appVersion: pwaVer,
-            cloudSaveTooLarge: false
-        }, expectedRevision);
-    } catch (e) {
-        await deleteSaveChunkGeneration(userDocRef, prefix, chunks.length);
-        throw e;
+    // A failed acknowledgement does not prove that the manifest commit failed.
+    // Retain new chunks on every error; only aged, unreferenced chunks may be cleaned.
+    for (let i = 0; i < chunks.length; i++) {
+        const chunkRef = doc(db, 'users', userDocRef.id, 'save_chunks', `${prefix}_${i}`);
+        await setDoc(chunkRef, {
+            idx: i,
+            data: chunks[i],
+            updatedAt: serverTimestamp()
+        }, { merge: true });
     }
+
+    const commitResult = await commitCloudSave(userDocRef, {
+        saveData: deleteField(),
+        saveStorage: 'chunked',
+        saveChunkPrefix: prefix,
+        saveChunkCount: chunks.length,
+        name: userProfile.displayName,
+        email: userProfile.email,
+        appVersion: pwaVer,
+        cloudSaveTooLarge: false
+    }, expectedRevision, options);
 
     if (commitResult.previousStorage === 'chunked') {
         await deleteSaveChunkGeneration(
             userDocRef,
             commitResult.previousChunkPrefix,
             commitResult.previousChunkCount
-        );
+        ).catch(error => console.warn('Previous cloud chunks retained:', error));
     }
     commitResult.activeChunkPrefix = prefix;
     return commitResult;
@@ -1238,6 +1318,11 @@ async function performCloudSave(silent = false, force = false) {
         saveUserId = uid;
         const userDocRef = doc(db, "users", uid);
         let expectedRevision = getKnownCloudSaveRevision(uid);
+        const incomingSummary = window.GameUtils.getLearningSaveSummary(JSON.parse(saveData));
+        let previousSummary = knownCloudSaveUserId === uid ? knownCloudSaveBaseline : null;
+        let allowProgressLoss = false;
+        let keepBeforeReplace = false;
+        const undoKeys = new Set(window.cloudSaveUndoKeys || []);
 
         if (!silent) {
             const existingSnap = await getDoc(userDocRef);
@@ -1254,7 +1339,11 @@ async function performCloudSave(silent = false, force = false) {
                 const cloudRaw = await fetchCloudSaveData(userDocRef, existingData);
                 if (cloudRaw) {
                     const cloudExisting = JSON.parse(cloudRaw);
+                    previousSummary = window.GameUtils.getLearningSaveSummary(cloudExisting);
                     const localDataObj = JSON.parse(saveData);
+                    if (window.GameUtils.getCloudSaveLossReason(incomingSummary, previousSummary, undoKeys)) {
+                        warnings.push('端末の学習記録がクラウドより大幅に少なくなっています。');
+                    }
 
                     const cloudTime = cloudExisting.lastSaveTime || 0;
                     const localTime = localDataObj.lastSaveTime || 0;
@@ -1263,6 +1352,7 @@ async function performCloudSave(silent = false, force = false) {
                     }
                 }
             }
+            if (!hasCloudSaveData(existingData)) previousSummary = window.GameUtils.getLearningSaveSummary(null);
 
             if (warnings.length > 0 && !confirm(`⚠️ 警告\n${warnings.join('\n\n')}\n\n現在の端末のデータで上書きしますか？`)) {
                 console.log("Upload aborted by user.");
@@ -1271,10 +1361,16 @@ async function performCloudSave(silent = false, force = false) {
             }
 
             expectedRevision = currentRevision;
-        } else if (expectedRevision === null) {
+            allowProgressLoss = warnings.length > 0;
+            keepBeforeReplace = warnings.length > 0;
+        } else if (expectedRevision === null || previousSummary === null) {
             // Authentication normally establishes this baseline. Never guess when it is missing.
             throw new CloudSaveConflictError(null);
         }
+        if (!allowProgressLoss && window.GameUtils.getCloudSaveLossReason(incomingSummary, previousSummary, undoKeys)) {
+            throw new CloudSaveProtectionError();
+        }
+        const saveOptions = { baseline: previousSummary, summary: incomingSummary, allowProgressLoss, keepBeforeReplace, undoKeys };
 
         const verElem = document.getElementById('helpVersionDisplay');
         const pwaVer = verElem ? verElem.textContent : 'unknown';
@@ -1286,7 +1382,7 @@ async function performCloudSave(silent = false, force = false) {
                 saveData,
                 pwaVer,
                 expectedRevision,
-                { displayName: currentUser.displayName, email: currentUser.email }
+                { displayName: currentUser.displayName, email: currentUser.email }, saveOptions
             );
             console.log(`Upload success (chunked): ${saveBytes} bytes`);
         } else {
@@ -1299,13 +1395,13 @@ async function performCloudSave(silent = false, force = false) {
                 email: currentUser.email,
                 appVersion: pwaVer,
                 cloudSaveTooLarge: false
-            }, expectedRevision);
+            }, expectedRevision, saveOptions);
             if (commitResult.previousStorage === 'chunked') {
                 await deleteSaveChunkGeneration(
                     userDocRef,
                     commitResult.previousChunkPrefix,
                     commitResult.previousChunkCount
-                );
+                ).catch(error => console.warn('Previous cloud chunks retained:', error));
             }
             console.log(`Upload success (inline): ${saveBytes} bytes`);
         }
@@ -1314,16 +1410,18 @@ async function performCloudSave(silent = false, force = false) {
             && auth.currentUser.uid === uid;
         if (isSameAuthenticatedUser) {
             setKnownCloudSaveRevision(uid, commitResult.revision);
+            knownCloudSaveBaseline = incomingSummary;
             window.cloudSaveConflict = false;
             // Do not clear changes made while this asynchronous upload was running.
             if (localStorage.getItem('vocabClickerSave') === rawSaveData) {
                 window.isDirty = false;
+                window.cloudSaveUndoKeys?.clear();
             }
 
             if (!silent) alert("保存完了！");
             const lastSync = document.getElementById('profileLastSync');
             if (lastSync) lastSync.textContent = new Date().toLocaleString();
-            void maybeCleanupStaleSaveChunks(userDocRef, commitResult.activeChunkPrefix || null);
+            void maybeCleanupStaleSaveChunks(userDocRef);
         }
         console.log("Upload success (Silent:" + silent + ")");
 
@@ -1331,7 +1429,10 @@ async function performCloudSave(silent = false, force = false) {
         const isSameAuthenticatedUser = saveUserId
             && isRegisteredFirebaseUser()
             && auth.currentUser.uid === saveUserId;
-        if (e && e.code === 'cloud-save-conflict') {
+        if (e && e.code === 'cloud-save-protection') {
+            if (isSameAuthenticatedUser) markCloudSaveProtection();
+            if (!silent && isSameAuthenticatedUser) alert('学習記録の減少を検出したため保存を止めました。\n「復元する」でクラウドの記録を確認してください。');
+        } else if (e && e.code === 'cloud-save-conflict') {
             if (isSameAuthenticatedUser) markCloudSaveConflict();
             if (!silent && isSameAuthenticatedUser) {
                 alert('別の端末で更新されたため保存を中止しました。\nもう一度「保存する」を押して内容を確認してください。');

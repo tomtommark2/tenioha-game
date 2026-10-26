@@ -672,6 +672,10 @@ function undoLastAction() {
     // Re-apply current mode button styles if needed
     updateModeButtons();
     window.DailyStudy?.undoAnswer(snapshot.key, snapshot.dailyStudy);
+    if (snapshot.key) {
+        window.cloudSaveUndoKeys ||= new Set();
+        window.cloudSaveUndoKeys.add(snapshot.key);
+    }
     saveGame();
 }
 
@@ -3162,6 +3166,7 @@ window.resetGameData = function () {
     console.log("Hard Resetting Game Data...");
     window.DailyStudy?.reset();
     localStorage.removeItem('vocabClickerSave');
+    localStorage.removeItem('vocabGame_beforeCloudRestore_v1');
     resetReviewQueueShuffleOrder();
     localStorage.removeItem(LAST_LEVEL_STORAGE_KEY);
     localStorage.removeItem('vocabGame_userId');

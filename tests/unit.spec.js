@@ -58,11 +58,11 @@ test('GameUtils.getLoginCloudSyncDecision: 空の新規端末では時刻より�
     hadExistingSaveAtBoot: false,
     localData: { ...timestampedEmptyLocal, globalQuestionCount: 1 },
     cloudData,
-  })).toBe('keep-local');
+  })).toBe('protect-cloud');
 
   expect(ctx.self.GameUtils.getLoginCloudSyncDecision({
     hadExistingSaveAtBoot: true,
     localData: timestampedEmptyLocal,
     cloudData,
-  })).toBe('keep-local');
+  })).toBe('restore-clean-device');
 });
