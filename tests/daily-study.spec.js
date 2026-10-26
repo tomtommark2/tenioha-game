@@ -109,13 +109,15 @@ test('今日の学習：回答と苦手克服を集計し、Undo・設定変更�
 });
 
 test('今日の学習：320〜1280pxで入口と2種類の時間が重ならず、吹き出しでカードを動かさない', async ({ page }, testInfo) => {
+    await expect(page.locator('#trialTimerDisplay')).toHaveCSS('color', 'rgb(255, 118, 117)');
+    expect(await page.locator('#trialTimerDisplay').evaluate(e => getComputedStyle(e, '::before').content)).toBe('none');
     const overlaps = (a, b) => a.left < b.right - 1 && a.right > b.left + 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1;
     for (const width of [320, 360, 375, 390, 768, 1280]) {
         await page.setViewportSize({ width, height: 844 });
         const layout = await page.evaluate(() => {
             const rect = id => document.getElementById(id).getBoundingClientRect().toJSON();
             return { button: rect('dailyStudyButton'), timer: rect('dailyStudyTimerDisplay'),
-                others: ['levelCurrentBtn', 'speechSettingsBtn', 'announcementBtn', 'sisterAppsBtn', 'topActionMenuBtn',
+                others: ['otherMenuBtn', 'levelCurrentBtn', 'speechSettingsBtn', 'announcementBtn', 'topActionMenuBtn',
                     'modeButtonsShell', 'trialTimerDisplay'].map(rect),
                 scores: [...document.querySelectorAll('.review-score-summary-row')].map(row => row.getBoundingClientRect().toJSON()), card: rect('vocabCard') };
         });

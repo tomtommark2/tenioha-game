@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const errors = new WeakMap();
-const button = page => page.getByRole('button', { name: 'ほかの学習アプリ', exact: true });
+const button = page => page.getByRole('button', { name: 'ほかの学習アプリ', exact: true, includeHidden: true });
 const panel = page => page.getByRole('dialog', { name: 'ほかの学習アプリ' });
 
 test.beforeEach(async ({ page, context }) => {
@@ -27,14 +27,17 @@ test.beforeEach(async ({ page, context }) => {
     });
     await page.goto('/index.html');
     await expect(page.locator('#vocabWord')).toHaveText('クリックしてスタート');
-    await expect(button(page)).toBeVisible();
+    await expect(page.locator('#otherMenuBtn')).toBeVisible();
+    await expect(button(page)).toBeHidden();
     await page.evaluate(() => document.fonts.ready);
 });
 test.afterEach(async ({ page }) => { expect(errors.get(page)).toEqual([]); });
 
 async function open(page) {
+    if (!await button(page).isVisible()) await page.locator('#otherMenuBtn').click();
     await button(page).click();
     await expect(panel(page)).toBeVisible();
+    await expect(page.locator('#otherMenuDropdown')).toBeHidden();
     await expect(button(page)).toHaveAttribute('aria-expanded', 'true');
     for (const image of await panel(page).locator('img').all()) await image.evaluate(img => img.decode());
     await page.evaluate(() => document.fonts.ready);
@@ -42,7 +45,7 @@ async function open(page) {
 async function closed(page) {
     await expect(panel(page)).toBeHidden();
     await expect(button(page)).toHaveAttribute('aria-expanded', 'false');
-    await expect(button(page)).toBeFocused();
+    await expect(page.locator('#otherMenuBtn')).toBeFocused();
     await expect.poll(() => page.evaluate(() => Boolean(history.state?.__teniohaModalLayer))).toBe(false);
 }
 const positions = page => page.evaluate(() => ['.learning-header', '#heroCharacter', '.learning-header .mode-buttons',
@@ -56,6 +59,7 @@ const learning = page => page.evaluate(() => JSON.stringify({ word: gameState.cu
     saved: localStorage.getItem('vocabClickerSave'), shuffled: localStorage.getItem('vocabGame_reviewQueueShuffle_v1') }));
 
 test('姉妹アプリ：320〜1280pxで画面を広く使い、開閉で学習画面をずらさない', async ({ page }, testInfo) => {
+    test.setTimeout(60000);
     for (const width of [320, 381, 389, 390, 568, 768, 769, 880, 1280]) {
         await page.setViewportSize({ width, height: 844 });
         await page.locator('#levelCurrentLabel').evaluate(e => { e.textContent = 'イラスト'; });
@@ -72,15 +76,29 @@ test('姉妹アプリ：320〜1280pxで画面を広く使い、開閉で学習�
         if (!levelFits) await page.screenshot({ path: `screenshots/sister-apps-20261014/overlap-before-fix-${width}-${testInfo.project.name}.png`, scale: 'css' });
         expect(levelFits, `${width}px level and timer: ${JSON.stringify(controls)}`).toBe(true);
         for (let i = 1; i < controls.buttons.length; i++) expect(controls.buttons[i].left).toBeGreaterThanOrEqual(controls.buttons[i - 1].right + 3);
+        await page.locator('#otherMenuBtn').click();
+        const menuEntry = await button(page).evaluate(entry => {
+            const rect = e => e.getBoundingClientRect().toJSON();
+            const icon = entry.querySelector('img');
+            return { row: rect(entry), icon: rect(icon), label: rect(entry.querySelector('.other-menu-label')),
+                previous: entry.previousElementSibling.textContent.trim(),
+                headerEntries: document.querySelectorAll('.header-controls #sisterAppsBtn').length,
+                icons: entry.querySelectorAll('img').length, loaded: icon.complete && icon.naturalWidth > 0,
+                before: getComputedStyle(icon, '::before').content, after: getComputedStyle(icon, '::after').content };
+        });
+        expect(menuEntry.previous).toBe('ランキング');
+        expect(menuEntry.headerEntries).toBe(0);
+        expect(menuEntry.icons).toBe(1);
+        expect(menuEntry.loaded).toBe(true);
+        expect(menuEntry.before).toBe('none');
+        expect(menuEntry.after).toBe('none');
+        expect(menuEntry.row.height).toBeGreaterThanOrEqual(44);
+        expect(menuEntry.icon.right + 10).toBeLessThanOrEqual(menuEntry.label.left);
+        expect(menuEntry.row.right).toBeLessThanOrEqual(width);
+        if ([320, 390, 1280].includes(width)) await page.screenshot({ path: `screenshots/header-menu-20261026-${width}-${testInfo.project.name}.png` });
         await open(page);
         expect(await positions(page)).toEqual(before);
         const bounds = await panel(page).boundingBox();
-        const trigger = await button(page).boundingBox();
-        // WebKit can report 44px as 43.999998 after device-pixel conversion.
-        expect(trigger.width).toBeGreaterThanOrEqual(43.99);
-        expect(trigger.height).toBeGreaterThanOrEqual(43.99);
-        await expect(button(page)).toHaveCSS('width', '44px');
-        await expect(button(page)).toHaveCSS('height', '44px');
         if (width <= 768) {
             expect(bounds.x).toBeCloseTo(0, 2);
             expect(bounds.y).toBeCloseTo(0, 2);
@@ -150,6 +168,7 @@ test('姉妹アプリ：2件の実アイコン・短い説明を表示し、別�
 });
 
 test('姉妹アプリ：Enter・Spaceで開き、×・外側・Escape・戻るで閉じ、フォーカスを戻す', async ({ page }) => {
+    await page.locator('#otherMenuBtn').click();
     await button(page).focus();
     await button(page).press('Enter');
     await expect(panel(page)).toBeVisible();
@@ -161,6 +180,8 @@ test('姉妹アプリ：Enter・Spaceで開き、×・外側・Escape・戻る�
     await expect(close).toBeFocused();
     await page.keyboard.press('Escape');
     await closed(page);
+    await page.locator('#otherMenuBtn').click();
+    await button(page).focus();
     await button(page).press('Space');
     await expect(panel(page)).toBeVisible();
     await close.click();

@@ -97,8 +97,8 @@
     window.openSisterApps = function () {
         const modal = document.getElementById('sisterAppsModal');
         if (!modal) return;
-        // Safari taps need an explicit opener for the shared focus-return behavior.
-        focusWithoutScrolling(document.getElementById('sisterAppsBtn'));
+        // Return to the visible menu button after its dropdown has closed.
+        focusWithoutScrolling(document.getElementById('otherMenuBtn'));
         modal.style.display = 'flex';
         syncMedia();
     };

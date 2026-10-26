@@ -72,9 +72,6 @@
 .daily-study-note { margin: 0; color: #776d84; font-size: 11px; line-height: 1.5; }
 #dailyStudyStorageStatus:empty { display: none; }
 .daily-study-panel :focus-visible, .daily-study-button:focus-visible, .daily-study-timer:focus-visible { outline: 3px solid #a38ad1; outline-offset: 2px; }
-/* The free allowance remains a countdown; today's study duration is purple. */
-.header-controls .trial-timer { color: #665c78; border-color: #d8cee8; background: #f6f2fb; }
-.header-controls .trial-timer::before { content: '残り'; display: block; font-size: 9px; font-weight: 500; line-height: 11px; text-align: center; }
 @media (max-width: 768px) {
     .daily-study-button { top: calc(58px + env(safe-area-inset-top)); left: 54px; min-height: 32px; }
     .daily-study-timer { top: calc(60px + env(safe-area-inset-top)); left: 132px; min-height: 28px; padding: 0 8px; }

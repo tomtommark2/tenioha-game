@@ -1,10 +1,4 @@
 /* An opt-in showcase; never reserve space in the learning layout. */
-.header-controls .sister-apps-btn {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    flex: 0 0 44px;
-}
 .sister-apps-btn[aria-expanded="true"] {
     color: #67548c;
     background: #eee7fa;
@@ -19,7 +13,6 @@
     -webkit-mask: var(--sister-apps-icon) center / contain no-repeat;
     mask: var(--sister-apps-icon) center / contain no-repeat;
 }
-.sister-apps-grid { --sister-apps-icon: url('assets/ui/grid-view-rounded.svg'); }
 .sister-apps-close-picto { --sister-apps-icon: url('assets/ui/close-rounded.svg'); }
 .sister-apps-external { --sister-apps-icon: url('assets/ui/open-in-new-rounded.svg'); width: 18px; height: 18px; }
 .sister-apps-modal {
