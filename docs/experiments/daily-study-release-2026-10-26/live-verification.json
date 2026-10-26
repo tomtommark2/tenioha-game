@@ -1,0 +1,196 @@
+{
+  "version": "2026.1026.1951",
+  "commit": "8411622ead994929a364466361933aad16ce16f7",
+  "checkedAt": "2026-10-26T11:06:42.927Z",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "2deea19ad08faeda095cc73aacb7ed124d824640189f2726dafaf4eec0d208af",
+      "bytes": 103518
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "2deea19ad08faeda095cc73aacb7ed124d824640189f2726dafaf4eec0d208af",
+      "bytes": 103518
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "8336a0c5dcf9e437514dfe17347bdecc0e19d07f1ba1488da284cd32e25afd4b",
+      "bytes": 169
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "61f8697e341fad5747add60c4616767e25b2e52d269d25bfd1c5d67b01f14e8a",
+      "bytes": 188679
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "9e80f581a0837abce819539a03ad8f90beba0e7d1b5285b046ba48db7f155209",
+      "bytes": 84112
+    },
+    {
+      "file": "js/daily_study.js",
+      "sha256": "f2b2a02097965cf264cfa45a96fd2f2556c6891e8cbe96722e59e3dda33966da",
+      "bytes": 11131
+    },
+    {
+      "file": "daily-study.css",
+      "sha256": "84a07747ebe906af6ad4a649ff60b8100c99aeffd6f409a31245439cd5ddfb09",
+      "bytes": 5786
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "019db57012c8050d6d93399770e7260f1e8a53a24aee3cf631e70cadc81ff81f",
+      "bytes": 4055
+    },
+    {
+      "file": "header-m3e.css",
+      "sha256": "ee5ba9e2951492c2d598b1a32fdf23660397bb726196f21da102fca1b4ebd0b1",
+      "bytes": 7876
+    },
+    {
+      "file": "js/update_manager.js",
+      "sha256": "e9e1ab566e290b873f08ffed1da798e2141cf7b873c919a49031e72873958f9b",
+      "bytes": 5784
+    },
+    {
+      "file": "assets/ui/bar-chart-rounded.svg",
+      "sha256": "4dcae612430829a14c5d91da7bd304ff8465e29f93b057123f4d8618d54fde00",
+      "bytes": 458
+    },
+    {
+      "file": "assets/ui/schedule-rounded.svg",
+      "sha256": "a0521ebc40eafb5a1c02dc3c966d8f342688fae78062b46ade248af94a161b28",
+      "bytes": 546
+    },
+    {
+      "file": "assets/ui/settings-rounded.svg",
+      "sha256": "6cd47de90647ece6b00922f497f8c4ea9c1649548cf15828d1df9d78d5bdf30d",
+      "bytes": 963
+    }
+  ],
+  "cases": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "idleTime": "00:10",
+      "answered": 1,
+      "perfect": 1,
+      "restore": true,
+      "timeToggle": true,
+      "panelFits": true,
+      "pageErrors": [],
+      "blockedNonGetRequests": [
+        {
+          "method": "POST",
+          "origin": "https://us-central1-tenioha-game.cloudfunctions.net",
+          "pathname": "/feedback",
+          "blocked": true
+        }
+      ],
+      "screenshot": "screenshots\\daily-study-release-20261026\\live-chromium-320.png"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "idleTime": "00:10",
+      "answered": 1,
+      "perfect": 1,
+      "restore": true,
+      "timeToggle": true,
+      "panelFits": true,
+      "pageErrors": [],
+      "blockedNonGetRequests": [
+        {
+          "method": "POST",
+          "origin": "https://us-central1-tenioha-game.cloudfunctions.net",
+          "pathname": "/feedback",
+          "blocked": true
+        }
+      ],
+      "screenshot": "screenshots\\daily-study-release-20261026\\live-chromium-390.png"
+    },
+    {
+      "engine": "chromium",
+      "width": 1280,
+      "idleTime": "00:10",
+      "answered": 1,
+      "perfect": 1,
+      "restore": true,
+      "timeToggle": true,
+      "panelFits": true,
+      "pageErrors": [],
+      "blockedNonGetRequests": [
+        {
+          "method": "POST",
+          "origin": "https://us-central1-tenioha-game.cloudfunctions.net",
+          "pathname": "/feedback",
+          "blocked": true
+        }
+      ],
+      "screenshot": "screenshots\\daily-study-release-20261026\\live-chromium-1280.png"
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "idleTime": "00:10",
+      "answered": 1,
+      "perfect": 1,
+      "restore": true,
+      "timeToggle": true,
+      "panelFits": true,
+      "pageErrors": [],
+      "blockedNonGetRequests": [
+        {
+          "method": "POST",
+          "origin": "https://us-central1-tenioha-game.cloudfunctions.net",
+          "pathname": "/feedback",
+          "blocked": true
+        }
+      ],
+      "screenshot": "screenshots\\daily-study-release-20261026\\live-webkit-320.png"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "idleTime": "00:10",
+      "answered": 1,
+      "perfect": 1,
+      "restore": true,
+      "timeToggle": true,
+      "panelFits": true,
+      "pageErrors": [],
+      "blockedNonGetRequests": [
+        {
+          "method": "POST",
+          "origin": "https://us-central1-tenioha-game.cloudfunctions.net",
+          "pathname": "/feedback",
+          "blocked": true
+        }
+      ],
+      "screenshot": "screenshots\\daily-study-release-20261026\\live-webkit-390.png"
+    },
+    {
+      "engine": "webkit",
+      "width": 1280,
+      "idleTime": "00:10",
+      "answered": 1,
+      "perfect": 1,
+      "restore": true,
+      "timeToggle": true,
+      "panelFits": true,
+      "pageErrors": [],
+      "blockedNonGetRequests": [
+        {
+          "method": "POST",
+          "origin": "https://us-central1-tenioha-game.cloudfunctions.net",
+          "pathname": "/feedback",
+          "blocked": true
+        }
+      ],
+      "screenshot": "screenshots\\daily-study-release-20261026\\live-webkit-1280.png"
+    }
+  ],
+  "isolation": "Downloaded public assets verified against Git; separate browser storage; external services blocked; no production accounts or writes.",
+  "status": "passed"
+}
