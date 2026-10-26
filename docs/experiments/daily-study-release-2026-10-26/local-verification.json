@@ -1,0 +1,19 @@
+{
+  "version": "2026.1026.1951",
+  "baseCommit": "bfc266f972cff3191594c5fbc417044c096f7af7",
+  "unit": { "passed": 86, "failed": 0 },
+  "functions": { "passed": 41, "failed": 0 },
+  "fullBrowserRun": { "passed": 302, "failed": 2, "total": 304 },
+  "followups": [
+    { "test": "Existing onboarding completion", "failure": "ECONNREFUSED on test HTTP server", "rerun": "passed" },
+    { "test": "Large-data hot path", "status": "existing threshold failure reproduced on base commit", "wordCount": 9327,
+      "baseQueueMs": 147.1, "releaseQueueMs": 147.2, "queueThresholdMs": 50,
+      "baseDisplayMs": 156.6, "releaseDisplayMs": 143.5 }
+  ],
+  "mobile": { "passed": 26, "failed": 0, "engines": ["chromium", "webkit"] },
+  "htmlSync": "passed",
+  "versionSync": "passed",
+  "reviewWordKeys": 10726,
+  "backendDeploymentRequired": false,
+  "fullSuiteStatus": "Not all passed; existing performance threshold failure retained"
+}

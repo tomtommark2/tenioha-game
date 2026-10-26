@@ -1,0 +1,91 @@
+/* The daily summary floats from the character without moving the lesson. */
+.daily-study-button, .daily-study-timer {
+    position: absolute;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 1px solid #e3daf5;
+    border-radius: 24px;
+    background: #f4efff;
+    color: #67548c;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+.daily-study-button { left: 80px; top: 58px; min-width: 64px; min-height: 32px; padding: 0 8px; font-size: 13px; }
+.daily-study-button[aria-expanded="true"] { background: #e9e0f8; border-color: #bcb0d5; }
+.daily-study-button > span:last-child { white-space: nowrap; flex-shrink: 0; }
+.daily-study-timer { left: 154px; top: 54px; min-height: 28px; padding: 0 9px; font-size: 12px; font-variant-numeric: tabular-nums; }
+.daily-study-timer[hidden] { display: none; }
+.daily-study-timer.is-paused { color: #71697e; }
+.daily-study-icon { display: inline-block; flex: 0 0 auto; width: 22px; height: 22px; object-fit: contain; filter: brightness(0) saturate(100%) invert(34%) sepia(15%) saturate(1439%) hue-rotate(221deg) brightness(91%) contrast(83%); }
+.daily-study-overlay { position: fixed; inset: 0; z-index: 16000; background: rgba(34, 28, 52, .12); }
+.daily-study-panel {
+    position: absolute;
+    width: min(320px, calc(100vw - 24px));
+    max-height: calc(100dvh - 24px);
+    overflow: visible;
+    padding: 16px;
+    border: 1px solid #e5dcf5;
+    border-radius: 20px;
+    background: #fcfaff;
+    color: #252134;
+    box-shadow: 0 12px 36px rgba(38, 31, 62, .18);
+    font-family: 'Noto Sans JP', sans-serif;
+}
+.daily-study-panel::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: calc(var(--daily-pointer-left, 48px) - 8px);
+    width: 16px;
+    height: 16px;
+    border-top: 1px solid #e5dcf5;
+    border-left: 1px solid #e5dcf5;
+    background: #fcfaff;
+    transform: rotate(45deg);
+}
+.daily-study-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: -8px -8px 4px 0; }
+.daily-study-heading h2 { margin: 0; font-size: 20px; font-weight: 800; }
+.daily-study-close { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 14px; background: transparent; color: #7b708e; cursor: pointer; }
+.daily-study-time { display: flex; align-items: center; gap: 10px; min-height: 64px; color: #67548c; }
+.daily-study-time > span:not(.daily-study-icon) { font-size: 14px; color: #4c435e; }
+.daily-study-time strong { margin-left: auto; font-size: 38px; font-weight: 800; letter-spacing: -.8px; font-variant-numeric: tabular-nums; }
+.daily-study-metrics { padding: 6px 0 12px; border-top: 1px solid #e4dcef; border-bottom: 1px solid #e4dcef; }
+.daily-study-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 46px; }
+.daily-study-row dt { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.daily-study-row dt .daily-study-icon { color: #67548c; }
+.daily-study-row dd { margin: 0; white-space: nowrap; font-size: 14px; color: #67548c; }
+.daily-study-row dd strong { margin-right: 4px; color: #252134; font-size: 28px; font-variant-numeric: tabular-nums; }
+.daily-study-subset { min-height: 34px; padding-left: 32px; }
+.daily-study-subset dt { font-size: 13px; color: #655c73; }
+.daily-study-subset dd strong { font-size: 24px; }
+.daily-study-toggle { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 50px; margin-top: 6px; font-size: 14px; cursor: pointer; }
+.daily-study-toggle > span { display: flex; align-items: center; gap: 10px; }
+.daily-study-toggle .daily-study-icon { color: #67548c; }
+.daily-study-toggle input { appearance: none; -webkit-appearance: none; position: relative; width: 48px; height: 32px; flex: 0 0 48px; margin: 0; border: 2px solid #82768f; border-radius: 24px; background: #ebe6ef; cursor: pointer; }
+.daily-study-toggle input::before { content: ''; position: absolute; top: 4px; left: 4px; width: 20px; height: 20px; border-radius: 50%; background: #82768f; }
+.daily-study-toggle input:checked { background: #6750a4; border-color: #6750a4; }
+.daily-study-toggle input:checked::before { left: 20px; background: #fff; }
+.daily-study-note { margin: 0; color: #776d84; font-size: 11px; line-height: 1.5; }
+#dailyStudyStorageStatus:empty { display: none; }
+.daily-study-panel :focus-visible, .daily-study-button:focus-visible, .daily-study-timer:focus-visible { outline: 3px solid #a38ad1; outline-offset: 2px; }
+/* The free allowance remains a countdown; today's study duration is purple. */
+.header-controls .trial-timer { color: #665c78; border-color: #d8cee8; background: #f6f2fb; }
+.header-controls .trial-timer::before { content: '残り'; display: block; font-size: 9px; font-weight: 500; line-height: 11px; text-align: center; }
+@media (max-width: 768px) {
+    .daily-study-button { top: calc(58px + env(safe-area-inset-top)); left: 54px; min-height: 32px; }
+    .daily-study-timer { top: calc(60px + env(safe-area-inset-top)); left: 132px; min-height: 28px; padding: 0 8px; }
+}
+@media (max-width: 380px) {
+    .daily-study-button { left: 8px; top: calc(66px + env(safe-area-inset-top)); min-width: 46px; width: 46px; min-height: 32px; padding: 0 2px; font-size: 11px; gap: 2px; }
+    .daily-study-button .daily-study-icon { width: 16px; height: 16px; }
+    .daily-study-timer { left: auto; right: 8px; top: calc(52px + env(safe-area-inset-top)); min-height: 18px; height: 18px; line-height: 16px; font-size: 11px; padding: 0 6px; }
+    .daily-study-timer .daily-study-icon { width: 14px; height: 14px; }
+}
+@media (max-height: 480px) {
+    .daily-study-panel { overflow-y: auto; }
+    .daily-study-panel::before { display: none; }
+}

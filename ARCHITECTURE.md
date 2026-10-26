@@ -14,9 +14,16 @@ This is a static web app with Firebase-backed features.
   - `js/utils.js`
   - `js/game_logic.js`
   - `js/ui_manager.js`
+  - `js/daily_study.js`
   - `js/firebase_app_v2.js`
 
 ## Important Relationships
+
+### 今日の学習（2026-10-26）
+
+- `js/daily_study.js`／`daily-study.css` がキャラクター横の「今日」と吹き出しを管理。操作から10秒無操作で学習時間を止め、無料版の残り時間とは分ける。常設表示は吹き出し内で切替える。
+- 回答数・完璧になった語数・そのうち苦手からの語数をJSTの当日分として集計し、Undoで件数を戻す。端末保存は `vocabGame_dailyStudy_v1` と `vocabGame_dailyStudySettings_v1`。既存のセーブ・クラウド・配点へ混ぜない。
+- 待機・非表示時の画面更新を省略。語キーはメモリ上でSet、保存時は既存の配列JSON。公開範囲・検証は `docs/experiments/daily-study-release-2026-10-26/review-notes.md`。
 
 ### 読み上げ設定（2026-09-16）
 

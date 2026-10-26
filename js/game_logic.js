@@ -545,6 +545,7 @@ function startLearningSession() {
     if (!ensureTrialAccess()) return false;
     activateLearningSessionUI();
     showNextWord();
+    window.DailyStudy?.touch();
     return true;
 }
 
@@ -609,6 +610,7 @@ function saveState() {
         actionCounts: { ...gameState.actionCounts },
         reviewScore: cloneUndoValue(gameState.reviewScore),
         dailyStats: cloneUndoValue(gameState.dailyStats),
+        dailyStudy: window.DailyStudy?.captureAnswer(key),
         reviewQueueOrder: gameState.reviewQueueWasShuffled ? [...gameState.reviewQueueShuffleOrder] : null,
         decks: cloneDecksForUndo(gameState.decks)
     };
@@ -669,6 +671,7 @@ function undoLastAction() {
 
     // Re-apply current mode button styles if needed
     updateModeButtons();
+    window.DailyStudy?.undoAnswer(snapshot.key, snapshot.dailyStudy);
     saveGame();
 }
 
@@ -838,12 +841,17 @@ function updateTrialUI() {
 
     // Format mm:ss
     timerDisplay.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    timerDisplay.setAttribute('aria-label', `無料版の残り時間 ${timerDisplay.textContent}`);
 
     // Warning color if low
     if (remaining < 60) {
         timerDisplay.style.color = '#d63031';
         timerDisplay.style.borderColor = '#d63031';
         timerDisplay.style.backgroundColor = 'rgba(214, 48, 49, 0.1)';
+    } else {
+        timerDisplay.style.color = '';
+        timerDisplay.style.borderColor = '';
+        timerDisplay.style.backgroundColor = '';
     }
 }
 
@@ -3152,6 +3160,7 @@ function loadGame() {
 // Hard Reset for Logout
 window.resetGameData = function () {
     console.log("Hard Resetting Game Data...");
+    window.DailyStudy?.reset();
     localStorage.removeItem('vocabClickerSave');
     resetReviewQueueShuffleOrder();
     localStorage.removeItem(LAST_LEVEL_STORAGE_KEY);
@@ -3876,6 +3885,8 @@ function handleVocabCardClick(event) {
     gameState.wordStates[key] = nextState;
     applyLearningProgressStateChange(key, currentState, nextState);
 
+    window.DailyStudy?.recordAnswer(key, currentState, nextState);
+
     // RPG Animation Trigger
     // RPG Animation Trigger
     if (currentState === 'weak') {
@@ -3944,6 +3955,8 @@ function handleMeaningCardClick(e) {
         const nextState = deriveStateFromAccuracy(key);
         gameState.wordStates[key] = nextState;
         applyLearningProgressStateChange(key, currentState, nextState);
+
+        window.DailyStudy?.recordAnswer(key, currentState, nextState);
 
         updateDisplay();
         animateCharacter();
