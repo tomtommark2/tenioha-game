@@ -1,0 +1,134 @@
+{
+  "version": "2026.1028.0057",
+  "commit": "76b78df22ad6569aa922b59e8a552ac62235a2e9",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "5bdb74e14cea3cc5e2afc7a486418a6f174a4168c7f3b1fd4d60604b5a93bf0c"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "5bdb74e14cea3cc5e2afc7a486418a6f174a4168c7f3b1fd4d60604b5a93bf0c"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "d610489f1a15add22749b9ba2e06526b74c4d2e033030ae57a2908bbf30c1652"
+    },
+    {
+      "file": "style.css",
+      "sha256": "5f9eda29484308818fcb4acd2a93cab377261f4babefa91e1b474fc974498f33"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "7e0c482ea0bb84a7e403a10742ef1d5adf6b35c0db14aa6fd09fee20366cb7b7"
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "5ba9b9cf55353732880e2a477bdabeb89e8c5c5e9ca7a50ba9c0d9e768da88ae"
+    },
+    {
+      "file": "js/daily_study.js",
+      "sha256": "f2b2a02097965cf264cfa45a96fd2f2556c6891e8cbe96722e59e3dda33966da"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "5d13260b56bd7fa789507240c39a820b39546ede29e24a6ee6bbba686adb93a3"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "019db57012c8050d6d93399770e7260f1e8a53a24aee3cf631e70cadc81ff81f"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 280,
+      "initialOff": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "closedHeight": 162,
+      "openHeight": 528.875,
+      "definitionCount": 5,
+      "settingPersisted": true,
+      "settingOutsideLearningSave": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "initialOff": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "closedHeight": 162,
+      "openHeight": 528.875,
+      "definitionCount": 5,
+      "settingPersisted": true,
+      "settingOutsideLearningSave": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "initialOff": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "closedHeight": 240,
+      "openHeight": 580.96875,
+      "definitionCount": 5,
+      "settingPersisted": true,
+      "settingOutsideLearningSave": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 280,
+      "initialOff": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "closedHeight": 162,
+      "openHeight": 527,
+      "definitionCount": 5,
+      "settingPersisted": true,
+      "settingOutsideLearningSave": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "initialOff": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "closedHeight": 162,
+      "openHeight": 527,
+      "definitionCount": 5,
+      "settingPersisted": true,
+      "settingOutsideLearningSave": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "initialOff": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "closedHeight": 240,
+      "openHeight": 578,
+      "definitionCount": 5,
+      "settingPersisted": true,
+      "settingOutsideLearningSave": true,
+      "pageErrors": 0
+    }
+  ],
+  "actualBackendWrites": 0,
+  "verifiedAt": "2026-10-27T16:02:11.416Z"
+}
