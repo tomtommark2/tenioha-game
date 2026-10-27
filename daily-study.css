@@ -1,4 +1,5 @@
 /* The daily summary floats from the character without moving the lesson. */
+.level-study-controls { display: contents; }
 .daily-study-button, .daily-study-timer {
     position: absolute;
     z-index: 3;
@@ -7,7 +8,7 @@
     justify-content: center;
     gap: 4px;
     border: 1px solid #e3daf5;
-    border-radius: 24px;
+    border-radius: 4px;
     background: #f4efff;
     color: #67548c;
     font-family: inherit;
@@ -72,6 +73,10 @@
 .daily-study-note { margin: 0; color: #776d84; font-size: 11px; line-height: 1.5; }
 #dailyStudyStorageStatus:empty { display: none; }
 .daily-study-panel :focus-visible, .daily-study-button:focus-visible, .daily-study-timer:focus-visible { outline: 3px solid #a38ad1; outline-offset: 2px; }
+@media (min-width: 769px) {
+    .level-study-controls { position: absolute; top: 20px; left: 76px; display: flex; align-items: center; gap: 8px; }
+    .level-study-controls .level-current-btn, .level-study-controls .daily-study-timer, .level-study-controls .daily-study-button { position: relative; top: auto; left: auto; height: 34px; min-height: 34px; }
+}
 @media (max-width: 768px) {
     .daily-study-button { top: calc(58px + env(safe-area-inset-top)); left: 54px; min-height: 32px; }
     .daily-study-timer { top: calc(60px + env(safe-area-inset-top)); left: 132px; min-height: 28px; padding: 0 8px; }

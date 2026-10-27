@@ -108,19 +108,30 @@ test('今日の学習：回答と苦手克服を集計し、Undo・設定変更�
     expect(await page.evaluate(() => JSON.parse(localStorage.getItem('vocabClickerSave')).dailyStudy)).toBeUndefined();
 });
 
-test('今日の学習：320〜1280pxで入口と2種類の時間が重ならず、吹き出しでカードを動かさない', async ({ page }, testInfo) => {
+test('今日の学習：280〜1280pxで入口と2種類の時間が重ならず、吹き出しでカードを動かさない', async ({ page }, testInfo) => {
     await expect(page.locator('#trialTimerDisplay')).toHaveCSS('color', 'rgb(255, 118, 117)');
     expect(await page.locator('#trialTimerDisplay').evaluate(e => getComputedStyle(e, '::before').content)).toBe('none');
     const overlaps = (a, b) => a.left < b.right - 1 && a.right > b.left + 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1;
-    for (const width of [320, 360, 375, 390, 768, 1280]) {
+    for (const width of [280, 300, 320, 360, 375, 380, 381, 389, 390, 768, 769, 1280]) {
         await page.setViewportSize({ width, height: 844 });
         const layout = await page.evaluate(() => {
             const rect = id => document.getElementById(id).getBoundingClientRect().toJSON();
-            return { button: rect('dailyStudyButton'), timer: rect('dailyStudyTimerDisplay'),
+            return { button: rect('dailyStudyButton'), timer: rect('dailyStudyTimerDisplay'), level: rect('levelCurrentBtn'),
+                radii: ['dailyStudyButton', 'dailyStudyTimerDisplay'].map(id => parseFloat(getComputedStyle(document.getElementById(id)).borderTopLeftRadius)),
                 others: ['otherMenuBtn', 'levelCurrentBtn', 'speechSettingsBtn', 'announcementBtn', 'topActionMenuBtn',
                     'modeButtonsShell', 'trialTimerDisplay'].map(rect),
                 scores: [...document.querySelectorAll('.review-score-summary-row')].map(row => row.getBoundingClientRect().toJSON()), card: rect('vocabCard') };
         });
+        expect(layout.radii[0], `button corners ${width}`).toBeLessThanOrEqual(4);
+        expect(layout.radii[1], `timer corners ${width}`).toBeLessThanOrEqual(4);
+        if (width > 768) {
+            expect(layout.timer.left - layout.level.right, `timer beside wordbook ${width}`).toBeCloseTo(8, 0);
+            expect(layout.timer.top, `timer top aligned with wordbook ${width}`).toBe(layout.level.top);
+            expect(layout.timer.height, `timer height matches wordbook ${width}`).toBe(layout.level.height);
+            expect(layout.button.left - layout.timer.right, `today beside timer ${width}`).toBeCloseTo(8, 0);
+            expect(layout.button.top, `today in top row ${width}`).toBe(layout.level.top);
+            expect(layout.button.height, `today height matches wordbook ${width}`).toBe(layout.level.height);
+        }
         for (const other of [...layout.others, layout.timer]) expect(overlaps(layout.button, other), `button ${width}`).toBe(false);
         for (const other of layout.others) expect(overlaps(layout.timer, other), `timer ${width}`).toBe(false);
         for (const score of layout.scores) expect(overlaps(layout.timer, score), `timer / score ${width}: ${JSON.stringify({ timer: layout.timer, score })}`).toBe(false);

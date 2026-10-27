@@ -14,14 +14,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026.1027.0220">
-    <link rel="stylesheet" href="wordbooks-m3e.css?v=2026.1027.0220">
-    <link rel="stylesheet" href="header-m3e.css?v=2026.1027.0220">
-    <link rel="stylesheet" href="daily-study.css?v=2026.1027.0220">
-    <link rel="stylesheet" href="sister-apps.css?v=2026.1027.0220">
-    <link rel="preload" href="data/vocabulary.js?v=2026.1027.0220" as="script">
-    <link rel="preload" href="data/ipa_overrides.js?v=2026.1027.0220" as="script">
-    <link rel="preload" href="js/game_logic.js?v=2026.1027.0220" as="script">
+    <link rel="stylesheet" href="style.css?v=2026.1027.1107">
+    <link rel="stylesheet" href="wordbooks-m3e.css?v=2026.1027.1107">
+    <link rel="stylesheet" href="header-m3e.css?v=2026.1027.1107">
+    <link rel="stylesheet" href="daily-study.css?v=2026.1027.1107">
+    <link rel="stylesheet" href="sister-apps.css?v=2026.1027.1107">
+    <link rel="preload" href="data/vocabulary.js?v=2026.1027.1107" as="script">
+    <link rel="preload" href="data/ipa_overrides.js?v=2026.1027.1107" as="script">
+    <link rel="preload" href="js/game_logic.js?v=2026.1027.1107" as="script">
 </head>
 
 <body>
@@ -236,11 +236,21 @@
             </button>
         </div>
 
-        <button id="levelCurrentBtn" class="level-current-btn" type="button" onclick="toggleLevelSelector(event)"
-            aria-expanded="false" aria-controls="levelContainer">
-            <span id="levelCurrentLabel">基礎</span>
-            <span class="level-current-caret">▾</span>
-        </button>
+        <div class="level-study-controls">
+            <button id="levelCurrentBtn" class="level-current-btn" type="button" onclick="toggleLevelSelector(event)"
+                aria-expanded="false" aria-controls="levelContainer">
+                <span id="levelCurrentLabel">基礎</span>
+                <span class="level-current-caret">▾</span>
+            </button>
+            <button type="button" id="dailyStudyTimerDisplay" class="daily-study-timer" aria-label="今日の学習時間。詳細を開く"
+                aria-haspopup="dialog" aria-controls="dailyStudyModal" title="今日の学習時間">
+                <img class="daily-study-icon" src="assets/ui/schedule-rounded.svg" alt="" aria-hidden="true"><span id="dailyStudyTimerValue">00:00</span>
+            </button>
+            <button type="button" id="dailyStudyButton" class="daily-study-button" aria-label="今日の学習を開く"
+                aria-haspopup="dialog" aria-controls="dailyStudyModal" aria-expanded="false">
+                <img class="daily-study-icon" src="assets/ui/bar-chart-rounded.svg" alt="" aria-hidden="true"><span>今日</span>
+            </button>
+        </div>
         <div class="level-selector" id="levelContainer">
             <button class="level-btn" data-level="junior">
                 <span class="level-option-name">中学</span><span class="level-option-code">A1</span>
@@ -260,15 +270,6 @@
                 <span>単語帳から選ぶ</span>
             </button>
         </div>
-
-        <button type="button" id="dailyStudyButton" class="daily-study-button" aria-label="今日の学習を開く"
-            aria-haspopup="dialog" aria-controls="dailyStudyModal" aria-expanded="false">
-            <img class="daily-study-icon" src="assets/ui/bar-chart-rounded.svg" alt="" aria-hidden="true"><span>今日</span>
-        </button>
-        <button type="button" id="dailyStudyTimerDisplay" class="daily-study-timer" aria-label="今日の学習時間。詳細を開く"
-            aria-haspopup="dialog" aria-controls="dailyStudyModal" title="今日の学習時間">
-            <img class="daily-study-icon" src="assets/ui/schedule-rounded.svg" alt="" aria-hidden="true"><span id="dailyStudyTimerValue">00:00</span>
-        </button>
 
         <div class="header learning-header">
             <div class="rpg-inline">
@@ -646,8 +647,8 @@
     </div>
 
     <!-- Import External Vocabulary Data -->
-    <script src="data/vocabulary.js?v=2026.1027.0220"></script>
-<script src="data/ipa_overrides.js?v=2026.1027.0220"></script>
+    <script src="data/vocabulary.js?v=2026.1027.1107"></script>
+<script src="data/ipa_overrides.js?v=2026.1027.1107"></script>
 
     <!-- Force Update Modal (Blocking) -->
     <div id="forceUpdateModal" class="modal-overlay"
@@ -1283,7 +1284,7 @@
     </div>
     </div>
 
-    <link rel="stylesheet" href="feedback.css?v=2026.1027.0220">
+    <link rel="stylesheet" href="feedback.css?v=2026.1027.1107">
     <div id="feedbackModal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
         <section class="feedback-sheet">
             <div class="feedback-heading"><h2 id="feedbackTitle">ひとこと・改善案</h2><button id="feedbackClose" type="button" aria-label="閉じる">×</button></div>
@@ -1357,23 +1358,23 @@
             <p id="dailyStudyStorageStatus" class="daily-study-note" role="status"></p>
         </section>
     </div>
-    <script src="js/version.js?v=2026.1027.0220"></script>
-    <script src="js/update_manager.js?v=2026.1027.0220"></script>
-    <script src="js/config.js?v=2026.1027.0220"></script>
-    <script src="js/app_check_client.js?v=2026.1027.0220"></script>
-    <script src="data/announcements.js?v=2026.1027.0220"></script>
-    <script src="js/utils.js?v=2026.1027.0220"></script>
-    <script src="data/word-illustrations.js?v=2026.1027.0220"></script>
-    <script src="js/word_illustrations.js?v=2026.1027.0220"></script>
+    <script src="js/version.js?v=2026.1027.1107"></script>
+    <script src="js/update_manager.js?v=2026.1027.1107"></script>
+    <script src="js/config.js?v=2026.1027.1107"></script>
+    <script src="js/app_check_client.js?v=2026.1027.1107"></script>
+    <script src="data/announcements.js?v=2026.1027.1107"></script>
+    <script src="js/utils.js?v=2026.1027.1107"></script>
+    <script src="data/word-illustrations.js?v=2026.1027.1107"></script>
+    <script src="js/word_illustrations.js?v=2026.1027.1107"></script>
     <script src="scripts/qrcode.min.js"></script>
-    <script src="js/word_grouping.js?v=2026.1027.0220"></script>
-    <script src="js/my_wordbooks.js?v=2026.1027.0220"></script>
-    <script src="js/daily_study.js?v=2026.1027.0220"></script>
-    <script src="js/game_logic.js?v=2026.1027.0220"></script>
-    <script src="js/ui_manager.js?v=2026.1027.0220"></script>
-    <script src="js/sister_apps.js?v=2026.1027.0220"></script>
-    <script src="js/feedback.js?v=2026.1027.0220"></script>
-    <script type="module" src="js/firebase_app_v2.js?v=2026.1027.0220"></script>
+    <script src="js/word_grouping.js?v=2026.1027.1107"></script>
+    <script src="js/my_wordbooks.js?v=2026.1027.1107"></script>
+    <script src="js/daily_study.js?v=2026.1027.1107"></script>
+    <script src="js/game_logic.js?v=2026.1027.1107"></script>
+    <script src="js/ui_manager.js?v=2026.1027.1107"></script>
+    <script src="js/sister_apps.js?v=2026.1027.1107"></script>
+    <script src="js/feedback.js?v=2026.1027.1107"></script>
+    <script type="module" src="js/firebase_app_v2.js?v=2026.1027.1107"></script>
     <div style="position: fixed; bottom: 5px; right: 5px; font-size: 10px; color: #ccc; z-index: 1000;"
         id="currentVersion">loading...</div>
     <script>

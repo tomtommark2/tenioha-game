@@ -149,9 +149,3 @@
     .sister-apps-body { padding: 0 16px calc(20px + env(safe-area-inset-bottom)); }
     #sisterAppsLinks { grid-template-columns: minmax(0, 1fr); max-width: 480px; margin: 0 auto; }
 }
-
-@media (max-width: 389px) {
-    /* Four right-side icons need the existing second-row level placement a little earlier. */
-    .app-shell .level-current-btn { top: calc(54px + env(safe-area-inset-top)); left: 62px; }
-    .app-shell .level-selector { top: calc(88px + env(safe-area-inset-top)); }
-}

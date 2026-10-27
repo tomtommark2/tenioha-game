@@ -69,6 +69,7 @@ function assertLayout(layout, width, illustrated = false) {
     expect(layout.panel.left, `${width}px right of character`).toBeGreaterThanOrEqual(
         (illustrated ? layout.illustration.right : layout.hero.right) - 1);
     if (width <= 768) {
+        expect(layout.panel.width, `${width}px compact selector`).toBeLessThanOrEqual(264);
         expect(layout.score.bottom, `${width}px score above panel`).toBeLessThanOrEqual(layout.panel.top + 1);
     } else {
         expect(layout.score.left, `${width}px legacy score beside character`).toBeCloseTo(layout.characterArea.left + 94, 1);
@@ -119,14 +120,14 @@ function assertLayout(layout, width, illustrated = false) {
     }
 }
 
-test('学習分類：320〜1280pxでキャラ右側に一列で収め、4桁の件数を切らない', async ({ page }, testInfo) => {
+test('学習分類：280〜1280pxでキャラ右側に一列で収め、4桁の件数を切らない', async ({ page }, testInfo) => {
     await page.evaluate(() => {
         document.querySelectorAll('.mode-count').forEach(element => { element.textContent = '9999'; });
         document.getElementById('reviewScoreHeaderToday').textContent = '9999pt';
         document.getElementById('reviewScoreHeaderWeek').textContent = '9999pt';
         document.getElementById('reviewRankHeader').textContent = '9999位';
     });
-    for (const width of [320, 360, 375, 380, 390, 568, 768, 769, 1280]) {
+    for (const width of [280, 300, 320, 360, 375, 380, 381, 389, 390, 568, 768, 769, 1280]) {
         await page.setViewportSize({ width, height: 844 });
         assertLayout(await inspectLayout(page), width);
     }
@@ -272,7 +273,7 @@ test('学習分類：復習ロックとイラスト常時表示でも分類の�
     await expect(page.locator('#wordIllustrationSlot')).toBeVisible();
     await expect(page.locator('#wordIllustration')).toHaveAttribute('src', /apple/);
     await page.locator('#wordIllustration').evaluate(image => image.decode());
-    for (const width of [320, 390, 768, 1280]) {
+    for (const width of [280, 320, 390, 768, 1280]) {
         await page.setViewportSize({ width, height: 844 });
         assertLayout(await inspectLayout(page), width, true);
     }
@@ -305,7 +306,7 @@ test('学習分類：紫と白の境目に足元を揃え、スコアを右側�
             return bottom;
         });
     });
-    for (const width of [320, 390, 532, 768]) {
+    for (const width of [280, 320, 381, 390, 532, 768]) {
         await page.setViewportSize({ width, height: 844 });
         for (const [index, state] of ['idle', 'attack', 'cheer'].entries()) {
             const layout = await page.evaluate(({ state, foot }) => {
@@ -366,7 +367,7 @@ test('学習分類：復習球と101語の案内を出しても境目・分類�
         const { top, bottom, height } = document.querySelector(selector).getBoundingClientRect();
         return { selector, top, bottom, height };
     }));
-    for (const width of [320, 390, 532, 768, 1280]) {
+    for (const width of [280, 320, 381, 390, 532, 768, 1280]) {
         await page.setViewportSize({ width, height: 844 });
         // New question text can load another font subset; let its ResizeObserver finish before measuring.
         await page.evaluate(async () => {
