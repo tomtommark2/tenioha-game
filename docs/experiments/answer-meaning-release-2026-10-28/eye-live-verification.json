@@ -1,0 +1,162 @@
+{
+  "version": "2026.1028.0238",
+  "commit": "62741c243d7f4adcfc3f9f6109e7768b64b2bd9f",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "6c81c57bf92e09fbe979db296887d75ca36a071f765d9436b8febe9a134d5a43"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "6c81c57bf92e09fbe979db296887d75ca36a071f765d9436b8febe9a134d5a43"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "1e8aa10df12139429ce5c44d87b6726d241a8aaafdc7685d064ef265dd43452a"
+    },
+    {
+      "file": "style.css",
+      "sha256": "2c3cd46784daa1c86c21467552df4894a3442225f0cd0fd2428637622ff0938e"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "7539626a773d4c231b98b5fdd9d2910917da74dca8ccb479d3ca3695bce409c9"
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "5ba9b9cf55353732880e2a477bdabeb89e8c5c5e9ca7a50ba9c0d9e768da88ae"
+    },
+    {
+      "file": "js/daily_study.js",
+      "sha256": "f2b2a02097965cf264cfa45a96fd2f2556c6891e8cbe96722e59e3dda33966da"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "5d13260b56bd7fa789507240c39a820b39546ede29e24a6ee6bbba686adb93a3"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "a585f9c4364e52cb68c464d851b461e986706ee9e241864cc0c096102e8b66cb"
+    },
+    {
+      "file": "assets/ui/visibility-rounded.svg",
+      "sha256": "024cf2e18ddffaed7d0f9e6872f7a09a76cc81349414a3869ae47a1f412b30ce"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 280,
+      "initialOff": true,
+      "eyeMode": true,
+      "normalTapAdvances": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "alwaysMode": true,
+      "bothSettingsPersisted": true,
+      "legacyOnMigration": true,
+      "explicitOffOverridesLegacy": true,
+      "settingOutsideLearningSave": true,
+      "noOverlap": true,
+      "eyeAssetRendered": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "initialOff": true,
+      "eyeMode": true,
+      "normalTapAdvances": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "alwaysMode": true,
+      "bothSettingsPersisted": true,
+      "legacyOnMigration": true,
+      "explicitOffOverridesLegacy": true,
+      "settingOutsideLearningSave": true,
+      "noOverlap": true,
+      "eyeAssetRendered": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "initialOff": true,
+      "eyeMode": true,
+      "normalTapAdvances": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "alwaysMode": true,
+      "bothSettingsPersisted": true,
+      "legacyOnMigration": true,
+      "explicitOffOverridesLegacy": true,
+      "settingOutsideLearningSave": true,
+      "noOverlap": true,
+      "eyeAssetRendered": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 280,
+      "initialOff": true,
+      "eyeMode": true,
+      "normalTapAdvances": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "alwaysMode": true,
+      "bothSettingsPersisted": true,
+      "legacyOnMigration": true,
+      "explicitOffOverridesLegacy": true,
+      "settingOutsideLearningSave": true,
+      "noOverlap": true,
+      "eyeAssetRendered": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "initialOff": true,
+      "eyeMode": true,
+      "normalTapAdvances": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "alwaysMode": true,
+      "bothSettingsPersisted": true,
+      "legacyOnMigration": true,
+      "explicitOffOverridesLegacy": true,
+      "settingOutsideLearningSave": true,
+      "noOverlap": true,
+      "eyeAssetRendered": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "initialOff": true,
+      "eyeMode": true,
+      "normalTapAdvances": true,
+      "correctScoredOnce": true,
+      "nextUnscored": true,
+      "undoRestores": true,
+      "alwaysMode": true,
+      "bothSettingsPersisted": true,
+      "legacyOnMigration": true,
+      "explicitOffOverridesLegacy": true,
+      "settingOutsideLearningSave": true,
+      "noOverlap": true,
+      "eyeAssetRendered": true,
+      "pageErrors": 0
+    }
+  ],
+  "actualBackendWrites": 0,
+  "verifiedAt": "2026-10-27T17:46:36.967Z"
+}
