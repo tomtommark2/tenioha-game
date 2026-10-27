@@ -1493,14 +1493,16 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 .meaning-card > .card-front { justify-self: center; }
 .meaning-card > .card-label { left: 50%; transform: translateX(-50%); white-space: nowrap; }
 
-/* Keep the answer's space without revealing it visually or to accessibility APIs. */
+/* Hidden definitions must not set the height of an unopened card. */
 .meaning-card > .card-back,
 .meaning-card.flipped > .card-front {
+    display: none;
     visibility: hidden;
     pointer-events: none;
 }
 
 .meaning-card.flipped > .card-back {
+    display: block;
     visibility: visible;
     pointer-events: auto;
 }

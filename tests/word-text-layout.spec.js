@@ -367,7 +367,9 @@ test('単語表示：ハテナと承認済み復習ラベルを表示し、確�
         await expect(page.locator('#meaningCard .card-back')).toBeVisible();
         await expect(page.locator('#meaningText')).toContainText(meaning);
         expect(await page.evaluate(() => gameState.srsData[getWordKeySafe(gameState.currentWord)].recentAnswers)).toEqual([true, false, true, false]);
-        expect((await measure()).card).toEqual(before.card);
+        const opened = (await measure()).card;
+        expect(opened.width).toBe(before.card.width);
+        expect(opened.height).toBeGreaterThanOrEqual(before.card.height);
         await page.locator('#undoBtn').click();
         await expect(prompt).toBeVisible();
         expect(await page.evaluate(() => gameState.srsData[getWordKeySafe(gameState.currentWord)].recentAnswers)).toEqual([true, false, true]);

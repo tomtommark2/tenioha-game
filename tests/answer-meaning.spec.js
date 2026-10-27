@@ -106,7 +106,7 @@ test('正解後の意味：不正解の確認・単語音声・次への操作�
     expect((await current(page)).key).not.toBe(before.key);
 });
 
-test('正解後の意味：280〜1280pxでカードを動かさず長い意味と次へを収める', async ({ page }, testInfo) => {
+test('正解後の意味：280〜1280pxで開く前はコンパクトにし、開いた長い意味と次へを収める', async ({ page }, testInfo) => {
     await page.evaluate(() => { setShowMeaningOnCorrect(true); startLearningSession(); });
     const word = await page.evaluate(() => ({ ...gameState.currentWord, meaning: '意味を確認します。'.repeat(25), phrase: '', __customWord: true }));
     for (const width of [280, 320, 390, 768, 1280]) {
@@ -115,7 +115,8 @@ test('正解後の意味：280〜1280pxでカードを動かさず長い意味�
         const before = await page.locator('#meaningCard').boundingBox();
         await page.locator('#vocabCard').click();
         const after = await page.locator('#meaningCard').boundingBox();
-        expect(after).toEqual(before);
+        expect(after.width).toBe(before.width);
+        expect(after.height).toBeGreaterThan(before.height);
         const footer = await page.locator('.answer-confirmation-actions').boundingBox();
         const meaning = await page.locator('#meaningCard > .card-back').boundingBox();
         expect(footer.x).toBeGreaterThanOrEqual(after.x);
@@ -123,6 +124,26 @@ test('正解後の意味：280〜1280pxでカードを動かさず長い意味�
         expect(meaning.y + meaning.height).toBeLessThanOrEqual(footer.y);
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
         if ([390, 1280].includes(width)) await page.screenshot({ path: `screenshots/answer-meaning-${width}-${testInfo.project.name}.png` });
+    }
+});
+
+test('正解後の意味：語義や品詞が多くても開く前の意味カードを同じ高さに保つ', async ({ page }) => {
+    await page.locator('#vocabCard').click();
+    const original = await page.evaluate(() => ({ ...gameState.currentWord, pos: '名', phrase: '', example: '', meaning: '意味' }));
+    for (const width of [280, 390, 768, 1280]) {
+        await page.setViewportSize({ width, height: 844 });
+        await page.evaluate(word => showWord(word), original);
+        const baseline = await page.locator('#meaningCard').boundingBox();
+        const long = { ...original, senses: Array.from({ length: 8 }, (_, index) => ({ pos: '名', meaning: `意味${index + 1}：詳しい説明です。`, phrase: 'sample phrase' })) };
+        await page.evaluate(word => showWord(word), long);
+        const closed = await page.locator('#meaningCard').boundingBox();
+        expect(closed.height, `${width}px closed card`).toBe(baseline.height);
+        await expect(page.locator('#meaningCard > .card-back')).toBeHidden();
+        await page.locator('#meaningCard').click();
+        await expect(page.locator('#meaningText')).toBeVisible();
+        expect((await page.locator('#meaningCard').boundingBox()).height, `${width}px revealed meanings`).toBeGreaterThan(closed.height);
+        await page.locator('#undoBtn').click();
+        expect((await page.locator('#meaningCard').boundingBox()).height, `${width}px after undo`).toBe(baseline.height);
     }
 });
 
