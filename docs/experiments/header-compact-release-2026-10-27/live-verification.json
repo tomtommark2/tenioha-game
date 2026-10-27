@@ -1,0 +1,130 @@
+{
+  "version": "2026.1027.1107",
+  "commit": "3ef86a427afa4f2a6dda709e35a81c3e281a65df",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "7c66d1559dad3794177520301d11992331abc1024701fa3495cc5f04bfc2ad1d"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "7c66d1559dad3794177520301d11992331abc1024701fa3495cc5f04bfc2ad1d"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "c4e56d0a0ca4fb528360082198804ce9a772fe05c78f08000680795d989856ec"
+    },
+    {
+      "file": "header-m3e.css",
+      "sha256": "582cb0db65dd67ac959cc16f1f45350db714dd9abd02fc8af323e64518e531e5"
+    },
+    {
+      "file": "daily-study.css",
+      "sha256": "ef3d6bd01ed2f68d26943eaacbe2b70a9b0f1a70ede8aadb2685b5fb5c9300cf"
+    },
+    {
+      "file": "sister-apps.css",
+      "sha256": "bd6f761e084855baad3177de8b5f1b59915d30e59c1ac66d5c5fa3a0d6469bff"
+    },
+    {
+      "file": "js/daily_study.js",
+      "sha256": "f2b2a02097965cf264cfa45a96fd2f2556c6891e8cbe96722e59e3dda33966da"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "bb4304b229da9bcf299c29f62c3c25a0cb322e0c7f1a8f79aebc2e974fc82bf3"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "019db57012c8050d6d93399770e7260f1e8a53a24aee3cf631e70cadc81ff81f"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 280,
+      "correctPlacement": true,
+      "compactCorners": true,
+      "noOverlap": true,
+      "opensAndCloses": true,
+      "learningUnchanged": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 381,
+      "correctPlacement": true,
+      "compactCorners": true,
+      "noOverlap": true,
+      "opensAndCloses": true,
+      "learningUnchanged": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "correctPlacement": true,
+      "compactCorners": true,
+      "noOverlap": true,
+      "opensAndCloses": true,
+      "learningUnchanged": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "correctPlacement": true,
+      "compactCorners": true,
+      "noOverlap": true,
+      "opensAndCloses": true,
+      "learningUnchanged": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 280,
+      "correctPlacement": true,
+      "compactCorners": true,
+      "noOverlap": true,
+      "opensAndCloses": true,
+      "learningUnchanged": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 381,
+      "correctPlacement": true,
+      "compactCorners": true,
+      "noOverlap": true,
+      "opensAndCloses": true,
+      "learningUnchanged": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "correctPlacement": true,
+      "compactCorners": true,
+      "noOverlap": true,
+      "opensAndCloses": true,
+      "learningUnchanged": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "correctPlacement": true,
+      "compactCorners": true,
+      "noOverlap": true,
+      "opensAndCloses": true,
+      "learningUnchanged": true,
+      "pageErrors": 0
+    }
+  ],
+  "actualBackendWrites": 0,
+  "verifiedAt": "2026-10-27T02:12:47.122Z"
+}
