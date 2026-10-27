@@ -385,32 +385,70 @@ function setCardStatusVisible(visible) {
 }
 
 const SHOW_MEANING_ON_CORRECT_KEY = 'vocabGame_showMeaningOnCorrect';
+const ANSWER_MEANING_MODE_KEY = 'vocabGame_answerMeaningMode';
+var answerMeaningMode = 'off';
 var showMeaningOnCorrect = false;
 try {
-    showMeaningOnCorrect = localStorage.getItem(SHOW_MEANING_ON_CORRECT_KEY) === 'true';
+    const savedMode = localStorage.getItem(ANSWER_MEANING_MODE_KEY);
+    answerMeaningMode = ['off', 'button', 'always'].includes(savedMode) ? savedMode
+        : localStorage.getItem(SHOW_MEANING_ON_CORRECT_KEY) === 'true' ? 'always' : 'off';
+    showMeaningOnCorrect = answerMeaningMode === 'always';
 } catch { /* Keep the existing one-tap flow when storage is unavailable. */ }
 
 function renderAnswerMeaningSettings(message = '') {
     const input = document.getElementById('showMeaningOnCorrect');
-    if (input) input.checked = showMeaningOnCorrect;
+    if (input) input.checked = answerMeaningMode !== 'off';
+    const choices = document.getElementById('answerMeaningChoices');
+    if (choices) choices.hidden = answerMeaningMode === 'off';
+    document.querySelectorAll('input[name="answerMeaningMode"]').forEach(input => {
+        input.checked = input.value === answerMeaningMode;
+    });
+    const description = document.getElementById('answerMeaningDescription');
+    if (description) {
+        description.hidden = answerMeaningMode === 'off';
+        description.textContent = answerMeaningMode === 'button'
+            ? '目を押すと、正解にして意味を表示します。' : '確認後、カードか「次へ」をタップ。';
+    }
     const status = document.getElementById('answerMeaningSettingsStatus');
     if (status) status.textContent = message;
 }
 
 function setShowMeaningOnCorrect(visible) {
     if (typeof visible !== 'boolean') return;
+    setAnswerMeaningMode(visible ? 'always' : 'off');
+}
+
+function setAnswerMeaningEnabled(visible) {
+    if (typeof visible !== 'boolean') return;
+    setAnswerMeaningMode(visible ? 'button' : 'off');
+}
+
+function setAnswerMeaningMode(mode) {
+    if (!['off', 'button', 'always'].includes(mode)) return;
     try {
-        localStorage.setItem(SHOW_MEANING_ON_CORRECT_KEY, String(visible));
+        localStorage.setItem(ANSWER_MEANING_MODE_KEY, mode);
     } catch {
         renderAnswerMeaningSettings('保存できなかったため、変更前の設定に戻しました。');
         return;
     }
-    showMeaningOnCorrect = visible;
+    answerMeaningMode = mode;
+    showMeaningOnCorrect = mode === 'always';
     renderAnswerMeaningSettings();
+    renderAnswerMeaningButton();
     window.renderLiveTutorial?.();
 }
 
+function renderAnswerMeaningButton() {
+    const button = document.getElementById('answerMeaningBtn');
+    if (!button) return;
+    const visible = answerMeaningMode === 'button' && learningSessionStarted && !!gameState.currentWord;
+    button.hidden = !visible;
+    button.disabled = gameState.meaningCardFlipped;
+    document.getElementById('vocabCard')?.classList.toggle('has-answer-meaning-button', visible);
+}
+
 function renderCorrectAnswerConfirmation(visible) {
+    renderAnswerMeaningButton();
     document.getElementById('cardsArea')?.classList.toggle('has-answer-confirmation', visible);
     const card = document.getElementById('meaningCard');
     if (!card) return;
@@ -2019,6 +2057,7 @@ function updateCardAccuracyUI() {
 }
 
 function updateQuestionReasonUI() {
+    renderAnswerMeaningButton();
     updateCardAccuracyUI();
     const label = document.getElementById('questionReasonLabel');
     if (!label) return;
@@ -3822,6 +3861,8 @@ function hideNoWordsMessage() {
         cardsArea.innerHTML = `
                     <div class="card vocab-card" id="vocabCard" role="button" tabindex="0"
                         aria-label="英単語を正解として回答">
+                        <button type="button" class="answer-meaning-btn" id="answerMeaningBtn"
+                            aria-label="正解にして意味を表示" hidden><span class="app-picto" aria-hidden="true"></span></button>
                         <button type="button" class="word-speech-btn" id="wordSpeechBtn"
                             aria-label="英単語を再生" title="英単語を再生" hidden><span class="speaker-icon" aria-hidden="true"></span></button>
                         <div class="card-content" id="vocabWord" aria-busy="true"></div>
@@ -3865,7 +3906,12 @@ function setupCardListeners() {
             event.stopPropagation();
             speakCurrentWord();
         });
+        newVocab.querySelector('#answerMeaningBtn')?.addEventListener('click', (event) => {
+            event.stopPropagation();
+            handleVocabCardClick(undefined, true);
+        });
         renderWordSpeechButton();
+        renderAnswerMeaningButton();
     }
 
     if (meaningCard) {
@@ -3877,9 +3923,9 @@ function setupCardListeners() {
     fitVocabWordText();
 }
 
-function handleVocabCardClick(event) {
+function handleVocabCardClick(event, revealMeaning = false) {
     // Keep native button activation (including Enter/Space) separate from answers.
-    if (event?.target?.closest('#wordSpeechBtn')) return;
+    if (event?.target?.closest('#wordSpeechBtn, #answerMeaningBtn')) return;
     if (!ensureTrialAccess()) return;
     if (!learningSessionStarted || !gameState.currentWord) {
         startLearningSession();
@@ -3947,7 +3993,7 @@ function handleVocabCardClick(event) {
     }
 
     const reviewSnapshot = updateDisplay();
-    if (showMeaningOnCorrect) {
+    if (showMeaningOnCorrect || (answerMeaningMode === 'button' && revealMeaning)) {
         gameState.meaningCardFlipped = true;
         document.getElementById('meaningCard').classList.add('flipped');
         renderCorrectAnswerConfirmation(true);
@@ -3975,6 +4021,7 @@ function handleMeaningCardClick(e) {
         // Flip = Incorrect / Check
         card.classList.add('flipped');
         gameState.meaningCardFlipped = true;
+        renderAnswerMeaningButton();
         window.WordIllustrations?.show(
             resolveReferencedVocabularyWord(gameState.currentWord, getWordSourceLevel(gameState.currentWord, gameState.currentLevel)),
             getWordSourceLevel(gameState.currentWord, gameState.currentLevel), vocabularyDatabase

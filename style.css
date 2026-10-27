@@ -1517,6 +1517,21 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 .answer-confirmation-next:focus-visible { outline: 3px solid #8775e6; outline-offset: 2px; }
 .answer-meaning-settings p { margin: 6px 0 0; font-size: 13px; line-height: 1.5; color: #596177; }
 #answerMeaningSettingsStatus:empty { display: none; }
+.answer-meaning-choices { display: flex; gap: 4px; margin-top: 12px; padding: 4px; border-radius: 8px; background: #f2eef8; }
+.answer-meaning-choices[hidden] { display: none; }
+.answer-meaning-choices label { position: relative; flex: 1; min-width: 0; cursor: pointer; }
+.answer-meaning-choices input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.answer-meaning-choices span { display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 6px; border-radius: 6px; color: #675b7b; font-size: 13px; font-weight: 600; }
+.answer-meaning-choices input:checked + span { background: #fff; color: #6948c7; box-shadow: 0 1px 4px rgba(64, 45, 103, 0.1); }
+.answer-meaning-choices input:focus-visible + span { outline: 2px solid #7c5cff; outline-offset: 1px; }
+.answer-meaning-btn { position: absolute; top: 4px; left: 6px; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid transparent; border-radius: 8px; background: transparent; color: #71628e; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.answer-meaning-btn[hidden] { display: none; }
+.answer-meaning-btn .app-picto { --picto-url: url('assets/ui/visibility-rounded.svg'); width: 22px; height: 22px; }
+.answer-meaning-btn:hover { background: #f3f0fb; }
+.answer-meaning-btn:active { background: #eae4f7; }
+.answer-meaning-btn:focus-visible { outline: 2px solid #7c5cff; outline-offset: 1px; }
+.answer-meaning-btn:disabled { opacity: 0.4; cursor: default; pointer-events: auto; }
+.vocab-card.has-answer-meaning-button > .question-reason-label { top: 48px; max-width: calc(50% - 12px); }
 
 #reviewProgressWrap {
     position: relative;
@@ -7182,6 +7197,7 @@ body.dismissible-modal-open {
     --picto-url: url("assets/icons/lock.svg");
 }
 
+.answer-meaning-btn .app-picto::before,
 .app-picto.icon-book::before,
 .app-picto.icon-check::before,
 .app-picto.icon-star::before,
@@ -7204,6 +7220,7 @@ body.dismissible-modal-open {
     mask: var(--picto-url) center / contain no-repeat;
 }
 
+.answer-meaning-btn .app-picto::after,
 .app-picto.icon-book::after,
 .app-picto.icon-check::after,
 .app-picto.icon-star::after,

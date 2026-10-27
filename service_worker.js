@@ -37,6 +37,7 @@ const ASSETS = [
     './assets/ui/check-circle-rounded.svg',
     './assets/ui/auto-awesome-rounded.svg',
     './assets/ui/question-mark-rounded.svg',
+    './assets/ui/visibility-rounded.svg',
     './assets/ui/school-outline-rounded.svg',
     './assets/ui/bookmark-outline-rounded.svg',
     './assets/ui/library-books-outline-rounded.svg',

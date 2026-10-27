@@ -1,5 +1,7 @@
 # 単語帳UIアイコン
 
+正解後の意味確認ボタンの `visibility-rounded.svg` は [Google公式のvisibility](https://github.com/google/material-design-icons/blob/master/symbols/web/visibility/materialsymbolsrounded/visibility_24px.svg)（Material Symbols Rounded、24px、Apache-2.0）を無改変で収録。
+
 「今日の学習」の `bar-chart-rounded.svg`・`schedule-rounded.svg`・`settings-rounded.svg` はGoogle公式リポジトリのMaterial Symbols Rounded（24px）を無改変で収録。既存のApache-2.0ライセンスを適用し、閉じる・回答・完璧のアイコンは既存素材を再利用する。
 
 姉妹アプリの `grid-view-rounded.svg`・`open-in-new-rounded.svg` はGoogle公式の [grid_view](https://github.com/google/material-design-icons/blob/master/symbols/web/grid_view/materialsymbolsrounded/grid_view_24px.svg)・[open_in_new](https://github.com/google/material-design-icons/blob/master/symbols/web/open_in_new/materialsymbolsrounded/open_in_new_24px.svg)（Material Symbols Rounded、24px、Apache-2.0）を無改変で収録。同梱の `close-rounded.svg` を再利用する。
