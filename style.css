@@ -1505,6 +1505,17 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     pointer-events: auto;
 }
 
+.meaning-card.answer-confirmation { border-color: #b5d8c3; }
+.has-answer-confirmation .card-tutorial-note { visibility: hidden; pointer-events: none; }
+.answer-confirmation-actions { position: absolute; left: 16px; right: 16px; bottom: 4px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.answer-confirmation-state { display: inline-flex; align-items: center; gap: 5px; color: #267847; font-size: 13px; font-weight: 700; }
+.answer-confirmation-state .app-picto { --picto-url: url('assets/ui/check-circle-rounded.svg'); width: 18px; height: 18px; }
+.answer-confirmation-next { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 36px; min-width: 84px; padding: 0 12px; border: 1px solid #ded4f1; border-radius: 8px; background: #eee8fc; color: #67548c; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.answer-confirmation-next:hover { background: #e4daf8; }
+.answer-confirmation-next:focus-visible { outline: 3px solid #8775e6; outline-offset: 2px; }
+.answer-meaning-settings p { margin: 6px 0 0; font-size: 13px; line-height: 1.5; color: #596177; }
+#answerMeaningSettingsStatus:empty { display: none; }
+
 #reviewProgressWrap {
     position: relative;
     /* The floating recommendation clears the card even without a tutorial heading. */

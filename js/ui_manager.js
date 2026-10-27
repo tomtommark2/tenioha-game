@@ -1772,7 +1772,7 @@ window.renderLiveTutorial = function () {
     box.hidden = true;
     box.style.display = 'none';
     const notes = [
-        { cardId: 'vocabCard', id: 'vocabCardTutorialHint', items: ['わかったらタップ', '意味は表示されません', '初回は「完璧」に分類'] },
+        { cardId: 'vocabCard', id: 'vocabCardTutorialHint', items: ['わかったらタップ', window.showMeaningOnCorrect ? '意味を確認して次へ' : '意味は表示されません', '初回は「完璧」に分類'] },
         { cardId: 'meaningCard', id: 'meaningCardTutorialHint', items: ['わからなかったらタップ', '意味を表示', '「苦手」に分類'] },
     ];
     notes.forEach(({ cardId, id, items }) => {
@@ -1788,6 +1788,7 @@ window.renderLiveTutorial = function () {
         }
         card.setAttribute('aria-describedby', `${id}Text`);
         if (existing) {
+            existing.querySelectorAll('li').forEach((item, index) => { item.textContent = items[index]; });
             existing.querySelector('.card-tutorial-close').onclick = event => window.dismissCardTutorial(cardId, event);
             return;
         }

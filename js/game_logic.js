@@ -384,6 +384,55 @@ function setCardStatusVisible(visible) {
     renderCardStatusSettings('このブラウザに保存しました。');
 }
 
+const SHOW_MEANING_ON_CORRECT_KEY = 'vocabGame_showMeaningOnCorrect';
+var showMeaningOnCorrect = false;
+try {
+    showMeaningOnCorrect = localStorage.getItem(SHOW_MEANING_ON_CORRECT_KEY) === 'true';
+} catch { /* Keep the existing one-tap flow when storage is unavailable. */ }
+
+function renderAnswerMeaningSettings(message = '') {
+    const input = document.getElementById('showMeaningOnCorrect');
+    if (input) input.checked = showMeaningOnCorrect;
+    const status = document.getElementById('answerMeaningSettingsStatus');
+    if (status) status.textContent = message;
+}
+
+function setShowMeaningOnCorrect(visible) {
+    if (typeof visible !== 'boolean') return;
+    try {
+        localStorage.setItem(SHOW_MEANING_ON_CORRECT_KEY, String(visible));
+    } catch {
+        renderAnswerMeaningSettings('保存できなかったため、変更前の設定に戻しました。');
+        return;
+    }
+    showMeaningOnCorrect = visible;
+    renderAnswerMeaningSettings();
+    window.renderLiveTutorial?.();
+}
+
+function renderCorrectAnswerConfirmation(visible) {
+    document.getElementById('cardsArea')?.classList.toggle('has-answer-confirmation', visible);
+    const card = document.getElementById('meaningCard');
+    if (!card) return;
+    card.classList.toggle('answer-confirmation', visible);
+    document.getElementById('vocabCard')?.setAttribute('aria-label', visible ? '次の単語へ' : '英単語を正解として回答');
+    const existing = card.querySelector('.answer-confirmation-actions');
+    if (!visible) {
+        existing?.remove();
+        return;
+    }
+    if (existing) return;
+    const actions = document.createElement('div');
+    actions.className = 'answer-confirmation-actions';
+    actions.innerHTML = `<span class="answer-confirmation-state" role="status"><span class="app-picto icon-check" aria-hidden="true"></span>正解</span>
+        <button type="button" class="answer-confirmation-next">次へ<span aria-hidden="true">→</span></button>`;
+    actions.querySelector('button').addEventListener('click', event => {
+        event.stopPropagation();
+        handleVocabCardClick();
+    });
+    card.append(actions);
+}
+
 // Browser preferences are separate from learning saves, cloud sync and Undo.
 const REVIEW_RECOMMENDATION_KEY = 'vocabGame_reviewRecommendationEnabled';
 const REVIEW_RECOMMENDATION_THRESHOLD = 100;
@@ -511,6 +560,7 @@ function activateLearningSessionUI() {
 }
 
 function showLearningStartPrompt() {
+    renderCorrectAnswerConfirmation(false);
     window.WordIllustrations.resetPrevious();
     document.getElementById('exampleSenseTabs')?.remove();
     document.getElementById('cardsArea')?.classList.remove('has-merged-word');
@@ -1715,6 +1765,7 @@ window.openStudyModeModal = function () {
         renderReviewTiming();
         renderReviewLevelCheckboxes();
         renderCardStatusSettings();
+        renderAnswerMeaningSettings();
         renderReviewRecommendationSettings();
         window.WordIllustrations.renderVisibilitySettings();
         updateReviewProgressUI();
@@ -3495,6 +3546,7 @@ function showNextWord(reviewSnapshot = null) {
     }
     if (!ensureTrialAccess()) return;
 
+    renderCorrectAnswerConfirmation(false);
     gameState.meaningCardFlipped = false;
     if (wordSpeechTimer) {
         clearTimeout(wordSpeechTimer);
@@ -3727,6 +3779,7 @@ function showWord(word) {
     gameState.currentWord = word;
 
     // Reset Card State
+    renderCorrectAnswerConfirmation(false);
     gameState.meaningCardFlipped = false;
     document.getElementById('meaningCard').classList.remove('flipped');
 
@@ -3758,7 +3811,8 @@ function showNoWordsMessage() {
 
     cardsArea.innerHTML = `<div class="no-words">${message}</div>`;
     window.WordIllustrations.refreshPrevious(null);
-    document.getElementById('exampleArea').style.display = document.getElementById('previousIllustrationBtn').hidden ? 'none' : 'flex';
+    const hasPreviousIllustration = !document.getElementById('previousIllustrationBtn').hidden;
+    document.getElementById('exampleArea').style.display = hasPreviousIllustration || gameStateHistory.length > 0 ? 'flex' : 'none';
     document.getElementById('exampleArea').classList.add('no-question');
 }
 
@@ -3831,6 +3885,11 @@ function handleVocabCardClick(event) {
         startLearningSession();
         return;
     }
+    // A revealed answer has already been scored, whether correct or incorrect.
+    if (gameState.meaningCardFlipped) {
+        showNextWord();
+        return;
+    }
 
     if (typeof window.liveTutorialEvent === 'function') window.liveTutorialEvent('vocab_correct');
 
@@ -3839,22 +3898,6 @@ function handleVocabCardClick(event) {
 
     if (gameState.isReviewWord) {
         triggerReviewChipPop(currentWord.word, false);
-    }
-
-    // Ignore click if card is already flipped (user should click Next or Meaning card)
-    // Actually, if flipped, clicking vocab card usually means "Next" in this design?
-    // User said: "Click vocab card = Correct".
-    // If already flipped, maybe "Correct" doesn't make sense anymore because they saw the answer.
-    // But let's assume clicking Vocab Card (Front) is the primary "I know this" action.
-    // If flipped, it's hidden behind checks usually. 
-    // In the provided code, vocabCard is FRONT. meaningCard is BACK.
-    // If flipped, Vocab Card is HIDDEN.
-    // So this handler only fires if NOT flipped.
-
-    if (gameState.meaningCardFlipped) {
-        // Should not happen if UI hides it, but safety:
-        showNextWord();
-        return;
     }
 
     // Save state for Undo
@@ -3904,7 +3947,15 @@ function handleVocabCardClick(event) {
     }
 
     const reviewSnapshot = updateDisplay();
-    showNextWord(reviewSnapshot);
+    if (showMeaningOnCorrect) {
+        gameState.meaningCardFlipped = true;
+        document.getElementById('meaningCard').classList.add('flipped');
+        renderCorrectAnswerConfirmation(true);
+        window.WordIllustrations?.show(resolveReferencedVocabularyWord(currentWord, getWordSourceLevel(currentWord, gameState.currentLevel)),
+            getWordSourceLevel(currentWord, gameState.currentLevel), vocabularyDatabase);
+    } else {
+        showNextWord(reviewSnapshot);
+    }
     animateCharacter();
     saveGame();
 }
