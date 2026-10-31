@@ -1,0 +1,126 @@
+{
+  "version": "2026.1031.1850",
+  "commit": "d5881d986d453d71bb16a293fc8f480718c2ad19",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "a89b9f03faced4df8bd7b4cbdbb97dc00db2da9a46d8dca0c6bedd48a3ca3564"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "a89b9f03faced4df8bd7b4cbdbb97dc00db2da9a46d8dca0c6bedd48a3ca3564"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "1611d65a3b8503345b7328d7f1e1d8ba975e094ad9aa780bf7b1499c864989bb"
+    },
+    {
+      "file": "style.css",
+      "sha256": "a6f7a1c53e08a3cb7c3e9270398022a1d800e0518bcfc8707e9e00d93c2e0056"
+    },
+    {
+      "file": "daily-study.css",
+      "sha256": "ef3d6bd01ed2f68d26943eaacbe2b70a9b0f1a70ede8aadb2685b5fb5c9300cf"
+    },
+    {
+      "file": "header-m3e.css",
+      "sha256": "582cb0db65dd67ac959cc16f1f45350db714dd9abd02fc8af323e64518e531e5"
+    },
+    {
+      "file": "js/daily_study.js",
+      "sha256": "f2b2a02097965cf264cfa45a96fd2f2556c6891e8cbe96722e59e3dda33966da"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "7539626a773d4c231b98b5fdd9d2910917da74dca8ccb479d3ca3695bce409c9"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "5d13260b56bd7fa789507240c39a820b39546ede29e24a6ee6bbba686adb93a3"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "a585f9c4364e52cb68c464d851b461e986706ee9e241864cc0c096102e8b66cb"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 320,
+      "bothTimerModes": true,
+      "menuReceivesPointer": true,
+      "wordbookSelection": true,
+      "cardPositionUnchanged": true,
+      "openingDoesNotChangeLearningSave": true,
+      "todayStillWorks": true,
+      "focusRestored": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "bothTimerModes": true,
+      "menuReceivesPointer": true,
+      "wordbookSelection": true,
+      "cardPositionUnchanged": true,
+      "openingDoesNotChangeLearningSave": true,
+      "todayStillWorks": true,
+      "focusRestored": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "bothTimerModes": true,
+      "menuReceivesPointer": true,
+      "wordbookSelection": true,
+      "cardPositionUnchanged": true,
+      "openingDoesNotChangeLearningSave": true,
+      "todayStillWorks": true,
+      "focusRestored": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "bothTimerModes": true,
+      "menuReceivesPointer": true,
+      "wordbookSelection": true,
+      "cardPositionUnchanged": true,
+      "openingDoesNotChangeLearningSave": true,
+      "todayStillWorks": true,
+      "focusRestored": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "bothTimerModes": true,
+      "menuReceivesPointer": true,
+      "wordbookSelection": true,
+      "cardPositionUnchanged": true,
+      "openingDoesNotChangeLearningSave": true,
+      "todayStillWorks": true,
+      "focusRestored": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "bothTimerModes": true,
+      "menuReceivesPointer": true,
+      "wordbookSelection": true,
+      "cardPositionUnchanged": true,
+      "openingDoesNotChangeLearningSave": true,
+      "todayStillWorks": true,
+      "focusRestored": true,
+      "pageErrors": 0
+    }
+  ],
+  "actualBackendWrites": 0,
+  "verifiedAt": "2026-10-31T09:56:52.673Z"
+}
