@@ -6555,10 +6555,12 @@ body.dismissible-modal-open {
 
     .simple-switch-container,
     .header-controls,
-    .level-current-btn,
-    .level-selector {
+    .level-current-btn {
         z-index: 2;
     }
+
+    /* Keep the open menu above the daily study controls (z-index: 3). */
+    .level-selector { z-index: 4; }
 
     .simple-switch-container {
         top: calc(8px + env(safe-area-inset-top)) !important;

@@ -155,6 +155,58 @@ test('今日の学習：280〜1280pxで入口と2種類の時間が重ならず�
     await expect(page.locator('#dailyStudyModal')).toBeHidden();
 });
 
+for (const showTimer of [true, false]) {
+test(`今日の学習：単語帳メニューを今日と時計の上に表示し、選択を妨げない（時計${showTimer ? 'あり' : 'なし'}）`, async ({ page }, testInfo) => {
+        await page.locator('#dailyStudyButton').click();
+        await page.locator('#dailyStudyShowTimer').setChecked(showTimer);
+        await page.locator('#dailyStudyClose').click();
+        for (const width of [390, 280, 320, 375, 768, 769, 1280]) {
+            await page.setViewportSize({ width, height: 844 });
+            const before = await page.locator('#vocabCard').boundingBox();
+            await page.locator('#levelCurrentBtn').click();
+            await expect(page.locator('#levelContainer')).toBeVisible();
+            await expect(page.locator('#levelCurrentBtn')).toHaveAttribute('aria-expanded', 'true');
+            if ([280, 320, 390, 1280].includes(width)) await page.screenshot({ path: `screenshots/level-menu-layer-${width}-${showTimer ? 'timer' : 'no-timer'}-${testInfo.project.name}.png` });
+            const blocked = await page.evaluate(() => {
+                const menu = document.getElementById('levelContainer');
+                const result = [];
+                for (const id of ['dailyStudyButton', 'dailyStudyTimerDisplay']) {
+                    const control = document.getElementById(id);
+                    if (control.hidden) continue;
+                    const rect = control.getBoundingClientRect();
+                    for (const item of menu.querySelectorAll('button')) {
+                        const box = item.getBoundingClientRect();
+                        // Check the selectable surface, excluding transparent rounded corners.
+                        const left = Math.max(box.left + 8, rect.left + 2), right = Math.min(box.right - 8, rect.right - 2);
+                        const top = Math.max(box.top + 8, rect.top + 2), bottom = Math.min(box.bottom - 8, rect.bottom - 2);
+                        if (left >= right || top >= bottom) continue;
+                        for (const x of [left, (left + right) / 2, right]) for (const y of [top, (top + bottom) / 2, bottom]) {
+                            if (!item.contains(document.elementFromPoint(x, y))) result.push({ id, item: item.textContent.trim(), x, y });
+                        }
+                    }
+                }
+                return result;
+            });
+            expect(blocked, `${width}px / timer=${showTimer}: menu must receive pointer input`).toEqual([]);
+            expect(await page.locator('#vocabCard').boundingBox()).toEqual(before);
+            expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+            await page.locator('#levelCurrentBtn').click();
+            await expect(page.locator('#levelContainer')).toBeHidden();
+        }
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.locator('#levelCurrentBtn').click();
+    await page.locator('#levelContainer [data-level="junior"]').click();
+    await expect(page.locator('#levelCurrentLabel')).toHaveText('中学');
+    await expect(page.locator('#levelContainer')).toBeHidden();
+    await page.locator('#levelCurrentBtn').click();
+    await page.locator('#levelContainer [data-level="basic"]').click();
+    await expect(page.locator('#levelCurrentLabel')).toHaveText('基礎');
+    await page.locator('#dailyStudyButton').click();
+    await expect(page.locator('#dailyStudyModal')).toBeVisible();
+    await page.locator('#dailyStudyClose').click();
+});
+}
+
 test('今日の学習：表示設定を保持し、閉じる・背景・Escape・戻るで入口へ復帰する', async ({ page }) => {
     await page.locator('#dailyStudyButton').click();
     await expect(page.locator('#dailyStudyClose')).toBeFocused();
