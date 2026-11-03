@@ -1,0 +1,246 @@
+{
+  "version": "2026.1103.1818",
+  "commit": "b8b72521201f791d30f1f0b425bd2a22e351e828",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "f10cc4e5769eede071a581c19a45d9c9f529d910f8df5b108256cf8f737551a5"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "f10cc4e5769eede071a581c19a45d9c9f529d910f8df5b108256cf8f737551a5"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "186191cb69d45095796a6c23e873f1b43feffcb5107cd78b57e1633248872bc1"
+    },
+    {
+      "file": "style.css",
+      "sha256": "0a837a46c6e5c846227e970a1b5ffcb16b2876e33dd96b2cc33fa0573540ef33"
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "aa874b9002ff6b6725a8723ea85fce80d5a9ae494a35892ea69a52701aa53d02"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "7539626a773d4c231b98b5fdd9d2910917da74dca8ccb479d3ca3695bce409c9"
+    },
+    {
+      "file": "js/daily_study.js",
+      "sha256": "f2b2a02097965cf264cfa45a96fd2f2556c6891e8cbe96722e59e3dda33966da"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "5d13260b56bd7fa789507240c39a820b39546ede29e24a6ee6bbba686adb93a3"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "a585f9c4364e52cb68c464d851b461e986706ee9e241864cc0c096102e8b66cb"
+    },
+    {
+      "file": "header-m3e.css",
+      "sha256": "582cb0db65dd67ac959cc16f1f45350db714dd9abd02fc8af323e64518e531e5"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 320,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 320,
+      "premium": true,
+      "entry": "index.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "premium": true,
+      "entry": "index.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "premium": true,
+      "entry": "index.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "premium": true,
+      "entry": "index.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "premium": true,
+      "entry": "index.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "premium": true,
+      "entry": "index.html",
+      "estimateAbsent": true,
+      "menuKeyboardWorks": true,
+      "settingsOpenAndClose": true,
+      "wordListOpenAndClose": true,
+      "rankingOpenAndClose": true,
+      "todayOpenAndClose": true,
+      "todayFocusRestored": true,
+      "learningSaveUnchanged": true,
+      "noHorizontalOverflow": true,
+      "pageErrors": 0
+    }
+  ],
+  "actualBackendWrites": 0,
+  "verifiedAt": "2026-11-03T09:22:39.393Z"
+}
