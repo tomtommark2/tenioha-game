@@ -62,25 +62,51 @@ test(START_INTERACTION_TEST, async ({ page }) => {
   expect(activeTrialSeconds).toBeGreaterThanOrEqual(4.5);
 });
 
-test('学習ログを廃止し、語彙力推定と復習ランキングを残す', async ({ page }) => {
-  await page.addInitScript(() => {
-    localStorage.setItem('vocabGame_skipWelcome', 'true');
-    localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
-  });
-  await page.goto('/vocab_clicker_game.html', { waitUntil: 'domcontentloaded' });
+for (const premium of [false, true]) {
+  test(`学習設定：語彙力推定を廃止し、単語一覧・ランキング・今日を利用できる（${premium ? 'プレミアム' : '無料'}）`, async ({ page, baseURL }, testInfo) => {
+    const pageErrors = [];
+    page.on('pageerror', error => pageErrors.push(error.message));
+    const origin = new URL(baseURL).origin;
+    await page.route('**/*', route => new URL(route.request().url()).origin === origin
+      ? route.continue() : route.abort());
+    await page.addInitScript(isPremium => {
+      localStorage.setItem('vocabGame_skipWelcome', 'true');
+      localStorage.setItem('vocabGame_skipLiveTutorial', 'true');
+      localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+      localStorage.setItem('vocabGame_installGuideDismissed', 'true');
+      localStorage.setItem('vocabGame_lastAutoShownAnnouncementId', '2026-10-04-noun-illustrations-complete');
+      localStorage.setItem('vocabGame_isUnlocked', String(isPremium));
+      localStorage.setItem('vocabGame_expiry', String(isPremium ? Date.now() + 86400000 : 0));
+    }, premium);
+    await page.goto(premium ? '/index.html' : '/vocab_clicker_game.html', { waitUntil: 'load' });
+    await expect(page.locator('#vocabWord')).not.toContainText('クリックしてスタート');
 
-  const menuLabels = await page.locator('#otherMenuDropdown .other-menu-label').allTextContents();
-  expect(menuLabels).not.toContain('学習ログ');
-  expect(menuLabels).toContain('語彙力推定');
-  expect(menuLabels).toContain('ランキング');
-  await expect(page.locator('#learningLogPreviewModal')).toHaveCount(0);
-  expect(await page.evaluate(() => typeof window.openLearningLogPreviewModal)).toBe('undefined');
-  expect(await page.evaluate(() => typeof window.openLearningLogModal)).toBe('function');
-  expect(await page.evaluate(() => typeof window.openLeaderboard)).toBe('function');
-  await page.evaluate(() => window.openLearningLogModal());
-  await expect(page.locator('#learningLogModal')).toBeVisible();
-  await expect(page.locator('#vocabDiagnosisContainer .vocab-diagnosis-card')).toBeVisible();
-});
+    const menuLabels = await page.locator('#otherMenuDropdown .other-menu-label').allTextContents();
+    expect(menuLabels).not.toContain('学習ログ');
+    expect(menuLabels).not.toContain('語彙力推定');
+    expect(menuLabels).toContain('英単語一覧');
+    expect(menuLabels).toContain('ランキング');
+    await expect(page.locator('#learningLogModal, #learningLogPreviewModal, #vocabDiagnosisContainer')).toHaveCount(0);
+    expect(await page.evaluate(() => [typeof window.openLearningLogModal, typeof window.closeLearningLogModal])).toEqual(['undefined', 'undefined']);
+
+    for (const [label, modalId] of [['英単語一覧', 'wordListModal'], ['ランキング', 'leaderboardModal']]) {
+      await page.locator('#otherMenuBtn').click();
+      await expect(page.locator('#otherMenuDropdown')).toBeVisible();
+      if (label === '英単語一覧' && !premium) {
+        await page.screenshot({ path: testInfo.outputPath('menu-without-vocabulary-estimate.png') });
+      }
+      await page.locator('#otherMenuDropdown').getByRole('button', { name: label, exact: true }).click();
+      await expect(page.locator(`#${modalId}`)).toBeVisible();
+      await page.keyboard.press('Escape');
+      await expect(page.locator(`#${modalId}`)).toBeHidden();
+    }
+    await page.locator('#dailyStudyButton').click();
+    await expect(page.locator('#dailyStudyModal')).toBeVisible();
+    await page.locator('#dailyStudyClose').click();
+    await expect(page.locator('#dailyStudyModal')).toBeHidden();
+    expect(pageErrors).toEqual([]);
+  });
+}
 
 test('無料版は8分到達後に回答できず再読み込み後もロックされる', async ({ page }) => {
   await page.addInitScript(() => {
@@ -438,7 +464,10 @@ test('アプリ化案内はiPhone別ブラウザ・Android・汎用環境で内�
   }
 });
 
-test('その他メニューは読み上げ名とキーボード操作に対応する', async ({ page }) => {
+test('学習設定：その他メニューは読み上げ名とキーボード操作に対応する', async ({ page, baseURL }) => {
+  const origin = new URL(baseURL).origin;
+  await page.route('**/*', route => new URL(route.request().url()).origin === origin
+    ? route.continue() : route.abort());
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -458,7 +487,7 @@ test('その他メニューは読み上げ名とキーボード操作に対応�
   await expect(page.locator('#otherMenuDropdown .other-menu-icon')).toHaveCount(4);
   await expect(page.locator('#otherMenuDropdown .icon-menu-tune')).toBeVisible();
   await expect(page.locator('#otherMenuDropdown .icon-menu-library')).toBeVisible();
-  await expect(page.locator('#otherMenuDropdown .icon-menu-bars')).toBeVisible();
+  await expect(page.locator('#otherMenuDropdown #sisterAppsBtn')).toBeVisible();
   await expect(page.locator('#otherMenuDropdown .icon-menu-leaderboard')).toBeVisible();
 
   await trigger.press('Enter');
@@ -1014,7 +1043,10 @@ test('プロフィールモーダルを開閉できる', async ({ page }) => {
   expect(page.url()).toBe(urlBeforeBack);
 });
 
-test('非ブロック画面は共通操作で閉じ、制限画面は閉じない', async ({ page }) => {
+test('非ブロック画面は共通操作で閉じ、制限画面は閉じない', async ({ page, baseURL }) => {
+  const origin = new URL(baseURL).origin;
+  await page.route('**/*', route => new URL(route.request().url()).origin === origin
+    ? route.continue() : route.abort());
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
@@ -1034,7 +1066,6 @@ test('非ブロック画面は共通操作で閉じ、制限画面は閉じな�
     'announcementModal',
     'wordbookModal',
     'leaderboardModal',
-    'learningLogModal',
     'purchaseModal',
   ];
 

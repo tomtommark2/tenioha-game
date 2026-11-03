@@ -41,12 +41,12 @@ Recommended demo path:
 2. Show the English card, meaning card, example, pronunciation, and audio button.
 3. Answer a few times to show automatic classification.
 4. Open review queue / study mode to explain复習.
-5. Open learning log to show progress visualization.
+5. Open 「今日」 and ランキング to show progress and review activity.
 6. Open account / premium only if needed.
 
 ### 3. Show Intelligence, Not Complexity
 
-The app has many systems: SRS, review mode, levels, wordbooks, IPA, cloud save, premium, learning logs.
+The app has many systems: SRS, review mode, levels, wordbooks, IPA, cloud save, premium, daily study summaries, and review rankings.
 
 For competition presentation, surface only:
 
@@ -116,7 +116,7 @@ For competition, visible quality matters:
 - Add a short first-run explanation for the four categories.
 - Add a compact "why this word appeared" label for review words.
 - Make the review queue explanation simpler: ON / MIX / OFF should map to learner language.
-- Improve learning log entry point and make its value obvious.
+- 記録の導線は「今日」「ランキング」。語彙力推定と旧学習ログは復活させない。
 - Ensure all icons follow one style: pictogram, not mixed emoji/UI.
 
 ### P2: Nice to Have
@@ -169,7 +169,7 @@ Before a competition demo, verify:
 - Card flip works.
 - Four category buttons are visible and not overlapping.
 - Review queue state is understandable.
-- Learning log opens.
+- 「今日」とランキングを開ける。
 - Login/premium prompts do not block the main demo.
 - Mobile view is clean.
 - Desktop view is clean.

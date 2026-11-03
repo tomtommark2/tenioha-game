@@ -193,11 +193,6 @@
                 <span class="other-menu-label">英単語一覧</span>
             </button>
 
-            <button type="button" class="other-menu-item" onclick="openLearningLogModal(); toggleOtherMenu();">
-                <span class="other-menu-icon app-picto icon-menu-bars" aria-hidden="true"></span>
-                <span class="other-menu-label">語彙力推定</span>
-            </button>
-
             <button type="button" class="other-menu-item" onclick="openLeaderboard(); toggleOtherMenu();">
                 <span class="other-menu-icon app-picto icon-menu-leaderboard" aria-hidden="true"></span>
                 <span class="other-menu-label">ランキング</span>
@@ -1136,26 +1131,6 @@
                     <div id="reviewRankingPinnedRow"></div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Learning Log Modal (New) -->
-    <div id="learningLogModal" class="modal-overlay learning-log-modal"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 10002; justify-content: center; align-items: flex-start; padding-top: 50px; overflow-y: auto;">
-        <div class="modal-content learning-log-modal-content"
-            style="background: white; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; margin-bottom: 50px;">
-            <button type="button" class="modal-close-btn learning-log-close-btn"
-                onclick="closeLearningLogModal()" aria-label="語彙力推定を閉じる">&times;</button>
-
-            <div class="learning-log-hero">
-                <div class="learning-log-kicker">Progress</div>
-                <h2 class="learning-log-title"><span class="title-picto app-picto icon-chart" aria-hidden="true"></span>語彙力推定</h2>
-                <p class="learning-log-subtitle">学習履歴から現在の語彙力を確認できます。</p>
-            </div>
-
-            <!-- Vocab Diagnosis Injection Container -->
-            <div id="vocabDiagnosisContainer" class="learning-log-diagnosis"></div>
-
         </div>
     </div>
 
