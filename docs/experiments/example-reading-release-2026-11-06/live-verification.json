@@ -1,0 +1,277 @@
+{
+  "version": "2026.1106.2301",
+  "commit": "3d4987cdd8568cf174789251b3cb7a86f6462708",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "09743c4b1ad6a5a969324d23c5a4b1f5fcaefb41f044220ae5989140dad5152f"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "09743c4b1ad6a5a969324d23c5a4b1f5fcaefb41f044220ae5989140dad5152f"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "bd83f03e5f9d0c25055d4bdec4b31d9e3cc0a71fe177ad18413985028bcd9fee"
+    },
+    {
+      "file": "style.css",
+      "sha256": "6b888cbc309697e7227d4913f385bcd7029f15b326e33bb4f63727561aeacf5c"
+    },
+    {
+      "file": "example-reading.css",
+      "sha256": "a143a3352396fee31b2b247aa0b2e4fdb59a0e2147ba17feb218f0a21ec86eac"
+    },
+    {
+      "file": "example-reading-preview.css",
+      "sha256": "d7c5e67df444aaba40f9d54d1a3532cb298592c52f331197b3e9bf5dcfcaebe0"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "f1a8425883a835ea0c9b69223acd73ee8a11861ec0ad726f41e8713552997802"
+    },
+    {
+      "file": "js/example_reading.js",
+      "sha256": "fdf63fe4608ec907fb6f9d140dc2450039ca028435eba37840fea971c26387b0"
+    },
+    {
+      "file": "js/example_reading_preview.js",
+      "sha256": "18f7fb94d5bb33ff923153df975ca5f91a35892c401d8f2ae307376707770e2d"
+    },
+    {
+      "file": "data/example-readings-junior.json",
+      "sha256": "9142b52398db4cc0e3c3f20b03848f7d9ab803a733afa67df21a52b3a726a00f"
+    },
+    {
+      "file": "assets/icons/quote.svg",
+      "sha256": "fd26e5298b8e304828eba2234ec952d18a1516ceffb486440d997d503d747eca"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "c5dc76f904ed51b63460e95ead54a96db1a1395b730788bb13bfdcd6ac3b3109"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "5d13260b56bd7fa789507240c39a820b39546ede29e24a6ee6bbba686adb93a3"
+    },
+    {
+      "file": "js/word_grouping.js",
+      "sha256": "3608beff448248ec16c2f6cb97d1ef4b3da2853b0c55817424c4ceadb35c9b27"
+    },
+    {
+      "file": "data/vocabulary.js",
+      "sha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 320,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 320,
+      "premium": true,
+      "entry": "index.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "premium": true,
+      "entry": "index.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "premium": true,
+      "entry": "index.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "premium": true,
+      "entry": "index.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "premium": true,
+      "entry": "index.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "premium": false,
+      "entry": "vocab_clicker_game.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "premium": true,
+      "entry": "index.html",
+      "equalsVisible": true,
+      "selectedSenseMatched": true,
+      "finalExampleSupported": true,
+      "fullMeaningOptional": true,
+      "englishSpeechOnly": true,
+      "learningUnchangedOnOpen": true,
+      "undoRestoresState": true,
+      "noHorizontalOverflow": true,
+      "controls44px": true,
+      "jsonRequests": 1,
+      "pageErrors": []
+    }
+  ],
+  "actualBackendWrites": 0
+}

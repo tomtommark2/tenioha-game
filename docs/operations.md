@@ -18,6 +18,11 @@
 
 ## Deployment Targets
 
+### 2026-11-06 中学の読み方・例文UI（2026.1106.2301）
+
+- 中学の全1,528用法に区切り訳と任意の全文訳。SVCのbeは「＝」、例文枠は採用済みA案。読み方データのキャッシュ更新・通信失敗時の手動再読込も公開した。語彙・学習キー・分類・保存・認証・課金・Firebaseは保持。
+- 公開元は `tmp/example-reading-release-20261106`／`codex/example-reading-release-20261106`、本番 `42d220a9` から対象32ファイルのみ反映。実装コミット `3d4987cd`、[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42231172849)。事前102件、本番16ファイル一致・12条件の表示と操作を確認。[公開記録](experiments/example-reading-release-2026-11-06/review-notes.md)。
+
 ### 2026-10-27 クラウド学習保存の保護（2026.1027.0015）
 
 - `2521d214` をmainへ公開し、[Pages公開処理](https://github.com/tomtommark2/tenioha-game/actions/runs/40362003445)成功。Firestoreルールも公開済みで全文一致を確認。空・大幅減少した記録の自動上書き停止、参照中保存片の削除防止、保存前退避を反映。

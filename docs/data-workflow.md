@@ -67,6 +67,7 @@ Additional wordbook datasets also exist:
 
 ## 例文の区切り訳
 
+- 2026-11-06公開完了（`2026.1106.2301`／`3d4987cd`）：中学全1,528用法・SVCのbe表記・例文UI・取得処理を反映。[公開・本番確認](experiments/example-reading-release-2026-11-06/review-notes.md)。
 - 正本は `data/example-readings-junior.json`。`word`・`pos`・`example` で現行用法と照合する。英語の本文や学習キーは変えない。対応数・公開状況は `docs/feedback.md` を参照。
 - 区切り訳は英語の順で、主語・述語・対象・修飾関係を追える表現を優先。全文訳は自然な日本語にする。例：`I / like / apple pie.` →「私は／好んでいる／アップルパイを」、全文訳は「私はアップルパイが好きです」。
 - 助詞だけの置換はしない。`like`・`love` などは対象を受ける日本語の述語と一緒に選ぶ。希望を表す `would like` と、好みを表す `like` を区別する。

@@ -1,7 +1,8 @@
 # ひとこと・改善案
 
-## 中学の読み方・例文UI（2026-11-06）
+## 中学の読み方・例文UI（2026-11-06、公開済み）
 
+- 公開版 `2026.1106.2301`（`3d4987cd`）。[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42231172849)、本番16ファイルの一致とChromium／WebKit・無料／プレミアム・320／390／1280pxの12条件を確認。事前は専用61件・関連37件・キャッシュ4件成功。[公開記録](experiments/example-reading-release-2026-11-06/review-notes.md)。
 - 中学1,098カード・全1,528用法に区切り訳と任意の全文訳を追加。SVCのbeは「＝」で示し、時制・否定・疑問と存在・受動態・進行形を区別する。元の英文・学習キー・採点・保存は保持。
 - 引用符＋英文と下段の操作バーで例文枠をコンパクトにし、読み方はその下へ開く。取得失敗時は「読み方を再読込」、通信できないときは成功済みキャッシュを使う。通常は1ページ1取得で、回答ごとの追加通信や翻訳APIはない。
 - 公開・検証状況は[公開記録](experiments/example-reading-release-2026-11-06/review-notes.md)。元データ22件の表記・品詞の注意は[一覧](experiments/example-reading-junior-complete-2026-11-06/source-issues.json)に保持し、読み方に注記した。
