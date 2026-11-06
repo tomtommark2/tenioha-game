@@ -1,0 +1,3026 @@
+[
+  {
+    "index": 2,
+    "classification": "copular",
+    "word": "open",
+    "example": "The shop is open."
+  },
+  {
+    "index": 7,
+    "classification": "copular",
+    "word": "because",
+    "example": "I stayed home because I was sick."
+  },
+  {
+    "index": 19,
+    "classification": "copular",
+    "word": "actor",
+    "example": "He is a famous movie actor."
+  },
+  {
+    "index": 21,
+    "classification": "copular",
+    "word": "address",
+    "example": "What is your email address?"
+  },
+  {
+    "index": 23,
+    "classification": "copular",
+    "word": "afraid",
+    "example": "I am afraid of spiders."
+  },
+  {
+    "index": 35,
+    "classification": "copular",
+    "word": "all right",
+    "example": "Are you all right?"
+  },
+  {
+    "index": 36,
+    "classification": "copular",
+    "word": "all right",
+    "example": "That's all right, don't worry."
+  },
+  {
+    "index": 37,
+    "classification": "copular",
+    "word": "almost",
+    "example": "It is almost 5 o'clock."
+  },
+  {
+    "index": 42,
+    "classification": "copular",
+    "word": "always",
+    "example": "He is always late."
+  },
+  {
+    "index": 43,
+    "classification": "notVerb",
+    "word": "am",
+    "example": "I leave home at 8 am."
+  },
+  {
+    "index": 44,
+    "classification": "notVerb",
+    "word": "AM",
+    "example": "The store opens at 10 AM."
+  },
+  {
+    "index": 45,
+    "classification": "copular",
+    "word": "am",
+    "example": "I am a student."
+  },
+  {
+    "index": 48,
+    "classification": "copular",
+    "word": "angry",
+    "example": "Why are you so angry?"
+  },
+  {
+    "index": 49,
+    "classification": "copular",
+    "word": "animal",
+    "example": "The lion is a strong animal."
+  },
+  {
+    "index": 55,
+    "classification": "existenceOrLocation",
+    "word": "anybody",
+    "example": "Is anybody home?"
+  },
+  {
+    "index": 60,
+    "classification": "copular",
+    "word": "are",
+    "example": "You are kind."
+  },
+  {
+    "index": 68,
+    "classification": "existenceOrLocation",
+    "word": "at",
+    "example": "I am at home now."
+  },
+  {
+    "index": 72,
+    "classification": "copular",
+    "word": "awake",
+    "example": "I was awake all night."
+  },
+  {
+    "index": 74,
+    "classification": "auxiliary",
+    "word": "baby",
+    "example": "The baby is sleeping."
+  },
+  {
+    "index": 75,
+    "classification": "existenceOrLocation",
+    "word": "back",
+    "example": "I'll be back soon."
+  },
+  {
+    "index": 77,
+    "classification": "copular",
+    "word": "bad",
+    "example": "Smoking is bad for your health."
+  },
+  {
+    "index": 88,
+    "classification": "existenceOrLocation",
+    "word": "bathroom",
+    "example": "Where is the bathroom?"
+  },
+  {
+    "index": 89,
+    "classification": "copular",
+    "word": "be",
+    "example": "Don't be shy."
+  },
+  {
+    "index": 93,
+    "classification": "copular",
+    "word": "beautiful",
+    "example": "She is very beautiful."
+  },
+  {
+    "index": 96,
+    "classification": "existenceOrLocation",
+    "word": "bedroom",
+    "example": "My bedroom is on the second floor."
+  },
+  {
+    "index": 97,
+    "classification": "auxiliary",
+    "word": "bee",
+    "example": "A bee is flying around the flower."
+  },
+  {
+    "index": 103,
+    "classification": "existenceOrLocation",
+    "word": "behind",
+    "example": "The cat is behind the sofa."
+  },
+  {
+    "index": 104,
+    "classification": "auxiliary",
+    "word": "being",
+    "example": "He is being careful with the glass."
+  },
+  {
+    "index": 108,
+    "classification": "copular",
+    "word": "below",
+    "example": "The temperature is below zero."
+  },
+  {
+    "index": 114,
+    "classification": "auxiliary",
+    "word": "all",
+    "example": "She was sitting all by herself."
+  },
+  {
+    "index": 115,
+    "classification": "copular",
+    "word": "alone",
+    "example": "I'm not afraid of being alone."
+  },
+  {
+    "index": 117,
+    "classification": "copular",
+    "word": "another",
+    "example": "This cup is broken, so please choose another."
+  },
+  {
+    "index": 120,
+    "classification": "copular",
+    "word": "as",
+    "example": "As I was tired, I went to bed early."
+  },
+  {
+    "index": 121,
+    "classification": "copular",
+    "word": "back",
+    "example": "The back garden is very quiet."
+  },
+  {
+    "index": 124,
+    "classification": "auxiliary",
+    "word": "bar",
+    "example": "The road was barred."
+  },
+  {
+    "index": 128,
+    "classification": "notVerb",
+    "word": "being",
+    "example": "A human being needs water to survive."
+  },
+  {
+    "index": 129,
+    "classification": "copular",
+    "word": "best",
+    "example": "She is my best friend."
+  },
+  {
+    "index": 133,
+    "classification": "existenceOrLocation",
+    "word": "between",
+    "example": "The shop is between the bank and the post office."
+  },
+  {
+    "index": 138,
+    "classification": "copular",
+    "word": "birth",
+    "example": "What is your date of birth?"
+  },
+  {
+    "index": 139,
+    "classification": "copular",
+    "word": "birthday",
+    "example": "My birthday is in May."
+  },
+  {
+    "index": 141,
+    "classification": "auxiliary",
+    "word": "black",
+    "example": "He was wearing a black suit."
+  },
+  {
+    "index": 146,
+    "classification": "auxiliary",
+    "word": "blow",
+    "example": "The wind is blowing hard."
+  },
+  {
+    "index": 147,
+    "classification": "copular",
+    "word": "blow",
+    "example": "The news was a terrible blow to her."
+  },
+  {
+    "index": 148,
+    "classification": "copular",
+    "word": "blue",
+    "example": "The sky is blue."
+  },
+  {
+    "index": 149,
+    "classification": "copular",
+    "word": "blue",
+    "example": "Blue is my favorite color."
+  },
+  {
+    "index": 151,
+    "classification": "auxiliary",
+    "word": "board",
+    "example": "Passengers are boarding the plane."
+  },
+  {
+    "index": 153,
+    "classification": "copular",
+    "word": "body",
+    "example": "Exercise is good for your body."
+  },
+  {
+    "index": 154,
+    "classification": "auxiliary",
+    "word": "bone",
+    "example": "The dog is chewing a bone."
+  },
+  {
+    "index": 157,
+    "classification": "copular",
+    "word": "boring",
+    "example": "The lecture was very boring."
+  },
+  {
+    "index": 161,
+    "classification": "copular",
+    "word": "both",
+    "example": "Both of them are my friends."
+  },
+  {
+    "index": 167,
+    "classification": "existenceOrLocation",
+    "word": "box",
+    "example": "The cat is in the box."
+  },
+  {
+    "index": 168,
+    "classification": "auxiliary",
+    "word": "boy",
+    "example": "The boy is playing soccer."
+  },
+  {
+    "index": 175,
+    "classification": "copular",
+    "word": "breathe",
+    "example": "It's hard to breathe in here."
+  },
+  {
+    "index": 177,
+    "classification": "copular",
+    "word": "bright",
+    "example": "The sun is very bright today."
+  },
+  {
+    "index": 179,
+    "classification": "copular",
+    "word": "broken",
+    "example": "My watch is broken."
+  },
+  {
+    "index": 182,
+    "classification": "copular",
+    "word": "brown",
+    "example": "Brown is my favorite color for shoes."
+  },
+  {
+    "index": 186,
+    "classification": "auxiliary",
+    "word": "build",
+    "example": "They are building a new school."
+  },
+  {
+    "index": 187,
+    "classification": "copular",
+    "word": "building",
+    "example": "That is a very old building."
+  },
+  {
+    "index": 190,
+    "classification": "auxiliary",
+    "word": "business",
+    "example": "His business is doing well."
+  },
+  {
+    "index": 191,
+    "classification": "copular",
+    "word": "busy",
+    "example": "I am very busy today."
+  },
+  {
+    "index": 195,
+    "classification": "auxiliary",
+    "word": "butterfly",
+    "example": "A butterfly is flying in the garden."
+  },
+  {
+    "index": 197,
+    "classification": "auxiliary",
+    "word": "by",
+    "example": "This book was written by Soseki."
+  },
+  {
+    "index": 200,
+    "classification": "existenceOrLocation",
+    "word": "café",
+    "example": "There is a nice café near here."
+  },
+  {
+    "index": 210,
+    "classification": "auxiliary",
+    "word": "cap",
+    "example": "He is wearing a red cap."
+  },
+  {
+    "index": 215,
+    "classification": "copular",
+    "word": "careful",
+    "example": "Be careful crossing the street."
+  },
+  {
+    "index": 224,
+    "classification": "copular",
+    "word": "CD player",
+    "example": "The CD player is broken."
+  },
+  {
+    "index": 228,
+    "classification": "existenceOrLocation",
+    "word": "change",
+    "example": "Here is your change."
+  },
+  {
+    "index": 230,
+    "classification": "copular",
+    "word": "character",
+    "example": "He is the main character of the story."
+  },
+  {
+    "index": 232,
+    "classification": "copular",
+    "word": "check",
+    "example": "Can you check if the door is locked?"
+  },
+  {
+    "index": 235,
+    "classification": "copular",
+    "word": "child",
+    "example": "She is an only child."
+  },
+  {
+    "index": 242,
+    "classification": "copular",
+    "word": "city",
+    "example": "Tokyo is a big city."
+  },
+  {
+    "index": 244,
+    "classification": "copular",
+    "word": "classmate",
+    "example": "He is my classmate."
+  },
+  {
+    "index": 245,
+    "classification": "existenceOrLocation",
+    "word": "classroom",
+    "example": "The students are in the classroom."
+  },
+  {
+    "index": 248,
+    "classification": "copular",
+    "word": "clever",
+    "example": "She is very clever."
+  },
+  {
+    "index": 249,
+    "classification": "copular",
+    "word": "climb",
+    "example": "The climb was difficult."
+  },
+  {
+    "index": 252,
+    "classification": "copular",
+    "word": "close",
+    "example": "My house is close to the station."
+  },
+  {
+    "index": 254,
+    "classification": "copular",
+    "word": "closed",
+    "example": "The shop is closed today."
+  },
+  {
+    "index": 257,
+    "classification": "existenceOrLocation",
+    "word": "cloud",
+    "example": "There are dark clouds in the sky."
+  },
+  {
+    "index": 258,
+    "classification": "copular",
+    "word": "cloudy",
+    "example": "It is cloudy today."
+  },
+  {
+    "index": 263,
+    "classification": "copular",
+    "word": "code",
+    "example": "What is the zip code?"
+  },
+  {
+    "index": 266,
+    "classification": "copular",
+    "word": "cold",
+    "example": "It is very cold today."
+  },
+  {
+    "index": 270,
+    "classification": "copular",
+    "word": "college",
+    "example": "She is a college student."
+  },
+  {
+    "index": 271,
+    "classification": "copular",
+    "word": "color",
+    "example": "What color is your car?"
+  },
+  {
+    "index": 273,
+    "classification": "copular",
+    "word": "colour",
+    "example": "What is your favourite colour?"
+  },
+  {
+    "index": 277,
+    "classification": "copular",
+    "word": "concert",
+    "example": "The concert was great."
+  },
+  {
+    "index": 280,
+    "classification": "copular",
+    "word": "cook",
+    "example": "My father is a good cook."
+  },
+  {
+    "index": 281,
+    "classification": "auxiliary",
+    "word": "cook",
+    "example": "She is cooking dinner now."
+  },
+  {
+    "index": 283,
+    "classification": "copular",
+    "word": "cool",
+    "example": "It's cool this evening."
+  },
+  {
+    "index": 290,
+    "classification": "copular",
+    "word": "correct",
+    "example": "Your answer is correct."
+  },
+  {
+    "index": 292,
+    "classification": "auxiliary",
+    "word": "couch",
+    "example": "The cat is sleeping on the couch."
+  },
+  {
+    "index": 300,
+    "classification": "auxiliary",
+    "word": "cream",
+    "example": "She was wearing a light cream sweater."
+  },
+  {
+    "index": 304,
+    "classification": "copular",
+    "word": "culture",
+    "example": "I am interested in Japanese culture."
+  },
+  {
+    "index": 308,
+    "classification": "copular",
+    "word": "cute",
+    "example": "That baby is very cute."
+  },
+  {
+    "index": 309,
+    "classification": "copular",
+    "word": "dad",
+    "example": "My dad is at work."
+  },
+  {
+    "index": 313,
+    "classification": "copular",
+    "word": "dancing",
+    "example": "Dancing is fun."
+  },
+  {
+    "index": 315,
+    "classification": "copular",
+    "word": "date",
+    "example": "What is the date today?"
+  },
+  {
+    "index": 316,
+    "classification": "auxiliary",
+    "word": "date",
+    "example": "The letter is dated today."
+  },
+  {
+    "index": 321,
+    "classification": "copular",
+    "word": "December",
+    "example": "Christmas is in December."
+  },
+  {
+    "index": 322,
+    "classification": "copular",
+    "word": "delicious",
+    "example": "This cake is delicious."
+  },
+  {
+    "index": 326,
+    "classification": "existenceOrLocation",
+    "word": "desk",
+    "example": "There is a book on the desk."
+  },
+  {
+    "index": 329,
+    "classification": "copular",
+    "word": "difference",
+    "example": "What is the difference between A and B?"
+  },
+  {
+    "index": 330,
+    "classification": "copular",
+    "word": "different",
+    "example": "My idea is different from yours."
+  },
+  {
+    "index": 331,
+    "classification": "copular",
+    "word": "difficult",
+    "example": "English is not difficult."
+  },
+  {
+    "index": 332,
+    "classification": "auxiliary",
+    "word": "dig",
+    "example": "The dog is digging a hole."
+  },
+  {
+    "index": 335,
+    "classification": "existenceOrLocation",
+    "word": "dinner",
+    "example": "What's for dinner?"
+  },
+  {
+    "index": 338,
+    "classification": "copular",
+    "word": "dish",
+    "example": "This is my favorite dish."
+  },
+  {
+    "index": 343,
+    "classification": "auxiliary",
+    "word": "doing",
+    "example": "What are you doing now?"
+  },
+  {
+    "index": 346,
+    "classification": "existenceOrLocation",
+    "word": "door",
+    "example": "Someone is at the door."
+  },
+  {
+    "index": 351,
+    "classification": "copular",
+    "word": "Dr.",
+    "example": "Dr. Brown is a famous scientist."
+  },
+  {
+    "index": 362,
+    "classification": "auxiliary",
+    "word": "drive",
+    "example": "He is learning to drive."
+  },
+  {
+    "index": 363,
+    "classification": "copular",
+    "word": "driver",
+    "example": "He is a taxi driver."
+  },
+  {
+    "index": 367,
+    "classification": "copular",
+    "word": "dry",
+    "example": "My throat is dry."
+  },
+  {
+    "index": 369,
+    "classification": "copular",
+    "word": "due",
+    "example": "The homework is due tomorrow."
+  },
+  {
+    "index": 377,
+    "classification": "copular",
+    "word": "easy",
+    "example": "This question is easy."
+  },
+  {
+    "index": 380,
+    "classification": "copular",
+    "word": "eight",
+    "example": "He is eight years old."
+  },
+  {
+    "index": 381,
+    "classification": "existenceOrLocation",
+    "word": "eighteen",
+    "example": "There are eighteen students."
+  },
+  {
+    "index": 382,
+    "classification": "copular",
+    "word": "eighty",
+    "example": "My grandmother is eighty."
+  },
+  {
+    "index": 383,
+    "classification": "copular",
+    "word": "either",
+    "example": "I'm not hungry either."
+  },
+  {
+    "index": 385,
+    "classification": "copular",
+    "word": "either",
+    "example": "Either way is fine."
+  },
+  {
+    "index": 388,
+    "classification": "copular",
+    "word": "eleven",
+    "example": "It is eleven o'clock."
+  },
+  {
+    "index": 394,
+    "classification": "copular",
+    "word": "end",
+    "example": "This is the end."
+  },
+  {
+    "index": 396,
+    "classification": "copular",
+    "word": "engineer",
+    "example": "He wants to be an engineer."
+  },
+  {
+    "index": 399,
+    "classification": "copular",
+    "word": "event",
+    "example": "The festival is a big event."
+  },
+  {
+    "index": 402,
+    "classification": "copular",
+    "word": "everyday",
+    "example": "These are everyday clothes."
+  },
+  {
+    "index": 403,
+    "classification": "copular",
+    "word": "everyone",
+    "example": "Is everyone ready?"
+  },
+  {
+    "index": 404,
+    "classification": "auxiliary",
+    "word": "everything",
+    "example": "Everything is going well."
+  },
+  {
+    "index": 407,
+    "classification": "copular",
+    "word": "excellent",
+    "example": "That is an excellent idea."
+  },
+  {
+    "index": 408,
+    "classification": "copular",
+    "word": "excited",
+    "example": "I'm excited about the trip."
+  },
+  {
+    "index": 409,
+    "classification": "copular",
+    "word": "exciting",
+    "example": "It was an exciting match."
+  },
+  {
+    "index": 410,
+    "classification": "copular",
+    "word": "excuse",
+    "example": "Excuse me, is this your bag?"
+  },
+  {
+    "index": 411,
+    "classification": "copular",
+    "word": "excuse",
+    "example": "He gave a poor excuse for being late."
+  },
+  {
+    "index": 415,
+    "classification": "copular",
+    "word": "false",
+    "example": "That statement is false."
+  },
+  {
+    "index": 417,
+    "classification": "copular",
+    "word": "famous",
+    "example": "He is a famous writer."
+  },
+  {
+    "index": 418,
+    "classification": "copular",
+    "word": "fan",
+    "example": "I am a big fan of yours."
+  },
+  {
+    "index": 421,
+    "classification": "copular",
+    "word": "fast",
+    "example": "He is a fast runner."
+  },
+  {
+    "index": 423,
+    "classification": "auxiliary",
+    "word": "fat",
+    "example": "My cat is getting fat."
+  },
+  {
+    "index": 425,
+    "classification": "copular",
+    "word": "father",
+    "example": "My father is a teacher."
+  },
+  {
+    "index": 426,
+    "classification": "copular",
+    "word": "favorite",
+    "example": "What is your favorite food?"
+  },
+  {
+    "index": 427,
+    "classification": "copular",
+    "word": "favorite",
+    "example": "This song is my favorite."
+  },
+  {
+    "index": 428,
+    "classification": "copular",
+    "word": "favourite",
+    "example": "Football is my favourite sport."
+  },
+  {
+    "index": 429,
+    "classification": "copular",
+    "word": "favourite",
+    "example": "It's my favourite."
+  },
+  {
+    "index": 438,
+    "classification": "auxiliary",
+    "word": "field",
+    "example": "They are playing in the field."
+  },
+  {
+    "index": 443,
+    "classification": "existenceOrLocation",
+    "word": "file",
+    "example": "Where is the file?"
+  },
+  {
+    "index": 447,
+    "classification": "copular",
+    "word": "fine",
+    "example": "I'm fine, thank you."
+  },
+  {
+    "index": 451,
+    "classification": "copular",
+    "word": "finish",
+    "example": "It was a close finish."
+  },
+  {
+    "index": 454,
+    "classification": "auxiliary",
+    "word": "fire",
+    "example": "You are fired."
+  },
+  {
+    "index": 455,
+    "classification": "copular",
+    "word": "first",
+    "example": "This is my first time."
+  },
+  {
+    "index": 459,
+    "classification": "copular",
+    "word": "fishing",
+    "example": "My hobby is fishing."
+  },
+  {
+    "index": 465,
+    "classification": "existenceOrLocation",
+    "word": "floor",
+    "example": "My room is on the second floor."
+  },
+  {
+    "index": 467,
+    "classification": "existenceOrLocation",
+    "word": "fly",
+    "example": "There is a fly in the soup."
+  },
+  {
+    "index": 471,
+    "classification": "copular",
+    "word": "foggy",
+    "example": "It is foggy this morning."
+  },
+  {
+    "index": 476,
+    "classification": "copular",
+    "word": "for",
+    "example": "This is for you."
+  },
+  {
+    "index": 477,
+    "classification": "copular",
+    "word": "for",
+    "example": "It's late, for the sun has already set."
+  },
+  {
+    "index": 483,
+    "classification": "copular",
+    "word": "forty",
+    "example": "He is forty years old."
+  },
+  {
+    "index": 484,
+    "classification": "existenceOrLocation",
+    "word": "four",
+    "example": "There are four seasons."
+  },
+  {
+    "index": 490,
+    "classification": "copular",
+    "word": "friend",
+    "example": "She is my best friend."
+  },
+  {
+    "index": 492,
+    "classification": "copular",
+    "word": "from",
+    "example": "I am from Japan."
+  },
+  {
+    "index": 493,
+    "classification": "existenceOrLocation",
+    "word": "front",
+    "example": "There is a park in front of my house."
+  },
+  {
+    "index": 494,
+    "classification": "auxiliary",
+    "word": "front",
+    "example": "The car is parked in front of the house."
+  },
+  {
+    "index": 496,
+    "classification": "copular",
+    "word": "full",
+    "example": "The glass is full."
+  },
+  {
+    "index": 498,
+    "classification": "copular",
+    "word": "fun",
+    "example": "This game is fun."
+  },
+  {
+    "index": 500,
+    "classification": "copular",
+    "word": "future",
+    "example": "What is your dream for the future?"
+  },
+  {
+    "index": 506,
+    "classification": "copular",
+    "word": "ghost",
+    "example": "Are you afraid of ghosts?"
+  },
+  {
+    "index": 508,
+    "classification": "auxiliary",
+    "word": "girl",
+    "example": "The girl is playing with a doll."
+  },
+  {
+    "index": 510,
+    "classification": "copular",
+    "word": "glad",
+    "example": "I am glad to see you."
+  },
+  {
+    "index": 515,
+    "classification": "copular",
+    "word": "goal",
+    "example": "My goal is to be a doctor."
+  },
+  {
+    "index": 517,
+    "classification": "auxiliary",
+    "word": "gold",
+    "example": "The ring is made of solid gold."
+  },
+  {
+    "index": 518,
+    "classification": "copular",
+    "word": "good",
+    "example": "You are a good student."
+  },
+  {
+    "index": 521,
+    "classification": "copular",
+    "word": "good morning",
+    "example": "Good morning! How are you?"
+  },
+  {
+    "index": 523,
+    "classification": "copular",
+    "word": "grade",
+    "example": "I am in the seventh grade."
+  },
+  {
+    "index": 525,
+    "classification": "copular",
+    "word": "grammar",
+    "example": "Grammar is important."
+  },
+  {
+    "index": 526,
+    "classification": "copular",
+    "word": "grandfather",
+    "example": "My grandfather is 80 years old."
+  },
+  {
+    "index": 533,
+    "classification": "copular",
+    "word": "gray",
+    "example": "The sky is gray."
+  },
+  {
+    "index": 534,
+    "classification": "copular",
+    "word": "gray",
+    "example": "My favorite color is gray."
+  },
+  {
+    "index": 536,
+    "classification": "copular",
+    "word": "green",
+    "example": "The leaves are green."
+  },
+  {
+    "index": 537,
+    "classification": "auxiliary",
+    "word": "green",
+    "example": "The hills were covered in green."
+  },
+  {
+    "index": 549,
+    "classification": "copular",
+    "word": "guy",
+    "example": "He is a nice guy."
+  },
+  {
+    "index": 550,
+    "classification": "copular",
+    "word": "habit",
+    "example": "Eating late is a bad habit."
+  },
+  {
+    "index": 556,
+    "classification": "copular",
+    "word": "half",
+    "example": "Half of the oranges were rotten."
+  },
+  {
+    "index": 562,
+    "classification": "copular",
+    "word": "handsome",
+    "example": "He is handsome."
+  },
+  {
+    "index": 564,
+    "classification": "copular",
+    "word": "happy",
+    "example": "I am happy to see you."
+  },
+  {
+    "index": 565,
+    "classification": "copular",
+    "word": "hard",
+    "example": "This rock is hard."
+  },
+  {
+    "index": 570,
+    "classification": "auxiliary",
+    "word": "having",
+    "example": "We are having lunch."
+  },
+  {
+    "index": 571,
+    "classification": "copular",
+    "word": "he",
+    "example": "He is my teacher."
+  },
+  {
+    "index": 575,
+    "classification": "copular",
+    "word": "health",
+    "example": "Health is wealth."
+  },
+  {
+    "index": 578,
+    "classification": "auxiliary",
+    "word": "heart",
+    "example": "My heart is beating fast."
+  },
+  {
+    "index": 579,
+    "classification": "copular",
+    "word": "heavy",
+    "example": "This box is too heavy."
+  },
+  {
+    "index": 580,
+    "classification": "copular",
+    "word": "hello",
+    "example": "Hello, my name is Ken."
+  },
+  {
+    "index": 583,
+    "classification": "copular",
+    "word": "her",
+    "example": "This is her pen."
+  },
+  {
+    "index": 586,
+    "classification": "copular",
+    "word": "hers",
+    "example": "The bag is hers."
+  },
+  {
+    "index": 587,
+    "classification": "auxiliary",
+    "word": "hi",
+    "example": "Hi! How's it going?"
+  },
+  {
+    "index": 589,
+    "classification": "copular",
+    "word": "high",
+    "example": "The mountain is high."
+  },
+  {
+    "index": 590,
+    "classification": "auxiliary",
+    "word": "high",
+    "example": "The birds were flying high in the sky."
+  },
+  {
+    "index": 593,
+    "classification": "copular",
+    "word": "his",
+    "example": "That is his car."
+  },
+  {
+    "index": 594,
+    "classification": "copular",
+    "word": "his",
+    "example": "This pen is his."
+  },
+  {
+    "index": 596,
+    "classification": "copular",
+    "word": "hobby",
+    "example": "My hobby is reading."
+  },
+  {
+    "index": 599,
+    "classification": "existenceOrLocation",
+    "word": "hole",
+    "example": "There is a hole in my sock."
+  },
+  {
+    "index": 600,
+    "classification": "copular",
+    "word": "holiday",
+    "example": "Tomorrow is a holiday."
+  },
+  {
+    "index": 603,
+    "classification": "copular",
+    "word": "hometown",
+    "example": "My hometown is Osaka."
+  },
+  {
+    "index": 605,
+    "classification": "copular",
+    "word": "hope",
+    "example": "I hope you are well."
+  },
+  {
+    "index": 608,
+    "classification": "existenceOrLocation",
+    "word": "hospital",
+    "example": "He is in the hospital."
+  },
+  {
+    "index": 609,
+    "classification": "copular",
+    "word": "hot",
+    "example": "It is very hot today."
+  },
+  {
+    "index": 612,
+    "classification": "copular",
+    "word": "house",
+    "example": "This is my house."
+  },
+  {
+    "index": 613,
+    "classification": "copular",
+    "word": "how",
+    "example": "How are you?"
+  },
+  {
+    "index": 614,
+    "classification": "copular",
+    "word": "hungry",
+    "example": "I am very hungry."
+  },
+  {
+    "index": 615,
+    "classification": "copular",
+    "word": "hurry",
+    "example": "I am in a hurry."
+  },
+  {
+    "index": 618,
+    "classification": "auxiliary",
+    "word": "hurt",
+    "example": "No one was hurt."
+  },
+  {
+    "index": 619,
+    "classification": "copular",
+    "word": "husband",
+    "example": "Her husband is a doctor."
+  },
+  {
+    "index": 624,
+    "classification": "copular",
+    "word": "ideal",
+    "example": "This is an ideal place for picnic."
+  },
+  {
+    "index": 627,
+    "classification": "copular",
+    "word": "important",
+    "example": "This is very important."
+  },
+  {
+    "index": 628,
+    "classification": "existenceOrLocation",
+    "word": "in",
+    "example": "The cat is in the box."
+  },
+  {
+    "index": 629,
+    "classification": "existenceOrLocation",
+    "word": "in",
+    "example": "Is the manager in today?"
+  },
+  {
+    "index": 632,
+    "classification": "copular",
+    "word": "inside",
+    "example": "It's cold outside, let's go inside."
+  },
+  {
+    "index": 635,
+    "classification": "copular",
+    "word": "interested",
+    "example": "I am interested in music."
+  },
+  {
+    "index": 636,
+    "classification": "copular",
+    "word": "interesting",
+    "example": "This book is interesting."
+  },
+  {
+    "index": 641,
+    "classification": "copular",
+    "word": "interviewer",
+    "example": "The interviewer was nice."
+  },
+  {
+    "index": 644,
+    "classification": "copular",
+    "word": "is",
+    "example": "This is a pen."
+  },
+  {
+    "index": 645,
+    "classification": "copular",
+    "word": "island",
+    "example": "Japan is an island country."
+  },
+  {
+    "index": 646,
+    "classification": "copular",
+    "word": "it",
+    "example": "It is a dog."
+  },
+  {
+    "index": 651,
+    "classification": "copular",
+    "word": "January",
+    "example": "It is cold in January."
+  },
+  {
+    "index": 652,
+    "classification": "auxiliary",
+    "word": "jeans",
+    "example": "He is wearing jeans."
+  },
+  {
+    "index": 656,
+    "classification": "auxiliary",
+    "word": "job",
+    "example": "I am looking for a job."
+  },
+  {
+    "index": 662,
+    "classification": "copular",
+    "word": "June",
+    "example": "June is a rainy month."
+  },
+  {
+    "index": 665,
+    "classification": "copular",
+    "word": "key",
+    "example": "This is the key to success."
+  },
+  {
+    "index": 669,
+    "classification": "copular",
+    "word": "kid",
+    "example": "He is just a kid."
+  },
+  {
+    "index": 670,
+    "classification": "auxiliary",
+    "word": "kid",
+    "example": "I'm just kidding."
+  },
+  {
+    "index": 672,
+    "classification": "copular",
+    "word": "kind",
+    "example": "A lemon is a kind of fruit."
+  },
+  {
+    "index": 677,
+    "classification": "existenceOrLocation",
+    "word": "kitchen",
+    "example": "Mom is in the kitchen."
+  },
+  {
+    "index": 680,
+    "classification": "copular",
+    "word": "knife",
+    "example": "Be careful with the knife."
+  },
+  {
+    "index": 682,
+    "classification": "copular",
+    "word": "lady",
+    "example": "She is a nice lady."
+  },
+  {
+    "index": 683,
+    "classification": "copular",
+    "word": "language",
+    "example": "English is a language."
+  },
+  {
+    "index": 685,
+    "classification": "copular",
+    "word": "last name",
+    "example": "What is your last name?"
+  },
+  {
+    "index": 686,
+    "classification": "copular",
+    "word": "late",
+    "example": "Don't be late."
+  },
+  {
+    "index": 692,
+    "classification": "copular",
+    "word": "lazy",
+    "example": "Don't be lazy."
+  },
+  {
+    "index": 693,
+    "classification": "copular",
+    "word": "leader",
+    "example": "He is our leader."
+  },
+  {
+    "index": 705,
+    "classification": "copular",
+    "word": "library",
+    "example": "Be quiet in the library."
+  },
+  {
+    "index": 707,
+    "classification": "copular",
+    "word": "light",
+    "example": "This bag is very light."
+  },
+  {
+    "index": 713,
+    "classification": "copular",
+    "word": "lily",
+    "example": "A lily is a beautiful flower."
+  },
+  {
+    "index": 716,
+    "classification": "copular",
+    "word": "lion",
+    "example": "The lion is the king of beasts."
+  },
+  {
+    "index": 720,
+    "classification": "copular",
+    "word": "little",
+    "example": "He is a little boy."
+  },
+  {
+    "index": 721,
+    "classification": "copular",
+    "word": "little",
+    "example": "I am a little tired."
+  },
+  {
+    "index": 722,
+    "classification": "existenceOrLocation",
+    "word": "little",
+    "example": "There is a little water in the bottle."
+  },
+  {
+    "index": 726,
+    "classification": "copular",
+    "word": "living",
+    "example": "It is a living thing."
+  },
+  {
+    "index": 731,
+    "classification": "auxiliary",
+    "word": "long",
+    "example": "Have you been waiting long?"
+  },
+  {
+    "index": 736,
+    "classification": "existenceOrLocation",
+    "word": "lot",
+    "example": "There's a lot of work to do."
+  },
+  {
+    "index": 737,
+    "classification": "copular",
+    "word": "love",
+    "example": "Love is important."
+  },
+  {
+    "index": 741,
+    "classification": "copular",
+    "word": "lucky",
+    "example": "You are lucky."
+  },
+  {
+    "index": 743,
+    "classification": "copular",
+    "word": "'m",
+    "example": "I'm a student."
+  },
+  {
+    "index": 746,
+    "classification": "existenceOrLocation",
+    "word": "mail",
+    "example": "Is there any mail for me?"
+  },
+  {
+    "index": 749,
+    "classification": "copular",
+    "word": "man",
+    "example": "Who is that man?"
+  },
+  {
+    "index": 751,
+    "classification": "copular",
+    "word": "many",
+    "example": "Many were late."
+  },
+  {
+    "index": 757,
+    "classification": "copular",
+    "word": "maths",
+    "example": "She is my maths teacher."
+  },
+  {
+    "index": 758,
+    "classification": "copular",
+    "word": "matter",
+    "example": "What's the matter with you?"
+  },
+  {
+    "index": 759,
+    "classification": "copular",
+    "word": "matter",
+    "example": "It doesn't matter even if you're late."
+  },
+  {
+    "index": 761,
+    "classification": "copular",
+    "word": "May",
+    "example": "My birthday is in May."
+  },
+  {
+    "index": 766,
+    "classification": "copular",
+    "word": "mean",
+    "example": "Don't be so mean to your sister."
+  },
+  {
+    "index": 775,
+    "classification": "existenceOrLocation",
+    "word": "middle",
+    "example": "I am in the middle."
+  },
+  {
+    "index": 776,
+    "classification": "auxiliary",
+    "word": "middle",
+    "example": "He was standing in the middle of the room."
+  },
+  {
+    "index": 780,
+    "classification": "copular",
+    "word": "mine",
+    "example": "This book is mine."
+  },
+  {
+    "index": 788,
+    "classification": "auxiliary",
+    "word": "mom",
+    "example": "Mom is cooking dinner."
+  },
+  {
+    "index": 795,
+    "classification": "existenceOrLocation",
+    "word": "month",
+    "example": "There are twelve months in a year."
+  },
+  {
+    "index": 796,
+    "classification": "copular",
+    "word": "moon",
+    "example": "The moon is beautiful tonight."
+  },
+  {
+    "index": 805,
+    "classification": "copular",
+    "word": "mother",
+    "example": "My mother is kind."
+  },
+  {
+    "index": 806,
+    "classification": "copular",
+    "word": "mountain",
+    "example": "That is a high mountain."
+  },
+  {
+    "index": 807,
+    "classification": "existenceOrLocation",
+    "word": "mouse",
+    "example": "There is a mouse in the house."
+  },
+  {
+    "index": 812,
+    "classification": "copular",
+    "word": "Mr",
+    "example": "This is Mr. Brown."
+  },
+  {
+    "index": 814,
+    "classification": "existenceOrLocation",
+    "word": "Mrs",
+    "example": "Is Mrs. White home?"
+  },
+  {
+    "index": 815,
+    "classification": "copular",
+    "word": "Mrs.",
+    "example": "She is Mrs. Brown."
+  },
+  {
+    "index": 818,
+    "classification": "copular",
+    "word": "much",
+    "example": "That is too much."
+  },
+  {
+    "index": 819,
+    "classification": "existenceOrLocation",
+    "word": "mum",
+    "example": "Mum is in the garden."
+  },
+  {
+    "index": 821,
+    "classification": "copular",
+    "word": "musician",
+    "example": "He wants to be a musician."
+  },
+  {
+    "index": 823,
+    "classification": "copular",
+    "word": "my",
+    "example": "This is my pen."
+  },
+  {
+    "index": 824,
+    "classification": "copular",
+    "word": "name",
+    "example": "My name is Tom."
+  },
+  {
+    "index": 826,
+    "classification": "copular",
+    "word": "nationality",
+    "example": "What is your nationality?"
+  },
+  {
+    "index": 834,
+    "classification": "copular",
+    "word": "neighbor",
+    "example": "He is my neighbor."
+  },
+  {
+    "index": 835,
+    "classification": "copular",
+    "word": "neighbour",
+    "example": "Our neighbour is kind."
+  },
+  {
+    "index": 836,
+    "classification": "existenceOrLocation",
+    "word": "never",
+    "example": "I have never been there."
+  },
+  {
+    "index": 838,
+    "classification": "copular",
+    "word": "news",
+    "example": "This is good news."
+  },
+  {
+    "index": 842,
+    "classification": "copular",
+    "word": "nine",
+    "example": "It is nine o'clock."
+  },
+  {
+    "index": 843,
+    "classification": "copular",
+    "word": "nineteen",
+    "example": "He is nineteen."
+  },
+  {
+    "index": 844,
+    "classification": "copular",
+    "word": "ninety",
+    "example": "Ninety days is a long time."
+  },
+  {
+    "index": 849,
+    "classification": "copular",
+    "word": "not",
+    "example": "It is not true."
+  },
+  {
+    "index": 855,
+    "classification": "copular",
+    "word": "now",
+    "example": "I am busy now."
+  },
+  {
+    "index": 857,
+    "classification": "copular",
+    "word": "number",
+    "example": "What is your phone number?"
+  },
+  {
+    "index": 858,
+    "classification": "copular",
+    "word": "nurse",
+    "example": "She is a kind nurse."
+  },
+  {
+    "index": 860,
+    "classification": "copular",
+    "word": "o'clock",
+    "example": "It is five o'clock."
+  },
+  {
+    "index": 861,
+    "classification": "copular",
+    "word": "October",
+    "example": "Halloween is in October."
+  },
+  {
+    "index": 862,
+    "classification": "copular",
+    "word": "of",
+    "example": "This is a picture of my dog."
+  },
+  {
+    "index": 863,
+    "classification": "copular",
+    "word": "off",
+    "example": "The light is off."
+  },
+  {
+    "index": 867,
+    "classification": "copular",
+    "word": "officer",
+    "example": "He is a police officer."
+  },
+  {
+    "index": 869,
+    "classification": "copular",
+    "word": "OK",
+    "example": "Are you OK?"
+  },
+  {
+    "index": 871,
+    "classification": "copular",
+    "word": "okay",
+    "example": "It is okay."
+  },
+  {
+    "index": 873,
+    "classification": "copular",
+    "word": "old",
+    "example": "This building is old."
+  },
+  {
+    "index": 875,
+    "classification": "existenceOrLocation",
+    "word": "on",
+    "example": "The book is on the desk."
+  },
+  {
+    "index": 880,
+    "classification": "copular",
+    "word": "one",
+    "example": "One plus one is two."
+  },
+  {
+    "index": 882,
+    "classification": "copular",
+    "word": "only",
+    "example": "He is an only child."
+  },
+  {
+    "index": 892,
+    "classification": "copular",
+    "word": "our",
+    "example": "This is our house."
+  },
+  {
+    "index": 893,
+    "classification": "copular",
+    "word": "ours",
+    "example": "The car is ours."
+  },
+  {
+    "index": 900,
+    "classification": "copular",
+    "word": "over",
+    "example": "The winter is over."
+  },
+  {
+    "index": 904,
+    "classification": "copular",
+    "word": "owner",
+    "example": "Who is the owner of this dog?"
+  },
+  {
+    "index": 906,
+    "classification": "copular",
+    "word": "P.M.",
+    "example": "It is 10 P.M."
+  },
+  {
+    "index": 908,
+    "classification": "copular",
+    "word": "paint",
+    "example": "The paint is wet."
+  },
+  {
+    "index": 913,
+    "classification": "auxiliary",
+    "word": "pants",
+    "example": "He is wearing black pants."
+  },
+  {
+    "index": 923,
+    "classification": "copular",
+    "word": "past",
+    "example": "It's all in the past."
+  },
+  {
+    "index": 924,
+    "classification": "copular",
+    "word": "past",
+    "example": "It is half past two."
+  },
+  {
+    "index": 926,
+    "classification": "copular",
+    "word": "pay",
+    "example": "The pay is good."
+  },
+  {
+    "index": 931,
+    "classification": "existenceOrLocation",
+    "word": "people",
+    "example": "There are many people in the park."
+  },
+  {
+    "index": 933,
+    "classification": "copular",
+    "word": "person",
+    "example": "He is a nice person."
+  },
+  {
+    "index": 934,
+    "classification": "copular",
+    "word": "personal",
+    "example": "This is my personal opinion."
+  },
+  {
+    "index": 946,
+    "classification": "copular",
+    "word": "pig",
+    "example": "Pigs are smart."
+  },
+  {
+    "index": 950,
+    "classification": "copular",
+    "word": "place",
+    "example": "This is a nice place."
+  },
+  {
+    "index": 952,
+    "classification": "copular",
+    "word": "plan",
+    "example": "What is your plan for tomorrow?"
+  },
+  {
+    "index": 957,
+    "classification": "copular",
+    "word": "player",
+    "example": "He is a good player."
+  },
+  {
+    "index": 960,
+    "classification": "copular",
+    "word": "pleasure",
+    "example": "It is a pleasure to meet you."
+  },
+  {
+    "index": 965,
+    "classification": "copular",
+    "word": "point",
+    "example": "That is a good point."
+  },
+  {
+    "index": 967,
+    "classification": "copular",
+    "word": "pollution",
+    "example": "Air pollution is a problem."
+  },
+  {
+    "index": 969,
+    "classification": "copular",
+    "word": "poor",
+    "example": "They are very poor."
+  },
+  {
+    "index": 980,
+    "classification": "copular",
+    "word": "present",
+    "example": "This is a present for you."
+  },
+  {
+    "index": 983,
+    "classification": "copular",
+    "word": "pretty",
+    "example": "She is very pretty."
+  },
+  {
+    "index": 984,
+    "classification": "copular",
+    "word": "pretty",
+    "example": "The exam was pretty difficult."
+  },
+  {
+    "index": 985,
+    "classification": "copular",
+    "word": "price",
+    "example": "The price is too high."
+  },
+  {
+    "index": 988,
+    "classification": "copular",
+    "word": "princess",
+    "example": "The princess is beautiful."
+  },
+  {
+    "index": 990,
+    "classification": "copular",
+    "word": "program",
+    "example": "What is your favorite TV program?"
+  },
+  {
+    "index": 995,
+    "classification": "auxiliary",
+    "word": "purple",
+    "example": "She was wearing a purple dress."
+  },
+  {
+    "index": 998,
+    "classification": "copular",
+    "word": "quarter",
+    "example": "It is a quarter past ten."
+  },
+  {
+    "index": 1002,
+    "classification": "copular",
+    "word": "quiet",
+    "example": "Please be quiet."
+  },
+  {
+    "index": 1007,
+    "classification": "auxiliary",
+    "word": "rain",
+    "example": "It is raining now."
+  },
+  {
+    "index": 1008,
+    "classification": "copular",
+    "word": "rainy",
+    "example": "It is a rainy day."
+  },
+  {
+    "index": 1009,
+    "classification": "copular",
+    "word": "rat",
+    "example": "Rats are bigger than mice."
+  },
+  {
+    "index": 1010,
+    "classification": "copular",
+    "word": "'re",
+    "example": "They're my friends."
+  },
+  {
+    "index": 1012,
+    "classification": "copular",
+    "word": "reader",
+    "example": "This book is for young readers."
+  },
+  {
+    "index": 1014,
+    "classification": "copular",
+    "word": "ready",
+    "example": "Are you ready?"
+  },
+  {
+    "index": 1015,
+    "classification": "copular",
+    "word": "real",
+    "example": "This is real gold."
+  },
+  {
+    "index": 1017,
+    "classification": "copular",
+    "word": "really",
+    "example": "I am really sorry."
+  },
+  {
+    "index": 1023,
+    "classification": "copular",
+    "word": "reporter",
+    "example": "He is a newspaper reporter."
+  },
+  {
+    "index": 1025,
+    "classification": "copular",
+    "word": "result",
+    "example": "The result was good."
+  },
+  {
+    "index": 1031,
+    "classification": "copular",
+    "word": "rich",
+    "example": "He is a rich man."
+  },
+  {
+    "index": 1034,
+    "classification": "copular",
+    "word": "right",
+    "example": "You are right."
+  },
+  {
+    "index": 1037,
+    "classification": "auxiliary",
+    "word": "ring",
+    "example": "The phone is ringing."
+  },
+  {
+    "index": 1038,
+    "classification": "auxiliary",
+    "word": "ring",
+    "example": "She was wearing a gold ring."
+  },
+  {
+    "index": 1046,
+    "classification": "copular",
+    "word": "rude",
+    "example": "It is rude to point."
+  },
+  {
+    "index": 1052,
+    "classification": "copular",
+    "word": "'s",
+    "example": "It's good."
+  },
+  {
+    "index": 1053,
+    "classification": "copular",
+    "word": "sad",
+    "example": "Don't be sad."
+  },
+  {
+    "index": 1054,
+    "classification": "copular",
+    "word": "sailor",
+    "example": "He is a sailor."
+  },
+  {
+    "index": 1056,
+    "classification": "copular",
+    "word": "sale",
+    "example": "This bag is on sale."
+  },
+  {
+    "index": 1061,
+    "classification": "copular",
+    "word": "Saturday",
+    "example": "I am free on Saturday."
+  },
+  {
+    "index": 1069,
+    "classification": "copular",
+    "word": "scientist",
+    "example": "He is a great scientist."
+  },
+  {
+    "index": 1071,
+    "classification": "copular",
+    "word": "seat",
+    "example": "Is this seat free?"
+  },
+  {
+    "index": 1072,
+    "classification": "copular",
+    "word": "second",
+    "example": "This is the second time."
+  },
+  {
+    "index": 1074,
+    "classification": "copular",
+    "word": "second",
+    "example": "He was the second to arrive."
+  },
+  {
+    "index": 1078,
+    "classification": "copular",
+    "word": "self",
+    "example": "Be your true self."
+  },
+  {
+    "index": 1085,
+    "classification": "existenceOrLocation",
+    "word": "seven",
+    "example": "There are seven days in a week."
+  },
+  {
+    "index": 1086,
+    "classification": "copular",
+    "word": "seventeen",
+    "example": "She is seventeen."
+  },
+  {
+    "index": 1092,
+    "classification": "copular",
+    "word": "she",
+    "example": "She is my sister."
+  },
+  {
+    "index": 1094,
+    "classification": "existenceOrLocation",
+    "word": "shelf",
+    "example": "The book is on the shelf."
+  },
+  {
+    "index": 1097,
+    "classification": "auxiliary",
+    "word": "shirt",
+    "example": "I am wearing a white shirt."
+  },
+  {
+    "index": 1120,
+    "classification": "auxiliary",
+    "word": "silver",
+    "example": "This ring is made of silver."
+  },
+  {
+    "index": 1122,
+    "classification": "auxiliary",
+    "word": "silver",
+    "example": "The medal is made of silver."
+  },
+  {
+    "index": 1123,
+    "classification": "copular",
+    "word": "simple",
+    "example": "It is a simple question."
+  },
+  {
+    "index": 1124,
+    "classification": "copular",
+    "word": "simple",
+    "example": "The rules are very simple."
+  },
+  {
+    "index": 1126,
+    "classification": "copular",
+    "word": "singer",
+    "example": "She is a famous singer."
+  },
+  {
+    "index": 1130,
+    "classification": "copular",
+    "word": "sixteen",
+    "example": "He is sixteen."
+  },
+  {
+    "index": 1131,
+    "classification": "existenceOrLocation",
+    "word": "sixty",
+    "example": "There are sixty minutes in an hour."
+  },
+  {
+    "index": 1134,
+    "classification": "auxiliary",
+    "word": "skirt",
+    "example": "She is wearing a skirt."
+  },
+  {
+    "index": 1138,
+    "classification": "copular",
+    "word": "slow",
+    "example": "This computer is slow."
+  },
+  {
+    "index": 1143,
+    "classification": "copular",
+    "word": "small",
+    "example": "It is a small cat."
+  },
+  {
+    "index": 1144,
+    "classification": "copular",
+    "word": "smart",
+    "example": "He is very smart."
+  },
+  {
+    "index": 1150,
+    "classification": "existenceOrLocation",
+    "word": "smoke",
+    "example": "There is no smoke without fire."
+  },
+  {
+    "index": 1152,
+    "classification": "copular",
+    "word": "smoke",
+    "example": "Is it okay if I smoke here?"
+  },
+  {
+    "index": 1156,
+    "classification": "copular",
+    "word": "snow",
+    "example": "Snow is white."
+  },
+  {
+    "index": 1159,
+    "classification": "copular",
+    "word": "snowy",
+    "example": "It is a snowy day."
+  },
+  {
+    "index": 1160,
+    "classification": "copular",
+    "word": "so",
+    "example": "I am so happy."
+  },
+  {
+    "index": 1161,
+    "classification": "copular",
+    "word": "so",
+    "example": "I was sick, so I stayed home."
+  },
+  {
+    "index": 1162,
+    "classification": "copular",
+    "word": "so",
+    "example": "It was so cold that the lake froze."
+  },
+  {
+    "index": 1169,
+    "classification": "copular",
+    "word": "soft",
+    "example": "This bed is soft."
+  },
+  {
+    "index": 1170,
+    "classification": "copular",
+    "word": "soft",
+    "example": "The bed is very soft and comfortable."
+  },
+  {
+    "index": 1174,
+    "classification": "existenceOrLocation",
+    "word": "someone",
+    "example": "Someone is at the door."
+  },
+  {
+    "index": 1178,
+    "classification": "copular",
+    "word": "son",
+    "example": "My son is five years old."
+  },
+  {
+    "index": 1179,
+    "classification": "copular",
+    "word": "song",
+    "example": "It is a popular song."
+  },
+  {
+    "index": 1181,
+    "classification": "copular",
+    "word": "sorry",
+    "example": "I am sorry I am late."
+  },
+  {
+    "index": 1189,
+    "classification": "existenceOrLocation",
+    "word": "south",
+    "example": "Australia is in the south."
+  },
+  {
+    "index": 1191,
+    "classification": "auxiliary",
+    "word": "south",
+    "example": "The wind is blowing from the south."
+  },
+  {
+    "index": 1192,
+    "classification": "existenceOrLocation",
+    "word": "space",
+    "example": "There is no space here."
+  },
+  {
+    "index": 1193,
+    "classification": "existenceOrLocation",
+    "word": "space",
+    "example": "There's not enough space for a desk here."
+  },
+  {
+    "index": 1198,
+    "classification": "copular",
+    "word": "speaker",
+    "example": "He is a great public speaker."
+  },
+  {
+    "index": 1199,
+    "classification": "copular",
+    "word": "special",
+    "example": "This is a special day."
+  },
+  {
+    "index": 1210,
+    "classification": "copular",
+    "word": "stadium",
+    "example": "The stadium is huge."
+  },
+  {
+    "index": 1211,
+    "classification": "copular",
+    "word": "stadium",
+    "example": "The stadium was packed with people."
+  },
+  {
+    "index": 1218,
+    "classification": "copular",
+    "word": "start",
+    "example": "This is a good start."
+  },
+  {
+    "index": 1219,
+    "classification": "existenceOrLocation",
+    "word": "station",
+    "example": "I am at the station."
+  },
+  {
+    "index": 1226,
+    "classification": "copular",
+    "word": "still",
+    "example": "I am still hungry."
+  },
+  {
+    "index": 1227,
+    "classification": "auxiliary",
+    "word": "still",
+    "example": "Are you still living in Tokyo?"
+  },
+  {
+    "index": 1236,
+    "classification": "copular",
+    "word": "straight",
+    "example": "This is a long, straight road."
+  },
+  {
+    "index": 1241,
+    "classification": "copular",
+    "word": "strong",
+    "example": "He is very strong."
+  },
+  {
+    "index": 1242,
+    "classification": "copular",
+    "word": "student",
+    "example": "He is a student."
+  },
+  {
+    "index": 1244,
+    "classification": "auxiliary",
+    "word": "study",
+    "example": "He is doing a study on birds."
+  },
+  {
+    "index": 1245,
+    "classification": "copular",
+    "word": "subject",
+    "example": "Math is my favorite subject."
+  },
+  {
+    "index": 1248,
+    "classification": "copular",
+    "word": "summer",
+    "example": "Summer is hot."
+  },
+  {
+    "index": 1249,
+    "classification": "auxiliary",
+    "word": "sun",
+    "example": "The sun is shining."
+  },
+  {
+    "index": 1253,
+    "classification": "existenceOrLocation",
+    "word": "supper",
+    "example": "What's for supper tonight?"
+  },
+  {
+    "index": 1257,
+    "classification": "copular",
+    "word": "sure",
+    "example": "Are you sure?"
+  },
+  {
+    "index": 1259,
+    "classification": "existenceOrLocation",
+    "word": "sure",
+    "example": "I'll be there for sure."
+  },
+  {
+    "index": 1262,
+    "classification": "auxiliary",
+    "word": "surprised",
+    "example": "I was surprised at the news."
+  },
+  {
+    "index": 1263,
+    "classification": "auxiliary",
+    "word": "surprised",
+    "example": "I was surprised to hear the news."
+  },
+  {
+    "index": 1265,
+    "classification": "copular",
+    "word": "sweater",
+    "example": "Put on a sweater; it's cold outside."
+  },
+  {
+    "index": 1266,
+    "classification": "copular",
+    "word": "sweet",
+    "example": "This cake is very sweet."
+  },
+  {
+    "index": 1277,
+    "classification": "copular",
+    "word": "tall",
+    "example": "He is tall."
+  },
+  {
+    "index": 1284,
+    "classification": "copular",
+    "word": "teacher",
+    "example": "She is a good teacher."
+  },
+  {
+    "index": 1301,
+    "classification": "copular",
+    "word": "than",
+    "example": "He is taller than me."
+  },
+  {
+    "index": 1304,
+    "classification": "copular",
+    "word": "that",
+    "example": "That is my car."
+  },
+  {
+    "index": 1306,
+    "classification": "copular",
+    "word": "the",
+    "example": "The sun is hot."
+  },
+  {
+    "index": 1309,
+    "classification": "copular",
+    "word": "their",
+    "example": "This is their house."
+  },
+  {
+    "index": 1310,
+    "classification": "copular",
+    "word": "theirs",
+    "example": "The dog is theirs."
+  },
+  {
+    "index": 1311,
+    "classification": "copular",
+    "word": "theirs",
+    "example": "Is this car theirs?"
+  },
+  {
+    "index": 1313,
+    "classification": "copular",
+    "word": "then",
+    "example": "I was busy then."
+  },
+  {
+    "index": 1315,
+    "classification": "copular",
+    "word": "these",
+    "example": "These books are mine."
+  },
+  {
+    "index": 1316,
+    "classification": "copular",
+    "word": "these",
+    "example": "These are apples."
+  },
+  {
+    "index": 1317,
+    "classification": "copular",
+    "word": "they",
+    "example": "They are my friends."
+  },
+  {
+    "index": 1318,
+    "classification": "copular",
+    "word": "thin",
+    "example": "This book is thin."
+  },
+  {
+    "index": 1319,
+    "classification": "copular",
+    "word": "thing",
+    "example": "What is that thing?"
+  },
+  {
+    "index": 1320,
+    "classification": "copular",
+    "word": "think",
+    "example": "I think it is good."
+  },
+  {
+    "index": 1322,
+    "classification": "copular",
+    "word": "third",
+    "example": "This is the third time I've called you."
+  },
+  {
+    "index": 1323,
+    "classification": "copular",
+    "word": "thirsty",
+    "example": "I am very thirsty."
+  },
+  {
+    "index": 1324,
+    "classification": "copular",
+    "word": "thirsty",
+    "example": "I'm always thirsty after playing tennis."
+  },
+  {
+    "index": 1325,
+    "classification": "copular",
+    "word": "thirteen",
+    "example": "She is thirteen."
+  },
+  {
+    "index": 1326,
+    "classification": "copular",
+    "word": "thirty",
+    "example": "The class is thirty minutes long."
+  },
+  {
+    "index": 1327,
+    "classification": "copular",
+    "word": "this",
+    "example": "This book is interesting."
+  },
+  {
+    "index": 1328,
+    "classification": "copular",
+    "word": "this",
+    "example": "This is a pen."
+  },
+  {
+    "index": 1329,
+    "classification": "copular",
+    "word": "those",
+    "example": "Those flowers are beautiful."
+  },
+  {
+    "index": 1332,
+    "classification": "existenceOrLocation",
+    "word": "thousand",
+    "example": "There were about a thousand people at the concert."
+  },
+  {
+    "index": 1341,
+    "classification": "copular",
+    "word": "time",
+    "example": "What time is it?"
+  },
+  {
+    "index": 1343,
+    "classification": "copular",
+    "word": "tired",
+    "example": "I am tired today."
+  },
+  {
+    "index": 1345,
+    "classification": "copular",
+    "word": "today",
+    "example": "How are you today?"
+  },
+  {
+    "index": 1346,
+    "classification": "copular",
+    "word": "today",
+    "example": "Today is Monday."
+  },
+  {
+    "index": 1350,
+    "classification": "existenceOrLocation",
+    "word": "toilet",
+    "example": "Where is the toilet?"
+  },
+  {
+    "index": 1352,
+    "classification": "copular",
+    "word": "tomorrow",
+    "example": "Tomorrow is Sunday."
+  },
+  {
+    "index": 1353,
+    "classification": "copular",
+    "word": "tonight",
+    "example": "Are you free tonight?"
+  },
+  {
+    "index": 1354,
+    "classification": "copular",
+    "word": "tonight",
+    "example": "Tonight will be cold."
+  },
+  {
+    "index": 1355,
+    "classification": "copular",
+    "word": "tonight",
+    "example": "What are your plans for tonight?"
+  },
+  {
+    "index": 1356,
+    "classification": "copular",
+    "word": "too",
+    "example": "I am too tired."
+  },
+  {
+    "index": 1358,
+    "classification": "existenceOrLocation",
+    "word": "top",
+    "example": "He is at the top of the class."
+  },
+  {
+    "index": 1359,
+    "classification": "existenceOrLocation",
+    "word": "top",
+    "example": "The office is on the top floor."
+  },
+  {
+    "index": 1365,
+    "classification": "existenceOrLocation",
+    "word": "traffic",
+    "example": "There is heavy traffic."
+  },
+  {
+    "index": 1366,
+    "classification": "existenceOrLocation",
+    "word": "traffic",
+    "example": "There's a lot of traffic on the road today."
+  },
+  {
+    "index": 1371,
+    "classification": "copular",
+    "word": "travel",
+    "example": "His book is about his travels in Asia."
+  },
+  {
+    "index": 1372,
+    "classification": "existenceOrLocation",
+    "word": "tree",
+    "example": "There is a big tree in the garden."
+  },
+  {
+    "index": 1376,
+    "classification": "copular",
+    "word": "true",
+    "example": "Is it true?"
+  },
+  {
+    "index": 1380,
+    "classification": "copular",
+    "word": "Tuesday",
+    "example": "I am busy on Tuesday."
+  },
+  {
+    "index": 1384,
+    "classification": "copular",
+    "word": "turn",
+    "example": "It is my turn."
+  },
+  {
+    "index": 1387,
+    "classification": "copular",
+    "word": "twenty",
+    "example": "He is twenty."
+  },
+  {
+    "index": 1388,
+    "classification": "existenceOrLocation",
+    "word": "twice",
+    "example": "I have been there twice."
+  },
+  {
+    "index": 1390,
+    "classification": "copular",
+    "word": "two",
+    "example": "One plus one is two."
+  },
+  {
+    "index": 1391,
+    "classification": "copular",
+    "word": "type",
+    "example": "What is your blood type?"
+  },
+  {
+    "index": 1395,
+    "classification": "existenceOrLocation",
+    "word": "under",
+    "example": "The cat is under the chair."
+  },
+  {
+    "index": 1399,
+    "classification": "copular",
+    "word": "uniform",
+    "example": "The houses were of uniform design."
+  },
+  {
+    "index": 1401,
+    "classification": "copular",
+    "word": "university",
+    "example": "He is a university student."
+  },
+  {
+    "index": 1402,
+    "classification": "copular",
+    "word": "university",
+    "example": "He is a student at Oxford University."
+  },
+  {
+    "index": 1408,
+    "classification": "auxiliary",
+    "word": "up",
+    "example": "The price of oil is going up."
+  },
+  {
+    "index": 1411,
+    "classification": "copular",
+    "word": "use",
+    "example": "Is this tool for common use?"
+  },
+  {
+    "index": 1412,
+    "classification": "copular",
+    "word": "useful",
+    "example": "This book is useful."
+  },
+  {
+    "index": 1413,
+    "classification": "copular",
+    "word": "useful",
+    "example": "This is a very useful dictionary."
+  },
+  {
+    "index": 1415,
+    "classification": "copular",
+    "word": "vacation",
+    "example": "I am on vacation."
+  },
+  {
+    "index": 1425,
+    "classification": "copular",
+    "word": "violin",
+    "example": "She started playing the violin when she was five."
+  },
+  {
+    "index": 1435,
+    "classification": "existenceOrLocation",
+    "word": "wall",
+    "example": "There is a picture on the wall."
+  },
+  {
+    "index": 1438,
+    "classification": "copular",
+    "word": "war",
+    "example": "War is terrible."
+  },
+  {
+    "index": 1439,
+    "classification": "copular",
+    "word": "warm",
+    "example": "It is warm today."
+  },
+  {
+    "index": 1443,
+    "classification": "copular",
+    "word": "watch",
+    "example": "My watch is slow."
+  },
+  {
+    "index": 1446,
+    "classification": "copular",
+    "word": "way",
+    "example": "This is the way."
+  },
+  {
+    "index": 1447,
+    "classification": "copular",
+    "word": "we",
+    "example": "We are students."
+  },
+  {
+    "index": 1448,
+    "classification": "copular",
+    "word": "weak",
+    "example": "He is weak."
+  },
+  {
+    "index": 1449,
+    "classification": "copular",
+    "word": "weak",
+    "example": "He is still weak after the surgery."
+  },
+  {
+    "index": 1450,
+    "classification": "auxiliary",
+    "word": "wear",
+    "example": "She is wearing a red dress."
+  },
+  {
+    "index": 1451,
+    "classification": "copular",
+    "word": "weather",
+    "example": "How is the weather?"
+  },
+  {
+    "index": 1456,
+    "classification": "copular",
+    "word": "week",
+    "example": "I am busy this week."
+  },
+  {
+    "index": 1459,
+    "classification": "fixedResponse",
+    "word": "welcome",
+    "example": "You are welcome."
+  },
+  {
+    "index": 1464,
+    "classification": "existenceOrLocation",
+    "word": "west",
+    "example": "California is on the west coast of the US."
+  },
+  {
+    "index": 1466,
+    "classification": "copular",
+    "word": "what",
+    "example": "What is your name?"
+  },
+  {
+    "index": 1467,
+    "classification": "copular",
+    "word": "what",
+    "example": "What time is it?"
+  },
+  {
+    "index": 1468,
+    "classification": "copular",
+    "word": "when",
+    "example": "When is your birthday?"
+  },
+  {
+    "index": 1472,
+    "classification": "copular",
+    "word": "which",
+    "example": "Which is better?"
+  },
+  {
+    "index": 1474,
+    "classification": "copular",
+    "word": "who",
+    "example": "Who are you?"
+  },
+  {
+    "index": 1475,
+    "classification": "copular",
+    "word": "whose",
+    "example": "Whose bag is this?"
+  },
+  {
+    "index": 1476,
+    "classification": "copular",
+    "word": "why",
+    "example": "Why are you sad?"
+  },
+  {
+    "index": 1477,
+    "classification": "auxiliary",
+    "word": "wife",
+    "example": "His wife is cooking."
+  },
+  {
+    "index": 1482,
+    "classification": "auxiliary",
+    "word": "wind",
+    "example": "The wind is blowing."
+  },
+  {
+    "index": 1485,
+    "classification": "copular",
+    "word": "windy",
+    "example": "It is very windy."
+  },
+  {
+    "index": 1486,
+    "classification": "copular",
+    "word": "windy",
+    "example": "It was so windy that my hat blew off."
+  },
+  {
+    "index": 1487,
+    "classification": "auxiliary",
+    "word": "winter",
+    "example": "Winter is coming."
+  },
+  {
+    "index": 1491,
+    "classification": "copular",
+    "word": "woman",
+    "example": "She is a kind woman."
+  },
+  {
+    "index": 1492,
+    "classification": "copular",
+    "word": "wonderful",
+    "example": "It's a wonderful life."
+  },
+  {
+    "index": 1493,
+    "classification": "auxiliary",
+    "word": "wood",
+    "example": "This desk is made of wood."
+  },
+  {
+    "index": 1494,
+    "classification": "auxiliary",
+    "word": "wood",
+    "example": "The table is made of solid wood."
+  },
+  {
+    "index": 1498,
+    "classification": "copular",
+    "word": "worker",
+    "example": "He is a hard worker."
+  },
+  {
+    "index": 1501,
+    "classification": "copular",
+    "word": "worry",
+    "example": "Don't worry about me; I'll be fine."
+  },
+  {
+    "index": 1504,
+    "classification": "copular",
+    "word": "writer",
+    "example": "She is a famous writer."
+  },
+  {
+    "index": 1505,
+    "classification": "copular",
+    "word": "wrong",
+    "example": "You are wrong."
+  },
+  {
+    "index": 1508,
+    "classification": "existenceOrLocation",
+    "word": "yeah",
+    "example": "Yeah, I'll be there."
+  },
+  {
+    "index": 1513,
+    "classification": "copular",
+    "word": "yesterday",
+    "example": "Yesterday was fun."
+  },
+  {
+    "index": 1516,
+    "classification": "copular",
+    "word": "you",
+    "example": "You are nice."
+  },
+  {
+    "index": 1517,
+    "classification": "copular",
+    "word": "young",
+    "example": "He is young."
+  },
+  {
+    "index": 1518,
+    "classification": "copular",
+    "word": "your",
+    "example": "What is your name?"
+  },
+  {
+    "index": 1519,
+    "classification": "copular",
+    "word": "yours",
+    "example": "Is this book yours?"
+  },
+  {
+    "index": 1521,
+    "classification": "existenceOrLocation",
+    "word": "zoo",
+    "example": "There are lions in the zoo."
+  },
+  {
+    "index": 1526,
+    "classification": "copular",
+    "word": "expensive",
+    "example": "That watch is too expensive for me."
+  }
+]

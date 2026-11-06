@@ -10,6 +10,14 @@ const ASSETS = [
     './manifest.json',
     './scripts/qrcode.min.js',
     './style.css',
+    './example-reading.css',
+    './example-reading.css?v=' + GAME_VERSION,
+    './js/example_reading.js',
+    './js/example_reading.js?v=' + GAME_VERSION,
+    './data/example-readings-junior.json?v=' + GAME_VERSION,
+    './assets/icons/quote.svg',
+    './assets/icons/volume-2.svg',
+    './assets/icons/undo-2.svg',
     './wordbooks-m3e.css',
     './header-m3e.css',
     './header-m3e.css?v=' + GAME_VERSION,
@@ -87,6 +95,28 @@ self.addEventListener('fetch', (event) => {
                     return networkResponse;
                 })
                 .catch(() => caches.match(event.request).then((r) => r || caches.match('./index.html') || caches.match('./vocab_clicker_game.html')))
+        );
+        return;
+    }
+
+    // Reading content is edited independently during authoring. Revalidate once
+    // per page load, keep the last successful copy for offline use, and never
+    // replace it with an HTTP error. Other static assets keep their existing policy.
+    const pathname = new URL(event.request.url).pathname;
+    if (pathname.endsWith('/data/example-readings-junior.json')
+        || pathname.endsWith('/js/example_reading.js')) {
+        event.respondWith(
+            fetch(event.request, { cache: 'no-cache' }).then(response => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const copy = response.clone();
+                event.waitUntil(caches.open(CACHE_NAME)
+                    .then(cache => cache.put(event.request, copy)).catch(() => {}));
+                return response;
+            }).catch(async error => {
+                const cached = await caches.match(event.request);
+                if (cached) return cached;
+                throw error;
+            })
         );
         return;
     }

@@ -19,6 +19,8 @@ const expected = m[1];
 
 const targets = [
   'style.css',
+  'example-reading.css',
+  'js/example_reading.js',
   'wordbooks-m3e.css',
   'header-m3e.css',
   'daily-study.css',

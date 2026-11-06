@@ -17,6 +17,11 @@ This is a static web app with Firebase-backed features.
   - `js/daily_study.js`
   - `js/firebase_app_v2.js`
 
+## 例文の読み方
+
+- `js/example_reading.js`／`example-reading.css` が例文の区切り訳と任意の全文訳を表示。中学データは `data/example-readings-junior.json`。取得失敗時は手動再読込、通信できない場合はService Workerの成功済みキャッシュを使う。
+- 例文・用法変更、次問、Undo、開始待ち・出題なしで閉じる。回答・保存・採点には介入しない。ローカル限定の一覧・比較表示は `js/example_reading_preview.js`／`example-reading-preview.css`。
+
 ## Important Relationships
 
 ### 今日の学習（2026-10-26）

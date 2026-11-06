@@ -1,0 +1,178 @@
+[
+  {
+    "offset": 85,
+    "index": 395,
+    "word": "end",
+    "pos": "動",
+    "example": "We reached the end of the road.",
+    "note": "この例文の end は「終わり」という名詞。"
+  },
+  {
+    "offset": 150,
+    "index": 460,
+    "word": "five",
+    "pos": "名",
+    "example": "Given me a high five.",
+    "note": "原文の Given は命令文として不適切。Give me a high five. なら「ハイタッチして」。"
+  },
+  {
+    "offset": 287,
+    "index": 597,
+    "word": "hold",
+    "pos": "名",
+    "example": "He holds a pen.",
+    "note": "この例文の holds は「持っている」という動詞。"
+  },
+  {
+    "offset": 295,
+    "index": 605,
+    "word": "hope",
+    "pos": "名",
+    "example": "I hope you are well.",
+    "note": "この例文の hope は「願う」という動詞。"
+  },
+  {
+    "offset": 314,
+    "index": 624,
+    "word": "ideal",
+    "pos": "形",
+    "example": "This is an ideal place for picnic.",
+    "note": "通常は for a picnic または for picnics とするのが自然。"
+  },
+  {
+    "offset": 321,
+    "index": 631,
+    "word": "inside",
+    "pos": "前",
+    "example": "Let's go inside.",
+    "note": "この例文の inside は、後ろに名詞を伴わない副詞。"
+  },
+  {
+    "offset": 324,
+    "index": 634,
+    "word": "inside",
+    "pos": "名",
+    "example": "Look inside.",
+    "note": "この例文の inside は副詞。"
+  },
+  {
+    "offset": 355,
+    "index": 665,
+    "word": "key",
+    "pos": "形",
+    "example": "This is the key to success.",
+    "note": "この例文の key は「鍵」という名詞。"
+  },
+  {
+    "offset": 499,
+    "index": 809,
+    "word": "move",
+    "pos": "名",
+    "example": "Don't move!",
+    "note": "この例文の move は動詞。"
+  },
+  {
+    "offset": 521,
+    "index": 831,
+    "word": "need",
+    "pos": "助",
+    "example": "I need your help.",
+    "note": "この例文の need は目的語を取る一般動詞。"
+  },
+  {
+    "offset": 613,
+    "index": 923,
+    "word": "past",
+    "pos": "副",
+    "example": "It's all in the past.",
+    "note": "この例文の past は in the past というまとまりの中の名詞。"
+  },
+  {
+    "offset": 638,
+    "index": 948,
+    "word": "pink",
+    "pos": "名",
+    "example": "She likes pink flowers.",
+    "note": "この例文の pink は flowers を修飾する形容詞。"
+  },
+  {
+    "offset": 661,
+    "index": 971,
+    "word": "pop",
+    "pos": "動",
+    "example": "Balloon popped.",
+    "note": "通常の文で単数の風船を指すなら The balloon popped. などとする。"
+  },
+  {
+    "offset": 710,
+    "index": 1020,
+    "word": "red",
+    "pos": "名",
+    "example": "She painted the door red.",
+    "note": "この例文の red は、塗った後のドアの状態を表す形容詞。"
+  },
+  {
+    "offset": 717,
+    "index": 1027,
+    "word": "review",
+    "pos": "名",
+    "example": "Let's review the lesson.",
+    "note": "この例文の review は動詞。"
+  },
+  {
+    "offset": 878,
+    "index": 1188,
+    "word": "south",
+    "pos": "名",
+    "example": "Go south.",
+    "note": "この例文の south は方向を表す副詞。"
+  },
+  {
+    "offset": 879,
+    "index": 1189,
+    "word": "south",
+    "pos": "形",
+    "example": "Australia is in the south.",
+    "note": "この例文の south は in the south の中の名詞。"
+  },
+  {
+    "offset": 919,
+    "index": 1229,
+    "word": "stop",
+    "pos": "動",
+    "example": "Bus stop.",
+    "note": "この例文の stop は名詞。"
+  },
+  {
+    "offset": 957,
+    "index": 1267,
+    "word": "sweet",
+    "pos": "名",
+    "example": "I'd like something sweet after dinner.",
+    "note": "この例文の sweet は something を修飾する形容詞。"
+  },
+  {
+    "offset": 1020,
+    "index": 1330,
+    "word": "those",
+    "pos": "代",
+    "example": "Those arebirds.",
+    "note": "原文の arebirds は are birds と分ける必要がある。"
+  },
+  {
+    "offset": 1108,
+    "index": 1418,
+    "word": "very",
+    "pos": "形",
+    "example": "The very best.",
+    "note": "この表現の very は best を強める副詞。"
+  },
+  {
+    "offset": 1200,
+    "index": 1510,
+    "word": "yellow",
+    "pos": "形",
+    "example": "I like yellow.",
+    "note": "この例文の yellow は色を表す名詞。"
+  }
+]

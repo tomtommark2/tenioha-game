@@ -1,0 +1,146 @@
+.example-area {
+    --example-surface: #fffdf4;
+    --example-ink: #2f3546;
+    --example-muted: #77674c;
+    --example-line: #e8ddb8;
+    --example-accent: #67548c;
+    --example-control-surface: #f0eaf4;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 14px 16px 10px;
+    border-color: var(--example-line);
+    background: var(--example-surface);
+    box-shadow: none;
+}
+.example-text { flex: none; width: 100%; min-width: 0; }
+.example-reading-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 7px;
+}
+.example-reading-heading .example-label { margin-bottom: 0; font-weight: 600; color: var(--example-muted); }
+.example-sentence { color: var(--example-ink); line-height: 1.65; }
+.example-actions { display: flex; flex-wrap: wrap; align-items: center; align-self: stretch; gap: 4px 8px; margin-top: 10px; padding-top: 4px; border-top: 1px solid var(--example-line); }
+.example-primary-tools { display: flex; align-items: center; gap: 0; }
+.example-actions #speakerBtn {
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--example-accent);
+    box-shadow: none;
+    transform: none;
+}
+.example-actions .speaker-icon {
+    width: 20px;
+    height: 20px;
+    background: currentColor;
+    -webkit-mask: url('assets/icons/volume-2.svg') center / contain no-repeat;
+    mask: url('assets/icons/volume-2.svg') center / contain no-repeat;
+}
+.example-actions .speaker-icon::before, .example-actions .speaker-icon::after { display: none; }
+.example-actions .answer-tools { margin-left: auto; gap: 4px; }
+.example-actions .answer-tools .undo-btn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 6px;
+    gap: 6px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--example-accent);
+    box-shadow: none;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    transform: none;
+}
+.example-actions .answer-tools .undo-icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 0;
+    border-radius: 0;
+    transform: none;
+    background: currentColor;
+    -webkit-mask: url('assets/icons/undo-2.svg') center / contain no-repeat;
+    mask: url('assets/icons/undo-2.svg') center / contain no-repeat;
+}
+.example-actions .answer-tools .undo-btn:disabled { opacity: .4; }
+.example-actions .undo-btn:enabled:hover, .example-actions #speakerBtn:hover { background: var(--example-control-surface); }
+.example-actions button:focus-visible { outline: 2px solid var(--example-accent); outline-offset: 1px; }
+.example-area.no-question .example-primary-tools { visibility: hidden; }
+.example-area.no-question #exampleReadingPanel { display: none; }
+.example-reading-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--example-accent);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.example-reading-toggle::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: currentColor;
+    -webkit-mask: url('assets/ui/chevron-right-rounded.svg') center / contain no-repeat;
+    mask: url('assets/ui/chevron-right-rounded.svg') center / contain no-repeat;
+    transform: rotate(90deg);
+}
+.example-reading-toggle[aria-expanded="true"] { background: var(--example-control-surface); }
+.example-reading-toggle[aria-expanded="true"]::after { transform: rotate(270deg); }
+.example-reading-toggle:hover { background: var(--example-control-surface); }
+.example-reading-toggle:focus-visible,
+.example-reading-meaning summary:focus-visible { outline: 2px solid var(--example-accent); outline-offset: 2px; }
+.example-reading-toggle[hidden], .example-reading-panel[hidden] { display: none; }
+.example-reading-panel {
+    width: 100%;
+    min-width: 0;
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--example-line);
+}
+.example-reading-chunks { display: flex; flex-wrap: wrap; gap: 12px 6px; }
+.example-reading-chunk { display: flex; flex-direction: column; gap: 6px; min-width: 0; max-width: 100%; padding: 0 9px 0 0; }
+.example-reading-chunk + .example-reading-chunk { padding-left: 10px; border-left: 1px solid #e3d7af; }
+.example-reading-chunk span:first-child { color: #303349; font-size: 15px; font-weight: 650; line-height: 1.5; overflow-wrap: anywhere; }
+.example-reading-chunk span:last-child { color: #77674c; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.example-reading-note { margin: 14px 0 0; color: #6c614d; font-size: 12px; line-height: 1.7; }
+.example-reading-meaning { margin-top: 9px; color: #695d47; font-size: 12px; line-height: 1.7; }
+.example-reading-meaning summary { display: flex; align-items: center; gap: 4px; width: fit-content; min-height: 44px; padding: 6px 0; cursor: pointer; list-style: none; color: var(--example-accent); }
+.example-reading-meaning summary::-webkit-details-marker { display: none; }
+.example-reading-meaning summary::marker { content: ''; }
+.example-reading-meaning summary::after { content: ''; width: 16px; height: 16px; background: currentColor; -webkit-mask: url('assets/ui/chevron-right-rounded.svg') center / contain no-repeat; mask: url('assets/ui/chevron-right-rounded.svg') center / contain no-repeat; transform: rotate(90deg); }
+.example-reading-meaning[open] summary::after { transform: rotate(270deg); }
+.example-reading-meaning p { margin: 2px 0 0; padding: 8px 11px; border-radius: 6px; background: #fffdf7; color: #414252; font-size: 13px; }
+@media (max-width: 480px) {
+    .example-reading-chunk { padding-right: 6px; }
+    .example-reading-chunk + .example-reading-chunk { padding-left: 7px; }
+}
+
+.example-panel-titleless .example-reading-heading { display: none; }
+.example-panel-titleless .example-sentence { position: relative; padding-inline-start: 26px; }
+.example-panel-titleless.has-example .example-sentence::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    background: var(--example-accent);
+    opacity: .65;
+    -webkit-mask: url('assets/icons/quote.svg') center / contain no-repeat;
+    mask: url('assets/icons/quote.svg') center / contain no-repeat;
+}

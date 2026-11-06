@@ -1739,7 +1739,8 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     border-radius: 16px;
     padding: 14px 16px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 12px;
     position: relative;
     box-shadow: 0 12px 26px rgba(143, 111, 0, 0.08);
@@ -1831,6 +1832,7 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
     flex-direction: row;
     gap: 5px;
     flex-shrink: 0;
+    margin-left: auto;
 }
 
 .answer-tools .undo-btn { justify-content: center; min-width: 44px; min-height: 44px; padding: 6px 7px; font-size: 11px; border-radius: 10px; white-space: nowrap; }
@@ -1875,8 +1877,8 @@ body.dismissible-modal-open .install-guide-notice { visibility: hidden; }
 }
 
 .example-text {
-    flex: 1;
-    min-width: 0;
+    flex: 1 1 min(220px, calc(100% - 60px));
+    min-width: min(220px, calc(100% - 60px));
 }
 
 .example-label {

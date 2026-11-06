@@ -299,6 +299,7 @@ function renderWordExample(word) {
         sentence.before(tabs);
     }
     sentence.textContent = (senses[0] || word)?.example || '';
+    window.ExampleReading?.render(word);
     document.getElementById('cardsArea')?.classList.toggle('has-merged-word', senses.length > 1);
     document.getElementById('cardsArea')?.classList.toggle('has-custom-word', !!word?.__customWord);
 }
@@ -308,6 +309,7 @@ function selectWordExample(index) {
     if (!Number.isInteger(index) || !senses?.[index]) return;
     currentExampleIndex = index;
     document.getElementById('exampleSentence').textContent = senses[index].example || '';
+    window.ExampleReading?.render(gameState.currentWord);
     const select = document.getElementById('exampleSenseSelect');
     if (select) select.value = String(index);
 }
@@ -623,6 +625,7 @@ function showLearningStartPrompt() {
     meaningCard?.setAttribute('aria-disabled', 'true');
     if (meaningText) meaningText.textContent = '意味';
     if (exampleSentence) exampleSentence.textContent = '開始すると例文が表示されます';
+    window.ExampleReading?.render(null);
     renderWordSpeechButton();
     markLearningContentReady();
     updateQuestionReasonUI();
@@ -3853,6 +3856,7 @@ function showNoWordsMessage() {
     const hasPreviousIllustration = !document.getElementById('previousIllustrationBtn').hidden;
     document.getElementById('exampleArea').style.display = hasPreviousIllustration || gameStateHistory.length > 0 ? 'flex' : 'none';
     document.getElementById('exampleArea').classList.add('no-question');
+    window.ExampleReading?.render(null);
 }
 
 function hideNoWordsMessage() {

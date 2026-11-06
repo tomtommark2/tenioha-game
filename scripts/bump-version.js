@@ -7,6 +7,8 @@ const indexFile = path.join(root, 'index.html');
 
 const VERSIONED_ASSETS = [
   'style.css',
+  'example-reading.css',
+  'js/example_reading.js',
   'wordbooks-m3e.css',
   'header-m3e.css',
   'daily-study.css',

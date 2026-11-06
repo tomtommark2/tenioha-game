@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-06",
+  "status": "local-unpublished",
+  "cards": 1098,
+  "sourceSenseRows": 1528,
+  "uniqueReadings": 1527,
+  "missingSourceRows": 0,
+  "missingRuntimeRows": 0,
+  "reviewedCandidates": 504,
+  "classifications": {
+    "copular": 376,
+    "notVerb": 3,
+    "existenceOrLocation": 61,
+    "auxiliary": 63,
+    "fixedResponse": 1
+  },
+  "equalityReadings": 376,
+  "changedEntries": 378,
+  "preservedFields": [
+    "word",
+    "pos",
+    "example",
+    "translation"
+  ],
+  "englishTokenOrderPreserved": true,
+  "bytes": 581770,
+  "gzipReferenceBytes": 84722,
+  "dataSha256": "9142b52398db4cc0e3c3f20b03848f7d9ab803a733afa67df21a52b3a726a00f",
+  "previousDataSha256": "4abb64978f3ae78d2a72a7bd3ee6f45ddca1c36882cdb335fadff62eb3c8525f",
+  "browserChecksPassed": 46,
+  "browserChecksSkipped": 2,
+  "cacheUnitChecksPassed": 4,
+  "syntaxChecksPassed": true,
+  "htmlSyncPassed": true,
+  "versionSyncPassed": true,
+  "staleCacheReproducedAndUpdated": true,
+  "offlineCacheVerified": true,
+  "manualRecoveryVerified": true,
+  "userDeviceOriginalCauseConfirmed": false,
+  "productionDeployed": false
+}

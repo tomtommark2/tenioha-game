@@ -1,0 +1,20 @@
+{
+  "version": "2026.1106.2301",
+  "sourceSenseRows": 1528,
+  "uniqueReadings": 1527,
+  "missingReadings": 0,
+  "equalityReadings": 376,
+  "readingBrowserPassed": 61,
+  "readingBrowserSkipped": 2,
+  "cacheUnitPassed": 4,
+  "regressionPassed": 37,
+  "regressionNote": "既存の意味カード高の仕様に合わせ、旧レイアウト試験1件を更新して再確認。初回36件成功＋更新した1件成功。",
+  "htmlSync": true,
+  "versionSync": true,
+  "syntax": true,
+  "unrelatedHtmlPreserved": true,
+  "gameLogicOnlyFourRenderHooks": true,
+  "vocabularyAndLearningKeysUnchanged": true,
+  "backendAndSaveCodeUnchanged": true,
+  "dataSha256": "9142b52398db4cc0e3c3f20b03848f7d9ab803a733afa67df21a52b3a726a00f"
+}

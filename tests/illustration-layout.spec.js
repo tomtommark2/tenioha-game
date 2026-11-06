@@ -1,9 +1,11 @@
 const { test, expect } = require('@playwright/test');
 
-test('絵・意味・前の絵の切替でヘッダーとカードの位置を動かさない', async ({ page }) => {
+test('絵・意味・前の絵の切替でヘッダーを保ち、開いた意味だけ必要な高さにする', async ({ page, baseURL }) => {
+  await page.route('**/*', route => new URL(route.request().url()).origin === new URL(baseURL).origin ? route.continue() : route.abort());
   await page.addInitScript(() => {
     localStorage.setItem('vocabGame_skipWelcome', 'true');
     localStorage.setItem('vocabGame_disableAutoUpdate', 'true');
+    localStorage.setItem('vocabGame_speechSettings', JSON.stringify({ autoRead: false, volume: 0 }));
   });
   await page.goto('/index.html');
   await page.evaluate(async () => {
@@ -15,7 +17,7 @@ test('絵・意味・前の絵の切替でヘッダーとカードの位置を�
     await document.fonts.ready;
   });
   const measure = () => page.evaluate(() => Object.fromEntries([
-    '.header', '.rpg-inline', '.review-score-summary', '#cardsArea', '#meaningCard', '#exampleArea', '.answer-tools'
+    '.header', '.rpg-inline', '.review-score-summary', '#cardsArea', '#vocabCard', '#meaningCard', '#exampleArea', '.answer-tools'
   ].map(selector => {
     const rect = document.querySelector(selector).getBoundingClientRect();
     return [selector, [rect.x + scrollX, rect.y + scrollY, rect.width, rect.height].map(value => Math.round(value * 10) / 10)];
@@ -42,7 +44,21 @@ test('絵・意味・前の絵の切替でヘッダーとカードの位置を�
     expect(await measure(), `image at ${width}px`).toEqual(before);
     await page.evaluate(() => handleMeaningCardClick({ currentTarget: document.getElementById('meaningCard') }));
     await expect(page.locator('#meaningCard .card-back')).toBeVisible();
-    expect(await measure(), `answer at ${width}px`).toEqual(before);
+    const answered = await measure();
+    for (const selector of ['.header', '.rpg-inline', '.review-score-summary', '#vocabCard']) {
+      expect(answered[selector], `${selector} after answer at ${width}px`).toEqual(before[selector]);
+    }
+    for (const selector of ['#cardsArea', '#meaningCard']) {
+      expect(answered[selector].slice(0, 3)).toEqual(before[selector].slice(0, 3));
+    }
+    expect(answered['#meaningCard'][3]).toBeGreaterThanOrEqual(before['#meaningCard'][3]);
+    // Since October, hidden meanings keep a compact card and may expand on reveal.
+    const shift = answered['#cardsArea'][3] - before['#cardsArea'][3];
+    for (const selector of ['#exampleArea', '.answer-tools']) {
+      expect(answered[selector][0]).toBe(before[selector][0]);
+      expect(answered[selector].slice(2)).toEqual(before[selector].slice(2));
+      expect(answered[selector][1] - before[selector][1]).toBeCloseTo(shift, 0);
+    }
     await page.evaluate(() => {
       WordIllustrations.rememberAnswer(vocabularyDatabase.illustrated.find(word => word.word === 'baby'), 'illustrated', vocabularyDatabase);
       showWord(gameState.currentWord);
