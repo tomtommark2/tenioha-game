@@ -36,7 +36,7 @@ test('お知らせは一覧で既読にせず、詳細の個別既読・再起�
   await page.keyboard.press('Enter');
   await expect(first).toHaveAttribute('open', '');
   await expect(first.locator('.announcement-read-label')).toHaveText('既読');
-  await expect(first.getByRole('heading', { name: '学習履歴への影響' })).toBeVisible();
+  await expect(first.getByRole('heading', { name: '変更点', exact: true })).toBeVisible();
   await expect(page.locator('#announcementReadStatus')).toHaveText(`未読 ${count - 1}件`);
   await page.screenshot({ path: `screenshots/announcements-v2-${testInfo.project.name}-detail.png` });
   await page.keyboard.press('Escape');
@@ -64,10 +64,10 @@ test('旧既読はその記事以前だけ移行し、未知ID・破損値でも
   });
   await page.goto('/index.html');
   await page.locator('#announcementBtn').click();
-  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 3件');
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 4件');
   await page.reload();
   await page.locator('#announcementBtn').click();
-  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 3件');
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 4件');
   await page.evaluate(() => {
     localStorage.setItem('vocabGame_readAnnouncementIds_v1', '{broken');
     localStorage.setItem('vocabGame_lastReadAnnouncementId', 'removed-article');
@@ -141,8 +141,8 @@ test('お知らせは日付と見出しだけのコンパクトな一覧から�
     await page.locator('#announcementBtn').click();
     const first = page.locator('#announcementList details').first();
     await expect(first.locator('.announcement-detail')).toBeHidden();
-    await expect(first.locator('summary')).toContainText('2026-10-04');
-    await expect(first.locator('summary')).toContainText('マイ単語帳');
+    await expect(first.locator('summary')).toContainText('2026-11-07');
+    await expect(first.locator('summary')).toContainText('最近のアップデートまとめ');
     await expect(page.locator('.announcement-excerpt, .announcement-disclosure')).toHaveCount(0);
     expect((await first.boundingBox()).height).toBeLessThan(110);
     const entry = await page.locator('#announcementFeedbackBtn').boundingBox();
@@ -212,9 +212,8 @@ test('お知らせはマイ単語帳の無料利用と使い方を案内し、�
   await page.goto('/index.html');
   const before = await page.evaluate(() => JSON.stringify([gameState.myWordbooks, gameState.wordStates, gameState.srsData, gameState.currentLevel]));
   await page.locator('#announcementBtn').click();
-  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 3件');
-  const first = page.locator('#announcementList details').first();
-  await expect(first).toHaveAttribute('data-announcement-id', '2026-10-04-my-wordbooks');
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 4件');
+  const first = page.locator('details[data-announcement-id="2026-10-04-my-wordbooks"]');
   await expect(first).toContainText('無料機能');
   await expect(first).not.toContainText('プレミアム機能');
   await first.locator('summary').click();
@@ -223,13 +222,13 @@ test('お知らせはマイ単語帳の無料利用と使い方を案内し、�
   await expect(first).toContainText('「単語帳から選ぶ」→「マイ単語帳」');
   await expect(first).toContainText('「名前の変更・単語帳の削除」');
   await page.screenshot({ path: testInfo.outputPath('my-wordbooks-announcement.png') });
-  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 2件');
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 3件');
   await expect(page.locator('#announcementList')).not.toContainText('固定20語');
   await expect(page.locator('details[data-announcement-id="2026-09-11-illustrated-wordbook"]')).toHaveCount(0);
   await expect(page.locator('details[data-announcement-id="2026-07-17-review-ranking"] .announcement-read-label')).toHaveText('既読');
   expect(await page.evaluate(() => JSON.stringify([gameState.myWordbooks, gameState.wordStates, gameState.srsData, gameState.currentLevel]))).toBe(before);
   await page.reload();
   await page.locator('#announcementBtn').click();
-  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 2件');
+  await expect(page.locator('#announcementReadStatus')).toHaveText('未読 3件');
   await expect(first.locator('.announcement-read-label')).toHaveText('既読');
 });
