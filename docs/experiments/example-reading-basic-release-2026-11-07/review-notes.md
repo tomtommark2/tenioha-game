@@ -15,4 +15,10 @@
 - 保存・語彙・中学データなど12ファイルは本番基準と一致。HTMLの差分は版番号だけ。公開する教材・処理は承認済み編集元と一致。[公開前確認値](preflight-verification.json)。
 - ログは公開用checkoutの `tmp/browser.log`／`tmp/cache.log`。全語の回答操作・全画像読込・全E2Eは再実行しない。Firebaseへのデプロイは行わない。
 
-公開後の確認結果は、Pages完了と本番照合後にここへ記録する。
+## 公開後の確認
+
+- `72e2435e`／`2026.1107.1446` をmainへ公開し、[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42344328440)。
+- 本番16ファイルが公開コミットとSHA-256一致。Chromium／WebKit×320／390／1280px×無料／プレミアムの12条件で、両HTML入口・基礎の等号・任意の全文訳・同綴り別品詞・長い主語・末尾troubleの動詞用法・中学との切替・英文音声・Undo・学習保存不変を確認した。
+- JSONは各レベル通常1回、版付きURLで取得。横はみ出しなし、操作領域44px、ページ例外0件。試作バーは本番では起動しない。[本番確認値](live-verification.json)。
+- 隔離ブラウザーで同一サイトのGET／HEAD以外を遮断。実バックエンド書込0件、Firebase・本番アカウント・投稿への返信は操作しない。編集元と以前の公開用checkoutの既存作業を保持した。
+

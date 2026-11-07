@@ -1,6 +1,6 @@
 {
   "date": "2026-11-07",
-  "status": "local-unpublished",
+  "status": "published",
   "level": "basic",
   "cards": 1231,
   "totalSenseRows": 1520,
@@ -37,5 +37,8 @@
   "partialFixtureHidesRetry": true,
   "htmlSync": true,
   "versionSync": true,
-  "productionDeployed": false
+  "productionDeployed": true,
+  "releaseVersion": "2026.1107.1446",
+  "releaseCommit": "72e2435edaa62611ed4ff4d6a28f15df35a16414",
+  "releaseVerification": "../example-reading-basic-release-2026-11-07/live-verification.json"
 }

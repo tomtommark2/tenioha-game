@@ -1,6 +1,8 @@
 # ひとこと・改善案
 
-## 基礎レベルの読み方：全1,520例（2026-11-07、ローカル反映・未公開）
+## 基礎レベルの読み方：全1,520例（2026-11-07、公開済み）
+
+- 公開版 `2026.1107.1446`（`72e2435e`）。[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42344328440)、本番16ファイル一致・Chromium／WebKitの12条件を確認。[公開記録](experiments/example-reading-basic-release-2026-11-07/review-notes.md)。
 
 - 最初の100例を保持し、残り1,420例を追加。基礎1,231カード・全1,520用法に対応、100%、残り0件。`complete: true`。元の語彙・英文・品詞・参照先・学習キーと、中学の1,527件は保持した。
 - SVCのbeは「＝」。長い主語・節・不定詞・分詞・否定表現・短い語句も点検し、英語の構造を追う区切りと自然な全文訳を分けた。必要な107例だけ補足。元データの不一致26件・確認候補7件は別記録に残した。[全例の判断・根拠](experiments/example-reading-basic-complete-2026-11-07/review-notes.md)／[最初の100例](experiments/example-reading-basic-100-2026-11-07/review-notes.md)。

@@ -18,6 +18,11 @@
 
 ## Deployment Targets
 
+### 2026-11-07 基礎の読み方（2026.1107.1446）
+
+- 基礎1,231カード・全1,520用法の区切り訳と任意の全文訳、基礎／中学のレベル別取得とキャッシュ更新を公開。元の語彙・学習キー・保存・採点・Firebaseは保持。
+- 公開元は `tmp/basic-reading-release-20261107`／`codex/basic-reading-release-20261107`、`1aa2d6f1` から対象22ファイルのみ反映。実装コミット `72e2435e`、[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42344328440)。事前ブラウザー61件・キャッシュ単体4件、本番16ファイル一致・12条件を確認。[公開記録](experiments/example-reading-basic-release-2026-11-07/review-notes.md)。
+
 ### 2026-11-06 中学の読み方・例文UI（2026.1106.2301）
 
 - 中学の全1,528用法に区切り訳と任意の全文訳。SVCのbeは「＝」、例文枠は採用済みA案。読み方データのキャッシュ更新・通信失敗時の手動再読込も公開した。語彙・学習キー・分類・保存・認証・課金・Firebaseは保持。
