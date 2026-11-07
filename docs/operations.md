@@ -18,6 +18,11 @@
 
 ## Deployment Targets
 
+### 2026-11-07 標準・受験の読み方と受け身（2026.1107.1719）
+
+- 標準全2,397用法・受験全2,580用法を追加し、中学・基礎の受け身69例を「＝」へ統一。4レベル全8,025用法に対応。語彙・学習キー・保存・採点・認証・課金・Firebaseは保持。
+- `e1fc3832` 起点の `tmp/readings-b1-b2-release-20261107`／`codex/readings-b1-b2-release-20261107` から対象31ファイルのみ公開。実装 `aa559cb6`、[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42355268518)。事前ブラウザー103件・キャッシュ4件、本番18ファイル一致・Chromium／WebKitの12条件を確認。[公開記録](experiments/example-reading-b1-b2-release-2026-11-07/review-notes.md)。
+
 ### 2026-11-07 基礎の読み方（2026.1107.1446）
 
 - 基礎1,231カード・全1,520用法の区切り訳と任意の全文訳、基礎／中学のレベル別取得とキャッシュ更新を公開。元の語彙・学習キー・保存・採点・Firebaseは保持。

@@ -67,6 +67,8 @@ Additional wordbook datasets also exist:
 
 ## 例文の区切り訳
 
+- 2026-11-07標準・受験と受け身69例を公開（`2026.1107.1719`／`aa559cb6`）。4レベル全8,025用法、対応漏れ0件。[公開・本番確認](experiments/example-reading-b1-b2-release-2026-11-07/review-notes.md)。
+
 - 2026-11-07基礎も公開完了（`2026.1107.1446`／`72e2435e`）：全1,520用法・レベル別取得・オフライン対応。[公開・本番確認](experiments/example-reading-basic-release-2026-11-07/review-notes.md)。
 
 - 2026-11-06公開完了（`2026.1106.2301`／`3d4987cd`）：中学全1,528用法・SVCのbe表記・例文UI・取得処理を反映。[公開・本番確認](experiments/example-reading-release-2026-11-06/review-notes.md)。

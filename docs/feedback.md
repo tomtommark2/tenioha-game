@@ -1,20 +1,22 @@
 # ひとこと・改善案
 
-## 受験（B2）の読み方：全2,580例（2026-11-07、ローカル反映・未公開）
+## 受験（B2）の読み方：全2,580例（2026-11-07、公開済み）
+
+- 公開版 `2026.1107.1719`（`aa559cb6`）。標準・受験の全例と受け身69例を同時に反映。[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42355268518)、本番18ファイル一致・12条件を確認。[公開記録](experiments/example-reading-b1-b2-release-2026-11-07/review-notes.md)。
 
 - 受験2,499カード・全2,580用法に区切り訳と任意の全文訳を追加。`complete: true`、元データ・画面側とも対応漏れ0件。これで中学・基礎・標準・受験の4レベルが全例対応。元の語彙ファイルと先行3レベルの読み方は保持した。
 - 内側の行為者、過去完了、否定、受け身の「＝」、進行形、熟語を確認。元データの誤字・品詞・断片など35件は確認候補として別記録に残した。[制作判断・確認記録](experiments/example-reading-exam1-complete-2026-11-07/review-notes.md)。
 - PC・スマホChromium／WebKitで代表30例、同綴りの別品詞と同品詞の別例文、幅320／390／1280px、保存不変、取得失敗と遅い応答を確認。古い部分キャッシュから4レベル全件への更新とオフライン読込も確認。[検証値・ハッシュ](experiments/example-reading-exam1-complete-2026-11-07/verification.json)。
-- [受験全例プレビュー](http://127.0.0.1:8067/index.html?exampleReadingPreview=1&exampleReadingLevel=exam1)。開いたままなら再読込する。デプロイ・Firebase変更は行っていない。
+- [受験全例プレビュー](http://127.0.0.1:8067/index.html?exampleReadingPreview=1&exampleReadingLevel=exam1)。開いたままなら再読込する。Firebaseは変更していない。
 
-## 標準（B1）の読み方：全2,397例（2026-11-07、ローカル反映・未公開）
+## 標準（B1）の読み方：全2,397例（2026-11-07、公開済み）
 
 - 標準2,179カード・全2,397用法に区切り訳と任意の全文訳を追加。`complete: true`、元データ・画面側とも対応漏れ0件。中学・基礎の最新データ、元の英文・品詞・参照先・学習キーは保持した。
 - 受け身の「＝」を継承し、動作・習慣・状態、内側の行為者、長い目的語、短い語句も確認。元データの誤字・品詞・作業メモなど31件は別記録へ。読み方は教材ごとに通常1回取得し、取得失敗・古いキャッシュへの対策を標準にも適用。[制作判断・確認記録](experiments/example-reading-daily-complete-2026-11-07/review-notes.md)。
 - PC・スマホChromium／WebKitで代表例、品詞切替、幅320／390／1280px、保存不変、再読込・教材切替を確認。成功数・保持比較・ハッシュは [verification.json](experiments/example-reading-daily-complete-2026-11-07/verification.json)。
 - [標準全例プレビュー](http://127.0.0.1:8067/index.html?exampleReadingPreview=1&exampleReadingLevel=daily)。開いたままの場合は再読込する。
 
-## 受け身の読み方も「＝」へ統一（2026-11-07、ローカル反映・未公開）
+## 受け身の読み方も「＝」へ統一（2026-11-07、公開済み）
 
 - 中学14例・基礎55例、計69例の区切り訳を修正。「授与された」「選ばれた」と「覆われていた」「〜でできている」など、動作・習慣・状態の違いを保つ。英文・品詞・全文訳・学習キーは保持。中学・基礎とも対応漏れ0件。[方針・確認記録](experiments/example-reading-passive-equals-2026-11-07/review-notes.md)。
 - 埋込み節、完了・未来・否定命令も確認。既に等号だった形容詞的な読み、存在・場所、通常の進行形、beのない短い用例と定型応答は保持。表示処理・保存・採点・Firebaseは変更しない。
