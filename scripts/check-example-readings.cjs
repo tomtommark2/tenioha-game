@@ -4,15 +4,18 @@ const vm = require('node:vm');
 const assert = require('node:assert/strict');
 
 const root = path.resolve(__dirname, '..');
-const context = { window: {} };
+const level = process.argv.find(arg => arg.startsWith('--level='))?.slice('--level='.length) || 'junior';
+assert.ok(['junior', 'basic'].includes(level), `Unsupported level: ${level}`);
+const context = { window: {}, readingLevel: level };
 vm.createContext(context);
 for (const file of ['data/vocabulary.js', 'js/utils.js', 'js/word_grouping.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
 }
-vm.runInContext('this.grouped = window.WordGrouping.build(DEFAULT_VOCABULARY, window.GameUtils).database.junior; this.source = this.grouped.flatMap(word => word.senses || [word]);', context);
-const data = JSON.parse(fs.readFileSync(path.join(root, 'data/example-readings-junior.json'), 'utf8'));
+vm.runInContext('this.grouped = window.WordGrouping.build(DEFAULT_VOCABULARY, window.GameUtils).database[readingLevel]; this.source = this.grouped.flatMap(word => word.senses || [word]);', context);
+const data = JSON.parse(fs.readFileSync(path.join(root, `data/example-readings-${level}.json`), 'utf8'));
 assert.equal(data.version, 1);
-assert.equal(data.level, 'junior');
+assert.equal(data.level, level);
+if (data.complete !== undefined) assert.equal(typeof data.complete, 'boolean');
 assert.ok(data.entries.length);
 const key = row => JSON.stringify([row.word, row.pos, row.example]);
 const sourceKeys = new Set(context.source.map(key));
@@ -43,11 +46,12 @@ const runtimeRows = context.grouped.flatMap(word => (word.senses || [word]).map(
     word: word.word, pos: sense.pos, example: sense.example
 })));
 const runtimePending = runtimeRows.filter(row => !covered.has(key(row)));
-if (process.argv.includes('--complete')) {
+if (process.argv.includes('--complete') || data.complete === true) {
     assert.equal(pending.length, 0, 'Uncovered source examples');
     assert.equal(runtimePending.length, 0, 'Uncovered displayed examples');
 }
 console.log(JSON.stringify({
+    level,
     sourceRows: context.source.length,
     uniqueSourceRows: sourceKeys.size,
     supportedRows: context.source.length - pending.length,

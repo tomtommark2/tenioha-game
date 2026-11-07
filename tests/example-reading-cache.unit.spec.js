@@ -10,7 +10,7 @@ test('例文補助の実際の取得URLとアイコンをオフライン・版�
     const assets = vm.runInNewContext(`${read('service_worker.js')}\nASSETS`, {
         importScripts() {}, GAME_VERSION: version, self: { addEventListener() {} }
     });
-    for (const file of ['example-reading.css', 'js/example_reading.js', 'data/example-readings-junior.json']) {
+    for (const file of ['example-reading.css', 'js/example_reading.js', 'data/example-readings-junior.json', 'data/example-readings-basic.json']) {
         expect(assets).toContain(`./${file}?v=${version}`);
         expect(fs.existsSync(path.join(root, file))).toBe(true);
     }
@@ -50,18 +50,18 @@ function worker(network) {
 
 test('古い読み方JSON・JSを再検証し、成功した内容だけをキャッシュする', async () => {
     const sw = worker(() => new Response('current'));
-    for (const asset of ['data/example-readings-junior.json', 'js/example_reading.js']) {
+    for (const asset of ['data/example-readings-junior.json', 'data/example-readings-basic.json', 'js/example_reading.js']) {
         const url = `https://example.test/app/${asset}?v=test`;
         sw.saved.set(url, new Response('stale'));
         expect(await (await sw.get(url)).text()).toBe('current');
         expect(await sw.saved.get(url).text()).toBe('current');
         expect(sw.requests.at(-1).options.cache).toBe('no-cache');
     }
-    expect(sw.requests).toHaveLength(2);
+    expect(sw.requests).toHaveLength(3);
     const css = 'https://example.test/app/style.css?v=test';
     sw.saved.set(css, new Response('cached CSS'));
     expect(await (await sw.get(css)).text()).toBe('cached CSS');
-    expect(sw.requests).toHaveLength(2);
+    expect(sw.requests).toHaveLength(3);
 });
 
 for (const failure of ['offline', 'HTTP 503']) {
@@ -70,11 +70,13 @@ for (const failure of ['offline', 'HTTP 503']) {
             if (failure === 'offline') throw new Error('Offline');
             return new Response('error', { status: 503 });
         });
-        const url = 'https://example.test/app/data/example-readings-junior.json?v=test';
-        sw.saved.set(url, new Response('last good data'));
-        expect(await (await sw.get(url)).text()).toBe('last good data');
-        expect(await sw.saved.get(url).text()).toBe('last good data');
-        await expect(sw.get(url + '-uncached')).rejects.toThrow();
-        expect(sw.requests).toHaveLength(2);
+        for (const level of ['junior', 'basic']) {
+            const url = `https://example.test/app/data/example-readings-${level}.json?v=test`;
+            sw.saved.set(url, new Response('last good data'));
+            expect(await (await sw.get(url)).text()).toBe('last good data');
+            expect(await sw.saved.get(url).text()).toBe('last good data');
+            await expect(sw.get(url + '-uncached')).rejects.toThrow();
+        }
+        expect(sw.requests).toHaveLength(4);
     });
 }

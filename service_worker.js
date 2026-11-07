@@ -15,6 +15,7 @@ const ASSETS = [
     './js/example_reading.js',
     './js/example_reading.js?v=' + GAME_VERSION,
     './data/example-readings-junior.json?v=' + GAME_VERSION,
+    './data/example-readings-basic.json?v=' + GAME_VERSION,
     './assets/icons/quote.svg',
     './assets/icons/volume-2.svg',
     './assets/icons/undo-2.svg',
@@ -103,7 +104,7 @@ self.addEventListener('fetch', (event) => {
     // per page load, keep the last successful copy for offline use, and never
     // replace it with an HTTP error. Other static assets keep their existing policy.
     const pathname = new URL(event.request.url).pathname;
-    if (pathname.endsWith('/data/example-readings-junior.json')
+    if (/\/data\/example-readings-(junior|basic)\.json$/.test(pathname)
         || pathname.endsWith('/js/example_reading.js')) {
         event.respondWith(
             fetch(event.request, { cache: 'no-cache' }).then(response => {

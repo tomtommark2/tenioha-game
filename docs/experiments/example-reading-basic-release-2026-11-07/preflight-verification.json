@@ -1,0 +1,83 @@
+{
+  "version": "2026.1107.1446",
+  "base": "1aa2d6f1e7ef8bb5f0b5e87f4ea0a38ed738bc43",
+  "basicReadings": 1520,
+  "complete": true,
+  "first100Preserved": true,
+  "juniorReadings": 1527,
+  "unchanged": [
+    {
+      "file": "data/vocabulary.js",
+      "sha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b"
+    },
+    {
+      "file": "data/example-readings-junior.json",
+      "sha256": "9142b52398db4cc0e3c3f20b03848f7d9ab803a733afa67df21a52b3a726a00f"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "f1a8425883a835ea0c9b69223acd73ee8a11861ec0ad726f41e8713552997802"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "5d13260b56bd7fa789507240c39a820b39546ede29e24a6ee6bbba686adb93a3"
+    },
+    {
+      "file": "js/word_grouping.js",
+      "sha256": "3608beff448248ec16c2f6cb97d1ef4b3da2853b0c55817424c4ceadb35c9b27"
+    },
+    {
+      "file": "js/my_wordbooks.js",
+      "sha256": "454ce41f650b52c21d6b572a81c1895ecc3c0b419a1bcd9dd197e5b991246b8a"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "js/config.js",
+      "sha256": "fdfc8b76e37fcce3a7c86c17b8b600926985c1927e1d34bb12faf5e35ed78d3e"
+    },
+    {
+      "file": "firestore.rules",
+      "sha256": "9bd7cb50bfedeb5489197ce4555b8bd42cb2e63e1eaf9d1818fd4838721f2865"
+    },
+    {
+      "file": "functions/index.js",
+      "sha256": "dc6bafd8036c6c53606fe0e968d5bad05ab3ff1edab82d9321aa248beae0def9"
+    },
+    {
+      "file": "example-reading.css",
+      "sha256": "a143a3352396fee31b2b247aa0b2e4fdb59a0e2147ba17feb218f0a21ec86eac"
+    },
+    {
+      "file": "style.css",
+      "sha256": "6b888cbc309697e7227d4913f385bcd7029f15b326e33bb4f63727561aeacf5c"
+    }
+  ],
+  "htmlOnlyVersionChanged": true,
+  "approvedSourceMatches": [
+    {
+      "file": "js/example_reading.js",
+      "sha256": "6ef4e65e9aa625497ece0bc70e829de15d3c4c90d143daca4ddbe1ee51f90523"
+    },
+    {
+      "file": "js/example_reading_preview.js",
+      "sha256": "10ec13050813a2e0ce299dab2cbd4c8faafc8621f22109f764dc1811d07fe8a7"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "ea2829ce8c14abf52f67b6e70335ce78c03d1c126c53aa1b9892c270c231ed62"
+    },
+    {
+      "file": "data/example-readings-basic.json",
+      "sha256": "f644bb64415555d38e5a2c4bc9308de0d84cc105f9a83bc1736d5fd0832f3f74"
+    }
+  ],
+  "browserChecksPassed": 61,
+  "browserChecksSkipped": 2,
+  "cacheChecksPassed": 4,
+  "sourceCoverageMissing": 0,
+  "runtimeCoverageMissing": 0,
+  "productionBackendChanged": false
+}

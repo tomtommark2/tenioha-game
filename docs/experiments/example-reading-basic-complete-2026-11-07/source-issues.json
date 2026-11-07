@@ -1,0 +1,332 @@
+{
+  "date": "2026-11-07",
+  "scope": "今回追加した基礎1,420例。全語彙の校閲完了を意味しない。",
+  "sourceChanged": false,
+  "identified": [
+    {
+      "offset": 3,
+      "word": "attempt",
+      "pos": "名",
+      "example": "He attempted to climb the mountain.",
+      "kind": "pos",
+      "issue": "attemptedは動詞。見出しは名詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 151,
+      "word": "chirp",
+      "pos": "名",
+      "example": "I woke up to the sound of birds chirping.",
+      "kind": "pos",
+      "issue": "見出しは名詞。chirpingはbirdsの動きを表す分詞として読む。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 182,
+      "word": "comic",
+      "pos": "名",
+      "example": "I used to read comics every sunday.",
+      "kind": "spelling",
+      "issue": "曜日のsundayは通常Sunday。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 189,
+      "word": "comparative",
+      "pos": "名",
+      "example": "'Better' is the comparative form of 'good'.",
+      "kind": "pos",
+      "issue": "comparativeはformを修飾する形容詞として使われている。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 220,
+      "word": "cooler",
+      "pos": "名",
+      "example": "It's much cooler in the mountains.",
+      "kind": "pos",
+      "issue": "coolerは形容詞coolの比較級。冷却器の名詞用例ではない。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 238,
+      "word": "crisp",
+      "pos": "名",
+      "example": "I like these crisp cookies.",
+      "kind": "pos",
+      "issue": "crispはcookiesを修飾する形容詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 247,
+      "word": "cruise",
+      "pos": "動",
+      "example": "Cruise ship.",
+      "kind": "phrase",
+      "issue": "動詞見出しにCruise ship.という名詞句がある。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 361,
+      "word": "enough",
+      "pos": "代",
+      "example": "Is there enough time to finish this?",
+      "kind": "pos",
+      "issue": "enoughはtimeの量を限定している。代名詞の用例ではない。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 371,
+      "word": "escape",
+      "pos": "名",
+      "example": "They managed to escape from the fire.",
+      "kind": "pos",
+      "issue": "escapeはtoに続く動詞。見出しは名詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 383,
+      "word": "except",
+      "pos": "接",
+      "example": "Everyone was there except for me.",
+      "kind": "pos",
+      "issue": "except forは前置詞句。見出しは接続詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 472,
+      "word": "forward",
+      "pos": "副",
+      "example": "The car made a forward motion.",
+      "kind": "pos",
+      "issue": "forwardはmotionを修飾する形容詞。見出しは副詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 493,
+      "word": "further",
+      "pos": "副",
+      "example": "Any further questions?",
+      "kind": "pos",
+      "issue": "furtherはquestionsを修飾する形容詞。見出しは副詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 561,
+      "word": "himself",
+      "pos": "代",
+      "example": "He live by himself in a small apartment.",
+      "kind": "agreement",
+      "issue": "He liveは通常He lives。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 634,
+      "word": "junior",
+      "pos": "形",
+      "example": "He is a junior at the university.",
+      "kind": "pos",
+      "issue": "a juniorは大学3年生を指す名詞。見出しは形容詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 696,
+      "word": "lock",
+      "pos": "名",
+      "example": "Don't forget to lock the back door.",
+      "kind": "pos",
+      "issue": "lockはtoに続く動詞。見出しは名詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 749,
+      "word": "military",
+      "pos": "形",
+      "example": "He spent two years in the military.",
+      "kind": "pos",
+      "issue": "the militaryは軍隊を指す名詞。見出しは形容詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 788,
+      "word": "net",
+      "pos": "形",
+      "example": "A butterfly was caught in the net.",
+      "kind": "pos",
+      "issue": "netはtheに続く名詞。見出しは形容詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 792,
+      "word": "next",
+      "pos": "代",
+      "example": "What comes next?",
+      "kind": "pos",
+      "issue": "nextはcomesを修飾する副詞。見出しは代名詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 848,
+      "word": "panic",
+      "pos": "名",
+      "example": "Don't panic! Everything will be fine.",
+      "kind": "pos",
+      "issue": "panicは否定命令で用いる動詞。見出しは名詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 969,
+      "word": "quit",
+      "pos": "形",
+      "example": "Notice to quit.",
+      "kind": "pos",
+      "issue": "quitはtoに続く動詞。見出しは形容詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 1043,
+      "word": "roll",
+      "pos": "動",
+      "example": "Ball rolled away.",
+      "kind": "article",
+      "issue": "独立した通常の文ならBallの前に冠詞などが必要。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 1083,
+      "word": "schoolwork",
+      "pos": "名",
+      "example": "He spends lot of time on his schoolwork.",
+      "kind": "article",
+      "issue": "通常はspends a lot of timeとする。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 1141,
+      "word": "singular",
+      "pos": "名",
+      "example": "The word 'datum' is singular.",
+      "kind": "pos",
+      "issue": "singularはdatumの性質を述べる形容詞。見出しは名詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 1240,
+      "word": "tap",
+      "pos": "動",
+      "example": "Tap on shoulder.",
+      "kind": "article",
+      "issue": "通常はon the shoulderなど限定詞を伴う。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 1341,
+      "word": "weekly",
+      "pos": "形",
+      "example": "The magazine is published weekly.",
+      "kind": "pos",
+      "issue": "weeklyは出版の頻度を示す副詞。見出しは形容詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    },
+    {
+      "offset": 1412,
+      "word": "tie",
+      "pos": "名",
+      "example": "He showed me how to tie a knot.",
+      "kind": "pos",
+      "issue": "tieはhow toに続く動詞。見出しは名詞。",
+      "status": "identified-source-mismatch",
+      "action": "元データ・学習キーを保持。読み方側で実際の文構造を示し、短く注記。"
+    }
+  ],
+  "reviewCandidates": [
+    {
+      "offset": 312,
+      "word": "done",
+      "pos": "動",
+      "example": "I'm finally done with my homework.",
+      "issue": "doneの完了状態と動詞・形容詞のラベル。形だけで断定せず確認する。",
+      "status": "review-candidate",
+      "action": "英文を改変せず、現在の構造に沿った区切り・訳を付ける。"
+    },
+    {
+      "offset": 359,
+      "word": "enough",
+      "pos": "代",
+      "example": "I have enough of this!",
+      "issue": "不満を表す意図ならhave enoughとhave had enoughの違いを確認する。現在の英文を勝手に完了形へ変えない。",
+      "status": "review-candidate",
+      "action": "英文を改変せず、現在の構造に沿った区切り・訳を付ける。"
+    },
+    {
+      "offset": 367,
+      "word": "envy",
+      "pos": "動",
+      "example": "Envy your success.",
+      "issue": "主語のないEnvy your success.を例文として使う意図を確認する。命令文への限定を避けた。",
+      "status": "review-candidate",
+      "action": "英文を改変せず、現在の構造に沿った区切り・訳を付ける。"
+    },
+    {
+      "offset": 530,
+      "word": "half-price",
+      "pos": "形",
+      "example": "I bought these shoes half-price.",
+      "issue": "half-priceは買った価格を示す。形容詞の見出しとの対応を確認する。",
+      "status": "review-candidate",
+      "action": "英文を改変せず、現在の構造に沿った区切り・訳を付ける。"
+    },
+    {
+      "offset": 978,
+      "word": "rap",
+      "pos": "動",
+      "example": "Rap music.",
+      "issue": "Rap music.は通常名詞句として読める。動詞用法を示す意図なら別の例が必要。",
+      "status": "review-candidate",
+      "action": "英文を改変せず、現在の構造に沿った区切り・訳を付ける。"
+    },
+    {
+      "offset": 1176,
+      "word": "split",
+      "pos": "形",
+      "example": "The class was split into two groups.",
+      "issue": "was splitはこの文脈で受け身として読んだ。状態と動作の境界、見出しの形容詞用例としての適否は別途確認する。",
+      "status": "review-candidate",
+      "action": "英文を改変せず、現在の構造に沿った区切り・訳を付ける。"
+    },
+    {
+      "offset": 1407,
+      "word": "stamp",
+      "pos": "動",
+      "example": "Stamp feet.",
+      "issue": "Stamp feet.は短い動詞句として保持。通常の指示ならStamp your feet.などとする。",
+      "status": "review-candidate",
+      "action": "英文を改変せず、現在の構造に沿った区切り・訳を付ける。"
+    }
+  ]
+}

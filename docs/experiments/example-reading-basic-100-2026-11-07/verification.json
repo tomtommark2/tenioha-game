@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-07",
+  "status": "local-unpublished",
+  "level": "basic",
+  "cards": 1231,
+  "totalSenseRows": 1520,
+  "addedReadings": 100,
+  "coveredCards": 82,
+  "remaining": 1420,
+  "coveragePercent": 6.578947368421052,
+  "next": {
+    "word": "atom",
+    "pos": "名",
+    "example": "Everything is made of atoms."
+  },
+  "sourceVocabularyPreserved": true,
+  "juniorDataPreserved": true,
+  "juniorDataSha256": "9142b52398db4cc0e3c3f20b03848f7d9ab803a733afa67df21a52b3a726a00f",
+  "bytes": 48345,
+  "gzipReferenceBytes": 8588,
+  "dataSha256": "9343a9041c9013ed4b73554848fef37be2971ca8994194b7bb7154a4b305517f",
+  "notes": 26,
+  "equalityReadings": 27,
+  "browserChecksPassed": 61,
+  "browserChecksSkipped": 2,
+  "cacheUnitChecksPassed": 4,
+  "newBasicRepresentativeExamples": 20,
+  "viewports": [
+    320,
+    390,
+    1280
+  ],
+  "supportedModes": [
+    "junior",
+    "basic"
+  ],
+  "loadedOncePerLevel": true,
+  "knownUnregisteredHidesRetry": true,
+  "offlineBasicDataVerified": true,
+  "htmlSync": true,
+  "versionSync": true,
+  "syntaxChecks": true,
+  "productionDeployed": false
+}

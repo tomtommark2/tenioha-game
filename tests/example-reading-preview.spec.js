@@ -130,8 +130,8 @@ test('例文の読み方：開閉は回答・保存を増やさず音声は英�
 test('例文の読み方：対象外・自作語・次の出題で前の補助を残さない', async ({ page }) => {
     await page.locator('#exampleReadingToggle').click();
     await page.evaluate(() => {
-        gameState.currentLevel = 'basic';
-        showWord(vocabularyDatabase.basic[0]);
+        gameState.currentLevel = 'daily';
+        showWord(vocabularyDatabase.daily[0]);
     });
     await expect(page.locator('#exampleReadingToggle')).toBeHidden();
     await expect(page.locator('#exampleReadingPanel')).toBeHidden();

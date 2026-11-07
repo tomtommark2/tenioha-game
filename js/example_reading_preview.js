@@ -3,7 +3,8 @@
     const params = new URLSearchParams(location.search);
     if (!['localhost', '127.0.0.1'].includes(location.hostname) || params.get('exampleReadingPreview') !== '1') return;
     const scriptUrl = new URL(document.currentScript.src);
-    const samples = await window.ExampleReading.load();
+    const level = params.get('exampleReadingLevel') === 'basic' ? 'basic' : 'junior';
+    const samples = await window.ExampleReading.load(false, level);
     if (!samples.length) return;
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
@@ -13,9 +14,9 @@
 
     function showSample(index) {
         const sample = samples[index];
-        const word = vocabularyDatabase.junior.find(word => word.word === sample.word);
+        const word = vocabularyDatabase[level].find(word => word.word === sample.word);
         if (!word) return;
-        gameState.currentLevel = 'junior';
+        gameState.currentLevel = level;
         gameState.currentMode = 'unlearned';
         gameState.isReviewWord = false;
         gameState.currentQuestionReason = '';
@@ -46,7 +47,7 @@
         preview.setAttribute('aria-label', '読み方の試作');
         const previewLabel = document.createElement('label');
         previewLabel.htmlFor = 'exampleReadingSample';
-        previewLabel.textContent = '読み方の試作';
+        previewLabel.textContent = level === 'basic' ? '基礎の読み方' : '読み方の試作';
         sampleSelect = document.createElement('select');
         sampleSelect.id = 'exampleReadingSample';
         const placeholder = document.createElement('option');

@@ -1,5 +1,14 @@
 # ひとこと・改善案
 
+## 基礎レベルの読み方：全1,520例（2026-11-07、ローカル反映・未公開）
+
+- 最初の100例を保持し、残り1,420例を追加。基礎1,231カード・全1,520用法に対応、100%、残り0件。`complete: true`。元の語彙・英文・品詞・参照先・学習キーと、中学の1,527件は保持した。
+- SVCのbeは「＝」。長い主語・節・不定詞・分詞・否定表現・短い語句も点検し、英語の構造を追う区切りと自然な全文訳を分けた。必要な107例だけ補足。元データの不一致26件・確認候補7件は別記録に残した。[全例の判断・根拠](experiments/example-reading-basic-complete-2026-11-07/review-notes.md)／[最初の100例](experiments/example-reading-basic-100-2026-11-07/review-notes.md)。
+- 各レベル初回の取得とMap再利用を継続。実際の取得失敗は手動で回復し、部分データの既知の未登録例には再取得を促さない。学習保存・分類・配点・Firebaseは変更しない。JSON672,506 bytes（参考gzip108,824 bytes）、回答ごとの通信や翻訳APIは増やさない。
+- 全件照合・英文復元、中学・既存100例の保持、HTML・版同期を確認。関連ブラウザー61件・キャッシュ単体4件が成功（実Service Worker検査の他2環境は対象外としてスキップ）。旧基礎100例キャッシュから全件への更新を追加確認し、1件成功。[確認値](experiments/example-reading-basic-complete-2026-11-07/verification.json)。
+- [基礎全例プレビュー](http://127.0.0.1:8067/index.html?exampleReadingPreview=1&exampleReadingLevel=basic)。開いたままなら再読込が必要。ローカルの明示URLだけに一覧を出し、通常起動は開始待ちを保つ。
+
+
 ## 中学の読み方・例文UI（2026-11-06、公開済み）
 
 - 公開版 `2026.1106.2301`（`3d4987cd`）。[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42231172849)、本番16ファイルの一致とChromium／WebKit・無料／プレミアム・320／390／1280pxの12条件を確認。事前は専用61件・関連37件・キャッシュ4件成功。[公開記録](experiments/example-reading-release-2026-11-06/review-notes.md)。
