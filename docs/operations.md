@@ -18,6 +18,11 @@
 
 ## Deployment Targets
 
+### 2026-11-07 お知らせの改善まとめ（2026.1107.1748）
+
+- 「最近のアップデートまとめ」を追加。公開済みの読み方・正解後の意味表示・今日の学習・マイ単語帳・復習・表示改善を6項目に集約。既存6記事・既読ID・折りたたみ表示と大型告知を維持。
+- 本番 `794fdffc` 起点の `tmp/announcements-roundup-release-20261107`／`codex/announcements-roundup-release-20261107` から記事データ・テスト・版番号の5ファイルを `c3b23359` で公開。[Pages成功](https://github.com/tomtommark2/tenioha-game/actions/runs/42357196625)。関連14件とHTML／版同期が成功。本番6ファイル一致、Chromium／WebKitの6条件で今回だけ新着・既読移行／再読込・表示とフォーカス・学習記録不変・ページ例外0件を確認。[仕様・確認記録](announcements-review-2026-09-09.md)、[本番確認値](experiments/announcements-roundup-release-2026-11-07/live-verification.json)。
+
 ### 2026-11-07 標準・受験の読み方と受け身（2026.1107.1719）
 
 - 標準全2,397用法・受験全2,580用法を追加し、中学・基礎の受け身69例を「＝」へ統一。4レベル全8,025用法に対応。語彙・学習キー・保存・採点・認証・課金・Firebaseは保持。

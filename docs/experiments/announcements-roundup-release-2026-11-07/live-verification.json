@@ -1,0 +1,155 @@
+{
+  "version": "2026.1107.1748",
+  "commit": "c3b23359ba6027ce301ebe46a5f2c71e7304d0e4",
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "9272c58091fd6d8c94e34c5f829e2713eb01e55d0246d582cc597bf2846297e7"
+    },
+    {
+      "file": "vocab_clicker_game.html",
+      "sha256": "9272c58091fd6d8c94e34c5f829e2713eb01e55d0246d582cc597bf2846297e7"
+    },
+    {
+      "file": "js/version.js",
+      "sha256": "95e392fb6a10b1db01a26aecd7a6cf059fc3fd96f34a5a5f5abc7e6ccf1524c3"
+    },
+    {
+      "file": "data/announcements.js",
+      "sha256": "c26e00b96163336d7ffac048685b577f621d8fd707f1e4bf12940c24dfcca05e"
+    },
+    {
+      "file": "js/ui_manager.js",
+      "sha256": "aa874b9002ff6b6725a8723ea85fce80d5a9ae494a35892ea69a52701aa53d02"
+    },
+    {
+      "file": "style.css",
+      "sha256": "6b888cbc309697e7227d4913f385bcd7029f15b326e33bb4f63727561aeacf5c"
+    }
+  ],
+  "cases": [
+    {
+      "browser": "chromium",
+      "width": 320,
+      "entry": "index.html",
+      "readState": "per-article",
+      "onlyNewArticleUnread": true,
+      "foldedInitially": true,
+      "sixItemsAndUsageVisible": true,
+      "oldReadIdsPreserved": true,
+      "readStatePersists": true,
+      "noExtraAutoPopup": true,
+      "noHorizontalOverflow": true,
+      "learningUnchanged": true,
+      "syntheticHistoryWords": 1,
+      "focusRestored": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "entry": "vocab_clicker_game.html",
+      "readState": "legacy",
+      "onlyNewArticleUnread": true,
+      "foldedInitially": true,
+      "sixItemsAndUsageVisible": true,
+      "oldReadIdsPreserved": true,
+      "readStatePersists": true,
+      "noExtraAutoPopup": true,
+      "noHorizontalOverflow": true,
+      "learningUnchanged": true,
+      "syntheticHistoryWords": 1,
+      "focusRestored": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "entry": "index.html",
+      "readState": "per-article",
+      "onlyNewArticleUnread": true,
+      "foldedInitially": true,
+      "sixItemsAndUsageVisible": true,
+      "oldReadIdsPreserved": true,
+      "readStatePersists": true,
+      "noExtraAutoPopup": true,
+      "noHorizontalOverflow": true,
+      "learningUnchanged": true,
+      "syntheticHistoryWords": 1,
+      "focusRestored": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 320,
+      "entry": "index.html",
+      "readState": "per-article",
+      "onlyNewArticleUnread": true,
+      "foldedInitially": true,
+      "sixItemsAndUsageVisible": true,
+      "oldReadIdsPreserved": true,
+      "readStatePersists": true,
+      "noExtraAutoPopup": true,
+      "noHorizontalOverflow": true,
+      "learningUnchanged": true,
+      "syntheticHistoryWords": 1,
+      "focusRestored": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "entry": "vocab_clicker_game.html",
+      "readState": "legacy",
+      "onlyNewArticleUnread": true,
+      "foldedInitially": true,
+      "sixItemsAndUsageVisible": true,
+      "oldReadIdsPreserved": true,
+      "readStatePersists": true,
+      "noExtraAutoPopup": true,
+      "noHorizontalOverflow": true,
+      "learningUnchanged": true,
+      "syntheticHistoryWords": 1,
+      "focusRestored": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "entry": "index.html",
+      "readState": "per-article",
+      "onlyNewArticleUnread": true,
+      "foldedInitially": true,
+      "sixItemsAndUsageVisible": true,
+      "oldReadIdsPreserved": true,
+      "readStatePersists": true,
+      "noExtraAutoPopup": true,
+      "noHorizontalOverflow": true,
+      "learningUnchanged": true,
+      "syntheticHistoryWords": 1,
+      "focusRestored": true,
+      "pageErrors": []
+    }
+  ],
+  "actualBackendWrites": 0,
+  "pages": {
+    "id": 42357196625,
+    "head_sha": "c3b23359ba6027ce301ebe46a5f2c71e7304d0e4",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/tomtommark2/tenioha-game/actions/runs/42357196625"
+  },
+  "preflight": {
+    "base": "794fdffca5030d8a53403b7a50a577f524bd08ca",
+    "relatedBrowserTestsPassed": 14,
+    "htmlSync": true,
+    "versionSync": true,
+    "previousSixArticlesUnchanged": true,
+    "retiredReadIdsUnchanged": true,
+    "htmlVersionOnly": true,
+    "otherRuntimeUnchanged": true
+  },
+  "verificationNotes": [
+    "再読込前後の学習記録は保存対象のSRSで比較。未回答語の仮のdueAtは起動時に再生成されるため比較対象から外し、隔離端末に既存学習1語を置いて正誤履歴・期限・ポイントの保持を確認した。画面の開閉中は仮のSRSを含む全状態も不変。"
+  ]
+}
