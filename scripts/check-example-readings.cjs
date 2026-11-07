@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 
 const root = path.resolve(__dirname, '..');
 const level = process.argv.find(arg => arg.startsWith('--level='))?.slice('--level='.length) || 'junior';
-assert.ok(['junior', 'basic'].includes(level), `Unsupported level: ${level}`);
+assert.ok(['junior', 'basic', 'daily', 'exam1'].includes(level), `Unsupported level: ${level}`);
 const context = { window: {}, readingLevel: level };
 vm.createContext(context);
 for (const file of ['data/vocabulary.js', 'js/utils.js', 'js/word_grouping.js']) {
@@ -30,7 +30,10 @@ for (const entry of data.entries) {
     for (const chunk of entry.chunks) {
         assert.equal(chunk.length, 2);
         assert.ok(chunk.every(value => typeof value === 'string' && value.trim()));
-        // A standalone relation marker is allowed only for an actual copular be.
+        if (chunk[1].includes('＝')) {
+            assert.match(chunk[0], /\b(?:am|is|are|was|were|be|been|being|isn't|aren't|wasn't|weren't)\b|\b(?:I|you|he|she|it|we|they|there|that|what|who)(?:'m|'s|'re)\b/i, `Equality without be: ${identity}`);
+        }
+        // A standalone relation marker requires be (copular or passive use).
         if (/^＝(?:？|（過去）|（予測）)?$/u.test(chunk[1])) {
             assert.match(chunk[0], /^(?:am|is|are|was|were|be|will be)[.?!,]?$/i, `Invalid equality marker: ${identity}`);
         } else {

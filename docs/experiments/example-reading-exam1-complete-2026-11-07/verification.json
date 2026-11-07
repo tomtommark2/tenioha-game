@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-07",
+  "status": "local-not-deployed",
+  "level": "exam1",
+  "cards": 2499,
+  "entries": 2580,
+  "coverage": {
+    "junior": {
+      "level": "junior",
+      "sourceRows": 1528,
+      "uniqueSourceRows": 1527,
+      "supportedRows": 1528,
+      "supportedEntries": 1527,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    },
+    "basic": {
+      "level": "basic",
+      "sourceRows": 1520,
+      "uniqueSourceRows": 1520,
+      "supportedRows": 1520,
+      "supportedEntries": 1520,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    },
+    "daily": {
+      "level": "daily",
+      "sourceRows": 2397,
+      "uniqueSourceRows": 2397,
+      "supportedRows": 2397,
+      "supportedEntries": 2397,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    },
+    "exam1": {
+      "level": "exam1",
+      "sourceRows": 2580,
+      "uniqueSourceRows": 2580,
+      "supportedRows": 2580,
+      "supportedEntries": 2580,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    }
+  },
+  "sourceSnapshotUnchanged": true,
+  "preserved": {
+    "data/vocabulary.js": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b",
+    "data/example-readings-junior.json": "52224888a5b5c40e71d0d96470d3f81d86b9fbc5175327190c10d3262d8081e8",
+    "data/example-readings-basic.json": "31e580fb3faaa375ea07e175642fa664a524cae34d37abbc2e4484129ca57ec9",
+    "data/example-readings-daily.json": "ed4e086bb23653cd5ada6bac2e4d451ebde885f54fb59759920d9c0d09c2e9ef"
+  },
+  "notes": 37,
+  "sourceIssues": 35,
+  "bytes": 775619,
+  "gzipBytes": 115566,
+  "validation": {
+    "initialBrowser": {
+      "passed": 98,
+      "failed": 5,
+      "skipped": 2
+    },
+    "fixtureCorrection": {
+      "passed": 6,
+      "failed": 0,
+      "reason": "対象外教材の表示テストをプラン制限から分離し、自作語も currentWord と描画対象を一致させた。製品コードの修正は不要だった。"
+    },
+    "finalCoverage": {
+      "passed": 103,
+      "failed": 0,
+      "skipped": 2
+    },
+    "cacheUnit": {
+      "passed": 4
+    },
+    "widths": [
+      320,
+      390,
+      1280
+    ],
+    "engines": [
+      "Chromium desktop",
+      "Chromium mobile",
+      "WebKit mobile"
+    ],
+    "htmlSync": true,
+    "versionSync": true
+  },
+  "files": {
+    "data/example-readings-exam1.json": "ed6b383bca2e8a20decfc1b0fac276918840673fcf03147cf1b77bf4e19332d9",
+    "js/example_reading.js": "170147165c3f1e0ba04768bdc36053814a35b5b59057791a2073d6c78ab97f71",
+    "js/example_reading_preview.js": "78a45a587d4af0f9c0894662f3a8a2f98a0344cd4f70d8d6b6308071ab499623",
+    "service_worker.js": "a1bf65a3125dd066d6a9fdadc8af108c1472d2698ca7f5f205bf1b0c10264b72",
+    "scripts/check-example-readings.cjs": "692f229f57816d4a5a6d39ab7b0845fcad93a361358a536d2288bb575e002d55",
+    "tests/example-reading-exam1.spec.js": "33b75326cadd4c16200a45d863afcbb26be837679c0c30e25cb50d545a3a3dea",
+    "tests/example-reading-daily.spec.js": "995e9c13597292cc611593988901f6d7d577334a774ff2cbdc6101e1e799e86a",
+    "tests/example-reading-preview.spec.js": "93562f763ac5b5f1a4b0be75620115d37fadd302d06afcc5a597ec964b1a6a7b",
+    "tests/example-reading-cache.spec.js": "123c5f208712f250c27ab894373bfe244bc97862e729c2b6a671ec81e8991ed5",
+    "tests/example-reading-cache.unit.spec.js": "ec3ac88729bf1844cb94410f2644a405846d341d740b1a34201c01eb1aac0e61",
+    "playwright.reading-preview.config.js": "b1a108c6709a30c156e2bb8cf685adb62695d9737f315dd71d78546c2c8fac95"
+  }
+}

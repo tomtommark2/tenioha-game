@@ -1,0 +1,219 @@
+[
+  {
+    "index": 58,
+    "word": "volunteer",
+    "pos": "名",
+    "example": "Work as volunteer.",
+    "issue": "as volunteer は通常 as a volunteer とする"
+  },
+  {
+    "index": 121,
+    "word": "worthy",
+    "pos": "形",
+    "example": "Trustworthy.",
+    "issue": "worthy の例として別語の Trustworthy が置かれている"
+  },
+  {
+    "index": 127,
+    "word": "wrist",
+    "pos": "名",
+    "example": "Sprain wrist.",
+    "issue": "Sprain wrist. は通常 sprain a/your wrist とする"
+  },
+  {
+    "index": 167,
+    "word": "thirst",
+    "pos": "動",
+    "example": "Thirst for knowledge.",
+    "issue": "Thirst for knowledge. は動詞句にも名詞句にもなる。ここでは登録品詞に合わせて動詞として読む"
+  },
+  {
+    "index": 174,
+    "word": "thumb",
+    "pos": "名",
+    "example": "Suck thumb.",
+    "issue": "Suck thumb. は通常 suck a/your thumb とする"
+  },
+  {
+    "index": 178,
+    "word": "thus",
+    "pos": "副",
+    "example": "Thus far.",
+    "issue": "thus far は「ここまでのところ」。登録の「したがって」とは別の用法"
+  },
+  {
+    "index": 245,
+    "word": "unbelievable",
+    "pos": "形",
+    "example": "Unbelievable stroy.",
+    "issue": "stroy は story の綴り誤りと考えられる"
+  },
+  {
+    "index": 273,
+    "word": "unite",
+    "pos": "動",
+    "example": "Unite against.",
+    "issue": "against の対象が省略された短い語句"
+  },
+  {
+    "index": 445,
+    "word": "safeguard",
+    "pos": "名",
+    "example": "Safeguard against.",
+    "issue": "against の対象が省略された短い語句。名詞の保護手段として読む"
+  },
+  {
+    "index": 550,
+    "word": "slip",
+    "pos": "名",
+    "example": "Slip on ice.",
+    "issue": "名詞登録だが Slip on ice. は動詞句にも読めるため、この例は「氷の上で滑る」と読む"
+  },
+  {
+    "index": 557,
+    "word": "sneeze",
+    "pos": "動",
+    "example": "Sneeze deeply.",
+    "issue": "Sneeze deeply. は副詞の組み合わせが不自然。原文を保持した訳"
+  },
+  {
+    "index": 571,
+    "word": "quake",
+    "pos": "名",
+    "example": "Earth quake.",
+    "issue": "Earth quake. は通常一語の earthquake とする"
+  },
+  {
+    "index": 701,
+    "word": "riddle",
+    "pos": "動",
+    "example": "Riddled with bullets; Riddled with holes.",
+    "issue": "一つの欄にセミコロンで二つの用例を並べている"
+  },
+  {
+    "index": 862,
+    "word": "ness",
+    "pos": "名",
+    "example": "Inverness (place name suffix often).",
+    "issue": "Inverness は地名で、岬を意味する ness の用例になっていない。括弧内も原文の注記として表示"
+  },
+  {
+    "index": 1052,
+    "word": "Mediterranean",
+    "pos": "名",
+    "example": "Mediterranean climate.",
+    "issue": "名詞登録だが Mediterranean climate. では Mediterranean は形容詞として働く"
+  },
+  {
+    "index": 1090,
+    "word": "modal",
+    "pos": "名",
+    "example": "Modal logic.",
+    "issue": "名詞登録だが Modal logic. では modal は形容詞として働く"
+  },
+  {
+    "index": 1433,
+    "word": "first floor",
+    "pos": "名",
+    "example": "It's on the first floor.",
+    "issue": "first floor は英米で階が異なるため、一つの階数に決めない"
+  },
+  {
+    "index": 1435,
+    "word": "first-floor",
+    "pos": "形",
+    "example": "First-floor apartment.",
+    "issue": "first floor は英米で階が異なるため、一つの階数に決めない"
+  },
+  {
+    "index": 1530,
+    "word": "glide",
+    "pos": "名",
+    "example": "Hang glide.",
+    "issue": "名詞登録だが Hang glide. は動詞句としての用例"
+  },
+  {
+    "index": 1633,
+    "word": "eventually",
+    "pos": "副",
+    "example": "He eventualy agreed.",
+    "issue": "eventualy は eventually の綴り誤りと考えられる"
+  },
+  {
+    "index": 1683,
+    "word": "farthest",
+    "pos": "副",
+    "example": "Who ran oldest and farthest?",
+    "issue": "oldest は年齢の最上級で、ran を修飾するこの用例は不自然。推測で別の語に置き換えない"
+  },
+  {
+    "index": 1926,
+    "word": "cough",
+    "pos": "動",
+    "example": "He has a bad cough.",
+    "issue": "動詞登録だが He has a bad cough. の cough は名詞"
+  },
+  {
+    "index": 2056,
+    "word": "canal",
+    "pos": "名",
+    "example": "We walked along the canal.",
+    "issue": "意味欄に作業用の skip candidate が残る。元データは今回は変更しない"
+  },
+  {
+    "index": 2374,
+    "word": "bin",
+    "pos": "名",
+    "example": "Put it in the bin.",
+    "issue": "意味欄に作業用の重複回避メモが残る。元データは今回は変更しない"
+  },
+  {
+    "index": 2375,
+    "word": "candle",
+    "pos": "名",
+    "example": "Light a candle.",
+    "issue": "意味欄に作業用の skip candidate が残る。元データは今回は変更しない"
+  },
+  {
+    "index": 2376,
+    "word": "career",
+    "pos": "名",
+    "example": "He has a successful career.",
+    "issue": "意味欄に作業用の skip candidate が残る。元データは今回は変更しない"
+  },
+  {
+    "index": 2377,
+    "word": "carpet",
+    "pos": "名",
+    "example": "The carpet is dirty.",
+    "issue": "意味欄に作業用の skip candidate が残る。元データは今回は変更しない"
+  },
+  {
+    "index": 2378,
+    "word": "ceremony",
+    "pos": "名",
+    "example": "The wedding ceremony.",
+    "issue": "意味欄に作業用の skip candidate が残る。元データは今回は変更しない"
+  },
+  {
+    "index": 2379,
+    "word": "curtain",
+    "pos": "名",
+    "example": "Draw the curtains.",
+    "issue": "意味欄に作業用の重複メモが残る。draw the curtains は開閉の両方があり文脈なしで決めない"
+  },
+  {
+    "index": 2380,
+    "word": "cushion",
+    "pos": "名",
+    "example": "Soft cushion.",
+    "issue": "意味欄に作業用の重複メモが残る。元データは今回は変更しない"
+  },
+  {
+    "index": 2382,
+    "word": "dishwasher",
+    "pos": "名",
+    "example": "Load the dishwasher.",
+    "issue": "意味欄に作業用の品詞・重複確認メモが残る。元データは今回は変更しない"
+  }
+]

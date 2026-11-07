@@ -3,7 +3,7 @@ const base = require('./playwright.config');
 
 module.exports = defineConfig({
     ...base,
-    testMatch: /example-(reading-preview|reading-app|reading-basic|reading-cache|area-layout|panel-variants)\.spec\.js/,
+    testMatch: /example-(reading-preview|reading-app|reading-basic|reading-daily|reading-exam1|reading-cache|area-layout|panel-variants)\.spec\.js/,
     projects: [
         { name: 'reading-desktop', use: { ...devices['Desktop Chrome'] } },
         { name: 'reading-mobile', use: { ...devices['Pixel 7'] } },

@@ -70,17 +70,18 @@ Additional wordbook datasets also exist:
 - 2026-11-07基礎も公開完了（`2026.1107.1446`／`72e2435e`）：全1,520用法・レベル別取得・オフライン対応。[公開・本番確認](experiments/example-reading-basic-release-2026-11-07/review-notes.md)。
 
 - 2026-11-06公開完了（`2026.1106.2301`／`3d4987cd`）：中学全1,528用法・SVCのbe表記・例文UI・取得処理を反映。[公開・本番確認](experiments/example-reading-release-2026-11-06/review-notes.md)。
-- 正本は `data/example-readings-junior.json`／`data/example-readings-basic.json`。`word`・`pos`・`example` で現行用法と照合する。英語の本文や学習キーは変えない。対応数・公開状況は `docs/feedback.md` を参照。
+- 正本は `data/example-readings-{junior,basic,daily,exam1}.json`。中学・基礎・標準・受験をそれぞれ管理し、`word`・`pos`・`example` で現行用法と照合する。英語の本文や学習キーは変えない。対応数・公開状況は `docs/feedback.md` を参照。
 - 区切り訳は英語の順で、主語・述語・対象・修飾関係を追える表現を優先。全文訳は自然な日本語にする。例：`I / like / apple pie.` →「私は／好んでいる／アップルパイを」、全文訳は「私はアップルパイが好きです」。
 - 助詞だけの置換はしない。`like`・`love` などは対象を受ける日本語の述語と一緒に選ぶ。希望を表す `would like` と、好みを表す `like` を区別する。
 - SVCのbeは、主語と属性・状態を結ぶ `＝` で示す。原則 `She / is / very beautiful.` →「彼女／＝／とても美しい」。過去は `＝（過去）`、否定は `＝ではない`、疑問は `＝？`。短縮形は同じ英語トークンのまま `I'm` →「私＝」とする。命令・不定詞などの働きも短く残し、時制や否定を等号だけで消さない。
-- `＝` は属性・状態の関係を表し、数式の完全な同一性を意味しない。天気・時刻・後ろの内容を先に受けるitは、その役割を示す。出身・休暇中など状態を述べる前置詞句も関係を示すが、場所・存在のbeは「いる・ある」、進行形・受動態は動詞と一組にする。分詞はその例文の状態／出来事を確認し、`You are welcome.` など直訳で機能が失われる定型応答はまとめる。be以外のSVC動詞は、その動詞の意味を保つ。根拠は『真・英文法大全』PDF423〜424頁。判定と検証は[beの統一記録](experiments/example-reading-be-2026-11-06/review-notes.md)。
+- `＝` は主語と後ろの説明を結ぶ読み方の表示で、数式の同一性や文型の断定を意味しない。2026-11-07の方針変更で、受け身のbeも `＝` に統一する。過去・完了・未来・否定・命令の働きを残し、後ろの訳で「選ばれた」「毎月出版される」「覆われていた」「〜でできている」など動作・習慣・状態を表し分ける。すべてを「〜された状態」と固定しない。形容詞的な読みと受け身の境界が曖昧な例は、文脈にない動作時点・継続を足さない。[受け身の統一記録](experiments/example-reading-passive-equals-2026-11-07/review-notes.md)。
+- 天気・時刻・後ろの内容を先に受けるitは、その役割を示す。場所・存在のbeは「いる・ある」、通常の進行形は従来どおり動詞と一組。受け身の進行形を扱う場合は、残りの語句で「〜されている最中」を残す。`You are welcome.` など機能が失われる定型応答はまとめ、beのない分詞句へbeや等号だけを補わない。be以外のSVC動詞は、その動詞の意味を保つ。根拠は『真・英文法大全』PDF423〜424・553・716頁。以前の範囲と判断は[beの統一記録](experiments/example-reading-be-2026-11-06/review-notes.md)に残す。
 - 日本語の「を」だけで英語の目的語を判定しない。「彼に会った」「私に渡す」の「に」、補語の「きれいな状態に」、`there is` の導入する語の「が」などは役割に合わせて保つ。すべてをSVOの型に当てはめない。
 - 英語のまとまりと訳の対応が崩れる場合は区切りを調整する。短い決まり文句はまとめ、前置詞句・名詞句を無理に動詞へ置き換えない。`help me carry` のような複合的な関係は、誰が動作するかを失わない。
 - 複雑な文は、`what we buy` のような節、動名詞、長い名詞句を必要な大きさで保つ。後置修飾と内側の動作主は短い注記で補い、すべてを一語ずつ分割しない。文脈がない進行形を「確定した予定」へ限定するなど、区切り訳で解釈を狭めすぎない。[基礎100例での確認](experiments/example-reading-basic-100-2026-11-07/review-notes.md)。
 - 基礎全例での補足：短い名詞句・動詞句に主語や命令の意図を一律に補わない。no・few・hardlyなどの否定的な意味を保ち、助動詞の意味を別の動詞へずらさない。前置詞と後続する句の境目、全文訳の語順・句読点も再点検する。元の品詞と用法が食い違う場合は実際の構造を読み方で示し、元データの修正候補として別に記録する。[全例の確認](experiments/example-reading-basic-complete-2026-11-07/review-notes.md)。
 - 段階追加中のデータは `complete: false` とする。登録済みの読み方だけを表示し、既知の未対応例には再読込を促さない。実際の取得失敗は手動再読込を表示する。全件完成時に `complete: true` とし、検査でも欠落0件を要求する。旧中学データの省略形式は全件対応として扱う。
-- `node scripts/check-example-readings.cjs` で中学、`--level=basic` で基礎の用法との一致・重複・英文の復元・表示側の照合を確認。全件整備時は `--complete` で対応漏れ0件も検査する。編集前後の比較で対象外フィールドを保ち、変更例の代表表示をPC・スマホで確認する。[中学全件の公開記録](experiments/example-reading-release-2026-11-06/review-notes.md)／[基礎全例の確認](experiments/example-reading-basic-complete-2026-11-07/review-notes.md)。
+- `node scripts/check-example-readings.cjs` で中学、`--level=basic` で基礎、`--level=daily` で標準、`--level=exam1` で受験の用法との一致・重複・英文の復元・表示側の照合を確認。全件整備時は `--complete` で対応漏れ0件も検査する。編集前後の比較で対象外フィールドを保ち、変更例の代表表示をPC・スマホで確認する。[310例の見直し記録](experiments/example-reading-structure-2026-11-06/review-notes.md)／[中学全件の整備記録](experiments/example-reading-junior-complete-2026-11-06/review-notes.md)／[標準全件の整備記録](experiments/example-reading-daily-complete-2026-11-07/review-notes.md)／[受験全件の整備記録](experiments/example-reading-exam1-complete-2026-11-07/review-notes.md)。
 
 ## Content Scripts
 

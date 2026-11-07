@@ -1381,10 +1381,14 @@
       "chunks": [
         [
           "She",
-          "彼女は"
+          "彼女"
         ],
         [
-          "was amused",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "amused",
           "楽しませられた"
         ],
         [
@@ -2196,10 +2200,14 @@
       "chunks": [
         [
           "Everything",
-          "あらゆるものは"
+          "あらゆるもの"
         ],
         [
-          "is made",
+          "is",
+          "＝"
+        ],
+        [
+          "made",
           "できている"
         ],
         [
@@ -2549,10 +2557,14 @@
       "chunks": [
         [
           "She",
-          "彼女は"
+          "彼女"
         ],
         [
-          "was awarded",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "awarded",
           "授与された"
         ],
         [
@@ -2877,10 +2889,14 @@
       "chunks": [
         [
           "The film",
-          "その映画は"
+          "その映画"
         ],
         [
-          "is based on",
+          "is",
+          "＝"
+        ],
+        [
+          "based on",
           "基づいている"
         ],
         [
@@ -4403,10 +4419,14 @@
       "chunks": [
         [
           "The new building",
-          "その新しい建物は"
+          "その新しい建物"
         ],
         [
-          "is located",
+          "is",
+          "＝"
+        ],
+        [
+          "located",
           "位置している"
         ],
         [
@@ -4463,10 +4483,14 @@
       "chunks": [
         [
           "He",
-          "彼は"
+          "彼"
         ],
         [
-          "was elected",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "elected",
           "選ばれた"
         ],
         [
@@ -4727,10 +4751,14 @@
       "chunks": [
         [
           "The church",
-          "その教会は"
+          "その教会"
         ],
         [
-          "was built",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "built",
           "建てられた"
         ],
         [
@@ -5295,10 +5323,14 @@
       "chunks": [
         [
           "Chilli peppers",
-          "唐辛子は"
+          "唐辛子"
         ],
         [
-          "are used",
+          "are",
+          "＝"
+        ],
+        [
+          "used",
           "使われる"
         ],
         [
@@ -5601,11 +5633,15 @@
       "chunks": [
         [
           "The situation",
-          "その状況は"
+          "その状況"
         ],
         [
-          "has now been clearly explained.",
-          "今でははっきり説明されている"
+          "has now been",
+          "今では＝（完了）"
+        ],
+        [
+          "clearly explained.",
+          "はっきり説明されている"
         ]
       ],
       "translation": "その状況は今でははっきり説明されている。"
@@ -6830,11 +6866,20 @@
           "確かめて"
         ],
         [
-          "all forms are filled in correctly.",
-          "すべての用紙が正しく記入されていることを"
+          "all forms",
+          "すべての用紙"
+        ],
+        [
+          "are",
+          "＝"
+        ],
+        [
+          "filled in correctly.",
+          "正しく記入されていることを"
         ]
       ],
-      "translation": "すべての用紙が正しく記入されていることを確かめてください。"
+      "translation": "すべての用紙が正しく記入されていることを確かめてください。",
+      "note": "all forms以下は、確かめる内容。"
     },
     {
       "word": "cost",
@@ -6987,11 +7032,15 @@
       "chunks": [
         [
           "The case",
-          "その訴訟は"
+          "その訴訟"
         ],
         [
-          "will be heard",
-          "審理される予定だ"
+          "will be",
+          "＝（予測）"
+        ],
+        [
+          "heard",
+          "審理される"
         ],
         [
           "in court.",
@@ -7429,10 +7478,14 @@
       "chunks": [
         [
           "The old house",
-          "その古い家は"
+          "その古い家"
         ],
         [
-          "was said",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "said",
           "言われていた"
         ],
         [
@@ -7837,11 +7890,15 @@
       "chunks": [
         [
           "I",
-          "私は"
+          "私"
         ],
         [
-          "was deeply moved",
-          "深く感動させられた"
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "deeply moved",
+          "深く心を動かされた"
         ],
         [
           "by the story.",
@@ -7877,10 +7934,14 @@
       "chunks": [
         [
           "The flight",
-          "その便は"
+          "その便"
         ],
         [
-          "was cancelled",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "cancelled",
           "欠航になった"
         ],
         [
@@ -7897,10 +7958,14 @@
       "chunks": [
         [
           "The train",
-          "その列車は"
+          "その列車"
         ],
         [
-          "was delayed.",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "delayed.",
           "遅延した"
         ]
       ],
@@ -10121,10 +10186,14 @@
       "chunks": [
         [
           "The school",
-          "その学校は"
+          "その学校"
         ],
         [
-          "was established",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "established",
           "設立された"
         ],
         [
@@ -11223,10 +11292,14 @@
       "chunks": [
         [
           "The female elephant",
-          "メスのゾウは"
+          "メスのゾウ"
         ],
         [
-          "is called",
+          "is",
+          "＝"
+        ],
+        [
+          "called",
           "呼ばれる"
         ],
         [
@@ -11263,10 +11336,14 @@
       "chunks": [
         [
           "The garden",
-          "その庭は"
+          "その庭"
         ],
         [
-          "is surrounded",
+          "is",
+          "＝"
+        ],
+        [
+          "surrounded",
           "囲まれている"
         ],
         [
@@ -11659,10 +11736,14 @@
       "chunks": [
         [
           "Our flight",
-          "私たちの便は"
+          "私たちの便"
         ],
         [
-          "was delayed",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "delayed",
           "遅れた"
         ],
         [
@@ -11779,10 +11860,14 @@
       "chunks": [
         [
           "The mountains",
-          "その山々は"
+          "その山々"
         ],
         [
-          "were hidden",
+          "were",
+          "＝（過去）"
+        ],
+        [
+          "hidden",
           "隠れていた"
         ],
         [
@@ -11862,8 +11947,12 @@
       "example": "Don't be fooled.",
       "chunks": [
         [
-          "Don't be fooled.",
-          "だまされないで"
+          "Don't be",
+          "＝にならないで"
+        ],
+        [
+          "fooled.",
+          "だまされる側に"
         ]
       ],
       "translation": "だまされないでください。"
@@ -11920,10 +12009,14 @@
       "chunks": [
         [
           "The door",
-          "そのドアは"
+          "そのドア"
         ],
         [
-          "was opened",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "opened",
           "開けられた"
         ],
         [
@@ -12023,7 +12116,11 @@
           "誰一人〜ない"
         ],
         [
-          "was injured",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "injured",
           "けがをした"
         ],
         [
@@ -12946,10 +13043,14 @@
       "chunks": [
         [
           "The weight",
-          "重さは"
+          "重さ"
         ],
         [
-          "is given",
+          "is",
+          "＝"
+        ],
+        [
+          "given",
           "示されている"
         ],
         [
@@ -13844,10 +13945,14 @@
       "chunks": [
         [
           "The highway",
-          "幹線道路は"
+          "幹線道路"
         ],
         [
-          "was closed",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "closed",
           "閉鎖されていた"
         ],
         [
@@ -14880,10 +14985,14 @@
       "chunks": [
         [
           "He",
-          "彼は"
+          "彼"
         ],
         [
-          "was badly injured",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "badly injured",
           "ひどいけがをした"
         ],
         [
@@ -14900,10 +15009,14 @@
       "chunks": [
         [
           "The inner walls",
-          "内側の壁は"
+          "内側の壁"
         ],
         [
-          "are painted",
+          "are",
+          "＝"
+        ],
+        [
+          "painted",
           "塗られている"
         ],
         [
@@ -15430,14 +15543,18 @@
       "chunks": [
         [
           "Her face",
-          "彼女の顔は"
+          "彼女の顔"
         ],
         [
-          "was filled with",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "filled",
           "満ちていた"
         ],
         [
-          "joy.",
+          "with joy.",
           "喜びで"
         ]
       ],
@@ -15495,10 +15612,14 @@
       "chunks": [
         [
           "The killer",
-          "殺人犯は"
+          "殺人犯"
         ],
         [
-          "was caught",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "caught",
           "捕まえられた"
         ],
         [
@@ -16186,14 +16307,18 @@
       "chunks": [
         [
           "These shoes",
-          "この靴は"
+          "この靴"
         ],
         [
-          "are made of",
+          "are",
+          "＝"
+        ],
+        [
+          "made",
           "できている"
         ],
         [
-          "leather.",
+          "of leather.",
           "革で"
         ]
       ],
@@ -16478,10 +16603,14 @@
       "chunks": [
         [
           "The company",
-          "その会社は"
+          "その会社"
         ],
         [
-          "was licenced",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "licenced",
           "認可された"
         ],
         [
@@ -16498,10 +16627,14 @@
       "chunks": [
         [
           "They",
-          "彼らは"
+          "彼ら"
         ],
         [
-          "are licensed",
+          "are",
+          "＝"
+        ],
+        [
+          "licensed",
           "許可されている"
         ],
         [
@@ -17525,14 +17658,18 @@
       "chunks": [
         [
           "This dress",
-          "このドレスは"
+          "このドレス"
         ],
         [
-          "is made of",
-          "作られている"
+          "is",
+          "＝"
         ],
         [
-          "thin material.",
+          "made",
+          "できている"
+        ],
+        [
+          "of thin material.",
           "薄い生地で"
         ]
       ],
@@ -18519,10 +18656,14 @@
       "chunks": [
         [
           "The whole nation",
-          "国民全体が"
+          "国民全体"
         ],
         [
-          "was shocked",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "shocked",
           "衝撃を受けた"
         ],
         [
@@ -18712,10 +18853,14 @@
       "chunks": [
         [
           "A butterfly",
-          "チョウは"
+          "チョウ"
         ],
         [
-          "was caught",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "caught",
           "捕らえられた"
         ],
         [
@@ -19115,14 +19260,18 @@
       "chunks": [
         [
           "The table",
-          "テーブルは"
+          "テーブル"
         ],
         [
-          "is made of",
-          "作られている"
+          "is",
+          "＝"
         ],
         [
-          "solid oak.",
+          "made",
+          "できている"
+        ],
+        [
+          "of solid oak.",
           "オークの無垢材で"
         ]
       ],
@@ -19279,10 +19428,14 @@
       "chunks": [
         [
           "The Olympic flame",
-          "オリンピックの聖火は"
+          "オリンピックの聖火"
         ],
         [
-          "was lit.",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "lit.",
           "ともされた"
         ]
       ],
@@ -19812,10 +19965,14 @@
       "chunks": [
         [
           "Japan",
-          "日本は"
+          "日本"
         ],
         [
-          "is surrounded",
+          "is",
+          "＝"
+        ],
+        [
+          "surrounded",
           "囲まれている"
         ],
         [
@@ -20813,10 +20970,14 @@
       "chunks": [
         [
           "Mars",
-          "火星は"
+          "火星"
         ],
         [
-          "is known",
+          "is",
+          "＝"
+        ],
+        [
+          "known",
           "知られている"
         ],
         [
@@ -20873,14 +21034,18 @@
       "chunks": [
         [
           "These toys",
-          "これらのおもちゃは"
+          "これらのおもちゃ"
         ],
         [
-          "are made of",
-          "作られている"
+          "are",
+          "＝"
         ],
         [
-          "plastic.",
+          "made",
+          "できている"
+        ],
+        [
+          "of plastic.",
           "プラスチックで"
         ]
       ],
@@ -22234,11 +22399,15 @@
       "chunks": [
         [
           "The magazine",
-          "その雑誌は"
+          "その雑誌"
         ],
         [
-          "is published",
-          "出版されている"
+          "is",
+          "＝"
+        ],
+        [
+          "published",
+          "出版される"
         ],
         [
           "monthly.",
@@ -23206,10 +23375,14 @@
       "chunks": [
         [
           "The movie's release",
-          "映画の公開は"
+          "映画の公開"
         ],
         [
-          "was delayed.",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "delayed.",
           "延期された"
         ]
       ],
@@ -23491,10 +23664,14 @@
       "chunks": [
         [
           "She",
-          "彼女は"
+          "彼女"
         ],
         [
-          "was chosen",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "chosen",
           "選ばれた"
         ],
         [
@@ -24449,10 +24626,14 @@
         ],
         [
           "the party",
-          "パーティーは"
+          "パーティー"
         ],
         [
-          "was canceled.",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "canceled.",
           "中止された"
         ]
       ],
@@ -25402,10 +25583,14 @@
       "chunks": [
         [
           "Lunch",
-          "昼食は"
+          "昼食"
         ],
         [
-          "is served",
+          "is",
+          "＝"
+        ],
+        [
+          "served",
           "提供される"
         ],
         [
@@ -26192,10 +26377,14 @@
       "chunks": [
         [
           "The slaves",
-          "奴隷たちは"
+          "奴隷たち"
         ],
         [
-          "were forced",
+          "were",
+          "＝（過去）"
+        ],
+        [
+          "forced",
           "強いられた"
         ],
         [
@@ -26774,10 +26963,14 @@
       "chunks": [
         [
           "The class",
-          "クラスは"
+          "クラス"
         ],
         [
-          "was split",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "split",
           "分けられた"
         ],
         [
@@ -27293,10 +27486,14 @@
       "chunks": [
         [
           "The package",
-          "包みは"
+          "包み"
         ],
         [
-          "was tied",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "tied",
           "縛られた"
         ],
         [
@@ -28823,10 +29020,14 @@
       "chunks": [
         [
           "The train tracks",
-          "線路は"
+          "線路"
         ],
         [
-          "were covered",
+          "were",
+          "＝（過去）"
+        ],
+        [
+          "covered",
           "覆われていた"
         ],
         [
@@ -29003,10 +29204,14 @@
       "chunks": [
         [
           "The mouse",
-          "ネズミは"
+          "ネズミ"
         ],
         [
-          "was caught",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "caught",
           "捕まった"
         ],
         [
@@ -29067,10 +29272,14 @@
       "chunks": [
         [
           "The box",
-          "箱は"
+          "箱"
         ],
         [
-          "was filled",
+          "was",
+          "＝（過去）"
+        ],
+        [
+          "filled",
           "満たされていた"
         ],
         [
@@ -29780,10 +29989,14 @@
       "chunks": [
         [
           "The village",
-          "その村は"
+          "その村"
         ],
         [
-          "is located",
+          "is",
+          "＝"
+        ],
+        [
+          "located",
           "位置している"
         ],
         [
@@ -30225,11 +30438,15 @@
       "chunks": [
         [
           "The magazine",
-          "その雑誌は"
+          "その雑誌"
         ],
         [
-          "is published",
-          "出版されている"
+          "is",
+          "＝"
+        ],
+        [
+          "published",
+          "出版される"
         ],
         [
           "weekly.",
@@ -30590,10 +30807,14 @@
       "chunks": [
         [
           "English",
-          "英語は"
+          "英語"
         ],
         [
-          "is widely spoken",
+          "is",
+          "＝"
+        ],
+        [
+          "widely spoken",
           "広く話されている"
         ],
         [
@@ -30815,14 +31036,18 @@
       "chunks": [
         [
           "This sweater",
-          "このセーターは"
+          "このセーター"
         ],
         [
-          "is made of",
-          "作られている"
+          "is",
+          "＝"
         ],
         [
-          "100% wool.",
+          "made",
+          "できている"
+        ],
+        [
+          "of 100% wool.",
           "100パーセントのウールで"
         ]
       ],

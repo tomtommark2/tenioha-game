@@ -1,0 +1,247 @@
+[
+  {
+    "index": 71,
+    "word": "amazingly",
+    "pos": "副",
+    "example": "Strictly amazingly.",
+    "issue": "副詞二つだけの不自然な用例で、何を説明するかが示されていない"
+  },
+  {
+    "index": 92,
+    "word": "anticancer",
+    "pos": "名",
+    "example": "Anticancer drug.",
+    "issue": "名詞として登録されているが、この用例では後続する名詞を修飾している"
+  },
+  {
+    "index": 95,
+    "word": "antipollution",
+    "pos": "名",
+    "example": "Antipollution laws.",
+    "issue": "名詞として登録されているが、この用例では後続する名詞を修飾している"
+  },
+  {
+    "index": 97,
+    "word": "antivirus",
+    "pos": "名",
+    "example": "Antivirus software.",
+    "issue": "名詞として登録されているが、この用例では後続する名詞を修飾している"
+  },
+  {
+    "index": 170,
+    "word": "bankrupt",
+    "pos": "動",
+    "example": "The recession bankrupt the company.",
+    "issue": "bankrupt はこの文では bankrupts または bankrupted が必要"
+  },
+  {
+    "index": 223,
+    "word": "blurt",
+    "pos": "名",
+    "example": "Blurt out.",
+    "issue": "名詞登録だが、用例は動詞句"
+  },
+  {
+    "index": 227,
+    "word": "bombard",
+    "pos": "名",
+    "example": "Bombard with questions.",
+    "issue": "名詞登録だが、用例は動詞句"
+  },
+  {
+    "index": 245,
+    "word": "brag",
+    "pos": "名",
+    "example": "Brag about success.",
+    "issue": "名詞登録だが、用例は動詞句"
+  },
+  {
+    "index": 288,
+    "word": "captive",
+    "pos": "名",
+    "example": "Held captive.",
+    "issue": "captive はこの用例では形容詞として働く"
+  },
+  {
+    "index": 373,
+    "word": "colon",
+    "pos": "名",
+    "example": "Semia colon.",
+    "issue": "Semia colon. は通常 semicolon とする。コロンとは別の記号"
+  },
+  {
+    "index": 408,
+    "word": "conception",
+    "pos": "名",
+    "example": "Concept of time.",
+    "issue": "見出し語は conception だが例文は concept を使っている"
+  },
+  {
+    "index": 449,
+    "word": "converse",
+    "pos": "名",
+    "example": "Converse with friends.",
+    "issue": "名詞登録だが、用例は動詞句"
+  },
+  {
+    "index": 683,
+    "word": "droop",
+    "pos": "名",
+    "example": "Shoulders droop.",
+    "issue": "名詞登録だが、この用例の droop は動詞"
+  },
+  {
+    "index": 965,
+    "word": "gook",
+    "pos": "名",
+    "example": "Offensive slur.",
+    "issue": "見出し語そのものの用例ではなく、表現の性質を説明した語句"
+  },
+  {
+    "index": 1036,
+    "word": "hone",
+    "pos": "名",
+    "example": "Hone skills.",
+    "issue": "名詞登録だが、この用例では hone は動詞"
+  },
+  {
+    "index": 1295,
+    "word": "ling",
+    "pos": "名",
+    "example": "Type of fish.",
+    "issue": "見出し語そのものの用例ではなく、語の説明"
+  },
+  {
+    "index": 1365,
+    "word": "micro",
+    "pos": "名",
+    "example": "Micro economics.",
+    "issue": "通常 microeconomics と一語で書く。名詞 micro の独立した用例ではない"
+  },
+  {
+    "index": 1442,
+    "word": "nano",
+    "pos": "名",
+    "example": "Nano technology.",
+    "issue": "通常 nanotechnology と一語で書く。独立した名詞 nano の用例ではない"
+  },
+  {
+    "index": 1576,
+    "word": "ow",
+    "pos": "名",
+    "example": "Ow, that hurt!",
+    "issue": "名詞登録だが Ow は間投詞"
+  },
+  {
+    "index": 1589,
+    "word": "pandemic",
+    "pos": "形",
+    "example": "Pandemic flu.",
+    "issue": "pandemic は一国内に限らず広く世界に及ぶ流行を指す"
+  },
+  {
+    "index": 1603,
+    "word": "partisan",
+    "pos": "名",
+    "example": "Partisan politics.",
+    "issue": "名詞登録だが、この用例の partisan は形容詞"
+  },
+  {
+    "index": 1713,
+    "word": "prance",
+    "pos": "名",
+    "example": "Prance around.",
+    "issue": "名詞登録だが、用例は動詞句"
+  },
+  {
+    "index": 1727,
+    "word": "prehuman",
+    "pos": "名",
+    "example": "Prehuman ancestors.",
+    "issue": "名詞登録だが、この用例の prehuman は形容詞"
+  },
+  {
+    "index": 1866,
+    "word": "refresh",
+    "pos": "名",
+    "example": "Refresh page.",
+    "issue": "名詞登録だが、この用例では refresh は動詞"
+  },
+  {
+    "index": 1967,
+    "word": "sag",
+    "pos": "名",
+    "example": "Start to sag.",
+    "issue": "名詞登録だが、この用例の sag は動詞"
+  },
+  {
+    "index": 1986,
+    "word": "scarlet",
+    "pos": "名",
+    "example": "Scarlet fever.",
+    "issue": "名詞登録だが、この用例の scarlet は fever を修飾している"
+  },
+  {
+    "index": 2036,
+    "word": "shooting",
+    "pos": "名",
+    "example": "Shooting star.",
+    "issue": "名詞登録だが、この用例の shooting は star を修飾している"
+  },
+  {
+    "index": 2064,
+    "word": "skim",
+    "pos": "動",
+    "example": "Skim milk.",
+    "issue": "skim milk は名詞句なら「脱脂乳」。ここでは登録品詞に合わせ動詞として読む"
+  },
+  {
+    "index": 2111,
+    "word": "Soviet",
+    "pos": "名",
+    "example": "Former Soviet Union.",
+    "issue": "名詞登録だが、この用例の Soviet は Union を修飾している"
+  },
+  {
+    "index": 2354,
+    "word": "tropic",
+    "pos": "形",
+    "example": "Tropic of Cancer.",
+    "issue": "形容詞登録だが、この用例の Tropic は名詞"
+  },
+  {
+    "index": 2480,
+    "word": "versus",
+    "pos": "前",
+    "example": " Us versus them.",
+    "issue": "元の英文には先頭に空白がある。照合のため原文を保持"
+  },
+  {
+    "index": 2530,
+    "word": "whereas",
+    "pos": "接",
+    "example": "Rich whereas poor.",
+    "issue": "主語・動詞を欠く断片で、完全な節の例ではない"
+  },
+  {
+    "index": 2558,
+    "word": "worm",
+    "pos": "名",
+    "example": "Earth worm.",
+    "issue": "通常 earthworm と一語で書く"
+  },
+  {
+    "index": 2559,
+    "word": "worn out",
+    "pos": "形",
+    "example": "Worn out shoes.",
+    "issue": "名詞の前では通常 worn-out とハイフンでつなぐ"
+  },
+  {
+    "index": 2560,
+    "word": "wornout",
+    "pos": "形",
+    "example": "Wornout clothes.",
+    "issue": "通常 worn-out とハイフンでつなぐ"
+  }
+]

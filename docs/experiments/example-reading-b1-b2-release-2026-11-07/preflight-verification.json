@@ -1,0 +1,259 @@
+{
+  "version": "2026.1107.1719",
+  "base": "e1fc3832caf232668b1a7587eb41d23caf5775c5",
+  "coverage": {
+    "junior": {
+      "level": "junior",
+      "sourceRows": 1528,
+      "uniqueSourceRows": 1527,
+      "supportedRows": 1528,
+      "supportedEntries": 1527,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    },
+    "basic": {
+      "level": "basic",
+      "sourceRows": 1520,
+      "uniqueSourceRows": 1520,
+      "supportedRows": 1520,
+      "supportedEntries": 1520,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    },
+    "daily": {
+      "level": "daily",
+      "sourceRows": 2397,
+      "uniqueSourceRows": 2397,
+      "supportedRows": 2397,
+      "supportedEntries": 2397,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    },
+    "exam1": {
+      "level": "exam1",
+      "sourceRows": 2580,
+      "uniqueSourceRows": 2580,
+      "supportedRows": 2580,
+      "supportedEntries": 2580,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    }
+  },
+  "passiveChanges": {
+    "junior": [
+      124,
+      197,
+      316,
+      454,
+      494,
+      517,
+      537,
+      618,
+      1120,
+      1122,
+      1262,
+      1263,
+      1493,
+      1494
+    ],
+    "basic": [
+      62,
+      100,
+      117,
+      132,
+      206,
+      209,
+      222,
+      248,
+      263,
+      321,
+      329,
+      350,
+      369,
+      371,
+      372,
+      475,
+      530,
+      532,
+      552,
+      558,
+      562,
+      565,
+      570,
+      615,
+      658,
+      707,
+      708,
+      733,
+      736,
+      770,
+      783,
+      784,
+      832,
+      879,
+      888,
+      907,
+      915,
+      942,
+      990,
+      993,
+      1058,
+      1106,
+      1120,
+      1166,
+      1212,
+      1249,
+      1276,
+      1302,
+      1374,
+      1383,
+      1386,
+      1420,
+      1441,
+      1458,
+      1469
+    ]
+  },
+  "preserved": [
+    {
+      "file": "data/vocabulary.js",
+      "sha256": "88856f46f33dc14e18bbe71c9e4c0714e49e9ef7298d9d8070b844125da96d3b"
+    },
+    {
+      "file": "data/word-illustrations.js",
+      "sha256": "44e74a34d1959442a894376e08a945fc55cc623f93eee66cfed82de648abdc4c"
+    },
+    {
+      "file": "js/game_logic.js",
+      "sha256": "f1a8425883a835ea0c9b69223acd73ee8a11861ec0ad726f41e8713552997802"
+    },
+    {
+      "file": "js/utils.js",
+      "sha256": "5d13260b56bd7fa789507240c39a820b39546ede29e24a6ee6bbba686adb93a3"
+    },
+    {
+      "file": "js/word_grouping.js",
+      "sha256": "3608beff448248ec16c2f6cb97d1ef4b3da2853b0c55817424c4ceadb35c9b27"
+    },
+    {
+      "file": "js/my_wordbooks.js",
+      "sha256": "454ce41f650b52c21d6b572a81c1895ecc3c0b419a1bcd9dd197e5b991246b8a"
+    },
+    {
+      "file": "js/firebase_app_v2.js",
+      "sha256": "9c6f7a99eacb5b1577555bfa4666c4f057c416914d25e69619e1befe4504579d"
+    },
+    {
+      "file": "js/config.js",
+      "sha256": "fdfc8b76e37fcce3a7c86c17b8b600926985c1927e1d34bb12faf5e35ed78d3e"
+    },
+    {
+      "file": "js/app_check_client.js",
+      "sha256": "7057e68ad2dce96db9cc8e90c10af3137a3947f33ac010996e09d177bcf1cda1"
+    },
+    {
+      "file": "js/word_illustrations.js",
+      "sha256": "312200fbd0177399a78a632a1de3f5a1c0a7ffb3043810b770a62393f815660e"
+    },
+    {
+      "file": "firestore.rules",
+      "sha256": "9bd7cb50bfedeb5489197ce4555b8bd42cb2e63e1eaf9d1818fd4838721f2865"
+    },
+    {
+      "file": "functions/index.js",
+      "sha256": "dc6bafd8036c6c53606fe0e968d5bad05ab3ff1edab82d9321aa248beae0def9"
+    },
+    {
+      "file": "example-reading.css",
+      "sha256": "a143a3352396fee31b2b247aa0b2e4fdb59a0e2147ba17feb218f0a21ec86eac"
+    },
+    {
+      "file": "style.css",
+      "sha256": "6b888cbc309697e7227d4913f385bcd7029f15b326e33bb4f63727561aeacf5c"
+    },
+    {
+      "file": "wordbooks-m3e.css",
+      "sha256": "b295b06ca5956897c7de86bdfa871164f7fb7250b8dcd1e501bc625472adc87c"
+    },
+    {
+      "file": "header-m3e.css",
+      "sha256": "582cb0db65dd67ac959cc16f1f45350db714dd9abd02fc8af323e64518e531e5"
+    }
+  ],
+  "htmlOnlyVersionChanged": true,
+  "approvedSourceMatches": [
+    {
+      "file": "data/example-readings-junior.json",
+      "sha256": "52224888a5b5c40e71d0d96470d3f81d86b9fbc5175327190c10d3262d8081e8"
+    },
+    {
+      "file": "data/example-readings-basic.json",
+      "sha256": "31e580fb3faaa375ea07e175642fa664a524cae34d37abbc2e4484129ca57ec9"
+    },
+    {
+      "file": "data/example-readings-daily.json",
+      "sha256": "ed4e086bb23653cd5ada6bac2e4d451ebde885f54fb59759920d9c0d09c2e9ef"
+    },
+    {
+      "file": "data/example-readings-exam1.json",
+      "sha256": "ed6b383bca2e8a20decfc1b0fac276918840673fcf03147cf1b77bf4e19332d9"
+    },
+    {
+      "file": "js/example_reading.js",
+      "sha256": "170147165c3f1e0ba04768bdc36053814a35b5b59057791a2073d6c78ab97f71"
+    },
+    {
+      "file": "js/example_reading_preview.js",
+      "sha256": "78a45a587d4af0f9c0894662f3a8a2f98a0344cd4f70d8d6b6308071ab499623"
+    },
+    {
+      "file": "service_worker.js",
+      "sha256": "a1bf65a3125dd066d6a9fdadc8af108c1472d2698ca7f5f205bf1b0c10264b72"
+    }
+  ],
+  "browser": {
+    "passed": 103,
+    "skipped": 2
+  },
+  "cache": {
+    "passed": 4
+  },
+  "backendChanged": false,
+  "allowedFiles": [
+    "data/example-readings-junior.json",
+    "data/example-readings-basic.json",
+    "data/example-readings-daily.json",
+    "data/example-readings-exam1.json",
+    "js/example_reading.js",
+    "js/example_reading_preview.js",
+    "service_worker.js",
+    "scripts/check-example-readings.cjs",
+    "playwright.reading-preview.config.js",
+    "tests/example-reading-basic.spec.js",
+    "tests/example-reading-preview.spec.js",
+    "tests/example-reading-daily.spec.js",
+    "tests/example-reading-exam1.spec.js",
+    "tests/example-reading-cache.spec.js",
+    "tests/example-reading-cache.unit.spec.js",
+    "docs/experiments/example-reading-passive-equals-2026-11-07/changes.json",
+    "docs/experiments/example-reading-passive-equals-2026-11-07/review-notes.md",
+    "docs/experiments/example-reading-passive-equals-2026-11-07/verification.json",
+    "docs/experiments/example-reading-daily-complete-2026-11-07/review-notes.md",
+    "docs/experiments/example-reading-daily-complete-2026-11-07/source-issues.json",
+    "docs/experiments/example-reading-daily-complete-2026-11-07/verification.json",
+    "docs/experiments/example-reading-exam1-complete-2026-11-07/review-notes.md",
+    "docs/experiments/example-reading-exam1-complete-2026-11-07/source-issues.json",
+    "docs/experiments/example-reading-exam1-complete-2026-11-07/verification.json",
+    "docs/data-workflow.md",
+    "docs/feedback.md",
+    "index.html",
+    "vocab_clicker_game.html",
+    "js/version.js",
+    "docs/experiments/example-reading-b1-b2-release-2026-11-07/review-notes.md",
+    "docs/experiments/example-reading-b1-b2-release-2026-11-07/preflight-verification.json"
+  ]
+}

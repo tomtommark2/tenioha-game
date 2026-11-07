@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-07",
+  "status": "local-not-deployed",
+  "level": "daily",
+  "cards": 2179,
+  "entries": 2397,
+  "coverage": {
+    "junior": {
+      "level": "junior",
+      "sourceRows": 1528,
+      "uniqueSourceRows": 1527,
+      "supportedRows": 1528,
+      "supportedEntries": 1527,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    },
+    "basic": {
+      "level": "basic",
+      "sourceRows": 1520,
+      "uniqueSourceRows": 1520,
+      "supportedRows": 1520,
+      "supportedEntries": 1520,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    },
+    "daily": {
+      "level": "daily",
+      "sourceRows": 2397,
+      "uniqueSourceRows": 2397,
+      "supportedRows": 2397,
+      "supportedEntries": 2397,
+      "remainingRows": 0,
+      "runtimeRemainingRows": 0,
+      "next": []
+    }
+  },
+  "sourceSnapshotUnchanged": true,
+  "preserved": {
+    "data/example-readings-junior.json": "52224888a5b5c40e71d0d96470d3f81d86b9fbc5175327190c10d3262d8081e8",
+    "data/example-readings-basic.json": "31e580fb3faaa375ea07e175642fa664a524cae34d37abbc2e4484129ca57ec9",
+    "tests/example-reading-basic.spec.js": "e884b024e6a5df1e6161abc6b5e1a1e97fbe607eee555f2a33a3bfd61a63d467",
+    "tests/example-reading-app.spec.js": "d2c66da417c96b1f179971c72a57652c9af0f89f6d962f9219cc6688c8259ce9"
+  },
+  "notes": 31,
+  "sourceIssues": 31,
+  "bytes": 772309,
+  "gzipBytes": 115095,
+  "validation": {
+    "browser": {
+      "passed": 91,
+      "skipped": 2
+    },
+    "finalContent": {
+      "passed": 3,
+      "skipped": 0
+    },
+    "cacheUnit": {
+      "passed": 4,
+      "skipped": 0
+    },
+    "widths": [
+      320,
+      390,
+      1280
+    ],
+    "engines": [
+      "Chromium desktop",
+      "Chromium mobile",
+      "WebKit mobile"
+    ],
+    "htmlSync": true,
+    "versionSync": true
+  },
+  "files": {
+    "data/example-readings-daily.json": "ed4e086bb23653cd5ada6bac2e4d451ebde885f54fb59759920d9c0d09c2e9ef",
+    "js/example_reading.js": "e21f8d37079fded22d3ec8346431bd9047873b36a7c5dcc9687f4b0fd2a57316",
+    "js/example_reading_preview.js": "61143f1b3b2bc3af7339bc0693d93b006715c050e8d51fe1fd6444ac886cb4cc",
+    "service_worker.js": "a448fe2d708d871ecf34a6e7d93a1f10c01c76fe774e4b88c6696b5df888726c",
+    "scripts/check-example-readings.cjs": "f35e83909f9b3d56efe753bdd1d9d73ad96d908f8c4b8919e69435b80e15e1e5",
+    "tests/example-reading-daily.spec.js": "2fafdf279b854d6a9df4fb067e3472fe70df146ff1230380e7fa56ed91174423",
+    "tests/example-reading-preview.spec.js": "234157a9d0334bb5dc4013ea76a17ed2d0e76b869a0c9abeb1aae90a5df9e4bf",
+    "tests/example-reading-cache.spec.js": "9dc972dd68ba9265978a666d9a501abd4db13606187a1ae64422c00793e16253",
+    "tests/example-reading-cache.unit.spec.js": "3413b45896c800aa1bbf95de5c30afee0742660f1e16669ccf97b3a2a9917223",
+    "playwright.reading-preview.config.js": "017e9fc32e371f5b38200698944dede8cfcf456dc9b60746188e445786d7a49c"
+  }
+}

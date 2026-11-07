@@ -3,7 +3,8 @@
     const params = new URLSearchParams(location.search);
     if (!['localhost', '127.0.0.1'].includes(location.hostname) || params.get('exampleReadingPreview') !== '1') return;
     const scriptUrl = new URL(document.currentScript.src);
-    const level = params.get('exampleReadingLevel') === 'basic' ? 'basic' : 'junior';
+    const requestedLevel = params.get('exampleReadingLevel');
+    const level = ['junior', 'basic', 'daily', 'exam1'].includes(requestedLevel) ? requestedLevel : 'junior';
     const samples = await window.ExampleReading.load(false, level);
     if (!samples.length) return;
     const stylesheet = document.createElement('link');
@@ -47,7 +48,7 @@
         preview.setAttribute('aria-label', '読み方の試作');
         const previewLabel = document.createElement('label');
         previewLabel.htmlFor = 'exampleReadingSample';
-        previewLabel.textContent = level === 'basic' ? '基礎の読み方' : '読み方の試作';
+        previewLabel.textContent = { junior: '読み方の試作', basic: '基礎の読み方', daily: '標準の読み方', exam1: '受験の読み方' }[level];
         sampleSelect = document.createElement('select');
         sampleSelect.id = 'exampleReadingSample';
         const placeholder = document.createElement('option');

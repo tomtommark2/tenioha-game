@@ -1,0 +1,2694 @@
+[
+  {
+    "level": "junior",
+    "index": 124,
+    "word": "bar",
+    "pos": "動",
+    "example": "The road was barred.",
+    "kind": "state",
+    "before": [
+      [
+        "The road",
+        "その道路は"
+      ],
+      [
+        "was barred.",
+        "通行をふさがれていた"
+      ]
+    ],
+    "after": [
+      [
+        "The road",
+        "その道路"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "barred.",
+        "通行をふさがれていた"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 197,
+    "word": "by",
+    "pos": "前",
+    "example": "This book was written by Soseki.",
+    "kind": "event",
+    "before": [
+      [
+        "This book",
+        "この本は"
+      ],
+      [
+        "was written",
+        "書かれた"
+      ],
+      [
+        "by Soseki.",
+        "漱石によって"
+      ]
+    ],
+    "after": [
+      [
+        "This book",
+        "この本"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "written",
+        "書かれた"
+      ],
+      [
+        "by Soseki.",
+        "漱石によって"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 316,
+    "word": "date",
+    "pos": "動",
+    "example": "The letter is dated today.",
+    "kind": "state",
+    "before": [
+      [
+        "The letter",
+        "その手紙は"
+      ],
+      [
+        "is dated today.",
+        "今日の日付が記されている"
+      ]
+    ],
+    "after": [
+      [
+        "The letter",
+        "その手紙"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "dated today.",
+        "今日の日付が記されている"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 454,
+    "word": "fire",
+    "pos": "動",
+    "example": "You are fired.",
+    "kind": "event",
+    "before": [
+      [
+        "You",
+        "あなたは"
+      ],
+      [
+        "are fired.",
+        "解雇される"
+      ]
+    ],
+    "after": [
+      [
+        "You",
+        "あなた"
+      ],
+      [
+        "are",
+        "＝"
+      ],
+      [
+        "fired.",
+        "解雇される"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 494,
+    "word": "front",
+    "pos": "名",
+    "example": "The car is parked in front of the house.",
+    "kind": "state",
+    "before": [
+      [
+        "The car",
+        "その車は"
+      ],
+      [
+        "is parked",
+        "駐車されている"
+      ],
+      [
+        "in front of the house.",
+        "その家の前に"
+      ]
+    ],
+    "after": [
+      [
+        "The car",
+        "その車"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "parked",
+        "駐車されている"
+      ],
+      [
+        "in front of the house.",
+        "その家の前に"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 517,
+    "word": "gold",
+    "pos": "名",
+    "example": "The ring is made of solid gold.",
+    "kind": "state",
+    "before": [
+      [
+        "The ring",
+        "その指輪は"
+      ],
+      [
+        "is made",
+        "できている"
+      ],
+      [
+        "of solid gold.",
+        "金そのもので"
+      ]
+    ],
+    "after": [
+      [
+        "The ring",
+        "その指輪"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of solid gold.",
+        "金そのもので"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 537,
+    "word": "green",
+    "pos": "名",
+    "example": "The hills were covered in green.",
+    "kind": "state",
+    "before": [
+      [
+        "The hills",
+        "その丘は"
+      ],
+      [
+        "were covered",
+        "覆われていた"
+      ],
+      [
+        "in green.",
+        "緑に"
+      ]
+    ],
+    "after": [
+      [
+        "The hills",
+        "その丘"
+      ],
+      [
+        "were",
+        "＝（過去）"
+      ],
+      [
+        "covered",
+        "覆われていた"
+      ],
+      [
+        "in green.",
+        "緑に"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 618,
+    "word": "hurt",
+    "pos": "形",
+    "example": "No one was hurt.",
+    "kind": "negative-event",
+    "before": [
+      [
+        "No one",
+        "誰一人〜ない"
+      ],
+      [
+        "was hurt.",
+        "けがをした"
+      ]
+    ],
+    "after": [
+      [
+        "No one",
+        "誰一人〜ない"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "hurt.",
+        "けがをした"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 1120,
+    "word": "silver",
+    "pos": "名",
+    "example": "This ring is made of silver.",
+    "kind": "state",
+    "before": [
+      [
+        "This ring",
+        "この指輪は"
+      ],
+      [
+        "is made",
+        "できている"
+      ],
+      [
+        "of silver.",
+        "銀で"
+      ]
+    ],
+    "after": [
+      [
+        "This ring",
+        "この指輪"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of silver.",
+        "銀で"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 1122,
+    "word": "silver",
+    "pos": "名",
+    "example": "The medal is made of silver.",
+    "kind": "state",
+    "before": [
+      [
+        "The medal",
+        "そのメダルは"
+      ],
+      [
+        "is made",
+        "できている"
+      ],
+      [
+        "of silver.",
+        "銀で"
+      ]
+    ],
+    "after": [
+      [
+        "The medal",
+        "そのメダル"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of silver.",
+        "銀で"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 1262,
+    "word": "surprised",
+    "pos": "形",
+    "example": "I was surprised at the news.",
+    "kind": "event",
+    "before": [
+      [
+        "I was surprised",
+        "私は驚いた"
+      ],
+      [
+        "at the news.",
+        "その知らせに"
+      ]
+    ],
+    "after": [
+      [
+        "I",
+        "私"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "surprised",
+        "驚いた"
+      ],
+      [
+        "at the news.",
+        "その知らせに"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 1263,
+    "word": "surprised",
+    "pos": "形",
+    "example": "I was surprised to hear the news.",
+    "kind": "event",
+    "before": [
+      [
+        "I was surprised",
+        "私は驚いた"
+      ],
+      [
+        "to hear the news.",
+        "その知らせを聞いて"
+      ]
+    ],
+    "after": [
+      [
+        "I",
+        "私"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "surprised",
+        "驚いた"
+      ],
+      [
+        "to hear the news.",
+        "その知らせを聞いて"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 1493,
+    "word": "wood",
+    "pos": "名",
+    "example": "This desk is made of wood.",
+    "kind": "state",
+    "before": [
+      [
+        "This desk",
+        "この机は"
+      ],
+      [
+        "is made",
+        "できている"
+      ],
+      [
+        "of wood.",
+        "木で"
+      ]
+    ],
+    "after": [
+      [
+        "This desk",
+        "この机"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of wood.",
+        "木で"
+      ]
+    ]
+  },
+  {
+    "level": "junior",
+    "index": 1494,
+    "word": "wood",
+    "pos": "名",
+    "example": "The table is made of solid wood.",
+    "kind": "state",
+    "before": [
+      [
+        "The table",
+        "そのテーブルは"
+      ],
+      [
+        "is made",
+        "できている"
+      ],
+      [
+        "of solid wood.",
+        "無垢の木で"
+      ]
+    ],
+    "after": [
+      [
+        "The table",
+        "そのテーブル"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of solid wood.",
+        "無垢の木で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 62,
+    "word": "amused",
+    "pos": "形",
+    "example": "She was amused by the story.",
+    "kind": "event-or-state",
+    "before": [
+      [
+        "She",
+        "彼女は"
+      ],
+      [
+        "was amused",
+        "楽しませられた"
+      ],
+      [
+        "by the story.",
+        "その話に"
+      ]
+    ],
+    "after": [
+      [
+        "She",
+        "彼女"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "amused",
+        "楽しませられた"
+      ],
+      [
+        "by the story.",
+        "その話に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 100,
+    "word": "atom",
+    "pos": "名",
+    "example": "Everything is made of atoms.",
+    "kind": "state",
+    "before": [
+      [
+        "Everything",
+        "あらゆるものは"
+      ],
+      [
+        "is made",
+        "できている"
+      ],
+      [
+        "of atoms.",
+        "原子から"
+      ]
+    ],
+    "after": [
+      [
+        "Everything",
+        "あらゆるもの"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of atoms.",
+        "原子から"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 117,
+    "word": "award",
+    "pos": "動",
+    "example": "She was awarded a prize.",
+    "kind": "event",
+    "before": [
+      [
+        "She",
+        "彼女は"
+      ],
+      [
+        "was awarded",
+        "授与された"
+      ],
+      [
+        "a prize.",
+        "賞を"
+      ]
+    ],
+    "after": [
+      [
+        "She",
+        "彼女"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "awarded",
+        "授与された"
+      ],
+      [
+        "a prize.",
+        "賞を"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 132,
+    "word": "base",
+    "pos": "動",
+    "example": "The film is based on a true story.",
+    "kind": "state",
+    "before": [
+      [
+        "The film",
+        "その映画は"
+      ],
+      [
+        "is based on",
+        "基づいている"
+      ],
+      [
+        "a true story.",
+        "実話に"
+      ]
+    ],
+    "after": [
+      [
+        "The film",
+        "その映画"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "based on",
+        "基づいている"
+      ],
+      [
+        "a true story.",
+        "実話に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 206,
+    "word": "campus",
+    "pos": "名",
+    "example": "The new building is located on the campus.",
+    "kind": "state",
+    "before": [
+      [
+        "The new building",
+        "その新しい建物は"
+      ],
+      [
+        "is located",
+        "位置している"
+      ],
+      [
+        "on the campus.",
+        "キャンパス内に"
+      ]
+    ],
+    "after": [
+      [
+        "The new building",
+        "その新しい建物"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "located",
+        "位置している"
+      ],
+      [
+        "on the campus.",
+        "キャンパス内に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 209,
+    "word": "captain",
+    "pos": "名",
+    "example": "He was elected captain of the team.",
+    "kind": "event",
+    "before": [
+      [
+        "He",
+        "彼は"
+      ],
+      [
+        "was elected",
+        "選ばれた"
+      ],
+      [
+        "captain of the team.",
+        "そのチームの主将に"
+      ]
+    ],
+    "after": [
+      [
+        "He",
+        "彼"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "elected",
+        "選ばれた"
+      ],
+      [
+        "captain of the team.",
+        "そのチームの主将に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 222,
+    "word": "century",
+    "pos": "名",
+    "example": "The church was built in the 12th century.",
+    "kind": "event",
+    "before": [
+      [
+        "The church",
+        "その教会は"
+      ],
+      [
+        "was built",
+        "建てられた"
+      ],
+      [
+        "in the 12th century.",
+        "12世紀に"
+      ]
+    ],
+    "after": [
+      [
+        "The church",
+        "その教会"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "built",
+        "建てられた"
+      ],
+      [
+        "in the 12th century.",
+        "12世紀に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 248,
+    "word": "chilli",
+    "pos": "名",
+    "example": "Chilli peppers are used in many spicy dishes.",
+    "kind": "general-use",
+    "before": [
+      [
+        "Chilli peppers",
+        "唐辛子は"
+      ],
+      [
+        "are used",
+        "使われる"
+      ],
+      [
+        "in many spicy dishes.",
+        "多くの辛い料理に"
+      ]
+    ],
+    "after": [
+      [
+        "Chilli peppers",
+        "唐辛子"
+      ],
+      [
+        "are",
+        "＝"
+      ],
+      [
+        "used",
+        "使われる"
+      ],
+      [
+        "in many spicy dishes.",
+        "多くの辛い料理に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 263,
+    "word": "clearly",
+    "pos": "副",
+    "example": "The situation has now been clearly explained.",
+    "kind": "perfect-result",
+    "before": [
+      [
+        "The situation",
+        "その状況は"
+      ],
+      [
+        "has now been clearly explained.",
+        "今でははっきり説明されている"
+      ]
+    ],
+    "after": [
+      [
+        "The situation",
+        "その状況"
+      ],
+      [
+        "has now been",
+        "今では＝（完了）"
+      ],
+      [
+        "clearly explained.",
+        "はっきり説明されている"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 321,
+    "word": "correctly",
+    "pos": "副",
+    "example": "Please ensure all forms are filled in correctly.",
+    "kind": "embedded-state",
+    "before": [
+      [
+        "Please",
+        "どうか"
+      ],
+      [
+        "ensure",
+        "確かめて"
+      ],
+      [
+        "all forms are filled in correctly.",
+        "すべての用紙が正しく記入されていることを"
+      ]
+    ],
+    "after": [
+      [
+        "Please",
+        "どうか"
+      ],
+      [
+        "ensure",
+        "確かめて"
+      ],
+      [
+        "all forms",
+        "すべての用紙"
+      ],
+      [
+        "are",
+        "＝"
+      ],
+      [
+        "filled in correctly.",
+        "正しく記入されていることを"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 329,
+    "word": "court",
+    "pos": "名",
+    "example": "The case will be heard in court.",
+    "kind": "future-event",
+    "before": [
+      [
+        "The case",
+        "その訴訟は"
+      ],
+      [
+        "will be heard",
+        "審理される予定だ"
+      ],
+      [
+        "in court.",
+        "法廷で"
+      ]
+    ],
+    "after": [
+      [
+        "The case",
+        "その訴訟"
+      ],
+      [
+        "will be",
+        "＝（予測）"
+      ],
+      [
+        "heard",
+        "審理される"
+      ],
+      [
+        "in court.",
+        "法廷で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 350,
+    "word": "curse",
+    "pos": "名",
+    "example": "The old house was said to be under a curse.",
+    "kind": "reported-state",
+    "before": [
+      [
+        "The old house",
+        "その古い家は"
+      ],
+      [
+        "was said",
+        "言われていた"
+      ],
+      [
+        "to be",
+        "＝であると"
+      ],
+      [
+        "under a curse.",
+        "呪われた状態"
+      ]
+    ],
+    "after": [
+      [
+        "The old house",
+        "その古い家"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "said",
+        "言われていた"
+      ],
+      [
+        "to be",
+        "＝であると"
+      ],
+      [
+        "under a curse.",
+        "呪われた状態"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 369,
+    "word": "deeply",
+    "pos": "副",
+    "example": "I was deeply moved by the story.",
+    "kind": "event",
+    "before": [
+      [
+        "I",
+        "私は"
+      ],
+      [
+        "was deeply moved",
+        "深く感動させられた"
+      ],
+      [
+        "by the story.",
+        "その話によって"
+      ]
+    ],
+    "after": [
+      [
+        "I",
+        "私"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "deeply moved",
+        "深く心を動かされた"
+      ],
+      [
+        "by the story.",
+        "その話によって"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 371,
+    "word": "delay",
+    "pos": "名",
+    "example": "The flight was cancelled after a long delay.",
+    "kind": "event",
+    "before": [
+      [
+        "The flight",
+        "その便は"
+      ],
+      [
+        "was cancelled",
+        "欠航になった"
+      ],
+      [
+        "after a long delay.",
+        "長い遅れの後に"
+      ]
+    ],
+    "after": [
+      [
+        "The flight",
+        "その便"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "cancelled",
+        "欠航になった"
+      ],
+      [
+        "after a long delay.",
+        "長い遅れの後に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 372,
+    "word": "delay",
+    "pos": "動",
+    "example": "The train was delayed.",
+    "kind": "event",
+    "before": [
+      [
+        "The train",
+        "その列車は"
+      ],
+      [
+        "was delayed.",
+        "遅延した"
+      ]
+    ],
+    "after": [
+      [
+        "The train",
+        "その列車"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "delayed.",
+        "遅延した"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 475,
+    "word": "establish",
+    "pos": "動",
+    "example": "The school was established in 1950.",
+    "kind": "event",
+    "before": [
+      [
+        "The school",
+        "その学校は"
+      ],
+      [
+        "was established",
+        "設立された"
+      ],
+      [
+        "in 1950.",
+        "1950年に"
+      ]
+    ],
+    "after": [
+      [
+        "The school",
+        "その学校"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "established",
+        "設立された"
+      ],
+      [
+        "in 1950.",
+        "1950年に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 530,
+    "word": "female",
+    "pos": "形",
+    "example": "The female elephant is called a cow.",
+    "kind": "general-use",
+    "before": [
+      [
+        "The female elephant",
+        "メスのゾウは"
+      ],
+      [
+        "is called",
+        "呼ばれる"
+      ],
+      [
+        "a cow.",
+        "カウと"
+      ]
+    ],
+    "after": [
+      [
+        "The female elephant",
+        "メスのゾウ"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "called",
+        "呼ばれる"
+      ],
+      [
+        "a cow.",
+        "カウと"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 532,
+    "word": "fence",
+    "pos": "名",
+    "example": "The garden is surrounded by a wooden fence.",
+    "kind": "state",
+    "before": [
+      [
+        "The garden",
+        "その庭は"
+      ],
+      [
+        "is surrounded",
+        "囲まれている"
+      ],
+      [
+        "by a wooden fence.",
+        "木製の柵で"
+      ]
+    ],
+    "after": [
+      [
+        "The garden",
+        "その庭"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "surrounded",
+        "囲まれている"
+      ],
+      [
+        "by a wooden fence.",
+        "木製の柵で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 552,
+    "word": "flight",
+    "pos": "名",
+    "example": "Our flight was delayed by two hours.",
+    "kind": "event",
+    "before": [
+      [
+        "Our flight",
+        "私たちの便は"
+      ],
+      [
+        "was delayed",
+        "遅れた"
+      ],
+      [
+        "by two hours.",
+        "2時間だけ"
+      ]
+    ],
+    "after": [
+      [
+        "Our flight",
+        "私たちの便"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "delayed",
+        "遅れた"
+      ],
+      [
+        "by two hours.",
+        "2時間だけ"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 558,
+    "word": "fog",
+    "pos": "名",
+    "example": "The mountains were hidden in fog.",
+    "kind": "state",
+    "before": [
+      [
+        "The mountains",
+        "その山々は"
+      ],
+      [
+        "were hidden",
+        "隠れていた"
+      ],
+      [
+        "in fog.",
+        "霧の中に"
+      ]
+    ],
+    "after": [
+      [
+        "The mountains",
+        "その山々"
+      ],
+      [
+        "were",
+        "＝（過去）"
+      ],
+      [
+        "hidden",
+        "隠れていた"
+      ],
+      [
+        "in fog.",
+        "霧の中に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 562,
+    "word": "fool",
+    "pos": "動",
+    "example": "Don't be fooled.",
+    "kind": "negative-imperative",
+    "before": [
+      [
+        "Don't be fooled.",
+        "だまされないで"
+      ]
+    ],
+    "after": [
+      [
+        "Don't be",
+        "＝にならないで"
+      ],
+      [
+        "fooled.",
+        "だまされる側に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 565,
+    "word": "force",
+    "pos": "名",
+    "example": "The door was opened by force.",
+    "kind": "event",
+    "before": [
+      [
+        "The door",
+        "そのドアは"
+      ],
+      [
+        "was opened",
+        "開けられた"
+      ],
+      [
+        "by force.",
+        "力ずくで"
+      ]
+    ],
+    "after": [
+      [
+        "The door",
+        "そのドア"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "opened",
+        "開けられた"
+      ],
+      [
+        "by force.",
+        "力ずくで"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 570,
+    "word": "fortunately",
+    "pos": "副",
+    "example": "Fortunately, nobody was injured in the accident.",
+    "kind": "negative-event",
+    "before": [
+      [
+        "Fortunately,",
+        "幸いにも"
+      ],
+      [
+        "nobody",
+        "誰一人〜ない"
+      ],
+      [
+        "was injured",
+        "けがをした"
+      ],
+      [
+        "in the accident.",
+        "その事故で"
+      ]
+    ],
+    "after": [
+      [
+        "Fortunately,",
+        "幸いにも"
+      ],
+      [
+        "nobody",
+        "誰一人〜ない"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "injured",
+        "けがをした"
+      ],
+      [
+        "in the accident.",
+        "その事故で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 615,
+    "word": "gramme",
+    "pos": "名",
+    "example": "The weight is given in grammes.",
+    "kind": "state",
+    "before": [
+      [
+        "The weight",
+        "重さは"
+      ],
+      [
+        "is given",
+        "示されている"
+      ],
+      [
+        "in grammes.",
+        "グラム単位で"
+      ]
+    ],
+    "after": [
+      [
+        "The weight",
+        "重さ"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "given",
+        "示されている"
+      ],
+      [
+        "in grammes.",
+        "グラム単位で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 658,
+    "word": "highway",
+    "pos": "名",
+    "example": "The highway was closed due to an accident.",
+    "kind": "state",
+    "before": [
+      [
+        "The highway",
+        "幹線道路は"
+      ],
+      [
+        "was closed",
+        "閉鎖されていた"
+      ],
+      [
+        "due to an accident.",
+        "事故のために"
+      ]
+    ],
+    "after": [
+      [
+        "The highway",
+        "幹線道路"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "closed",
+        "閉鎖されていた"
+      ],
+      [
+        "due to an accident.",
+        "事故のために"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 707,
+    "word": "injure",
+    "pos": "動",
+    "example": "He was badly injured in the accident.",
+    "kind": "event",
+    "before": [
+      [
+        "He",
+        "彼は"
+      ],
+      [
+        "was badly injured",
+        "ひどいけがをした"
+      ],
+      [
+        "in the accident.",
+        "その事故で"
+      ]
+    ],
+    "after": [
+      [
+        "He",
+        "彼"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "badly injured",
+        "ひどいけがをした"
+      ],
+      [
+        "in the accident.",
+        "その事故で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 708,
+    "word": "inner",
+    "pos": "形",
+    "example": "The inner walls are painted white.",
+    "kind": "result-state",
+    "before": [
+      [
+        "The inner walls",
+        "内側の壁は"
+      ],
+      [
+        "are painted",
+        "塗られている"
+      ],
+      [
+        "white.",
+        "白く"
+      ]
+    ],
+    "after": [
+      [
+        "The inner walls",
+        "内側の壁"
+      ],
+      [
+        "are",
+        "＝"
+      ],
+      [
+        "painted",
+        "塗られている"
+      ],
+      [
+        "white.",
+        "白く"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 733,
+    "word": "joy",
+    "pos": "名",
+    "example": "Her face was filled with joy.",
+    "kind": "state",
+    "before": [
+      [
+        "Her face",
+        "彼女の顔は"
+      ],
+      [
+        "was filled with",
+        "満ちていた"
+      ],
+      [
+        "joy.",
+        "喜びで"
+      ]
+    ],
+    "after": [
+      [
+        "Her face",
+        "彼女の顔"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "filled",
+        "満ちていた"
+      ],
+      [
+        "with joy.",
+        "喜びで"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 736,
+    "word": "killer",
+    "pos": "名",
+    "example": "The killer was caught by the police.",
+    "kind": "event",
+    "before": [
+      [
+        "The killer",
+        "殺人犯は"
+      ],
+      [
+        "was caught",
+        "捕まえられた"
+      ],
+      [
+        "by the police.",
+        "警察に"
+      ]
+    ],
+    "after": [
+      [
+        "The killer",
+        "殺人犯"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "caught",
+        "捕まえられた"
+      ],
+      [
+        "by the police.",
+        "警察に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 770,
+    "word": "leather",
+    "pos": "名",
+    "example": "These shoes are made of leather.",
+    "kind": "state",
+    "before": [
+      [
+        "These shoes",
+        "この靴は"
+      ],
+      [
+        "are made of",
+        "できている"
+      ],
+      [
+        "leather.",
+        "革で"
+      ]
+    ],
+    "after": [
+      [
+        "These shoes",
+        "この靴"
+      ],
+      [
+        "are",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of leather.",
+        "革で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 783,
+    "word": "licence",
+    "pos": "動",
+    "example": "The company was licenced to sell the product.",
+    "kind": "event",
+    "before": [
+      [
+        "The company",
+        "その会社は"
+      ],
+      [
+        "was licenced",
+        "認可された"
+      ],
+      [
+        "to sell the product.",
+        "その製品を販売することを"
+      ]
+    ],
+    "after": [
+      [
+        "The company",
+        "その会社"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "licenced",
+        "認可された"
+      ],
+      [
+        "to sell the product.",
+        "その製品を販売することを"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 784,
+    "word": "license",
+    "pos": "動",
+    "example": "They are licensed to fish in this area.",
+    "kind": "state",
+    "before": [
+      [
+        "They",
+        "彼らは"
+      ],
+      [
+        "are licensed",
+        "許可されている"
+      ],
+      [
+        "to fish in this area.",
+        "この区域で釣りをすることを"
+      ]
+    ],
+    "after": [
+      [
+        "They",
+        "彼ら"
+      ],
+      [
+        "are",
+        "＝"
+      ],
+      [
+        "licensed",
+        "許可されている"
+      ],
+      [
+        "to fish in this area.",
+        "この区域で釣りをすることを"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 832,
+    "word": "material",
+    "pos": "名",
+    "example": "This dress is made of thin material.",
+    "kind": "state",
+    "before": [
+      [
+        "This dress",
+        "このドレスは"
+      ],
+      [
+        "is made of",
+        "作られている"
+      ],
+      [
+        "thin material.",
+        "薄い生地で"
+      ]
+    ],
+    "after": [
+      [
+        "This dress",
+        "このドレス"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of thin material.",
+        "薄い生地で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 879,
+    "word": "nation",
+    "pos": "名",
+    "example": "The whole nation was shocked by the news.",
+    "kind": "event",
+    "before": [
+      [
+        "The whole nation",
+        "国民全体が"
+      ],
+      [
+        "was shocked",
+        "衝撃を受けた"
+      ],
+      [
+        "by the news.",
+        "その知らせに"
+      ]
+    ],
+    "after": [
+      [
+        "The whole nation",
+        "国民全体"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "shocked",
+        "衝撃を受けた"
+      ],
+      [
+        "by the news.",
+        "その知らせに"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 888,
+    "word": "net",
+    "pos": "形",
+    "example": "A butterfly was caught in the net.",
+    "kind": "event",
+    "before": [
+      [
+        "A butterfly",
+        "チョウは"
+      ],
+      [
+        "was caught",
+        "捕らえられた"
+      ],
+      [
+        "in the net.",
+        "網の中に"
+      ]
+    ],
+    "after": [
+      [
+        "A butterfly",
+        "チョウ"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "caught",
+        "捕らえられた"
+      ],
+      [
+        "in the net.",
+        "網の中に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 907,
+    "word": "oak",
+    "pos": "名",
+    "example": "The table is made of solid oak.",
+    "kind": "state",
+    "before": [
+      [
+        "The table",
+        "テーブルは"
+      ],
+      [
+        "is made of",
+        "作られている"
+      ],
+      [
+        "solid oak.",
+        "オークの無垢材で"
+      ]
+    ],
+    "after": [
+      [
+        "The table",
+        "テーブル"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of solid oak.",
+        "オークの無垢材で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 915,
+    "word": "Olympic",
+    "pos": "形",
+    "example": "The Olympic flame was lit.",
+    "kind": "event",
+    "before": [
+      [
+        "The Olympic flame",
+        "オリンピックの聖火は"
+      ],
+      [
+        "was lit.",
+        "ともされた"
+      ]
+    ],
+    "after": [
+      [
+        "The Olympic flame",
+        "オリンピックの聖火"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "lit.",
+        "ともされた"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 942,
+    "word": "pacific",
+    "pos": "形",
+    "example": "Japan is surrounded by the Pacific Ocean.",
+    "kind": "state",
+    "before": [
+      [
+        "Japan",
+        "日本は"
+      ],
+      [
+        "is surrounded",
+        "囲まれている"
+      ],
+      [
+        "by the Pacific Ocean.",
+        "太平洋に"
+      ]
+    ],
+    "after": [
+      [
+        "Japan",
+        "日本"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "surrounded",
+        "囲まれている"
+      ],
+      [
+        "by the Pacific Ocean.",
+        "太平洋に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 990,
+    "word": "planet",
+    "pos": "名",
+    "example": "Mars is known as the red planet.",
+    "kind": "state",
+    "before": [
+      [
+        "Mars",
+        "火星は"
+      ],
+      [
+        "is known",
+        "知られている"
+      ],
+      [
+        "as the red planet.",
+        "赤い惑星として"
+      ]
+    ],
+    "after": [
+      [
+        "Mars",
+        "火星"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "known",
+        "知られている"
+      ],
+      [
+        "as the red planet.",
+        "赤い惑星として"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 993,
+    "word": "plastic",
+    "pos": "形",
+    "example": "These toys are made of plastic.",
+    "kind": "state",
+    "before": [
+      [
+        "These toys",
+        "これらのおもちゃは"
+      ],
+      [
+        "are made of",
+        "作られている"
+      ],
+      [
+        "plastic.",
+        "プラスチックで"
+      ]
+    ],
+    "after": [
+      [
+        "These toys",
+        "これらのおもちゃ"
+      ],
+      [
+        "are",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of plastic.",
+        "プラスチックで"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1058,
+    "word": "publish",
+    "pos": "動",
+    "example": "The magazine is published monthly.",
+    "kind": "habitual-event",
+    "before": [
+      [
+        "The magazine",
+        "その雑誌は"
+      ],
+      [
+        "is published",
+        "出版されている"
+      ],
+      [
+        "monthly.",
+        "毎月"
+      ]
+    ],
+    "after": [
+      [
+        "The magazine",
+        "その雑誌"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "published",
+        "出版される"
+      ],
+      [
+        "monthly.",
+        "毎月"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1106,
+    "word": "release",
+    "pos": "名",
+    "example": "The movie's release was delayed.",
+    "kind": "event",
+    "before": [
+      [
+        "The movie's release",
+        "映画の公開は"
+      ],
+      [
+        "was delayed.",
+        "延期された"
+      ]
+    ],
+    "after": [
+      [
+        "The movie's release",
+        "映画の公開"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "delayed.",
+        "延期された"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1120,
+    "word": "represent",
+    "pos": "動",
+    "example": "She was chosen to represent our school.",
+    "kind": "event",
+    "before": [
+      [
+        "She",
+        "彼女は"
+      ],
+      [
+        "was chosen",
+        "選ばれた"
+      ],
+      [
+        "to represent our school.",
+        "私たちの学校を代表するために"
+      ]
+    ],
+    "after": [
+      [
+        "She",
+        "彼女"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "chosen",
+        "選ばれた"
+      ],
+      [
+        "to represent our school.",
+        "私たちの学校を代表するために"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1166,
+    "word": "sadly",
+    "pos": "副",
+    "example": "Sadly, the party was canceled.",
+    "kind": "event",
+    "before": [
+      [
+        "Sadly,",
+        "残念ながら"
+      ],
+      [
+        "the party",
+        "パーティーは"
+      ],
+      [
+        "was canceled.",
+        "中止された"
+      ]
+    ],
+    "after": [
+      [
+        "Sadly,",
+        "残念ながら"
+      ],
+      [
+        "the party",
+        "パーティー"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "canceled.",
+        "中止された"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1212,
+    "word": "serve",
+    "pos": "動",
+    "example": "Lunch is served from 12 to 2.",
+    "kind": "habitual-event",
+    "before": [
+      [
+        "Lunch",
+        "昼食は"
+      ],
+      [
+        "is served",
+        "提供される"
+      ],
+      [
+        "from 12 to 2.",
+        "12時から2時まで"
+      ]
+    ],
+    "after": [
+      [
+        "Lunch",
+        "昼食"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "served",
+        "提供される"
+      ],
+      [
+        "from 12 to 2.",
+        "12時から2時まで"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1249,
+    "word": "slave",
+    "pos": "名",
+    "example": "The slaves were forced to work in the fields.",
+    "kind": "event",
+    "before": [
+      [
+        "The slaves",
+        "奴隷たちは"
+      ],
+      [
+        "were forced",
+        "強いられた"
+      ],
+      [
+        "to work in the fields.",
+        "畑で働くことを"
+      ]
+    ],
+    "after": [
+      [
+        "The slaves",
+        "奴隷たち"
+      ],
+      [
+        "were",
+        "＝（過去）"
+      ],
+      [
+        "forced",
+        "強いられた"
+      ],
+      [
+        "to work in the fields.",
+        "畑で働くことを"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1276,
+    "word": "split",
+    "pos": "形",
+    "example": "The class was split into two groups.",
+    "kind": "event",
+    "before": [
+      [
+        "The class",
+        "クラスは"
+      ],
+      [
+        "was split",
+        "分けられた"
+      ],
+      [
+        "into two groups.",
+        "2つのグループに"
+      ]
+    ],
+    "after": [
+      [
+        "The class",
+        "クラス"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "split",
+        "分けられた"
+      ],
+      [
+        "into two groups.",
+        "2つのグループに"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1302,
+    "word": "string",
+    "pos": "名",
+    "example": "The package was tied with string.",
+    "kind": "event",
+    "before": [
+      [
+        "The package",
+        "包みは"
+      ],
+      [
+        "was tied",
+        "縛られた"
+      ],
+      [
+        "with string.",
+        "ひもで"
+      ]
+    ],
+    "after": [
+      [
+        "The package",
+        "包み"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "tied",
+        "縛られた"
+      ],
+      [
+        "with string.",
+        "ひもで"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1374,
+    "word": "track",
+    "pos": "名",
+    "example": "The train tracks were covered in snow.",
+    "kind": "state",
+    "before": [
+      [
+        "The train tracks",
+        "線路は"
+      ],
+      [
+        "were covered",
+        "覆われていた"
+      ],
+      [
+        "in snow.",
+        "雪で"
+      ]
+    ],
+    "after": [
+      [
+        "The train tracks",
+        "線路"
+      ],
+      [
+        "were",
+        "＝（過去）"
+      ],
+      [
+        "covered",
+        "覆われていた"
+      ],
+      [
+        "in snow.",
+        "雪で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1383,
+    "word": "trap",
+    "pos": "名",
+    "example": "The mouse was caught in a trap.",
+    "kind": "event",
+    "before": [
+      [
+        "The mouse",
+        "ネズミは"
+      ],
+      [
+        "was caught",
+        "捕まった"
+      ],
+      [
+        "in a trap.",
+        "わなに"
+      ]
+    ],
+    "after": [
+      [
+        "The mouse",
+        "ネズミ"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "caught",
+        "捕まった"
+      ],
+      [
+        "in a trap.",
+        "わなに"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1386,
+    "word": "treasure",
+    "pos": "名",
+    "example": "The box was filled with treasure.",
+    "kind": "state",
+    "before": [
+      [
+        "The box",
+        "箱は"
+      ],
+      [
+        "was filled",
+        "満たされていた"
+      ],
+      [
+        "with treasure.",
+        "財宝で"
+      ]
+    ],
+    "after": [
+      [
+        "The box",
+        "箱"
+      ],
+      [
+        "was",
+        "＝（過去）"
+      ],
+      [
+        "filled",
+        "満たされていた"
+      ],
+      [
+        "with treasure.",
+        "財宝で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1420,
+    "word": "valley",
+    "pos": "名",
+    "example": "The village is located in a narrow valley.",
+    "kind": "state",
+    "before": [
+      [
+        "The village",
+        "その村は"
+      ],
+      [
+        "is located",
+        "位置している"
+      ],
+      [
+        "in a narrow valley.",
+        "狭い谷の中に"
+      ]
+    ],
+    "after": [
+      [
+        "The village",
+        "その村"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "located",
+        "位置している"
+      ],
+      [
+        "in a narrow valley.",
+        "狭い谷の中に"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1441,
+    "word": "weekly",
+    "pos": "形",
+    "example": "The magazine is published weekly.",
+    "kind": "habitual-event",
+    "before": [
+      [
+        "The magazine",
+        "その雑誌は"
+      ],
+      [
+        "is published",
+        "出版されている"
+      ],
+      [
+        "weekly.",
+        "毎週"
+      ]
+    ],
+    "after": [
+      [
+        "The magazine",
+        "その雑誌"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "published",
+        "出版される"
+      ],
+      [
+        "weekly.",
+        "毎週"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1458,
+    "word": "widely",
+    "pos": "副",
+    "example": "English is widely spoken in this country.",
+    "kind": "general-use",
+    "before": [
+      [
+        "English",
+        "英語は"
+      ],
+      [
+        "is widely spoken",
+        "広く話されている"
+      ],
+      [
+        "in this country.",
+        "この国で"
+      ]
+    ],
+    "after": [
+      [
+        "English",
+        "英語"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "widely spoken",
+        "広く話されている"
+      ],
+      [
+        "in this country.",
+        "この国で"
+      ]
+    ]
+  },
+  {
+    "level": "basic",
+    "index": 1469,
+    "word": "wool",
+    "pos": "名",
+    "example": "This sweater is made of 100% wool.",
+    "kind": "state",
+    "before": [
+      [
+        "This sweater",
+        "このセーターは"
+      ],
+      [
+        "is made of",
+        "作られている"
+      ],
+      [
+        "100% wool.",
+        "100パーセントのウールで"
+      ]
+    ],
+    "after": [
+      [
+        "This sweater",
+        "このセーター"
+      ],
+      [
+        "is",
+        "＝"
+      ],
+      [
+        "made",
+        "できている"
+      ],
+      [
+        "of 100% wool.",
+        "100パーセントのウールで"
+      ]
+    ]
+  }
+]

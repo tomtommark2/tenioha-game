@@ -89,7 +89,7 @@ test('例文の読み方：同綴り別品詞への切替で説明と全文訳�
     await expect(page.locator('.example-reading-meaning p')).toBeHidden();
 });
 
-test('例文の読み方：beの等号・過去・否定・疑問を示し、助動詞と存在は区別する', async ({ page }) => {
+test('例文の読み方：beと受け身の等号を示し、進行形と存在は区別する', async ({ page }) => {
     test.setTimeout(60000);
     const samples = {
         93: ['彼女', '＝', 'とても美しい'],
@@ -102,7 +102,7 @@ test('例文の読み方：beの等号・過去・否定・疑問を示し、助
         1002: ['どうか', '＝でいて', '静か'],
         651: ['天気を示すit', '＝', '寒い', '1月は'],
         74: ['その赤ちゃんは', '眠っている'],
-        197: ['この本は', '書かれた', '漱石によって'],
+        197: ['この本', '＝（過去）', '書かれた', '漱石によって'],
         167: ['猫はいる', 'その箱の中に'],
         326: ['ある', '本が一冊', 'その机の上に']
     };
@@ -130,15 +130,17 @@ test('例文の読み方：開閉は回答・保存を増やさず音声は英�
 test('例文の読み方：対象外・自作語・次の出題で前の補助を残さない', async ({ page }) => {
     await page.locator('#exampleReadingToggle').click();
     await page.evaluate(() => {
-        gameState.currentLevel = 'daily';
-        showWord(vocabularyDatabase.daily[0]);
+        gameState.currentLevel = 'selection1400';
+        gameState.currentWord = vocabularyDatabase.junior[0];
+        renderWordExample(gameState.currentWord);
     });
     await expect(page.locator('#exampleReadingToggle')).toBeHidden();
     await expect(page.locator('#exampleReadingPanel')).toBeHidden();
     await page.evaluate(() => {
         gameState.currentLevel = 'junior';
         const word = vocabularyDatabase.junior.find(word => word.word === 'apple');
-        renderWordExample({ ...word, __customWord: true });
+        gameState.currentWord = { ...word, __customWord: true };
+        renderWordExample(gameState.currentWord);
     });
     await expect(page.locator('#exampleReadingToggle')).toBeHidden();
     await page.locator('#exampleReadingSample').selectOption('0');

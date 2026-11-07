@@ -1,7 +1,7 @@
 // Optional, locally supplied reading help. Does not alter answers or saved learning data.
 (() => {
     const scriptUrl = new URL(document.currentScript.src);
-    const collections = new Map(['junior', 'basic'].map(level => [level, {
+    const collections = new Map(['junior', 'basic', 'daily', 'exam1'].map(level => [level, {
         readings: new Map(), loading: null, loaded: false, failed: false, complete: level === 'junior'
     }]));
     const toggle = document.getElementById('exampleReadingToggle');

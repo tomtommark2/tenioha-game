@@ -40,7 +40,7 @@ test('基礎全例：難しいまとまり・be・受け身の対応と、任意
         43: ['その医師は', '助言した', '私に', '休むように'],
         46: ['彼は', '持っている', '高齢の母親を', '世話をする必要がある'],
         56: ['どうか', '許可してください', '私が説明するのを'],
-        62: ['彼女は', '楽しませられた', 'その話に'],
+        62: ['彼女', '＝（過去）', '楽しませられた', 'その話に'],
         68: ['私は', 'くじいた', '自分の足首を', 'サッカーをしているときに'],
         80: ['どうやら', '彼は', '来ない']
     };
@@ -55,6 +55,40 @@ test('基礎全例：難しいまとまり・be・受け身の対応と、任意
         await page.getByText('全体の意味', { exact: true }).click();
         await expect(page.locator('.example-reading-meaning p')).toHaveText(data.entries[index].translation);
         expect(await snapshot(page)).toBe(before);
+    }
+});
+
+test('受け身：等号で動作・状態・完了・未来・否定・入れ子の違いを保つ', async ({ page }) => {
+    test.setTimeout(60000);
+    const samples = {
+        junior: {
+            197: ['この本', '＝（過去）', '書かれた', '漱石によって'],
+            494: ['その車', '＝', '駐車されている', 'その家の前に'],
+            618: ['誰一人〜ない', '＝（過去）', 'けがをした'],
+            1262: ['私', '＝（過去）', '驚いた', 'その知らせに']
+        },
+        basic: {
+            117: ['彼女', '＝（過去）', '授与された', '賞を'],
+            263: ['その状況', '今では＝（完了）', 'はっきり説明されている'],
+            321: ['どうか', '確かめて', 'すべての用紙', '＝', '正しく記入されていることを'],
+            329: ['その訴訟', '＝（予測）', '審理される', '法廷で'],
+            350: ['その古い家', '＝（過去）', '言われていた', '＝であると', '呪われた状態'],
+            562: ['＝にならないで', 'だまされる側に'],
+            708: ['内側の壁', '＝', '塗られている', '白く'],
+            1058: ['その雑誌', '＝', '出版される', '毎月']
+        }
+    };
+    for (const [level, examples] of Object.entries(samples)) {
+        await page.goto('/index.html?exampleReadingPreview=1&exampleReadingLevel=' + level);
+        for (const [index, japanese] of Object.entries(examples)) {
+            await page.locator('#exampleReadingSample').selectOption(index);
+            const before = await snapshot(page);
+            await page.locator('#exampleReadingToggle').click();
+            await expect(page.locator('.example-reading-chunk span:last-child')).toHaveText(japanese);
+            expect((await page.locator('.example-reading-chunk span:first-child').allTextContents()).join(' ')).toBe(await page.locator('#exampleSentence').textContent());
+            await expect(page.locator('.example-reading-meaning p')).toBeHidden();
+            expect(await snapshot(page)).toBe(before);
+        }
     }
 });
 
